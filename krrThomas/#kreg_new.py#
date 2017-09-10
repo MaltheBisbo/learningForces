@@ -192,6 +192,8 @@ class Kreg(Calculator):
 
         return self.results['energy']
 
+    def pred_forces(self, ):
+
     def add_data(self,atoms):
         """This method takes an atoms object with a set energy as an input and adds it to the dataset
         """

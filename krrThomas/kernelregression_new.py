@@ -52,10 +52,12 @@ class KernelRegression(object):
         self.similarity_matrix = similarity_matrix
         self.comp = comp
         self.sigma = None
+        
+        print(similarity_matrix)
 
         self.nested = nested
         self.stratify = stratify
-        assert similarity_matrix != None or comp != None
+        assert similarity_matrix is not None or comp is not None
 
         self.kernel_matrix = None
         if feature_matrix != None:
@@ -272,7 +274,7 @@ class KernelRegression(object):
         if self.stratify:
             # Distribute data evenly into subsets (stratification)
             subsets = []
-            n_buckets = len(train_idx)/self.k
+            n_buckets = int(len(train_idx)/self.k)
             buckets = np.array_split(train_idx, n_buckets)
             for h in range(n_buckets):
                 random.shuffle(buckets[h])

@@ -219,10 +219,10 @@ class FingerprintsComparator(object):
         num = atoms.get_atomic_numbers()
         cell = self.cell
 
-        unique_types = sorted(list(set(num))) # the unique atomic numbers
+        unique_types = sorted(list(set(num)))  # the unique atomic numbers
         posdic = {}
         for t in unique_types:
-            tlist = [i for i,atom in enumerate(atoms) if atom.number == t]
+            tlist = [i for i, atom in enumerate(atoms) if atom.number == t]
             posdic[t] = pos[tlist]
 
         # Setting up the required extra parameters if we don't want to apply
@@ -400,7 +400,7 @@ class FingerprintsComparator(object):
                 for i in self.typedic[type1]:
                     fingerprint += take_individual_rdf(i,type2)
                 fingerprint /= len(self.typedic[type1])
-                if self.dimensions > 0:
+               if self.dimensions > 0:
                     fingerprint -= 1
                 fingerprints[key] = fingerprint
 
