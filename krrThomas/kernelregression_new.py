@@ -52,8 +52,6 @@ class KernelRegression(object):
         self.similarity_matrix = similarity_matrix
         self.comp = comp
         self.sigma = None
-        
-        print(similarity_matrix)
 
         self.nested = nested
         self.stratify = stratify

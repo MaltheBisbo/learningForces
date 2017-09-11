@@ -400,7 +400,7 @@ class FingerprintsComparator(object):
                 for i in self.typedic[type1]:
                     fingerprint += take_individual_rdf(i,type2)
                 fingerprint /= len(self.typedic[type1])
-               if self.dimensions > 0:
+                if self.dimensions > 0:
                     fingerprint -= 1
                 fingerprints[key] = fingerprint
 
