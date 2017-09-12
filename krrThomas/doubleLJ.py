@@ -67,7 +67,7 @@ def bobFeatures(positions):
 def data2bobFeatures(X):
     """
     --input--
-    X: 
+    X:
     Contains data. Each row tepresents a structure given by cartesian coordinates
     in the form [x1, y1, ... , xN, yN]
     """
@@ -166,6 +166,7 @@ def createData(Ndata):
     x = np.c_[x1, x2].reshape((1, 8))
     
     # Define an array of positions for the last pointB
+    #xnew = np.c_[np.random.rand(Ndata)+0.5, np.random.rand(Ndata)+1]
     xnew = np.c_[np.linspace(0.5, 2, Ndata), np.ones(Ndata)]
     
     # Make X matrix with rows beeing the coordinates for each point in a structure.
@@ -178,9 +179,9 @@ if __name__ == "__main__":
 
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 100
-    lamb = 0.0001
-    sig = 0.3
+    Ndata = 30
+    lamb = 0.001
+    sig = 0.1
 
     X = createData(Ndata)
     G, I = data2bobFeatures(X)
@@ -190,12 +191,33 @@ if __name__ == "__main__":
     F = np.zeros((Ndata, 2*5))
     for i in range(Ndata):
         E[i], F[i, :] = doubleLJ(X[i], eps, r0, sigma)
-
+    
     Gtrain = G[:-1]
     Etrain = E[:-1]
+    beta = np.mean(Etrain)
+    print(beta)
     K = kernelMat(Gtrain, sig)
-    alpha = np.linalg.inv(K + lamb*np.identity(Ndata-1)).dot(Etrain)
-
+    alpha = np.linalg.inv(K + lamb*np.identity(Ndata-1)).dot(Etrain-beta)
+    print(alpha)
+    Npoints = 60
+    Etest = np.zeros(Npoints)
+    Epredict = np.zeros(Npoints)
+    Xtest0 = X[-1]
+    delta_array = np.linspace(-3.5, 0.5, Npoints)
+    for i in range(Npoints):
+        delta = delta_array[i]
+        Xtest = Xtest0.copy()
+        Xtest[-2] += delta
+        Gtest, I = bobFeatures(Xtest)
+        kappa = kernelVec(Gtest, Gtrain, sig)
+        print(kappa[0], kappa[10], kappa[20])
+        Etest[i], F = doubleLJ(Xtest, eps, r0, sigma)
+        Epredict[i] = kappa.dot(alpha) + beta
+    
+    plt.plot(delta_array, Etest)
+    plt.scatter(delta_array, Epredict)
+    plt.show()
+    """
     Gtest = G[-1]
     Itest = I[-1]
     kappa = kernelVec(G[-1], Gtrain, sig)
@@ -219,7 +241,7 @@ if __name__ == "__main__":
     pos_test = Xtest.reshape((5,2))
     plt.scatter(pos_test[:, 0], pos_test[:, 1])
     plt.show()
-
+    """
 
 
     """
