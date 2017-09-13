@@ -179,8 +179,8 @@ if __name__ == "__main__":
 
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 30
-    lamb = 0.001
+    Ndata = 100
+    lamb = 0.1
     sig = 0.1
 
     X = createData(Ndata)
@@ -216,7 +216,26 @@ if __name__ == "__main__":
     
     plt.plot(delta_array, Etest)
     plt.scatter(delta_array, Epredict)
+    #plt.show()
+
+
+    Xtest = Xtest0.copy()
+    Xtest[-2] -= 1.2
+    print(Xtest)
+    gtest, itest = features.calc_singleFeature(Xtest)
+    print(gtest)
+    print(itest)
+    kappaDeriv = kernelVecDeriv(Xtest, gtest, itest, Gtrain, sig)
+
+    a = krr.dual_coef_
+
+    Fpred = kappaDeriv.dot(a)
+    E, Ftest = doubleLJ(Xtest, eps, r0, sigma)
+    print(Fpred)
+    print(Ftest)
     plt.show()
+
+
     """
     Gtest = G[-1]
     Itest = I[-1]
@@ -242,7 +261,7 @@ if __name__ == "__main__":
     plt.scatter(pos_test[:, 0], pos_test[:, 1])
     plt.show()
     """
-
+    
 
     """
     # Set interaction parameters
@@ -282,7 +301,7 @@ if __name__ == "__main__":
 
     
 
-
+    """
     r = np.linspace(0.8, 2.5, 100)
     x1 = np.array([0, 0])
     x2 = np.c_[r, np.zeros(100)]
@@ -300,4 +319,4 @@ if __name__ == "__main__":
     plt.xlim([0.9, 2.5])
     plt.ylim([-10, 10])
     plt.show()
-
+    """

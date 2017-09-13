@@ -101,28 +101,12 @@ def bobDeriv(pos, g, atomIndices):
     # Calculate gradient of bob-feature
     gDeriv = np.zeros((Nfeatures, Nr))
     for i in range(Nfeatures):
-        for j in range(Nr):
-            a0 = atomIndices[j, 0]
-            a1 = atomIndices[j, 1]
-            inv_r = g[i]
-            gDeriv[i, 2*a0:2*a0+2] += inv_r**3*np.array([pos[a1, 0] - pos[a0, 0], pos[a1, 1] - pos[a0, 1]])
-            gDeriv[i, 2*a1:2*a1+2] += -inv_r**3*np.array([pos[a1, 0] - pos[a0, 0], pos[a1, 1] - pos[a0, 1]])
+        a0 = atomIndices[i, 0]
+        a1 = atomIndices[i, 1]
+        inv_r = g[i]
+        gDeriv[i, 2*a0:2*a0+2] += inv_r**3*np.array([pos[a1, 0] - pos[a0, 0], pos[a1, 1] - pos[a0, 1]])
+        gDeriv[i, 2*a1:2*a1+2] += -inv_r**3*np.array([pos[a1, 0] - pos[a0, 0], pos[a1, 1] - pos[a0, 1]])
     return gDeriv
-
-
-def invDistFeature(X):
-    Ndata = X.shape[0]
-    Natoms = int(X.shape[1]/2)
-    Nfeatures = int(Natoms*(Natoms-1)/2)
-    Q = np.zeros((Ndata, Nfeatures))
-    for n in range(Ndata):
-        x = X[n, :].reshape((Natoms, 2))
-        k = 0
-        for i in range(Natoms):
-            for j in range(i+1, Natoms):
-                Q[n, k] = 1 / np.linalg.norm(x[i, :] - x[j, :])
-                k += 1
-    return Q
 
 
 def gaussKernel(g1, g2, sigma):
@@ -165,7 +149,7 @@ def kernelVecDeriv(pos, gnew, inew, G, sig):
     dd_dR = np.dot(dd_dg, dg_dR)
     front = -1/(2*sig**2)*kappa  # -1/sig**2*np.multiply(dvec, kappa)
     kernelDeriv = np.multiply(front.reshape((Ntrain, 1)), dd_dR)
-    return kernelDeriv.T
+    return -kernelDeriv.T
 
     
 def createData(Ndata):
@@ -205,10 +189,8 @@ if __name__ == "__main__":
     Gtrain = G[:-1]
     Etrain = E[:-1]
     beta = np.mean(Etrain)
-    print(beta)
     K = kernelMat(Gtrain, sig)
     alpha = np.linalg.inv(K + lamb*np.identity(Ndata-1)).dot(Etrain-beta)
-    print(alpha)
     Npoints = 60
     Etest = np.zeros(Npoints)
     Epredict = np.zeros(Npoints)
@@ -220,13 +202,29 @@ if __name__ == "__main__":
         Xtest[-2] += delta
         Gtest, I = features.calc_singleFeature(Xtest)
         kappa = kernelVec(Gtest, Gtrain, sig)
-        print(kappa[0], kappa[10], kappa[20])
         Etest[i], F = doubleLJ(Xtest, eps, r0, sigma)
         Epredict[i] = kappa.dot(alpha) + beta
     
     plt.plot(delta_array, Etest)
     plt.scatter(delta_array, Epredict)
+    #plt.show()
+
+
+    Xtest = Xtest0.copy()
+    Xtest[-2] -= 1.2
+    gtest, itest = features.calc_singleFeature(Xtest)
+
+    kappaDeriv = kernelVecDeriv(Xtest, gtest, itest, Gtrain, sig)
+
+    a = alpha
+
+    Fpred = kappaDeriv.dot(a)
+    E, Ftest = doubleLJ(Xtest, eps, r0, sigma)
+    print(Fpred)
+    print(Ftest)
     plt.show()
+
+
     """
     Gtest = G[-1]
     Itest = I[-1]
@@ -292,7 +290,7 @@ if __name__ == "__main__":
 
     
 
-
+    """
     r = np.linspace(0.8, 2.5, 100)
     x1 = np.array([0, 0])
     x2 = np.c_[r, np.zeros(100)]
@@ -310,4 +308,4 @@ if __name__ == "__main__":
     plt.xlim([0.9, 2.5])
     plt.ylim([-10, 10])
     plt.show()
-
+    """

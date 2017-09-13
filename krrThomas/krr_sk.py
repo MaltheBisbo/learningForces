@@ -50,7 +50,7 @@ def doubleLJ(x, *params):
 
 
 class bob_features():
-    def __init__(self, X):
+    def __init__(self, X=None):
         """
         --input--
         X:
@@ -97,7 +97,7 @@ class bob_features():
 
 
 def bobDeriv(pos, g, atomIndices):
-    Nr = len(atomIndices)
+    Nr = pos.shape[0]
     pos = pos.reshape((int(Nr/2), 2))
     Nfeatures = np.size(g, 0)
     
@@ -105,12 +105,11 @@ def bobDeriv(pos, g, atomIndices):
     # Calculate gradient of bob-feature
     gDeriv = np.zeros((Nfeatures, Nr))
     for i in range(Nfeatures):
-        for j in range(Nr):
-            a0 = atomIndices[j, 0]
-            a1 = atomIndices[j, 1]
-            inv_r = g[i]
-            gDeriv[i, 2*a0:2*a0+2] += inv_r**3*np.array([pos[a1, 0] - pos[a0, 0], pos[a1, 1] - pos[a0, 1]])
-            gDeriv[i, 2*a1:2*a1+2] += -inv_r**3*np.array([pos[a1, 0] - pos[a0, 0], pos[a1, 1] - pos[a0, 1]])
+        a0 = atomIndices[i, 0]
+        a1 = atomIndices[i, 1]
+        inv_r = g[i]
+        gDeriv[i, 2*a0:2*a0+2] += inv_r**3*np.array([pos[a1, 0] - pos[a0, 0], pos[a1, 1] - pos[a0, 1]])
+        gDeriv[i, 2*a1:2*a1+2] += -inv_r**3*np.array([pos[a1, 0] - pos[a0, 0], pos[a1, 1] - pos[a0, 1]])
     return gDeriv
 
 """
@@ -123,7 +122,7 @@ def gaussKernel(g1, g2, **kwargs):
 
 def gaussKernel(g1, g2, sigma):
     d = np.linalg.norm(g2 - g1)
-    return np.exp(-1/(2*sigma**2)*d)
+    return np.exp(-1/(2*sigma**2)*d) # **2)
 
 
 class GaussKernel(BaseEstimator, TransformerMixin):
@@ -142,7 +141,7 @@ def kernelVecDeriv(pos, gnew, inew, G, sig):
     Ntrain, Nfeatures = G.shape
     dvec = np.array([np.linalg.norm(g - gnew) for g in G])
     kappa = np.array([gaussKernel(gnew, g, sig) for g in G])
-    #print('kappa=\n', kappa)
+
     dd_dg = np.zeros((Ntrain, Nfeatures))
     for i in range(Ntrain):
         dd_dg[i, :] = -np.sign(G[i] - gnew)
@@ -150,7 +149,7 @@ def kernelVecDeriv(pos, gnew, inew, G, sig):
     dd_dR = np.dot(dd_dg, dg_dR)
     front = -1/(2*sig**2)*kappa  # -1/sig**2*np.multiply(dvec, kappa)
     kernelDeriv = np.multiply(front.reshape((Ntrain, 1)), dd_dR)
-    return kernelDeriv.T
+    return -kernelDeriv.T
 
     
 def createData(Ndata):
@@ -191,14 +190,15 @@ if __name__ == "__main__":
     Etrain = E[:-1]
     beta = np.mean(Etrain)
 
-    """
+    
     kernel_params = {'sigma': sig}
     parameters = {'alpha': [lamb, 10*lamb]}
     krr = KernelRidge(alpha=lamb, kernel=gaussKernel, kernel_params=kernel_params)
     estimator = GridSearchCV(krr, param_grid=parameters)
     krr.fit(Gtrain, Etrain-beta)
-    """
+    
 
+    """
     # Create a pipeline where our custom predefined kernel Chi2Kernel
     # is run before SVC.
     pipe = Pipeline([
@@ -227,7 +227,7 @@ if __name__ == "__main__":
     print("Test accuracy: {}".format(acc_test))
     print("Best params:")
     print(model.best_params_)
-    
+    """
     
     Npoints = 60
     Etest = np.zeros(Npoints)
@@ -239,9 +239,25 @@ if __name__ == "__main__":
         Xtest = Xtest0.copy()
         Xtest[-2] += delta
         Gtest = features.calc_singleFeature(Xtest)[0].reshape((1, -1))
-        Etest[i], F = doubleLJ(Xtest, eps, r0, sigma)
+        Etest[i], Ftest = doubleLJ(Xtest, eps, r0, sigma)
         Epredict[i] = krr.predict(Gtest) + beta
-                                                                                                                             
+    
     plt.plot(delta_array, Etest)
     plt.scatter(delta_array, Epredict)
+    #plt.show()
+
+    Xtest = Xtest0.copy()
+    Xtest[-2] -= 1.2
+    print(Xtest)
+    gtest, itest = features.calc_singleFeature(Xtest)
+    print(gtest)
+    print(itest)
+    kappaDeriv = kernelVecDeriv(Xtest, gtest, itest, Gtrain, sig)
+
+    a = krr.dual_coef_
+
+    Fpred = kappaDeriv.dot(a)
+    E, Ftest = doubleLJ(Xtest, eps, r0, sigma)
+    print(Fpred)
+    print(Ftest)
     plt.show()
