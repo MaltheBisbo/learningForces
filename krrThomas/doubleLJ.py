@@ -219,22 +219,6 @@ if __name__ == "__main__":
     #plt.show()
 
 
-    Xtest = Xtest0.copy()
-    Xtest[-2] -= 1.2
-    print(Xtest)
-    gtest, itest = features.calc_singleFeature(Xtest)
-    print(gtest)
-    print(itest)
-    kappaDeriv = kernelVecDeriv(Xtest, gtest, itest, Gtrain, sig)
-
-    a = krr.dual_coef_
-
-    Fpred = kappaDeriv.dot(a)
-    E, Ftest = doubleLJ(Xtest, eps, r0, sigma)
-    print(Fpred)
-    print(Ftest)
-    plt.show()
-
 
     """
     Gtest = G[-1]

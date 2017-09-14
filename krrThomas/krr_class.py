@@ -111,12 +111,7 @@ def bobDeriv(pos, g, atomIndices):
 
 def gaussKernel(g1, g2, sigma):
     d = np.linalg.norm(g2 - g1)
-    return np.exp(-1/(2*sigma**2)*d)  # **)
-
-
-def HessGaussKernel(g1, g2, sigma):
-    N = g1.shape[0]
-    Hesskernel = np.zeros((N, N))
+    return np.exp(-1/(2*sigma**2)*d)  # **2)
 
 
 def kernelMat(G, sigma):
@@ -125,58 +120,65 @@ def kernelMat(G, sigma):
     for i in range(Ndata):
         for j in range(i, Ndata):
             K[i, j] = gaussKernel(G[i, :], G[j, :], sigma)
-    K = K + np.triu(K, k=1)
+    K = K + np.triu(K, k=1).T
     return K
 
 
 def kernelVec(gnew, G, sigma):
-    Ndata = G.shape[0]
-    kappa = np.zeros(Ndata)
-    for i in range(Ndata):
-        kappa[i] = gaussKernel(gnew, G[i, :], sigma)
+    kappa = np.array([gaussKernel(gnew, g, sigma) for g in G])
     return kappa
 
 
 def kernelVecDeriv(pos, gnew, inew, G, sig):
-    Ntrain, Nfeatures = G.shape
-    dvec = np.array([np.linalg.norm(g - gnew) for g in G])
-    kappa = np.array([gaussKernel(gnew, g, sig) for g in G])
-    #print('kappa=\n', kappa)
-    dd_dg = np.zeros((Ntrain, Nfeatures))
-    for i in range(Ntrain):
-        dd_dg[i, :] = -np.sign(G[i] - gnew)
+    Ntrain = G.shape[0]
+    # dvec = np.array([np.linalg.norm(g - gnew) for g in G])
+    kappa = kernelVec(gnew, G, sig).reshape((Ntrain, 1))
+    dd_dg = np.array([-np.sign(g - gnew) for g in G])
     dg_dR = bobDeriv(pos, gnew, inew)
     dd_dR = np.dot(dd_dg, dg_dR)
-    front = -1/(2*sig**2)*kappa  # -1/sig**2*np.multiply(dvec, kappa)
-    kernelDeriv = np.multiply(front.reshape((Ntrain, 1)), dd_dR)
-    return -kernelDeriv.T
+    dk_dd = -1/(2*sig**2)*kappa  # -1/sig**2*np.multiply(dvec, kappa)
+    kernelDeriv = np.multiply(dk_dd, dd_dR)
+    return kernelDeriv.T
 
     
-def createData(Ndata):
+def createData(Ndata, theta):
     # Define fixed points
     x1 = np.array([-1, 0, 1, 2])
     x2 = np.array([0, 0, 0, 0])
-    x = np.c_[x1, x2].reshape((1, 8))
+
+    # rotate ficed coordinates
+    x1rot = np.cos(theta) * x1 - np.sin(theta) * x2
+    x2rot = np.sin(theta) * x1 + np.cos(theta) * x2
+    xrot = np.c_[x1rot, x2rot].reshape((1, 8))
+    
     
     # Define an array of positions for the last pointB
     #xnew = np.c_[np.random.rand(Ndata)+0.5, np.random.rand(Ndata)+1]
-    xnew = np.c_[np.linspace(0.5, 2, Ndata), np.ones(Ndata)]
+    x1new = np.linspace(0.5, 2, Ndata)
+    x2new = np.ones(Ndata)
+
+    # rotate new coordinates
+    x1new_rot = np.cos(theta) * x1new - np.sin(theta) * x2new
+    x2new_rot = np.sin(theta) * x1new + np.cos(theta) * x2new
+    
+    xnew_rot = np.c_[x1new_rot, x2new_rot]
     
     # Make X matrix with rows beeing the coordinates for each point in a structure.
     # row example: [x1, y1, x2, y2, ...]
-    X = np.c_[np.repeat(x, Ndata, axis=0), xnew]
+    X = np.c_[np.repeat(xrot, Ndata, axis=0), xnew_rot]
     return X
 
 
 if __name__ == "__main__":
-
+    
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 30
-    lamb = 0.001
-    sig = 0.1
+    Ndata = 100
+    lamb = 0.005
+    sig = 0.3
 
-    X = createData(Ndata)
+    theta = np.pi/2
+    X = createData(Ndata, theta)
     features = bob_features(X)
     G = features.G
 
@@ -189,24 +191,47 @@ if __name__ == "__main__":
     Gtrain = G[:-1]
     Etrain = E[:-1]
     beta = np.mean(Etrain)
+
+    # Train model
     K = kernelMat(Gtrain, sig)
-    alpha = np.linalg.inv(K + lamb*np.identity(Ndata-1)).dot(Etrain-beta)
-    Npoints = 60
+    print("K[0,:]=\n", K[0, :])
+    alpha = np.linalg.inv(K + lamb*np.identity(np.size(Etrain, 0))).dot(Etrain-beta)
+
+    Npoints = 1000
     Etest = np.zeros(Npoints)
     Epredict = np.zeros(Npoints)
+    Fpredx = np.zeros(Npoints)
+    Ftestx = np.zeros(Npoints)
     Xtest0 = X[-1]
     delta_array = np.linspace(-3.5, 0.5, Npoints)
     for i in range(Npoints):
         delta = delta_array[i]
         Xtest = Xtest0.copy()
-        Xtest[-2] += delta
-        Gtest, I = features.calc_singleFeature(Xtest)
+        pertub = np.array([delta, 0])
+        pertub_rot = np.array([np.cos(theta) * pertub[0] - np.sin(theta) * pertub[1],
+                               np.sin(theta) * pertub[0] + np.cos(theta) * pertub[1]])
+        Xtest[-2:] += pertub_rot
+        Gtest, Itest = features.calc_singleFeature(Xtest)
         kappa = kernelVec(Gtest, Gtrain, sig)
-        Etest[i], F = doubleLJ(Xtest, eps, r0, sigma)
+        if i == 0:
+            print("kappa=\n", kappa)
+        Etest[i], Ftest = doubleLJ(Xtest, eps, r0, sigma)
         Epredict[i] = kappa.dot(alpha) + beta
-    
+        Ftestx[i] = np.cos(theta) * Ftest[-2] - np.sin(theta) * Ftest[-1]
+        
+        kappaDeriv = kernelVecDeriv(Xtest, Gtest, Itest, Gtrain, sig)
+        Fpred = -kappaDeriv.dot(alpha)
+        Fpredx[i] = np.cos(theta) * Fpred[-2] - np.sin(theta) * Fpred[-1]
+
+    dx = delta_array[1] - delta_array[0]
+    Ffinite = (Epredict[:-1] - Epredict[1:])/dx
+
+    plt.figure(1)
+    plt.plot(delta_array, Ftestx, color='c')
+    plt.plot(delta_array, Fpredx, color='y')
+    plt.plot(delta_array[1:], Ffinite, color='g')
     plt.plot(delta_array, Etest)
-    plt.scatter(delta_array, Epredict)
+    plt.plot(delta_array, Epredict, color='r')
     #plt.show()
 
 
@@ -218,94 +243,16 @@ if __name__ == "__main__":
 
     a = alpha
 
-    Fpred = kappaDeriv.dot(a)
+    Fpred = -kappaDeriv.dot(a)
     E, Ftest = doubleLJ(Xtest, eps, r0, sigma)
     print(Fpred)
     print(Ftest)
+
+    # Plot first structure
+    plt.figure(2)
+    x = X[-1].reshape((5, 2))
+    plt.scatter(x[:, 0], x[:, 1])
+    
     plt.show()
 
-
-    """
-    Gtest = G[-1]
-    Itest = I[-1]
-    kappa = kernelVec(G[-1], Gtrain, sig)
-    print("kappa=\n", kappa)
-    print("alpha=\n", alpha)
     
-    Epredict = kappa.dot(alpha)
-    Etest = E[-1]
-    # print(Etrain)
-    print("Etest=\n", Etest)
-    print("Epredict=\n", Epredict)
-
-    Xtest = X[-1]
-    kappaDeriv = kernelVecDeriv(Xtest, Gtest, Itest, Gtrain, sig)
-
-    Fpredict = kappaDeriv.dot(alpha)
-    Ftest = F[-1]
-    print(Ftest)
-    print(Fpredict)
-    
-    pos_test = Xtest.reshape((5,2))
-    plt.scatter(pos_test[:, 0], pos_test[:, 1])
-    plt.show()
-    """
-
-
-    """
-    # Set interaction parameters
-    eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
-
-    Ndata = 100
-    lamb = 0.001
-    sig = 1
-    
-    X = createData(Ndata)
-    
-    # Calculate features F of structures based of atom coordinates X
-    Q = invDistFeature(X)
-    
-    # Calculate energies for each structure
-    E = np.zeros(Ndata)
-    for i in range(Ndata):
-        E[i], F = doubleLJ(X[i], eps, r0, sigma)
-
-    Qtrain = Q[:-1]
-    Etrain = E[:-1]
-    K = kernelMat(Qtrain, sig)
-        
-    alpha = np.linalg.inv(K + lamb*np.identity(Ndata-1)).dot(Etrain)
-
-    kappa = kernelVec(Q[-1], Q[:-1], sig)
-
-    Epredict = kappa.dot(alpha)
-    Etest = E[-1]
-    print(Etrain)
-    print(Etest)
-    print(Epredict)
-    """
-    
-
-
-
-    
-
-    """
-    r = np.linspace(0.8, 2.5, 100)
-    x1 = np.array([0, 0])
-    x2 = np.c_[r, np.zeros(100)]
-    eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
-
-    E = np.zeros(100)
-    Fx = np.zeros(100)
-    for i in range(100):
-        X = np.array([x1, x2[i, :]])
-        print(X)
-        E[i], F = doubleLJ(X, eps, r0, sigma)
-        Fx[i] = F[0]
-    plt.plot(r, E)
-    plt.plot(r, Fx)
-    plt.xlim([0.9, 2.5])
-    plt.ylim([-10, 10])
-    plt.show()
-    """

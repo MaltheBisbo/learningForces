@@ -122,20 +122,18 @@ def gaussKernel(g1, g2, **kwargs):
 
 def gaussKernel(g1, g2, sigma):
     d = np.linalg.norm(g2 - g1)
-    return np.exp(-1/(2*sigma**2)*d) # **2)
+    return np.exp(-1/(2*sigma**2)*d)  # **2)
 
 
-class GaussKernel(BaseEstimator, TransformerMixin):
-    def __init__(self, sigma=1.0):
-        super(GaussKernel, self).__init__()
-        self.sigma = sigma
+def kernelMat(G, sigma):
+    Ndata = G.shape[0]
+    K = np.zeros((Ndata, Ndata))
+    for i in range(Ndata):
+        for j in range(i, Ndata):
+            K[i, j] = gaussKernel(G[i, :], G[j, :], sigma)
+    K = K + np.triu(K, k=1).T
+    return K
 
-    def transform(self, X):
-        return gaussKernel(X, self.X_train_, sigma=self.sigma)
-
-    def fit(self, X, y=None, **fit_params):
-        self.X_train_ = X
-        return self
 
 def kernelVecDeriv(pos, gnew, inew, G, sig):
     Ntrain, Nfeatures = G.shape
@@ -168,14 +166,34 @@ def createData(Ndata):
     return X
 
 
-if __name__ == "__main__":
-
+def testKernel():
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 100
-    lamb = 0.0001
-    sig = 0.1
+    Ndata = 30
+    lamb = 0.001
+    sig = 1
 
+    # Create data
+    Ndata = 5
+    X = createData(Ndata)
+    features = bob_features(X)
+    G = features.G
+
+    # Calculate kernel matrix
+    K = kernelMat(G, sig)
+    print("K=\n", K)
+
+if __name__ == "__main__":
+    testKernel()
+    
+    
+    eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
+
+    Ndata = 30
+    lamb = 0.001
+    sig = 1
+
+    # Create data and calculate energies
     X = createData(Ndata)
     features = bob_features(X)
     G = features.G
@@ -190,46 +208,12 @@ if __name__ == "__main__":
     Etrain = E[:-1]
     beta = np.mean(Etrain)
 
-    
+    # Train model
     kernel_params = {'sigma': sig}
-    parameters = {'alpha': [lamb, 10*lamb]}
     krr = KernelRidge(alpha=lamb, kernel=gaussKernel, kernel_params=kernel_params)
-    estimator = GridSearchCV(krr, param_grid=parameters)
     krr.fit(Gtrain, Etrain-beta)
     
-
-    """
-    # Create a pipeline where our custom predefined kernel Chi2Kernel
-    # is run before SVC.
-    pipe = Pipeline([
-        ('chi2', GaussKernel()),
-        ('krr', KernelRidge()),
-    ])
-    print("hello")
-
-    # Set the parameter 'gamma' of our custom kernel by
-    # using the 'estimator__param' syntax.
-    cv_params = dict([
-        ('chi2__sigma', np.array([1, 0.1, 0.01])),
-        ('krr__kernel', ['precomputed']),
-        ('krr__alpha', np.array([0.001, 0.0001, 0.00001])),
-    ])
-
-    # Do grid search to get the best parameter value of 'gamma'.
-    model = GridSearchCV(pipe, cv_params, cv=5)
-    print('Hellor')
-    print(Gtrain.shape)
-    print(Etrain.shape)
-    model.fit(Gtrain, Etrain)
-    Epred = model.predict(G[-1])
-    acc_test = accuracy_score(E[-1], Epred)
-
-    print("Test accuracy: {}".format(acc_test))
-    print("Best params:")
-    print(model.best_params_)
-    """
-    
-    Npoints = 60
+    Npoints = 200
     Etest = np.zeros(Npoints)
     Epredict = np.zeros(Npoints)
     Xtest0 = X[-1]
@@ -243,7 +227,7 @@ if __name__ == "__main__":
         Epredict[i] = krr.predict(Gtest) + beta
     
     plt.plot(delta_array, Etest)
-    plt.scatter(delta_array, Epredict)
+    plt.plot(delta_array, Epredict, color='r')
     #plt.show()
 
     Xtest = Xtest0.copy()
