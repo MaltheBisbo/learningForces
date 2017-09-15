@@ -177,7 +177,7 @@ if __name__ == "__main__":
     lamb = 0.005
     sig = 0.3
 
-    theta = 0 #0.7*np.pi
+    theta = 0.7*np.pi
     X = createData(Ndata, theta)
     features = bob_features(X)
     G = features.G
