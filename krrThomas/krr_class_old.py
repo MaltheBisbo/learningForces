@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import time
 from sklearn.kernel_ridge import KernelRidge
 
-
 def doubleLJ(x, *params):
     """
     Calculates total energy and gradient of N atoms interacting with a
@@ -47,7 +46,7 @@ def doubleLJ(x, *params):
 
 
 class bob_features():
-    def __init__(self, X=None):
+    def __init__(self, X):
         """
         --input--
         X:
@@ -55,24 +54,22 @@ class bob_features():
         in the form [x1, y1, ... , xN, yN]
         """
         self.X = X
+        self.calc_featureMat()
     
-    def get_featureMat(self, X=None):
-        if X is not None:
-            self.X = X
+    def calc_featureMat(self):
         Ndata = self.X.shape[0]
         Natoms = int(self.X.shape[1]/2)
         Nfeatures = int(Natoms*(Natoms-1)/2)
         G = np.zeros((Ndata, Nfeatures))
         I = []
         for n in range(Ndata):
-            g, atomIndices = self.get_singleFeature(self.X[n])
+            g, atomIndices = self.calc_singleFeature(self.X[n])
             G[n, :] = g
             I.append(atomIndices)
         self.G = G
         self.I = I
-        return self.G, self.I
     
-    def get_singleFeature(self, x):
+    def calc_singleFeature(self, x):
         """
         --input--
         x: atomic positions for a single structure in the form [x1, y1, ... , xN, yN]
@@ -94,111 +91,27 @@ class bob_features():
         atomIndices_ordered = [atomIndices[i] for i in sorting_indices]
         return g_ordered, atomIndices_ordered
 
-    def get_featureGradient(self, pos, g, atomIndices):
-        Nr = len(atomIndices)
-        pos = pos.reshape((int(Nr/2), 2))
-        Nfeatures = np.size(g, 0)
-        
-        atomIndices = np.array(atomIndices)
-        # Calculate gradient of bob-feature
-        gDeriv = np.zeros((Nfeatures, Nr))
-        for i in range(Nfeatures):
-            a0 = atomIndices[i, 0]
-            a1 = atomIndices[i, 1]
-            inv_r = g[i]
-            gDeriv[i, 2*a0:2*a0+2] += inv_r**3*np.array([pos[a1, 0] - pos[a0, 0], pos[a1, 1] - pos[a0, 1]])
-            gDeriv[i, 2*a1:2*a1+2] += -inv_r**3*np.array([pos[a1, 0] - pos[a0, 0], pos[a1, 1] - pos[a0, 1]])
-        return gDeriv
+
+def bobDeriv(pos, g, atomIndices):
+    Nr = len(atomIndices)
+    pos = pos.reshape((int(Nr/2), 2))
+    Nfeatures = np.size(g, 0)
+    
+    atomIndices = np.array(atomIndices)
+    # Calculate gradient of bob-feature
+    gDeriv = np.zeros((Nfeatures, Nr))
+    for i in range(Nfeatures):
+        a0 = atomIndices[i, 0]
+        a1 = atomIndices[i, 1]
+        inv_r = g[i]
+        gDeriv[i, 2*a0:2*a0+2] += inv_r**3*np.array([pos[a1, 0] - pos[a0, 0], pos[a1, 1] - pos[a0, 1]])
+        gDeriv[i, 2*a1:2*a1+2] += -inv_r**3*np.array([pos[a1, 0] - pos[a0, 0], pos[a1, 1] - pos[a0, 1]])
+    return gDeriv
 
 
-class krr_class():
-    def __init__(self, featureCalculator=None, comparator=None):
-        self.featureCalculator = featureCalculator
-        self.comparator = comparator
-
-        assert self.comparator is not None
-
-    def fit(self, data_values=None, featureMat=None, positionMat=None, lamb=None):
-        if data_values is not None:
-            self.data_values = data_values
-
-        if featureMat is not None:
-            self.featureMat = featureMat
-        elif positionMat is not None and self.featureCalculator is not None:
-            self.featureObj = self.featureCalculator(positionMat)
-            self.featureMat = self.featureObj.get_featureMat()
-        else:
-            print("You need to set the feature matrix or both the position matrix and a feature calculator")
-
-        self.lamb = lamb
-        self.similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
-
-        self.beta = np.mean(data_values)
-
-        A = self.similarityMat + self.lamb*np.identity(self.data_values.shape[0])
-        #self.alpha = np.linalg.inv(A).dot(self.data_values-self.beta)
-        self.alpha = sp.linalg.solve(A, self.data_values - self.beta)
-        
-    def predict_energy(self, fnew=None, pos=None):
-        if fnew is not None:
-            self.fnew = fnew
-        else:
-            self.pos = pos
-            assert self.featureCalculator is not None
-            self.fnew, self.inew = self.featureCalculator.get_singleFeature(self.pos)
-            
-        self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
-
-        return self.similarityVec.dot(self.alpha) + self.beta
-
-    def predict_force(self, pos=None, fnew=None, inew=None):
-        if pos is not None:
-            self.pos = pos
-        if fnew is not None:
-            self.fnew = fnew
-            self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
-#        elif self.fnew is None:
-#            assert self.featureCalculator is not None
-#            self.fnew, self.inew = self.featureCalculator.get_singleFeature(self.pos)
-#            self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
-        Ntrain = self.featureMat.shape[0]
-
-        sigma = self.comparator.sigma
-        kappa = self.similarityVec.reshape((Ntrain, 1))
-        dd_dg = np.array([-(f - self.fnew)/np.linalg.norm(f-self.fnew) for f in self.featureMat])
-        dg_dR = self.featureCalculator.get_featureGradient(self.pos, self.fnew, self.inew)
-        dd_dR = np.dot(dd_dg, dg_dR)
-        dk_dd = -1/(2*sigma**2)*kappa  # -1/sig**2*np.multiply(dvec, kappa)
-        
-        kernelDeriv = np.multiply(dk_dd, dd_dR)
-        return -(kernelDeriv.T).dot(self.alpha)
-
-
-class gaussComparator():
-    def __init__(self, sigma=1, featureMat=None):
-        self.featureMat = featureMat
-        self.sigma = sigma
-
-    def get_similarity_matrix(self, featureMat=None):
-        if featureMat is not None:
-            self.featureMat = featureMat
-        else:
-            print("You need to supply a feature matrix")
-
-        self.similarityMat = np.array([[self.single_comparison(f1, f2, self.sigma)
-                                        for f2 in self.featureMat]
-                                       for f1 in self.featureMat])
-        return self.similarityMat
-
-    def get_similarity_vector(self, fnew):
-
-        self.similarityVec = np.array([self.single_comparison(fnew, f, self.sigma)
-                                       for f in self.featureMat])
-        return self.similarityVec
-
-    def single_comparison(self, feature1, feature2, sigma):
-        d = np.linalg.norm(feature2 - feature1)
-        return np.exp(-1/(2*sigma**2)*d)  # **2)
+def gaussKernel(g1, g2, sigma):
+    d = np.linalg.norm(g2 - g1)
+    return np.exp(-1/(2*sigma**2)*d)  # **2)
 
 
 def kernelMat(G, sigma):
@@ -257,7 +170,7 @@ def createData(Ndata, theta):
 
 
 if __name__ == "__main__":
-
+    
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
     Ndata = 100
@@ -265,10 +178,9 @@ if __name__ == "__main__":
     sig = 0.3
 
     theta = 0.7*np.pi
-
     X = createData(Ndata, theta)
-    featureCalculator = bob_features()
-    G = featureCalculator.get_featureMat(X)[0]
+    features = bob_features(X)
+    G = features.G
 
     # Calculate energies for each structure
     E = np.zeros(Ndata)
@@ -281,9 +193,9 @@ if __name__ == "__main__":
     beta = np.mean(Etrain)
 
     # Train model
-    comparator = gaussComparator(sigma=sig)
-    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
-    krr.fit(Etrain, Gtrain, lamb=lamb)
+    K = kernelMat(Gtrain, sig)
+    print("K[0,:]=\n", K[0, :])
+    alpha = np.linalg.inv(K + lamb*np.identity(np.size(Etrain, 0))).dot(Etrain-beta)
 
     Npoints = 1000
     Etest = np.zeros(Npoints)
@@ -301,12 +213,16 @@ if __name__ == "__main__":
         pertub_rot = np.array([np.cos(theta) * pertub[0] - np.sin(theta) * pertub[1],
                                np.sin(theta) * pertub[0] + np.cos(theta) * pertub[1]])
         Xtest[i, -2:] += pertub_rot
-
+        Gtest, Itest = features.calc_singleFeature(Xtest[i])
+        kappa = kernelVec(Gtest, Gtrain, sig)
+        if i == 0:
+            print("kappa=\n", kappa)
         Etest[i], Ftest = doubleLJ(Xtest[i], eps, r0, sigma)
-        Epredict[i] = krr.predict_energy(pos=Xtest[i])
+        Epredict[i] = kappa.dot(alpha) + beta
         Ftestx[i] = np.cos(theta) * Ftest[-2] + np.cos(np.pi/2 - theta) * Ftest[-1]
         
-        Fpred = krr.predict_force()
+        kappaDeriv = kernelVecDeriv(Xtest[i], Gtest, Itest, Gtrain, sig)
+        Fpred = -kappaDeriv.dot(alpha)
         Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
 
     dx = delta_array[1] - delta_array[0]
