@@ -13,39 +13,37 @@ class krr_class():
 
         assert self.comparator is not None
 
-    def fit(self, data_values=None, featureMat=None, positionMat=None, lamb=1e-3):
-        if data_values is not None:
-            self.data_values = data_values
-
-        # calculate features form positions if they are not given
+    def fit(self, forceMat, positionMat, featureMat=None, lamb=1e-3):
+        (Ndata, Ncoord) = self.positionaMat.shape  # Ncoord is number of coordinated in a structure
+        self.forceVec = forceMat.reshape(Ndata*Ncoord, order='F')
+        self.positionMat = positionMat
+        
         if featureMat is not None:
             self.featureMat = featureMat
         elif positionMat is not None and self.featureCalculator is not None:
             self.featureObj = self.featureCalculator(positionMat)
-            self.featureMat = self.featureObj.get_featureMat()
+            self.featureMat, self.indexMat = self.featureObj.get_featureMat()
         else:
             print("You need to set the feature matrix or both the position matrix and a feature calculator")
 
         self.lamb = lamb
         self.similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
 
-        self.beta = np.mean(data_values)
+        # Calculate the matrix consisting of the
+        # Hessians of the kernel with respect to
+        # the atomic coordinates of two structures
+        self.featureGrad = np.array([self.featureCalculator.get_featureGradient(self.positionMat[i],
+                                                                                self.featureMat[i],
+                                                                                self.indexMat[i])
+                                     for i in range(Ndata)])
+        kernel_Hess_mat = np.zeros((Ncoord*Ndata, Ncoord*Ndata))
+        for i in range(Ndata):
+            for j in range(data):
+                kernel_Hess = self.comparator.get_Hess_single(featureMat[i], featureMat[j])
+                kernel_Hess_mat = [i*Ncoord:(i+1)*Ncoord, j*Ncoord:(j+1)*Ncoord] = self.featureGrad[i].T @ kernel_Hess @ self.featureGrad[j]
 
-        A = self.similarityMat + self.lamb*np.identity(self.data_values.shape[0])
-        #self.alpha = np.linalg.inv(A).dot(self.data_values-self.beta)
-        self.alpha = np.linalg.solve(A, self.data_values - self.beta)
-        
-    def predict_energy(self, fnew=None, pos=None):
-        if fnew is not None:
-            self.fnew = fnew
-        else:
-            self.pos = pos
-            assert self.featureCalculator is not None
-            self.fnew, self.inew = self.featureCalculator.get_singleFeature(self.pos)
-            
-        self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
-
-        return self.similarityVec.dot(self.alpha) + self.beta
+        A = kernel_Hess_mat - self.lamb*np.identity(Ndata*Ncoord)
+        self.alpha = np.linalg.solve(A, self.forceVec)
 
     def predict_force(self, pos=None, fnew=None, inew=None):
         if pos is not None:
@@ -58,11 +56,14 @@ class krr_class():
             self.fnew, self.inew = self.featureCalculator.get_singleFeature(self.pos)
             self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
 
-        df_dR = self.featureCalculator.get_featureGradient(self.pos, self.fnew, self.inew)
-        dk_df = self.comparator.get_jac(self.fnew)
+        (Ndata, Ncoord) = self.positionMat.shape
+        featureGrad_new = self.featureCalculator.get_featureGradient(pos, fnew, inew)
 
-        kernelDeriv = np.dot(dk_df, df_dR)
-        return -(kernelDeriv.T).dot(self.alpha)
+        kernel_Hess_vec = np.zeros((Ncoord, Ncoord*Ndata))
+        for j in range(Ndata):
+            kernel_Hess = self.comparator.get_Hess_single(featureMat_new, featureMat[j])
+            kernel_Hess_vec = [i*Ncoord:(i+1)*Ncoord,
+                               j*Ncoord:(j+1)*Ncoord] = featureGrad_new.T @ kernel_Hess @ self.featureGrad[j]
 
     def cross_validation(self, data_values, featureMat, k=3, lamb=None, **GSkwargs):
         Ndata = data_values.shape[0]
@@ -156,13 +157,12 @@ if __name__ == "__main__":
         E[i], F[i, :] = doubleLJ(X[i], eps, r0, sigma)
     
     Gtrain = G[:-1]
-    Etrain = E[:-1]
-    beta = np.mean(Etrain)
+    Ftrain = F[:-1]
 
     # Train model
     comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
-    krr.fit(Etrain, Gtrain, lamb=lamb)
+    krr.fit(Ftrain, Gtrain, lamb=lamb)
 
     Npoints = 1000
     Etest = np.zeros(Npoints)

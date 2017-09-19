@@ -17,7 +17,6 @@ class krr_class():
         if data_values is not None:
             self.data_values = data_values
 
-        # calculate features form positions if they are not given
         if featureMat is not None:
             self.featureMat = featureMat
         elif positionMat is not None and self.featureCalculator is not None:
@@ -57,11 +56,16 @@ class krr_class():
             assert self.featureCalculator is not None
             self.fnew, self.inew = self.featureCalculator.get_singleFeature(self.pos)
             self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
+        Ntrain = self.featureMat.shape[0]
 
-        df_dR = self.featureCalculator.get_featureGradient(self.pos, self.fnew, self.inew)
-        dk_df = self.comparator.get_jac(self.fnew)
-
-        kernelDeriv = np.dot(dk_df, df_dR)
+        sigma = self.comparator.sigma
+        kappa = self.similarityVec.reshape((Ntrain, 1))
+        dd_dg = np.array([-(f - self.fnew)/np.linalg.norm(f-self.fnew) for f in self.featureMat])
+        dg_dR = self.featureCalculator.get_featureGradient(self.pos, self.fnew, self.inew)
+        dd_dR = np.dot(dd_dg, dg_dR)
+        dk_dd = -1/(2*sigma**2)*kappa  # -1/sig**2*np.multiply(dvec, kappa)
+        
+        kernelDeriv = np.multiply(dk_dd, dd_dR)
         return -(kernelDeriv.T).dot(self.alpha)
 
     def cross_validation(self, data_values, featureMat, k=3, lamb=None, **GSkwargs):
