@@ -64,9 +64,16 @@ class gaussComparator():
         dd_df1 = -(f2-f1)/d
         dd_df2 = -dd_df1
 
+        print('f1=\n', f1)
+        print('f2=\n', f2)
+        print('d=', d)
+        print('dd_df1=\n', dd_df1)
+        
         d2d_df1df2 = np.array([f2 * f1_i for f1_i in f1])/d**3
 
         Hess = -1/self.sigma**2 * (-1/self.sigma**2 * kernel * dd_df1 * dd_df2 +
                                    kernel * d2d_df1df2)
+        print('d double deriv:\n', d2d_df1df2)
+        print('Hess=\n', Hess)
         return Hess
         

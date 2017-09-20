@@ -5,7 +5,7 @@ from bob_features import bob_features
 from gaussComparator import gaussComparator
 
 
-class krr_class():
+class krr_force_class():
     def __init__(self, featureCalculator=None, comparator=None, **comparator_kwargs):
         self.featureCalculator = featureCalculator
         self.comparator = comparator
@@ -14,15 +14,14 @@ class krr_class():
         assert self.comparator is not None
 
     def fit(self, forceMat, positionMat, featureMat=None, lamb=1e-3):
-        (Ndata, Ncoord) = self.positionaMat.shape  # Ncoord is number of coordinated in a structure
+        (Ndata, Ncoord) = positionMat.shape  # Ncoord is number of coordinated in a structure
         self.forceVec = forceMat.reshape(Ndata*Ncoord, order='F')
         self.positionMat = positionMat
         
         if featureMat is not None:
             self.featureMat = featureMat
         elif positionMat is not None and self.featureCalculator is not None:
-            self.featureObj = self.featureCalculator(positionMat)
-            self.featureMat, self.indexMat = self.featureObj.get_featureMat()
+            self.featureMat, self.indexMat = self.featureCalculator.get_featureMat()
         else:
             print("You need to set the feature matrix or both the position matrix and a feature calculator")
 
@@ -38,33 +37,30 @@ class krr_class():
                                      for i in range(Ndata)])
         kernel_Hess_mat = np.zeros((Ncoord*Ndata, Ncoord*Ndata))
         for i in range(Ndata):
-            for j in range(data):
-                kernel_Hess = self.comparator.get_Hess_single(featureMat[i], featureMat[j])
-                kernel_Hess_mat = [i*Ncoord:(i+1)*Ncoord, j*Ncoord:(j+1)*Ncoord] = self.featureGrad[i].T @ kernel_Hess @ self.featureGrad[j]
+            for j in range(Ndata):
+                kernel_Hess = self.comparator.get_Hess_single(self.featureMat[i], self.featureMat[j])
+                #print(kernel_Hess)
+                kernel_Hess_mat[i*Ncoord:(i+1)*Ncoord,
+                                j*Ncoord:(j+1)*Ncoord] = self.featureGrad[i].T @ kernel_Hess @ self.featureGrad[j]
 
         A = kernel_Hess_mat - self.lamb*np.identity(Ndata*Ncoord)
         self.alpha = np.linalg.solve(A, self.forceVec)
 
-    def predict_force(self, pos=None, fnew=None, inew=None):
-        if pos is not None:
-            self.pos = pos
-        if fnew is not None:
-            self.fnew = fnew
-            self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
-        else:
+    def predict_force(self, pos_new, fnew=None, inew=None):
+        if fnew is None or inew is None:
             assert self.featureCalculator is not None
-            self.fnew, self.inew = self.featureCalculator.get_singleFeature(self.pos)
-            self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
+            fnew, inew = self.featureCalculator.get_singleFeature(pos_new)
 
         (Ndata, Ncoord) = self.positionMat.shape
-        featureGrad_new = self.featureCalculator.get_featureGradient(pos, fnew, inew)
+        featureGrad_new = self.featureCalculator.get_featureGradient(pos_new, fnew, inew)
 
         kernel_Hess_vec = np.zeros((Ncoord, Ncoord*Ndata))
         for j in range(Ndata):
-            kernel_Hess = self.comparator.get_Hess_single(featureMat_new, featureMat[j])
-            kernel_Hess_vec = [i*Ncoord:(i+1)*Ncoord,
-                               j*Ncoord:(j+1)*Ncoord] = featureGrad_new.T @ kernel_Hess @ self.featureGrad[j]
+            kernel_Hess = self.comparator.get_Hess_single(fnew, self.featureMat[j])
+            kernel_Hess_vec[:, j*Ncoord:(j+1)*Ncoord] = featureGrad_new.T @ kernel_Hess @ self.featureGrad[j]
 
+        return kernel_Hess_vec @ self.alpha
+            
     def cross_validation(self, data_values, featureMat, k=3, lamb=None, **GSkwargs):
         Ndata = data_values.shape[0]
         permutation = np.random.permutation(Ndata)
@@ -140,8 +136,8 @@ if __name__ == "__main__":
 
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 100
-    lamb = 0.005
+    Ndata = 4
+    lamb = 5
     sig = 0.3
 
     theta = 0.7*np.pi
@@ -161,12 +157,13 @@ if __name__ == "__main__":
 
     # Train model
     comparator = gaussComparator(sigma=sig)
-    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
+    krr = krr_force_class(comparator=comparator, featureCalculator=featureCalculator)
     krr.fit(Ftrain, Gtrain, lamb=lamb)
+    print(krr.alpha)
+    
+    assert false
 
     Npoints = 1000
-    Etest = np.zeros(Npoints)
-    Epredict = np.zeros(Npoints)
     Fpredx = np.zeros(Npoints)
     Ftestx = np.zeros(Npoints)
     Xtest0 = X[-1]
@@ -181,22 +178,16 @@ if __name__ == "__main__":
                                np.sin(theta) * pertub[0] + np.cos(theta) * pertub[1]])
         Xtest[i, -2:] += pertub_rot
 
-        Etest[i], Ftest = doubleLJ(Xtest[i], eps, r0, sigma)
-        Epredict[i] = krr.predict_energy(pos=Xtest[i])
+        Etemp, Ftest = doubleLJ(Xtest[i], eps, r0, sigma)
         Ftestx[i] = np.cos(theta) * Ftest[-2] + np.cos(np.pi/2 - theta) * Ftest[-1]
-        
-        Fpred = krr.predict_force()
+
+        Fpred = krr.predict_force(Xtest[i])
         Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
 
-    dx = delta_array[1] - delta_array[0]
-    Ffinite = (Epredict[:-1] - Epredict[1:])/dx
 
     plt.figure(1)
     plt.plot(delta_array, Ftestx, color='c')
-    plt.plot(delta_array, Fpredx, color='y')
-    plt.plot(delta_array[1:], Ffinite, color='g')
-    plt.plot(delta_array, Etest)
-    plt.plot(delta_array, Epredict, color='r')
+    plt.scatter(delta_array, Fpredx, color='y')
 
     """
     Xtest = Xtest0.copy()

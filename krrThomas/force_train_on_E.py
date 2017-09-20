@@ -41,22 +41,28 @@ def forceCurve(x, krr_class):
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
     unitvec = np.zeros(x.shape[0])
     unitvec[13] = 1
-    Npoints = 200
+    Npoints = 10000
     pertub_array = np.linspace(-5, 5, Npoints)
     Xtest = np.array([x + unitvec*pertubation for pertubation in pertub_array])
-    curve = np.array([[krr_class.predict_energy(pos=Xtest[i]), doubleLJ(Xtest[i], eps, r0, sigma)[0], pertub_array[i],
-                       krr_class.predict_force(pos=Xtest[i])[13], doubleLJ(Xtest[i], eps, r0, sigma)[1][13]]
+    curve = np.array([[krr_class.predict_energy(pos=Xtest[i]),
+                       doubleLJ(Xtest[i], eps, r0, sigma)[0],
+                       pertub_array[i],
+                       krr_class.predict_force(pos=Xtest[i])[13],
+                       doubleLJ(Xtest[i], eps, r0, sigma)[1][13]]
                       for i in range(Npoints) if doubleLJ(Xtest[i], eps, r0, sigma)[0] < 0])
+
     """
     Epred = np.array([krr_class.predict_energy(pos=xi) for xi in Xtest])
     Etest = np.array([doubleLJ(xi, eps, r0, sigma)[0] for xi in Xtest])
     plt.plot(pertub_array, Etest, color='r')
     plt.plot(pertub_array, Epred, color='b')
     """
-    plt.scatter(curve[:, 2], curve[:, 1], color='r', s=2)
-    plt.scatter(curve[:, 2], curve[:, 0], color='b', s=2)
-    plt.scatter(curve[:, 2], curve[:, 3], color='y', s=2)
-    plt.scatter(curve[:, 2], curve[:, 4], color='g', s=2)
+    
+    #pertub_array[pertub_array > 0] = 'nan'
+    plt.scatter(curve[:, 2], curve[:, 1], color='r', s=1)
+    plt.scatter(curve[:, 2], curve[:, 0], color='b', s=1)
+    plt.scatter(curve[:, 2], curve[:, 3], color='y', s=1)
+    plt.scatter(curve[:, 2], curve[:, 4], color='g', s=1)
 
     plt.show()
 
