@@ -1,6 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from krr_class import doubleLJ, bob_features, krr_class, gaussComparator
+from krr_class import krr_class
+from doubleLJ import doubleLJ
+from bob_features import bob_features
+from eksponentialComparator import eksponentialComparator
 from scipy.optimize import minimize
 
 """
@@ -41,7 +44,7 @@ def forceCurve(x, krr_class):
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
     unitvec = np.zeros(x.shape[0])
     unitvec[13] = 1
-    Npoints = 10000
+    Npoints = 1000
     pertub_array = np.linspace(-5, 5, Npoints)
     Xtest = np.array([x + unitvec*pertubation for pertubation in pertub_array])
     curve = np.array([[krr_class.predict_energy(pos=Xtest[i]),
@@ -92,7 +95,7 @@ def main():
     Etrain = E[:-1]
 
     # Train model
-    comparator = gaussComparator(sigma=sig)
+    comparator = eksponentialComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
     #GSkwargs = {'lamb': [0.001, 0.0001], 'sigma': [3, 1]}
     GSkwargs = {'lamb': np.logspace(-6, -3, 10), 'sigma': np.logspace(-1, 1, 5)}

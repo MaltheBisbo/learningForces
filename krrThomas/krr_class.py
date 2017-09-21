@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from doubleLJ import doubleLJ
 from bob_features import bob_features
-from gaussComparator import gaussComparator
+from eksponentialComparator import eksponentialComparator
 
 
 class krr_class():
@@ -160,7 +160,7 @@ if __name__ == "__main__":
     beta = np.mean(Etrain)
 
     # Train model
-    comparator = gaussComparator(sigma=sig)
+    comparator = eksponentialComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
     krr.fit(Etrain, Gtrain, lamb=lamb)
 

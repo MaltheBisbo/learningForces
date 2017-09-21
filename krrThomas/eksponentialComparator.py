@@ -1,5 +1,4 @@
 import numpy as np
-from scipy.spatial.distance import sqeuclidean
 
 
 class eksponentialComparator():
@@ -32,7 +31,7 @@ class eksponentialComparator():
     def single_comparison(self, feature1, feature2, sigma=None):
         if sigma is None:
             sigma = self.sigma
-            d = sqeuclidean(feature1, feature1)
+        d = np.linalg.norm(feature2 - feature1)
         return np.exp(-1/(2*sigma**2)*d)
 
     def get_jac(self, fnew, kappa=None, featureMat=None):
@@ -46,9 +45,8 @@ class eksponentialComparator():
             kappa = self.similarityVec.copy()
         if featureMat is None:
             featureMat = self.featureMat.copy()
-        
         dk_dd = -1/(2*self.sigma**2)*kappa.reshape((kappa.shape[0], 1))
-        dd_df = -2*(featureMat - fnew.reshape((1, fnew.shape[0])))
+        dd_df = np.array([-(f - fnew)/np.linalg.norm(f-fnew) for f in featureMat])
 
         dk_df = np.multiply(dk_dd, dd_df)
         return dk_df
