@@ -2,7 +2,7 @@ import numpy as np
 from scipy.spatial.distance import sqeuclidean
 
 
-class eksponentialComparator():
+class gaussComparator():
     def __init__(self, featureMat=None, **kwargs):
         self.featureMat = featureMat
         if 'sigma' in kwargs:
@@ -11,7 +11,7 @@ class eksponentialComparator():
     def set_args(self, **kwargs):
         if 'sigma' in kwargs:
             self.sigma = kwargs['sigma']
-    
+
     def get_similarity_matrix(self, featureMat=None):
         if featureMat is not None:
             self.featureMat = featureMat
@@ -32,7 +32,7 @@ class eksponentialComparator():
     def single_comparison(self, feature1, feature2, sigma=None):
         if sigma is None:
             sigma = self.sigma
-            d = sqeuclidean(feature1, feature1)
+        d = sqeuclidean(feature1, feature1)
         return np.exp(-1/(2*sigma**2)*d)
 
     def get_jac(self, fnew, kappa=None, featureMat=None):
@@ -46,8 +46,9 @@ class eksponentialComparator():
             kappa = self.similarityVec.copy()
         if featureMat is None:
             featureMat = self.featureMat.copy()
-        
+
         dk_dd = -1/(2*self.sigma**2)*kappa.reshape((kappa.shape[0], 1))
+        #dd_df = -2*np.array([f-fnew for f in featureMat])
         dd_df = -2*(featureMat - fnew.reshape((1, fnew.shape[0])))
 
         dk_df = np.multiply(dk_dd, dd_df)
@@ -62,20 +63,12 @@ class eksponentialComparator():
         # kernel between the two features
         kernel = self.single_comparison(f1, f2)
 
-        d = np.linalg.norm(f2 - f1)
-        dd_df1 = -(f2-f1)/d
-        dd_df2 = -dd_df1
+        Nf = f1.shape[0]
 
-        print('f1=\n', f1)
-        print('f2=\n', f2)
-        print('d=', d)
-        print('dd_df1=\n', dd_df1)
-        
-        d2d_df1df2 = np.array([f2 * f1_i for f1_i in f1])/d**3
+        dd_df1 = -2*(f2-f1).reshape((Nf,1))
+        dd_df2 = -dd_df1.reshape((1,Nf))
+        d2d_df1df2 = -2*np.identity(Nf)
 
-        Hess = -1/self.sigma**2 * (-1/self.sigma**2 * kernel * dd_df1 * dd_df2 +
+        Hess = -1/self.sigma**2 * (-1/self.sigma**2 * kernel * np.outer(dd_df1, dd_df2) +
                                    kernel * d2d_df1df2)
-        print('d double deriv:\n', d2d_df1df2)
-        print('Hess=\n', Hess)
         return Hess
-        

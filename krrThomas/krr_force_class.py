@@ -17,7 +17,7 @@ class krr_force_class():
         (Ndata, Ncoord) = positionMat.shape  # Ncoord is number of coordinated in a structure
         self.forceVec = forceMat.reshape(Ndata*Ncoord, order='F')
         self.positionMat = positionMat
-        
+
         if featureMat is not None:
             self.featureMat = featureMat
         elif positionMat is not None and self.featureCalculator is not None:
@@ -35,11 +35,12 @@ class krr_force_class():
                                                                                 self.featureMat[i],
                                                                                 self.indexMat[i])
                                      for i in range(Ndata)])
+
         kernel_Hess_mat = np.zeros((Ncoord*Ndata, Ncoord*Ndata))
         for i in range(Ndata):
             for j in range(Ndata):
                 kernel_Hess = self.comparator.get_Hess_single(self.featureMat[i], self.featureMat[j])
-                #print(kernel_Hess)
+
                 kernel_Hess_mat[i*Ncoord:(i+1)*Ncoord,
                                 j*Ncoord:(j+1)*Ncoord] = self.featureGrad[i].T @ kernel_Hess @ self.featureGrad[j]
 
@@ -60,7 +61,7 @@ class krr_force_class():
             kernel_Hess_vec[:, j*Ncoord:(j+1)*Ncoord] = featureGrad_new.T @ kernel_Hess @ self.featureGrad[j]
 
         return kernel_Hess_vec @ self.alpha
-            
+
     def cross_validation(self, data_values, featureMat, k=3, lamb=None, **GSkwargs):
         Ndata = data_values.shape[0]
         permutation = np.random.permutation(Ndata)
@@ -104,7 +105,7 @@ class krr_force_class():
         MAE = np.mean(np.fabs(Epred - data_values))
         return MAE
 
-    
+
 def createData(Ndata, theta):
     # Define fixed points
     x1 = np.array([-1, 0, 1, 2])
@@ -114,18 +115,18 @@ def createData(Ndata, theta):
     x1rot = np.cos(theta) * x1 - np.sin(theta) * x2
     x2rot = np.sin(theta) * x1 + np.cos(theta) * x2
     xrot = np.c_[x1rot, x2rot].reshape((1, 8))
-    
+
     # Define an array of positions for the last pointB
-    #xnew = np.c_[np.random.rand(Ndata)+0.5, np.random.rand(Ndata)+1]
+    # xnew = np.c_[np.random.rand(Ndata)+0.5, np.random.rand(Ndata)+1]
     x1new = np.linspace(0.5, 2, Ndata)
     x2new = np.ones(Ndata)
 
     # rotate new coordinates
     x1new_rot = np.cos(theta) * x1new - np.sin(theta) * x2new
     x2new_rot = np.sin(theta) * x1new + np.cos(theta) * x2new
-    
+
     xnew_rot = np.c_[x1new_rot, x2new_rot]
-    
+
     # Make X matrix with rows beeing the coordinates for each point in a structure.
     # row example: [x1, y1, x2, y2, ...]
     X = np.c_[np.repeat(xrot, Ndata, axis=0), xnew_rot]
@@ -136,11 +137,13 @@ if __name__ == "__main__":
 
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 4
-    lamb = 5
-    sig = 0.3
+    Ndata = 1000
+    lamb = 0.01
+    sig = 0.5
 
     theta = 0.7*np.pi
+
+    z = np.arange(9).reshape((3,3))
 
     X = createData(Ndata, theta)
     featureCalculator = bob_features()
@@ -151,7 +154,7 @@ if __name__ == "__main__":
     F = np.zeros((Ndata, 2*5))
     for i in range(Ndata):
         E[i], F[i, :] = doubleLJ(X[i], eps, r0, sigma)
-    
+
     Gtrain = G[:-1]
     Ftrain = F[:-1]
 
@@ -160,8 +163,6 @@ if __name__ == "__main__":
     krr = krr_force_class(comparator=comparator, featureCalculator=featureCalculator)
     krr.fit(Ftrain, Gtrain, lamb=lamb)
     print(krr.alpha)
-    
-    assert false
 
     Npoints = 1000
     Fpredx = np.zeros(Npoints)
@@ -183,7 +184,6 @@ if __name__ == "__main__":
 
         Fpred = krr.predict_force(Xtest[i])
         Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
-
 
     plt.figure(1)
     plt.plot(delta_array, Ftestx, color='c')
