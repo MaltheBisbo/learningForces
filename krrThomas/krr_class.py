@@ -193,9 +193,9 @@ if __name__ == "__main__":
     Ffinite = (Epredict[:-1] - Epredict[1:])/dx
 
     plt.figure(1)
-    plt.plot(delta_array, Ftestx, color='c')
-    plt.plot(delta_array, Fpredx, color='y')
-    plt.plot(delta_array[1:], Ffinite, color='g')
+    #plt.plot(delta_array, Ftestx, color='c')
+    #plt.plot(delta_array, Fpredx, color='y')
+    #plt.plot(delta_array[1:], Ffinite, color='g')
     plt.plot(delta_array, Etest)
     plt.plot(delta_array, Epredict, color='r')
 

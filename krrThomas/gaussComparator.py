@@ -48,7 +48,6 @@ class gaussComparator():
             featureMat = self.featureMat.copy()
 
         dk_dd = -1/(2*self.sigma**2)*kappa.reshape((kappa.shape[0], 1))
-        #dd_df = -2*np.array([f-fnew for f in featureMat])
         dd_df = -2*(featureMat - fnew.reshape((1, fnew.shape[0])))
 
         dk_df = np.multiply(dk_dd, dd_df)
