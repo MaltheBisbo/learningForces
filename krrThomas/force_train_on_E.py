@@ -103,6 +103,7 @@ def main():
     MAE, params = krr.gridSearch(Etrain, Gtrain, **GSkwargs)
     print('sigma', params['sigma'])
     print('lamb', params['lamb'])
+
     #MAE = krr.cross_validation(E, G, lamb=lamb)
     #krr.fit(Etrain, Gtrain, lamb=lamb)
 

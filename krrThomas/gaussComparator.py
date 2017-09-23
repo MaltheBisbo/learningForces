@@ -32,7 +32,7 @@ class gaussComparator():
     def single_comparison(self, feature1, feature2, sigma=None):
         if sigma is None:
             sigma = self.sigma
-        d = sqeuclidean(feature1, feature1)
+        d = sqeuclidean(feature1, feature2)
         return np.exp(-1/(2*sigma**2)*d)
 
     def get_jac(self, fnew, kappa=None, featureMat=None):
@@ -65,9 +65,8 @@ class gaussComparator():
         Nf = f1.shape[0]
 
         dd_df1 = -2*(f2-f1).reshape((Nf,1))
-        dd_df2 = -dd_df1.reshape((1,Nf))
+        dd_df2 = -dd_df1
         d2d_df1df2 = -2*np.identity(Nf)
 
-        Hess = -1/self.sigma**2 * (-1/self.sigma**2 * kernel * np.outer(dd_df1, dd_df2) +
-                                   kernel * d2d_df1df2)
+        Hess = -1/(2*self.sigma**2) * kernel * (-1/(2*self.sigma**2) * np.outer(dd_df1, dd_df2.T) + d2d_df1df2)
         return Hess

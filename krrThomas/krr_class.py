@@ -61,7 +61,8 @@ class krr_class():
 
         df_dR = self.featureCalculator.get_featureGradient(self.pos, self.fnew, self.inew)
         dk_df = self.comparator.get_jac(self.fnew)
-
+        print(df_dR)
+        assert False
         kernelDeriv = np.dot(dk_df, df_dR)
         return -(kernelDeriv.T).dot(self.alpha)
 
@@ -141,8 +142,8 @@ if __name__ == "__main__":
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
     Ndata = 100
-    lamb = 0.0005  # 0.005
-    sig = 100  # 0.3
+    lamb = 1e-7  # expKernel: 0.005 , gaussKernel: 1e-7
+    sig = 0.13  # expKernel: 0.3 , gaussKernel: 0.13
 
     theta = 0.7*np.pi
 
@@ -164,6 +165,14 @@ if __name__ == "__main__":
     comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
     krr.fit(Etrain, Gtrain, lamb=lamb)
+
+    """ gridSearch
+    GSkwargs = {'lamb': np.logspace(-7, -5, 10), 'sigma': np.logspace(-2, 0, 10)}
+    print(Etrain.shape, Gtrain.shape)
+    MAE, params = krr.gridSearch(Etrain, Gtrain, **GSkwargs)
+    print('sigma', params['sigma'])
+    print('lamb', params['lamb'])
+    """
 
     Npoints = 1000
     Etest = np.zeros(Npoints)
@@ -193,9 +202,9 @@ if __name__ == "__main__":
     Ffinite = (Epredict[:-1] - Epredict[1:])/dx
 
     plt.figure(1)
-    #plt.plot(delta_array, Ftestx, color='c')
-    #plt.plot(delta_array, Fpredx, color='y')
-    #plt.plot(delta_array[1:], Ffinite, color='g')
+    plt.plot(delta_array, Ftestx, color='c')
+    plt.plot(delta_array, Fpredx, color='y')
+    plt.plot(delta_array[1:], Ffinite, color='g')
     plt.plot(delta_array, Etest)
     plt.plot(delta_array, Epredict, color='r')
 

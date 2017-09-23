@@ -43,11 +43,15 @@ class bob_features():
         
         # Get indices that sort g in decending order
         sorting_indices = np.argsort(-g)
-        
+
+        """
         # Sort features and atomic indices
         g_ordered = g[sorting_indices]
         atomIndices_ordered = [atomIndices[i] for i in sorting_indices]
         return g_ordered, atomIndices_ordered
+        """
+
+        return g, atomIndices
 
     def get_featureGradient(self, pos, g, atomIndices):
         Nr = len(pos)

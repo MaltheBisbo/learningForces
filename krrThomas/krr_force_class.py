@@ -6,6 +6,23 @@ from gaussComparator import gaussComparator
 
 
 class krr_force_class():
+    """
+    Vectorized kernel ridge regression:
+    Predicts forces by training directly on the forces using the scheme
+    described in: www.ncbi.nlm.nih.gov/pmc/articles/PMC5419702/
+    
+    -- Input --
+    featureCalculator:
+    Class to calculate the feature of a structure based on atomic positions.
+
+    comparator:
+    Class to calculate the similarity of the kernel of the features.
+    Must include method to calculate the Hessian of the kernel between
+    two features
+
+    **comparator_kwargs:
+    parameters for the comparator class (ie. the kernel)
+    """
     def __init__(self, featureCalculator=None, comparator=None, **comparator_kwargs):
         self.featureCalculator = featureCalculator
         self.comparator = comparator
@@ -17,17 +34,17 @@ class krr_force_class():
         (Ndata, Ncoord) = positionMat.shape  # Ncoord is number of coordinated in a structure
         self.forceVec = forceMat.reshape(Ndata*Ncoord, order='F')
         self.positionMat = positionMat
-
+    
         if featureMat is not None:
             self.featureMat = featureMat
         elif positionMat is not None and self.featureCalculator is not None:
-            self.featureMat, self.indexMat = self.featureCalculator.get_featureMat()
+            self.featureMat, self.indexMat = self.featureCalculator.get_featureMat(positionMat)
         else:
             print("You need to set the feature matrix or both the position matrix and a feature calculator")
 
         self.lamb = lamb
-        self.similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
-
+        #self.similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
+        
         # Calculate the matrix consisting of the
         # Hessians of the kernel with respect to
         # the atomic coordinates of two structures
@@ -40,7 +57,6 @@ class krr_force_class():
         for i in range(Ndata):
             for j in range(Ndata):
                 kernel_Hess = self.comparator.get_Hess_single(self.featureMat[i], self.featureMat[j])
-
                 kernel_Hess_mat[i*Ncoord:(i+1)*Ncoord,
                                 j*Ncoord:(j+1)*Ncoord] = self.featureGrad[i].T @ kernel_Hess @ self.featureGrad[j]
 
@@ -108,17 +124,17 @@ class krr_force_class():
 
 def createData(Ndata, theta):
     # Define fixed points
-    x1 = np.array([-1, 0, 1, 2])
-    x2 = np.array([0, 0, 0, 0])
+    x1 = np.array([-1, 0, 1])
+    x2 = np.array([0, 0, 0])
 
     # rotate ficed coordinates
     x1rot = np.cos(theta) * x1 - np.sin(theta) * x2
     x2rot = np.sin(theta) * x1 + np.cos(theta) * x2
-    xrot = np.c_[x1rot, x2rot].reshape((1, 8))
+    xrot = np.c_[x1rot, x2rot].reshape((1, 6))
 
     # Define an array of positions for the last pointB
     # xnew = np.c_[np.random.rand(Ndata)+0.5, np.random.rand(Ndata)+1]
-    x1new = np.linspace(0.5, 2, Ndata)
+    x1new = np.linspace(0, 1, Ndata)
     x2new = np.ones(Ndata)
 
     # rotate new coordinates
@@ -135,42 +151,42 @@ def createData(Ndata, theta):
 
 if __name__ == "__main__":
 
+    Natoms = 4
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 1000
-    lamb = 0.01
-    sig = 0.5
+    Ndata = 4
+    lamb = 1e-7
+    sig = 0.13
 
     theta = 0.7*np.pi
-
-    z = np.arange(9).reshape((3,3))
 
     X = createData(Ndata, theta)
     featureCalculator = bob_features()
     G = featureCalculator.get_featureMat(X)[0]
-
+    
     # Calculate energies for each structure
     E = np.zeros(Ndata)
-    F = np.zeros((Ndata, 2*5))
+    F = np.zeros((Ndata, 2*Natoms))
     for i in range(Ndata):
         E[i], F[i, :] = doubleLJ(X[i], eps, r0, sigma)
 
+    Xtrain = X[:-1]
     Gtrain = G[:-1]
     Ftrain = F[:-1]
 
     # Train model
     comparator = gaussComparator(sigma=sig)
     krr = krr_force_class(comparator=comparator, featureCalculator=featureCalculator)
-    krr.fit(Ftrain, Gtrain, lamb=lamb)
-    print(krr.alpha)
+    krr.fit(Ftrain, Xtrain, lamb=lamb)
 
     Npoints = 1000
     Fpredx = np.zeros(Npoints)
     Ftestx = np.zeros(Npoints)
     Xtest0 = X[-1]
-    Xtest = np.zeros((Npoints, 10))
+    Xtest = np.zeros((Npoints, 2*Natoms))
     print(Xtest.shape)
-    delta_array = np.linspace(-3.5, 0.5, Npoints)
+    # delta_array = np.linspace(-3.5, 0.5, Npoints)
+    delta_array = np.linspace(-1, 0, Npoints)
     for i in range(Npoints):
         delta = delta_array[i]
         Xtest[i] = Xtest0
@@ -189,27 +205,12 @@ if __name__ == "__main__":
     plt.plot(delta_array, Ftestx, color='c')
     plt.scatter(delta_array, Fpredx, color='y')
 
-    """
-    Xtest = Xtest0.copy()
-    Xtest[-2] -= 1.2
-    gtest, itest = features.calc_singleFeature(Xtest)
-
-    kappaDeriv = kernelVecDeriv(Xtest, gtest, itest, Gtrain, sig)
-
-    a = alpha
-
-    Fpred = -kappaDeriv.dot(a)
-    E, Ftest = doubleLJ(Xtest, eps, r0, sigma)
-    print(Fpred)
-    print(Ftest)
-    """
-
     # Plot first structure
     plt.figure(2)
     plt.scatter(Xtest[:, -2], Xtest[:, -1], color='r')
     plt.scatter(Xtest[0, -2], Xtest[0, -1], color='y')
     
-    x = X[-1].reshape((5, 2))
+    x = X[-1].reshape((Natoms, 2))
     plt.scatter(x[:, 0], x[:, 1])
     
     plt.show()
