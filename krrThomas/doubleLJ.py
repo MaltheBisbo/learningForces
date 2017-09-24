@@ -8,7 +8,7 @@ def doubleLJ(x, *params):
     double Lennard-Johnes potential.
     
     Input:
-    x: positions of atoms in form x= [x1,y2,x2,y2,...]
+    x: positions of atoms in form x= [x1,y1,x2,y2,...]
     params: parameters for the Lennard-Johnes potential
     Output:
     E: Total energy

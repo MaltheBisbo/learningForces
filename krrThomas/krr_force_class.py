@@ -154,7 +154,7 @@ if __name__ == "__main__":
     Natoms = 4
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 4
+    Ndata = 100
     lamb = 1e-7
     sig = 0.13
 

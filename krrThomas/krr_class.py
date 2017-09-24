@@ -51,18 +51,13 @@ class krr_class():
     def predict_force(self, pos=None, fnew=None, inew=None):
         if pos is not None:
             self.pos = pos
-        if fnew is not None:
-            self.fnew = fnew
-            self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
-        else:
             assert self.featureCalculator is not None
             self.fnew, self.inew = self.featureCalculator.get_singleFeature(self.pos)
             self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
 
         df_dR = self.featureCalculator.get_featureGradient(self.pos, self.fnew, self.inew)
         dk_df = self.comparator.get_jac(self.fnew)
-        print(df_dR)
-        assert False
+
         kernelDeriv = np.dot(dk_df, df_dR)
         return -(kernelDeriv.T).dot(self.alpha)
 
