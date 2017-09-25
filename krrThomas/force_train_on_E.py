@@ -26,31 +26,30 @@ def makeRandomStructure(Natoms, params):
     return x
 
 
-def relaxStructure(x, model):
+def relaxWithModel(x, model):
     def getEandF(pos):
         E = model.predict_energy(pos=pos)
-        F = model.predict_force()
+        F = -model.predict_force()
         return E, F
     res = minimize(getEandF, x,
                    method="TNC",
                    jac=True,
-                   tol=1e-0)
+                   tol=1e-1)
     return res.x, res.fun
 
     
-def forceCurve(x, krr_class):
-    plotDim = 6
+def forceCurve(x, krr_class, coord):
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
     unitvec = np.zeros(x.shape[0])
-    unitvec[plotDim] = 1
+    unitvec[coord] = 1
     Npoints = 1000
     pertub_array = np.linspace(-5, 5, Npoints)
     Xtest = np.array([x + unitvec*pertubation for pertubation in pertub_array])
     curve = np.array([[krr_class.predict_energy(pos=Xtest[i]),
                        doubleLJ(Xtest[i], eps, r0, sigma)[0],
                        pertub_array[i],
-                       krr_class.predict_force(pos=Xtest[i])[plotDim],
-                       doubleLJ(Xtest[i], eps, r0, sigma)[1][plotDim]]
+                       krr_class.predict_force(pos=Xtest[i])[coord],
+                       doubleLJ(Xtest[i], eps, r0, sigma)[1][coord]]
                       for i in range(Npoints) if doubleLJ(Xtest[i], eps, r0, sigma)[0] < 0])
 
     """
@@ -68,6 +67,27 @@ def forceCurve(x, krr_class):
 
     plt.show()
 
+def relaxTest(Xtest, model, params):
+    params = (1.8, 1.1, np.sqrt(0.02))
+    Ntest, Ncoord = Xtest.shape
+    Xrelax = np.zeros((Ntest, Ncoord))
+    Erelax = np.zeros(Ntest)
+    XrelaxLJ = np.zeros((Ntest, Ncoord))
+    ErelaxLJ = np.zeros(Ntest)
+    for i in range(Ntest):
+        print('Progress: {}/{}'.format(i, Ntest))
+        Xrelax[i,:], Erelax[i] = relaxWithModel(Xtest[i], model)
+        res = minimize(doubleLJ, Xtest[i], params,
+                       method="TNC",
+                       jac=True,
+                       tol=1e-2)
+        XrelaxLJ[i,:] = res.x
+        ErelaxLJ[i] = res.fun
+
+    Etrue = np.array([doubleLJ(x, params[0], params[1], params[2])[0] for x in Xrelax])
+    print('[Erelax, ErelaxLJ]:\n', np.c_[Erelax, ErelaxLJ, Etrue])
+    MAE = np.mean(np.abs(ErelaxLJ - Erelax))
+    print('MAE relax:', MAE)
 
 def main():
     np.random.seed(555)
@@ -91,8 +111,8 @@ def main():
     for i in range(Ndata):
         E[i], F[i] = doubleLJ(X[i], eps, r0, sigma)
 
-    Gtrain = G[:-1]
-    Etrain = E[:-1]
+    Gtrain = G[:-20]
+    Etrain = E[:-20]
 
     # Train model
     comparator = eksponentialComparator(sigma=sig)
@@ -104,25 +124,15 @@ def main():
     print('sigma', params['sigma'])
     print('lamb', params['lamb'])
 
-    #MAE = krr.cross_validation(E, G, lamb=lamb)
-    #krr.fit(Etrain, Gtrain, lamb=lamb)
-
     print('MAE=', MAE)
     print('MAE using mean:', np.mean(np.fabs(E-np.mean(E))))
     print('Mean absolute energy:', np.mean(np.fabs(E)))
 
-    forceCurve(X[-1], krr)
-    
-    Etest = E[-1]
-    Epred = krr.predict_energy(pos=X[-1])
-    Ftest = F[-1]
-    Fpred = krr.predict_force()
-    
-    print('Etest=\n', Etest)
-    print('Epred=\n', Epred)
-    print('Ftest=\n', Ftest)
-    print('Fpred=\n', Fpred)
-    
+    forceCurve(X[-1], krr, 6)
+
+    print('E_unrelaxed\n', E[-20:])
+    Xtest = X[-20:]
+    relaxTest(Xtest, krr, params)
     
     """
     pos = np.reshape(X, (Natoms, 2))
