@@ -4,8 +4,7 @@ from krr_class import krr_class
 from doubleLJ import doubleLJ
 from bob_features import bob_features
 from eksponentialComparator import eksponentialComparator
-from scipy.optimize import minimize
-
+from scipy.optimize import minimize, fmin_bfgs
 
 def makePerturbedGridStructure(Natoms):
     Nside = int(np.ceil(np.sqrt(Natoms)))
@@ -15,6 +14,34 @@ def makePerturbedGridStructure(Natoms):
     x += (np.random.rand(2*Natoms) - 0.5) * 0.6
     return x
 
+
+def makeStructuresFromRelaxation(Ndata, Natoms, params):
+    def LJenergy(x, *params):
+        return doubleLJ(x, params[0], params[1], params[2])[0]
+    def LJforce(x, *params):
+        return -doubleLJ(x, params[0], params[1], params[2])[1]
+    Nside = int(np.ceil(np.sqrt(Natoms)))
+    r0 = 1.5
+    x0 = np.array([[i, j] for i in range(Nside) for j in range(Nside)
+                   if j*Nside + i+1 <= Natoms]).reshape(2*Natoms) * r0
+    X = np.zeros((Ndata, 2*Natoms))
+    k = 0
+    while True:
+        x = x0 = (np.random.rand(2*Natoms) - 0.5) * 0.6
+        res = fmin_bfgs(LJenergy, x, LJforce, args=params,
+                        gtol=1e-2,
+                        retall=True,
+                        full_output=True)
+        x_evol = res[7]
+        x_add = np.array(x_evol[0::3])
+        Nadd = min(Ndata-k, x_add.shape[0])
+        print('k:', k)
+        X[k:k+Nadd, :] = x_add[:Nadd]
+        if k+Nadd < Ndata:
+            k += Nadd
+        else:
+            break
+    return X
 
 def makeRandomStructure(Natoms, params):
     eps, r0, sigma = params
@@ -80,12 +107,12 @@ def relaxTest(Xtest, model, params):
         res = minimize(doubleLJ, Xtest[i], params,
                        method="TNC",
                        jac=True,
-                       tol=1e-2)
+                       tol=1e-4)
         XrelaxLJ[i,:] = res.x
         ErelaxLJ[i] = res.fun
 
-    Etrue = np.array([doubleLJ(x, params[0], params[1], params[2])[0] for x in Xrelax])
-    print('[Erelax, ErelaxLJ]:\n', np.c_[Erelax, ErelaxLJ, Etrue])
+    Erelax_struct = np.array([doubleLJ(x, params[0], params[1], params[2])[0] for x in Xrelax])
+    print('[Erelax, ErelaxLJ]:\n', np.c_[Erelax, ErelaxLJ, Erelax_struct])
     MAE = np.mean(np.abs(ErelaxLJ - Erelax))
     print('MAE relax:', MAE)
 
@@ -102,7 +129,8 @@ def main():
     lamb = 1e-5
     sig = 10
     
-    X = np.array([makePerturbedGridStructure(Natoms) for i in range(Ndata)])
+    # X = np.array([makePerturbedGridStructure(Natoms) for i in range(Ndata)])
+    X = makeStructuresFromRelaxation(Ndata, Natoms, params)
     featureCalculator = bob_features()
     G, I = featureCalculator.get_featureMat(X)
     
@@ -128,14 +156,32 @@ def main():
     print('MAE using mean:', np.mean(np.fabs(E-np.mean(E))))
     print('Mean absolute energy:', np.mean(np.fabs(E)))
 
-    forceCurve(X[-1], krr, 6)
+    # forceCurve(X[-1], krr, 6)
 
-    print('E_unrelaxed\n', E[-20:])
-    Xtest = X[-20:]
-    relaxTest(Xtest, krr, params)
+    # print('E_unrelaxed\n', E[-20:])
+    # Xtest = X[-20:]
+    # relaxTest(Xtest, krr, params)
+
+    def createStructuresFromRelaxation(Ndata, *params):
+        def LJenergy(x, *params):
+            return doubleLJ(x, params[0], params[1], params[2])[0]
+        def LJforce(x, *params):
+            return -doubleLJ(x, params[0], params[1], params[2])[1]
+        X = np.zeros(Ndata)
+        Xnotfull = True 
+        while Xnotfull:
+            
+            res = fmin_bfgs(LJenergy, X[-1,:], LJforce, args=params,
+                            gtol=1e-2,
+                            retall=True,
+                            full_output=True)
+        
+    
+    #print('n iterations:', res.nit)
+    #print('Eafter', res.fun)
     
     """
-    pos = np.reshape(X, (Natoms, 2))
+    pos = np.reshape(pos, (Natoms, 2))
     plt.scatter(pos[:, 0], pos[:, 1])
     plt.show()
     """
