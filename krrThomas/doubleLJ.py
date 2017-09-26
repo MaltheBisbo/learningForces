@@ -40,6 +40,6 @@ def doubleLJ(x, *params):
 
                 dE[2*i] += dEx1 + dEx2
                 dE[2*i + 1] += dEy1 + dEy2
-    return E, -dE
+    return E, dE
 
     
