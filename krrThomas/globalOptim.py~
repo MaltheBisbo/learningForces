@@ -1,0 +1,23 @@
+import numpy as np
+
+
+class globalOptim():
+    """
+    Documentation
+    """
+    def __init__(self, Natoms=6, Niter=10, boxsize=None, dmax=0.1):
+        self.Natoms = Natoms
+        if boxsize is not None:
+            self.boxsize = boxsize
+        else:
+            self.boxsize = 2 * np.sqrt(self.Natoms)
+        self.dmax = dmax
+        self.Niter = Niter
+
+    def makeInitialStructure(self):
+        self.X = np.random.rand(2 * self.Natoms) * self.boxsize
+
+    def relax(self, X):
+        
+        
+        

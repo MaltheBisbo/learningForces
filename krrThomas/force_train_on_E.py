@@ -70,15 +70,29 @@ def forceCurve(x, krr_class, coord):
     unitvec = np.zeros(x.shape[0])
     unitvec[coord] = 1
     Npoints = 1000
-    pertub_array = np.linspace(-5, 5, Npoints)
-    Xtest = np.array([x + unitvec*pertubation for pertubation in pertub_array])
-    curve = np.array([[krr_class.predict_energy(pos=Xtest[i]),
-                       doubleLJ(Xtest[i], eps, r0, sigma)[0],
-                       pertub_array[i],
+    perturb_array = np.linspace(-5, 5, Npoints)
+    Xtest = np.array([x + unitvec*pertubation for pertubation in perturb_array])
+    curve = np.array([[perturb_array[i],
+                       krr_class.predict_energy(pos=Xtest[i]),
                        krr_class.predict_force(pos=Xtest[i])[coord],
+                       doubleLJ(Xtest[i], eps, r0, sigma)[0],
                        doubleLJ(Xtest[i], eps, r0, sigma)[1][coord]]
-                      for i in range(Npoints) if doubleLJ(Xtest[i], eps, r0, sigma)[0] < 0])
+                      for i in range(Npoints)])  # if doubleLJ(Xtest[i], eps, r0, sigma)[0] < 0])
 
+    F_fd = -np.diff(curve[:,1])/np.diff(curve[:,0])
+    
+    dx = perturb_array[1] - perturb_array[0]
+    
+    filter_high = curve[:,4] < 10
+    filter_low = curve[:,4] > -10
+    curve = curve[filter_low & filter_high]
+    perturb_array = curve[:,0]
+    Epred = curve[:,1]
+    Fpredx = curve[:,2]
+    E_LJ = curve[:,3]
+    F_LJx = curve[:,4]
+    F_fd = F_fd[filter_low[:-1] & filter_high[:-1]]
+    
     """
     Epred = np.array([krr_class.predict_energy(pos=xi) for xi in Xtest])
     Etest = np.array([doubleLJ(xi, eps, r0, sigma)[0] for xi in Xtest])
@@ -87,11 +101,12 @@ def forceCurve(x, krr_class, coord):
     """
     
     #pertub_array[pertub_array > 0] = 'nan'
-    plt.scatter(curve[:, 2], curve[:, 1], color='r', s=1)
-    plt.scatter(curve[:, 2], curve[:, 0], color='b', s=1)
-    plt.scatter(curve[:, 2], curve[:, 3], color='y', s=1)
-    plt.scatter(curve[:, 2], curve[:, 4], color='g', s=1)
-
+    plt.scatter(perturb_array, E_LJ, color='r', s=1)
+    plt.scatter(perturb_array, F_LJx, color='b', s=1)
+    plt.scatter(perturb_array, Epred, color='y', s=1)
+    plt.scatter(perturb_array, Fpredx, color='g', s=1)
+    plt.scatter(perturb_array[:-1]+dx/2, F_fd, color='c', s=1)
+    
     plt.show()
 
 def relaxTest(Xtest, model, params):
@@ -129,8 +144,8 @@ def main():
     lamb = 1e-5
     sig = 10
     
-    # X = np.array([makePerturbedGridStructure(Natoms) for i in range(Ndata)])
-    X = makeStructuresFromRelaxation(Ndata, Natoms, params)
+    X = np.array([makePerturbedGridStructure(Natoms) for i in range(Ndata)])
+    # X = makeStructuresFromRelaxation(Ndata, Natoms, params)
     featureCalculator = bob_features()
     G, I = featureCalculator.get_featureMat(X)
     
@@ -156,29 +171,11 @@ def main():
     print('MAE using mean:', np.mean(np.fabs(E-np.mean(E))))
     print('Mean absolute energy:', np.mean(np.fabs(E)))
 
-    # forceCurve(X[-1], krr, 6)
-
+    forceCurve(X[-1], krr, 6)
+    
     # print('E_unrelaxed\n', E[-20:])
     # Xtest = X[-20:]
     # relaxTest(Xtest, krr, params)
-
-    def createStructuresFromRelaxation(Ndata, *params):
-        def LJenergy(x, *params):
-            return doubleLJ(x, params[0], params[1], params[2])[0]
-        def LJforce(x, *params):
-            return -doubleLJ(x, params[0], params[1], params[2])[1]
-        X = np.zeros(Ndata)
-        Xnotfull = True 
-        while Xnotfull:
-            
-            res = fmin_bfgs(LJenergy, X[-1,:], LJforce, args=params,
-                            gtol=1e-2,
-                            retall=True,
-                            full_output=True)
-        
-    
-    #print('n iterations:', res.nit)
-    #print('Eafter', res.fun)
     
     """
     pos = np.reshape(pos, (Natoms, 2))
