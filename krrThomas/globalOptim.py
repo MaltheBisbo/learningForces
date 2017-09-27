@@ -31,8 +31,10 @@ class globalOptim():
     Max number of iterations without accepting new structure before
     the search is terminated.
     """
-    def __init__(self, Efun, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=5):
+    def __init__(self, Efun, gradfun, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=5, maxfev=10,
+                 fracPerturb=0.2):
         self.Efun = Efun
+        self.gradfun = gradfun
         self.Natoms = Natoms
         if boxsize is not None:
             self.boxsize = boxsize
@@ -43,7 +45,15 @@ class globalOptim():
         self.Niter = Niter
         self.sigma = sigma
         self.Nstag = Nstag
+        self.maxfev = maxfev
+        self.Nperturb = max(2, int(self.Natoms*fracPerturb))
 
+        # Initialize arrays to store structures for model training
+        self.Xsaved = np.zeros((1000, 2*Natoms))
+        self.Esaved = np.zeros(1000)
+        # initialize index to keep track of the ammount of data saved
+        self.ksaved = 0
+        
     def runOptimizer(self):
         self.makeInitialStructure()
         self.Ebest = self.E
@@ -83,41 +93,53 @@ class globalOptim():
         Makes a new candidate by perturbing current structure and
         relaxing the resulting structure.
         """
-        Xperturb = self.X + 2*self.dmax * (np.random.rand(2*self.Natoms) - 0.5)
+        # Pick atoms to perturb
+        i_perturb = np.random.permutation(self.Natoms)[:self.Nperturb]
+        i_perturb.sort()
+        Xperturb = self.X.copy()
+        for i in i_perturb:
+            Xperturb[i:i+2] += 2*self.dmax * (np.random.rand(2) - 0.5)
         Enew, Xnew = self.relax(X=Xperturb)
         return Enew, Xnew
+
+    #def trainModel(self):
+
         
-    def relax(self, X=None, ML=False, maxiter=None):
-        if X is None:
-            X = self.X
+    def relax(self, X=None, ML=False):
+        # determine which model to use for potential:
         if ML:
             # Use ML potential and forces
-            func = doubleLJ
+            Efun = doubleLJ_energy
+            gradfun = soubleLJ_gradient 
         else:
             # Use double Lennard-Johnes
-            func = self.Efun
-            
-        options = {'maxiter': maxiter}  # , 'disp': True}
+            Efun = self.Efun
+            gradfun = self.gradfun
 
-        def localMinimizer(X, func=func, bounds=self.bounds, options=options):
-            res = minimize(func, X, method="TNC", jac=True, tol=1e-3,
+        # Set up local minimizer
+        options = {'maxiter': self.maxfev}  # , 'disp': True}
+        
+        def localMinimizer(X, func=Efun, bounds=self.bounds, options=options):
+            res = minimize(func, X, method="L-BFGS-B", jac=gradfun, tol=1e-3,
                            bounds=bounds, options=options)
             return res
 
+        # Run Local minimization
         if ML is False:
             X0 = X.copy()
-            savedStructures = []
-            savedEnergies = []
             for i in range(100):
                 res = localMinimizer(X0)
-                savedStructures.append(res.x)
-                savedEnergies.append(res.fun)
+                print('iterations:', res.nit, '#f eval:', res.nfev)
+                self.Xsaved[self.ksaved] = res.x
+                self.Esaved[self.ksaved] = res.fun
+                self.ksaved += 1
                 if res.success:
                     break
                 X0 = res.x
-            return savedEnergies[-1], savedStructures[-1]
+            return self.Esaved[self.ksaved-1], self.Xsaved[self.ksaved-1]
         else:
             # Need to use the ML potential and force
+            print('hello')
             res = localMinimizer(X)
             return res.fun, res.x
 
