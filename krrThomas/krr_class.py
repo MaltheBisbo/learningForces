@@ -6,14 +6,15 @@ from eksponentialComparator import eksponentialComparator
 from gaussComparator import gaussComparator
 
 class krr_class():
-    def __init__(self, featureCalculator=None, comparator=None, **comparator_kwargs):
+    def __init__(self, featureCalculator=None, comparator=None, **comparator_kwargs, reg=1e-3):
         self.featureCalculator = featureCalculator
         self.comparator = comparator
         self.comparator.set_args(**comparator_kwargs)
+        self.reg = reg
 
         assert self.comparator is not None
 
-    def fit(self, data_values=None, featureMat=None, positionMat=None, lamb=1e-3):
+    def fit(self, data_values=None, featureMat=None, positionMat=None, reg=None):
         if data_values is not None:
             self.data_values = data_values
 
@@ -26,12 +27,13 @@ class krr_class():
         else:
             print("You need to set the feature matrix or both the position matrix and a feature calculator")
 
-        self.lamb = lamb
+        if reg is not None:
+            self.reg = reg
         self.similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
 
         self.beta = np.mean(data_values)
 
-        A = self.similarityMat + self.lamb*np.identity(self.data_values.shape[0])
+        A = self.similarityMat + self.reg*np.identity(self.data_values.shape[0])
 
         # self.alpha = np.linalg.inv(A).dot(self.data_values-self.beta)
         self.alpha = np.linalg.solve(A, self.data_values - self.beta)

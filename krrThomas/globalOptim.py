@@ -7,9 +7,17 @@ class globalOptim():
     """
     --Input--
     Efun:
-    Function that returns energy and gradient of a structure given
+    Function that returns energy of a structure given
+    atomic positions in the form [x0, y0, x1, y1, ...]
+    
+    gradfun:
+    Function that returns energy of a structure given
     atomic positions in the form [x0, y0, x1, y1, ...]
 
+    MLmodel:
+    Model that given training data can predict energy and gradient of a structure.
+    Hint: must include a fit, predict_energy and predict_force methods.
+    
     Natoms:
     Number of atoms in structure.
     
@@ -31,10 +39,11 @@ class globalOptim():
     Max number of iterations without accepting new structure before
     the search is terminated.
     """
-    def __init__(self, Efun, gradfun, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=5, maxfev=10,
+    def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=5, maxIterLocal=10,
                  fracPerturb=0.2):
         self.Efun = Efun
         self.gradfun = gradfun
+        self.MLmodel = MLmodel
         self.Natoms = Natoms
         if boxsize is not None:
             self.boxsize = boxsize
@@ -45,14 +54,18 @@ class globalOptim():
         self.Niter = Niter
         self.sigma = sigma
         self.Nstag = Nstag
-        self.maxfev = maxfev
+        self.maxIterLocal = maxIterLocal
         self.Nperturb = max(2, int(self.Natoms*fracPerturb))
 
         # Initialize arrays to store structures for model training
-        self.Xsaved = np.zeros((1000, 2*Natoms))
-        self.Esaved = np.zeros(1000)
+        self.Xsaved = np.zeros((2000, 2*Natoms))
+        self.Esaved = np.zeros(2000)
         # initialize index to keep track of the ammount of data saved
         self.ksaved = 0
+        
+        ## Statistics ##
+        # function evaluations
+        self.Nfeval = 0
         
     def runOptimizer(self):
         self.makeInitialStructure()
@@ -103,7 +116,7 @@ class globalOptim():
         return Enew, Xnew
 
     #def trainModel(self):
-
+        
         
     def relax(self, X=None, ML=False):
         # determine which model to use for potential:
@@ -117,7 +130,7 @@ class globalOptim():
             gradfun = self.gradfun
 
         # Set up local minimizer
-        options = {'maxiter': self.maxfev}  # , 'disp': True}
+        options = {'maxiter': self.maxIterLocal}  # , 'disp': True}
         
         def localMinimizer(X, func=Efun, bounds=self.bounds, options=options):
             res = minimize(func, X, method="L-BFGS-B", jac=gradfun, tol=1e-3,

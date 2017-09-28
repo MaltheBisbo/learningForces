@@ -41,7 +41,7 @@ def main():
     def gradfun(X):
         params = (1.5, 1, np.sqrt(0.02))
         return doubleLJ_gradient(X, params[0], params[1], params[2])
-    optim = globalOptim(Efun, gradfun, Natoms=13, dmax=1.5, Niter=50, Nstag=10, sigma=0.5, maxfev=10)
+    optim = globalOptim(Efun, gradfun, Natoms=13, dmax=1.5, Niter=1000, Nstag=30, sigma=0.5, maxIterLocal=5)
     optim.runOptimizer()
     print('Esaved:\n', optim.Esaved[:optim.ksaved])
     print('best E:', optim.Ebest)
@@ -59,7 +59,7 @@ def mainML():
     sig = 10 
     comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=bob_features)
-    optim = globalOptim(Efun, gradfun, Natoms=26, dmax=2.5, Niter=50, Nstag=10, sigma=0.5, maxfev=100)
+    optim = globalOptim(Efun, gradfun, Natoms=26, dmax=1.5, Niter=500, Nstag=20, sigma=0.5, maxfev=5)
     optim.runOptimizer()
     print('best E:', optim.Ebest)
     plotStructure(optim.Xbest)
