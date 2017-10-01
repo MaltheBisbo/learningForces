@@ -6,6 +6,7 @@ from doubleLJ import doubleLJ, doubleLJ_energy, doubleLJ_gradient
 from bob_features import bob_features
 from eksponentialComparator import eksponentialComparator
 from gaussComparator import gaussComparator
+from krr_class import krr_class
 
 def plotStructure(X, boxsize=None, color='b'):
     Natoms = int(X.shape[0]/2)
@@ -50,21 +51,32 @@ def main():
 
 def mainML():
     def Efun(X):
-        params = (1.5, 1, np.sqrt(0.02))
+        params = (1.8, 1.1, np.sqrt(0.02))
         return doubleLJ_energy(X, params[0], params[1], params[2])
     def gradfun(X):
-        params = (1.5, 1, np.sqrt(0.02))
+        params = (1.8, 1.1, np.sqrt(0.02))
         return doubleLJ_gradient(X, params[0], params[1], params[2])
 
-    sig = 10 
+    sig = 1
+    reg = 1e-5
     comparator = gaussComparator(sigma=sig)
-    krr = krr_class(comparator=comparator, featureCalculator=bob_features)
-    optim = globalOptim(Efun, gradfun, Natoms=26, dmax=1.5, Niter=500, Nstag=20, sigma=0.5, maxfev=5)
+    featureCalculator=bob_features()
+    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
+    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=200, Nstag=50, sigma=0.5, maxIterLocal=1)
     optim.runOptimizer()
+
+    print(optim.Esaved.T[:optim.ksaved])
     print('best E:', optim.Ebest)
+    plt.figure(1)
     plotStructure(optim.Xbest)
+    plt.figure(2)
+    dErel = np.fabs(np.array(optim.ErelML) - np.array(optim.ErelTrue))
+    dErelTrue = np.fabs(np.array(optim.ErelML) - np.array(optim.ErelMLTrue))
+    np.savetxt('dErel_vs_ktrain1.txt', np.c_[np.array(optim.ktrain), dErel], delimiter='\t')
+    plt.plot(optim.ktrain, dErel, color='r')
+    plt.plot(optim.ktrain, dErelTrue, color='b')
     plt.show()
     
     
 if __name__ == '__main__':
-    main()
+    mainML()

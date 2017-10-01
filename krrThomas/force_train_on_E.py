@@ -90,7 +90,7 @@ def forceCurve(x, krr_class, coord):
     Epred = curve[:,1]
     Fpredx = curve[:,2]
     E_LJ = curve[:,3]
-    F_LJx = curve[:,4]
+    F_LJx = -curve[:,4]
     F_fd = F_fd[filter_low[:-1] & filter_high[:-1]]
     
     """
@@ -133,7 +133,7 @@ def relaxTest(Xtest, model, params):
 
 def main():
     np.random.seed(555)
-    Ndata = 500
+    Ndata = 100
     Natoms = 6
 
     # parameters for potential
@@ -160,12 +160,12 @@ def main():
     # Train model
     comparator = eksponentialComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
-    GSkwargs = {'lamb': [lamb], 'sigma': [sig]}
-    # GSkwargs = {'lamb': np.logspace(-6, -3, 5), 'sigma': np.logspace(-1, 1, 5)}
+    # GSkwargs = {'reg': [lamb], 'sigma': [sig]}
+    GSkwargs = {'reg': np.logspace(-6, -3, 10), 'sigma': np.logspace(-1, 1, 10)}
     print(Etrain.shape, Gtrain.shape)
     MAE, params = krr.gridSearch(Etrain, Gtrain, **GSkwargs)
     print('sigma', params['sigma'])
-    print('lamb', params['lamb'])
+    print('reg', params['reg'])
 
     print('MAE=', MAE)
     print('MAE using mean:', np.mean(np.fabs(E-np.mean(E))))

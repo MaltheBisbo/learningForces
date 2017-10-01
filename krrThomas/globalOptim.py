@@ -40,7 +40,7 @@ class globalOptim():
     the search is terminated.
     """
     def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=5, maxIterLocal=10,
-                 fracPerturb=0.2):
+                 fracPerturb=0.2, radiusRange = [0.9, 1.8]):
         self.Efun = Efun
         self.gradfun = gradfun
         self.MLmodel = MLmodel
@@ -56,6 +56,8 @@ class globalOptim():
         self.Nstag = Nstag
         self.maxIterLocal = maxIterLocal
         self.Nperturb = max(2, int(self.Natoms*fracPerturb))
+        self.rmin = radiusRange[0]
+        self.rmax = radiusRange[1]
 
         # Initialize arrays to store structures for model training
         self.Xsaved = np.zeros((2000, 2*Natoms))
@@ -66,6 +68,14 @@ class globalOptim():
         ## Statistics ##
         # function evaluations
         self.Nfeval = 0
+        # Predicted energy of structure relaxed with ML model
+        self.ErelML = []
+        # Energy of structure relaxed with true potential
+        self.ErelTrue = []
+        # True energy of structure relaxed with ML model
+        self.ErelMLTrue = []
+        # the number of training data used
+        self.ktrain = []
         
     def runOptimizer(self):
         self.makeInitialStructure()
@@ -73,7 +83,18 @@ class globalOptim():
         self.Xbest = self.X
         k = 0
         for i in range(self.Niter):
-            Enew, Xnew = self.makeNewCandidate()
+            if self.ksaved > 10:
+                self.trainModel()
+                self.ktrain.append(self.ksaved)
+                Enew, Xnew = self.makeNewCandidate()
+                ErelML, XrelML = self.testMLrelaxor()
+                ErelMLTrue = self.Efun(XrelML)
+                self.ErelML.append(ErelML)
+                self.ErelMLTrue.append(ErelMLTrue)
+                self.ErelTrue.append(Enew)
+            else:
+                Enew, Xnew = self.makeNewCandidate()
+
             dE = Enew - self.E
             if dE <= 0:  # Accept better structure
                 self.E = Enew
@@ -98,32 +119,96 @@ class globalOptim():
             print('E=', self.E)
         
     def makeInitialStructure(self):
-        self.X = np.random.rand(2 * self.Natoms) * self.boxsize
-        self.E, self.X = self.relax(self.X)
+        
+        def validPosition(X, xnew):
+            Natoms = int(len(X)/2) # Current number of atoms
+            if Natoms == 0:
+                return True
+            connected = False
+            for i in range(Natoms):
+                r = np.linalg.norm(xnew - X[2*i:2*i+2])
+                if r < self.rmin:
+                    return False
+                if r < self.rmax:
+                    connected = True
+            return connected
+        
+        Xinit = np.zeros(2*self.Natoms)
+        for i in range(self.Natoms):
+            while True:
+                xnew = np.random.rand(2) * self.boxsize
+                if validPosition(Xinit[:2*i], xnew):
+                    Xinit[2*i:2*i+2] = xnew
+                    break
+        
+        self.E, self.X = self.relax(Xinit)
         
     def makeNewCandidate(self):
         """
         Makes a new candidate by perturbing current structure and
         relaxing the resulting structure.
         """
+        def validPerturbation(X, index, perturbation, index_static):
+            connected = False
+            xnew = X[2*index:2*index+2] + perturbation
+            for i in index_static:
+                if i == index:
+                    continue
+                r = np.linalg.norm(xnew - X[2*i:2*i+2])
+                if r < self.rmin:
+                    return False
+                if r < self.rmax:
+                    connected = True
+            return connected
+
+        InitialStructureOkay = np.array([validPerturbation(self.X, i, np.array([0,0]), np.arange(self.Natoms)) for i in range(self.Natoms)])
+        assert np.all(InitialStructureOkay)
+
         # Pick atoms to perturb
-        i_perturb = np.random.permutation(self.Natoms)[:self.Nperturb]
-        i_perturb.sort()
+        i_permuted = np.random.permutation(self.Natoms)
+        i_perturb = i_permuted[:self.Nperturb]
+        i_static = i_permuted[self.Nperturb:]
         Xperturb = self.X.copy()
         for i in i_perturb:
-            Xperturb[i:i+2] += 2*self.dmax * (np.random.rand(2) - 0.5)
+            # Make valid perturbation on this atom
+            while True:
+                perturbation = 2*self.dmax * (np.random.rand(2) - 0.5)
+            
+                # check if perturbation rersult in acceptable structure
+                if validPerturbation(Xperturb, i, perturbation, i_static):
+                    Xperturb[2*i:2*i+2] += perturbation
+                    i_static = np.append(i_static, i)
+                    break
+
+        # Save structure for training
+        Eperturb = self.Efun(Xperturb)
+        self.Xsaved[self.ksaved] = Xperturb
+        self.Esaved[self.ksaved] = Eperturb
+        self.ksaved += 1
+        
+        print('Energy of unrelaxed perturbed structure:', Eperturb)
         Enew, Xnew = self.relax(X=Xperturb)
+
         return Enew, Xnew
 
-    #def trainModel(self):
+    def trainModel(self):
+        self.MLmodel.fit(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved])
+        # GSkwargs = {'reg': np.logspace(-6, -3, 5), 'sigma': np.logspace(-1, 1, 5)}
+        # MAE, params = self.MLmodel.gridSearch(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved], **GSkwargs)
+        # print('sigma:', params['sigma'], 'reg:', params['reg'])
         
+    def testMLrelaxor(self):
+        Erel, Xrel = self.relax(self.X, ML=True)
+        return Erel, Xrel
         
     def relax(self, X=None, ML=False):
         # determine which model to use for potential:
         if ML:
             # Use ML potential and forces
-            Efun = doubleLJ_energy
-            gradfun = soubleLJ_gradient 
+            def Efun(pos):
+                return self.MLmodel.predict_energy(pos=pos)
+            def gradfun(pos):
+                return self.MLmodel.predict_force(pos=pos) 
         else:
             # Use double Lennard-Johnes
             Efun = self.Efun
@@ -152,7 +237,6 @@ class globalOptim():
             return self.Esaved[self.ksaved-1], self.Xsaved[self.ksaved-1]
         else:
             # Need to use the ML potential and force
-            print('hello')
             res = localMinimizer(X)
             return res.fun, res.x
 

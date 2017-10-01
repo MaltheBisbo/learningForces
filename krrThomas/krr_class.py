@@ -6,7 +6,7 @@ from eksponentialComparator import eksponentialComparator
 from gaussComparator import gaussComparator
 
 class krr_class():
-    def __init__(self, featureCalculator=None, comparator=None, **comparator_kwargs, reg=1e-3):
+    def __init__(self, featureCalculator=None, comparator=None, reg=1e-3, **comparator_kwargs):
         self.featureCalculator = featureCalculator
         self.comparator = comparator
         self.comparator.set_args(**comparator_kwargs)
@@ -22,8 +22,7 @@ class krr_class():
         if featureMat is not None:
             self.featureMat = featureMat
         elif positionMat is not None and self.featureCalculator is not None:
-            self.featureObj = self.featureCalculator(positionMat)
-            self.featureMat = self.featureObj.get_featureMat()
+            self.featureMat, _ = self.featureCalculator.get_featureMat(positionMat)
         else:
             print("You need to set the feature matrix or both the position matrix and a feature calculator")
 
@@ -44,7 +43,7 @@ class krr_class():
         else:
             self.pos = pos
             assert self.featureCalculator is not None
-            self.fnew, self.inew = self.featureCalculator.get_singleFeature(self.pos)
+            self.fnew, self.inew = self.featureCalculator.get_singleFeature(x=self.pos)
 
         self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
 
@@ -63,7 +62,7 @@ class krr_class():
         kernelDeriv = np.dot(dk_df, df_dR)
         return -(kernelDeriv.T).dot(self.alpha)
 
-    def cross_validation(self, data_values, featureMat, k=3, lamb=None, **GSkwargs):
+    def cross_validation(self, data_values, featureMat, k=3, reg=None, **GSkwargs):
         Ndata = data_values.shape[0]
         permutation = np.random.permutation(Ndata)
         data_values = data_values[permutation]
@@ -75,31 +74,36 @@ class krr_class():
             [i_train1, i_test, i_train2] = np.split(np.arange(Ndata),
                                                     [Ntest * ik, Ntest * (ik+1)])
             i_train = np.r_[i_train1, i_train2]
-            self.fit(data_values[i_train], featureMat[i_train], lamb=lamb)
+            self.fit(data_values[i_train], featureMat[i_train], reg=reg)
             MAE[ik] = self.get_MAE_energy(data_values[i_test], featureMat[i_test])
         return np.mean(MAE)
 
-    def gridSearch(self, data_values, featureMat, k=3, **GSkwargs):
+    def gridSearch(self, data_values, featureMat=None, positionMat=None, k=3, disp=False, **GSkwargs):
+        if positionMat is not None and self.featureCalculator is not None:
+            featureMat, _ = self.featureCalculator.get_featureMat(positionMat)
+        else:
+            assert featureMat is not None
         sigma_array = GSkwargs['sigma']
-        lamb_array = GSkwargs['lamb']
+        reg_array = GSkwargs['reg']
         Nsigma = len(sigma_array)
-        Nlamb = len(lamb_array)
+        Nreg = len(reg_array)
         best_args = np.zeros(2).astype(int)
         MAE_min = None
         for i in range(Nsigma):
             self.comparator.set_args(sigma=sigma_array[i])
-            for j in range(Nlamb):
-                MAE = self.cross_validation(data_values, featureMat, k=k, lamb=lamb_array[j])
-                print('MAE:', MAE,'params: (', sigma_array[i],',', lamb_array[j], ')')
+            for j in range(Nreg):
+                MAE = self.cross_validation(data_values, featureMat, k=k, reg=reg_array[j])
+                if disp:
+                    print('MAE:', MAE,'params: (', sigma_array[i],',', reg_array[j], ')')
                 if MAE_min is None or MAE < MAE_min:
                     MAE_min = MAE
                     best_args = np.array([i, j])
         sigma_best = sigma_array[best_args[0]]
-        lamb_best = lamb_array[best_args[1]]
+        reg_best = reg_array[best_args[1]]
         # Train with best parameters using all data
         self.comparator.set_args(sigma=sigma_best)
-        self.fit(data_values, featureMat, lamb=lamb_best)
-        return MAE_min, {'sigma': sigma_best, 'lamb': lamb_best}
+        self.fit(data_values, featureMat, reg=reg_best)
+        return MAE_min, {'sigma': sigma_best, 'reg': reg_best}
 
     def get_MAE_energy(self, data_values, featureMat):
         Epred = np.array([self.predict_energy(f) for f in featureMat])
@@ -139,7 +143,7 @@ if __name__ == "__main__":
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
     Ndata = 100
-    lamb = 1e-7  # expKernel: 0.005 , gaussKernel: 1e-7
+    reg = 1e-7  # expKernel: 0.005 , gaussKernel: 1e-7
     sig = 0.13  # expKernel: 0.3 , gaussKernel: 0.13
 
     theta = 0.7*np.pi
@@ -161,14 +165,14 @@ if __name__ == "__main__":
     # Train model
     comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
-    krr.fit(Etrain, Gtrain, lamb=lamb)
+    krr.fit(Etrain, Gtrain, reg=reg)
 
     """ gridSearch
-    GSkwargs = {'lamb': np.logspace(-7, -5, 10), 'sigma': np.logspace(-2, 0, 10)}
+    GSkwargs = {'reg': np.logspace(-7, -5, 10), 'sigma': np.logspace(-2, 0, 10)}
     print(Etrain.shape, Gtrain.shape)
     MAE, params = krr.gridSearch(Etrain, Gtrain, **GSkwargs)
     print('sigma', params['sigma'])
-    print('lamb', params['lamb'])
+    print('reg', params['reg'])
     """
 
     Npoints = 1000
