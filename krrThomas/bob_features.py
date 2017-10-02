@@ -18,11 +18,9 @@ class bob_features():
         Natoms = int(self.X.shape[1]/2)
         Nfeatures = int(Natoms*(Natoms-1)/2)
         G = np.zeros((Ndata, Nfeatures))
-        I = []
+        I = np.zeros((Ndata, Nfeatures, 2))
         for n in range(Ndata):
-            g, atomIndices = self.get_singleFeature(self.X[n])
-            G[n, :] = g
-            I.append(atomIndices)
+            G[n, :], I[n, :, :] = self.get_singleFeature(self.X[n])
         self.G = G
         self.I = I
         return self.G, self.I
@@ -39,7 +37,7 @@ class bob_features():
         g = np.array([1/np.linalg.norm(x[j]-x[i]) for i in range(Natoms) for j in range(i+1, Natoms)])
         
         # Make list of atom indices corresponding to the elements of the feature g
-        atomIndices = [(i, j) for i in range(Natoms) for j in range(i+1, Natoms)]
+        atomIndices = np.array([(i, j) for i in range(Natoms) for j in range(i+1, Natoms)])
         
         # Get indices that sort g in decending order
         sorting_indices = np.argsort(-g)
@@ -47,7 +45,7 @@ class bob_features():
 
         # Sort features and atomic indices
         g_ordered = g[sorting_indices]
-        atomIndices_ordered = [atomIndices[i] for i in sorting_indices]
+        atomIndices_ordered = atomIndices[sorting_indices]
         return g_ordered, atomIndices_ordered
 
 

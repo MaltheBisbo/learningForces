@@ -62,7 +62,7 @@ class krr_class():
         kernelDeriv = np.dot(dk_df, df_dR)
         return -(kernelDeriv.T).dot(self.alpha)
 
-    def cross_validation(self, data_values, featureMat, k=3, reg=None, **GSkwargs):
+    def cross_validation(self, data_values, featureMat, k=3, reg=None):
         Ndata = data_values.shape[0]
         permutation = np.random.permutation(Ndata)
         data_values = data_values[permutation]
@@ -77,6 +77,28 @@ class krr_class():
             self.fit(data_values[i_train], featureMat[i_train], reg=reg)
             MAE[ik] = self.get_MAE_energy(data_values[i_test], featureMat[i_test])
         return np.mean(MAE)
+
+    def cross_validation_EandF(self, energy, force, featureMat, indexMat, positionMat, k=3, reg=None):
+        Ndata, Ndf = positionMat.shape
+        permutation = np.random.permutation(Ndata)
+        energy = energy[permutation]
+        force = force[permutation]
+        featureMat = featureMat[permutation]
+        indexMat = indexMat[permutation]
+        positionMat = positionMat[permutation]
+        
+        Ntest = int(np.floor(Ndata/k))
+        MAE_energy = np.zeros(k)
+        MAE_force = np.zeros((k, Ndf))
+        for ik in range(k):
+            [i_train1, i_test, i_train2] = np.split(np.arange(Ndata),
+                                                    [Ntest * ik, Ntest * (ik+1)])
+            i_train = np.r_[i_train1, i_train2]
+            self.fit(energy[i_train], featureMat[i_train], reg=reg)
+            MAE_energy[ik] = self.get_MAE_energy(energy[i_test], featureMat[i_test])
+            MAE_force[ik, :] = self.get_MAE_force(force[i_test], positionMat[i_test],
+                                                  featureMat[i_test], indexMat[i_test])
+        return np.mean(MAE_energy) , np.mean(MAE_force, axis=0)
 
     def gridSearch(self, data_values, featureMat=None, positionMat=None, k=3, disp=False, **GSkwargs):
         if positionMat is not None and self.featureCalculator is not None:
@@ -109,6 +131,12 @@ class krr_class():
         Epred = np.array([self.predict_energy(f) for f in featureMat])
         MAE = np.mean(np.fabs(Epred - data_values))
         return MAE
+
+    def get_MAE_force(self, force, positionMat, featureMat, indexMat):
+        Fpred = np.array([self.predict_force(positionMat[i], featureMat[i], indexMat[i])
+                          for i in range(force.shape[0])])
+        MAE_force = np.mean(np.fabs(Fpred - force), axis=0)
+        return MAE_force
 
 
 def createData(Ndata, theta):
