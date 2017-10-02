@@ -62,7 +62,7 @@ def mainML():
     comparator = gaussComparator(sigma=sig)
     featureCalculator=bob_features()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
-    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=200, Nstag=50, sigma=0.5, maxIterLocal=1)
+    optim = globalOptim(Efun, gradfun, krr, Natoms=4, dmax=2.5, Niter=50, Nstag=30, sigma=0.5, maxIterLocal=1)
     optim.runOptimizer()
 
     print(optim.Esaved.T[:optim.ksaved])
