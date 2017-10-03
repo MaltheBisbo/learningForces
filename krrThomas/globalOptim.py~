@@ -40,7 +40,7 @@ class globalOptim():
     the search is terminated.
     """
     def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=5, maxIterLocal=10,
-                 fracPerturb=0.2, radiusRange = [0.9, 1.8]):
+                 fracPerturb=0.2, radiusRange = [0.9, 1.5]):
         self.Efun = Efun
         self.gradfun = gradfun
         self.MLmodel = MLmodel
@@ -65,16 +65,16 @@ class globalOptim():
         # initialize index to keep track of the ammount of data saved
         self.ksaved = 0
         
-        ## Statistics ##
-        # function evaluations
+        ### Statistics ###
+        # Function evaluations
         self.Nfeval = 0
         # Predicted energy of structure relaxed with ML model
         self.ErelML = []
         # Energy of structure relaxed with true potential
         self.ErelTrue = []
-        # True energy of structure relaxed with ML model
+        # True energy of resulting from relaxation with ML model
         self.ErelMLTrue = []
-        # the number of training data used
+        # The number of training data used
         self.ktrain = []
         
     def runOptimizer(self):
@@ -86,15 +86,18 @@ class globalOptim():
             if self.ksaved > 10:
                 self.trainModel()
                 self.ktrain.append(self.ksaved)
-                Enew, Xnew = self.makeNewCandidate()
-                ErelML, XrelML = self.testMLrelaxor()
+                Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+                Enew, Xnew = self.relax(Xnew_unrelaxed)
+                ErelML, XrelML = self.testMLrelaxor(Xnew_unrelaxed)
+                self.plotStructures(Xnew, XrelML, Xnew_unrelaxed)
                 ErelMLTrue = self.Efun(XrelML)
                 self.ErelML.append(ErelML)
                 self.ErelMLTrue.append(ErelMLTrue)
                 self.ErelTrue.append(Enew)
             else:
-                Enew, Xnew = self.makeNewCandidate()
-
+                Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+                Enew, Xnew = self.relax(Xnew_unrelaxed)
+                
             dE = Enew - self.E
             if dE <= 0:  # Accept better structure
                 self.E = Enew
@@ -162,7 +165,9 @@ class globalOptim():
             return connected
 
         InitialStructureOkay = np.array([validPerturbation(self.X, i, np.array([0,0]), np.arange(self.Natoms)) for i in range(self.Natoms)])
-        assert np.all(InitialStructureOkay)
+        if not np.all(InitialStructureOkay):
+            print('Einit:', self.Efun(self.X))
+            assert np.all(InitialStructureOkay)
 
         # Pick atoms to perturb
         i_permuted = np.random.permutation(self.Natoms)
@@ -187,9 +192,9 @@ class globalOptim():
         self.ksaved += 1
         
         print('Energy of unrelaxed perturbed structure:', Eperturb)
-        Enew, Xnew = self.relax(X=Xperturb)
+        #Enew, Xnew = self.relax(X=Xperturb)
 
-        return Enew, Xnew
+        return Eperturb, Xperturb
 
     def trainModel(self):
         self.MLmodel.fit(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved])
@@ -197,8 +202,8 @@ class globalOptim():
         # MAE, params = self.MLmodel.gridSearch(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved], **GSkwargs)
         # print('sigma:', params['sigma'], 'reg:', params['reg'])
         
-    def testMLrelaxor(self):
-        Erel, Xrel = self.relax(self.X, ML=True)
+    def testMLrelaxor(self, X):
+        Erel, Xrel = self.relax(X, ML=True)
         return Erel, Xrel
         
     def relax(self, X=None, ML=False):
@@ -206,7 +211,7 @@ class globalOptim():
         if ML:
             # Use ML potential and forces
             def Efun(pos):
-                return self.MLmodel.predict_energy(pos=pos)
+                return self.MLmodel.predict_energy(pos=pos) + self.artificialPotential(pos)
             def gradfun(pos):
                 return self.MLmodel.predict_force(pos=pos) 
         else:
@@ -221,16 +226,31 @@ class globalOptim():
             res = minimize(func, X, method="L-BFGS-B", jac=gradfun, tol=1e-3,
                            bounds=bounds, options=options)
             return res
+        
+        """
+        def localMinimizer(X, func=Efun, options=options):
+            res = minimize(func, X, method="SLSQP", jac=gradfun, tol=1e-3,
+                           options=options)
+            return res
+        """
 
         # Run Local minimization
         if ML is False:
             X0 = X.copy()
             for i in range(100):
                 res = localMinimizer(X0)
-                print('iterations:', res.nit, '#f eval:', res.nfev)
-                self.Xsaved[self.ksaved] = res.x
-                self.Esaved[self.ksaved] = res.fun
-                self.ksaved += 1
+                # print('iterations:', res.nit, '#f eval:', res.nfev)
+                if res.fun < 0:
+                    self.Xsaved[self.ksaved] = res.x
+                    self.Esaved[self.ksaved] = res.fun
+                    self.ksaved += 1
+                """
+                if res.fun >= 0:
+                    print('i:', i)
+                    print('res.fun:', self.Efun(X0))
+                    print('Esaved:', self.Esaved[max(0,self.ksaved-3):self.ksaved])
+                    assert res.fun < 0
+                """
                 if res.success:
                     break
                 X0 = res.x
@@ -240,14 +260,34 @@ class globalOptim():
             res = localMinimizer(X)
             return res.fun, res.x
 
-    def plotCurrentStructure(self):
+    def artificialPotential(self, x):
+        N = x.shape[0]
+        Natoms = int(N/2)
+        x = np.reshape(x, (Natoms, 2))
+        E = 0
+        for i in range(Natoms):
+            for j in range(i+1, Natoms):
+                r = np.sqrt(np.dot(x[i] - x[j], x[i] - x[j]))
+                if r < self.rmin:
+                    E += 1e4 * (self.rmin - r)
+        return E
+
+
+    def plotStructures(self, X1=None, X2=None, X3=None):
         xbox = np.array([0, self.boxsize, self.boxsize, 0, 0])
         ybox = np.array([0, 0, self.boxsize, self.boxsize, 0])
 
-        x = self.X[0::2]
-        y = self.X[1::2]
+        plt.gca().cla()
+        x1 = X1[0::2]
+        y1 = X1[1::2]
+        x2 = X2[0::2]
+        y2 = X2[1::2]
+        x3 = X3[0::2]
+        y3 = X3[1::2]
         plt.plot(xbox, ybox, color='k')
-        plt.scatter(x, y, s=8)
+        plt.scatter(x1, y1, s=15, color='r')
+        plt.scatter(x2, y2, s=15, color='b')
+        plt.scatter(x3, y3, s=15, color='g', marker='x')
         plt.gca().set_aspect('equal', adjustable='box')
-        plt.show()
+        plt.pause(0.5)
         

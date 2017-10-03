@@ -35,6 +35,7 @@ def testLocalMinimizer():
     plt.show()
 
 
+
 def main():
     def Efun(X):
         params = (1.5, 1, np.sqrt(0.02))
@@ -60,9 +61,9 @@ def mainML():
     sig = 1
     reg = 1e-5
     comparator = gaussComparator(sigma=sig)
-    featureCalculator=bob_features()
+    featureCalculator = bob_features()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
-    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=50, Nstag=50, sigma=1, maxIterLocal=3)
+    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=1000, Nstag=400, sigma=1, maxIterLocal=3)
     optim.runOptimizer()
 
     GSkwargs = {'reg': [reg], 'sigma': [sig]}
@@ -70,18 +71,41 @@ def mainML():
     print('MAE:', MAE)
     print(optim.Esaved.T[:optim.ksaved])
     print('best E:', optim.Ebest)
-    plt.figure(1)
-    plotStructure(optim.Xbest)
-    plt.figure(2)
+    # Make into numpy arrays
+    ktrain = np.array(optim.ktrain)
+    EunrelML = np.array(optim.EunrelML)
+    Eunrel = np.array(optim.Eunrel)
+    F_MAE = np.array(optim.F_MAE)
+    
     dErel = np.fabs(np.array(optim.ErelML) - np.array(optim.ErelTrue))
     dErelTrue = np.fabs(np.array(optim.ErelML) - np.array(optim.ErelMLTrue))
-    np.savetxt('dErel_vs_ktrain1.txt', np.c_[np.array(optim.ktrain), dErel], delimiter='\t')
-    plt.plot(optim.ktrain, dErel, color='r')
-    plt.plot(optim.ktrain, dErelTrue, color='b')
+    dEunrel = np.fabs(EunrelML - Eunrel)
+    
+    np.savetxt('dErel_vs_ktrain1.txt', np.c_[ktrain, dErel, dErelTrue, EunrelML, Eunrel, F_MAE], delimiter='\t')
+
+    
+    plt.figure(1)
+    plt.title('Structure Example')
+    plotStructure(optim.Xbest)
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.figure(2)
+    plt.title('Energies of relaxed struxtures')
+    line_dErel, = plt.loglog(ktrain, dErel, color='r')  # , label="hej")
+    line_dErelTrue, = plt.loglog(ktrain, dErelTrue, color='b')  # , label="hej2")
+    plt.xlabel('NData')
+    plt.ylabel('Energy')
+    # plt.legend()
     plt.figure(3)
-    plt.plot(optim.ktrain, optim.ErelML, color='r')
-    plt.plot(optim.ktrain, optim.ErelTrue, color='b')
-    plt.plot(optim.ktrain, optim.ErelMLTrue, color='g')
+    plt.title('Energies of unrelaxed structures')
+    plt.loglog(ktrain, dEunrel)
+    plt.xlabel('NData')
+    plt.ylabel('Energy')
+    plt.figure(4)
+    plt.title('Forces of unrelaxed structures')
+    plt.loglog(ktrain, F_MAE)
+    plt.xlabel('NData')
+    plt.ylabel('F_MAE')
     plt.show()
     
     

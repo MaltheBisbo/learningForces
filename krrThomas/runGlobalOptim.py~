@@ -62,9 +62,12 @@ def mainML():
     comparator = gaussComparator(sigma=sig)
     featureCalculator=bob_features()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
-    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=200, Nstag=50, sigma=0.5, maxIterLocal=1)
+    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=50, Nstag=50, sigma=1, maxIterLocal=3)
     optim.runOptimizer()
 
+    GSkwargs = {'reg': [reg], 'sigma': [sig]}
+    MAE, params = krr.gridSearch(optim.Esaved[:optim.ksaved], positionMat=optim.Xsaved[:optim.ksaved], **GSkwargs)
+    print('MAE:', MAE)
     print(optim.Esaved.T[:optim.ksaved])
     print('best E:', optim.Ebest)
     plt.figure(1)
@@ -75,6 +78,10 @@ def mainML():
     np.savetxt('dErel_vs_ktrain1.txt', np.c_[np.array(optim.ktrain), dErel], delimiter='\t')
     plt.plot(optim.ktrain, dErel, color='r')
     plt.plot(optim.ktrain, dErelTrue, color='b')
+    plt.figure(3)
+    plt.plot(optim.ktrain, optim.ErelML, color='r')
+    plt.plot(optim.ktrain, optim.ErelTrue, color='b')
+    plt.plot(optim.ktrain, optim.ErelMLTrue, color='g')
     plt.show()
     
     

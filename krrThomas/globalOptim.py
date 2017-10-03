@@ -39,8 +39,8 @@ class globalOptim():
     Max number of iterations without accepting new structure before
     the search is terminated.
     """
-    def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=5, maxIterLocal=10,
-                 fracPerturb=0.2, radiusRange = [0.9, 1.5]):
+    def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=5,
+                 maxIterLocal=10, fracPerturb=0.4, radiusRange = [0.9, 1.5]):
         self.Efun = Efun
         self.gradfun = gradfun
         self.MLmodel = MLmodel
@@ -60,8 +60,8 @@ class globalOptim():
         self.rmax = radiusRange[1]
 
         # Initialize arrays to store structures for model training
-        self.Xsaved = np.zeros((2000, 2*Natoms))
-        self.Esaved = np.zeros(2000)
+        self.Xsaved = np.zeros((4000, 2*Natoms))
+        self.Esaved = np.zeros(4000)
         # initialize index to keep track of the ammount of data saved
         self.ksaved = 0
         
@@ -74,8 +74,17 @@ class globalOptim():
         self.ErelTrue = []
         # True energy of resulting from relaxation with ML model
         self.ErelMLTrue = []
+        # Predicted energy of unrelaxed structure
+        self.EunrelML = []
+        # Energy of unrelaxed structure
+        self.Eunrel = []
+        # MAE of all force components of unrelaxed structure
+        self.F_MAE = []
         # The number of training data used
         self.ktrain = []
+
+        self.testCounter = 0
+        self.Ntest_array = np.logspace(1, 3.5, 15)
         
     def runOptimizer(self):
         self.makeInitialStructure()
@@ -83,17 +92,26 @@ class globalOptim():
         self.Xbest = self.X
         k = 0
         for i in range(self.Niter):
-            if self.ksaved > 10:
+            if self.ksaved > self.Ntest_array[self.testCounter]:
+                self.testCounter += 1
                 self.trainModel()
                 self.ktrain.append(self.ksaved)
                 Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
                 Enew, Xnew = self.relax(Xnew_unrelaxed)
                 ErelML, XrelML = self.testMLrelaxor(Xnew_unrelaxed)
-                self.plotStructures(Xnew, XrelML, Xnew_unrelaxed)
+                # self.plotStructures(Xnew, XrelML, Xnew_unrelaxed)
                 ErelMLTrue = self.Efun(XrelML)
+                # Data for relaxed energies
                 self.ErelML.append(ErelML)
                 self.ErelMLTrue.append(ErelMLTrue)
                 self.ErelTrue.append(Enew)
+                # Data for unrelaxed energies
+                self.Eunrel.append(Enew_unrelaxed)
+                self.EunrelML.append(self.MLmodel.predict_energy(pos=Xnew_unrelaxed))
+                # Data for unrelaxed forces
+                Fnew_MAE = np.mean(np.fabs(self.MLmodel.predict_force(pos=Xnew_unrelaxed) -
+                                           self.gradfun(Xnew_unrelaxed)))
+                self.F_MAE.append(Fnew_MAE)
             else:
                 Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
                 Enew, Xnew = self.relax(Xnew_unrelaxed)
@@ -120,6 +138,9 @@ class globalOptim():
                 print('The convergence/stagnation criteria was reached')
                 break
             print('E=', self.E)
+
+            if self.testCounter > 14:
+                break
         
     def makeInitialStructure(self):
         
