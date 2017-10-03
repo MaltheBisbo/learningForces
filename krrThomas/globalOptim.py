@@ -74,17 +74,21 @@ class globalOptim():
         self.ErelTrue = []
         # True energy of resulting from relaxation with ML model
         self.ErelMLTrue = []
+        # Energy of structure relaxed with ML model followed by relaxation with true potential
+        self.E2rel = []
         # Predicted energy of unrelaxed structure
         self.EunrelML = []
         # Energy of unrelaxed structure
         self.Eunrel = []
-        # MAE of all force components of unrelaxed structure
-        self.F_MAE = []
+        # All force components of unrelaxed structure (ML)
+        self.FunrelML = []
+        # All force components of unrelaxed structure (True)
+        self.FunrelTrue = []
         # The number of training data used
         self.ktrain = []
 
         self.testCounter = 0
-        self.Ntest_array = np.logspace(1, 3.5, 15)
+        self.Ntest_array = np.logspace(1, 3, 10)
         
     def runOptimizer(self):
         self.makeInitialStructure()
@@ -92,26 +96,29 @@ class globalOptim():
         self.Xbest = self.X
         k = 0
         for i in range(self.Niter):
-            if self.ksaved > self.Ntest_array[self.testCounter]:
+            if  self.ksaved > 100:  # self.ksaved > self.Ntest_array[self.testCounter]:
                 self.testCounter += 1
                 self.trainModel()
                 self.ktrain.append(self.ksaved)
                 Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
                 Enew, Xnew = self.relax(Xnew_unrelaxed)
                 ErelML, XrelML = self.testMLrelaxor(Xnew_unrelaxed)
-                # self.plotStructures(Xnew, XrelML, Xnew_unrelaxed)
+                ErelML_relax, XrelML_relax = self.relax(XrelML)
+                self.plotStructures(Xnew, XrelML, Xnew_unrelaxed)
                 ErelMLTrue = self.Efun(XrelML)
                 # Data for relaxed energies
                 self.ErelML.append(ErelML)
                 self.ErelMLTrue.append(ErelMLTrue)
                 self.ErelTrue.append(Enew)
+                self.E2rel.append(ErelML_relax)
                 # Data for unrelaxed energies
                 self.Eunrel.append(Enew_unrelaxed)
                 self.EunrelML.append(self.MLmodel.predict_energy(pos=Xnew_unrelaxed))
                 # Data for unrelaxed forces
-                Fnew_MAE = np.mean(np.fabs(self.MLmodel.predict_force(pos=Xnew_unrelaxed) -
-                                           self.gradfun(Xnew_unrelaxed)))
-                self.F_MAE.append(Fnew_MAE)
+                FnewML = np.mean(np.fabs(self.MLmodel.predict_force(pos=Xnew_unrelaxed)))
+                FnewTrue = np.mean(np.fabs(self.gradfun(Xnew_unrelaxed)))
+                self.FunrelML.append(FnewML)
+                self.FunrelTrue.append(FnewTrue)
             else:
                 Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
                 Enew, Xnew = self.relax(Xnew_unrelaxed)
@@ -139,7 +146,7 @@ class globalOptim():
                 break
             print('E=', self.E)
 
-            if self.testCounter > 14:
+            if self.testCounter > 9:
                 break
         
     def makeInitialStructure(self):
@@ -234,23 +241,34 @@ class globalOptim():
             def Efun(pos):
                 return self.MLmodel.predict_energy(pos=pos) + self.artificialPotential(pos)
             def gradfun(pos):
-                return self.MLmodel.predict_force(pos=pos) 
+                return -self.MLmodel.predict_force(pos=pos)
+            options = {'gtol': 1e-5}
+            def localMinimizer(X, func=Efun, bounds=self.bounds, options=options):
+                res = minimize(func, X, method="L-BFGS-B", jac=gradfun,
+                               bounds=bounds, options=options)
+                return res
         else:
             # Use double Lennard-Johnes
             Efun = self.Efun
             gradfun = self.gradfun
+            options = {'maxiter': self.maxIterLocal}  # , 'gtol': 1e-3}
+            def localMinimizer(X, func=Efun, bounds=self.bounds, options=options):
+                res = minimize(func, X, method="L-BFGS-B", jac=gradfun, tol=1e-5,
+                               bounds=bounds, options=options)
+                return res
 
         # Set up local minimizer
-        options = {'maxiter': self.maxIterLocal}  # , 'disp': True}
-        
+        """
+        options = {'maxiter': self.maxIterLocal, 'ftol': 1e-5, 'factr': 10}
         def localMinimizer(X, func=Efun, bounds=self.bounds, options=options):
-            res = minimize(func, X, method="L-BFGS-B", jac=gradfun, tol=1e-3,
+            res = minimize(func, X, method="L-BFGS-B", jac=gradfun,
                            bounds=bounds, options=options)
             return res
-        
         """
+        """
+        options = {'maxiter': self.maxIterLocal, 'gtol': 1e-5}
         def localMinimizer(X, func=Efun, options=options):
-            res = minimize(func, X, method="SLSQP", jac=gradfun, tol=1e-3,
+            res = minimize(func, X, method="CG", jac=gradfun,
                            options=options)
             return res
         """
@@ -260,7 +278,6 @@ class globalOptim():
             X0 = X.copy()
             for i in range(100):
                 res = localMinimizer(X0)
-                # print('iterations:', res.nit, '#f eval:', res.nfev)
                 if res.fun < 0:
                     self.Xsaved[self.ksaved] = res.x
                     self.Esaved[self.ksaved] = res.fun
@@ -272,6 +289,7 @@ class globalOptim():
                     print('Esaved:', self.Esaved[max(0,self.ksaved-3):self.ksaved])
                     assert res.fun < 0
                 """
+                print('Number of iterations:', res.nit, 'fev:', res.nfev)
                 if res.success:
                     break
                 X0 = res.x
@@ -279,6 +297,9 @@ class globalOptim():
         else:
             # Need to use the ML potential and force
             res = localMinimizer(X)
+            print('Number of ML iterations:', res.nit, 'fev:', res.nfev)
+            print('Convergence status:', res.status)
+            print(res.message)
             return res.fun, res.x
 
     def artificialPotential(self, x):
@@ -306,9 +327,9 @@ class globalOptim():
         x3 = X3[0::2]
         y3 = X3[1::2]
         plt.plot(xbox, ybox, color='k')
-        plt.scatter(x1, y1, s=15, color='r')
-        plt.scatter(x2, y2, s=15, color='b')
-        plt.scatter(x3, y3, s=15, color='g', marker='x')
+        plt.scatter(x1, y1, s=22, color='r')
+        plt.scatter(x2, y2, s=22, color='b')
+        plt.scatter(x3, y3, s=22, color='g', marker='x')
         plt.gca().set_aspect('equal', adjustable='box')
-        plt.pause(0.5)
+        plt.pause(4)
         

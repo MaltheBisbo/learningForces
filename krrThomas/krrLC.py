@@ -76,7 +76,7 @@ def energyLC():
 
 def energyANDforceLC():
     np.random.seed(455)
-    Ndata = 10000
+    Ndata = 1000
     Natoms = 7
     
     # parameters for potential
@@ -100,8 +100,8 @@ def energyANDforceLC():
         E[i], grad = doubleLJ(X[i], eps, r0, sigma)
         F[i] = -grad
 
-    NpointsLC = 15
-    Ndata_array = np.logspace(1,3.5,NpointsLC).astype(int)
+    NpointsLC = 10
+    Ndata_array = np.logspace(1,3,NpointsLC).astype(int)
     MAE_energy_array = np.zeros(NpointsLC)
     MAE_force_array = np.zeros((NpointsLC, 2*Natoms))
     for i in range(NpointsLC):

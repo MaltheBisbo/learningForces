@@ -129,14 +129,17 @@ class krr_class():
 
     def get_MAE_energy(self, data_values, featureMat):
         Epred = np.array([self.predict_energy(f) for f in featureMat])
-        MAE = np.mean(np.fabs(Epred - data_values))
-        return MAE
+        error = Epred - data_values
+        MSE = np.mean((Epred - data_values)**2)
+        var = np.var(data_values)
+        return MSE / var 
 
     def get_MAE_force(self, force, positionMat, featureMat, indexMat):
         Fpred = np.array([self.predict_force(positionMat[i], featureMat[i], indexMat[i])
                           for i in range(force.shape[0])])
-        MAE_force = np.mean(np.fabs(Fpred - force), axis=0)
-        return MAE_force
+        MSE_force = np.mean((Fpred - force)**2, axis=0)
+        var_force = np.var(force, axis=0)
+        return MSE_force / var_force
 
 
 def createData(Ndata, theta):
