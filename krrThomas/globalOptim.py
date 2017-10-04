@@ -96,7 +96,6 @@ class globalOptim():
         self.Xbest = self.X
         k = 0
         for i in range(self.Niter):
-            print(i, self.ksaved)
             if  False:  # self.ksaved > self.Ntest_array[self.testCounter]:
                 self.testCounter += 1
                 self.trainModel()
@@ -138,14 +137,13 @@ class globalOptim():
                     self.E = Enew
                     self.X = Xnew
                     k = 0
-                    print(p, np.exp(-dE/self.sigma))
                 else:  # Decline structure
                     k += 1
             
             if k >= self.Nstag:  # The method search has converged or stagnated.
                 print('The convergence/stagnation criteria was reached')
                 break
-            print('E=', self.E)
+            # print('E=', self.E)
 
             if self.ksaved > 1000:  # self.testCounter > 29:
                 break
@@ -243,8 +241,6 @@ class globalOptim():
         self.Esaved[self.ksaved] = Eperturb
         self.ksaved += 1
         
-        print('Energy of unrelaxed perturbed structure:', Eperturb)
-
         return Eperturb, Xperturb
 
     def trainModel(self):

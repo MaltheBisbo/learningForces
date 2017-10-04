@@ -14,9 +14,8 @@ class krr_class():
 
         assert self.comparator is not None
 
-    def fit(self, data_values=None, featureMat=None, positionMat=None, reg=None):
-        if data_values is not None:
-            self.data_values = data_values
+    def fit(self, data_values, featureMat=None, positionMat=None, reg=None):
+        self.data_values = data_values
 
         # calculate features form positions if they are not given
         if featureMat is not None:
@@ -127,14 +126,19 @@ class krr_class():
         self.fit(data_values, featureMat, reg=reg_best)
         return MAE_min, {'sigma': sigma_best, 'reg': reg_best}
 
-    def get_MAE_energy(self, data_values, featureMat):
+    def get_MAE_energy(self, data_values, featureMat=None, positionMat=None):
+        if featureMat is None:
+            assert positionMat is not None
+            featureMat, _ = self.featureCalculator.get_featureMat(positionMat)
         Epred = np.array([self.predict_energy(f) for f in featureMat])
         error = Epred - data_values
         MSE = np.mean((Epred - data_values)**2)
         var = np.var(data_values)
         return MSE / var 
 
-    def get_MAE_force(self, force, positionMat, featureMat, indexMat):
+    def get_MAE_force(self, force, positionMat, featureMat=None, indexMat=None):
+        if featureMat is None or indexMat is None:
+            featureMat, indexMat = self.featureCalculator.get_featureMat(positionMat)
         Fpred = np.array([self.predict_force(positionMat[i], featureMat[i], indexMat[i])
                           for i in range(force.shape[0])])
         MSE_force = np.mean((Fpred - force)**2, axis=0)
