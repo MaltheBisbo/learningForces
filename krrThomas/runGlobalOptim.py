@@ -58,12 +58,12 @@ def mainML():
         params = (1.8, 1.1, np.sqrt(0.02))
         return doubleLJ_gradient(X, params[0], params[1], params[2])
 
-    sig = 1
+    sig = 3
     reg = 1e-5
     comparator = gaussComparator(sigma=sig)
     featureCalculator = bob_features()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
-    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=1000, Nstag=400, sigma=1, maxIterLocal=3)
+    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=200, Nstag=400, sigma=1, maxIterLocal=3)
     optim.runOptimizer()
 
     GSkwargs = {'reg': [reg], 'sigma': [sig]}

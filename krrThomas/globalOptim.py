@@ -88,7 +88,7 @@ class globalOptim():
         self.ktrain = []
 
         self.testCounter = 0
-        self.Ntest_array = np.logspace(1, 3, 10)
+        self.Ntest_array = np.logspace(1, 3, 30)
         
     def runOptimizer(self):
         self.makeInitialStructure()
@@ -96,15 +96,16 @@ class globalOptim():
         self.Xbest = self.X
         k = 0
         for i in range(self.Niter):
-            if  self.ksaved > 100:  # self.ksaved > self.Ntest_array[self.testCounter]:
+            print(i, self.ksaved)
+            if  False:  # self.ksaved > self.Ntest_array[self.testCounter]:
                 self.testCounter += 1
                 self.trainModel()
                 self.ktrain.append(self.ksaved)
                 Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
                 Enew, Xnew = self.relax(Xnew_unrelaxed)
-                ErelML, XrelML = self.testMLrelaxor(Xnew_unrelaxed)
+                ErelML, XrelML = self.relax(Xnew_unrelaxed, ML=True)
                 ErelML_relax, XrelML_relax = self.relax(XrelML)
-                self.plotStructures(Xnew, XrelML, Xnew_unrelaxed)
+                #self.plotStructures(Xnew, XrelML, Xnew_unrelaxed)
                 ErelMLTrue = self.Efun(XrelML)
                 # Data for relaxed energies
                 self.ErelML.append(ErelML)
@@ -146,11 +147,19 @@ class globalOptim():
                 break
             print('E=', self.E)
 
-            if self.testCounter > 9:
+            if self.ksaved > 1000:  # self.testCounter > 29:
                 break
         
     def makeInitialStructure(self):
+        """
+        Generates an initial structure by placing an atom one at a time inside
+        a square of size self.boxsize and cheking if it satisfies the constraints
+        based on the previously placed atoms.
         
+        Constraints:
+        1) Distance to all atoms must be > self.rmin
+        2) Distance to nearest neighbor must be < self.rmax
+        """
         def validPosition(X, xnew):
             Natoms = int(len(X)/2) # Current number of atoms
             if Natoms == 0:
@@ -176,9 +185,22 @@ class globalOptim():
         
     def makeNewCandidate(self):
         """
-        Makes a new candidate by perturbing current structure and
-        relaxing the resulting structure.
+        Makes a new candidate by perturbing a subset of the atoms in the
+        current structure.
+
+        The perturbed atoms are added to the fixed atoms one at a time.
+
+        Pertubations are applied to an atom until it satisfies the
+        constraints with respect to the fixed atoms and the previously
+        placed perturbed atoms.
+
+        Constraints:
+        1) Distance to all atoms must be > self.rmin
+        2) Distance to nearest neighbor must be < self.rmax
         """
+
+        # Function to determine if perturbation of a single atom is valid
+        # with respect to a set of static atoms.
         def validPerturbation(X, index, perturbation, index_static):
             connected = False
             xnew = X[2*index:2*index+2] + perturbation
@@ -192,7 +214,8 @@ class globalOptim():
                     connected = True
             return connected
 
-        InitialStructureOkay = np.array([validPerturbation(self.X, i, np.array([0,0]), np.arange(self.Natoms)) for i in range(self.Natoms)])
+        InitialStructureOkay = np.array([validPerturbation(self.X, i, np.array([0,0]), np.arange(self.Natoms))
+                                         for i in range(self.Natoms)])
         if not np.all(InitialStructureOkay):
             print('Einit:', self.Efun(self.X))
             assert np.all(InitialStructureOkay)
@@ -210,6 +233,7 @@ class globalOptim():
                 # check if perturbation rersult in acceptable structure
                 if validPerturbation(Xperturb, i, perturbation, i_static):
                     Xperturb[2*i:2*i+2] += perturbation
+                    # Add accepted perturbet atom to static set
                     i_static = np.append(i_static, i)
                     break
 
@@ -220,7 +244,6 @@ class globalOptim():
         self.ksaved += 1
         
         print('Energy of unrelaxed perturbed structure:', Eperturb)
-        #Enew, Xnew = self.relax(X=Xperturb)
 
         return Eperturb, Xperturb
 
@@ -230,72 +253,47 @@ class globalOptim():
         # MAE, params = self.MLmodel.gridSearch(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved], **GSkwargs)
         # print('sigma:', params['sigma'], 'reg:', params['reg'])
         
-    def testMLrelaxor(self, X):
-        Erel, Xrel = self.relax(X, ML=True)
-        return Erel, Xrel
-        
     def relax(self, X=None, ML=False):
-        # determine which model to use for potential:
+        ## determine which model to use for potential ##
         if ML:
             # Use ML potential and forces
             def Efun(pos):
                 return self.MLmodel.predict_energy(pos=pos) + self.artificialPotential(pos)
             def gradfun(pos):
                 return -self.MLmodel.predict_force(pos=pos)
+            # Set up minimizer
             options = {'gtol': 1e-5}
-            def localMinimizer(X, func=Efun, bounds=self.bounds, options=options):
-                res = minimize(func, X, method="L-BFGS-B", jac=gradfun,
-                               bounds=bounds, options=options)
+            def localMinimizer(X):
+                res = minimize(Efun, X, method="L-BFGS-B", jac=gradfun,
+                               bounds=self.bounds, options=options)
                 return res
         else:
             # Use double Lennard-Johnes
-            Efun = self.Efun
-            gradfun = self.gradfun
+            # Set up Minimizer
             options = {'maxiter': self.maxIterLocal}  # , 'gtol': 1e-3}
-            def localMinimizer(X, func=Efun, bounds=self.bounds, options=options):
-                res = minimize(func, X, method="L-BFGS-B", jac=gradfun, tol=1e-5,
-                               bounds=bounds, options=options)
+            def localMinimizer(X):
+                res = minimize(self.Efun, X, method="L-BFGS-B", jac=self.gradfun, tol=1e-5,
+                               bounds=self.bounds, options=options)
                 return res
 
-        # Set up local minimizer
-        """
-        options = {'maxiter': self.maxIterLocal, 'ftol': 1e-5, 'factr': 10}
-        def localMinimizer(X, func=Efun, bounds=self.bounds, options=options):
-            res = minimize(func, X, method="L-BFGS-B", jac=gradfun,
-                           bounds=bounds, options=options)
-            return res
-        """
-        """
-        options = {'maxiter': self.maxIterLocal, 'gtol': 1e-5}
-        def localMinimizer(X, func=Efun, options=options):
-            res = minimize(func, X, method="CG", jac=gradfun,
-                           options=options)
-            return res
-        """
-
-        # Run Local minimization
+        ## Run Local minimization ##
         if ML is False:
+            # Minimize using double-LJ potential + save trajectories
             X0 = X.copy()
             for i in range(100):
                 res = localMinimizer(X0)
+                # Save training data
                 if res.fun < 0:
                     self.Xsaved[self.ksaved] = res.x
                     self.Esaved[self.ksaved] = res.fun
                     self.ksaved += 1
-                """
-                if res.fun >= 0:
-                    print('i:', i)
-                    print('res.fun:', self.Efun(X0))
-                    print('Esaved:', self.Esaved[max(0,self.ksaved-3):self.ksaved])
-                    assert res.fun < 0
-                """
-                print('Number of iterations:', res.nit, 'fev:', res.nfev)
-                if res.success:
+                # print('Number of iterations:', res.nit, 'fev:', res.nfev)
+                if res.success: # Converged
                     break
                 X0 = res.x
             return self.Esaved[self.ksaved-1], self.Xsaved[self.ksaved-1]
         else:
-            # Need to use the ML potential and force
+            # Minimize using ML potential
             res = localMinimizer(X)
             print('Number of ML iterations:', res.nit, 'fev:', res.nfev)
             print('Convergence status:', res.status)
