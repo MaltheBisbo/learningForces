@@ -134,7 +134,7 @@ def mainTestLearning():
     featureCalculator = bob_features()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
     
-    Nruns = 50
+    Nruns = 20
     Nstructs = 1200
     optimData = np.zeros((Nruns, Nstructs, 2*Natoms))
     for i in range(Nruns):
@@ -146,7 +146,7 @@ def mainTestLearning():
     print('optimData created with shape:', optimData.shape)
     optimData = np.array(optimData)
     
-    Npoints = 20
+    Npoints = 10
     FVU_energy = np.zeros(Npoints)
     FVU_force = np.zeros((Npoints, 2*Natoms))
     Ntrain_array = np.logspace(1, 3, Npoints).astype(int)
@@ -158,7 +158,7 @@ def mainTestLearning():
         for n in range(Npoints):
             print('i:{}/{} , n:{}/{}'.format(i,Nruns,n,Npoints))
             Ntrain = Ntrain_array[n]
-            Ntest = int(max(10, np.round(Ntrain/5)))
+            Ntest = 10  # int(max(10, np.round(Ntrain/5)))
             krr.fit(E[:Ntrain], positionMat=optimData[i, :Ntrain, :])
             Etest = E[Ntrain:Ntrain+Ntest]
             Ftest = F[Ntrain:Ntrain+Ntest]

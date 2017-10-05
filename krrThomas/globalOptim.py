@@ -145,7 +145,7 @@ class globalOptim():
                 break
             # print('E=', self.E)
 
-            if self.ksaved > 1000:  # self.testCounter > 29:
+            if self.ksaved > 1200:  # self.testCounter > 29:
                 break
         
     def makeInitialStructure(self):
