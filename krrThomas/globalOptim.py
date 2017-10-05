@@ -96,7 +96,8 @@ class globalOptim():
         self.Xbest = self.X
         k = 0
         for i in range(self.Niter):
-            if  False:  # self.ksaved > self.Ntest_array[self.testCounter]:
+            if  self.ksaved > self.Ntest_array[self.testCounter]:
+                print('ksaved=', self.ksaved)
                 self.testCounter += 1
                 self.trainModel()
                 self.ktrain.append(self.ksaved)
@@ -245,9 +246,9 @@ class globalOptim():
 
     def trainModel(self):
         self.MLmodel.fit(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved])
-        # GSkwargs = {'reg': np.logspace(-6, -3, 5), 'sigma': np.logspace(-1, 1, 5)}
-        # MAE, params = self.MLmodel.gridSearch(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved], **GSkwargs)
-        # print('sigma:', params['sigma'], 'reg:', params['reg'])
+        GSkwargs = {'reg': np.logspace(-6, -3, 5), 'sigma': np.logspace(-1, 1, 5)}
+        MAE, params = self.MLmodel.gridSearch(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved], **GSkwargs)
+        print('sigma:', params['sigma'], 'reg:', params['reg'])
         
     def relax(self, X=None, ML=False):
         ## determine which model to use for potential ##

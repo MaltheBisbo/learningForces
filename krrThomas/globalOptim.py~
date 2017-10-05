@@ -96,7 +96,6 @@ class globalOptim():
         self.Xbest = self.X
         k = 0
         for i in range(self.Niter):
-            print(i, self.ksaved)
             if  False:  # self.ksaved > self.Ntest_array[self.testCounter]:
                 self.testCounter += 1
                 self.trainModel()
@@ -116,8 +115,8 @@ class globalOptim():
                 self.Eunrel.append(Enew_unrelaxed)
                 self.EunrelML.append(self.MLmodel.predict_energy(pos=Xnew_unrelaxed))
                 # Data for unrelaxed forces
-                FnewML = np.mean(np.fabs(self.MLmodel.predict_force(pos=Xnew_unrelaxed)))
-                FnewTrue = np.mean(np.fabs(self.gradfun(Xnew_unrelaxed)))
+                FnewML = self.MLmodel.predict_force(pos=Xnew_unrelaxed)
+                FnewTrue = -self.gradfun(Xnew_unrelaxed)
                 self.FunrelML.append(FnewML)
                 self.FunrelTrue.append(FnewTrue)
             else:
@@ -138,16 +137,15 @@ class globalOptim():
                     self.E = Enew
                     self.X = Xnew
                     k = 0
-                    print(p, np.exp(-dE/self.sigma))
                 else:  # Decline structure
                     k += 1
             
             if k >= self.Nstag:  # The method search has converged or stagnated.
                 print('The convergence/stagnation criteria was reached')
                 break
-            print('E=', self.E)
+            # print('E=', self.E)
 
-            if self.ksaved > 1000:  # self.testCounter > 29:
+            if self.ksaved > 1200:  # self.testCounter > 29:
                 break
         
     def makeInitialStructure(self):
@@ -243,8 +241,6 @@ class globalOptim():
         self.Esaved[self.ksaved] = Eperturb
         self.ksaved += 1
         
-        print('Energy of unrelaxed perturbed structure:', Eperturb)
-
         return Eperturb, Xperturb
 
     def trainModel(self):

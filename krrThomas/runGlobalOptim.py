@@ -266,8 +266,83 @@ def energyANDforceLC_searchData():
     plt.loglog(Ndata_array, FVU_force_array)
     plt.show()
 
+
+def mainEnergyAndForceCurve():
+    #np.random.seed(455)
+    Ndata = 1000
+    Natoms = 7
+
+    # parameters for potential
+    eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
+    params = (eps, r0, sigma)
+
+    # parameters for kernel and regression
+    reg = 1e-5
+    sig = 0.5
+
+    def Efun(X):
+        params = (1.8, 1.1, np.sqrt(0.02))
+        return doubleLJ_energy(X, params[0], params[1], params[2])
+
+    def gradfun(X):
+        params = (1.8, 1.1, np.sqrt(0.02))
+        return doubleLJ_gradient(X, params[0], params[1], params[2])
+
+    featureCalculator = bob_features()
+    comparator = gaussComparator(sigma=sig)
+    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
+
+    optim = globalOptim(Efun, gradfun, krr, Natoms=Natoms, dmax=2.5,
+                        Niter=200, Nstag=400, sigma=1, maxIterLocal=3)
+    optim.runOptimizer()
+    X = optim.Xsaved[:Ndata]
+
+    # Calculate energy and forces
+    E = np.zeros(Ndata)
+    F = np.zeros((Ndata, 2*Natoms))
+    for i in range(Ndata):
+        E[i], grad = doubleLJ(X[i], eps, r0, sigma)
+        F[i] = -grad
+
+    Xtrain = X[:-1]
+    Xtest = X[-1]
+    Etrain = E[:-1]
+    Etest = E[-1]
+    krr.fit(Etrain, positionMat=Xtrain)
+
+    Npoints = 1000
+    dx_array = np.linspace(-0.05, 0.05, Npoints)
+    dx_diff = dx_array[1]-dx_array[0]
+    # choose coordinate to perturb
+    i_perturb = 0
+    ei = np.zeros(2*Natoms)
+    ei[i_perturb] = 1
+
+    # Calculate energy and forces of perturbed structures
+    Etrue = np.zeros(Npoints)
+    Ftrue = np.zeros((Npoints, 2*Natoms))
+    for i in range(Npoints):
+        Etrue[i], grad = doubleLJ(Xtest+dx_array[i]*ei, eps, r0, sigma)
+        Ftrue[i] = -grad
+    Ftrue0 = Ftrue[:,i_perturb]
+    
+    Epred = np.array([krr.predict_energy(pos=Xtest+dx*ei) for dx in dx_array])
+    Fpred = np.array([krr.predict_force(pos=Xtest+dx*ei) for dx in dx_array])
+    Fpred0 = Fpred[:,i_perturb]
+    Ffinite0 = -(Etrue[1:] - Etrue[:-1]) / dx_diff
+    
+    plt.figure(1)
+    plt.plot(dx_array, Etrue)
+    plt.plot(dx_array, Epred)
+    plt.figure(2)
+    plt.plot(dx_array, Ftrue0)
+    plt.plot(dx_array, Fpred0)
+    plt.plot(dx_array[:-1]+dx_diff/2, Ffinite0, linestyle='--')
+    plt.show()
+    
             
 if __name__ == '__main__':
-    #mainML()
+    mainML()
     #mainTestLearning()
-    energyANDforceLC_searchData()
+    #energyANDforceLC_searchData()
+    #mainEnergyAndForceCurve()

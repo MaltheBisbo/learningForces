@@ -6,7 +6,7 @@ from eksponentialComparator import eksponentialComparator
 from gaussComparator import gaussComparator
 
 class krr_class():
-    def __init__(self, featureCalculator=None, comparator=None, reg=1e-3, **comparator_kwargs):
+    def __init__(self, featureCalculator=None, comparator=None, reg=1e-5, **comparator_kwargs):
         self.featureCalculator = featureCalculator
         self.comparator = comparator
         self.comparator.set_args(**comparator_kwargs)
