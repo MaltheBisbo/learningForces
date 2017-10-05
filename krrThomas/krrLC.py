@@ -76,7 +76,7 @@ def energyLC():
 
 def energyANDforceLC():
     np.random.seed(455)
-    Ndata = 1000
+    Ndata = 1500
     Natoms = 7
     
     # parameters for potential
@@ -102,25 +102,25 @@ def energyANDforceLC():
 
     NpointsLC = 10
     Ndata_array = np.logspace(1,3,NpointsLC).astype(int)
-    MAE_energy_array = np.zeros(NpointsLC)
-    MAE_force_array = np.zeros((NpointsLC, 2*Natoms))
+    FVU_energy_array = np.zeros(NpointsLC)
+    FVU_force_array = np.zeros((NpointsLC, 2*Natoms))
     for i in range(NpointsLC):
-        N = Ndata_array[i]
+        N = int(3/2*Ndata_array[i])
         Esub = E[:N]
         Fsub = F[:N]
         Xsub = X[:N]
         Gsub = G[:N]
         Isub = I[:N]
         t0 = time.time()
-        MAE_energy_array[i], MAE_force_array[i, :] = krr.cross_validation_EandF(Esub, Fsub, Gsub, Isub, Xsub, reg=reg)
+        FVU_energy_array[i], FVU_force_array[i, :] = krr.cross_validation_EandF(Esub, Fsub, Gsub, Isub, Xsub, reg=reg)
         print('dt:', time.time() - t0)
-        print(MAE_energy_array[i])
+        print(FVU_energy_array[i])
 
-    np.savetxt('LC_bob_N7_4.txt', np.c_[Ndata_array, MAE_energy_array, MAE_force_array], delimiter='\t')
+    np.savetxt('LC_bob_N7_4.txt', np.c_[Ndata_array, FVU_energy_array, FVU_force_array], delimiter='\t')
     plt.figure(1)
-    plt.loglog(Ndata_array, MAE_energy_array)
+    plt.loglog(Ndata_array, FVU_energy_array)
     plt.figure(2)
-    plt.loglog(Ndata_array, MAE_force_array)
+    plt.loglog(Ndata_array, FVU_force_array)
     plt.show()
 
 if __name__ == "__main__":
