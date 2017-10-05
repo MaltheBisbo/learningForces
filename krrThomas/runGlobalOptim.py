@@ -82,6 +82,7 @@ def mainML():
     dErelTrue = np.fabs(np.array(optim.ErelML) - np.array(optim.ErelMLTrue))
     dE2rel = np.fabs(np.array(optim.ErelML) - np.array(optim.E2rel))
     dEunrel = np.fabs(EunrelML - Eunrel)
+    dFunrel = np.fabs(FunrelML = FunrelTrue)
     
     np.savetxt('dErel_vs_ktrain2.txt', np.c_[ktrain, dErel, dErelTrue, EunrelML, Eunrel], delimiter='\t')
 
@@ -107,13 +108,8 @@ def mainML():
     plt.xlabel('NData')
     plt.ylabel('Energy')
     plt.figure(4)
-    plt.title('Forces of unrelaxed structures (ML)')
-    plt.loglog(ktrain, FunrelML)
-    plt.xlabel('NData')
-    plt.ylabel('Force')
-    plt.figure(5)
-    plt.title('Forces of unrelaxed structures (True)')
-    plt.loglog(ktrain, FunrelTrue)
+    plt.title('Difference between ML and True force of unrelaxed structures')
+    plt.loglog(ktrain, dFunrel)
     plt.xlabel('NData')
     plt.ylabel('Force')
     plt.show()
@@ -134,7 +130,7 @@ def mainTestLearning():
     featureCalculator = bob_features()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
     
-    Nruns = 20
+    Nruns = 5
     Nstructs = 1200
     optimData = np.zeros((Nruns, Nstructs, 2*Natoms))
     for i in range(Nruns):
@@ -149,23 +145,35 @@ def mainTestLearning():
     Npoints = 10
     FVU_energy = np.zeros(Npoints)
     FVU_force = np.zeros((Npoints, 2*Natoms))
+    FVU_force_finite = np.zeros((Npoints, 2*Natoms))
     Ntrain_array = np.logspace(1, 3, Npoints).astype(int)
     for i in range(Nruns):
+        # Calculate all energies and forces for this run
         E = np.zeros(Nstructs)
         F = np.zeros((Nstructs, 2*Natoms))
         for s in range(Nstructs):
-            E[s], F[s,:] = doubleLJ(optimData[i,s], 1.8, 1.1, np.sqrt(0.02))
+            E[s], grad = doubleLJ(optimData[i,s], 1.8, 1.1, np.sqrt(0.02))
+            F[s,:] = -grad
+        # Calculate LC
         for n in range(Npoints):
             print('i:{}/{} , n:{}/{}'.format(i,Nruns,n,Npoints))
             Ntrain = Ntrain_array[n]
             Ntest = 10  # int(max(10, np.round(Ntrain/5)))
-            krr.fit(E[:Ntrain], positionMat=optimData[i, :Ntrain, :])
+            posTrain = optimData[i, :Ntrain]
+            posTest = optimData[i, Ntrain:Ntrain+Ntest]
+            krr.fit(E[:Ntrain], positionMat=posTrain)
             Etest = E[Ntrain:Ntrain+Ntest]
             Ftest = F[Ntrain:Ntrain+Ntest]
-            FVU_energy[n] += krr.get_MAE_energy(Etest, positionMat=optimData[i, Ntrain:Ntrain+Ntest, :])
-            FVU_force[n,:] = krr.get_MAE_force(Ftest, positionMat=optimData[i, Ntrain:Ntrain+Ntest, :])
+            FVU_energy[n] += krr.get_MAE_energy(Etest, positionMat=posTest)
+            FVU_force[n,:] += krr.get_MAE_force(Ftest, positionMat=posTest)
+
+            Ffinite = np.array([finiteDiff(krr, pos) for pos in posTest])
+            FVU_force_finite[n,:] += calcFVU_force(Ftest, Ffinite)
+            if n == 9:
+                print(np.c_[Ftest[0].T, Ffinite[0].T])
     FVU_energy /= Nruns
     FVU_force /= Nruns
+    FVU_force_finite /= Nruns
 
     np.savetxt('LC_search_bob_N7.txt', np.c_[Ntrain_array, FVU_energy, FVU_force], delimiter='\t')
     plt.figure(1)
@@ -178,8 +186,88 @@ def mainTestLearning():
     plt.loglog(Ntrain_array, FVU_force)
     plt.xlabel('# training data')
     plt.ylabel('FVU')
+    plt.figure(3)
+    plt.title('finite difference Force FVU vs training size (from search)')
+    plt.loglog(Ntrain_array, FVU_force_finite)
+    plt.xlabel('# training data')
+    plt.ylabel('FVU')
     plt.show()
+
+def finiteDiff(MLmodel, pos, dx=1e-3):
+    Ndf = pos.shape[0]
+    identity = np.identity(Ndf)
+    E0 = MLmodel.predict_energy(pos=pos)
+    F = -np.array([MLmodel.predict_energy(pos=pos+dx*ei) - E0 for ei in identity]) / dx
+    return F
+
+def calcFVU_force(FtrueMat, FpredMat):
+    MSE_force = np.mean((FtrueMat - FpredMat)**2, axis=0)
+    var_force = np.var(FtrueMat, axis=0)
+    return MSE_force / var_force
+
+
+def energyANDforceLC_searchData():
+    # np.random.seed(455)
+    Ndata = 1000
+    Natoms = 7
+
+    # parameters for potential                                                                                                          
+    eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
+    params = (eps, r0, sigma)
+
+    # parameters for kernel and regression                                                                                              
+    reg = 1e-5
+    sig = 3
+
+    def Efun(X):
+        params = (1.8, 1.1, np.sqrt(0.02))
+        return doubleLJ_energy(X, params[0], params[1], params[2])
+
+    def gradfun(X):
+        params = (1.8, 1.1, np.sqrt(0.02))
+        return doubleLJ_gradient(X, params[0], params[1], params[2])
+
+    featureCalculator = bob_features()
+    comparator = gaussComparator(sigma=sig)
+    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
+
+    optim = globalOptim(Efun, gradfun, krr, Natoms=Natoms, dmax=2.5,
+                            Niter=200, Nstag=400, sigma=1, maxIterLocal=3)
+    optim.runOptimizer()
+    X = optim.Xsaved[:Ndata]
+    
+    G, I = featureCalculator.get_featureMat(X)
+    
+    E = np.zeros(Ndata)
+    F = np.zeros((Ndata, 2*Natoms))
+    for i in range(Ndata):
+        E[i], grad = doubleLJ(X[i], eps, r0, sigma)
+        F[i] = -grad
+
+    NpointsLC = 10
+    Ndata_array = np.logspace(1,3,NpointsLC).astype(int)
+    FVU_energy_array = np.zeros(NpointsLC)
+    FVU_force_array = np.zeros((NpointsLC, 2*Natoms))
+    for i in range(NpointsLC):
+        N = int(3/2*Ndata_array[i])
+        Esub = E[:N]
+        Fsub = F[:N]
+        Xsub = X[:N]
+        Gsub = G[:N]
+        Isub = I[:N]
+        FVU_energy_array[i], FVU_force_array[i, :] = krr.cross_validation_EandF(Esub, Fsub, Gsub, Isub, Xsub, reg=reg)
+        print(FVU_energy_array[i])
+        #print(FVU_force_array[i])
+
+    np.savetxt('LC_bob_N7_search2.txt', np.c_[Ndata_array, FVU_energy_array, FVU_force_array], delimiter='\t')
+    plt.figure(1)
+    plt.loglog(Ndata_array, FVU_energy_array)
+    plt.figure(2)
+    plt.loglog(Ndata_array, FVU_force_array)
+    plt.show()
+
             
 if __name__ == '__main__':
     #mainML()
-    mainTestLearning()
+    #mainTestLearning()
+    energyANDforceLC_searchData()

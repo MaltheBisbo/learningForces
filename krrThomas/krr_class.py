@@ -57,7 +57,7 @@ class krr_class():
 
         df_dR = self.featureCalculator.get_featureGradient(self.pos, self.fnew, self.inew)
         dk_df = self.comparator.get_jac(self.fnew)
-
+        
         kernelDeriv = np.dot(dk_df, df_dR)
         return -(kernelDeriv.T).dot(self.alpha)
 
@@ -92,13 +92,33 @@ class krr_class():
         for ik in range(k):
             [i_train1, i_test, i_train2] = np.split(np.arange(Ndata),
                                                     [Ntest * ik, Ntest * (ik+1)])
+            print('index:', ik)
             i_train = np.r_[i_train1, i_train2]
             self.fit(energy[i_train], featureMat[i_train], reg=reg)
             MAE_energy[ik] = self.get_MAE_energy(energy[i_test], featureMat[i_test])
             MAE_force[ik, :] = self.get_MAE_force(force[i_test], positionMat[i_test],
                                                   featureMat[i_test], indexMat[i_test])
         return np.mean(MAE_energy) , np.mean(MAE_force, axis=0)
+    """
+    def single_validation_EandF(E, F, positionMat, reg=None):
+    Ndata, Ndf = positionMat.shape
+        permutation = np.random.permutation(Ndata)
+        energy = energy[permutation]
+        force = force[permutation]
+        featureMat = featureMat[permutation]
+        indexMat = indexMat[permutation]
+        positionMat = positionMat[permutation]
 
+        Ntest = int(np.floor(Ndata/k))
+        MAE_energy = np.zeros(k)
+        MAE_force = np.zeros((k, Ndf))
+
+        self.fit(Etrain, featureMat[i_train], reg=reg)
+        MAE_energy[ik] = self.get_MAE_energy(Etest, featureMat[i_test])
+        MAE_force[ik, :] = self.get_MAE_force(Ftest, positionMat[i_test],
+                                              featureMat[i_test], indexMat[i_test])
+        return np.mean(MAE_energy) , np.mean(MAE_force, axis=0)
+    """
     def gridSearch(self, data_values, featureMat=None, positionMat=None, k=3, disp=False, **GSkwargs):
         if positionMat is not None and self.featureCalculator is not None:
             featureMat, _ = self.featureCalculator.get_featureMat(positionMat)
@@ -142,7 +162,10 @@ class krr_class():
         Fpred = np.array([self.predict_force(positionMat[i], featureMat[i], indexMat[i])
                           for i in range(force.shape[0])])
         MSE_force = np.mean((Fpred - force)**2, axis=0)
-        var_force = np.var(force, axis=0)
+        var_force = np.var(force, axis=0)        
+        #print('MSE:\n', MSE_force)
+        #print('var:\n', var_force)
+        #print('varPred:\n', np.var(Fpred, axis=0))
         return MSE_force / var_force
 
 

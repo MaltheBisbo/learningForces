@@ -115,8 +115,8 @@ class globalOptim():
                 self.Eunrel.append(Enew_unrelaxed)
                 self.EunrelML.append(self.MLmodel.predict_energy(pos=Xnew_unrelaxed))
                 # Data for unrelaxed forces
-                FnewML = np.mean(np.fabs(self.MLmodel.predict_force(pos=Xnew_unrelaxed)))
-                FnewTrue = np.mean(np.fabs(self.gradfun(Xnew_unrelaxed)))
+                FnewML = self.MLmodel.predict_force(pos=Xnew_unrelaxed)
+                FnewTrue = -self.gradfun(Xnew_unrelaxed)
                 self.FunrelML.append(FnewML)
                 self.FunrelTrue.append(FnewTrue)
             else:

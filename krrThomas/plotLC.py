@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-data = np.loadtxt(fname='LC_bob_N7_4.txt', delimiter='\t')
+data = np.loadtxt(fname='LC_search_bob_N7.txt', delimiter='\t')
 N = data[:,0]
 MAE_energy = data[:,1]
 MAE_force = data[:, 2:]

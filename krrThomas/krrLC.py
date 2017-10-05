@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from krr_class import krr_class
 from doubleLJ import doubleLJ
 from bob_features import bob_features
+from gaussComparator import gaussComparator
 from eksponentialComparator import eksponentialComparator
 from scipy.optimize import minimize, fmin_bfgs
 import time
@@ -91,7 +92,7 @@ def energyANDforceLC():
     featureCalculator = bob_features()
     G, I = featureCalculator.get_featureMat(X)
 
-    comparator = eksponentialComparator(sigma=sig)
+    comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
     E = np.zeros(Ndata)
