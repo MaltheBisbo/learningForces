@@ -130,7 +130,7 @@ def mainTestLearning():
     featureCalculator = bob_features()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
     
-    Nruns = 5
+    Nruns = 15
     Nstructs = 1200
     optimData = np.zeros((Nruns, Nstructs, 2*Natoms))
     for i in range(Nruns):
@@ -208,12 +208,11 @@ def calcFVU_force(FtrueMat, FpredMat):
 
 def energyANDforceLC_searchData():
     # np.random.seed(455)
-    Ndata = 1000
+    Ndata = 1500
     Natoms = 7
 
     # parameters for potential                                                                                                          
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
-    params = (eps, r0, sigma)
 
     # parameters for kernel and regression                                                                                              
     reg = 1e-5
@@ -232,7 +231,7 @@ def energyANDforceLC_searchData():
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
     optim = globalOptim(Efun, gradfun, krr, Natoms=Natoms, dmax=2.5,
-                            Niter=200, Nstag=400, sigma=1, maxIterLocal=3)
+                        Niter=200, Nstag=400, sigma=1, maxIterLocal=3)
     optim.runOptimizer()
     X = optim.Xsaved[:Ndata]
     
@@ -278,7 +277,7 @@ def mainEnergyAndForceCurve():
 
     # parameters for kernel and regression
     reg = 1e-5
-    sig = 0.5
+    sig = 3
 
     def Efun(X):
         params = (1.8, 1.1, np.sqrt(0.02))
@@ -329,20 +328,29 @@ def mainEnergyAndForceCurve():
     Epred = np.array([krr.predict_energy(pos=Xtest+dx*ei) for dx in dx_array])
     Fpred = np.array([krr.predict_force(pos=Xtest+dx*ei) for dx in dx_array])
     Fpred0 = Fpred[:,i_perturb]
-    Ffinite0 = -(Etrue[1:] - Etrue[:-1]) / dx_diff
+    Ffinite0 = -(Epred[1:] - Epred[:-1]) / dx_diff
     
     plt.figure(1)
-    plt.plot(dx_array, Etrue)
-    plt.plot(dx_array, Epred)
+    plt.title('Energy with one coordinate varied')
+    plt.plot(dx_array, Etrue, label='True energy')
+    plt.plot(dx_array, Epred, label='Predicted energy')
+    plt.xlabel('dx (perturbation of single coordinate)')
+    plt.ylabel('Energy')
+    plt.legend()
+    
     plt.figure(2)
-    plt.plot(dx_array, Ftrue0)
-    plt.plot(dx_array, Fpred0)
-    plt.plot(dx_array[:-1]+dx_diff/2, Ffinite0, linestyle='--')
+    plt.title('Force with one coordinate varied')
+    plt.plot(dx_array, Ftrue0, label='True force')
+    plt.plot(dx_array, Fpred0, label='Predicted force')
+    plt.plot(dx_array[:-1]+dx_diff/2, Ffinite0, linestyle=':', label='finite difference force')
+    plt.xlabel('dx (perturbation of single coordinate)')
+    plt.ylabel('Energy')
+    plt.legend()
     plt.show()
     
             
 if __name__ == '__main__':
-    mainML()
+    #mainML()
     #mainTestLearning()
     #energyANDforceLC_searchData()
-    #mainEnergyAndForceCurve()
+    mainEnergyAndForceCurve()

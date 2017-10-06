@@ -117,7 +117,7 @@ def energyANDforceLC():
         print('dt:', time.time() - t0)
         print(FVU_energy_array[i])
 
-    np.savetxt('LC_bob_N7_4.txt', np.c_[Ndata_array, FVU_energy_array, FVU_force_array], delimiter='\t')
+    np.savetxt('LC_bob_gauss_N7.txt', np.c_[Ndata_array, FVU_energy_array, FVU_force_array], delimiter='\t')
     plt.figure(1)
     plt.loglog(Ndata_array, FVU_energy_array)
     plt.figure(2)

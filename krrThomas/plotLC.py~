@@ -1,19 +1,21 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-data = np.loadtxt(fname='LC_bob_N7_forces.txt', delimiter='\t')
+data = np.loadtxt(fname='LC_bob_gauss_N7.txt', delimiter='\t')
 N = data[:,0]
 MAE_energy = data[:,1]
 MAE_force = data[:, 2:]
 
 plt.figure(1)
+plt.title('Energy learning curve (random structures)')
 plt.loglog(N, MAE_energy)
-plt.xlabel('N')
-plt.ylabel('MAE_energy')
+plt.xlabel('# training data')
+plt.ylabel('FVU')
 
 plt.figure(2)
+plt.title('Force learning curve (random structures)')
 plt.loglog(N, MAE_force)
-plt.xlabel('N')
-plt.ylabel('MAE_force')
+plt.xlabel('# training data')
+plt.ylabel('FVU')
 
 plt.show()
