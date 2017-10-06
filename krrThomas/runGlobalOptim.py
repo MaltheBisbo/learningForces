@@ -130,7 +130,7 @@ def mainTestLearning():
     featureCalculator = bob_features()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
     
-    Nruns = 15
+    Nruns = 5
     Nstructs = 1200
     optimData = np.zeros((Nruns, Nstructs, 2*Natoms))
     for i in range(Nruns):
@@ -142,11 +142,11 @@ def mainTestLearning():
     print('optimData created with shape:', optimData.shape)
     optimData = np.array(optimData)
     
-    Npoints = 10
+    Npoints = 1
     FVU_energy = np.zeros(Npoints)
     FVU_force = np.zeros((Npoints, 2*Natoms))
     FVU_force_finite = np.zeros((Npoints, 2*Natoms))
-    Ntrain_array = np.logspace(1, 3, Npoints).astype(int)
+    Ntrain_array = np.logspace(3, 3, Npoints).astype(int)
     for i in range(Nruns):
         # Calculate all energies and forces for this run
         E = np.zeros(Nstructs)
@@ -351,6 +351,6 @@ def mainEnergyAndForceCurve():
             
 if __name__ == '__main__':
     #mainML()
-    #mainTestLearning()
+    mainTestLearning()
     #energyANDforceLC_searchData()
-    mainEnergyAndForceCurve()
+    #mainEnergyAndForceCurve()
