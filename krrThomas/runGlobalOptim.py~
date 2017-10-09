@@ -142,11 +142,11 @@ def mainTestLearning():
     print('optimData created with shape:', optimData.shape)
     optimData = np.array(optimData)
     
-    Npoints = 10
+    Npoints = 1
     FVU_energy = np.zeros(Npoints)
     FVU_force = np.zeros((Npoints, 2*Natoms))
     FVU_force_finite = np.zeros((Npoints, 2*Natoms))
-    Ntrain_array = np.logspace(1, 3, Npoints).astype(int)
+    Ntrain_array = np.logspace(3, 3, Npoints).astype(int)
     for i in range(Nruns):
         # Calculate all energies and forces for this run
         E = np.zeros(Nstructs)
@@ -208,12 +208,11 @@ def calcFVU_force(FtrueMat, FpredMat):
 
 def energyANDforceLC_searchData():
     # np.random.seed(455)
-    Ndata = 1000
+    Ndata = 1500
     Natoms = 7
 
     # parameters for potential                                                                                                          
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
-    params = (eps, r0, sigma)
 
     # parameters for kernel and regression                                                                                              
     reg = 1e-5
@@ -232,7 +231,7 @@ def energyANDforceLC_searchData():
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
     optim = globalOptim(Efun, gradfun, krr, Natoms=Natoms, dmax=2.5,
-                            Niter=200, Nstag=400, sigma=1, maxIterLocal=3)
+                        Niter=200, Nstag=400, sigma=1, maxIterLocal=3)
     optim.runOptimizer()
     X = optim.Xsaved[:Ndata]
     
@@ -266,8 +265,111 @@ def energyANDforceLC_searchData():
     plt.loglog(Ndata_array, FVU_force_array)
     plt.show()
 
+
+def mainEnergyAndForceCurve():
+    #np.random.seed(455)
+    Ndata = 1000
+    Natoms = 7
+
+    # parameters for potential
+    eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
+    params = (eps, r0, sigma)
+
+    # parameters for kernel and regression
+    reg = 1e-5
+    sig = 3
+
+    def Efun(X):
+        params = (1.8, 1.1, np.sqrt(0.02))
+        return doubleLJ_energy(X, params[0], params[1], params[2])
+
+    def gradfun(X):
+        params = (1.8, 1.1, np.sqrt(0.02))
+        return doubleLJ_gradient(X, params[0], params[1], params[2])
+
+    featureCalculator = bob_features()
+    comparator = gaussComparator(sigma=sig)
+    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
+
+    optim = globalOptim(Efun, gradfun, krr, Natoms=Natoms, dmax=2.5,
+                        Niter=200, Nstag=400, sigma=1, maxIterLocal=3)
+    optim.runOptimizer()
+    X = optim.Xsaved[:Ndata]
+
+    # Calculate energy and forces
+    E = np.zeros(Ndata)
+    F = np.zeros((Ndata, 2*Natoms))
+    for i in range(Ndata):
+        E[i], grad = doubleLJ(X[i], eps, r0, sigma)
+        F[i] = -grad
+
+    Xtrain = X[:-1]
+    Xtest = X[-1]
+    Etrain = E[:-1]
+    Etest = E[-1]
+    krr.fit(Etrain, positionMat=Xtrain)
+
+    Npoints = 1000
+    dx_array = np.linspace(-0.05, 0.05, Npoints)
+    dx_diff = dx_array[1]-dx_array[0]
+    # choose coordinate to perturb
+    i_perturb = 0
+    ei = np.zeros(2*Natoms)
+    ei[i_perturb] = 1
+
+    # Calculate energy and forces of perturbed structures
+    Etrue = np.zeros(Npoints)
+    Ftrue = np.zeros((Npoints, 2*Natoms))
+    for i in range(Npoints):
+        Etrue[i], grad = doubleLJ(Xtest+dx_array[i]*ei, eps, r0, sigma)
+        Ftrue[i] = -grad
+    Ftrue0 = Ftrue[:,i_perturb]
+    
+    Epred = np.array([krr.predict_energy(pos=Xtest+dx*ei) for dx in dx_array])
+    Fpred = np.array([krr.predict_force(pos=Xtest+dx*ei) for dx in dx_array])
+    Fpred0 = Fpred[:,i_perturb]
+    Ffinite0 = -(Epred[1:] - Epred[:-1]) / dx_diff
+    
+    plt.figure(1)
+    plt.title('Energy with one coordinate varied')
+    plt.plot(dx_array, Etrue, label='True energy')
+    plt.plot(dx_array, Epred, label='Predicted energy')
+    plt.xlabel('dx (perturbation of single coordinate)')
+    plt.ylabel('Energy')
+    plt.legend()
+    
+    plt.figure(2)
+    plt.title('Force with one coordinate varied')
+    plt.plot(dx_array, Ftrue0, label='True force')
+    plt.plot(dx_array, Fpred0, label='Predicted force')
+    plt.plot(dx_array[:-1]+dx_diff/2, Ffinite0, linestyle=':', label='finite difference force')
+    plt.xlabel('dx (perturbation of single coordinate)')
+    plt.ylabel('Energy')
+    plt.legend()
+
+    boxsize = 1.5 * np.sqrt(Natoms)
+
+    xbox = np.array([0, boxsize, boxsize, 0, 0])
+    ybox = np.array([0, 0, boxsize, boxsize, 0])
+    x = Xtest[0::2]
+    y = Xtest[1::2]
+    # Perturbation line
+    xline = np.array([x[0]-0.05*ei, x[0]+0.05*ei])
+    yline = y[0]*np.ones(2)
+
+    plt.figure(3)
+    #plt.plot(xbox, ybox, color='k')
+    plt.scatter(x, y, color='r', s=8)
+    plt.plot(xline, yline)
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.gca().set_aspect('equal', adjustable='box')
+    
+    plt.show()
+
             
 if __name__ == '__main__':
     #mainML()
     #mainTestLearning()
     energyANDforceLC_searchData()
+    #mainEnergyAndForceCurve()

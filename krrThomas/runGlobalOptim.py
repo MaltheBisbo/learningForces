@@ -346,11 +346,30 @@ def mainEnergyAndForceCurve():
     plt.xlabel('dx (perturbation of single coordinate)')
     plt.ylabel('Energy')
     plt.legend()
-    plt.show()
+
+    boxsize = 1.5 * np.sqrt(Natoms)
+
+    xbox = np.array([0, boxsize, boxsize, 0, 0])
+    ybox = np.array([0, 0, boxsize, boxsize, 0])
+    x = Xtest[0::2]
+    y = Xtest[1::2]
+    # Perturbation line
+    xline = np.array([x[0]-0.05*ei, x[0]+0.05*ei])
+    yline = y[0]*np.ones(2)
+
+    plt.figure(3)
+    #plt.plot(xbox, ybox, color='k')
+    plt.scatter(x, y, color='r', s=8)
+    plt.plot(xline, yline)
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.gca().set_aspect('equal', adjustable='box')
     
+    plt.show()
+
             
 if __name__ == '__main__':
     #mainML()
-    mainTestLearning()
-    #energyANDforceLC_searchData()
+    #mainTestLearning()
+    energyANDforceLC_searchData()
     #mainEnergyAndForceCurve()

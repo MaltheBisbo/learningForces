@@ -161,19 +161,16 @@ class krr_class():
             featureMat, indexMat = self.featureCalculator.get_featureMat(positionMat)
         Fpred = np.array([self.predict_force(positionMat[i], featureMat[i], indexMat[i])
                           for i in range(force.shape[0])])
+        """
         i_max = np.argmax(np.fabs(force-Fpred), axis=0)
         diff = force - Fpred
         max_diff = np.array([diff[i_max[i], i] for i in range(i_max.shape[0])])
         force_i_max = np.array([force[i_max[i], i] for i in range(i_max.shape[0])])
         print('max diff:\n', max_diff)
         print('force index_max:\n', force_i_max)
-        
-
+        """
         MSE_force = np.mean((Fpred - force)**2, axis=0)
         var_force = np.var(force, axis=0)        
-        #print('MSE:\n', MSE_force)
-        #print('var:\n', var_force)
-        #print('varPred:\n', np.var(Fpred, axis=0))
         return MSE_force / var_force
 
 

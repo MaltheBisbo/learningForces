@@ -123,7 +123,9 @@ class globalOptim():
             else:
                 Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
                 Enew, Xnew = self.relax(Xnew_unrelaxed)
-                
+
+            print(self.ksaved)    
+
             dE = Enew - self.E
             if dE <= 0:  # Accept better structure
                 self.E = Enew
