@@ -90,9 +90,9 @@ class krr_force_class():
 
         kernel_Jac_vec = np.zeros((1,Ncoord*Ndata))
         for i in range(Ndata):
-            kernel_Jac_vec[:, i*Ncoord:(i+1)*Ncoord] = kernel_Jac[i, :] @ featureGrad_new
-        
-        return kernel_Jac_vec @ self.alpha
+            kernel_Jac_vec[:, i*Ncoord:(i+1)*Ncoord] = kernel_Jac[i, :] @ self.featureGrad[i]
+
+        return -kernel_Jac_vec @ self.alpha
         
     def cross_validation(self, data_values, featureMat, k=3, lamb=None, **GSkwargs):
         Ndata = data_values.shape[0]
@@ -222,8 +222,8 @@ if __name__ == "__main__":
     plt.figure(1)
     plt.plot(delta_array, Ftestx, color='c')
     plt.plot(delta_array, Fpredx, color='y')
-    #plt.plot(delta_array, Etest, color='b')
-    #plt.plot(delta_array, Epred, color='r')
+    plt.plot(delta_array, Etest, color='b')
+    plt.plot(delta_array, Epred, color='r')
     
     # Plot first structure
     plt.figure(2)
