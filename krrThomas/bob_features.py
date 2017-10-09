@@ -37,7 +37,7 @@ class bob_features():
         g = np.array([1/np.linalg.norm(x[j]-x[i]) for i in range(Natoms) for j in range(i+1, Natoms)])
         
         # Make list of atom indices corresponding to the elements of the feature g
-        atomIndices = np.array([(i, j) for i in range(Natoms) for j in range(i+1, Natoms)])
+        atomIndices = np.array([(i, j) for i in range(Natoms) for j in range(i+1, Natoms)]).astype(int)
         
         # Get indices that sort g in decending order
         sorting_indices = np.argsort(-g)
@@ -56,7 +56,7 @@ class bob_features():
         pos = pos.reshape((int(Nr/2), 2))
         Nfeatures = np.size(g, 0)
         
-        atomIndices = np.array(atomIndices)
+        atomIndices = np.array(atomIndices).astype(int)
         # Calculate gradient of bob-feature
         gDeriv = np.zeros((Nfeatures, Nr))
         for i in range(Nfeatures):

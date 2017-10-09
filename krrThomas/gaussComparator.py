@@ -23,7 +23,9 @@ class gaussComparator():
                                        for f1 in self.featureMat])
         return self.similarityMat
 
-    def get_similarity_vector(self, fnew):
+    def get_similarity_vector(self, fnew, featureMat=None):
+        if featureMat is not None:
+            self.featureMat = featureMat
 
         self.similarityVec = np.array([self.single_comparison(fnew, f, self.sigma)
                                        for f in self.featureMat])
@@ -53,6 +55,14 @@ class gaussComparator():
         dk_df = np.multiply(dk_dd, dd_df)
         return dk_df
 
+    def get_jac_new(self, fnew, featureMat):
+        kappa = self.get_similarity_vector(fnew, featureMat)
+        dk_dd = -1/(2*self.sigma**2)*kappa.reshape((kappa.shape[0], 1))
+        dd_df = -2*(featureMat - fnew.reshape((1, fnew.shape[0])))
+
+        dk_df = np.multiply(dk_dd, dd_df)
+        return dk_df
+    
     def get_Hess_single(self, f1, f2):
         """
         Calculated the hessian of the kernel function with respect to
@@ -67,6 +77,7 @@ class gaussComparator():
         dd_df1 = -2*(f2-f1).reshape((Nf,1))
         dd_df2 = -dd_df1
         d2d_df1df2 = -2*np.identity(Nf)
+        u = -1/(2*self.sigma**2)
 
-        Hess = -1/(2*self.sigma**2) * kernel * (-1/(2*self.sigma**2) * np.outer(dd_df1, dd_df2.T) + d2d_df1df2)
+        Hess = u*kernel * (u*np.outer(dd_df1, dd_df2.T) + d2d_df1df2)
         return Hess

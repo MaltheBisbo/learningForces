@@ -18,7 +18,7 @@ class krr_force_class():
     comparator:
     Class to calculate the similarity of the kernel of the features.
     Must include method to calculate the Hessian of the kernel between
-    two features
+    two features.
 
     **comparator_kwargs:
     parameters for the comparator class (ie. the kernel)
@@ -32,7 +32,7 @@ class krr_force_class():
 
     def fit(self, forceMat, positionMat, featureMat=None, lamb=1e-3):
         (Ndata, Ncoord) = positionMat.shape  # Ncoord is number of coordinated in a structure
-        self.forceVec = forceMat.reshape(Ndata*Ncoord, order='F')
+        self.forceVec = forceMat.reshape(Ndata*Ncoord, order='C')
         self.positionMat = positionMat
     
         if featureMat is not None:
@@ -78,6 +78,22 @@ class krr_force_class():
 
         return kernel_Hess_vec @ self.alpha
 
+    def predict_energy(self, pos_new, fnew=None, inew=None):
+        if fnew is None or inew is None:
+            assert self.featureCalculator is not None
+            fnew, inew = self.featureCalculator.get_singleFeature(pos_new)
+        
+        Ndata, Nf = self.featureMat.shape
+        Ncoord = pos_new.shape[0]
+        kernel_Jac = self.comparator.get_jac_new(fnew, self.featureMat)
+        featureGrad_new = self.featureCalculator.get_featureGradient(pos_new, fnew, inew)
+
+        kernel_Jac_vec = np.zeros((1,Ncoord*Ndata))
+        for i in range(Ndata):
+            kernel_Jac_vec[:, i*Ncoord:(i+1)*Ncoord] = kernel_Jac[i, :] @ featureGrad_new
+        
+        return kernel_Jac_vec @ self.alpha
+        
     def cross_validation(self, data_values, featureMat, k=3, lamb=None, **GSkwargs):
         Ndata = data_values.shape[0]
         permutation = np.random.permutation(Ndata)
@@ -154,11 +170,11 @@ if __name__ == "__main__":
     Natoms = 4
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 100
-    lamb = 1e-7
-    sig = 0.13
+    Ndata = 10
+    lamb = 1e-7  # 1e-7
+    sig = 0.40  # 0.13
 
-    theta = 0.7*np.pi
+    theta = 0.1*np.pi
 
     X = createData(Ndata, theta)
     featureCalculator = bob_features()
@@ -180,13 +196,15 @@ if __name__ == "__main__":
     krr.fit(Ftrain, Xtrain, lamb=lamb)
 
     Npoints = 1000
+    Epred = np.zeros(Npoints)
     Fpredx = np.zeros(Npoints)
+    Etest = np.zeros(Npoints)
     Ftestx = np.zeros(Npoints)
     Xtest0 = X[-1]
     Xtest = np.zeros((Npoints, 2*Natoms))
     print(Xtest.shape)
     # delta_array = np.linspace(-3.5, 0.5, Npoints)
-    delta_array = np.linspace(-1, 0, Npoints)
+    delta_array = np.linspace(-3, 1, Npoints)
     for i in range(Npoints):
         delta = delta_array[i]
         Xtest[i] = Xtest0
@@ -195,24 +213,27 @@ if __name__ == "__main__":
                                np.sin(theta) * pertub[0] + np.cos(theta) * pertub[1]])
         Xtest[i, -2:] += pertub_rot
 
-        Etemp, Ftest = doubleLJ(Xtest[i], eps, r0, sigma)
+        Etest[i], Ftest = doubleLJ(Xtest[i], eps, r0, sigma)
         Ftestx[i] = np.cos(theta) * Ftest[-2] + np.cos(np.pi/2 - theta) * Ftest[-1]
 
         Fpred = krr.predict_force(Xtest[i])
         Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
-
+        Epred[i] = krr.predict_energy(Xtest[i])
     plt.figure(1)
     plt.plot(delta_array, Ftestx, color='c')
-    plt.scatter(delta_array, Fpredx, color='y')
-
+    plt.plot(delta_array, Fpredx, color='y')
+    #plt.plot(delta_array, Etest, color='b')
+    #plt.plot(delta_array, Epred, color='r')
+    
     # Plot first structure
     plt.figure(2)
-    plt.scatter(Xtest[:, -2], Xtest[:, -1], color='r')
+    #plt.scatter(Xtest[:, -2], Xtest[:, -1], color='r')
+    plt.plot(Xtest[:, -2], Xtest[:, -1], color='r')
     plt.scatter(Xtest[0, -2], Xtest[0, -1], color='y')
     
     x = X[-1].reshape((Natoms, 2))
     plt.scatter(x[:, 0], x[:, 1])
-    
+    plt.gca().set_aspect('equal', adjustable='box')
     plt.show()
 
     
