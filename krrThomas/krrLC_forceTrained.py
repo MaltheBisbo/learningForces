@@ -119,7 +119,11 @@ def energyANDforceLC():
 
     np.savetxt('LC_bob_FT.txt', np.c_[Ndata_array, FVU_force_array], delimiter='\t')
     plt.figure(2)
-    plt.loglog(Ndata_array, FVU_force_array)
+    plt.title('Force learning curve (Model trained on forces)')
+    plt.loglog(Ndata_array, np.mean(FVU_force_array, axis=1))
+    plt.xlabel('# training data')
+    plt.ylabel('mean FVU')
+    plt.ylim([10**(-2), 10**(-0.6)])
     plt.show()
 
 if __name__ == "__main__":
