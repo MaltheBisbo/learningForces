@@ -94,19 +94,19 @@ class krr_force_class():
         return -kernel_Jac_vec @ self.alpha
         
     def cross_validation(self, data_vectors, positionMat, k=3, lamb=None, **GSkwargs):
-        Ndata = data_vectors.shape[0]
+        Ndata, Ncoord = data_vectors.shape
         permutation = np.random.permutation(Ndata)
         data_vectors = data_vectors[permutation]
         positionMat = positionMat[permutation]
 
         Ntest = int(np.floor(Ndata/k))
-        FVU = np.zeros(k)
+        FVU = np.zeros((k, Ncoord))
         for ik in range(k):
             [i_train1, i_test, i_train2] = np.split(np.arange(Ndata),
                                                     [Ntest * ik, Ntest * (ik+1)])
             i_train = np.r_[i_train1, i_train2]
             self.fit(data_vectors[i_train], positionMat[i_train], lamb=lamb)
-            FVU[ik] = self.get_FVU_force(data_vectors[i_test], positionMat[i_test])
+            FVU[ik, :] = self.get_FVU_force(data_vectors[i_test], positionMat[i_test])
         return np.mean(FVU)
 
     def gridSearch(self, data_vectors, positionMat, k=3, **GSkwargs):
@@ -205,8 +205,7 @@ if __name__ == "__main__":
     GSkwargs = {'sigma': np.logspace(-2,0,10), 'lamb': [1e-7]}
     FVU, params = krr.gridSearch(F, X, **GSkwargs)
     
-    """
-    krr.fit(Ftrain, Xtrain, lamb=lamb)
+    #krr.fit(Ftrain, Xtrain, lamb=lamb)
 
     Npoints = 1000
     Epred = np.zeros(Npoints)
@@ -236,7 +235,7 @@ if __name__ == "__main__":
     plt.plot(delta_array, Ftestx, color='c')
     plt.plot(delta_array, Fpredx, color='y')
     plt.plot(delta_array, Etest, color='b')
-    plt.plot(delta_array, Epred, color='r')
+    plt.plot(delta_array, Epred-8.58, color='r')
     
     # Plot first structure
     plt.figure(2)
@@ -248,5 +247,5 @@ if __name__ == "__main__":
     plt.scatter(x[:, 0], x[:, 1])
     plt.gca().set_aspect('equal', adjustable='box')
     plt.show()
-    """
+    
     
