@@ -30,7 +30,7 @@ class krr_force_class():
 
         assert self.comparator is not None
 
-    def fit(self, forceMat, positionMat, featureMat=None, lamb=1e-3):
+    def fit(self, forceMat, positionMat, featureMat=None, reg=1e-3):
         (Ndata, Ncoord) = positionMat.shape  # Ncoord is number of coordinated in a structure
         self.forceVec = forceMat.reshape(Ndata*Ncoord, order='C')
         self.positionMat = positionMat
@@ -42,7 +42,7 @@ class krr_force_class():
         else:
             print("You need to set the feature matrix or both the position matrix and a feature calculator")
 
-        self.lamb = lamb
+        self.reg = reg
         #self.similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
         
         # Calculate the matrix consisting of the
@@ -60,7 +60,7 @@ class krr_force_class():
                 kernel_Hess_mat[i*Ncoord:(i+1)*Ncoord,
                                 j*Ncoord:(j+1)*Ncoord] = self.featureGrad[i].T @ kernel_Hess @ self.featureGrad[j]
 
-        A = kernel_Hess_mat - self.lamb*np.identity(Ndata*Ncoord)
+        A = kernel_Hess_mat - self.reg*np.identity(Ndata*Ncoord)
         self.alpha = np.linalg.solve(A, self.forceVec)
 
     def predict_force(self, pos_new, fnew=None, inew=None):
@@ -93,7 +93,7 @@ class krr_force_class():
 
         return -kernel_Jac_vec @ self.alpha
         
-    def cross_validation(self, data_vectors, positionMat, k=3, lamb=None, **GSkwargs):
+    def cross_validation(self, data_vectors, positionMat, k=3, reg=None, **GSkwargs):
         Ndata, Ncoord = data_vectors.shape
         permutation = np.random.permutation(Ndata)
         data_vectors = data_vectors[permutation]
@@ -105,31 +105,32 @@ class krr_force_class():
             [i_train1, i_test, i_train2] = np.split(np.arange(Ndata),
                                                     [Ntest * ik, Ntest * (ik+1)])
             i_train = np.r_[i_train1, i_train2]
-            self.fit(data_vectors[i_train], positionMat[i_train], lamb=lamb)
+            self.fit(data_vectors[i_train], positionMat[i_train], reg=reg)
             FVU[ik, :] = self.get_FVU_force(data_vectors[i_test], positionMat[i_test])
-        return np.mean(FVU)
+        return np.mean(FVU, axis=0)
 
     def gridSearch(self, data_vectors, positionMat, k=3, **GSkwargs):
         sigma_array = GSkwargs['sigma']
-        lamb_array = GSkwargs['lamb']
+        reg_array = GSkwargs['reg']
         Nsigma = len(sigma_array)
-        Nlamb = len(lamb_array)
+        Nreg = len(reg_array)
         best_args = np.zeros(2).astype(int)
         FVU_min = None
         for i in range(Nsigma):
             self.comparator.set_args(sigma=sigma_array[i])
-            for j in range(Nlamb):
-                FVU = self.cross_validation(data_vectors, positionMat, k=k, lamb=lamb_array[j])
-                print('FVU:', FVU,'params: (', sigma_array[i],',', lamb_array[j], ')')
+            for j in range(Nreg):
+                FVU_all = self.cross_validation(data_vectors, positionMat, k=k, reg=reg_array[j])
+                FVU = np.mean(FVU_all)
+                print('FVU:', FVU,'params: (', sigma_array[i],',', reg_array[j], ')')
                 if FVU_min is None or FVU < FVU_min:
                     FVU_min = FVU
                     best_args = np.array([i, j])
         sigma_best = sigma_array[best_args[0]]
-        lamb_best = lamb_array[best_args[1]]
+        reg_best = reg_array[best_args[1]]
         # Train with best parameters using all data
         self.comparator.set_args(sigma=sigma_best)
-        self.fit(data_vectors, positionMat, lamb=lamb_best)
-        return FVU_min, {'sigma': sigma_best, 'lamb': lamb_best}
+        self.fit(data_vectors, positionMat, reg=reg_best)
+        return FVU_min, {'sigma': sigma_best, 'reg': reg_best}
 
     def get_FVU_energy(self, data_values, featureMat):
         Epred = np.array([self.predict_energy(f) for f in featureMat])
@@ -179,7 +180,7 @@ if __name__ == "__main__":
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
     Ndata = 10
-    lamb = 1e-7  # 1e-7
+    reg = 1e-7  # 1e-7
     sig = 0.40  # 0.13
 
     theta = 0.1*np.pi
@@ -202,10 +203,10 @@ if __name__ == "__main__":
     comparator = gaussComparator(sigma=sig)
     krr = krr_force_class(comparator=comparator, featureCalculator=featureCalculator)
 
-    GSkwargs = {'sigma': np.logspace(-2,0,10), 'lamb': [1e-7]}
+    GSkwargs = {'sigma': np.logspace(-2,0,10), 'reg': [1e-7]}
     FVU, params = krr.gridSearch(F, X, **GSkwargs)
     
-    #krr.fit(Ftrain, Xtrain, lamb=lamb)
+    #krr.fit(Ftrain, Xtrain, reg=reg)
 
     Npoints = 1000
     Epred = np.zeros(Npoints)
