@@ -161,19 +161,16 @@ class krr_class():
             featureMat, indexMat = self.featureCalculator.get_featureMat(positionMat)
         Fpred = np.array([self.predict_force(positionMat[i], featureMat[i], indexMat[i])
                           for i in range(force.shape[0])])
+        """
         i_max = np.argmax(np.fabs(force-Fpred), axis=0)
         diff = force - Fpred
         max_diff = np.array([diff[i_max[i], i] for i in range(i_max.shape[0])])
         force_i_max = np.array([force[i_max[i], i] for i in range(i_max.shape[0])])
         print('max diff:\n', max_diff)
         print('force index_max:\n', force_i_max)
-        
-
+        """
         MSE_force = np.mean((Fpred - force)**2, axis=0)
         var_force = np.var(force, axis=0)        
-        #print('MSE:\n', MSE_force)
-        #print('var:\n', var_force)
-        #print('varPred:\n', np.var(Fpred, axis=0))
         return MSE_force / var_force
 
 
@@ -208,7 +205,7 @@ if __name__ == "__main__":
 
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 100
+    Ndata = 20
     reg = 1e-7  # expKernel: 0.005 , gaussKernel: 1e-7
     sig = 0.13  # expKernel: 0.3 , gaussKernel: 0.13
 
@@ -222,7 +219,8 @@ if __name__ == "__main__":
     E = np.zeros(Ndata)
     F = np.zeros((Ndata, 2*5))
     for i in range(Ndata):
-        E[i], F[i, :] = doubleLJ(X[i], eps, r0, sigma)
+        E[i], grad = doubleLJ(X[i], eps, r0, sigma)
+        F[i, :] = -grad
 
     Gtrain = G[:-1]
     Etrain = E[:-1]
@@ -258,7 +256,8 @@ if __name__ == "__main__":
                                np.sin(theta) * pertub[0] + np.cos(theta) * pertub[1]])
         Xtest[i, -2:] += pertub_rot
 
-        Etest[i], Ftest = doubleLJ(Xtest[i], eps, r0, sigma)
+        Etest[i], gradtest = doubleLJ(Xtest[i], eps, r0, sigma)
+        Ftest = -gradtest
         Epredict[i] = krr.predict_energy(pos=Xtest[i])
         Ftestx[i] = np.cos(theta) * Ftest[-2] + np.cos(np.pi/2 - theta) * Ftest[-1]
 
@@ -271,7 +270,7 @@ if __name__ == "__main__":
     plt.figure(1)
     plt.plot(delta_array, Ftestx, color='c')
     plt.plot(delta_array, Fpredx, color='y')
-    plt.plot(delta_array[1:], Ffinite, color='g')
+    plt.plot(delta_array[1:]-dx/2, Ffinite, color='g')
     plt.plot(delta_array, Etest)
     plt.plot(delta_array, Epredict, color='r')
 

@@ -68,14 +68,14 @@ class krr_class():
         featureMat = featureMat[permutation]
 
         Ntest = int(np.floor(Ndata/k))
-        MAE = np.zeros(k)
+        FVU = np.zeros(k)
         for ik in range(k):
             [i_train1, i_test, i_train2] = np.split(np.arange(Ndata),
                                                     [Ntest * ik, Ntest * (ik+1)])
             i_train = np.r_[i_train1, i_train2]
             self.fit(data_values[i_train], featureMat[i_train], reg=reg)
-            MAE[ik] = self.get_MAE_energy(data_values[i_test], featureMat[i_test])
-        return np.mean(MAE)
+            FVU[ik] = self.get_FVU_energy(data_values[i_test], featureMat[i_test])
+        return np.mean(FVU)
 
     def cross_validation_EandF(self, energy, force, featureMat, indexMat, positionMat, k=3, reg=None):
         Ndata, Ndf = positionMat.shape
@@ -87,38 +87,19 @@ class krr_class():
         positionMat = positionMat[permutation]
         
         Ntest = int(np.floor(Ndata/k))
-        MAE_energy = np.zeros(k)
-        MAE_force = np.zeros((k, Ndf))
+        FVU_energy = np.zeros(k)
+        FVU_force = np.zeros((k, Ndf))
         for ik in range(k):
             [i_train1, i_test, i_train2] = np.split(np.arange(Ndata),
                                                     [Ntest * ik, Ntest * (ik+1)])
             print('index:', ik)
             i_train = np.r_[i_train1, i_train2]
             self.fit(energy[i_train], featureMat[i_train], reg=reg)
-            MAE_energy[ik] = self.get_MAE_energy(energy[i_test], featureMat[i_test])
-            MAE_force[ik, :] = self.get_MAE_force(force[i_test], positionMat[i_test],
+            FVU_energy[ik] = self.get_FVU_energy(energy[i_test], featureMat[i_test])
+            FVU_force[ik, :] = self.get_FVU_force(force[i_test], positionMat[i_test],
                                                   featureMat[i_test], indexMat[i_test])
-        return np.mean(MAE_energy) , np.mean(MAE_force, axis=0)
-    """
-    def single_validation_EandF(E, F, positionMat, reg=None):
-    Ndata, Ndf = positionMat.shape
-        permutation = np.random.permutation(Ndata)
-        energy = energy[permutation]
-        force = force[permutation]
-        featureMat = featureMat[permutation]
-        indexMat = indexMat[permutation]
-        positionMat = positionMat[permutation]
+        return np.mean(FVU_energy), np.mean(FVU_force, axis=0)
 
-        Ntest = int(np.floor(Ndata/k))
-        MAE_energy = np.zeros(k)
-        MAE_force = np.zeros((k, Ndf))
-
-        self.fit(Etrain, featureMat[i_train], reg=reg)
-        MAE_energy[ik] = self.get_MAE_energy(Etest, featureMat[i_test])
-        MAE_force[ik, :] = self.get_MAE_force(Ftest, positionMat[i_test],
-                                              featureMat[i_test], indexMat[i_test])
-        return np.mean(MAE_energy) , np.mean(MAE_force, axis=0)
-    """
     def gridSearch(self, data_values, featureMat=None, positionMat=None, k=3, disp=False, **GSkwargs):
         if positionMat is not None and self.featureCalculator is not None:
             featureMat, _ = self.featureCalculator.get_featureMat(positionMat)
@@ -129,24 +110,24 @@ class krr_class():
         Nsigma = len(sigma_array)
         Nreg = len(reg_array)
         best_args = np.zeros(2).astype(int)
-        MAE_min = None
+        FVU_min = None
         for i in range(Nsigma):
             self.comparator.set_args(sigma=sigma_array[i])
             for j in range(Nreg):
-                MAE = self.cross_validation(data_values, featureMat, k=k, reg=reg_array[j])
+                FVU = self.cross_validation(data_values, featureMat, k=k, reg=reg_array[j])
                 if disp:
-                    print('MAE:', MAE,'params: (', sigma_array[i],',', reg_array[j], ')')
-                if MAE_min is None or MAE < MAE_min:
-                    MAE_min = MAE
+                    print('FVU:', FVU,'params: (', sigma_array[i],',', reg_array[j], ')')
+                if FVU_min is None or FVU < FVU_min:
+                    FVU_min = FVU
                     best_args = np.array([i, j])
         sigma_best = sigma_array[best_args[0]]
         reg_best = reg_array[best_args[1]]
         # Train with best parameters using all data
         self.comparator.set_args(sigma=sigma_best)
         self.fit(data_values, featureMat, reg=reg_best)
-        return MAE_min, {'sigma': sigma_best, 'reg': reg_best}
+        return FVU_min, {'sigma': sigma_best, 'reg': reg_best}
 
-    def get_MAE_energy(self, data_values, featureMat=None, positionMat=None):
+    def get_FVU_energy(self, data_values, featureMat=None, positionMat=None):
         if featureMat is None:
             assert positionMat is not None
             featureMat, _ = self.featureCalculator.get_featureMat(positionMat)
@@ -156,19 +137,11 @@ class krr_class():
         var = np.var(data_values)
         return MSE / var 
 
-    def get_MAE_force(self, force, positionMat, featureMat=None, indexMat=None):
+    def get_FVU_force(self, force, positionMat, featureMat=None, indexMat=None):
         if featureMat is None or indexMat is None:
             featureMat, indexMat = self.featureCalculator.get_featureMat(positionMat)
         Fpred = np.array([self.predict_force(positionMat[i], featureMat[i], indexMat[i])
                           for i in range(force.shape[0])])
-        """
-        i_max = np.argmax(np.fabs(force-Fpred), axis=0)
-        diff = force - Fpred
-        max_diff = np.array([diff[i_max[i], i] for i in range(i_max.shape[0])])
-        force_i_max = np.array([force[i_max[i], i] for i in range(i_max.shape[0])])
-        print('max diff:\n', max_diff)
-        print('force index_max:\n', force_i_max)
-        """
         MSE_force = np.mean((Fpred - force)**2, axis=0)
         var_force = np.var(force, axis=0)        
         return MSE_force / var_force
