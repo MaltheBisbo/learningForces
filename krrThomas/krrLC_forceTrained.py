@@ -34,47 +34,6 @@ def makeConstrainedStructure(Natoms):
                 break
     return Xinit
 
-def energyLC():
-    np.random.seed(455)
-    Ndata = 1000
-    Natoms = 7
-
-    # parameters for potential
-    eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
-    params = (eps, r0, sigma)
-
-    # parameters for kernel and regression
-    reg = 1e-5
-    sig = 10
-    
-    X = np.array([makeConstrainedStructure(Natoms) for i in range(Ndata)])
-    featureCalculator = bob_features()
-    G, I = featureCalculator.get_featureMat(X)
-
-    comparator = eksponentialComparator(sigma=sig)
-    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
-    
-    E = np.zeros(Ndata)
-    F = np.zeros((Ndata, 2*Natoms))
-    for i in range(Ndata):
-        E[i], F[i] = doubleLJ(X[i], eps, r0, sigma)
-
-    NpointsLC = 10
-    Ndata_array = np.logspace(1,2,NpointsLC).astype(int)
-    MAE_array = np.zeros(NpointsLC)
-    for i in range(NpointsLC):
-        N = Ndata_array[i]
-        Esub = E[:N]
-        Gsub = G[:N]
-        t0 = time.time()
-        MAE_array[i] = krr.cross_validation(Esub, Gsub, reg=reg)
-        print('dt:', time.time() - t0)
-        print(MAE_array[i])
-
-    np.savetxt('LC_bob_N7_3.txt', np.c_[Ndata_array, MAE_array], delimiter='\t')
-    plt.loglog(Ndata_array, MAE_array)
-    plt.show()
-
 def energyANDforceLC():
     np.random.seed(455)
     Ndata = 150

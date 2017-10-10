@@ -149,17 +149,17 @@ class krr_force_class():
 
 def createData(Ndata, theta):
     # Define fixed points
-    x1 = np.array([-1, 0, 1])
-    x2 = np.array([0, 0, 0])
+    x1 = np.array([-1, 0, 1, 2])
+    x2 = np.array([0, 0, 0, 0])
 
     # rotate ficed coordinates
     x1rot = np.cos(theta) * x1 - np.sin(theta) * x2
     x2rot = np.sin(theta) * x1 + np.cos(theta) * x2
-    xrot = np.c_[x1rot, x2rot].reshape((1, 6))
+    xrot = np.c_[x1rot, x2rot].reshape((1, 8))
 
     # Define an array of positions for the last pointB
     # xnew = np.c_[np.random.rand(Ndata)+0.5, np.random.rand(Ndata)+1]
-    x1new = np.linspace(0, 1, Ndata)
+    x1new = np.linspace(0.5, 2, Ndata)
     x2new = np.ones(Ndata)
 
     # rotate new coordinates
@@ -176,7 +176,7 @@ def createData(Ndata, theta):
 
 if __name__ == "__main__":
 
-    Natoms = 4
+    Natoms = 5
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
     Ndata = 10
@@ -217,7 +217,7 @@ if __name__ == "__main__":
     Xtest = np.zeros((Npoints, 2*Natoms))
     print(Xtest.shape)
     # delta_array = np.linspace(-3.5, 0.5, Npoints)
-    delta_array = np.linspace(-3, 1, Npoints)
+    delta_array = np.linspace(-4, 1, Npoints)
     for i in range(Npoints):
         delta = delta_array[i]
         Xtest[i] = Xtest0
@@ -236,7 +236,7 @@ if __name__ == "__main__":
     plt.plot(delta_array, Ftestx, color='c')
     plt.plot(delta_array, Fpredx, color='y')
     plt.plot(delta_array, Etest, color='b')
-    plt.plot(delta_array, Epred-8.58, color='r')
+    plt.plot(delta_array, Epred, color='r')
     
     # Plot first structure
     plt.figure(2)

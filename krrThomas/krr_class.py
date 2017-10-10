@@ -264,12 +264,11 @@ if __name__ == "__main__":
 
     # Plot first structure
     plt.figure(2)
-    plt.scatter(Xtest[:, -2], Xtest[:, -1], color='r')
-    plt.scatter(Xtest[0, -2], Xtest[0, -1], color='y')
+    plt.plot(Xtest[:, -2], Xtest[:, -1], color='r')
     
     x = X[-1].reshape((5, 2))
     plt.scatter(x[:, 0], x[:, 1])
-    
+    plt.gca().set_aspect('equal', adjustable='box')
     plt.show()
 
     
