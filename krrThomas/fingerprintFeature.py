@@ -30,8 +30,8 @@ class fingerprintFeature():
         self.nsigma = nsigma
 
         # parameters for the binning:
-        m = int(np.ceil(self.nsigma*self.sigma/self.binwidth))
-        self.smearing_norm = erf(0.25*np.sqrt(2)*self.binwidth*(2*m+1)*1./self.sigma)
+        self.m = int(np.ceil(self.nsigma*self.sigma/self.binwidth))  # number of neighbour bins included.
+        self.smearing_norm = erf(0.25*np.sqrt(2)*self.binwidth*(2*m+1)*1./self.sigma)  # Integral of the included part of the gauss.
         self.Nbins = int(np.floor(rcut/binwidth))
 
     def get_singleFeature(self, x):
@@ -46,9 +46,13 @@ class fingerprintFeature():
         # filter distances longer than rcut + nsigma*sigma
         R = R[R <= self.rcut + self.nsigma*self.sigma]
         rdf = np.zeros(self.Nbins)
-        for i in range(self.Nbins):
-             r = (i+1/2)*self.rbin
-             
+        for i_bin in range(self.Nbins):
+             r = (i_bin+1/2)*self.rbin
+             for j in range(-self.m, self.m+1):
+                 newbin = i_bin + j
+                 if newbin < 0 or newbin >= self.Nbins:
+                     continue
+                 
                     
 
     def radiusMatrix(self, x):
