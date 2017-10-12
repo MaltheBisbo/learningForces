@@ -3,27 +3,27 @@ from scipy.spatial.distance import euclidean
 from scipy.special import erf
 
 class fingerprintFeature():
-    def __init__(self, X=None, rcut=6, binwidth=0.2, sigma=0.2, nsigma=4):
-	"""
+    def __init__(self, X=None, rcut=4, binwidth=0.05, sigma=0.2, nsigma=4):
+        """
         --input--
         X:                                                                                                                                     Contains data. Each row tepresents a structure given by cartesian coordinates
         in the form [x1, y1, ... , xN, yN]
-        
+    
         Rcut:
         Cutoff radius
         
         deltaR:
         radial binsize
-
+        
         sigma:
         standard deviation for gaussian smearing
-
+        
         nsigma:
         The distance (as the number of standard deviations sigma) at                                                            
         which the gaussian smearing is cut off (i.e. no smearing beyond                                                         
         that distance). 
         """
-	self.X = X
+        self.X = X
         self.rcut = rcut
         self.binwidth = binwidth
         self.sigma = sigma
@@ -31,14 +31,14 @@ class fingerprintFeature():
 
         # parameters for the binning:
         self.m = int(np.ceil(self.nsigma*self.sigma/self.binwidth))  # number of neighbour bins included.
-        self.smearing_norm = erf(0.25*np.sqrt(2)*self.binwidth*(2*m+1)*1./self.sigma)  # Integral of the included part of the gauss.
+        self.smearing_norm = erf(0.25*np.sqrt(2)*self.binwidth*(2*self.m+1)*1./self.sigma)  # Integral of the included part of the gauss.
         self.Nbins = int(np.ceil(rcut/binwidth))
 
         # Cutoff volume
         self.cutoffVolume = 4*np.pi*self.rcut**2
 
     def get_singleFeature(self, x):
-	"""
+        """
         --input--
         x: atomic positions for a single structure in the form [x1, y1, ... , xN, yN]
         """
@@ -62,7 +62,7 @@ class fingerprintFeature():
                 c = 0.25*np.sqrt(2)*self.binwidth*1./self.sigma
                 value = 0.5*erf(c*(2*i+1))-0.5*erf(c*(2*i-1))
 		# divide by smearing_norm
-		value /= smearing_norm
+                value /= self.smearing_norm
                 value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * 0.5*N_within*(N_within-1)
                 fingerprint[newbin] += value
         return fingerprint
@@ -75,7 +75,7 @@ class fingerprintFeature():
         Position matrix with each row 'x' containing the atomic coordinates of
         a structure. x = [x0,y0,x1,y1, ...].
         """
-        featureMat = np.array([get_singleFeature(x) for x in X])
+        featureMat = np.array([self.get_singleFeature(x) for x in X])
         return featureMat
 
     def radiusMatrix(self, x):
@@ -93,9 +93,10 @@ class fingerprintFeature():
         Calculates the vector consisting of all pairwise euclidean distances.
         """
         Ndim = 2
-        Natoms = int(x.shape[0])
-	x = x.reshape((Natoms, Ndim))
-        Rvec = np.zeros(Natoms*(Natoms-1)/2)
+        Natoms = int(x.shape[0]/2)
+        Ndistances = int(Natoms*(Natoms-1)/2)
+        x = x.reshape((Natoms, Ndim))
+        Rvec = np.zeros(Ndistances)
         k = 0
         for i in range(Natoms):
             for j in range(i+1, Natoms):

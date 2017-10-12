@@ -149,13 +149,15 @@ class krr_class():
 
 def createData(Ndata, theta):
     # Define fixed points
-    x1 = np.array([-1, 0, 1, 2])
-    x2 = np.array([0, 0, 0, 0])
-
+    #x1 = np.array([-1, 0, 1, 2])
+    #x2 = np.array([0, 0, 0, 0])
+    x1 = np.array([0, 1])
+    x2 = np.array([0, 0])
+    
     # rotate ficed coordinates
     x1rot = np.cos(theta) * x1 - np.sin(theta) * x2
     x2rot = np.sin(theta) * x1 + np.cos(theta) * x2
-    xrot = np.c_[x1rot, x2rot].reshape((1, 8))
+    xrot = np.c_[x1rot, x2rot].reshape((1, 2*x1.shape[0]))
 
     # Define an array of positions for the last pointB
     # xnew = np.c_[np.random.rand(Ndata)+0.5, np.random.rand(Ndata)+1]
@@ -175,14 +177,14 @@ def createData(Ndata, theta):
 
 
 if __name__ == "__main__":
-
+    Natoms = 3
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 20
+    Ndata = 4
     reg = 1e-7  # expKernel: 0.005 , gaussKernel: 1e-7
     sig = 0.13  # expKernel: 0.3 , gaussKernel: 0.13
 
-    theta = 0.7*np.pi
+    theta = 0*np.pi
 
     X = createData(Ndata, theta)
     featureCalculator = bob_features()
@@ -190,13 +192,13 @@ if __name__ == "__main__":
 
     # Calculate energies for each structure
     E = np.zeros(Ndata)
-    F = np.zeros((Ndata, 2*5))
+    F = np.zeros((Ndata, 2*Natoms))
     for i in range(Ndata):
         E[i], grad = doubleLJ(X[i], eps, r0, sigma)
         F[i, :] = -grad
 
-    Gtrain = G[:-1]
-    Etrain = E[:-1]
+    Gtrain = G  # G[:-1]
+    Etrain = E  # E[:-1]
     beta = np.mean(Etrain)
 
     # Train model
@@ -218,7 +220,7 @@ if __name__ == "__main__":
     Fpredx = np.zeros(Npoints)
     Ftestx = np.zeros(Npoints)
     Xtest0 = X[-1]
-    Xtest = np.zeros((Npoints, 10))
+    Xtest = np.zeros((Npoints, 2*Natoms))
     print(Xtest.shape)
     delta_array = np.linspace(-3.5, 0.5, Npoints)
     for i in range(Npoints):
@@ -261,13 +263,20 @@ if __name__ == "__main__":
     print(Fpred)
     print(Ftest)
     """
+    # Define the moving coordinate
+    x1new = np.linspace(0.5, 2, Ndata)
+    x2new = np.ones(Ndata)
+
+    x1new_rot = np.cos(theta) * x1new - np.sin(theta) * x2new
+    x2new_rot = np.sin(theta) * x1new + np.cos(theta) * x2new
 
     # Plot first structure
     plt.figure(2)
     plt.plot(Xtest[:, -2], Xtest[:, -1], color='r')
     
-    x = X[-1].reshape((5, 2))
+    x = X[-1].reshape((Natoms, 2))
     plt.scatter(x[:, 0], x[:, 1])
+    plt.scatter(x1new_rot, x2new_rot, marker='x')
     plt.gca().set_aspect('equal', adjustable='box')
     plt.show()
 

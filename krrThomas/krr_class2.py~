@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from doubleLJ import doubleLJ
-from fingerprintFeature import fingerprintFeature
+from bob_features import bob_features
 from eksponentialComparator import eksponentialComparator
 from gaussComparator import gaussComparator
 
@@ -17,15 +17,14 @@ class krr_class():
     def fit(self, data_values, featureMat=None, positionMat=None, reg=None):
         self.data_values = data_values
 
-        # calculate features from positions if they are not given
+        # calculate features form positions if they are not given
         if featureMat is not None:
             self.featureMat = featureMat
         elif positionMat is not None and self.featureCalculator is not None:
-            self.featureMat = self.featureCalculator.get_featureMat(positionMat)
+            self.featureMat, _ = self.featureCalculator.get_featureMat(positionMat)
         else:
             print("You need to set the feature matrix or both the position matrix and a feature calculator")
 
-        print('shape:', self.featureMat.shape)
         if reg is not None:
             self.reg = reg
         self.similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
@@ -43,18 +42,17 @@ class krr_class():
         else:
             self.pos = pos
             assert self.featureCalculator is not None
-            self.fnew = self.featureCalculator.get_singleFeature(x=self.pos)
+            self.fnew, self.inew = self.featureCalculator.get_singleFeature(x=self.pos)
 
         self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
 
         return self.similarityVec.dot(self.alpha) + self.beta
 
-    
     def predict_force(self, pos=None, fnew=None, inew=None):
         if pos is not None:
             self.pos = pos
             assert self.featureCalculator is not None
-            self.fnew = self.featureCalculator.get_singleFeature(self.pos)
+            self.fnew, self.inew = self.featureCalculator.get_singleFeature(self.pos)
             self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
 
         df_dR = self.featureCalculator.get_featureGradient(self.pos, self.fnew, self.inew)
@@ -62,7 +60,6 @@ class krr_class():
         
         kernelDeriv = np.dot(dk_df, df_dR)
         return -(kernelDeriv.T).dot(self.alpha)
-    
 
     def cross_validation(self, data_values, featureMat, k=3, reg=None):
         Ndata = data_values.shape[0]
@@ -148,7 +145,7 @@ class krr_class():
         MSE_force = np.mean((Fpred - force)**2, axis=0)
         var_force = np.var(force, axis=0)        
         return MSE_force / var_force
-    
+
 
 def createData(Ndata, theta):
     # Define fixed points
@@ -182,17 +179,14 @@ if __name__ == "__main__":
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
     Ndata = 20
-    reg = 1e-5  # expKernel: 0.005 , gaussKernel: 1e-7
-    sig = 1.13  # expKernel: 0.3 , gaussKernel: 0.13
+    reg = 1e-7  # expKernel: 0.005 , gaussKernel: 1e-7
+    sig = 0.13  # expKernel: 0.3 , gaussKernel: 0.13
 
-    theta = 0*np.pi
+    theta = 0.7*np.pi
 
-    # Set feature parameters
-    
-    
     X = createData(Ndata, theta)
-    featureCalculator = fingerprintFeature()
-    G = featureCalculator.get_featureMat(X)
+    featureCalculator = bob_features()
+    G = featureCalculator.get_featureMat(X)[0]
 
     # Calculate energies for each structure
     E = np.zeros(Ndata)
@@ -240,26 +234,19 @@ if __name__ == "__main__":
         Epredict[i] = krr.predict_energy(pos=Xtest[i])
         Ftestx[i] = np.cos(theta) * Ftest[-2] + np.cos(np.pi/2 - theta) * Ftest[-1]
 
-        # Fpred = krr.predict_force()
-        # Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
+        Fpred = krr.predict_force()
+        Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
 
     dx = delta_array[1] - delta_array[0]
     Ffinite = (Epredict[:-1] - Epredict[1:])/dx
 
     plt.figure(1)
-    # plt.plot(delta_array, Ftestx, color='c')
-    # plt.plot(delta_array, Fpredx, color='y')
-    # plt.plot(delta_array[1:]-dx/2, Ffinite, color='g')
+    plt.plot(delta_array, Ftestx, color='c')
+    plt.plot(delta_array, Fpredx, color='y')
+    plt.plot(delta_array[1:]-dx/2, Ffinite, color='g')
     plt.plot(delta_array, Etest)
     plt.plot(delta_array, Epredict, color='r')
-    plt.scatter(np.linspace(-1.5, 0, Ndata), np.zeros(Ndata)-12, s=10)
-    plt.figure(3)
-    plt.plot(np.arange(G.shape[1]), G.T)
 
-    similarityMat = comparator.get_similarity_matrix(G)
-    plt.figure(4)
-    plt.pcolor(1-similarityMat, antialiaseds=True)
-    plt.colorbar()
     """
     Xtest = Xtest0.copy()
     Xtest[-2] -= 1.2
