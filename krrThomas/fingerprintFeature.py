@@ -32,7 +32,10 @@ class fingerprintFeature():
         # parameters for the binning:
         self.m = int(np.ceil(self.nsigma*self.sigma/self.binwidth))  # number of neighbour bins included.
         self.smearing_norm = erf(0.25*np.sqrt(2)*self.binwidth*(2*m+1)*1./self.sigma)  # Integral of the included part of the gauss.
-        self.Nbins = int(np.floor(rcut/binwidth))
+        self.Nbins = int(np.ceil(rcut/binwidth))
+
+        # Cutoff volume
+        self.cutoffVolume = 4*np.pi*self.rcut**2
 
     def get_singleFeature(self, x):
 	"""
@@ -42,18 +45,38 @@ class fingerprintFeature():
         Natoms = int(x.shape[0])
         gamma = Natoms*(Natoms-1)/2
             
-        R = self.radiusMatrix(x)
+        R = self.radiusVector(x)
         # filter distances longer than rcut + nsigma*sigma
         R = R[R <= self.rcut + self.nsigma*self.sigma]
-        rdf = np.zeros(self.Nbins)
-        for i_bin in range(self.Nbins):
-             r = (i_bin+1/2)*self.rbin
-             for j in range(-self.m, self.m+1):
-                 newbin = i_bin + j
-                 if newbin < 0 or newbin >= self.Nbins:
-                     continue
-                 
-                    
+        # Number of atoms within this radius
+        N_within = R.shape[0]
+        
+        fingerprint = np.zeros(self.Nbins)
+        for deltaR in R:
+            rbin = int(np.floor(deltaR/self.binwidth))
+            for i in range(-self.m, self.m+1):
+                newbin = rbin + i
+                if newbin < 0 or newbin >= self.Nbins:
+                    continue
+
+                c = 0.25*np.sqrt(2)*self.binwidth*1./self.sigma
+                value = 0.5*erf(c*(2*i+1))-0.5*erf(c*(2*i-1))
+		# divide by smearing_norm
+		value /= smearing_norm
+                value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * 0.5*N_within*(N_within-1)
+                fingerprint[newbin] += value
+        return fingerprint
+
+    def get_featureMat(self, X):
+        """
+        Calculated the feature matrix based on a position matrix 'X'.
+        ---input---
+        X:
+        Position matrix with each row 'x' containing the atomic coordinates of
+        a structure. x = [x0,y0,x1,y1, ...].
+        """
+        featureMat = np.array([get_singleFeature(x) for x in X])
+        return featureMat
 
     def radiusMatrix(self, x):
         """
@@ -67,7 +90,7 @@ class fingerprintFeature():
     
     def radiusVector(self, x):
         """
-        Calculates the matrix consisting of all pairwise euclidean distances.
+        Calculates the vector consisting of all pairwise euclidean distances.
         """
         Ndim = 2
         Natoms = int(x.shape[0])

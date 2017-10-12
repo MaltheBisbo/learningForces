@@ -6,7 +6,7 @@ class bob_features():
         """
         --input--
         X:
-        Contains data. Each row tepresents a structure given by cartesian coordinates
+        Contains data. Each row represents a structure given by cartesian coordinates
         in the form [x1, y1, ... , xN, yN]
         """
         self.X = X
