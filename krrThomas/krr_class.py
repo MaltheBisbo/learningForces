@@ -221,7 +221,10 @@ if __name__ == "__main__":
     Ftestx = np.zeros(Npoints)
     Xtest0 = X[0]
     Xtest = np.zeros((Npoints, 2*Natoms))
-    print(Xtest.shape)
+
+    Itest0 = np.zeros((Npoints, G.shape[1]))
+    Itest1 = np.zeros((Npoints, G.shape[1]))
+    
     delta_array = np.linspace(-2, 2, Npoints)
     for i in range(Npoints):
         delta = delta_array[i]
@@ -230,6 +233,10 @@ if __name__ == "__main__":
         pertub_rot = np.array([np.cos(theta) * pertub[0] - np.sin(theta) * pertub[1],
                                np.sin(theta) * pertub[0] + np.cos(theta) * pertub[1]])
         Xtest[i, -2:] = pertub_rot
+
+        _, indexVec = featureCalculator.get_singleFeature(Xtest[i])
+        Itest0[i] = indexVec[:,0]
+        Itest1[i] = indexVec[:,1]
         
         Etest[i], gradtest = doubleLJ(Xtest[i], eps, r0, sigma)
         Ftest = -gradtest
@@ -250,6 +257,22 @@ if __name__ == "__main__":
     plt.plot(delta_array, Epredict, color='r', label='E model')
     plt.xlabel('x')
     plt.ylabel('E , F')
+    plt.legend()
+
+    print(Itest0.shape)
+    plt.figure(3)
+    plt.title('First index of the elements in the sorted feature vector')
+    for i in range(Itest0.shape[1]):
+        plt.plot(delta_array, Itest0[:,i]+0.01*i, label=str(i))
+    plt.xlabel('x')
+    plt.ylabel('atom index')
+    plt.legend()
+    plt.figure(4)
+    plt.title('Second index of the elements in the sorted feature vector')
+    for i in range(Itest0.shape[1]):
+        plt.plot(delta_array, Itest1[:,i]+0.01*i, label=str(i))
+    plt.xlabel('x')
+    plt.ylabel('atom index')
     plt.legend()
     
     """

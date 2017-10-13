@@ -1,5 +1,7 @@
 import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
+from matplotlib import cm
 from doubleLJ import doubleLJ
 from fingerprintFeature import fingerprintFeature
 from eksponentialComparator import eksponentialComparator
@@ -25,7 +27,6 @@ class krr_class():
         else:
             print("You need to set the feature matrix or both the position matrix and a feature calculator")
 
-        print('shape:', self.featureMat.shape)
         if reg is not None:
             self.reg = reg
         self.similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
@@ -34,7 +35,7 @@ class krr_class():
 
         A = self.similarityMat + self.reg*np.identity(self.data_values.shape[0])
 
-        # self.alpha = np.linalg.inv(A).dot(self.data_values-self.beta)
+        #self.alpha = np.linalg.inv(A).dot(self.data_values-self.beta)
         self.alpha = np.linalg.solve(A, self.data_values - self.beta)
 
     def predict_energy(self, fnew=None, pos=None):
@@ -49,7 +50,6 @@ class krr_class():
 
         return self.similarityVec.dot(self.alpha) + self.beta
 
-    
     def predict_force(self, pos=None, fnew=None, inew=None):
         if pos is not None:
             self.pos = pos
@@ -62,7 +62,6 @@ class krr_class():
         
         kernelDeriv = np.dot(dk_df, df_dR)
         return -(kernelDeriv.T).dot(self.alpha)
-    
 
     def cross_validation(self, data_values, featureMat, k=3, reg=None):
         Ndata = data_values.shape[0]
@@ -105,7 +104,7 @@ class krr_class():
 
     def gridSearch(self, data_values, featureMat=None, positionMat=None, k=3, disp=False, **GSkwargs):
         if positionMat is not None and self.featureCalculator is not None:
-            featureMat, _ = self.featureCalculator.get_featureMat(positionMat)
+            featureMat = self.featureCalculator.get_featureMat(positionMat)
         else:
             assert featureMat is not None
         sigma_array = GSkwargs['sigma']
@@ -133,7 +132,7 @@ class krr_class():
     def get_FVU_energy(self, data_values, featureMat=None, positionMat=None):
         if featureMat is None:
             assert positionMat is not None
-            featureMat, _ = self.featureCalculator.get_featureMat(positionMat)
+            featureMat = self.featureCalculator.get_featureMat(positionMat)
         Epred = np.array([self.predict_energy(f) for f in featureMat])
         error = Epred - data_values
         MSE = np.mean((Epred - data_values)**2)
@@ -182,8 +181,8 @@ if __name__ == "__main__":
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
     Ndata = 20
-    reg = 1e-5  # expKernel: 0.005 , gaussKernel: 1e-7
-    sig = 1.13  # expKernel: 0.3 , gaussKernel: 0.13
+    reg = 1e-7  # expKernel: 0.005 , gaussKernel: 1e-7
+    sig = 30  # expKernel: 0.3 , gaussKernel: 0.13
 
     theta = 0*np.pi
 
@@ -211,9 +210,9 @@ if __name__ == "__main__":
     krr.fit(Etrain, Gtrain, reg=reg)
 
     """ gridSearch
-    GSkwargs = {'reg': np.logspace(-7, -5, 10), 'sigma': np.logspace(-2, 0, 10)}
+    GSkwargs = {'reg': np.logspace(-7, -4, 10), 'sigma': np.logspace(-1, 2, 20)}
     print(Etrain.shape, Gtrain.shape)
-    MAE, params = krr.gridSearch(Etrain, Gtrain, **GSkwargs)
+    MAE, params = krr.gridSearch(Etrain, Gtrain, disp=True, **GSkwargs)
     print('sigma', params['sigma'])
     print('reg', params['reg'])
     """
@@ -225,7 +224,9 @@ if __name__ == "__main__":
     Ftestx = np.zeros(Npoints)
     Xtest0 = X[-1]
     Xtest = np.zeros((Npoints, 10))
-    print(Xtest.shape)
+
+    Gtest = np.zeros((Npoints, G.shape[1]))
+    
     delta_array = np.linspace(-3.5, 0.5, Npoints)
     for i in range(Npoints):
         delta = delta_array[i]
@@ -235,6 +236,8 @@ if __name__ == "__main__":
                                np.sin(theta) * pertub[0] + np.cos(theta) * pertub[1]])
         Xtest[i, -2:] += pertub_rot
 
+        Gtest[i] = featureCalculator.get_singleFeature(Xtest[i])
+        
         Etest[i], gradtest = doubleLJ(Xtest[i], eps, r0, sigma)
         Ftest = -gradtest
         Epredict[i] = krr.predict_energy(pos=Xtest[i])
@@ -260,21 +263,22 @@ if __name__ == "__main__":
     plt.figure(4)
     plt.pcolor(1-similarityMat, antialiaseds=True)
     plt.colorbar()
-    """
-    Xtest = Xtest0.copy()
-    Xtest[-2] -= 1.2
-    gtest, itest = features.calc_singleFeature(Xtest)
 
-    kappaDeriv = kernelVecDeriv(Xtest, gtest, itest, Gtrain, sig)
+    fig = plt.figure(5)
+    ax = fig.gca(projection='3d')
 
-    a = alpha
+    # Make data
+    Xax = np.linspace(0, 100, G.shape[1])
+    Yax = np.linspace(-3.5, 0.5, Npoints)
+    Xax, Yax = np.meshgrid(Xax, Yax)
+    
+    # Plot the surface.
+    surf = ax.plot_surface(Xax, Yax, Gtest, cmap=cm.coolwarm,
+                           linewidth=0, antialiased=False)
 
-    Fpred = -kappaDeriv.dot(a)
-    E, Ftest = doubleLJ(Xtest, eps, r0, sigma)
-    print(Fpred)
-    print(Ftest)
-    """
-
+    plt.figure(6)
+    plt.plot(delta_array, Gtest[:,20])
+    
     # Plot first structure
     plt.figure(2)
     plt.plot(Xtest[:, -2], Xtest[:, -1], color='r')
