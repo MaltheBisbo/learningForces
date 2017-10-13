@@ -151,8 +151,8 @@ def createData(Ndata, theta):
     # Define fixed points
     #x1 = np.array([-1, 0, 1, 2])
     #x2 = np.array([0, 0, 0, 0])
-    x1 = np.array([-1, 0, 1])
-    x2 = np.array([0, 0, 0])
+    x1 = np.array([0, 1])
+    x2 = np.array([0, 0])
     
     # rotate ficed coordinates
     x1rot = np.cos(theta) * x1 - np.sin(theta) * x2
@@ -161,7 +161,7 @@ def createData(Ndata, theta):
 
     # Define an array of positions for the last pointB
     # xnew = np.c_[np.random.rand(Ndata)+0.5, np.random.rand(Ndata)+1]
-    x1new = np.linspace(0, 1.5, Ndata)
+    x1new = np.linspace(0.5, 2, Ndata)
     x2new = np.ones(Ndata)
 
     # rotate new coordinates
@@ -177,7 +177,7 @@ def createData(Ndata, theta):
 
 
 if __name__ == "__main__":
-    Natoms = 4
+    Natoms = 3
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
     Ndata = 4
@@ -214,23 +214,23 @@ if __name__ == "__main__":
     print('reg', params['reg'])
     """
 
-    Npoints = 3000
+    Npoints = 1000
     Etest = np.zeros(Npoints)
     Epredict = np.zeros(Npoints)
     Fpredx = np.zeros(Npoints)
     Ftestx = np.zeros(Npoints)
-    Xtest0 = X[0]
+    Xtest0 = X[-1]
     Xtest = np.zeros((Npoints, 2*Natoms))
     print(Xtest.shape)
-    delta_array = np.linspace(-2, 2, Npoints)
+    delta_array = np.linspace(-3.5, 0.5, Npoints)
     for i in range(Npoints):
         delta = delta_array[i]
         Xtest[i] = Xtest0
-        pertub = np.array([delta, 1])
+        pertub = np.array([delta, 0])
         pertub_rot = np.array([np.cos(theta) * pertub[0] - np.sin(theta) * pertub[1],
                                np.sin(theta) * pertub[0] + np.cos(theta) * pertub[1]])
-        Xtest[i, -2:] = pertub_rot
-        
+        Xtest[i, -2:] += pertub_rot
+
         Etest[i], gradtest = doubleLJ(Xtest[i], eps, r0, sigma)
         Ftest = -gradtest
         Epredict[i] = krr.predict_energy(pos=Xtest[i])
@@ -243,15 +243,12 @@ if __name__ == "__main__":
     Ffinite = (Epredict[:-1] - Epredict[1:])/dx
 
     plt.figure(1)
-    plt.plot(delta_array, Ftestx, color='c', label='F target')
-    plt.plot(delta_array, Fpredx, color='y', label='F model')
-    plt.plot(delta_array[1:]-dx/2, Ffinite, color='g', linestyle=':', label='F finite diff.')
-    plt.plot(delta_array, Etest, label='E target')
-    plt.plot(delta_array, Epredict, color='r', label='E model')
-    plt.xlabel('x')
-    plt.ylabel('E , F')
-    plt.legend()
-    
+    plt.plot(delta_array, Ftestx, color='c')
+    plt.plot(delta_array, Fpredx, color='y')
+    plt.plot(delta_array[1:]-dx/2, Ffinite, color='g')
+    plt.plot(delta_array, Etest)
+    plt.plot(delta_array, Epredict, color='r')
+
     """
     Xtest = Xtest0.copy()
     Xtest[-2] -= 1.2
@@ -267,7 +264,7 @@ if __name__ == "__main__":
     print(Ftest)
     """
     # Define the moving coordinate
-    x1new = np.linspace(0, 1.5, Ndata)
+    x1new = np.linspace(0.5, 2, Ndata)
     x2new = np.ones(Ndata)
 
     x1new_rot = np.cos(theta) * x1new - np.sin(theta) * x2new
@@ -280,8 +277,6 @@ if __name__ == "__main__":
     x = X[-1].reshape((Natoms, 2))
     plt.scatter(x[:, 0], x[:, 1])
     plt.scatter(x1new_rot, x2new_rot, marker='x')
-    plt.xlabel('x')
-    plt.ylabel('y')
     plt.gca().set_aspect('equal', adjustable='box')
     plt.show()
 
