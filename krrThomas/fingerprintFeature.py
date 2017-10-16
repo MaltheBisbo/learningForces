@@ -53,15 +53,19 @@ class fingerprintFeature():
         
         fingerprint = np.zeros(self.Nbins)
         for deltaR in R:
+            drbin = deltaR % self.binwidth
+            rabove = int(drbin > 0.5*self.binwidth)
             rbin = int(np.floor(deltaR/self.binwidth))
-            for i in range(-self.m, self.m+1):
-                newbin = rbin + i
+            for i in range(-self.m-(1-rabove), self.m+1+rabove):
+                newbin = rbin + i  # maybe abs() to make negative bins constibute aswell.
                 if newbin < 0 or newbin >= self.Nbins:
                     continue
-
+                
+                
                 c = 0.25*np.sqrt(2)*self.binwidth*1./self.sigma
                 value = 0.5*erf(c*(2*i+1))-0.5*erf(c*(2*i-1))
-		# divide by smearing_norm
+                #value = 0.5*erf(c*(2*i+2*(1-drbin)))-0.5*erf(c*(2*i-2*drbin)) # to make the continous
+                # divide by smearing_norm
                 value /= self.smearing_norm
                 value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * 0.5*N_within*(N_within-1)
                 fingerprint[newbin] += value
