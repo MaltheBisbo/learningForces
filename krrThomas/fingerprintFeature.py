@@ -42,8 +42,6 @@ class fingerprintFeature():
         --input--
         x: atomic positions for a single structure in the form [x1, y1, ... , xN, yN]
         """
-        Natoms = int(x.shape[0]/2)
-        gamma = Natoms*(Natoms-1)/2
             
         R = self.radiusVector(x)
         # filter distances longer than rcut + nsigma*sigma
@@ -100,7 +98,6 @@ class fingerprintFeature():
         x: atomic positions for a single structure in the form [x1, y1, ... , xN, yN]
         """
         Natoms = int(x.shape[0]/2)
-        gamma = Natoms*(Natoms-1)/2
 
         R, dxMat, indexMat = self.radiusVector_grad(x)
         # filter distances longer than rcut + nsigma*sigma
@@ -132,8 +129,8 @@ class fingerprintFeature():
                 else:
                     arg_low = i-binpos
                     arg_up = i+(1-binpos)
-                value1 = 1./deltaR*0.25*(erf(2*c*arg_up)-erf(2*c*arg_low))
-                value2 = -(np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))
+                value1 = -1./deltaR*(erf(2*c*arg_up)-erf(2*c*arg_low))
+                value2 = -2*(np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))  # 2 in front..
                 value = value1 + value2
 
                 # divide by smearing_norm

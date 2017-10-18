@@ -79,13 +79,12 @@ class krr_class():
             FVU[ik] = self.get_FVU_energy(data_values[i_test], featureMat[i_test])
         return np.mean(FVU)
 
-    def cross_validation_EandF(self, energy, force, featureMat, indexMat, positionMat, k=3, reg=None):
+    def cross_validation_EandF(self, energy, force, featureMat, positionMat, k=3, reg=None):
         Ndata, Ndf = positionMat.shape
         permutation = np.random.permutation(Ndata)
         energy = energy[permutation]
         force = force[permutation]
         featureMat = featureMat[permutation]
-        indexMat = indexMat[permutation]
         positionMat = positionMat[permutation]
         
         Ntest = int(np.floor(Ndata/k))
@@ -99,7 +98,7 @@ class krr_class():
             self.fit(energy[i_train], featureMat[i_train], reg=reg)
             FVU_energy[ik] = self.get_FVU_energy(energy[i_test], featureMat[i_test])
             FVU_force[ik, :] = self.get_FVU_force(force[i_test], positionMat[i_test],
-                                                  featureMat[i_test], indexMat[i_test])
+                                                  featureMat[i_test])
         return np.mean(FVU_energy), np.mean(FVU_force, axis=0)
 
     def gridSearch(self, data_values, featureMat=None, positionMat=None, k=3, disp=False, **GSkwargs):
@@ -139,10 +138,10 @@ class krr_class():
         var = np.var(data_values)
         return MSE / var 
 
-    def get_FVU_force(self, force, positionMat, featureMat=None, indexMat=None):
-        if featureMat is None or indexMat is None:
-            featureMat, indexMat = self.featureCalculator.get_featureMat(positionMat)
-        Fpred = np.array([self.predict_force(positionMat[i], featureMat[i], indexMat[i])
+    def get_FVU_force(self, force, positionMat, featureMat=None):
+        if featureMat is None:
+            featureMat = self.featureCalculator.get_featureMat(positionMat)
+        Fpred = np.array([self.predict_force(positionMat[i], featureMat[i])
                           for i in range(force.shape[0])])
         MSE_force = np.mean((Fpred - force)**2, axis=0)
         var_force = np.var(force, axis=0)        
@@ -180,7 +179,7 @@ if __name__ == "__main__":
     Natoms = 4
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 5
+    Ndata = 8
     reg = 1e-7  # expKernel: 0.005 , gaussKernel: 1e-7
     sig = 30  # expKernel: 0.3 , gaussKernel: 0.13
 
@@ -252,7 +251,7 @@ if __name__ == "__main__":
     plt.figure(1)
     plt.plot(delta_array, Ftestx, color='c')
     plt.plot(delta_array, Fpredx, color='y')
-    plt.plot(delta_array[1:]-dx/2, Ffinite, color='g')
+    plt.plot(delta_array[1:]-dx/2, Ffinite, color='g', linestyle=':')
     plt.plot(delta_array, Etest)
     plt.plot(delta_array, Epredict, color='r')
 
