@@ -50,16 +50,16 @@ class krr_class():
 
         return self.similarityVec.dot(self.alpha) + self.beta
 
-    def predict_force(self, pos=None, fnew=None, inew=None):
+    def predict_force(self, pos=None, fnew=None):
         if pos is not None:
             self.pos = pos
             assert self.featureCalculator is not None
             self.fnew = self.featureCalculator.get_singleFeature(self.pos)
             self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
 
-        df_dR = self.featureCalculator.get_featureGradient(self.pos, self.fnew, self.inew)
+        df_dR = self.featureCalculator.get_singleGradient(self.pos)
         dk_df = self.comparator.get_jac(self.fnew)
-        
+
         kernelDeriv = np.dot(dk_df, df_dR)
         return -(kernelDeriv.T).dot(self.alpha)
 
@@ -180,7 +180,7 @@ if __name__ == "__main__":
     Natoms = 4
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 4
+    Ndata = 5
     reg = 1e-7  # expKernel: 0.005 , gaussKernel: 1e-7
     sig = 30  # expKernel: 0.3 , gaussKernel: 0.13
 
@@ -207,7 +207,7 @@ if __name__ == "__main__":
     # Train model
     comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
-    krr.fit(Etrain, Gtrain, reg=reg)
+    krr.fit(E, G, reg=reg)
 
     """ gridSearch
     GSkwargs = {'reg': np.logspace(-7, -4, 10), 'sigma': np.logspace(-1, 2, 20)}
@@ -242,17 +242,17 @@ if __name__ == "__main__":
         Ftest = -gradtest
         Epredict[i] = krr.predict_energy(pos=Xtest[i])
         Ftestx[i] = np.cos(theta) * Ftest[-2] + np.cos(np.pi/2 - theta) * Ftest[-1]
-
-        #Fpred = krr.predict_force()
-        #Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
+        
+        Fpred = krr.predict_force()
+        Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
 
     dx = delta_array[1] - delta_array[0]
     Ffinite = (Epredict[:-1] - Epredict[1:])/dx
 
     plt.figure(1)
-    #plt.plot(delta_array, Ftestx, color='c')
-    #plt.plot(delta_array, Fpredx, color='y')
-    #plt.plot(delta_array[1:]-dx/2, Ffinite, color='g')
+    plt.plot(delta_array, Ftestx, color='c')
+    plt.plot(delta_array, Fpredx, color='y')
+    plt.plot(delta_array[1:]-dx/2, Ffinite, color='g')
     plt.plot(delta_array, Etest)
     plt.plot(delta_array, Epredict, color='r')
 
