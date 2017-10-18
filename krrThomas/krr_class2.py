@@ -50,16 +50,16 @@ class krr_class():
 
         return self.similarityVec.dot(self.alpha) + self.beta
 
-    def predict_force(self, pos=None, fnew=None, inew=None):
+    def predict_force(self, pos=None, fnew=None):
         if pos is not None:
             self.pos = pos
             assert self.featureCalculator is not None
             self.fnew = self.featureCalculator.get_singleFeature(self.pos)
             self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
 
-        df_dR = self.featureCalculator.get_featureGradient(self.pos, self.fnew, self.inew)
+        df_dR = self.featureCalculator.get_singleGradient(self.pos)
         dk_df = self.comparator.get_jac(self.fnew)
-        
+
         kernelDeriv = np.dot(dk_df, df_dR)
         return -(kernelDeriv.T).dot(self.alpha)
 
@@ -79,13 +79,12 @@ class krr_class():
             FVU[ik] = self.get_FVU_energy(data_values[i_test], featureMat[i_test])
         return np.mean(FVU)
 
-    def cross_validation_EandF(self, energy, force, featureMat, indexMat, positionMat, k=3, reg=None):
+    def cross_validation_EandF(self, energy, force, featureMat, positionMat, k=3, reg=None):
         Ndata, Ndf = positionMat.shape
         permutation = np.random.permutation(Ndata)
         energy = energy[permutation]
         force = force[permutation]
         featureMat = featureMat[permutation]
-        indexMat = indexMat[permutation]
         positionMat = positionMat[permutation]
         
         Ntest = int(np.floor(Ndata/k))
@@ -99,7 +98,7 @@ class krr_class():
             self.fit(energy[i_train], featureMat[i_train], reg=reg)
             FVU_energy[ik] = self.get_FVU_energy(energy[i_test], featureMat[i_test])
             FVU_force[ik, :] = self.get_FVU_force(force[i_test], positionMat[i_test],
-                                                  featureMat[i_test], indexMat[i_test])
+                                                  featureMat[i_test])
         return np.mean(FVU_energy), np.mean(FVU_force, axis=0)
 
     def gridSearch(self, data_values, featureMat=None, positionMat=None, k=3, disp=False, **GSkwargs):
@@ -139,10 +138,10 @@ class krr_class():
         var = np.var(data_values)
         return MSE / var 
 
-    def get_FVU_force(self, force, positionMat, featureMat=None, indexMat=None):
-        if featureMat is None or indexMat is None:
-            featureMat, indexMat = self.featureCalculator.get_featureMat(positionMat)
-        Fpred = np.array([self.predict_force(positionMat[i], featureMat[i], indexMat[i])
+    def get_FVU_force(self, force, positionMat, featureMat=None):
+        if featureMat is None:
+            featureMat = self.featureCalculator.get_featureMat(positionMat)
+        Fpred = np.array([self.predict_force(positionMat[i], featureMat[i])
                           for i in range(force.shape[0])])
         MSE_force = np.mean((Fpred - force)**2, axis=0)
         var_force = np.var(force, axis=0)        
@@ -151,17 +150,17 @@ class krr_class():
 
 def createData(Ndata, theta):
     # Define fixed points
-    x1 = np.array([-1, 0, 1, 2])
-    x2 = np.array([0, 0, 0, 0])
+    x1 = np.array([-1, 0, 1])
+    x2 = np.array([0, 0, 0])
 
     # rotate ficed coordinates
     x1rot = np.cos(theta) * x1 - np.sin(theta) * x2
     x2rot = np.sin(theta) * x1 + np.cos(theta) * x2
-    xrot = np.c_[x1rot, x2rot].reshape((1, 8))
+    xrot = np.c_[x1rot, x2rot].reshape((1, 2*x1rot.shape[0]))
 
     # Define an array of positions for the last pointB
     # xnew = np.c_[np.random.rand(Ndata)+0.5, np.random.rand(Ndata)+1]
-    x1new = np.linspace(0.5, 2, Ndata)
+    x1new = np.linspace(0, 1.5, Ndata)
     x2new = np.ones(Ndata)
 
     # rotate new coordinates
@@ -177,10 +176,10 @@ def createData(Ndata, theta):
 
 
 if __name__ == "__main__":
-
+    Natoms = 4
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 20
+    Ndata = 8
     reg = 1e-7  # expKernel: 0.005 , gaussKernel: 1e-7
     sig = 30  # expKernel: 0.3 , gaussKernel: 0.13
 
@@ -195,7 +194,7 @@ if __name__ == "__main__":
 
     # Calculate energies for each structure
     E = np.zeros(Ndata)
-    F = np.zeros((Ndata, 2*5))
+    F = np.zeros((Ndata, 2*Natoms))
     for i in range(Ndata):
         E[i], grad = doubleLJ(X[i], eps, r0, sigma)
         F[i, :] = -grad
@@ -207,7 +206,7 @@ if __name__ == "__main__":
     # Train model
     comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
-    krr.fit(Etrain, Gtrain, reg=reg)
+    krr.fit(E, G, reg=reg)
 
     """ gridSearch
     GSkwargs = {'reg': np.logspace(-7, -4, 10), 'sigma': np.logspace(-1, 2, 20)}
@@ -223,18 +222,18 @@ if __name__ == "__main__":
     Fpredx = np.zeros(Npoints)
     Ftestx = np.zeros(Npoints)
     Xtest0 = X[-1]
-    Xtest = np.zeros((Npoints, 10))
+    Xtest = np.zeros((Npoints, 2*Natoms))
 
     Gtest = np.zeros((Npoints, G.shape[1]))
     
-    delta_array = np.linspace(-3.5, 0.5, Npoints)
+    delta_array = np.linspace(-2, 2, Npoints)
     for i in range(Npoints):
         delta = delta_array[i]
         Xtest[i] = Xtest0
-        pertub = np.array([delta, 0])
+        pertub = np.array([delta, 1])
         pertub_rot = np.array([np.cos(theta) * pertub[0] - np.sin(theta) * pertub[1],
                                np.sin(theta) * pertub[0] + np.cos(theta) * pertub[1]])
-        Xtest[i, -2:] += pertub_rot
+        Xtest[i, -2:] = pertub_rot
 
         Gtest[i] = featureCalculator.get_singleFeature(Xtest[i])
         
@@ -242,48 +241,38 @@ if __name__ == "__main__":
         Ftest = -gradtest
         Epredict[i] = krr.predict_energy(pos=Xtest[i])
         Ftestx[i] = np.cos(theta) * Ftest[-2] + np.cos(np.pi/2 - theta) * Ftest[-1]
-
-        # Fpred = krr.predict_force()
-        # Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
+        
+        Fpred = krr.predict_force()
+        Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
 
     dx = delta_array[1] - delta_array[0]
     Ffinite = (Epredict[:-1] - Epredict[1:])/dx
 
     plt.figure(1)
-    # plt.plot(delta_array, Ftestx, color='c')
-    # plt.plot(delta_array, Fpredx, color='y')
-    # plt.plot(delta_array[1:]-dx/2, Ffinite, color='g')
+    plt.plot(delta_array, Ftestx, color='c')
+    plt.plot(delta_array, Fpredx, color='y')
+    plt.plot(delta_array[1:]-dx/2, Ffinite, color='g', linestyle=':')
     plt.plot(delta_array, Etest)
     plt.plot(delta_array, Epredict, color='r')
-    plt.scatter(np.linspace(-1.5, 0, Ndata), np.zeros(Ndata)-12, s=10)
+
     plt.figure(3)
     plt.plot(np.arange(G.shape[1]), G.T)
 
+    """
     similarityMat = comparator.get_similarity_matrix(G)
     plt.figure(4)
     plt.pcolor(1-similarityMat, antialiaseds=True)
     plt.colorbar()
-
-    fig = plt.figure(5)
-    ax = fig.gca(projection='3d')
-
-    # Make data
-    Xax = np.linspace(0, 100, G.shape[1])
-    Yax = np.linspace(-3.5, 0.5, Npoints)
-    Xax, Yax = np.meshgrid(Xax, Yax)
+    """
     
-    # Plot the surface.
-    surf = ax.plot_surface(Xax, Yax, Gtest, cmap=cm.coolwarm,
-                           linewidth=0, antialiased=False)
-
     plt.figure(6)
-    plt.plot(delta_array, Gtest[:,20])
+    plt.plot(delta_array, Gtest[:,9])
     
     # Plot first structure
     plt.figure(2)
     plt.plot(Xtest[:, -2], Xtest[:, -1], color='r')
     
-    x = X[-1].reshape((5, 2))
+    x = X[-1].reshape((Natoms, 2))
     plt.scatter(x[:, 0], x[:, 1])
     plt.gca().set_aspect('equal', adjustable='box')
     plt.show()

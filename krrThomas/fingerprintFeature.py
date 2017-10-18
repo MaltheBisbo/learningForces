@@ -3,7 +3,7 @@ from scipy.spatial.distance import euclidean
 from scipy.special import erf
 
 class fingerprintFeature():
-    def __init__(self, X=None, rcut=4, binwidth=0.05, sigma=0.2, nsigma=4):
+    def __init__(self, X=None, rcut=4, binwidth=0.1, sigma=0.2, nsigma=4):
         """
         --input--
         X:                                                                                                                                     Contains data. Each row tepresents a structure given by cartesian coordinates
@@ -42,26 +42,40 @@ class fingerprintFeature():
         --input--
         x: atomic positions for a single structure in the form [x1, y1, ... , xN, yN]
         """
-        Natoms = int(x.shape[0])
-        gamma = Natoms*(Natoms-1)/2
             
         R = self.radiusVector(x)
         # filter distances longer than rcut + nsigma*sigma
         R = R[R <= self.rcut + self.nsigma*self.sigma]
         # Number of atoms within this radius
-        N_within = R.shape[0]
-        
+        N_within = R.shape[0] + 1
+
         fingerprint = np.zeros(self.Nbins)
         for deltaR in R:
             rbin = int(np.floor(deltaR/self.binwidth))
-            for i in range(-self.m, self.m+1):
-                newbin = rbin + i
+            binpos = (deltaR % self.binwidth) / self.binwidth  # From 0 to binwidth (set constant at 0.5*binwidth for original)
+            rabove = int(binpos > 0.5)
+            
+            # Lower and upper range of bins affected by the current atomic distance deltaR.
+            minbin_lim = -self.m-(1-rabove)
+            maxbin_lim = self.m+1+rabove
+            for i in range(minbin_lim, maxbin_lim):
+                newbin = rbin + i  # maybe abs() to make negative bins contribute aswell.
                 if newbin < 0 or newbin >= self.Nbins:
                     continue
-
+                
                 c = 0.25*np.sqrt(2)*self.binwidth*1./self.sigma
-                value = 0.5*erf(c*(2*i+1))-0.5*erf(c*(2*i-1))
-		# divide by smearing_norm
+                if i == minbin_lim:
+                    erfarg_low = -(self.m+0.5)
+                    erfarg_up = i+(1-binpos)
+                elif i == maxbin_lim:
+                    erfarg_low = i-binpos
+                    erfarg_up =	self.m+0.5
+                else:
+                    erfarg_low = i-binpos
+                    erfarg_up =	i+(1-binpos)
+                value = 0.5*erf(2*c*erfarg_up)-0.5*erf(2*c*erfarg_low)
+                        
+                # divide by smearing_norm
                 value /= self.smearing_norm
                 value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * 0.5*N_within*(N_within-1)
                 fingerprint[newbin] += value
@@ -78,6 +92,65 @@ class fingerprintFeature():
         featureMat = np.array([self.get_singleFeature(x) for x in X])
         return featureMat
 
+    def get_singleGradient(self, x):
+        """
+        --input--
+        x: atomic positions for a single structure in the form [x1, y1, ... , xN, yN]
+        """
+        Natoms = int(x.shape[0]/2)
+
+        R, dxMat, indexMat = self.radiusVector_grad(x)
+        # filter distances longer than rcut + nsigma*sigma
+        R = R[R <= self.rcut + self.nsigma*self.sigma]
+        # Number of atoms within this radius
+        N_within = R.shape[0] + 1
+
+        fingerprint_grad = np.zeros((self.Nbins, 2*Natoms))
+        for deltaR, dx, index in zip(R, dxMat, indexMat):
+            rbin = int(np.floor(deltaR/self.binwidth))
+            binpos = (deltaR % self.binwidth) / self.binwidth  # From 0 to binwidth (set constant at 0.5*binwidth for original)
+            rabove = int(binpos > 0.5)
+
+            # Lower and upper range of bins affected by the current atomic distance deltaR.
+            minbin_lim = -self.m-(1-rabove)
+            maxbin_lim = self.m+1+rabove
+            for i in range(minbin_lim, maxbin_lim):
+                newbin = rbin + i  # maybe abs() to make negative bins contribute aswell.
+                if newbin < 0 or newbin >= self.Nbins:
+                    continue
+
+                c = 0.25*np.sqrt(2)*self.binwidth*1./self.sigma
+                if i == minbin_lim:
+                    arg_low = -(self.m+0.5)
+                    arg_up = i+(1-binpos)
+                elif i == maxbin_lim:
+                    arg_low = i-binpos
+                    arg_up = self.m+0.5
+                else:
+                    arg_low = i-binpos
+                    arg_up = i+(1-binpos)
+                value1 = -1./deltaR*(erf(2*c*arg_up)-erf(2*c*arg_low))
+                value2 = -2*(np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))  # 2 in front..
+                value = value1 + value2
+
+                # divide by smearing_norm
+                value /= self.smearing_norm
+                value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * 0.5*N_within*(N_within-1)
+                fingerprint_grad[newbin, 2*index[0]:2*index[0]+2] += value/deltaR*dx
+                fingerprint_grad[newbin, 2*index[1]:2*index[1]+2] += -value/deltaR*dx
+        return fingerprint_grad
+
+    def get_gradientMat(self, X):
+        """
+        Calculated the feature=gradient matrix based on a position matrix 'X'.
+        ---input---
+        X:
+        Position matrix with each row 'x' containing the atomic coordinates of
+        a structure. x = [x0,y0,x1,y1, ...].
+        """
+        feature_gradMat = np.array([self.get_singleGradient(x) for x in X])
+        return feature_gradMat
+        
     def radiusMatrix(self, x):
         """
         Calculates the matrix consisting of all pairwise euclidean distances.
@@ -103,3 +176,23 @@ class fingerprintFeature():
                 Rvec[k] = euclidean(x[i],x[j])
                 k += 1
         return Rvec
+
+    def radiusVector_grad(self, x):
+        """
+        Calculates the vector consisting of all pairwise euclidean distances.
+        """
+        Ndim = 2
+        Natoms = int(x.shape[0]/2)
+        Ndistances = int(Natoms*(Natoms-1)/2)
+        x = x.reshape((Natoms, Ndim))
+        Rvec = np.zeros(Ndistances)
+        dxMat = np.zeros((Ndistances, Ndim))
+        indexMat = np.zeros((Ndistances, Ndim)).astype(int)
+        k = 0
+        for i in range(Natoms):
+            for j in range(i+1, Natoms):
+                Rvec[k] = euclidean(x[i],x[j])
+                dxMat[k,:] = np.array([x[i,0] - x[j,0] , x[i,1] - x[j,1]])
+                indexMat[k,:] = np.array([i,j])
+                k += 1
+        return Rvec, dxMat, indexMat

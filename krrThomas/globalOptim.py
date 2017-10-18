@@ -96,7 +96,7 @@ class globalOptim():
         self.Xbest = self.X
         k = 0
         for i in range(self.Niter):
-            if  False:  # self.ksaved > self.Ntest_array[self.testCounter]:
+            if True:  # self.ksaved > self.Ntest_array[self.testCounter]:
                 print('ksaved=', self.ksaved)
                 self.testCounter += 1
                 self.trainModel()
@@ -105,7 +105,7 @@ class globalOptim():
                 Enew, Xnew = self.relax(Xnew_unrelaxed)
                 ErelML, XrelML = self.relax(Xnew_unrelaxed, ML=True)
                 ErelML_relax, XrelML_relax = self.relax(XrelML)
-                #self.plotStructures(Xnew, XrelML, Xnew_unrelaxed)
+                self.plotStructures(Xnew, XrelML, Xnew_unrelaxed)
                 ErelMLTrue = self.Efun(XrelML)
                 # Data for relaxed energies
                 self.ErelML.append(ErelML)
@@ -123,8 +123,6 @@ class globalOptim():
             else:
                 Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
                 Enew, Xnew = self.relax(Xnew_unrelaxed)
-
-            print(self.ksaved)    
 
             dE = Enew - self.E
             if dE <= 0:  # Accept better structure
@@ -148,7 +146,8 @@ class globalOptim():
                 break
             # print('E=', self.E)
 
-            if self.ksaved > 1500:  # self.testCounter > 29:
+            # if self.ksaved > 1500:
+            if self.testCounter > 29:
                 break
         
     def makeInitialStructure(self):
@@ -247,10 +246,10 @@ class globalOptim():
         return Eperturb, Xperturb
 
     def trainModel(self):
-        self.MLmodel.fit(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved])
-        #GSkwargs = {'reg': np.logspace(-6, -3, 5), 'sigma': np.logspace(-1, 1, 5)}
-        #MAE, params = self.MLmodel.gridSearch(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved], **GSkwargs)
-        #print('sigma:', params['sigma'], 'reg:', params['reg'])
+        #self.MLmodel.fit(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved])
+        GSkwargs = {'reg': np.logspace(-7, -7, 1), 'sigma': np.logspace(0, 2, 5)}
+        MAE, params = self.MLmodel.gridSearch(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved], **GSkwargs)
+        print('sigma:', params['sigma'], 'reg:', params['reg'])
         
     def relax(self, X=None, ML=False):
         ## determine which model to use for potential ##
@@ -328,5 +327,5 @@ class globalOptim():
         plt.scatter(x2, y2, s=22, color='b')
         plt.scatter(x3, y3, s=22, color='g', marker='x')
         plt.gca().set_aspect('equal', adjustable='box')
-        plt.pause(4)
+        plt.pause(2)
         
