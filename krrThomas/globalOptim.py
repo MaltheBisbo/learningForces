@@ -40,7 +40,7 @@ class globalOptim():
     the search is terminated.
     """
     def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=5,
-                 maxIterLocal=10, fracPerturb=0.4, radiusRange = [0.9, 1.5]):
+                 maxIterLocal=10, fracPerturb=0.4, radiusRange = [0.9, 1.5], stat=False):
         self.Efun = Efun
         self.gradfun = gradfun
         self.MLmodel = MLmodel
@@ -64,32 +64,10 @@ class globalOptim():
         self.Esaved = np.zeros(4000)
         # initialize index to keep track of the ammount of data saved
         self.ksaved = 0
-        
-        ### Statistics ###
-        # Function evaluations
-        self.Nfeval = 0
-        # Predicted energy of structure relaxed with ML model
-        self.ErelML = []
-        # Energy of structure relaxed with true potential
-        self.ErelTrue = []
-        # True energy of resulting from relaxation with ML model
-        self.ErelMLTrue = []
-        # Energy of structure relaxed with ML model followed by relaxation with true potential
-        self.E2rel = []
-        # Predicted energy of unrelaxed structure
-        self.EunrelML = []
-        # Energy of unrelaxed structure
-        self.Eunrel = []
-        # All force components of unrelaxed structure (ML)
-        self.FunrelML = []
-        # All force components of unrelaxed structure (True)
-        self.FunrelTrue = []
-        # The number of training data used
-        self.ktrain = []
 
-        self.testCounter = 0
-        self.Ntest_array = np.logspace(1, 3, 30)
-        
+        if stat:
+            self.initializeStatistics()
+            
     def runOptimizer(self):
         self.makeInitialStructure()
         self.Ebest = self.E
@@ -101,20 +79,26 @@ class globalOptim():
                 self.testCounter += 1
                 self.trainModel()
                 self.ktrain.append(self.ksaved)
+                # New unrelaxed structure
                 Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+                # relax with true potential
                 Enew, Xnew = self.relax(Xnew_unrelaxed)
+                # relax with ML potential
                 ErelML, XrelML = self.relax(Xnew_unrelaxed, ML=True)
                 ErelML_relax, XrelML_relax = self.relax(XrelML)
                 self.plotStructures(Xnew, XrelML, Xnew_unrelaxed)
                 ErelMLTrue = self.Efun(XrelML)
+
                 # Data for relaxed energies
                 self.ErelML.append(ErelML)
                 self.ErelMLTrue.append(ErelMLTrue)
                 self.ErelTrue.append(Enew)
                 self.E2rel.append(ErelML_relax)
+
                 # Data for unrelaxed energies
                 self.Eunrel.append(Enew_unrelaxed)
                 self.EunrelML.append(self.MLmodel.predict_energy(pos=Xnew_unrelaxed))
+
                 # Data for unrelaxed forces
                 FnewML = self.MLmodel.predict_force(pos=Xnew_unrelaxed)
                 FnewTrue = -self.gradfun(Xnew_unrelaxed)
@@ -328,4 +312,32 @@ class globalOptim():
         plt.scatter(x3, y3, s=22, color='g', marker='x')
         plt.gca().set_aspect('equal', adjustable='box')
         plt.pause(2)
-        
+
+    def initializeStatistics(self):
+        ### Statistics ###
+        # Function evaluations
+        self.Nfeval = 0
+        # Predicted energy of structure relaxed with ML model
+        self.ErelML = []
+        # Energy of structure relaxed with true potential
+        self.ErelTrue = []
+        # True energy of resulting from relaxation with ML model
+        self.ErelMLTrue = []
+        # Energy of structure relaxed with ML model followed by relaxation with true potential
+        self.E2rel = []
+        # Predicted energy of unrelaxed structure
+        self.EunrelML = []
+        # Energy of unrelaxed structure
+        self.Eunrel = []
+        # All force components of unrelaxed structure (ML)
+        self.FunrelML = []
+        # All force components of unrelaxed structure (True)
+        self.FunrelTrue = []
+        # The number of training data used
+        self.ktrain = []
+
+        self.testCounter = 0
+        self.Ntest_array = np.logspace(1, 3, 30)
+
+    
+    
