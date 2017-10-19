@@ -76,7 +76,7 @@ def energyLC():
     plt.show()
 
 def energyANDforceLC():
-    np.random.seed(455)
+    #np.random.seed(455)
     Ndata = 1500
     Natoms = 7
     
