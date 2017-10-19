@@ -35,7 +35,7 @@ def mainML():
     comparator = gaussComparator(sigma=sig)
     featureCalculator = fingerprintFeature()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
-    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=200, Nstag=400, sigma=1, maxIterLocal=3)
+    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=200, Nstag=400, sigma=1, maxIterLocal=3, stat=True)
     optim.runOptimizer()
 
     GSkwargs = {'reg': [reg], 'sigma': [sig]}
@@ -215,7 +215,8 @@ def energyANDforceLC_searchData():
     for i in range(Ndata):
         E[i], grad = doubleLJ(X[i], eps, r0, sigma)
         F[i] = -grad
-
+    plt.hist(E, range=(-33,0))
+    plt.show()
     NpointsLC = 10
     Ndata_array = np.logspace(1,3,NpointsLC).astype(int)
     FVU_energy_array = np.zeros(NpointsLC)

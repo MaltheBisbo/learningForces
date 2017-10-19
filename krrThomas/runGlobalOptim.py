@@ -37,17 +37,33 @@ def testLocalMinimizer():
 
 
 def main():
+    Natoms = 7
     def Efun(X):
         params = (1.5, 1, np.sqrt(0.02))
         return doubleLJ_energy(X, params[0], params[1], params[2])
     def gradfun(X):
         params = (1.5, 1, np.sqrt(0.02))
         return doubleLJ_gradient(X, params[0], params[1], params[2])
-    optim = globalOptim(Efun, gradfun, Natoms=13, dmax=1.5, Niter=1000, Nstag=30, sigma=0.5, maxIterLocal=5)
+    
+    boxsize = 1.5 * np.sqrt(Natoms)
+    bounds = [(0, boxsize)] * Natoms * 2
+    options = {'maxiter': 70}  # , 'gtol': 1e-3}
+    def localMinimizer(X):
+        res = minimize(Efun, X, method="L-BFGS-B", jac=gradfun, tol=1e-5,
+                       bounds=bounds)  # , options=options)
+        return res.fun
+    
+    optim = globalOptim(Efun, gradfun, Natoms=7, dmax=2.5, Niter=20, Nstag=200, sigma=1, maxIterLocal=3)
     optim.runOptimizer()
-    print('Esaved:\n', optim.Esaved[:optim.ksaved])
-    print('best E:', optim.Ebest)
-    plotStructure(optim.Xbest)
+    Esaved = optim.Esaved[:optim.ksaved]
+    Erelaxed = np.array([localMinimizer(x) for x in optim.Xsaved[:optim.ksaved]])
+    EsavedCheck = np.array([Efun(x) for x in optim.Xsaved[:optim.ksaved]])
+    # print(np.c_[Esaved, Erelaxed])
+    plt.figure(1)
+    plt.plot(np.arange(optim.ksaved), Esaved)
+    plt.plot(np.arange(optim.ksaved), Erelaxed)
+    
+    #plotStructure(optim.Xbest)
     plt.show()
 
 def mainML():
@@ -63,7 +79,7 @@ def mainML():
     comparator = gaussComparator(sigma=sig)
     featureCalculator = bob_features()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
-    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=200, Nstag=400, sigma=1, maxIterLocal=3)
+    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=200, Nstag=400, sigma=1, maxIterLocal=3, stat=True)
     optim.runOptimizer()
 
     GSkwargs = {'reg': [reg], 'sigma': [sig]}
@@ -369,7 +385,8 @@ def mainEnergyAndForceCurve():
 
             
 if __name__ == '__main__':
+    main()
     #mainML()
     #mainTestLearning()
-    energyANDforceLC_searchData()
+    #energyANDforceLC_searchData()
     #mainEnergyAndForceCurve()
