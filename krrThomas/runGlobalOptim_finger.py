@@ -134,7 +134,11 @@ def mainTestLearning():
             Ntest = 10  # int(max(10, np.round(Ntrain/5)))
             posTrain = optimData[i, :Ntrain]
             posTest = optimData[i, Ntrain:Ntrain+Ntest]
-            krr.fit(E[:Ntrain], positionMat=posTrain)
+            #krr.fit(E[:Ntrain], positionMat=posTrain)
+
+            GSkwargs = {'reg': [1e-6], 'sigma': np.logspace(-0, 2, 5)}
+            MAE, params = krr.gridSearch(E[:Ntrain], positionMat=posTrain, disp=True, **GSkwargs)  
+
             Etest = E[Ntrain:Ntrain+Ntest]
             Ftest = F[Ntrain:Ntrain+Ntest]
             FVU_energy[n] += krr.get_FVU_energy(Etest, positionMat=posTest)
@@ -343,6 +347,6 @@ def mainEnergyAndForceCurve():
             
 if __name__ == '__main__':
     #mainML()
-    #mainTestLearning()
-    energyANDforceLC_searchData()
+    mainTestLearning()
+    #energyANDforceLC_searchData()
     #mainEnergyAndForceCurve()

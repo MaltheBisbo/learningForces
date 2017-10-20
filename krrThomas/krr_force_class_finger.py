@@ -104,7 +104,7 @@ class krr_force_class():
             i_train = np.r_[i_train1, i_train2]
             self.fit(data_vectors[i_train], positionMat[i_train], reg=reg)
             FVU[ik, :] = self.get_FVU_force(data_vectors[i_test], positionMat[i_test])
-        print(FVU)
+
         return np.mean(FVU, axis=0)
 
     def gridSearch(self, data_vectors, positionMat, k=3, **GSkwargs):
@@ -114,6 +114,7 @@ class krr_force_class():
         Nreg = len(reg_array)
         best_args = np.zeros(2).astype(int)
         FVU_min = None
+        FVU_all_min = None
         for i in range(Nsigma):
             self.comparator.set_args(sigma=sigma_array[i])
             for j in range(Nreg):
@@ -122,13 +123,14 @@ class krr_force_class():
                 print('FVU:', FVU,'params: (', sigma_array[i],',', reg_array[j], ')')
                 if FVU_min is None or FVU < FVU_min:
                     FVU_min = FVU
+                    FVU_all_min = FVU_all
                     best_args = np.array([i, j])
         sigma_best = sigma_array[best_args[0]]
         reg_best = reg_array[best_args[1]]
         # Train with best parameters using all data
         self.comparator.set_args(sigma=sigma_best)
         self.fit(data_vectors, positionMat, reg=reg_best)
-        return FVU_min, {'sigma': sigma_best, 'reg': reg_best}
+        return FVU_all_min, {'sigma': sigma_best, 'reg': reg_best}
 
     def get_FVU_energy(self, data_values, featureMat):
         Epred = np.array([self.predict_energy(f) for f in featureMat])
