@@ -211,7 +211,7 @@ def energyANDforceLC_searchData():
                         Niter=200, Nstag=400, sigma=1, maxIterLocal=3)
     optim.runOptimizer()
     X = optim.Xsaved[:Ndata]
-    
+    X = np.random.perturbation(X)
     G = featureCalculator.get_featureMat(X)
     
     E = np.zeros(Ndata)
