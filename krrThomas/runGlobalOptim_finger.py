@@ -35,7 +35,7 @@ def mainML():
     comparator = gaussComparator(sigma=sig)
     featureCalculator = fingerprintFeature()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, reg=reg)
-    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=200, Nstag=400, sigma=1, maxIterLocal=3)
+    optim = globalOptim(Efun, gradfun, krr, Natoms=7, dmax=2.5, Niter=200, Nstag=400, sigma=1, maxIterLocal=3, stat=True)
     optim.runOptimizer()
 
     GSkwargs = {'reg': [reg], 'sigma': [sig]}
@@ -134,7 +134,11 @@ def mainTestLearning():
             Ntest = 10  # int(max(10, np.round(Ntrain/5)))
             posTrain = optimData[i, :Ntrain]
             posTest = optimData[i, Ntrain:Ntrain+Ntest]
-            krr.fit(E[:Ntrain], positionMat=posTrain)
+            #krr.fit(E[:Ntrain], positionMat=posTrain)
+
+            GSkwargs = {'reg': [1e-6], 'sigma': np.logspace(-0, 2, 5)}
+            MAE, params = krr.gridSearch(E[:Ntrain], positionMat=posTrain, disp=True, **GSkwargs)  
+
             Etest = E[Ntrain:Ntrain+Ntest]
             Ftest = F[Ntrain:Ntrain+Ntest]
             FVU_energy[n] += krr.get_FVU_energy(Etest, positionMat=posTest)
@@ -180,7 +184,7 @@ def calcFVU_force(FtrueMat, FpredMat):
 
 
 def energyANDforceLC_searchData():
-    # np.random.seed(455)
+    np.random.seed(111)
     Ndata = 1500
     Natoms = 7
 
@@ -215,7 +219,7 @@ def energyANDforceLC_searchData():
     for i in range(Ndata):
         E[i], grad = doubleLJ(X[i], eps, r0, sigma)
         F[i] = -grad
-
+    
     NpointsLC = 10
     Ndata_array = np.logspace(1,3,NpointsLC).astype(int)
     FVU_energy_array = np.zeros(NpointsLC)
@@ -230,11 +234,21 @@ def energyANDforceLC_searchData():
         print(FVU_energy_array[i])
         #print(FVU_force_array[i])
 
-    np.savetxt('LC_finger_N7_search2.txt', np.c_[Ndata_array, FVU_energy_array, FVU_force_array], delimiter='\t')
+    #np.savetxt('EandFsearch.txt', np.c_[E, F], delimiter='\t')
+    #np.savetxt('Xsearch.txt', X, delimiter='\t')
+    #np.savetxt('LC_finger_N7_search2.txt', np.c_[Ndata_array, FVU_energy_array, FVU_force_array], delimiter='\t')
     plt.figure(1)
+    plt.title('Energy learning curve')
     plt.loglog(Ndata_array, FVU_energy_array)
+    plt.xlabel('# training data')
+    plt.ylabel('unexplained variance')
     plt.figure(2)
+    plt.title('Energy learning curve')
     plt.loglog(Ndata_array, FVU_force_array)
+    plt.xlabel('# training data')
+    plt.ylabel('unexplained variance')
+    plt.figure(3)
+    plt.hist(E, range=(-33,0))
     plt.show()
 
 
@@ -242,7 +256,7 @@ def mainEnergyAndForceCurve():
     #np.random.seed(455)
     Ndata = 1000
     Natoms = 7
-
+    
     # parameters for potential
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
     params = (eps, r0, sigma)
@@ -275,15 +289,24 @@ def mainEnergyAndForceCurve():
         E[i], grad = doubleLJ(X[i], eps, r0, sigma)
         F[i] = -grad
 
-    Xtrain = X[:-1]
-    Xtest = X[-1]
-    Etrain = E[:-1]
-    Etest = E[-1]
+    kperturb = np.array(optim.kperturb).astype(int)
+    Nperturb = len(kperturb[kperturb < Ndata])
+    iall = np.arange(Ndata).astype(int)
+    itest = kperturb[Nperturb-4]
+    print('itest:', itest)
+    itrain = iall[:itest]
+    #itrain = iall[iall != itest]
+    
+    Xtrain = X[itrain]
+    Xtest = X[itest]
+    Etrain = E[itrain]
+    Etest = E[itest]
     krr.fit(Etrain, positionMat=Xtrain)
 
     Npoints = 1000
     dx_array = np.linspace(-0.05, 0.05, Npoints)
     dx_diff = dx_array[1]-dx_array[0]
+    
     # choose coordinate to perturb
     i_perturb = 0
     ei = np.zeros(2*Natoms)

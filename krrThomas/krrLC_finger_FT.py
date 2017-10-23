@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from krr_class2 import krr_class
+from krr_force_class_finger import krr_force_class
 from doubleLJ import doubleLJ
 from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
@@ -34,50 +34,9 @@ def makeConstrainedStructure(Natoms):
                 break
     return Xinit
 
-def energyLC():
-    np.random.seed(111)
-    Ndata = 1000
-    Natoms = 7
-
-    # parameters for potential
-    eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
-    params = (eps, r0, sigma)
-
-    # parameters for kernel and regression
-    reg = 1e-5
-    sig = 30
-    
-    X = np.array([makeConstrainedStructure(Natoms) for i in range(Ndata)])
-    featureCalculator = fingerprintFeature()
-    G = featureCalculator.get_featureMat(X)
-
-    comparator = gaussComparator(sigma=sig)
-    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
-    
-    E = np.zeros(Ndata)
-    F = np.zeros((Ndata, 2*Natoms))
-    for i in range(Ndata):
-        E[i], F[i] = doubleLJ(X[i], eps, r0, sigma)
-
-    NpointsLC = 10
-    Ndata_array = np.logspace(1,2,NpointsLC).astype(int)
-    FVU_array = np.zeros(NpointsLC)
-    for i in range(NpointsLC):
-        N = Ndata_array[i]
-        Esub = E[:N]
-        Gsub = G[:N]
-        t0 = time.time()
-        FVU_array[i] = krr.cross_validation(Esub, Gsub, reg=reg)
-        print('dt:', time.time() - t0)
-        print(FVU_array[i])
-
-    np.savetxt('LC_bob_N7_3.txt', np.c_[Ndata_array, FVU_array], delimiter='\t')
-    plt.loglog(Ndata_array, FVU_array)
-    plt.show()
-
 def energyANDforceLC():
-    #np.random.seed(455)
-    Ndata = 1500
+    # np.random.seed(455)
+    Ndata = 300
     Natoms = 7
     
     # parameters for potential
@@ -86,14 +45,14 @@ def energyANDforceLC():
 
     # parameters for kernel and regression
     reg = 1e-7
-    sig = 30
+    sig = 3
     
     X = np.array([makeConstrainedStructure(Natoms) for i in range(Ndata)])
     featureCalculator = fingerprintFeature()
     G = featureCalculator.get_featureMat(X)
 
     comparator = gaussComparator(sigma=sig)
-    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
+    krr = krr_force_class(comparator=comparator, featureCalculator=featureCalculator)
 
     E = np.zeros(Ndata)
     F = np.zeros((Ndata, 2*Natoms))
@@ -102,7 +61,7 @@ def energyANDforceLC():
         F[i] = -grad
 
     NpointsLC = 10
-    Ndata_array = np.logspace(1,3,NpointsLC).astype(int)
+    Ndata_array = np.logspace(1,2,NpointsLC).astype(int)
     FVU_energy_array = np.zeros(NpointsLC)
     FVU_force_array = np.zeros((NpointsLC, 2*Natoms))
     for i in range(NpointsLC):
@@ -112,21 +71,20 @@ def energyANDforceLC():
         Xsub = X[:N]
         Gsub = G[:N]
         t0 = time.time()
-        FVU_energy_array[i], FVU_force_array[i, :] = krr.cross_validation_EandF(Esub, Fsub, Gsub, Xsub, reg=reg)
+        #FVU_force_array[i,:] = krr.cross_validation(Fsub, Xsub, reg=reg)
+        GSkwargs = {'sigma': np.logspace(0,2,5), 'reg': [1e-7]}
+        FVU_force_array[i,:], _ = krr.gridSearch(Fsub, Xsub, **GSkwargs)
         print('dt:', time.time() - t0)
-        print(FVU_energy_array[i])
+        print(FVU_force_array[i])
 
-    np.savetxt('LC_bob_gauss_N7.txt', np.c_[Ndata_array, FVU_energy_array, FVU_force_array], delimiter='\t')
-    plt.figure(1)
-    plt.title('Energy learning curve (random structures)')
-    plt.loglog(Ndata_array, FVU_energy_array)
-    plt.xlabel('# training data')
-    plt.ylabel('unexplained variance')
+    np.savetxt('LC_bob_FT.txt', np.c_[Ndata_array, FVU_force_array], delimiter='\t')
     plt.figure(2)
-    plt.title('Force learning curve (random structures)')
+    plt.title('Force learning curve (Model trained on forces)')
+    #plt.loglog(Ndata_array, np.mean(FVU_force_array, axis=1))
     plt.loglog(Ndata_array, FVU_force_array)
     plt.xlabel('# training data')
-    plt.ylabel('unexplained variance')
+    plt.ylabel('mean FVU')
+    # plt.ylim([10**(-2), 10**(-0.6)])
     plt.show()
 
 if __name__ == "__main__":

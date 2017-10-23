@@ -1,0 +1,19 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from globalOptim import globalOptim
+from scipy.optimize import minimize
+from doubleLJ import doubleLJ, doubleLJ_energy, doubleLJ_gradient
+from fingerprintFeature import fingerprintFeature
+from eksponentialComparator import eksponentialComparator
+from gaussComparator import gaussComparator
+from krr_class2 import krr_class
+
+def main():
+    X = np.loadtxt('Xsearch.txt', delimiter='\t')
+    E_F = np.loadtxt('EandFsearch.txt', delimiter='\t')
+    E = E_F[:,0]
+    F = E_F[:,1:]
+    Ndata = len(E)
+    plt.figure(1)
+    plt.plot(np.arange(Ndata), E)
+    
