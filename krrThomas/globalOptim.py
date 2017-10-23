@@ -68,6 +68,8 @@ class globalOptim():
         self.stat = stat
         if stat:
             self.initializeStatistics()
+
+        self.kperturb = []
             
     def runOptimizer(self):
         self.makeInitialStructure()
@@ -206,6 +208,7 @@ class globalOptim():
         self.Xsaved[self.ksaved] = Xperturb
         self.Esaved[self.ksaved] = Eperturb
         self.ksaved += 1
+        self.kperturb.append(self.ksaved)
         
         return Eperturb, Xperturb
 
@@ -321,7 +324,7 @@ class globalOptim():
         self.testCounter = 0
         self.NtestPoints = 10
         self.Ntest_array = np.logspace(1, 3, self.NtestPoints)
-
+        
     def saveStatistics(self):
         print('ksaved=', self.ksaved)
         

@@ -35,7 +35,7 @@ def makeConstrainedStructure(Natoms):
     return Xinit
 
 def energyLC():
-    np.random.seed(455)
+    np.random.seed(111)
     Ndata = 1000
     Natoms = 7
 
@@ -118,9 +118,15 @@ def energyANDforceLC():
 
     np.savetxt('LC_bob_gauss_N7.txt', np.c_[Ndata_array, FVU_energy_array, FVU_force_array], delimiter='\t')
     plt.figure(1)
+    plt.title('Energy learning curve (random structures)')
     plt.loglog(Ndata_array, FVU_energy_array)
+    plt.xlabel('# training data')
+    plt.ylabel('unexplained variance')
     plt.figure(2)
+    plt.title('Force learning curve (random structures)')
     plt.loglog(Ndata_array, FVU_force_array)
+    plt.xlabel('# training data')
+    plt.ylabel('unexplained variance')
     plt.show()
 
 if __name__ == "__main__":
