@@ -1,10 +1,6 @@
 import numpy as np
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
-from matplotlib import cm
 from doubleLJ import doubleLJ
 from fingerprintFeature import fingerprintFeature
-from eksponentialComparator import eksponentialComparator
 from gaussComparator import gaussComparator
 
 class krr_class():
@@ -93,7 +89,7 @@ class krr_class():
         for ik in range(k):
             [i_train1, i_test, i_train2] = np.split(np.arange(Ndata),
                                                     [Ntest * ik, Ntest * (ik+1)])
-            print('index:', ik)
+            #print('index:', ik)
             i_train = np.r_[i_train1, i_train2]
             self.fit(energy[i_train], featureMat[i_train], reg=reg)
             FVU_energy[ik] = self.get_FVU_energy(energy[i_test], featureMat[i_test])
@@ -127,6 +123,35 @@ class krr_class():
         self.comparator.set_args(sigma=sigma_best)
         self.fit(data_values, featureMat, reg=reg_best)
         return FVU_min, {'sigma': sigma_best, 'reg': reg_best}
+
+    def gridSearch_EandF(self, energy, force, featureMat=None, positionMat=None, k=3, disp=False, **GSkwargs):
+        if positionMat is not None and self.featureCalculator is not None:
+            featureMat = self.featureCalculator.get_featureMat(positionMat)
+        else:
+            assert featureMat is not None
+        sigma_array = GSkwargs['sigma']
+        reg_array = GSkwargs['reg']
+        Nsigma = len(sigma_array)
+        Nreg = len(reg_array)
+        best_args = np.zeros(2).astype(int)
+        FVU_energy_min = None
+        FVU_force_min = None
+        for i in range(Nsigma):
+            self.comparator.set_args(sigma=sigma_array[i])
+            for j in range(Nreg):
+                FVU_energy, FVU_force = self.cross_validation_EandF(energy, force, featureMat, positionMat, k=k, reg=reg_array[j])
+                if disp:
+                    print('FVU:', FVU,'params: (', sigma_array[i],',', reg_array[j], ')')
+                if FVU_energy_min is None or FVU_energy < FVU_energy_min:
+                    FVU_energy_min = FVU_energy
+                    FVU_force_min = FVU_force
+                    best_args = np.array([i, j])
+        sigma_best = sigma_array[best_args[0]]
+        reg_best = reg_array[best_args[1]]
+        # Train with best parameters using all data
+        self.comparator.set_args(sigma=sigma_best)
+        self.fit(energy, featureMat, reg=reg_best)
+        return FVU_energy_min, FVU_force_min, {'sigma': sigma_best, 'reg': reg_best}
 
     def get_FVU_energy(self, data_values, featureMat=None, positionMat=None):
         if featureMat is None:
@@ -176,6 +201,8 @@ def createData(Ndata, theta):
 
 
 if __name__ == "__main__":
+    import matplotlib.pyplot as plt
+
     Natoms = 4
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
@@ -258,13 +285,6 @@ if __name__ == "__main__":
     plt.figure(3)
     plt.plot(np.arange(G.shape[1]), G.T)
 
-    """
-    similarityMat = comparator.get_similarity_matrix(G)
-    plt.figure(4)
-    plt.pcolor(1-similarityMat, antialiaseds=True)
-    plt.colorbar()
-    """
-    
     plt.figure(6)
     plt.plot(delta_array, Gtest[:,9])
     

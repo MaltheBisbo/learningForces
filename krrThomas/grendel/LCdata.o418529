@@ -1,0 +1,30 @@
+
+
+Usage statistics:
+Command:  dispatch -T 1 -e ssh -SS -c 'python krrLC_finger_search_gr.py' 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+Nodename         Tasks   AccWalltime
+s12n06               8            15
+s12n07               8            13
+Total number of tasks run:       16
+Number of nodes/cpus:            2/16
+Total AccWalltime for all tasks: 28
+Total walltime for the job:      3
+P-factor:                        9.3
+
+Nodename  TaskID  Wallt[s]  Command
+s12n06        0          3  python krrLC_finger_search_gr.py 0
+s12n07        1          2  python krrLC_finger_search_gr.py 1
+s12n06        2          2  python krrLC_finger_search_gr.py 2
+s12n07        3          2  python krrLC_finger_search_gr.py 3
+s12n06        4          2  python krrLC_finger_search_gr.py 4
+s12n07        5          2  python krrLC_finger_search_gr.py 5
+s12n06        6          2  python krrLC_finger_search_gr.py 6
+s12n07        7          2  python krrLC_finger_search_gr.py 7
+s12n06        8          2  python krrLC_finger_search_gr.py 8
+s12n07        9          2  python krrLC_finger_search_gr.py 9
+s12n06       10          2  python krrLC_finger_search_gr.py 10
+s12n07       11          1  python krrLC_finger_search_gr.py 11
+s12n06       12          1  python krrLC_finger_search_gr.py 12
+s12n07       13          1  python krrLC_finger_search_gr.py 13
+s12n06       14          1  python krrLC_finger_search_gr.py 14
+s12n07       15          1  python krrLC_finger_search_gr.py 15

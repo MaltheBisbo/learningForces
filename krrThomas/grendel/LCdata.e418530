@@ -1,0 +1,96 @@
+/scratch/418530.in1/doubleLJ.py:56: RuntimeWarning: divide by zero encountered in double_scalars
+  E1 = 1/r**12 - 2/r**6
+/scratch/418530.in1/doubleLJ.py:56: RuntimeWarning: invalid value encountered in double_scalars
+  E1 = 1/r**12 - 2/r**6
+/scratch/418530.in1/doubleLJ.py:75: RuntimeWarning: divide by zero encountered in double_scalars
+  dEx1 = 12*dxij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:75: RuntimeWarning: invalid value encountered in double_scalars
+  dEx1 = 12*dxij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:76: RuntimeWarning: invalid value encountered in double_scalars
+  dEx2 = eps*(r-r0)*dxij / (r*sigma**2) * np.exp(-(r - r0)**2 / (2*sigma**2))
+/scratch/418530.in1/doubleLJ.py:78: RuntimeWarning: divide by zero encountered in double_scalars
+  dEy1 = 12*dyij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:78: RuntimeWarning: invalid value encountered in double_scalars
+  dEy1 = 12*dyij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:79: RuntimeWarning: invalid value encountered in double_scalars
+  dEy2 = eps*(r-r0)*dyij / (r*sigma**2) * np.exp(-(r - r0)**2 / (2*sigma**2))
+/scratch/418530.in1/doubleLJ.py:56: RuntimeWarning: divide by zero encountered in double_scalars
+  E1 = 1/r**12 - 2/r**6
+/scratch/418530.in1/doubleLJ.py:56: RuntimeWarning: invalid value encountered in double_scalars
+  E1 = 1/r**12 - 2/r**6
+/scratch/418530.in1/doubleLJ.py:75: RuntimeWarning: divide by zero encountered in double_scalars
+  dEx1 = 12*dxij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:75: RuntimeWarning: invalid value encountered in double_scalars
+  dEx1 = 12*dxij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:76: RuntimeWarning: invalid value encountered in double_scalars
+  dEx2 = eps*(r-r0)*dxij / (r*sigma**2) * np.exp(-(r - r0)**2 / (2*sigma**2))
+/scratch/418530.in1/doubleLJ.py:78: RuntimeWarning: divide by zero encountered in double_scalars
+  dEy1 = 12*dyij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:78: RuntimeWarning: invalid value encountered in double_scalars
+  dEy1 = 12*dyij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:79: RuntimeWarning: invalid value encountered in double_scalars
+  dEy2 = eps*(r-r0)*dyij / (r*sigma**2) * np.exp(-(r - r0)**2 / (2*sigma**2))
+/scratch/418530.in1/doubleLJ.py:56: RuntimeWarning: divide by zero encountered in double_scalars
+  E1 = 1/r**12 - 2/r**6
+/scratch/418530.in1/doubleLJ.py:56: RuntimeWarning: invalid value encountered in double_scalars
+  E1 = 1/r**12 - 2/r**6
+/scratch/418530.in1/doubleLJ.py:75: RuntimeWarning: divide by zero encountered in double_scalars
+  dEx1 = 12*dxij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:75: RuntimeWarning: invalid value encountered in double_scalars
+  dEx1 = 12*dxij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:76: RuntimeWarning: invalid value encountered in double_scalars
+  dEx2 = eps*(r-r0)*dxij / (r*sigma**2) * np.exp(-(r - r0)**2 / (2*sigma**2))
+/scratch/418530.in1/doubleLJ.py:78: RuntimeWarning: divide by zero encountered in double_scalars
+  dEy1 = 12*dyij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:78: RuntimeWarning: invalid value encountered in double_scalars
+  dEy1 = 12*dyij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:79: RuntimeWarning: invalid value encountered in double_scalars
+  dEy2 = eps*(r-r0)*dyij / (r*sigma**2) * np.exp(-(r - r0)**2 / (2*sigma**2))
+/scratch/418530.in1/doubleLJ.py:56: RuntimeWarning: divide by zero encountered in double_scalars
+  E1 = 1/r**12 - 2/r**6
+/scratch/418530.in1/doubleLJ.py:56: RuntimeWarning: invalid value encountered in double_scalars
+  E1 = 1/r**12 - 2/r**6
+/scratch/418530.in1/doubleLJ.py:75: RuntimeWarning: divide by zero encountered in double_scalars
+  dEx1 = 12*dxij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:75: RuntimeWarning: invalid value encountered in double_scalars
+  dEx1 = 12*dxij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:76: RuntimeWarning: invalid value encountered in double_scalars
+  dEx2 = eps*(r-r0)*dxij / (r*sigma**2) * np.exp(-(r - r0)**2 / (2*sigma**2))
+/scratch/418530.in1/doubleLJ.py:78: RuntimeWarning: divide by zero encountered in double_scalars
+  dEy1 = 12*dyij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:78: RuntimeWarning: invalid value encountered in double_scalars
+  dEy1 = 12*dyij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:79: RuntimeWarning: invalid value encountered in double_scalars
+  dEy2 = eps*(r-r0)*dyij / (r*sigma**2) * np.exp(-(r - r0)**2 / (2*sigma**2))
+/scratch/418530.in1/doubleLJ.py:56: RuntimeWarning: divide by zero encountered in double_scalars
+  E1 = 1/r**12 - 2/r**6
+/scratch/418530.in1/doubleLJ.py:56: RuntimeWarning: invalid value encountered in double_scalars
+  E1 = 1/r**12 - 2/r**6
+/scratch/418530.in1/doubleLJ.py:75: RuntimeWarning: divide by zero encountered in double_scalars
+  dEx1 = 12*dxij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:75: RuntimeWarning: invalid value encountered in double_scalars
+  dEx1 = 12*dxij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:76: RuntimeWarning: invalid value encountered in double_scalars
+  dEx2 = eps*(r-r0)*dxij / (r*sigma**2) * np.exp(-(r - r0)**2 / (2*sigma**2))
+/scratch/418530.in1/doubleLJ.py:78: RuntimeWarning: divide by zero encountered in double_scalars
+  dEy1 = 12*dyij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:78: RuntimeWarning: invalid value encountered in double_scalars
+  dEy1 = 12*dyij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:79: RuntimeWarning: invalid value encountered in double_scalars
+  dEy2 = eps*(r-r0)*dyij / (r*sigma**2) * np.exp(-(r - r0)**2 / (2*sigma**2))
+/scratch/418530.in1/doubleLJ.py:56: RuntimeWarning: divide by zero encountered in double_scalars
+  E1 = 1/r**12 - 2/r**6
+/scratch/418530.in1/doubleLJ.py:56: RuntimeWarning: invalid value encountered in double_scalars
+  E1 = 1/r**12 - 2/r**6
+/scratch/418530.in1/doubleLJ.py:75: RuntimeWarning: divide by zero encountered in double_scalars
+  dEx1 = 12*dxij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:75: RuntimeWarning: invalid value encountered in double_scalars
+  dEx1 = 12*dxij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:76: RuntimeWarning: invalid value encountered in double_scalars
+  dEx2 = eps*(r-r0)*dxij / (r*sigma**2) * np.exp(-(r - r0)**2 / (2*sigma**2))
+/scratch/418530.in1/doubleLJ.py:78: RuntimeWarning: divide by zero encountered in double_scalars
+  dEy1 = 12*dyij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:78: RuntimeWarning: invalid value encountered in double_scalars
+  dEy1 = 12*dyij*(-1 / r**14 + 1 / r**8)
+/scratch/418530.in1/doubleLJ.py:79: RuntimeWarning: invalid value encountered in double_scalars
+  dEy2 = eps*(r-r0)*dyij / (r*sigma**2) * np.exp(-(r - r0)**2 / (2*sigma**2))
