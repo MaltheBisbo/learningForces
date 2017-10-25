@@ -249,7 +249,7 @@ class globalOptim():
                 # Save training data
                 if np.isnan(res.fun):
                     print('NaN value during relaxation')
-                if res.fun < 0 and res.fun:  # < self.Esaved[self.ksaved-1] - 0.2:
+                if res.fun < 0:  # and res.fun < self.Esaved[self.ksaved-1] - 0.2:
                     self.Xsaved[self.ksaved] = res.x
                     self.Esaved[self.ksaved] = res.fun
                     self.ksaved += 1

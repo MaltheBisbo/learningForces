@@ -25,7 +25,11 @@ def doubleLJ(x, *params):
         for j in range(Natoms):
             r = np.sqrt(sp.dot(x[i] - x[j], x[i] - x[j]))
             if j > i:
-                E1 = 1/r**12 - 2/r**6
+                try:
+                    E1 = 1/r**12 - 2/r**6
+                except ZeroDivisionError:
+                    print('r:', r)
+                    E1 = 1/r**12 - 2/r**6
                 E2 = -eps * np.exp(-(r - r0)**2 / (2*sigma**2))
                 E += E1 + E2
             if j != i:
@@ -53,7 +57,11 @@ def doubleLJ_energy(x, *params):
         for j in range(Natoms):
             if j > i:
                 r = np.sqrt(sp.dot(x[i] - x[j], x[i] - x[j]))
-                E1 = 1/r**12 - 2/r**6
+                try:
+                    E1 = 1/r**12 - 2/r**6
+                except ZeroDivisionError:
+                    print('r:', r)
+                    E1 = 1/r**12 - 2/r**6
                 E2 = -eps * np.exp(-(r - r0)**2 / (2*sigma**2))
                 E += E1 + E2
     return E    
