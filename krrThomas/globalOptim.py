@@ -235,30 +235,53 @@ class globalOptim():
         else:
             # Use double Lennard-Johnes
             # Set up Minimizer
-            options = {'maxiter': self.maxIterLocal}  # , 'gtol': 1e-3}
-            def localMinimizer(X):
-                res = minimize(self.Efun, X, method="L-BFGS-B", jac=self.gradfun, tol=1e-5,
-                               bounds=self.bounds, options=options)
-                return res
+            def callback(x_cur):
+                global Xtraj
+                Xtraj.append(x_cur)
 
+            def localMinimizer(X):
+                global Xtraj
+                Xtraj = []
+                res = minimize(self.Efun, X, method="BFGS", jac=self.gradfun, tol=1e-5, callback=callback)
+                Xtraj = np.array(Xtraj)
+                return res, Xtraj
+
+        Nskip = 3
+        min_Ediff = 0.1
+        def trimData(Etraj):
+            Nstep = len(Etraj)
+            index = []
+            k = 0
+            Ecur = Etraj[0]
+            while k < Nstep:
+                if len(index) == 0:
+                    index.append(0)
+                    continue
+                elif Ecur - Etraj[k] > min_Ediff:
+                    index.append(k)
+                    Ecur = Etraj[k]
+                k += Nskip
+            index[-1] = Nstep - 1
+            return index
+            
         ## Run Local minimization ##
         if ML is False:
-            # Minimize using double-LJ potential + save trajectories
-            X0 = X.copy()
-            for i in range(100):
-                res = localMinimizer(X0)
-                # Save training data
-                if np.isnan(res.fun):
-                    print('NaN value during relaxation')
-                if res.fun < 0 and res.fun:  # < self.Esaved[self.ksaved-1] - 0.2:
-                    self.Xsaved[self.ksaved] = res.x
-                    self.Esaved[self.ksaved] = res.fun
-                    self.ksaved += 1
-                # print('Number of iterations:', res.nit, 'fev:', res.nfev)
-                if res.success: # Converged
-                    break
-                X0 = res.x
-            return self.Esaved[self.ksaved-1], self.Xsaved[self.ksaved-1]
+            # Relax
+            res, Xtraj = localMinimizer(X)
+            Etraj = np.array([self.Efun(x) for x in Xtraj])
+
+            # Extract subset of trajectory for training
+            trimIndices  = trimData(Etraj)
+            Xtrim = Xtraj[trimIndices]
+            Etrim = Etraj[trimIndices]
+
+            # Save new training data
+            Ntrim = len(trimIndices)
+            self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+            self.Esaved[self.ksaved : self.ksaved + Ntrim] = Etrim
+            self.ksaved += Ntrim
+
+            return res.fun, res.x
         else:
             # Minimize using ML potential
             res = localMinimizer(X)
@@ -359,3 +382,37 @@ class globalOptim():
         
         return Enew, Xnew
     
+    """
+    options = {'maxiter': self.maxIterLocal}  # , 'gtol': 1e-3}
+    def localMinimizer(X):
+        res = minimize(self.Efun, X, method="L-BFGS-B", jac=self.gradfun, tol=1e-5,
+                       bounds=self.bounds, options=options)
+        return res
+    """
+
+    """
+    if ML is False:
+            # Minimize using double-LJ potential + save trajectories
+            X0 = X.copy()
+            for i in range(100):
+                res = localMinimizer(X0)
+                # Save training data
+                if np.isnan(res.fun):
+                    print('NaN value during relaxation')
+                if res.fun < 0 and res.fun:  # < self.Esaved[self.ksaved-1] - 0.2:
+                    self.Xsaved[self.ksaved] = res.x
+                    self.Esaved[self.ksaved] = res.fun
+                    self.ksaved += 1
+                # print('Number of iterations:', res.nit, 'fev:', res.nfev)
+                if res.success: # Converged
+                    break
+                X0 = res.x
+            return self.Esaved[self.ksaved-1], self.Xsaved[self.ksaved-1]
+        else:
+            # Minimize using ML potential
+            res = localMinimizer(X)
+            print('Number of ML iterations:', res.nit, 'fev:', res.nfev)
+            print('Convergence status:', res.status)
+            print(res.message)
+            return res.fun, res.x
+    """

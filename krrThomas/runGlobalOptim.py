@@ -55,13 +55,14 @@ def main():
     
     optim = globalOptim(Efun, gradfun, Natoms=7, dmax=2.5, Niter=20, Nstag=200, sigma=1, maxIterLocal=3)
     optim.runOptimizer()
+
     Esaved = optim.Esaved[:optim.ksaved]
-    Erelaxed = np.array([localMinimizer(x) for x in optim.Xsaved[:optim.ksaved]])
+    #Erelaxed = np.array([localMinimizer(x) for x in optim.Xsaved[:optim.ksaved]])
     EsavedCheck = np.array([Efun(x) for x in optim.Xsaved[:optim.ksaved]])
     # print(np.c_[Esaved, Erelaxed])
     plt.figure(1)
     plt.plot(np.arange(optim.ksaved), Esaved)
-    plt.plot(np.arange(optim.ksaved), Erelaxed)
+    #plt.plot(np.arange(optim.ksaved), Erelaxed)
     
     #plotStructure(optim.Xbest)
     plt.show()
