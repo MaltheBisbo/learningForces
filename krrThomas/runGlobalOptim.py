@@ -35,7 +35,6 @@ def testLocalMinimizer():
     plt.show()
 
 
-
 def main():
     Natoms = 7
     def Efun(X):
@@ -53,7 +52,8 @@ def main():
                        bounds=bounds)  # , options=options)
         return res.fun
     
-    optim = globalOptim(Efun, gradfun, Natoms=7, dmax=2.5, Niter=20, Nstag=200, sigma=1, maxIterLocal=3)
+    optim = globalOptim(Efun, gradfun, Natoms=7, dmax=3.5, Niter=20,
+                        fracPerturb=0.4, Nstag=200, sigma=1, maxIterLocal=3)
     optim.runOptimizer()
 
     Esaved = optim.Esaved[:optim.ksaved]
