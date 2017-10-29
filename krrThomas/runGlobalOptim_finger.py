@@ -365,6 +365,6 @@ def mainEnergyAndForceCurve():
             
 if __name__ == '__main__':
     #mainML()
-    #mainTestLearning()
-    energyANDforceLC_searchData()
+    mainTestLearning()
+    #energyANDforceLC_searchData()
     #mainEnergyAndForceCurve()
