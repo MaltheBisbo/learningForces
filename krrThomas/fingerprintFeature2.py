@@ -3,7 +3,7 @@ from scipy.spatial.distance import euclidean
 from scipy.special import erf
 
 class fingerprintFeature():
-    def __init__(self, X=None, rcut=4, binwidth=0.1, sigma=0.2, nsigma=4):
+    def __init__(self, X=None, rcut=4, binwidth=0.1, sigma=0.2, nsigma=2):
         """
         --input--
         X:                                                                                                                                     Contains data. Each row tepresents a structure given by cartesian coordinates
@@ -30,8 +30,9 @@ class fingerprintFeature():
         self.nsigma = nsigma
 
         # parameters for the binning:
-        self.m = int(np.ceil(self.nsigma*self.sigma/self.binwidth))  # number of neighbour bins included.
-        self.smearing_norm = erf(0.25*np.sqrt(2)*self.binwidth*(2*self.m+1)*1./self.sigma)  # Integral of the included part of the gauss
+        self.width = self.nsigma*self.sigma/self.binwidth
+        #self.m = int(np.ceil(self.nsigma*self.sigma/self.binwidth))  # number of neighbour bins included.
+        self.smearing_norm = erf(0.25*np.sqrt(2)*self.binwidth*(2*self.width)*1./self.sigma)  # Integral of the included part of the gauss
         self.Nbins = int(np.ceil(rcut/binwidth))
 
         # Cutoff volume
@@ -53,30 +54,35 @@ class fingerprintFeature():
         for deltaR in R:
             rbin = int(np.floor(deltaR/self.binwidth))
             binpos = (deltaR % self.binwidth) / self.binwidth  # From 0 to binwidth (set constant at 0.5*binwidth for original)
-            rabove = int(binpos > 0.5)
 
+            below = (self.width - binpos) / self.binwidth
+            above = (self.width - (1 - binpos)) / self.binwidth
+            nbelow = int(np.ceil(below))
+            nabove = int(np.ceil(above))
+            fracLowest = below % self.binwidth
+            fracHighest = above % self.binwidth
+            
             # Lower and upper range of bins affected by the current atomic distance deltaR.
-            minbin_lim = -self.m-(1-rabove)
-            maxbin_lim = self.m+1+rabove
-            for i in range(minbin_lim, maxbin_lim):
+            for i in range(nbelow, nabove+1):
                 newbin = rbin + i  # maybe abs() to make negative bins contribute aswell.
                 if newbin < 0 or newbin >= self.Nbins:
                     continue
                 
                 c = 0.25*np.sqrt(2)*self.binwidth*1./self.sigma
-                if i == minbin_lim:
-                    erfarg_low = -(self.m+0.5)
+                if i == nbelow:
+                    erfarg_low = -self.width
                     erfarg_up = i+(1-binpos)
-                elif i == maxbin_lim:
+                elif i == nabove:
                     erfarg_low = i-binpos
-                    erfarg_up =	self.m+0.5
+                    erfarg_up = self.width
                 else:
                     erfarg_low = i-binpos
-                    erfarg_up =	i+(1-binpos)
+                    erfarg_up = i+(1-binpos)
                 value = 0.5*erf(2*c*erfarg_up)-0.5*erf(2*c*erfarg_low)
                         
                 # divide by smearing_norm
                 value /= self.smearing_norm
+                
                 value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * N_distances
                 #value *= f_cutoff
                 fingerprint[newbin] += value

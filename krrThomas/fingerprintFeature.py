@@ -67,12 +67,12 @@ class fingerprintFeature():
                 if i == minbin_lim:
                     erfarg_low = -(self.m+0.5)
                     erfarg_up = i+(1-binpos)
-                elif i == maxbin_lim:
+                elif i == maxbin_lim-1:
                     erfarg_low = i-binpos
-                    erfarg_up =	self.m+0.5
+                    erfarg_up = self.m+0.5
                 else:
                     erfarg_low = i-binpos
-                    erfarg_up =	i+(1-binpos)
+                    erfarg_up = i+(1-binpos)
                 value = 0.5*erf(2*c*erfarg_up)-0.5*erf(2*c*erfarg_low)
                         
                 # divide by smearing_norm

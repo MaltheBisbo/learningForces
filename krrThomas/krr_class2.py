@@ -216,7 +216,7 @@ if __name__ == "__main__":
     
     
     X = createData(Ndata, theta)
-    featureCalculator = fingerprintFeature(rcut=1.8)
+    featureCalculator = fingerprintFeature(rcut=4)
     G = featureCalculator.get_featureMat(X)
 
     # Calculate energies for each structure
@@ -286,7 +286,7 @@ if __name__ == "__main__":
     plt.plot(np.arange(G.shape[1]), G.T)
 
     plt.figure(4)
-    plt.plot(delta_array, Gtest[:,9])
+    plt.plot(delta_array, Gtest[:,:])
 
     xx = np.array([0,0,1,0,2,0,0,1])
     gg = featureCalculator.get_singleFeature(xx)
