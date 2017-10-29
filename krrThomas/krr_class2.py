@@ -216,7 +216,7 @@ if __name__ == "__main__":
     
     
     X = createData(Ndata, theta)
-    featureCalculator = fingerprintFeature()
+    featureCalculator = fingerprintFeature(rcut=4)
     G = featureCalculator.get_featureMat(X)
 
     # Calculate energies for each structure
@@ -243,7 +243,7 @@ if __name__ == "__main__":
     print('reg', params['reg'])
     """
 
-    Npoints = 1000
+    Npoints = 3001
     Etest = np.zeros(Npoints)
     Epredict = np.zeros(Npoints)
     Fpredx = np.zeros(Npoints)
@@ -253,7 +253,7 @@ if __name__ == "__main__":
 
     Gtest = np.zeros((Npoints, G.shape[1]))
     
-    delta_array = np.linspace(-2, 2, Npoints)
+    delta_array = np.linspace(-3, 3, Npoints)
     for i in range(Npoints):
         delta = delta_array[i]
         Xtest[i] = Xtest0
@@ -285,8 +285,14 @@ if __name__ == "__main__":
     plt.figure(3)
     plt.plot(np.arange(G.shape[1]), G.T)
 
-    plt.figure(6)
-    plt.plot(delta_array, Gtest[:,9])
+    plt.figure(4)
+    plt.plot(delta_array, Gtest[:,:])
+
+    xx = np.array([0,0,1,0,2,0,0,1])
+    gg = featureCalculator.get_singleFeature(xx)
+
+    plt.figure(5)
+    plt.plot(np.arange(len(gg)), gg)
     
     # Plot first structure
     plt.figure(2)

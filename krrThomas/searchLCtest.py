@@ -44,9 +44,9 @@ def main():
         Fpred[i, :] = np.array([krr.predict_force(pos=x) for x in X[Ntrain:Ntrain+Nnext]]).reshape(2*Natoms*Nnext)
         
 
-    np.savetxt('test_searchLC/MAEsearchLC.txt', MAE, delimiter='\t')
-    np.savetxt('test_searchLC/EpredSearchLC.txt', Epred, delimiter='\t')
-    np.savetxt('test_searchLC/FpredSearchLC.txt', Fpred, delimiter='\t')
+    np.savetxt('test_searchLC/MAEsearchLC2.txt', MAE, delimiter='\t')
+    np.savetxt('test_searchLC/EpredSearchLC2.txt', Epred, delimiter='\t')
+    np.savetxt('test_searchLC/FpredSearchLC2.txt', Fpred, delimiter='\t')
     """
     plt.figure(1)
     plt.plot(np.arange(Ndata), E)

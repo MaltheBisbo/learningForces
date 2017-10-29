@@ -3,7 +3,7 @@ from scipy.spatial.distance import euclidean
 from scipy.special import erf
 
 class fingerprintFeature():
-    def __init__(self, X=None, rcut=4, binwidth=0.1, sigma=0.2, nsigma=4):
+    def __init__(self, X=None, rcut=4, binwidth=0.1, sigma=0.2, nsigma=2):
         """
         --input--
         X:                                                                                                                                     Contains data. Each row tepresents a structure given by cartesian coordinates

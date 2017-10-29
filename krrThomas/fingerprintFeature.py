@@ -31,7 +31,7 @@ class fingerprintFeature():
 
         # parameters for the binning:
         self.m = int(np.ceil(self.nsigma*self.sigma/self.binwidth))  # number of neighbour bins included.
-        self.smearing_norm = erf(0.25*np.sqrt(2)*self.binwidth*(2*self.m+1)*1./self.sigma)  # Integral of the included part of the gauss.
+        self.smearing_norm = erf(0.25*np.sqrt(2)*self.binwidth*(2*self.m+1)*1./self.sigma)  # Integral of the included part of the gauss
         self.Nbins = int(np.ceil(rcut/binwidth))
 
         # Cutoff volume
@@ -42,19 +42,19 @@ class fingerprintFeature():
         --input--
         x: atomic positions for a single structure in the form [x1, y1, ... , xN, yN]
         """
-            
+        
         R = self.radiusVector(x)
+        # Number of interatomic distances in the structure
+        N_distances = R.shape[0]
         # filter distances longer than rcut + nsigma*sigma
         R = R[R <= self.rcut + self.nsigma*self.sigma]
-        # Number of atoms within this radius
-        N_within = R.shape[0] + 1
-
+        
         fingerprint = np.zeros(self.Nbins)
         for deltaR in R:
             rbin = int(np.floor(deltaR/self.binwidth))
             binpos = (deltaR % self.binwidth) / self.binwidth  # From 0 to binwidth (set constant at 0.5*binwidth for original)
             rabove = int(binpos > 0.5)
-            
+
             # Lower and upper range of bins affected by the current atomic distance deltaR.
             minbin_lim = -self.m-(1-rabove)
             maxbin_lim = self.m+1+rabove
@@ -67,17 +67,18 @@ class fingerprintFeature():
                 if i == minbin_lim:
                     erfarg_low = -(self.m+0.5)
                     erfarg_up = i+(1-binpos)
-                elif i == maxbin_lim:
+                elif i == maxbin_lim-1:
                     erfarg_low = i-binpos
-                    erfarg_up =	self.m+0.5
+                    erfarg_up = self.m+0.5
                 else:
                     erfarg_low = i-binpos
-                    erfarg_up =	i+(1-binpos)
+                    erfarg_up = i+(1-binpos)
                 value = 0.5*erf(2*c*erfarg_up)-0.5*erf(2*c*erfarg_low)
                         
                 # divide by smearing_norm
                 value /= self.smearing_norm
-                value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * 0.5*N_within*(N_within-1)
+                value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * N_distances
+                #value *= f_cutoff
                 fingerprint[newbin] += value
         return fingerprint
 
@@ -100,11 +101,14 @@ class fingerprintFeature():
         Natoms = int(x.shape[0]/2)
 
         R, dxMat, indexMat = self.radiusVector_grad(x)
+        # Number of interatomic distances in the structure
+        N_distances = R.shape[0]
         # filter distances longer than rcut + nsigma*sigma
-        R = R[R <= self.rcut + self.nsigma*self.sigma]
-        # Number of atoms within this radius
-        N_within = R.shape[0] + 1
-
+        filter = R <= self.rcut + self.nsigma*self.sigma
+        R = R[filter]
+        dxMat = dxMat[filter]
+        indexMat = indexMat[filter]
+        
         fingerprint_grad = np.zeros((self.Nbins, 2*Natoms))
         for deltaR, dx, index in zip(R, dxMat, indexMat):
             rbin = int(np.floor(deltaR/self.binwidth))
@@ -135,7 +139,9 @@ class fingerprintFeature():
 
                 # divide by smearing_norm
                 value /= self.smearing_norm
-                value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * 0.5*N_within*(N_within-1)
+                value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * N_distances
+
+                # Add to the the gradient matrix
                 fingerprint_grad[newbin, 2*index[0]:2*index[0]+2] += value/deltaR*dx
                 fingerprint_grad[newbin, 2*index[1]:2*index[1]+2] += -value/deltaR*dx
         return fingerprint_grad
