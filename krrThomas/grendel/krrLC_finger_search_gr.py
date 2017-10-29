@@ -1,5 +1,5 @@
 import numpy as np
-from globalOptim_gr import globalOptim
+from globalOptim_gr2 import globalOptim
 from scipy.optimize import minimize
 from doubleLJ import doubleLJ, doubleLJ_energy, doubleLJ_gradient
 from fingerprintFeature import fingerprintFeature
@@ -44,8 +44,8 @@ def energyANDforceLC_searchData(arg=1):
         E[i], grad = doubleLJ(X[i], eps, r0, sigma)
         F[i] = -grad
     
-    NpointsLC = 10
-    Ndata_array = np.logspace(1,2,NpointsLC).astype(int)
+    NpointsLC = 30
+    Ndata_array = np.logspace(1,3,NpointsLC).astype(int)
     FVU_energy_array = np.zeros(NpointsLC)
     FVU_force_array = np.zeros((NpointsLC, 2*Natoms))
     for i in range(NpointsLC):

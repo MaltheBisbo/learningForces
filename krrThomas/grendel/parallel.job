@@ -15,8 +15,8 @@
 #  Copy the inputfiles and the program to the local scratch-
 #  directory on each node. One set of files per executionnode!
 #  pbsdsh-flags: -s : one node at a time; -u : once on each node 
-pbsdsh -s -u cp $PBS_O_WORKDIR/krrLC_finger_search_gr.py  /scratch/$PBS_JOBID
-pbsdsh -s -u cp $PBS_O_WORKDIR/globalOptim_gr.py  /scratch/$PBS_JOBID
+pbsdsh -s -u cp $PBS_O_WORKDIR/krrLC_finger_random_gr.py  /scratch/$PBS_JOBID
+pbsdsh -s -u cp $PBS_O_WORKDIR/globalOptim_gr2.py  /scratch/$PBS_JOBID
 pbsdsh -s -u cp $PBS_O_WORKDIR/../krr_class2.py    /scratch/$PBS_JOBID
 pbsdsh -s -u cp $PBS_O_WORKDIR/../doubleLJ.py    /scratch/$PBS_JOBID
 pbsdsh -s -u cp $PBS_O_WORKDIR/../fingerprintFeature.py    /scratch/$PBS_JOBID
@@ -34,6 +34,6 @@ cd /scratch/$PBS_JOBID
 #             Remember to setup passwordless login!
 #  -SS :      Log runtime statistics for each subtask
 #  {0..9} : Specify arguments for the 9 subtasks: 0,...,9
-dispatch -T 1 -e ssh -SS -c "python krrLC_finger_search_gr.py" {0..79}
+dispatch -T 1 -e ssh -SS -c "python krrLC_finger_random_gr.py" {0..79}
 
-pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/*.dat  $PBS_O_WORKDIR/dataN7_finger_search_perm3/'
+pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/*.dat  $PBS_O_WORKDIR/dataN7_finger_random3/'
