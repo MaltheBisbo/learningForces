@@ -10,12 +10,12 @@
 #PBS -l walltime=100:00:00
 
 # set name of job
-#PBS -N gloPerBase
+#PBS -N gloPerformML
 
 #  Copy the inputfiles and the program to the local scratch-
 #  directory on each node. One set of files per executionnode!
 #  pbsdsh-flags: -s : one node at a time; -u : once on each node 
-pbsdsh -s -u cp $PBS_O_WORKDIR/../globalSearchBasecase.py  /scratch/$PBS_JOBID
+pbsdsh -s -u cp $PBS_O_WORKDIR/../globalSearchMLenhanced.py  /scratch/$PBS_JOBID
 pbsdsh -s -u cp $PBS_O_WORKDIR/../globalOptim.py  /scratch/$PBS_JOBID
 pbsdsh -s -u cp $PBS_O_WORKDIR/../krr_class2.py    /scratch/$PBS_JOBID
 pbsdsh -s -u cp $PBS_O_WORKDIR/../doubleLJ.py    /scratch/$PBS_JOBID
@@ -34,6 +34,6 @@ cd /scratch/$PBS_JOBID
 #             Remember to setup passwordless login!
 #  -SS :      Log runtime statistics for each subtask
 #  {0..9} : Specify arguments for the 9 subtasks: 0,...,9
-dispatch -T 1 -e ssh -SS -c "python globalSearchBasecase.py" {0..199}
+dispatch -T 1 -e ssh -SS -c "python globalSearchMLenhanced.py" {0..199}
 
-pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/*.txt  $PBS_O_WORKDIR/basecase_data/'
+pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/*.txt  $PBS_O_WORKDIR/MLenhanced_data/'
