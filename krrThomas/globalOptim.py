@@ -99,6 +99,9 @@ class globalOptim():
         # Initialize counters for function evaluations
         self.Nfev = 0
         self.Nfev_array = np.zeros(Niter)
+
+        # Save number of accepted ML-relaxations
+        self.NacceptedML = 0
         
         # For extracting statistics (Only for testing)
         self.stat = stat
@@ -143,6 +146,7 @@ class globalOptim():
                     # Accept ML-relaxed structure based on precision criteria
                     if abs(EnewML - EnewML_true) < self.MLerrorMargin:
                         Enew, Xnew = EnewML_true, XnewML
+                        self.NacceptedML += 1
                     else:
                         Enew, Xnew = self.relax(Xnew_unrelaxed)
                 else:
