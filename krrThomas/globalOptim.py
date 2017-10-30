@@ -38,9 +38,24 @@ class globalOptim():
     Nstag:
     Max number of iterations without accepting new structure before
     the search is terminated.
+
+    saveStep:
+    if saveStep=3, every third point in the relaxation trajectory is used for training, and so on..
+
+    min_saveDifference:
+    Defines the energy which a new trajectory point has to be lover than the previous, to be saved for training.
+
+    fracPerturb:
+    The fraction of the atoms which are ratteled to create a new structure.
+
+    radiusRange:
+    Range [rmin, rmax] constraining the initial and perturbed structures. All atoms need to be atleast a
+    distance rmin from each other, and have atleast one neighbour less than rmax away.
+
     """
-    def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=5,
-                 maxIterLocal=10, fracPerturb=0.4, radiusRange = [0.9, 1.5], stat=False):
+    def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=10,
+                 saveStep=3, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, fracPerturb=0.4,
+                 radiusRange = [0.9, 1.5], stat=False):
         self.Efun = Efun
         self.gradfun = gradfun
         self.MLmodel = MLmodel
@@ -54,7 +69,10 @@ class globalOptim():
         self.Niter = Niter
         self.sigma = sigma
         self.Nstag = Nstag
-        self.maxIterLocal = maxIterLocal
+        self.saveStep = saveStep
+        self.min_saveDifference = min_saveDifference
+        self.MLerrorMargin = MLerrorMargin
+        self.NstartML = NstartML
         self.Nperturb = max(2, int(np.ceil(self.Natoms*fracPerturb)))
         self.rmin, self.rmax = radiusRange
 
@@ -77,10 +95,30 @@ class globalOptim():
         self.Xbest = self.X
         k = 0
         for i in range(self.Niter):
-            if self.stat and self.ksaved > self.Ntest_array[self.testCounter]:
-                Enew, Xnew = self.saveStatistics()
+            # Perturb current best structure to make new candidate
+            Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+
+            # Use MLmodel to relax - if it excists
+            if self.MLmodel is not None:
+
+                # If sufficient training data use ML model
+                if self.ksaved > self.NstartML:
+
+                    # Train ML model + ML-relaxation
+                    self.trainModel()
+                    EnewML, XnewML = self.relax(Xnew_unrelaxed, ML=True)
+
+                    # Target energy of relaxed structure
+                    EnewML_true = self.Efun(XnewML)
+
+                    # Accept ML-relaxed structure based on precision criteria
+                    if abs(EnewML - EnewML_true) < self.MLerrorMargin:
+                        Enew, Xnew = EnewML, XnewML
+                    else:
+                        Enew, Xnew = self.relax(Xnew_unrelaxed)
+                else:
+                    Enew, Xnew = self.relax(Xnew_unrelaxed)
             else:
-                Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
                 Enew, Xnew = self.relax(Xnew_unrelaxed)
 
             dE = Enew - self.E
@@ -216,7 +254,7 @@ class globalOptim():
         #self.MLmodel.fit(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved])
         GSkwargs = {'reg': np.logspace(-7, -7, 1), 'sigma': np.logspace(0, 2, 5)}
         MAE, params = self.MLmodel.gridSearch(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved], **GSkwargs)
-        print('sigma:', params['sigma'], 'reg:', params['reg'])
+        #print('sigma:', params['sigma'], 'reg:', params['reg'])
         
     def relax(self, X=None, ML=False):
         ## determine which model to use for potential ##
@@ -246,8 +284,7 @@ class globalOptim():
                 Xtraj = np.array(Xtraj)
                 return res, Xtraj
 
-        Nskip = 3
-        min_Ediff = 0.1
+        # Define function that extracts the subset, of the relaxation trajectory, relevant for training.
         def trimData(Etraj):
             Nstep = len(Etraj)
             index = []
@@ -257,10 +294,10 @@ class globalOptim():
                 if len(index) == 0:
                     index.append(0)
                     continue
-                elif Ecur - Etraj[k] > min_Ediff:
+                elif Ecur - Etraj[k] > self.min_saveDifference:
                     index.append(k)
                     Ecur = Etraj[k]
-                k += Nskip
+                k += self.saveStep
             index[-1] = Nstep - 1
             return index
             
