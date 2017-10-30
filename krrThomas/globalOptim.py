@@ -44,6 +44,16 @@ class globalOptim():
 
     min_saveDifference:
     Defines the energy which a new trajectory point has to be lover than the previous, to be saved for training.
+    
+    MLerrorMargin:
+    Maximum error differende between the ML-relaxed structure and the target energy of the same structure, 
+    below which the ML structure is accepted.
+
+    NstartML:
+    The Number of training data required for the ML-model to be used.
+
+    maxNtrain:
+    The maximum number of training data. When above this, some of the oldest training data is removed.
 
     fracPerturb:
     The fraction of the atoms which are ratteled to create a new structure.
@@ -54,7 +64,7 @@ class globalOptim():
 
     """
     def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=10,
-                 saveStep=3, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, fracPerturb=0.4,
+                 saveStep=3, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, maxNtrain=1e3, fracPerturb=0.4,
                  radiusRange = [0.9, 1.5], stat=False):
         self.Efun = Efun
         self.gradfun = gradfun
@@ -73,6 +83,7 @@ class globalOptim():
         self.min_saveDifference = min_saveDifference
         self.MLerrorMargin = MLerrorMargin
         self.NstartML = NstartML
+        self.maxNtrain = int(maxNtrain)
         self.Nperturb = max(2, int(np.ceil(self.Natoms*fracPerturb)))
         self.rmin, self.rmax = radiusRange
 
@@ -82,18 +93,29 @@ class globalOptim():
         # initialize counter to keep track of the ammount of data saved
         self.ksaved = 0
 
+        # Initialize array containing Energies of all relaxed structures
+        self.Erelaxed = np.zeros(Niter)
+
+        # Initialize counters for function evaluations
+        self.Nfev = 0
+        self.Nfev_array = np.zeros(Niter)
+        
         # For extracting statistics (Only for testing)
         self.stat = stat
         if stat:
             self.initializeStatistics()
 
-        self.kperturb = []
-            
     def runOptimizer(self):
         self.makeInitialStructure()
         self.Ebest = self.E
         self.Xbest = self.X
         k = 0
+        
+        # Save stuff for performance curve
+        self.Erelaxed[0] = self.E
+        self.Nfev_array[0] = self.Nfev
+
+        # Run global search
         for i in range(self.Niter):
             # Perturb current best structure to make new candidate
             Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
@@ -104,6 +126,13 @@ class globalOptim():
                 # If sufficient training data use ML model
                 if self.ksaved > self.NstartML:
 
+                    # Reduce training data - If there is too much
+                    if self.ksaved > 1.1*self.maxNtrain:
+                        Nremove = self.ksaved - self.maxNtrain
+                        self.Xsaved = self.Xsaved[Nremove:]
+                        self.Esaved = self.Esaved[Nremove:]
+                        self.ksaved = self.maxNtrain
+                    
                     # Train ML model + ML-relaxation
                     self.trainModel()
                     EnewML, XnewML = self.relax(Xnew_unrelaxed, ML=True)
@@ -113,7 +142,7 @@ class globalOptim():
 
                     # Accept ML-relaxed structure based on precision criteria
                     if abs(EnewML - EnewML_true) < self.MLerrorMargin:
-                        Enew, Xnew = EnewML, XnewML
+                        Enew, Xnew = EnewML_true, XnewML
                     else:
                         Enew, Xnew = self.relax(Xnew_unrelaxed)
                 else:
@@ -137,19 +166,24 @@ class globalOptim():
                     k = 0
                 else:  # Reject structure
                     k += 1
+
+            # Save stuff for performance curve
+            self.Erelaxed[i] = self.E
+            self.Nfev_array[i] = self.Nfev
             
             if k >= self.Nstag:  # The search has converged or stagnated.
                 print('The convergence/stagnation criteria was reached')
                 break
 
-            
+            """
             # Other termination criterias (for testing)
             if self.stat:
                 if self.testCounter > self.NtestPoints-1:
                     break
             if self.ksaved > 1500:
                 break
-        
+            """
+            
     def makeInitialStructure(self):
         """
         Generates an initial structure by placing an atom one at a time inside
@@ -246,7 +280,6 @@ class globalOptim():
         self.Xsaved[self.ksaved] = Xperturb
         self.Esaved[self.ksaved] = Eperturb
         self.ksaved += 1
-        self.kperturb.append(self.ksaved)
         
         return Eperturb, Xperturb
 
@@ -317,6 +350,9 @@ class globalOptim():
             self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
             self.Esaved[self.ksaved : self.ksaved + Ntrim] = Etrim
             self.ksaved += Ntrim
+
+            # Count number of function evaluations
+            self.Nfev += res.nfev
 
             return res.fun, res.x
         else:
