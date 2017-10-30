@@ -120,6 +120,7 @@ class globalOptim():
 
         # Run global search
         for i in range(self.Niter):
+            print("progress: {}/{}\r".format(i+1, self.Niter), end='')
             # Perturb current best structure to make new candidate
             Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
 
@@ -139,7 +140,7 @@ class globalOptim():
                     # Train ML model + ML-relaxation
                     self.trainModel()
                     EnewML, XnewML = self.relax(Xnew_unrelaxed, ML=True)
-
+                    
                     # Target energy of relaxed structure
                     EnewML_true = self.Efun(XnewML)
 
@@ -304,8 +305,7 @@ class globalOptim():
             # Set up minimizer
             options = {'gtol': 1e-5}
             def localMinimizer(X):
-                res = minimize(Efun, X, method="L-BFGS-B", jac=gradfun,
-                               bounds=self.bounds, options=options)
+                res = minimize(Efun, X, method="BFGS", jac=gradfun, tol=1e-5)
                 return res
         else:
             # Use double Lennard-Johnes
@@ -321,7 +321,7 @@ class globalOptim():
                 Xtraj = np.array(Xtraj)
                 return res, Xtraj
 
-        # Define function that extracts the subset, of the relaxation trajectory, relevant for training.
+        # Function that extracts the subset, of the relaxation trajectory, relevant for training.
         def trimData(Etraj):
             Nstep = len(Etraj)
             index = []
@@ -362,9 +362,6 @@ class globalOptim():
         else:
             # Minimize using ML potential
             res = localMinimizer(X)
-            print('Number of ML iterations:', res.nit, 'fev:', res.nfev)
-            print('Convergence status:', res.status)
-            print(res.message)
             return res.fun, res.x
 
     def artificialPotential(self, x):

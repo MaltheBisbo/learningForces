@@ -5,10 +5,10 @@ from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
 from krr_class2 import krr_class
 import sys
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 def main(arg=1):
-    Natoms = 7
+    Natoms = 19
 
     # parameters for potential
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
@@ -25,7 +25,7 @@ def main(arg=1):
         params = (1.8, 1.1, np.sqrt(0.02))
         return doubleLJ_gradient(X, params[0], params[1], params[2])
 
-    Niter = 100
+    Niter = 30
     featureCalculator = fingerprintFeature()
     comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
@@ -55,7 +55,8 @@ def main(arg=1):
     print('Training data saved:', optim.ksaved)
 
     np.savetxt('performance_base' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
-    
+
+    """
     plt.figure(1)
     plt.title('Groundstate for 19 atoms')
     plt.scatter(Xbest[0::2], Xbest[1::2])
@@ -63,7 +64,7 @@ def main(arg=1):
     plt.ylabel('y')
     plt.gca().set_aspect('equal', adjustable='box')
     plt.show()
-    
+    """
 if __name__ == '__main__':
     arg = int(sys.argv[1])
     main(arg)
