@@ -25,7 +25,7 @@ def main(arg=1):
         params = (1.8, 1.1, np.sqrt(0.02))
         return doubleLJ_gradient(X, params[0], params[1], params[2])
 
-    Niter = 100
+    Niter = 200
     featureCalculator = fingerprintFeature()
     comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
@@ -35,21 +35,23 @@ def main(arg=1):
     optim.runOptimizer()
     Ebest = optim.Ebest
     Xbest = optim.Xbest
-    print(optim.Erelaxed)
-    print('Ebest:', Ebest)
-    index_groundstate = np.arange(Niter)[optim.Erelaxed < -64]
+    #print(optim.Erelaxed)
+    #print('Ebest:', Ebest)
+    index_groundstate = np.arange(Niter)[optim.Erelaxed < -113.2]
     if len(index_groundstate) == 0:
-        index_done = np.nan
+        Niter_done = np.nan
+        Nfev_done = np.nan
+        E_done = np.nan
     else:
         index_done = index_groundstate[0]
-    Niter_done = int(index_done + 1)
-    Nfev_done = optim.Nfev_array[index_done]
-    E_done = optim.Erelaxed[index_done]
+        Niter_done = int(index_done + 1)
+        Nfev_done = optim.Nfev_array[index_done]
+        E_done = optim.Erelaxed[index_done]
 
-    print('Niter_done:', Niter_done)
-    print('Nfev_done:', Nfev_done)
-    print('Total function evaluations:', optim.Nfev_array[-1])
-    print('Training data saved:', optim.ksaved)
+    #print('Niter_done:', Niter_done)
+    #print('Nfev_done:', Nfev_done)
+    #print('Total function evaluations:', optim.Nfev_array[-1])
+    #print('Training data saved:', optim.ksaved)
 
     np.savetxt('performance_base' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
     """
