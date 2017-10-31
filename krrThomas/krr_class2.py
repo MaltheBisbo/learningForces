@@ -4,34 +4,44 @@ from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
 
 class krr_class():
-    def __init__(self, featureCalculator=None, comparator=None, reg=1e-5, **comparator_kwargs):
+    """
+    comparator:
+    Class to calculate similarities between structures based on their feature vectors.
+    The comparator coresponds to the choice of kernel for the model
+
+    featureCalculator:
+    Class to calculate the features of structures based on the atomic positions of the structures.
+
+    reg:
+    Regularization parameter for the model
+
+    comparator_kwargs:
+    Parameters for the compator. This could be the width for the gaussian kernel.
+    """
+    def __init__(self, comparator, featureCalculator, reg=1e-5, **comparator_kwargs):
         self.featureCalculator = featureCalculator
         self.comparator = comparator
         self.comparator.set_args(**comparator_kwargs)
         self.reg = reg
 
-        assert self.comparator is not None
-
     def fit(self, data_values, featureMat=None, positionMat=None, reg=None):
         self.data_values = data_values
 
-        # calculate features from positions if they are not given
+        # Calculate features from positions if they are not given
         if featureMat is not None:
             self.featureMat = featureMat
-        elif positionMat is not None and self.featureCalculator is not None:
-            self.featureMat = self.featureCalculator.get_featureMat(positionMat)
         else:
-            print("You need to set the feature matrix or both the position matrix and a feature calculator")
+            self.featureMat = self.featureCalculator.get_featureMat(positionMat)
 
         if reg is not None:
             self.reg = reg
+        
         self.similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
 
         self.beta = np.mean(data_values)
 
         A = self.similarityMat + self.reg*np.identity(self.data_values.shape[0])
-
-        #self.alpha = np.linalg.inv(A).dot(self.data_values-self.beta)
+        
         self.alpha = np.linalg.solve(A, self.data_values - self.beta)
 
     def predict_energy(self, fnew=None, pos=None):
@@ -39,7 +49,6 @@ class krr_class():
             self.fnew = fnew
         else:
             self.pos = pos
-            assert self.featureCalculator is not None
             self.fnew = self.featureCalculator.get_singleFeature(x=self.pos)
 
         self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
@@ -49,7 +58,6 @@ class krr_class():
     def predict_force(self, pos=None, fnew=None):
         if pos is not None:
             self.pos = pos
-            assert self.featureCalculator is not None
             self.fnew = self.featureCalculator.get_singleFeature(self.pos)
             self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
 
