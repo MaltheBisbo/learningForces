@@ -35,8 +35,8 @@ def main(arg=1):
     optim.runOptimizer()
     Ebest = optim.Ebest
     Xbest = optim.Xbest
-    #print(optim.Erelaxed)
-    #print('Ebest:', Ebest)
+    # print(optim.Erelaxed)
+    # print('Ebest:', Ebest)
     index_groundstate = np.arange(Niter)[optim.Erelaxed < -113.2]
     if len(index_groundstate) == 0:
         Niter_done = np.nan
