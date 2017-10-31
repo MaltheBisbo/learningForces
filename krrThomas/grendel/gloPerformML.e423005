@@ -1,0 +1,846 @@
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+Traceback (most recent call last):
+  File "globalSearchMLenhanced.py", line 70, in <module>
+    main(arg)
+  File "globalSearchMLenhanced.py", line 57, in main
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+UnboundLocalError: local variable 'E_done' referenced before assignment
+cp: cannot stat `/scratch/423005.in1/*.txt': No such file or directory
+pbsdsh: task 8 exit status 1
+cp: cannot stat `/scratch/423005.in1/*.txt': No such file or directory
+pbsdsh: task 11 exit status 1
+cp: cannot stat `/scratch/423005.in1/*.txt': No such file or directory
+pbsdsh: task 23 exit status 1
