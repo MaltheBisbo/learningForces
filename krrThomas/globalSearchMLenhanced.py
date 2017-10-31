@@ -39,9 +39,9 @@ def main(arg=1):
     #print('Ebest:', Ebest)
     index_groundstate = np.arange(Niter)[optim.Erelaxed < -113.2]
     if len(index_groundstate) == 0:
-        index_done = np.nan
         Niter_done = np.nan
         Nfev_done = np.nan
+        E_done = np.nan
     else:
         index_done = index_groundstate[0]
         Niter_done = int(index_done + 1)
