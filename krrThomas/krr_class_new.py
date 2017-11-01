@@ -55,7 +55,7 @@ class krr_class():
 
         return self.similarityVec.dot(self.alpha) + self.beta
 
-    def predict_force(self, pos=None, fnew=None):
+    def predict_force(self, pos, fnew=None):
         if pos is not None:
             self.pos = pos
             self.fnew = self.featureCalculator.get_singleFeature(self.pos)
@@ -106,10 +106,9 @@ class krr_class():
         return np.mean(FVU_energy), np.mean(FVU_force, axis=0)
 
     def gridSearch(self, data_values, featureMat=None, positionMat=None, k=3, disp=False, **GSkwargs):
-        if positionMat is not None and self.featureCalculator is not None:
+        if featureMat is None:
             featureMat = self.featureCalculator.get_featureMat(positionMat)
-        else:
-            assert featureMat is not None
+
         sigma_array = GSkwargs['sigma']
         reg_array = GSkwargs['reg']
         Nsigma = len(sigma_array)
@@ -179,136 +178,4 @@ class krr_class():
         MSE_force = np.mean((Fpred - force)**2, axis=0)
         var_force = np.var(force, axis=0)        
         return MSE_force / var_force
-    
-
-def createData(Ndata, theta):
-    # Define fixed points
-    x1 = np.array([-1, 0, 1])
-    x2 = np.array([0, 0, 0])
-
-    # rotate ficed coordinates
-    x1rot = np.cos(theta) * x1 - np.sin(theta) * x2
-    x2rot = np.sin(theta) * x1 + np.cos(theta) * x2
-    xrot = np.c_[x1rot, x2rot].reshape((1, 2*x1rot.shape[0]))
-
-    # Define an array of positions for the last pointB
-    # xnew = np.c_[np.random.rand(Ndata)+0.5, np.random.rand(Ndata)+1]
-    x1new = np.linspace(0, 1.5, Ndata)
-    x2new = np.ones(Ndata)
-
-    # rotate new coordinates
-    x1new_rot = np.cos(theta) * x1new - np.sin(theta) * x2new
-    x2new_rot = np.sin(theta) * x1new + np.cos(theta) * x2new
-
-    xnew_rot = np.c_[x1new_rot, x2new_rot]
-
-    # Make X matrix with rows beeing the coordinates for each point in a structure.
-    # row example: [x1, y1, x2, y2, ...]
-    X = np.c_[np.repeat(xrot, Ndata, axis=0), xnew_rot]
-    return X
-
-
-if __name__ == "__main__":
-    import matplotlib.pyplot as plt
-
-    Natoms = 4
-    eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
-
-    Ndata = 8
-    reg = 1e-7  # expKernel: 0.005 , gaussKernel: 1e-7
-    sig = 30  # expKernel: 0.3 , gaussKernel: 0.13
-
-    theta = 0*np.pi
-
-    # Set feature parameters
-    
-    
-    X = createData(Ndata, theta)
-    featureCalculator = fingerprintFeature(rcut=4)
-    G = featureCalculator.get_featureMat(X)
-
-    # Calculate energies for each structure
-    E = np.zeros(Ndata)
-    F = np.zeros((Ndata, 2*Natoms))
-    for i in range(Ndata):
-        E[i], grad = doubleLJ(X[i], eps, r0, sigma)
-        F[i, :] = -grad
-
-    Gtrain = G[:-1]
-    Etrain = E[:-1]
-    beta = np.mean(Etrain)
-
-    # Train model
-    comparator = gaussComparator(sigma=sig)
-    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
-    krr.fit(E, G, reg=reg)
-
-    """ gridSearch
-    GSkwargs = {'reg': np.logspace(-7, -4, 10), 'sigma': np.logspace(-1, 2, 20)}
-    print(Etrain.shape, Gtrain.shape)
-    MAE, params = krr.gridSearch(Etrain, Gtrain, disp=True, **GSkwargs)
-    print('sigma', params['sigma'])
-    print('reg', params['reg'])
-    """
-
-    Npoints = 3001
-    Etest = np.zeros(Npoints)
-    Epredict = np.zeros(Npoints)
-    Fpredx = np.zeros(Npoints)
-    Ftestx = np.zeros(Npoints)
-    Xtest0 = X[-1]
-    Xtest = np.zeros((Npoints, 2*Natoms))
-
-    Gtest = np.zeros((Npoints, G.shape[1]))
-    
-    delta_array = np.linspace(-3, 3, Npoints)
-    for i in range(Npoints):
-        delta = delta_array[i]
-        Xtest[i] = Xtest0
-        pertub = np.array([delta, 1])
-        pertub_rot = np.array([np.cos(theta) * pertub[0] - np.sin(theta) * pertub[1],
-                               np.sin(theta) * pertub[0] + np.cos(theta) * pertub[1]])
-        Xtest[i, -2:] = pertub_rot
-
-        Gtest[i] = featureCalculator.get_singleFeature(Xtest[i])
-        
-        Etest[i], gradtest = doubleLJ(Xtest[i], eps, r0, sigma)
-        Ftest = -gradtest
-        Epredict[i] = krr.predict_energy(pos=Xtest[i])
-        Ftestx[i] = np.cos(theta) * Ftest[-2] + np.cos(np.pi/2 - theta) * Ftest[-1]
-        
-        Fpred = krr.predict_force()
-        Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
-
-    dx = delta_array[1] - delta_array[0]
-    Ffinite = (Epredict[:-1] - Epredict[1:])/dx
-
-    plt.figure(1)
-    plt.plot(delta_array, Ftestx, color='c')
-    plt.plot(delta_array, Fpredx, color='y')
-    plt.plot(delta_array[1:]-dx/2, Ffinite, color='g', linestyle=':')
-    plt.plot(delta_array, Etest)
-    plt.plot(delta_array, Epredict, color='r')
-
-    plt.figure(3)
-    plt.plot(np.arange(G.shape[1]), G.T)
-
-    plt.figure(4)
-    plt.plot(delta_array, Gtest[:,:])
-
-    xx = np.array([0,0,1,0,2,0,0,1])
-    gg = featureCalculator.get_singleFeature(xx)
-
-    plt.figure(5)
-    plt.plot(np.arange(len(gg)), gg)
-    
-    # Plot first structure
-    plt.figure(2)
-    plt.plot(Xtest[:, -2], Xtest[:, -1], color='r')
-    
-    x = X[-1].reshape((Natoms, 2))
-    plt.scatter(x[:, 0], x[:, 1])
-    plt.gca().set_aspect('equal', adjustable='box')
-    plt.show()
-
     
