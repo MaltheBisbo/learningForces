@@ -55,7 +55,7 @@ class krr_class():
 
         return self.similarityVec.dot(self.alpha) + self.beta
 
-    def predict_force(self, pos=None, fnew=None):
+    def predict_force(self, pos, fnew=None):
         if pos is not None:
             self.pos = pos
             self.fnew = self.featureCalculator.get_singleFeature(self.pos)
