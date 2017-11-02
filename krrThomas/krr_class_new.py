@@ -63,7 +63,7 @@ class krr_class():
             else:
                 self.pos = pos
                 self.fnew = self.featureCalculator.get_singleFeature(x=self.pos)
-            similarityVec = self.comparator.get_similarity_vector(self.fnew, self.featureMat)
+            similarityVec = self.comparator.get_similarity_vector(self.fnew, self.featureMat[:self.Ndata])
 
         return similarityVec.dot(self.alpha) + self.beta
 
@@ -99,10 +99,10 @@ class krr_class():
         Fit the model based on training data.
         - i.e. find the alpha coeficients.
         """
-        beta = np.mean(data_values)
+        self.beta = np.mean(data_values)
 
         A = similarityMat + reg*np.identity(len(data_values))
-        self.alpha = np.linalg.solve(A, data_values - beta)
+        self.alpha = np.linalg.solve(A, data_values - self.beta)
         
     def train(self, data_values, featureMat=None, positionMat=None, add_new_data=True, k=3, **GSkwargs):
         """ 
@@ -138,11 +138,11 @@ class krr_class():
             self.data_values[0:self.Ndata] = data_values
             self.featureMat[0:self.Ndata] = featureMat
 
-        FVU, params = self.__gridSearch(k=k, **GSkwargs)
+        FVU, params = self.__gridSearch(self.data_values[:self.Ndata], self.featureMat[:self.Ndata], k=k, **GSkwargs)
 
         return FVU, params
             
-    def __gridSearch(self, k, **GSkwargs):
+    def __gridSearch(self, data_values, featureMat, k, **GSkwargs):
         """
         Performs grid search in the set of hyperparameters specified in **GSkwargs.
 
@@ -156,9 +156,9 @@ class krr_class():
         best_similarityMat = None
         for i, sigma in enumerate(sigma_array):
             self.comparator.set_args(sigma=sigma)
-            similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
+            similarityMat = self.comparator.get_similarity_matrix(featureMat)
             for j, reg in enumerate(reg_array):
-                FVU = self.__cross_validation(self.data_values, similarityMat, k=k, reg=reg)
+                FVU = self.__cross_validation(data_values, similarityMat, k=k, reg=reg)
                 if FVU_min is None or FVU < FVU_min:
                     FVU_min = FVU
                     best_args = np.array([i, j])
@@ -170,7 +170,7 @@ class krr_class():
         self.comparator.set_args(sigma=sigma_best)
         
         # Train with best parameters using all data
-        self.__fit(self.data_values, best_similarityMat, reg=reg_best)
+        self.__fit(data_values, best_similarityMat, reg=reg_best)
 
         return FVU_min, {'sigma': sigma_best, 'reg': reg_best}
     

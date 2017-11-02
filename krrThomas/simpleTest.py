@@ -4,6 +4,7 @@ from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
 from krr_class2 import krr_class
 from krr_class_new import krr_class as krr_class_new
+import time
 
 def createData(Ndata, theta):
     # Define fixed points
@@ -105,7 +106,9 @@ if __name__ == "__main__":
     comparator = gaussComparator(sigma=sig)
     krr1 = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
-    delta_array, Etest1, Epredict1, Ftestx1, Fpredx1, Ffinite1, Xtest, X = testModel(krr1, Ndata=8, theta=theta, new=False)
+    t0 = time.time()
+    delta_array, Etest1, Epredict1, Ftestx1, Fpredx1, Ffinite1, Xtest, X = testModel(krr1, Ndata=500, theta=theta, new=False)
+    print('Runtime old:', time.time() - t0)
     dx = delta_array[1] - delta_array[0]
 
     # Model 2
@@ -114,7 +117,9 @@ if __name__ == "__main__":
     comparator = gaussComparator(sigma=sig)
     krr2 = krr_class_new(comparator=comparator, featureCalculator=featureCalculator)
 
-    delta_array, Etest2, Epredict2, Ftestx2, Fpredx2, Ffinite2, Xtest, X = testModel(krr2, Ndata=8, theta=theta, new=True)
+    t0 = time.time()
+    delta_array, Etest2, Epredict2, Ftestx2, Fpredx2, Ffinite2, Xtest, X = testModel(krr2, Ndata=500, theta=theta, new=True)
+    print('Runtime old:', time.time() - t0)
     
     plt.figure(1)
     plt.plot(delta_array, Ftestx1, color='c')
