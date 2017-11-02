@@ -87,13 +87,24 @@ class krr_class():
         """
         Nadd = len(data_values_add)
         
-        # Update data
+        # Add data
         self.data_values[self.Ndata:self.Ndata+Nadd] = data_values_add
         self.featureMat[self.Ndata:self.Ndata+Nadd] = featureMat_add
         
         # Iterate data counter
         self.Ndata += Nadd
 
+    def remove_data(self, N_remove):
+        """
+        Removes the N_remove oldest datapoints
+        """
+        # Remove data
+        self.data_values[0:self.Ndata-N_remove] = self.data_values[N_remove:self.Ndata]
+        self.featureMat[0:self.Ndata-N_remove] = self.featureMat[N_remove:self.Ndata]
+
+        # Adjust data counter
+        self.Ndata -= N_remove
+        
     def __fit(self, data_values, similarityMat, reg):
         """ 
         Fit the model based on training data.

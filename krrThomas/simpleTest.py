@@ -48,15 +48,15 @@ def testModel(model, Ndata, theta=0, new=False):
         F[i, :] = -grad
 
     # Train model
-    # model.fit(E, G, reg=reg)
-
+    t0 = time.time()
     #gridSearch
     GSkwargs = {'reg': np.logspace(-7, -6, 2), 'sigma': np.logspace(0, 2, 3)}
     if new:
         MAE, params = model.train(E, G, **GSkwargs)
     else:
         MAE, params = model.gridSearch(E, G, disp=False, **GSkwargs)
-
+    print('Time used on training:', time.time() - t0)
+    
     Npoints = 1000
     Etest = np.zeros(Npoints)
     Epredict = np.zeros(Npoints)
@@ -106,8 +106,9 @@ if __name__ == "__main__":
     comparator = gaussComparator(sigma=sig)
     krr1 = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
+    print('Model 1')
     t0 = time.time()
-    delta_array, Etest1, Epredict1, Ftestx1, Fpredx1, Ffinite1, Xtest, X = testModel(krr1, Ndata=500, theta=theta, new=False)
+    delta_array, Etest1, Epredict1, Ftestx1, Fpredx1, Ffinite1, Xtest, X = testModel(krr1, Ndata=1000, theta=theta, new=False)
     print('Runtime old:', time.time() - t0)
     dx = delta_array[1] - delta_array[0]
 
@@ -117,9 +118,10 @@ if __name__ == "__main__":
     comparator = gaussComparator(sigma=sig)
     krr2 = krr_class_new(comparator=comparator, featureCalculator=featureCalculator)
 
+    print('Model 2')
     t0 = time.time()
-    delta_array, Etest2, Epredict2, Ftestx2, Fpredx2, Ffinite2, Xtest, X = testModel(krr2, Ndata=500, theta=theta, new=True)
-    print('Runtime old:', time.time() - t0)
+    delta_array, Etest2, Epredict2, Ftestx2, Fpredx2, Ffinite2, Xtest, X = testModel(krr2, Ndata=1000, theta=theta, new=True)
+    print('Runtime new:', time.time() - t0)
     
     plt.figure(1)
     plt.plot(delta_array, Ftestx1, color='c')
