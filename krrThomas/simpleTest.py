@@ -32,7 +32,7 @@ def createData(Ndata, theta):
     return X
 
 
-def testModel(model, Ndata, theta=0):
+def testModel(model, Ndata, theta=0, new=False):
     Natoms = 4
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
@@ -47,13 +47,14 @@ def testModel(model, Ndata, theta=0):
         F[i, :] = -grad
 
     # Train model
-    model.fit(E, G, reg=reg)
+    # model.fit(E, G, reg=reg)
 
     #gridSearch
     GSkwargs = {'reg': np.logspace(-7, -6, 2), 'sigma': np.logspace(0, 2, 3)}
-    MAE, params = model.gridSearch(E, G, disp=False, **GSkwargs)
-    
-    
+    if new:
+        MAE, params = model.train(E, G, **GSkwargs)
+    else:
+        MAE, params = model.gridSearch(E, G, disp=False, **GSkwargs)
 
     Npoints = 1000
     Etest = np.zeros(Npoints)
@@ -81,7 +82,7 @@ def testModel(model, Ndata, theta=0):
         Epredict[i] = model.predict_energy(pos=Xtest[i])
         Ftestx[i] = np.cos(theta) * Ftest[-2] + np.cos(np.pi/2 - theta) * Ftest[-1]
         
-        Fpred = model.predict_force()
+        Fpred = model.predict_force(pos=Xtest[i])
         Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
 
     dx = delta_array[1] - delta_array[0]
@@ -104,7 +105,7 @@ if __name__ == "__main__":
     comparator = gaussComparator(sigma=sig)
     krr1 = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
-    delta_array, Etest1, Epredict1, Ftestx1, Fpredx1, Ffinite1, Xtest, X = testModel(krr1, Ndata=8, theta=theta)
+    delta_array, Etest1, Epredict1, Ftestx1, Fpredx1, Ffinite1, Xtest, X = testModel(krr1, Ndata=8, theta=theta, new=False)
     dx = delta_array[1] - delta_array[0]
 
     # Model 2
@@ -113,7 +114,7 @@ if __name__ == "__main__":
     comparator = gaussComparator(sigma=sig)
     krr2 = krr_class_new(comparator=comparator, featureCalculator=featureCalculator)
 
-    delta_array, Etest2, Epredict2, Ftestx2, Fpredx2, Ffinite2, Xtest, X = testModel(krr2, Ndata=8, theta=theta)
+    delta_array, Etest2, Epredict2, Ftestx2, Fpredx2, Ffinite2, Xtest, X = testModel(krr2, Ndata=8, theta=theta, new=True)
     
     plt.figure(1)
     plt.plot(delta_array, Ftestx1, color='c')

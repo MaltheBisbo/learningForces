@@ -26,7 +26,6 @@ class gaussComparator():
     def get_similarity_vector(self, fnew, featureMat=None):
         if featureMat is not None:
             self.featureMat = featureMat
-
         self.similarityVec = np.array([self.single_comparison(fnew, f, self.sigma)
                                        for f in self.featureMat])
         return self.similarityVec

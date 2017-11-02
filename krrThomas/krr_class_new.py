@@ -24,6 +24,15 @@ class krr_class():
         self.comparator.set_args(**comparator_kwargs)
         self.reg = reg
 
+        # Initialize data arrays
+        max_data = 3000
+        length_feature = featureCalculator.Nbins
+        self.data_values = np.zeros(max_data)
+        self.featureMat = np.zeros((max_data, length_feature))
+
+        # Initialize data counter
+        self.Ndata = 0
+    """
     def fit(self, data_values, featureMat=None, positionMat=None, reg=None):
         self.data_values = data_values
 
@@ -43,23 +52,28 @@ class krr_class():
         A = self.similarityMat + self.reg*np.identity(self.data_values.shape[0])
         
         self.alpha = np.linalg.solve(A, self.data_values - self.beta)
+    """
+    def predict_energy(self, fnew=None, pos=None, similarityVec=None):
+        """
+        Predict the energy of a new structure.
+        """
+        if similarityVec is None:
+            if fnew is not None:
+                self.fnew = fnew
+            else:
+                self.pos = pos
+                self.fnew = self.featureCalculator.get_singleFeature(x=self.pos)
+            similarityVec = self.comparator.get_similarity_vector(self.fnew, self.featureMat)
 
-    def predict_energy(self, fnew=None, pos=None):
-        if fnew is not None:
-            self.fnew = fnew
-        else:
-            self.pos = pos
-            self.fnew = self.featureCalculator.get_singleFeature(x=self.pos)
-
-        self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
-
-        return self.similarityVec.dot(self.alpha) + self.beta
+        return similarityVec.dot(self.alpha) + self.beta
 
     def predict_force(self, pos, fnew=None):
-        if pos is not None:
-            self.pos = pos
+        """
+        Predict the force of a new structure.
+        """
+        self.pos = pos
+        if fnew is None:
             self.fnew = self.featureCalculator.get_singleFeature(self.pos)
-            self.similarityVec = self.comparator.get_similarity_vector(self.fnew)
 
         df_dR = self.featureCalculator.get_singleGradient(self.pos)
         dk_df = self.comparator.get_jac(self.fnew)
@@ -67,6 +81,119 @@ class krr_class():
         kernelDeriv = np.dot(dk_df, df_dR)
         return -(kernelDeriv.T).dot(self.alpha)
 
+    def add_data(self, data_values_add, featureMat_add):
+        """ 
+        Adds data to previously saved data.
+        """
+        Nadd = len(data_values_add)
+        
+        # Update data
+        self.data_values[self.Ndata:self.Ndata+Nadd] = data_values_add
+        self.featureMat[self.Ndata:self.Ndata+Nadd] = featureMat_add
+        
+        # Iterate data counter
+        self.Ndata += Nadd
+
+    def __fit(self, data_values, similarityMat, reg):
+        """ 
+        Fit the model based on training data.
+        - i.e. find the alpha coeficients.
+        """
+        beta = np.mean(data_values)
+
+        A = similarityMat + reg*np.identity(len(data_values))
+        self.alpha = np.linalg.solve(A, data_values - beta)
+        
+    def train(self, data_values, featureMat=None, positionMat=None, add_new_data=True, k=3, **GSkwargs):
+        """ 
+        Train the model using gridsearch and cross-validation
+            
+        --- Input ---
+        data_values:
+        The labels of the new training data. In our case, the energies of the new training structures.
+
+        featureMat:
+        The features of the new training structures.
+
+        positionMat:
+        The atomic positions of the new training structures. 
+
+        add_new_data:
+        If True, the data passed will be added to previously saved data (if any).
+
+        k:
+        Performs k-fold cross-validation.
+
+        **GSkwargs:
+        Dict containing the sequences of the kernel-width and regularization parameter to be
+        used in grissearch. The labels are 'sigma' and 'reg' respectively.
+        """
+        if featureMat is None:
+            featureMat = self.featureCalculator.get_featureMat(positionMat)
+
+        if add_new_data:
+            self.add_data(data_values, featureMat)
+        else:
+            self.Ndata = len(data_values)
+            self.data_values[0:self.Ndata] = data_values
+            self.featureMat[0:self.Ndata] = featureMat
+
+        FVU, params = self.__gridSearch(k=k, **GSkwargs)
+
+        return FVU, params
+            
+    def __gridSearch(self, k, **GSkwargs):
+        """
+        Performs grid search in the set of hyperparameters specified in **GSkwargs.
+
+        Used k-fold cross-validation for error estimates.
+        """
+        sigma_array = GSkwargs['sigma']
+        reg_array = GSkwargs['reg']
+
+        FVU_min = None
+        best_args = np.zeros(2).astype(int)
+        best_similarityMat = None
+        for i, sigma in enumerate(sigma_array):
+            self.comparator.set_args(sigma=sigma)
+            similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
+            for j, reg in enumerate(reg_array):
+                FVU = self.__cross_validation(self.data_values, similarityMat, k=k, reg=reg)
+                if FVU_min is None or FVU < FVU_min:
+                    FVU_min = FVU
+                    best_args = np.array([i, j])
+                    best_similarityMat = similarityMat
+        sigma_best = sigma_array[best_args[0]]
+        reg_best = reg_array[best_args[1]]
+
+        # Set comparator to best sigma
+        self.comparator.set_args(sigma=sigma_best)
+        
+        # Train with best parameters using all data
+        self.__fit(self.data_values, best_similarityMat, reg=reg_best)
+
+        return FVU_min, {'sigma': sigma_best, 'reg': reg_best}
+    
+    def __cross_validation(self, data_values, similarityMat, k, reg):
+        Ndata = len(data_values)
+
+        # Permute data for cross-validation
+        permutation = np.random.permutation(Ndata)
+        data_values = data_values[permutation]
+        similarityMat = similarityMat[:,permutation][permutation,:]
+        
+        Ntest = int(np.floor(Ndata/k))
+        FVU = np.zeros(k)
+        for ik in range(k):
+            [i_train1, i_test, i_train2] = np.split(np.arange(Ndata), [ik*Ntest, (ik+1)*Ntest])
+            i_train = np.r_[i_train1, i_train2]
+            self.__fit(data_values[i_train], similarityMat[i_train,:][:,i_train], reg=reg)
+
+            # Validation
+            test_similarities = similarityMat[i_test,:][:,i_train]
+            FVU[ik] = self.get_FVU_energy2(data_values[i_test], test_similarities)
+        return np.mean(FVU)
+    """    
     def cross_validation(self, data_values, featureMat, k=3, reg=None):
         Ndata = data_values.shape[0]
         permutation = np.random.permutation(Ndata)
@@ -168,8 +295,15 @@ class krr_class():
         error = Epred - data_values
         MSE = np.mean((Epred - data_values)**2)
         var = np.var(data_values)
-        return MSE / var 
-
+        return MSE / var
+    """
+    def get_FVU_energy2(self, data_values, test_similarities):
+        Epred = np.array([self.predict_energy(similarityVec=similarity) for similarity in test_similarities])
+        error = Epred - data_values
+        MSE = np.mean((Epred - data_values)**2)
+        var = np.var(data_values)
+        return MSE / var
+    """
     def get_FVU_force(self, force, positionMat, featureMat=None):
         if featureMat is None:
             featureMat = self.featureCalculator.get_featureMat(positionMat)
@@ -178,4 +312,4 @@ class krr_class():
         MSE_force = np.mean((Fpred - force)**2, axis=0)
         var_force = np.var(force, axis=0)        
         return MSE_force / var_force
-    
+    """
