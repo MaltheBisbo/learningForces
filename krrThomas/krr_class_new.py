@@ -61,9 +61,9 @@ class krr_class():
         """
         if fnew is None:
             fnew = self.featureCalculator.get_singleFeature(pos)
-
+        
         df_dR = self.featureCalculator.get_singleGradient(pos)
-        dk_df = self.comparator.get_jac(fnew)
+        dk_df = self.comparator.get_jac(fnew, featureMat=self.featureMat[:self.Ndata])
 
         kernelDeriv = np.dot(dk_df, df_dR)
         return -(kernelDeriv.T).dot(self.alpha)

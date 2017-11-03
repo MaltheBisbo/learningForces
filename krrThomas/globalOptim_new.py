@@ -288,10 +288,14 @@ class globalOptim():
         return Eperturb, Xperturb
 
     def trainModel(self):
-        #self.MLmodel.fit(self.Esaved[:self.ksaved], positionMat=self.Xsaved[:self.ksaved])
+        
+        Eadd = self.Esaved[self.MLmodel.Ndata:self.ksaved]
+        Xadd = positionMat=self.Xsaved[self.MLmodel.Ndata:self.ksaved]
+
         GSkwargs = {'reg': np.logspace(-7, -7, 1), 'sigma': np.logspace(0, 2, 5)}
         FVU, params = self.MLmodel.train(self.Esaved[:self.ksaved],
                                          positionMat=self.Xsaved[:self.ksaved],
+                                         add_new_data=False,
                                          **GSkwargs)
         #print('sigma:', params['sigma'], 'reg:', params['reg'])
         
