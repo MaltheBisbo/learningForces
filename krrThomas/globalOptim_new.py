@@ -63,7 +63,7 @@ class globalOptim():
 
     """
     def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=10,
-                 saveStep=1, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=1, maxNtrain=1e3,
+                 saveStep=3, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, maxNtrain=1e3,
                  fracPerturb=0.4, radiusRange = [0.9, 1.5], stat=False):
 
         self.Efun = Efun
@@ -88,8 +88,8 @@ class globalOptim():
         self.rmin, self.rmax = radiusRange
 
         # Initialize arrays to store structures for model training
-        self.Xsaved = np.zeros((4000, 2*Natoms))
-        self.Esaved = np.zeros(4000)
+        self.Xsaved = np.zeros((6000, 2*Natoms))
+        self.Esaved = np.zeros(6000)
         # initialize counter to keep track of the ammount of data saved
         self.ksaved = 0
 
@@ -120,7 +120,7 @@ class globalOptim():
 
         # Run global search
         for i in range(self.Niter):
-            print("progress: {}/{}\r".format(i+1, self.Niter), end='')
+            #print("progress: {}/{}\r".format(i+1, self.Niter), end='')
             # Perturb current best structure to make new candidate
             Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
 
@@ -260,13 +260,15 @@ class globalOptim():
                     connected = True
             return connected
 
+        """
         # Check if unperturbed structure satisfies constraints
         InitialStructureOkay = np.array([validPerturbation(self.X, i, np.array([0,0]), np.arange(self.Natoms))
                                          for i in range(self.Natoms)])
         if not np.all(InitialStructureOkay):
             print('Einit:', self.Efun(self.X))
             assert np.all(InitialStructureOkay)
-        
+        """
+
         # Pick atoms to perturb
         i_permuted = np.random.permutation(self.Natoms)
         i_perturb = i_permuted[:self.Nperturb]
@@ -367,6 +369,7 @@ class globalOptim():
 
             # Save new training data
             Ntrim = len(trimIndices)
+            print('right:', Xtrim.shape, 'left:', self.Xsaved[self.ksaved : self.ksaved + Ntrim].shape)
             self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
             self.Esaved[self.ksaved : self.ksaved + Ntrim] = Etrim
             self.ksaved += Ntrim

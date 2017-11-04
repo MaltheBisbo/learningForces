@@ -120,7 +120,7 @@ class globalOptim():
 
         # Run global search
         for i in range(self.Niter):
-            print("progress: {}/{}\r".format(i+1, self.Niter), end='')
+            #print("progress: {}/{}\r".format(i+1, self.Niter), end='')
             # Perturb current best structure to make new candidate
             Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
 

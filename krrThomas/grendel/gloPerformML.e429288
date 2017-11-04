@@ -1,0 +1,2050 @@
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (10,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (9,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (10,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (5,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (14,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (3,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (8,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (9,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (6,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (7,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (11,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (6,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 125, in runOptimizer
+    Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+  File "/scratch/429288.in1/globalOptim_new.py", line 291, in makeNewCandidate
+    self.Xsaved[self.ksaved] = Xperturb
+IndexError: index 6000 is out of bounds for axis 0 with size 6000
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (24,38) into shape (19,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (7,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (10,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (11,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (4,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (7,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (3,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (11,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (16,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (6,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (9,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (9,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (22,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (11,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (6,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (11,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (9,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (22,38) into shape (8,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (5,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (10,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (4,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (8,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (6,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (21,38) into shape (15,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 125, in runOptimizer
+    Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+  File "/scratch/429288.in1/globalOptim_new.py", line 291, in makeNewCandidate
+    self.Xsaved[self.ksaved] = Xperturb
+IndexError: index 6000 is out of bounds for axis 0 with size 6000
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (7,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (21,38) into shape (8,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (6,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (12,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (8,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (14,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (11,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (3,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (11,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (9,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (9,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (4,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (12,38) into shape (8,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (5,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (19,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (8,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (13,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (8,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (10,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (8,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (21,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (4,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (3,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (21,38) into shape (8,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (5,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 125, in runOptimizer
+    Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+  File "/scratch/429288.in1/globalOptim_new.py", line 291, in makeNewCandidate
+    self.Xsaved[self.ksaved] = Xperturb
+IndexError: index 6000 is out of bounds for axis 0 with size 6000
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (5,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (15,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (9,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (11,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (8,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (13,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (22,38) into shape (8,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (22,38) into shape (3,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (13,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (12,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (4,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (12,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (12,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (12,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (16,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (10,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (9,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (22,38) into shape (16,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (6,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (6,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (13,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (22,38) into shape (12,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (13,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (13,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (14,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (4,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (7,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (10,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (11,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (3,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (3,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (14,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (7,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (11,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (7,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (4,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (4,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (14,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (11,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (23,38) into shape (15,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (3,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (10,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (12,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (22,38) into shape (16,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (7,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (21,38) into shape (19,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (16,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 125, in runOptimizer
+    Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+  File "/scratch/429288.in1/globalOptim_new.py", line 291, in makeNewCandidate
+    self.Xsaved[self.ksaved] = Xperturb
+IndexError: index 6000 is out of bounds for axis 0 with size 6000
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (7,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (7,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (4,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (8,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (10,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (23,38) into shape (10,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (10,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (9,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (6,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (21,38) into shape (12,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 125, in runOptimizer
+    Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+  File "/scratch/429288.in1/globalOptim_new.py", line 291, in makeNewCandidate
+    self.Xsaved[self.ksaved] = Xperturb
+IndexError: index 6000 is out of bounds for axis 0 with size 6000
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (13,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (14,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (2,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (5,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (5,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (12,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (17,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (14,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (3,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (9,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (11,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (23,38) into shape (13,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (16,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 125, in runOptimizer
+    Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+  File "/scratch/429288.in1/globalOptim_new.py", line 291, in makeNewCandidate
+    self.Xsaved[self.ksaved] = Xperturb
+IndexError: index 6000 is out of bounds for axis 0 with size 6000
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 125, in runOptimizer
+    Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+  File "/scratch/429288.in1/globalOptim_new.py", line 291, in makeNewCandidate
+    self.Xsaved[self.ksaved] = Xperturb
+IndexError: index 6000 is out of bounds for axis 0 with size 6000
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (7,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (6,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (9,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (4,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (7,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (9,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (18,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 125, in runOptimizer
+    Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+  File "/scratch/429288.in1/globalOptim_new.py", line 291, in makeNewCandidate
+    self.Xsaved[self.ksaved] = Xperturb
+IndexError: index 6000 is out of bounds for axis 0 with size 6000
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (20,38) into shape (6,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (24,38) into shape (4,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (7,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (6,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (13,38) into shape (12,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (15,38) into shape (14,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (21,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (10,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (13,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (18,38) into shape (3,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (19,38) into shape (16,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (10,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (17,38) into shape (0,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 125, in runOptimizer
+    Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+  File "/scratch/429288.in1/globalOptim_new.py", line 291, in makeNewCandidate
+    self.Xsaved[self.ksaved] = Xperturb
+IndexError: index 6000 is out of bounds for axis 0 with size 6000
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (16,38) into shape (14,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (12,38) into shape (1,38)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 71, in <module>
+    main(arg)
+  File "performanceML_new.py", line 35, in main
+    optim.runOptimizer()
+  File "/scratch/429288.in1/globalOptim_new.py", line 160, in runOptimizer
+    Enew, Xnew = self.relax(Xnew_unrelaxed)
+  File "/scratch/429288.in1/globalOptim_new.py", line 373, in relax
+    self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
+ValueError: could not broadcast input array from shape (14,38) into shape (4,38)
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 0 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 1 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 2 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 3 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 4 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 5 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 6 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 7 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 8 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 9 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 10 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 11 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 12 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 13 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 14 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 15 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 16 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 17 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 18 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 19 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 20 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 21 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 22 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 23 exit status 1
+cp: cannot stat `/scratch/429288.in1/*.txt': No such file or directory
+pbsdsh: task 24 exit status 1
