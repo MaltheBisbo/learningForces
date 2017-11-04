@@ -4,6 +4,7 @@ from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
 from krr_class2 import krr_class
 from krr_class_new import krr_class as krr_class_new
+import time
 
 def createData(Ndata, theta):
     # Define fixed points
@@ -32,7 +33,7 @@ def createData(Ndata, theta):
     return X
 
 
-def testModel(model, Ndata, theta=0):
+def testModel(model, Ndata, theta=0, new=False):
     Natoms = 4
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
@@ -47,17 +48,25 @@ def testModel(model, Ndata, theta=0):
         F[i, :] = -grad
 
     # Train model
-    model.fit(E, G, reg=reg)
-
+    t0 = time.time()
     #gridSearch
-    GSkwargs = {'reg': np.logspace(-7, -6, 2), 'sigma': np.logspace(0, 2, 3)}
-    MAE, params = model.gridSearch(E, G, disp=False, **GSkwargs)
+    GSkwargs = {'reg': np.logspace(-7, -7, 1), 'sigma': np.logspace(0, 2, 10)}
+    if new:
+        MAE, params = model.train(E, G, **GSkwargs)
+    else:
+        MAE, params = model.gridSearch(E, G, disp=False, **GSkwargs)
+    print('Time used on training:', time.time() - t0)
+    print('best params:', params['sigma'], params['reg'])
     
-    
-
-    Npoints = 1000
+    Npoints = 1002
     Etest = np.zeros(Npoints)
-    Epredict = np.zeros(Npoints)
+    if new:
+        Epredict = np.zeros(Npoints)
+        Eerror = np.zeros(Npoints)
+    else:
+        Epredict = np.zeros(Npoints)
+
+
     Fpredx = np.zeros(Npoints)
     Ftestx = np.zeros(Npoints)
     Xtest0 = X[-1]
@@ -78,17 +87,23 @@ def testModel(model, Ndata, theta=0):
         
         Etest[i], gradtest = doubleLJ(Xtest[i], eps, r0, sigma)
         Ftest = -gradtest
-        Epredict[i] = model.predict_energy(pos=Xtest[i])
         Ftestx[i] = np.cos(theta) * Ftest[-2] + np.cos(np.pi/2 - theta) * Ftest[-1]
         
-        Fpred = model.predict_force()
+        if new:
+            Epredict[i], Eerror[i] = model.predict_energy(pos=Xtest[i], return_error=True)
+        else:
+            Epredict[i] = model.predict_energy(pos=Xtest[i])
+        
+        Fpred = model.predict_force(pos=Xtest[i])
         Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
 
     dx = delta_array[1] - delta_array[0]
     Ffinite = (Epredict[:-1] - Epredict[1:])/dx
-    
-    return delta_array, Etest, Epredict, Ftestx, Fpredx, Ffinite, Xtest, X
-    
+
+    if new:
+        return delta_array, Etest, Epredict, Eerror, Ftestx, Fpredx, Ffinite, Xtest, X
+    else:
+        return delta_array, Etest, Epredict, Ftestx, Fpredx, Ffinite, Xtest, X
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
 
@@ -104,7 +119,10 @@ if __name__ == "__main__":
     comparator = gaussComparator(sigma=sig)
     krr1 = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
-    delta_array, Etest1, Epredict1, Ftestx1, Fpredx1, Ffinite1, Xtest, X = testModel(krr1, Ndata=8, theta=theta)
+    print('Model 1')
+    t0 = time.time()
+    delta_array, Etest1, Epredict1, Ftestx1, Fpredx1, Ffinite1, Xtest, X = testModel(krr1, Ndata=6, theta=theta, new=False)
+    print('Runtime old:', time.time() - t0)
     dx = delta_array[1] - delta_array[0]
 
     # Model 2
@@ -113,7 +131,10 @@ if __name__ == "__main__":
     comparator = gaussComparator(sigma=sig)
     krr2 = krr_class_new(comparator=comparator, featureCalculator=featureCalculator)
 
-    delta_array, Etest2, Epredict2, Ftestx2, Fpredx2, Ffinite2, Xtest, X = testModel(krr2, Ndata=8, theta=theta)
+    print('Model 2')
+    t0 = time.time()
+    delta_array, Etest2, Epredict2, Eerror2, Ftestx2, Fpredx2, Ffinite2, Xtest, X = testModel(krr2, Ndata=6, theta=theta, new=True)
+    print('Runtime new:', time.time() - t0)
     
     plt.figure(1)
     plt.plot(delta_array, Ftestx1, color='c')
@@ -125,6 +146,8 @@ if __name__ == "__main__":
     plt.plot(delta_array, Etest1, color='c')
     plt.plot(delta_array, Epredict1, color='y')
     plt.plot(delta_array, Epredict2, color='r', linestyle=':')
+    plt.plot(delta_array, Epredict2-Eerror2, color='k', linestyle=':')
+    plt.plot(delta_array, Epredict2+Eerror2, color='k', linestyle=':')
     
     # Plot first structure
     plt.figure(3)

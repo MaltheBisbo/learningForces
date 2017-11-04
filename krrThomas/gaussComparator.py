@@ -26,7 +26,6 @@ class gaussComparator():
     def get_similarity_vector(self, fnew, featureMat=None):
         if featureMat is not None:
             self.featureMat = featureMat
-
         self.similarityVec = np.array([self.single_comparison(fnew, f, self.sigma)
                                        for f in self.featureMat])
         return self.similarityVec
@@ -44,10 +43,12 @@ class gaussComparator():
         ie. calculates dk_df.
         Using the chain rule: dk_df = dk_dd*dd_df , where d is the distance measure
         """
-        if kappa is None:
-            kappa = self.similarityVec.copy()
         if featureMat is None:
             featureMat = self.featureMat.copy()
+
+        if kappa is None:
+            kappa = np.array([self.single_comparison(fnew, f, self.sigma)
+                              for f in self.featureMat])
 
         dk_dd = -1/(2*self.sigma**2)*kappa.reshape((kappa.shape[0], 1))
         dd_df = -2*(featureMat - fnew.reshape((1, fnew.shape[0])))
