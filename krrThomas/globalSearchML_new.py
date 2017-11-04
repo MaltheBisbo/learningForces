@@ -1,6 +1,6 @@
 import numpy as np
 from globalOptim_new import globalOptim
-from doubleLJ import doubleLJ, doubleLJ_energy, doubleLJ_gradient
+from doubleLJ import doubleLJ_energy, doubleLJ_gradient
 from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
 from krr_class_new import krr_class
@@ -8,8 +8,7 @@ import sys
 import matplotlib.pyplot as plt
 
 def main(arg=1):
-    np.random.seed(10)
-    Natoms = 7
+    Natoms = 12
 
     # parameters for potential
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
@@ -32,11 +31,11 @@ def main(arg=1):
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
     optim = globalOptim(Efun, gradfun, krr, Natoms=Natoms, dmax=2.5,
-			Niter=Niter, Nstag=Niter, sigma=1, saveStep=4)
+                        Niter=Niter, Nstag=Niter, sigma=1, saveStep=4)
     optim.runOptimizer()
     Ebest = optim.Ebest
     Xbest = optim.Xbest
-    # print(optim.Erelaxed)
+    print(optim.Erelaxed)
     # print('Ebest:', Ebest)
     index_groundstate = np.arange(Niter)[optim.Erelaxed < -113.2]
     if len(index_groundstate) == 0:
@@ -57,7 +56,6 @@ def main(arg=1):
     
     np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
 
-    
     plt.figure(1)
     plt.title('Groundstate for 19 atoms')
     plt.scatter(Xbest[0::2], Xbest[1::2])

@@ -63,9 +63,8 @@ class globalOptim():
 
     """
     def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=10,
-                 saveStep=1, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=1, maxNtrain=1e3,
-                 fracPerturb=0.4, radiusRange = [0.9, 1.5], stat=False):
-
+                 saveStep=3, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, maxNtrain=1e3, fracPerturb=0.4,
+                 radiusRange = [0.9, 1.5], stat=False):
         self.Efun = Efun
         self.gradfun = gradfun
         self.MLmodel = MLmodel
@@ -132,14 +131,11 @@ class globalOptim():
 
                     # Reduce training data - If there is too much
                     if self.ksaved > 1.1*self.maxNtrain:
-                        
                         Nremove = self.ksaved - self.maxNtrain
-                        self.Xsaved[:self.maxNtrain] = self.Xsaved[Nremove:self.ksaved]
-                        self.Esaved[:self.maxNtrain] = self.Esaved[Nremove:self.ksaved]
+                        self.Xsaved = self.Xsaved[Nremove:]
+                        self.Esaved = self.Esaved[Nremove:]
                         self.ksaved = self.maxNtrain
-
-                        self.MLmodel.remove_data(Nremove)
-                        
+                    
                     # Train ML model + ML-relaxation
                     self.trainModel()
                     EnewML, XnewML = self.relax(Xnew_unrelaxed, ML=True)
@@ -152,8 +148,7 @@ class globalOptim():
                         Enew, Xnew = EnewML_true, XnewML
                         self.NacceptedML += 1
                     else:
-                        continue
-                        #Enew, Xnew = self.relax(Xnew_unrelaxed)
+                        Enew, Xnew = self.relax(Xnew_unrelaxed)
                 else:
                     Enew, Xnew = self.relax(Xnew_unrelaxed)
             else:
@@ -226,7 +221,7 @@ class globalOptim():
                 if validPosition(Xinit[:2*i], xnew):
                     Xinit[2*i:2*i+2] = xnew
                     break
-
+        
         self.E, self.X = self.relax(Xinit)
         
     def makeNewCandidate(self):
@@ -295,19 +290,13 @@ class globalOptim():
     def trainModel(self):
         
         Eadd = self.Esaved[self.MLmodel.Ndata:self.ksaved]
-        Xadd = self.Xsaved[self.MLmodel.Ndata:self.ksaved]
+        Xadd = positionMat=self.Xsaved[self.MLmodel.Ndata:self.ksaved]
 
         GSkwargs = {'reg': np.logspace(-7, -7, 1), 'sigma': np.logspace(0, 2, 5)}
-        FVU, params = self.MLmodel.train(Eadd,
-                                         positionMat=Xadd,
-                                         add_new_data=True,
-                                         **GSkwargs)
-        """
         FVU, params = self.MLmodel.train(self.Esaved[:self.ksaved],
                                          positionMat=self.Xsaved[:self.ksaved],
                                          add_new_data=False,
                                          **GSkwargs)
-        """
         #print('sigma:', params['sigma'], 'reg:', params['reg'])
         
     def relax(self, X=None, ML=False):

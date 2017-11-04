@@ -1,14 +1,15 @@
 import numpy as np
-from globalOptim import globalOptim
+from globalOptim_new import globalOptim
 from doubleLJ import doubleLJ, doubleLJ_energy, doubleLJ_gradient
 from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
-from krr_class2 import krr_class
+from krr_class_new import krr_class
 import sys
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 def main(arg=1):
-    Natoms = 19
+    np.random.seed(10)
+    Natoms = 7
 
     # parameters for potential
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
@@ -25,7 +26,7 @@ def main(arg=1):
         params = (1.8, 1.1, np.sqrt(0.02))
         return doubleLJ_gradient(X, params[0], params[1], params[2])
 
-    Niter = 200
+    Niter = 50
     featureCalculator = fingerprintFeature()
     comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
@@ -47,16 +48,16 @@ def main(arg=1):
         Niter_done = int(index_done + 1)
         Nfev_done = optim.Nfev_array[index_done]
         E_done = optim.Erelaxed[index_done]
-    """
+    
     print('# accepted ML relaxations:', optim.NacceptedML)
     print('Niter_done:', Niter_done)
     print('Nfev_done:', Nfev_done)
     print('Total function evaluations:', optim.Nfev_array[-1])
     print('Training data saved:', optim.ksaved)
-    """
+    
     np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
 
-    """
+    
     plt.figure(1)
     plt.title('Groundstate for 19 atoms')
     plt.scatter(Xbest[0::2], Xbest[1::2])
@@ -64,7 +65,7 @@ def main(arg=1):
     plt.ylabel('y')
     plt.gca().set_aspect('equal', adjustable='box')
     plt.show()
-    """
+    
 if __name__ == '__main__':
     arg = int(sys.argv[1])
     main(arg)
