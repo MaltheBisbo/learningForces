@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.optimize import minimize
+import time
 # import matplotlib.pyplot as plt
 
 class globalOptim():
@@ -63,7 +64,7 @@ class globalOptim():
 
     """
     def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=10,
-                 saveStep=3, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, maxNtrain=1e3,
+                 saveStep=2, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, maxNtrain=1e3,
                  fracPerturb=0.4, radiusRange = [0.9, 1.5], stat=False):
 
         self.Efun = Efun
@@ -100,6 +101,10 @@ class globalOptim():
         self.Nfev = 0
         self.Nfev_array = np.zeros(Niter)
 
+        # Counters for timing
+        self.time_relaxML = 0
+        self.time_train = 0
+
         # Save number of accepted ML-relaxations
         self.NacceptedML = 0
         
@@ -121,7 +126,7 @@ class globalOptim():
         # Run global search
         for i in range(self.Niter):
             #print("progress: {}/{}\r".format(i+1, self.Niter), end='')
-            # Perturb current best structure to make new candidate
+            # Perturb current structure to make new candidate
             Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
 
             # Use MLmodel to relax - if it excists
@@ -141,12 +146,22 @@ class globalOptim():
                         self.MLmodel.remove_data(Nremove)
                         
                     # Train ML model + ML-relaxation
+                    t0 = time.time()
                     self.trainModel()
+                    self.time_train += time.time() - t0
+
+                    t0 = time.time()
                     EnewML, XnewML = self.relax(Xnew_unrelaxed, ML=True)
+                    self.time_relaxML += time.time() - t0
                     
                     # Target energy of relaxed structure
                     EnewML_true = self.Efun(XnewML)
-
+                    
+                    # Save target energy
+                    self.Xsaved[self.ksaved] = XnewML
+                    self.Esaved[self.ksaved] = EnewML_true
+                    self.ksaved += 1
+                    
                     # Accept ML-relaxed structure based on precision criteria
                     if abs(EnewML - EnewML_true) < self.MLerrorMargin:
                         Enew, Xnew = EnewML_true, XnewML
@@ -369,7 +384,8 @@ class globalOptim():
 
             # Save new training data
             Ntrim = len(trimIndices)
-            print('right:', Xtrim.shape, 'left:', self.Xsaved[self.ksaved : self.ksaved + Ntrim].shape)
+            # print('right:', Xtrim.shape, 'left:', self.Xsaved[self.ksaved : self.ksaved + Ntrim].shape)
+            # print('Ntrim:', Ntrim, 'ksaved:', self.ksaved)
             self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
             self.Esaved[self.ksaved : self.ksaved + Ntrim] = Etrim
             self.ksaved += Ntrim

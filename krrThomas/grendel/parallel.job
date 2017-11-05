@@ -36,4 +36,4 @@ cd /scratch/$PBS_JOBID
 #  {0..9} : Specify arguments for the 9 subtasks: 0,...,9
 dispatch -T 1 -e ssh -SS -c "python performanceML_new.py" {0..199}
 
-pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/*.txt  $PBS_O_WORKDIR/dataN19/'
+pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/*.txt  $PBS_O_WORKDIR/dataN19_ML_singleTargetRelax2/'
