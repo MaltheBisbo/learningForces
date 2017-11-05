@@ -64,7 +64,7 @@ class globalOptim():
 
     """
     def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=10,
-                 saveStep=2, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, maxNtrain=1e3,
+                 saveStep=3, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, maxNtrain=1e3,
                  fracPerturb=0.4, radiusRange = [0.9, 1.5], stat=False):
 
         self.Efun = Efun
