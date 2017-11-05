@@ -44,11 +44,28 @@ NfevML2_values, NfevML2_base = np.histogram(NfevML2, 1000)
 NiterML2_cum = np.cumsum(NiterML2_values)
 NfevML2_cum = np.cumsum(NfevML2_values)
 
+### MLenhanced - single target relax ###
+dataML3 = np.loadtxt('grendel/dataN19_ML_singleTargetRelax2/all_performance_MLenhanced.txt', delimiter='\t')
+dataML3 = dataML3.reshape((200,6))
+print(dataML3)
+dataML3 = dataML3[~np.isnan(dataML3[:,0])]
+
+NiterML3 = dataML3[:,0]
+NfevML3 = dataML3[:,1]
+EbestML3 = dataML3[:,2]
+
+NiterML3_values, NiterML3_base = np.histogram(NiterML3, 1000)
+NfevML3_values, NfevML3_base = np.histogram(NfevML3, 1000)
+
+NiterML3_cum = np.cumsum(NiterML3_values)
+NfevML3_cum = np.cumsum(NfevML3_values)
+
 plt.figure(1)
 plt.title('Search performance - Search iterations')
 plt.plot(Niter_base[:-1], Niter_cum/200, label='Without ML')
 plt.plot(NiterML_base[:-1], NiterML_cum/200, label='With ML')
 plt.plot(NiterML2_base[:-1], NiterML2_cum/200, label='With ML2')
+plt.plot(NiterML3_base[:-1], NiterML3_cum/200, label='With ML2')
 plt.legend()
 plt.xlabel('# search iterations')
 plt.ylabel('Succes rate')
@@ -58,6 +75,7 @@ plt.title('Search performance - Function evaluations')
 plt.plot(Nfev_base[:-1], Nfev_cum/200, label='Without ML')
 plt.plot(NfevML_base[:-1], NfevML_cum/200, label='With ML')
 plt.plot(NfevML2_base[:-1], NfevML2_cum/200, label='With ML2')
+plt.plot(NfevML3_base[:-1], NfevML3_cum/200, label='With ML2')
 plt.legend()
 plt.xlabel('# function evaluations')
 plt.ylabel('Succes rate')
