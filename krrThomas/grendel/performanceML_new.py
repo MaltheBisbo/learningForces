@@ -5,6 +5,7 @@ from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
 from krr_class_new import krr_class
 import sys
+import time
 #import matplotlib.pyplot as plt
 
 def main(arg=1):
@@ -30,9 +31,12 @@ def main(arg=1):
     comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
-    optim = globalOptim(Efun, gradfun, Natoms=Natoms, dmax=2.5,
+    optim = globalOptim(Efun, gradfun, krr, Natoms=Natoms, dmax=2.5,
                         Niter=Niter, Nstag=Niter, sigma=1, saveStep=4)
+    t0 = time.time()
     optim.runOptimizer()
+    runtime = time.time() - t0
+    
     Ebest = optim.Ebest
     Xbest = optim.Xbest
     #print(optim.Erelaxed)
@@ -48,6 +52,8 @@ def main(arg=1):
         Nfev_done = optim.Nfev_array[index_done]
         E_done = optim.Erelaxed[index_done]
 
+    time_relaxML = optim.time_relaxML
+    time_train = optim.time_train
     """
     print('# accepted ML relaxations:', optim.NacceptedML)
     print('Niter_done:', Niter_done)
@@ -56,7 +62,9 @@ def main(arg=1):
     print('Training data saved:', optim.ksaved)
     """
     
-    np.savetxt('performance_MLenhanced' + str(arg) + '.txt', np.c_[Niter_done, Nfev_done, E_done], delimiter='\t')
+    np.savetxt('performance_MLenhanced' + str(arg) + '.txt',
+               np.c_[Niter_done, Nfev_done, E_done,
+                     runtime, time_relaxML, time_train], delimiter='\t')
     """
     plt.figure(1)
     plt.title('Groundstate for 19 atoms')
