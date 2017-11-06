@@ -156,6 +156,7 @@ class globalOptim():
                     
                     # Target energy of relaxed structure
                     EnewML_true = self.Efun(XnewML)
+                    self.Nfev +=1
                     
                     # Save target energy
                     self.Xsaved[self.ksaved] = XnewML
@@ -301,12 +302,15 @@ class globalOptim():
                     i_static = np.append(i_static, i)
                     break
 
-        # Save structure for training
+        # Calculate target energy
         Eperturb = self.Efun(Xperturb)
+        self.Nfev += 1
+
+        # Save structure for training
         self.Xsaved[self.ksaved] = Xperturb
         self.Esaved[self.ksaved] = Eperturb
         self.ksaved += 1
-        
+
         return Eperturb, Xperturb
 
     def trainModel(self):
