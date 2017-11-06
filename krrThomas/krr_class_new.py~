@@ -1,5 +1,7 @@
 import numpy as np
-
+from doubleLJ import doubleLJ
+from fingerprintFeature import fingerprintFeature
+from gaussComparator import gaussComparator
 
 class krr_class():
     """
