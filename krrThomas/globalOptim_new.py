@@ -363,13 +363,15 @@ class globalOptim():
         #print('sigma:', params['sigma'], 'reg:', params['reg'])
         
     def relax(self, X=None, ML=False):
-        ## determine which model to use for potential ##
+        ## determine which model to use for relaxation ##
         if ML:
             # Use ML potential and forces
             def Efun(pos):
                 return self.MLmodel.predict_energy(pos=pos)  # + self.artificialPotential(pos)
+
             def gradfun(pos):
                 return -self.MLmodel.predict_force(pos=pos)
+
             # Set up minimizer
             options = {'gtol': 1e-5}
             def localMinimizer(X):
