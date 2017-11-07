@@ -138,14 +138,14 @@ if __name__ == "__main__":
     
     plt.figure(1)
     plt.plot(delta_array, Ftestx1, color='c')
-    plt.plot(delta_array, Fpredx1, color='y')
-    plt.plot(delta_array, Fpredx2, color='r', linestyle=':')
+    #plt.plot(delta_array, Fpredx1, color='y')
+    plt.plot(delta_array, Fpredx2, color='r')#, linestyle=':')
     #plt.plot(delta_array[1:]-dx/2, Ffinite1, color='g', linestyle=':')
 
     plt.figure(2)
     plt.plot(delta_array, Etest1, color='c')
-    plt.plot(delta_array, Epredict1, color='y')
-    plt.plot(delta_array, Epredict2, color='r', linestyle=':')
+    #plt.plot(delta_array, Epredict1, color='y')
+    plt.plot(delta_array, Epredict2, color='r')#, linestyle=':')
     plt.plot(delta_array, Epredict2-Eerror2, color='k', linestyle=':')
     plt.plot(delta_array, Epredict2+Eerror2, color='k', linestyle=':')
     
