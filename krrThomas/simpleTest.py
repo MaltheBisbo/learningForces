@@ -74,7 +74,7 @@ def testModel(model, Ndata, theta=0, new=False):
 
     Gtest = np.zeros((Npoints, G.shape[1]))
     
-    delta_array = np.linspace(-3, 3, Npoints)
+    delta_array = np.linspace(-3, 6, Npoints)
     for i in range(Npoints):
         delta = delta_array[i]
         Xtest[i] = Xtest0
@@ -104,6 +104,8 @@ def testModel(model, Ndata, theta=0, new=False):
         return delta_array, Etest, Epredict, Eerror, Ftestx, Fpredx, Ffinite, Xtest, X
     else:
         return delta_array, Etest, Epredict, Ftestx, Fpredx, Ffinite, Xtest, X
+
+
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
 
