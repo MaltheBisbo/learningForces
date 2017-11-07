@@ -8,6 +8,7 @@ import sys
 import time
 #import matplotlib.pyplot as plt
 
+
 def main(arg=1):
     Natoms = 19
 
@@ -63,8 +64,11 @@ def main(arg=1):
     """
     
     np.savetxt('performance_MLenhanced' + str(arg) + '.txt',
-               np.c_[Niter_done, Nfev_done, E_done,
+               np.c_[Niter_done, Nfev_done, E_done, Ebest,
                      runtime, time_relaxML, time_train], delimiter='\t')
+
+    np.savetxt('relaxedEnergiesML' + str(arg) + '.txt', np.c_[optim.ErelML, optim.ErelTrue])
+    
     """
     plt.figure(1)
     plt.title('Groundstate for 19 atoms')
@@ -74,6 +78,8 @@ def main(arg=1):
     plt.gca().set_aspect('equal', adjustable='box')
     plt.show()
     """
+
+
 if __name__ == '__main__':
     arg = int(sys.argv[1])
     main(arg)

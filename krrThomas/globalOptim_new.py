@@ -1,7 +1,9 @@
 import numpy as np
 from scipy.optimize import minimize
+from scipy.spatial.distance import euclidean
 import time
 # import matplotlib.pyplot as plt
+
 
 class globalOptim():
     """
@@ -46,7 +48,7 @@ class globalOptim():
     Defines the energy which a new trajectory point has to be lover than the previous, to be saved for training.
     
     MLerrorMargin:
-    Maximum error differende between the ML-relaxed structure and the target energy of the same structure, 
+    Maximum error differende between the ML-relaxed structure and the target energy of the same structure,
     below which the ML structure is accepted.
 
     NstartML:
@@ -65,7 +67,7 @@ class globalOptim():
     """
     def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=10,
                  saveStep=3, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, maxNtrain=1e3,
-                 fracPerturb=0.4, radiusRange = [0.9, 1.5], stat=False):
+                 fracPerturb=0.4, radiusRange=[0.9, 1.5], stat=False):
 
         self.Efun = Efun
         self.gradfun = gradfun
@@ -107,6 +109,10 @@ class globalOptim():
 
         # Save number of accepted ML-relaxations
         self.NacceptedML = 0
+
+        # ML and target energy of relaxed structures
+        self.ErelML = np.zeros(Niter)
+        self.ErelTrue = np.zeros(Niter)
         
         # For extracting statistics (Only for testing)
         self.stat = stat
@@ -125,54 +131,65 @@ class globalOptim():
 
         # Run global search
         for i in range(self.Niter):
-            #print("progress: {}/{}\r".format(i+1, self.Niter), end='')
-            # Perturb current structure to make new candidate
-            Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
-
+            
             # Use MLmodel to relax - if it excists
-            if self.MLmodel is not None:
-
-                # If sufficient training data use ML model
-                if self.ksaved > self.NstartML:
-
-                    # Reduce training data - If there is too much
-                    if self.ksaved > 1.1*self.maxNtrain:
+            # and there is sufficient training data
+            if self.MLmodel is not None and self.ksaved > self.NstartML:
+                
+                # Reduce training data - If there is too much
+                if self.ksaved > 1.1*self.maxNtrain:
+                    
+                    Nremove = self.ksaved - self.maxNtrain
+                    self.Xsaved[:self.maxNtrain] = self.Xsaved[Nremove:self.ksaved]
+                    self.Esaved[:self.maxNtrain] = self.Esaved[Nremove:self.ksaved]
+                    self.ksaved = self.maxNtrain
+                    
+                    self.MLmodel.remove_data(Nremove)
                         
-                        Nremove = self.ksaved - self.maxNtrain
-                        self.Xsaved[:self.maxNtrain] = self.Xsaved[Nremove:self.ksaved]
-                        self.Esaved[:self.maxNtrain] = self.Esaved[Nremove:self.ksaved]
-                        self.ksaved = self.maxNtrain
+                # Train ML model + ML-relaxation
+                t0 = time.time()
+                self.trainModel()
+                self.time_train += time.time() - t0
 
-                        self.MLmodel.remove_data(Nremove)
-                        
-                    # Train ML model + ML-relaxation
-                    t0 = time.time()
-                    self.trainModel()
-                    self.time_train += time.time() - t0
+                # Try perturbations until acceptable ML-relaxed structure is found
+                acceptabelStructure = False
+                while not acceptabelStructure:
+                    # Perturbation
+                    Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
 
+                    # ML-relaxation
                     t0 = time.time()
                     EnewML, XnewML = self.relax(Xnew_unrelaxed, ML=True)
                     self.time_relaxML += time.time() - t0
+
+                    acceptabelStructure = self.structureValidity(XnewML)
+
+                    if acceptabelStructure:
+                        # Target energy of relaxed structure
+                        EnewML_true = self.Efun(XnewML)
+                        self.Nfev += 1
+                        
+                        # Save ML and target energy of relaxed structure (For testing)
+                        self.ErelML[i] = EnewML
+                        self.ErelTrue[i] = EnewML_true
+                        
+                        # Save target energy
+                        self.Xsaved[self.ksaved] = XnewML
+                        self.Esaved[self.ksaved] = EnewML_true
+                        self.ksaved += 1
                     
-                    # Target energy of relaxed structure
-                    EnewML_true = self.Efun(XnewML)
-                    self.Nfev +=1
-                    
-                    # Save target energy
-                    self.Xsaved[self.ksaved] = XnewML
-                    self.Esaved[self.ksaved] = EnewML_true
-                    self.ksaved += 1
-                    
-                    # Accept ML-relaxed structure based on precision criteria
-                    if abs(EnewML - EnewML_true) < self.MLerrorMargin:
-                        Enew, Xnew = EnewML_true, XnewML
-                        self.NacceptedML += 1
-                    else:
-                        continue
-                        #Enew, Xnew = self.relax(Xnew_unrelaxed)
+                # Accept ML-relaxed structure based on precision criteria
+                if abs(EnewML - EnewML_true) < self.MLerrorMargin:
+                    Enew, Xnew = EnewML_true, XnewML
+                    self.NacceptedML += 1
                 else:
-                    Enew, Xnew = self.relax(Xnew_unrelaxed)
+                    continue
+                    #Enew, Xnew = self.relax(Xnew_unrelaxed)
             else:
+                # Perturb current structure to make new candidate
+                Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+
+                # Relax with true potential
                 Enew, Xnew = self.relax(Xnew_unrelaxed)
 
             dE = Enew - self.E
@@ -313,6 +330,20 @@ class globalOptim():
 
         return Eperturb, Xperturb
 
+    def structureValidity(self, x):
+        connected_array = np.zeros(self.Natoms).astype(int)
+        for i in range(self.Natoms):
+            xi = x[2*i:2*(i+1)]
+            for j in range(i+1, self.Natoms):
+                xj = x[2*j:2*(j+1)]
+                distance = euclidean(xi, xj)
+                if distance < self.rmin:
+                    return False
+                if distance < self.rmax:
+                    connected_array[i] = 1
+                    connected_array[j] = 1
+        return np.all(connected_array == 1)
+    
     def trainModel(self):
         
         Eadd = self.Esaved[self.MLmodel.Ndata:self.ksaved]
