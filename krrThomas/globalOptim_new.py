@@ -155,7 +155,8 @@ class globalOptim():
                 acceptabelStructure = False
                 while not acceptabelStructure:
                     # Perturbation
-                    Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+                    #Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+                    Xnew_unrelaxed = self.makeNewCandidate()
 
                     # ML-relaxation
                     t0 = time.time()
@@ -187,7 +188,8 @@ class globalOptim():
                     #Enew, Xnew = self.relax(Xnew_unrelaxed)
             else:
                 # Perturb current structure to make new candidate
-                Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+                # Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
+                Xnew_unrelaxed = self.makeNewCandidate()
 
                 # Relax with true potential
                 Enew, Xnew = self.relax(Xnew_unrelaxed)
@@ -319,6 +321,7 @@ class globalOptim():
                     i_static = np.append(i_static, i)
                     break
 
+        """
         # Calculate target energy
         Eperturb = self.Efun(Xperturb)
         self.Nfev += 1
@@ -329,7 +332,9 @@ class globalOptim():
         self.ksaved += 1
 
         return Eperturb, Xperturb
-
+        """
+        return Xperturb
+    
     def structureValidity(self, x):
         connected_array = np.zeros(self.Natoms).astype(int)
         for i in range(self.Natoms):
