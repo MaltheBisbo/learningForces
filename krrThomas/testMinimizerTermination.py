@@ -11,10 +11,10 @@ def gradfun(X):
     params = (1.5, 1, np.sqrt(0.02))
     return doubleLJ_gradient(X, params[0], params[1], params[2])
 
-def callback(x_cur, obj):
+def callback(x_cur):
     global Xtraj
     Xtraj.append(x_cur)
-    print(obj.fk)
+    print(len(Xtraj))
 
 def localMinimizer(X):
     global Xtraj
