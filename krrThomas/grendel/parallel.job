@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # set the number of nodes and processes per node
-#PBS -l nodes=25:ppn=8
+#PBS -l nodes=10:ppn=8
 
 # set nodes to use
-#PBS -q q8
+#PBS -q q8n
 
 # set max wallclock time
 #PBS -l walltime=100:00:00
@@ -34,6 +34,6 @@ cd /scratch/$PBS_JOBID
 #             Remember to setup passwordless login!
 #  -SS :      Log runtime statistics for each subtask
 #  {0..9} : Specify arguments for the 9 subtasks: 0,...,9
-dispatch -T 1 -e ssh -SS -c "python performanceML_new.py" {0..199}
+dispatch -T 1 -e ssh -SS -c "python performanceML_new.py" {0..79}
 
-pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/*.txt  $PBS_O_WORKDIR/dataN19_ML_singleTargetRelax7/'
+pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/*.txt  $PBS_O_WORKDIR/dataN19_ML_singleTargetRelax9/'
