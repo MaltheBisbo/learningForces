@@ -1,6 +1,5 @@
 import numpy as np
 from scipy.spatial.distance import sqeuclidean
-from scipy.spatial.distance import cdist
 
 
 class gaussComparator():
@@ -27,9 +26,8 @@ class gaussComparator():
     def get_similarity_vector(self, fnew, featureMat=None):
         if featureMat is not None:
             self.featureMat = featureMat
-        d = cdist(fnew.reshape((1,len(fnew))), self.featureMat, metric='sqeuclidean')
-        self.similarityVec = np.exp(-1/(2*self.sigma**2)*d).reshape(-1)
-        
+        self.similarityVec = np.array([self.single_comparison(fnew, f, self.sigma)
+                                       for f in self.featureMat])
         return self.similarityVec
 
     def single_comparison(self, feature1, feature2, sigma=None):
@@ -49,8 +47,9 @@ class gaussComparator():
             featureMat = self.featureMat.copy()
 
         if kappa is None:
-            kappa = self.get_similarity_vector(fnew, featureMat)
-            
+            kappa = np.array([self.single_comparison(fnew, f, self.sigma)
+                              for f in self.featureMat])
+
         dk_dd = -1/(2*self.sigma**2)*kappa.reshape((kappa.shape[0], 1))
         dd_df = -2*(featureMat - fnew.reshape((1, fnew.shape[0])))
 

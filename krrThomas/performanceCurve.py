@@ -52,6 +52,13 @@ dataML6 = dataML6[~np.isnan(dataML6[:,0])]
 NiterML6 = dataML6[:,0]
 NfevML6 = dataML6[:,1]
 EbestML6 = dataML6[:,2]
+t_run = dataML6[:,-3]
+t_relax = dataML6[:,-2]
+t_train = dataML6[:,-1]
+
+print('t_run:', np.mean(t_run))
+print('t_relax:', np.mean(t_relax))
+print('t_train:', np.mean(t_train))
 
 NiterML6_values, NiterML6_base = np.histogram(NiterML6, 1000)
 NfevML6_values, NfevML6_base = np.histogram(NfevML6, 1000)
