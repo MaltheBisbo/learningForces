@@ -47,7 +47,7 @@ class krr_class():
             alpha_err = np.linalg.solve(A, similarityVec)
             theta0 = np.dot(self.data_values[:self.Ndata], self.alpha) / self.Ndata
             predicted_error = np.sqrt(np.abs(theta0*(1 - np.dot(similarityVec, alpha_err))))
-            return predicted_value, predicted_error
+            return predicted_value, predicted_error, theta0
         else:
             return predicted_value
         

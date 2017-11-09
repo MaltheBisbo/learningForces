@@ -113,6 +113,10 @@ class globalOptim():
         # ML and target energy of relaxed structures
         self.ErelML = np.zeros(Niter)
         self.ErelTrue = np.zeros(Niter)
+
+        # ML error of relaxed structure
+        self.MLerror = np.zeros(Niter)
+        self.Nbacktrack = np.zeros(Niter).astype(int)
         
         # For extracting statistics (Only for testing)
         self.stat = stat
@@ -151,33 +155,22 @@ class globalOptim():
                 self.trainModel()
                 self.time_train += time.time() - t0
 
-                # Try perturbations until acceptable ML-relaxed structure is found
-                acceptabelStructure = False
-                while not acceptabelStructure:
-                    # Perturbation
-                    #Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
-                    Xnew_unrelaxed = self.makeNewCandidate()
+                # Perturbation
+                Xnew_unrelaxed = self.makeNewCandidate()
 
-                    # ML-relaxation
-                    t0 = time.time()
-                    EnewML, XnewML = self.relax(Xnew_unrelaxed, ML=True)
-                    self.time_relaxML += time.time() - t0
+                # ML-relaxation
+                t0 = time.time()
+                EnewML, XnewML, relative_error, Nback = self.relax(Xnew_unrelaxed, ML=True)  # two last for TESTING
+                self.time_relaxML += time.time() - t0
 
-                    acceptabelStructure = self.structureValidity(XnewML)
-
-                    if acceptabelStructure:
-                        # Target energy of relaxed structure
-                        EnewML_true = self.Efun(XnewML)
-                        self.Nfev += 1
-                        
-                        # Save ML and target energy of relaxed structure (For testing)
-                        self.ErelML[i] = EnewML
-                        self.ErelTrue[i] = EnewML_true
-                        
-                        # Save target energy
-                        self.Xsaved[self.ksaved] = XnewML
-                        self.Esaved[self.ksaved] = EnewML_true
-                        self.ksaved += 1
+                # Target energy of relaxed structure
+                EnewML_true = self.Efun(XnewML)
+                self.Nfev += 1
+                
+                # Save target energy
+                self.Xsaved[self.ksaved] = XnewML
+                self.Esaved[self.ksaved] = EnewML_true
+                self.ksaved += 1
                     
                 # Accept ML-relaxed structure based on precision criteria
                 if abs(EnewML - EnewML_true) < self.MLerrorMargin:
@@ -185,7 +178,14 @@ class globalOptim():
                     self.NacceptedML += 1
                 else:
                     continue
-                    #Enew, Xnew = self.relax(Xnew_unrelaxed)
+
+                # Save ML and target energy of relaxed structure (For testing)
+                self.ErelML[i] = EnewML  # TESTING
+                self.ErelTrue[i] = EnewML_true  # TESTING
+
+                self.MLerror[i] = relative_error  # TESTING
+                self.Nbacktrack[i] = Nback  # TESTING
+
             else:
                 # Perturb current structure to make new candidate
                 # Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
@@ -321,18 +321,6 @@ class globalOptim():
                     i_static = np.append(i_static, i)
                     break
 
-        """
-        # Calculate target energy
-        Eperturb = self.Efun(Xperturb)
-        self.Nfev += 1
-
-        # Save structure for training
-        self.Xsaved[self.ksaved] = Xperturb
-        self.Esaved[self.ksaved] = Eperturb
-        self.ksaved += 1
-
-        return Eperturb, Xperturb
-        """
         return Xperturb
     
     def structureValidity(self, x):
@@ -359,13 +347,6 @@ class globalOptim():
                                          positionMat=Xadd,
                                          add_new_data=True,
                                          **GSkwargs)
-        """
-        FVU, params = self.MLmodel.train(self.Esaved[:self.ksaved],
-                                         positionMat=self.Xsaved[:self.ksaved],
-                                         add_new_data=False,
-                                         **GSkwargs)
-        """
-        #print('sigma:', params['sigma'], 'reg:', params['reg'])
         
     def relax(self, X=None, ML=False):
         ## determine which model to use for relaxation ##
@@ -377,14 +358,18 @@ class globalOptim():
             def gradfun(pos):
                 return -self.MLmodel.predict_force(pos=pos)
 
-            # Set up minimizer
-            options = {'gtol': 1e-5}
+            def callback(x_cur):
+                global Xtraj
+                Xtraj.append(x_cur)
+                
             def localMinimizer(X):
-                res = minimize(Efun, X, method="BFGS", jac=gradfun, tol=1e-5)
-                return res
+                global Xtraj
+                Xtraj = []
+                res = minimize(Efun, X, method="BFGS", jac=gradfun, tol=1e-5, callback=callback)
+                Xtraj = np.array(Xtraj)
+                return res, Xtraj
         else:
             # Use double Lennard-Johnes
-            # Set up Minimizer
             def callback(x_cur):
                 global Xtraj
                 Xtraj.append(x_cur)
@@ -420,7 +405,7 @@ class globalOptim():
             Etraj = np.array([self.Efun(x) for x in Xtraj])
 
             # Extract subset of trajectory for training
-            trimIndices  = trimData(Etraj)
+            trimIndices = trimData(Etraj)
             Xtrim = Xtraj[trimIndices]
             Etrim = Etraj[trimIndices]
 
@@ -428,8 +413,8 @@ class globalOptim():
             Ntrim = len(trimIndices)
             # print('right:', Xtrim.shape, 'left:', self.Xsaved[self.ksaved : self.ksaved + Ntrim].shape)
             # print('Ntrim:', Ntrim, 'ksaved:', self.ksaved)
-            self.Xsaved[self.ksaved : self.ksaved + Ntrim] = Xtrim
-            self.Esaved[self.ksaved : self.ksaved + Ntrim] = Etrim
+            self.Xsaved[self.ksaved:self.ksaved + Ntrim] = Xtrim
+            self.Esaved[self.ksaved:self.ksaved + Ntrim] = Etrim
             self.ksaved += Ntrim
 
             # Count number of function evaluations
@@ -438,8 +423,14 @@ class globalOptim():
             return res.fun, res.x
         else:
             # Minimize using ML potential
-            res = localMinimizer(X)
-            return res.fun, res.x
+            res, Xtraj = localMinimizer(X)
+            k = 0
+            for x in reversed(Xtraj):
+                E, error, theta0 = self.MLmodel.predict_energy(pos=x, return_error=True)
+                if error < 0.9*np.sqrt(theta0):  # 0.5 as first trial (testing)
+                    return E, x, error/np.sqrt(theta0), k  # two last is only for TESTING
+                k += 1
+            return res.fun, res.x, np.nan, np.nan
 
     def artificialPotential(self, x):
         N = x.shape[0]

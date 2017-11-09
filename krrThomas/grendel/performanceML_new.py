@@ -67,7 +67,7 @@ def main(arg=1):
                np.c_[Niter_done, Nfev_done, E_done, Ebest,
                      runtime, time_relaxML, time_train], delimiter='\t')
 
-    np.savetxt('relaxedEnergiesML' + str(arg) + '.txt', np.c_[optim.ErelML, optim.ErelTrue])
+    np.savetxt('relaxedEnergiesML' + str(arg) + '.txt', np.c_[optim.ErelML, optim.ErelTrue, optim.MLerror, optim.Nbacktrack])
     
     """
     plt.figure(1)
