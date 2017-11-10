@@ -65,9 +65,9 @@ def main(arg=1):
     
     np.savetxt('performance_MLenhanced' + str(arg) + '.txt',
                np.c_[Niter_done, Nfev_done, E_done, Ebest,
-                     runtime, time_relaxML, time_train], delimiter='\t')
+                     runtime, time_relaxML, time_train, optim.Nerror_too_high], delimiter='\t')
 
-    np.savetxt('relaxedEnergiesML' + str(arg) + '.txt', np.c_[optim.ErelML, optim.ErelTrue, optim.MLerror, optim.Nbacktrack])
+    np.savetxt('relaxedEnergiesML' + str(arg) + '.txt', np.c_[optim.ErelML, optim.ErelTrue, optim.MLerror, optim.theta0, optim.Nbacktrack])
     
     """
     plt.figure(1)

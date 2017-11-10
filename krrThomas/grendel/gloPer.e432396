@@ -1,0 +1,128 @@
+Warning: Permanently added 's32n41,10.10.32.41' (RSA) to the list of known hosts.
+Warning: Permanently added 's32n43,10.10.32.43' (RSA) to the list of known hosts.
+Warning: Permanently added 's32n34,10.10.32.34' (RSA) to the list of known hosts.
+Warning: Permanently added 's32n53,10.10.32.53' (RSA) to the list of known hosts.
+Warning: Permanently added 's32n24,10.10.32.24' (RSA) to the list of known hosts.
+Warning: Permanently added 's32n51,10.10.32.51' (RSA) to the list of known hosts.
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+/scratch/432396.in1/globalOptim_new.py:436: RuntimeWarning: invalid value encountered in sqrt
+  if error < 0.7*np.sqrt(theta0):  # 0.5 as first trial (testing)
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "performanceML_new.py", line 85, in <module>
+    main(arg)
+  File "performanceML_new.py", line 38, in main
+    optim.runOptimizer()
+  File "/scratch/432396.in1/globalOptim_new.py", line 185, in runOptimizer
+    self.Nbacktrack[i] = Nback  # TESTING
+ValueError: cannot convert float NaN to integer

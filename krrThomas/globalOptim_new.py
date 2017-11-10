@@ -116,7 +116,9 @@ class globalOptim():
 
         # ML error of relaxed structure
         self.MLerror = np.zeros(Niter)
-        self.Nbacktrack = np.zeros(Niter).astype(int)
+        self.theta0 = np.zeros(Niter)
+        self.Nbacktrack = np.zeros(Niter)
+        self.Nerror_too_high = 0
         
         # For extracting statistics (Only for testing)
         self.stat = stat
@@ -136,8 +138,7 @@ class globalOptim():
         # Run global search
         for i in range(self.Niter):
             
-            # Use MLmodel to relax - if it excists
-            # and there is sufficient training data
+            # Use MLmodel - if it excists + sufficient data is available
             if self.MLmodel is not None and self.ksaved > self.NstartML:
                 
                 # Reduce training data - If there is too much
@@ -155,22 +156,36 @@ class globalOptim():
                 self.trainModel()
                 self.time_train += time.time() - t0
 
-                # Perturbation
-                Xnew_unrelaxed = self.makeNewCandidate()
+                done = False
+                while not done:
+                    # Perturb current structure
+                    Xnew_unrelaxed = self.makeNewCandidate()
+                    
+                    # Relax with MLmodel
+                    t0 = time.time()
+                    EnewML, XnewML, error, theta0, Nback = self.relax(Xnew_unrelaxed, ML=True)  # two last for TESTING
+                    self.time_relaxML += time.time() - t0
+                    
+                    # Target energy of relaxed structure
+                    EnewML_true = self.Efun(XnewML)
+                    self.Nfev += 1
+                    
+                    # Save target energy
+                    self.Xsaved[self.ksaved] = XnewML
+                    self.Esaved[self.ksaved] = EnewML_true
+                    self.ksaved += 1
 
-                # ML-relaxation
-                t0 = time.time()
-                EnewML, XnewML, relative_error, Nback = self.relax(Xnew_unrelaxed, ML=True)  # two last for TESTING
-                self.time_relaxML += time.time() - t0
-
-                # Target energy of relaxed structure
-                EnewML_true = self.Efun(XnewML)
-                self.Nfev += 1
-                
-                # Save target energy
-                self.Xsaved[self.ksaved] = XnewML
-                self.Esaved[self.ksaved] = EnewML_true
-                self.ksaved += 1
+                    done = ~np.isnan(Nback)
+                    
+                    ## TESTING
+                    # Save ML and target energy of relaxed structure (For testing)
+                    self.ErelML[i] = EnewML  # TESTING
+                    self.ErelTrue[i] = EnewML_true  # TESTING
+                    
+                    self.MLerror[i] = error  # TESTING
+                    self.theta0[i] = theta0  # TESTING
+                    self.Nbacktrack[i] = Nback  # TESTING
+                    ## TESTING DONE
                     
                 # Accept ML-relaxed structure based on precision criteria
                 if abs(EnewML - EnewML_true) < self.MLerrorMargin:
@@ -178,14 +193,7 @@ class globalOptim():
                     self.NacceptedML += 1
                 else:
                     continue
-
-                # Save ML and target energy of relaxed structure (For testing)
-                self.ErelML[i] = EnewML  # TESTING
-                self.ErelTrue[i] = EnewML_true  # TESTING
-
-                self.MLerror[i] = relative_error  # TESTING
-                self.Nbacktrack[i] = Nback  # TESTING
-
+                
             else:
                 # Perturb current structure to make new candidate
                 # Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
@@ -427,22 +435,11 @@ class globalOptim():
             k = 0
             for x in reversed(Xtraj):
                 E, error, theta0 = self.MLmodel.predict_energy(pos=x, return_error=True)
-                if error < 0.9*np.sqrt(theta0):  # 0.5 as first trial (testing)
-                    return E, x, error/np.sqrt(theta0), k  # two last is only for TESTING
+                if error < 0.95*np.sqrt(theta0):  # 0.5 as first trial (testing)
+                    return E, x, error, theta0, k  # two last is only for TESTING
                 k += 1
-            return res.fun, res.x, np.nan, np.nan
-
-    def artificialPotential(self, x):
-        N = x.shape[0]
-        Natoms = int(N/2)
-        x = np.reshape(x, (Natoms, 2))
-        E = 0
-        for i in range(Natoms):
-            for j in range(i+1, Natoms):
-                r = np.sqrt(np.dot(x[i] - x[j], x[i] - x[j]))
-                if r < self.rmin:
-                    E += 1e4 * (self.rmin - r)
-        return E
+            self.Nerror_too_high += 1
+            return res.fun, res.x, np.nan, np.nan, np.nan
 
     def initializeStatistics(self):
         ### Statistics ###
