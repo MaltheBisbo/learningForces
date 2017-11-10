@@ -30,13 +30,22 @@ NiterML_cum = np.cumsum(NiterML_values)
 NfevML_cum = np.cumsum(NfevML_values)
 
 ### MLenhanced - single target relax (Saving relaxed + unrelaxed)###
-dataML5 = np.loadtxt('grendel/dataN19_ML_singleTargetRelax6/all_performance_MLenhanced.txt', delimiter='\t')
-dataML5 = dataML5.reshape((200,7))
+dataML5 = np.loadtxt('grendel/dataN19_ML_singleTargetRelax10/all_performance_MLenhanced.txt', delimiter='\t')
+dataML5 = dataML5.reshape((200,8))
 dataML5 = dataML5[~np.isnan(dataML5[:,0])]
 
 NiterML5 = dataML5[:,0]
 NfevML5 = dataML5[:,1]
 EbestML5 = dataML5[:,2]
+t_run5 = dataML5[:,-4]
+t_relax5 = dataML5[:,-3]
+t_train5 = dataML5[:,-2]
+t_NerrorAbove5 = dataML5[:,-1]
+
+print('t_run:', np.mean(t_run5))
+print('t_relax:', np.mean(t_relax5))
+print('t_train:', np.mean(t_train5))
+print('t_NerrorAbove5:', np.mean(t_NerrorAbove5))
 
 NiterML5_values, NiterML5_base = np.histogram(NiterML5, 1000)
 NfevML5_values, NfevML5_base = np.histogram(NfevML5, 1000)
