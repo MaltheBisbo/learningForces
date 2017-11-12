@@ -71,13 +71,14 @@ class krr_class():
         Adds data to previously saved data.
         """
         Nadd = len(data_values_add)
-        
-        # Add data
-        self.data_values[self.Ndata:self.Ndata+Nadd] = data_values_add
-        self.featureMat[self.Ndata:self.Ndata+Nadd] = featureMat_add
-        
-        # Iterate data counter
-        self.Ndata += Nadd
+
+        if Nadd > 0:
+            # Add data
+            self.data_values[self.Ndata:self.Ndata+Nadd] = data_values_add
+            self.featureMat[self.Ndata:self.Ndata+Nadd] = featureMat_add
+            
+            # Iterate data counter
+            self.Ndata += Nadd
 
     def remove_data(self, N_remove):
         """
