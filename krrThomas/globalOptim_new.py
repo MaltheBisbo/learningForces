@@ -169,13 +169,14 @@ class globalOptim():
                     # Target energy of relaxed structure
                     EnewML_true = self.Efun(XnewML)
                     self.Nfev += 1
-                    
-                    # Save target energy
-                    self.Xsaved[self.ksaved] = XnewML
-                    self.Esaved[self.ksaved] = EnewML_true
-                    self.ksaved += 1
 
-                    done = ~np.isnan(Nback)
+                    if EnewML < 0:
+                        # Save target energy
+                        self.Xsaved[self.ksaved] = XnewML
+                        self.Esaved[self.ksaved] = EnewML_true
+                        self.ksaved += 1
+
+                    done = True
                     
                     ## TESTING
                     # Save ML and target energy of relaxed structure (For testing)
@@ -435,11 +436,11 @@ class globalOptim():
             k = 0
             for x in reversed(Xtraj):
                 E, error, theta0 = self.MLmodel.predict_energy(pos=x, return_error=True)
-                if error < 0.95*np.sqrt(theta0):  # 0.5 as first trial (testing)
-                    return E, x, error, theta0, k  # two last is only for TESTING
-                k += 1
-            self.Nerror_too_high += 1
-            return res.fun, res.x, np.nan, np.nan, np.nan
+                #if error < 0.95*np.sqrt(theta0):  # 0.5 as first trial (testing)
+                return E, x, error, theta0, k  # two last is only for TESTING
+                #k += 1
+            #self.Nerror_too_high += 1
+            #return res.fun, res.x, np.nan, np.nan, np.nan
 
     def initializeStatistics(self):
         ### Statistics ###
