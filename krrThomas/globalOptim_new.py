@@ -170,7 +170,7 @@ class globalOptim():
                     EnewML_true = self.Efun(XnewML)
                     self.Nfev += 1
 
-                    if EnewML < 0:
+                    if EnewML_true < 0:
                         # Save target energy
                         self.Xsaved[self.ksaved] = XnewML
                         self.Esaved[self.ksaved] = EnewML_true
