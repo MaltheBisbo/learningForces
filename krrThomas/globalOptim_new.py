@@ -156,8 +156,8 @@ class globalOptim():
                 self.trainModel()
                 self.time_train += time.time() - t0
 
-                done = False
-                while not done:
+                acceptableStructure = False
+                while not acceptableStructure:
                     # Perturb current structure
                     Xnew_unrelaxed = self.makeNewCandidate()
                     
@@ -165,28 +165,29 @@ class globalOptim():
                     t0 = time.time()
                     EnewML, XnewML, error, theta0, Nback = self.relax(Xnew_unrelaxed, ML=True)  # two last for TESTING
                     self.time_relaxML += time.time() - t0
-                    
-                    # Target energy of relaxed structure
-                    EnewML_true = self.Efun(XnewML)
-                    self.Nfev += 1
 
-                    if EnewML_true < 0:
+                    # Measure of acceptability
+                    acceptableStructure = error/np.sqrt(theta0) < 0.01
+                    
+                    if acceptableStructure:
+                        # Target energy of relaxed structure
+                        EnewML_true = self.Efun(XnewML)
+                        self.Nfev += 1
+                        
                         # Save target energy
                         self.Xsaved[self.ksaved] = XnewML
                         self.Esaved[self.ksaved] = EnewML_true
                         self.ksaved += 1
-
-                    done = True
                     
-                    ## TESTING
-                    # Save ML and target energy of relaxed structure (For testing)
-                    self.ErelML[i] = EnewML  # TESTING
-                    self.ErelTrue[i] = EnewML_true  # TESTING
-                    
-                    self.MLerror[i] = error  # TESTING
-                    self.theta0[i] = theta0  # TESTING
-                    self.Nbacktrack[i] = Nback  # TESTING
-                    ## TESTING DONE
+                        ## TESTING
+                        # Save ML and target energy of relaxed structure (For testing)
+                        self.ErelML[i] = EnewML  # TESTING
+                        self.ErelTrue[i] = EnewML_true  # TESTING
+                        
+                        self.MLerror[i] = error  # TESTING
+                        self.theta0[i] = theta0  # TESTING
+                        self.Nbacktrack[i] = Nback  # TESTING
+                        ## TESTING DONE
                     
                 # Accept ML-relaxed structure based on precision criteria
                 if abs(EnewML - EnewML_true) < self.MLerrorMargin:
