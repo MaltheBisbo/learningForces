@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.spatial.distance import euclidean
+from scipy.spatial.distance import pdist
 from scipy.special import erf
 import time
 
@@ -82,6 +83,16 @@ class fingerprintFeature():
                 #value *= f_cutoff
                 fingerprint[newbin] += value
         return fingerprint
+
+    def test(self, x):
+        R = self.radiusVector(x)
+        N_distances = R.shape[0]
+        R = R[R <= self.rcut + self.nsigma*self.sigma]
+        N_relevant_distances = R.shape[0]
+        atomic_fingerprints = np.zeros((N_relevant_distances, self.Nbins))
+
+        
+        
     
     def get_featureMat(self, X):
         """
@@ -173,17 +184,10 @@ class fingerprintFeature():
         Calculates the vector consisting of all pairwise euclidean distances.
         """
         Ndim = 2
-        Natoms = int(x.shape[0]/2)
-        Ndistances = int(Natoms*(Natoms-1)/2)
+        Natoms = int(x.shape[0]/Ndim)
         x = x.reshape((Natoms, Ndim))
-        Rvec = np.zeros(Ndistances)
-        k = 0
-        for i in range(Natoms):
-            for j in range(i+1, Natoms):
-                Rvec[k] = euclidean(x[i],x[j])
-                k += 1
-        return Rvec
-
+        return pdist(x, metric='euclidean')
+    
     def radiusVector_grad(self, x):
         """
         Calculates the vector consisting of all pairwise euclidean distances.
@@ -203,3 +207,21 @@ class fingerprintFeature():
                 indexMat[k,:] = np.array([i,j])
                 k += 1
         return Rvec, dxMat, indexMat
+
+    def radiusVector_grad2(self, x):
+        """
+        Calculates the vector consisting of all pairwise euclidean distances.
+        """
+        Ndim = 2
+        Natoms = int(x.shape[0]/Ndim)
+        x = x.reshape((Natoms, Ndim))
+
+        Rvec = pdist(x, metric='euclidean')
+
+        #dxMat = np.c_[pdist(x[:,0,None], metric='euclidean'),
+        #              pdist(x[:,1,None], metric='euclidean')]
+        print(dxMat)
+        indexMat = np.array([[(i,j) for j in range(Natoms)] for i in range(Natoms)]).astype(int)
+        #print(indexMat)
+        return Rvec, dxMat, indexMat
+
