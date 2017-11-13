@@ -146,7 +146,7 @@ if __name__ == "__main__":
 
     print('Model 2')
     t0 = time.time()
-    delta_array, Etest2, Epredict2, Eerror2, Ftestx2, Fpredx2, Ffinite2, Xtest, X = testModel(krr2, Ndata=1000, theta=theta, new=True)
+    delta_array, Etest2, Epredict2, Eerror2, Ftestx2, Fpredx2, Ffinite2, Xtest, X = testModel(krr2, Ndata=500, theta=theta, new=True)
     print('Runtime new:', time.time() - t0)
 
     plt.figure(1)

@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.spatial.distance import euclidean
 from scipy.special import erf
+import time
 
 class fingerprintFeature():
     def __init__(self, X=None, rcut=4, binwidth=0.1, sigma=0.2, nsigma=4):
@@ -42,8 +43,8 @@ class fingerprintFeature():
         --input--
         x: atomic positions for a single structure in the form [x1, y1, ... , xN, yN]
         """
-        
         R = self.radiusVector(x)
+
         # Number of interatomic distances in the structure
         N_distances = R.shape[0]
         # filter distances longer than rcut + nsigma*sigma
@@ -81,7 +82,7 @@ class fingerprintFeature():
                 #value *= f_cutoff
                 fingerprint[newbin] += value
         return fingerprint
-
+    
     def get_featureMat(self, X):
         """
         Calculated the feature matrix based on a position matrix 'X'.
