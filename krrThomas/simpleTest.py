@@ -2,7 +2,6 @@ import numpy as np
 from doubleLJ import doubleLJ
 from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
-from krr_class2 import krr_class
 from krr_class_new import krr_class as krr_class_new
 import time
 
@@ -122,10 +121,11 @@ if __name__ == "__main__":
     Natoms = 4
     theta=0*np.pi
     
-    # Model 1
     reg = 1e-7  # expKernel: 0.005 , gaussKernel: 1e-7
     sig = 30  # expKernel: 0.3 , gaussKernel: 0.13
 
+    """
+    # Model 1
     np.random.seed(10)
     featureCalculator = fingerprintFeature(rcut=4)
     comparator = gaussComparator(sigma=sig)
@@ -136,7 +136,8 @@ if __name__ == "__main__":
     delta_array, Etest1, Epredict1, Ftestx1, Fpredx1, Ffinite1, Xtest, X = testModel(krr1, Ndata=100, theta=theta, new=False)
     print('Runtime old:', time.time() - t0)
     dx = delta_array[1] - delta_array[0]
-
+    """
+    
     # Model 2
     np.random.seed(10)
     featureCalculator = fingerprintFeature(rcut=4)
@@ -145,17 +146,17 @@ if __name__ == "__main__":
 
     print('Model 2')
     t0 = time.time()
-    delta_array, Etest2, Epredict2, Eerror2, Ftestx2, Fpredx2, Ffinite2, Xtest, X = testModel(krr2, Ndata=100, theta=theta, new=True)
+    delta_array, Etest2, Epredict2, Eerror2, Ftestx2, Fpredx2, Ffinite2, Xtest, X = testModel(krr2, Ndata=1000, theta=theta, new=True)
     print('Runtime new:', time.time() - t0)
-    
+
     plt.figure(1)
-    plt.plot(delta_array, Ftestx1, color='c')
+    plt.plot(delta_array, Ftestx2, color='c')
     #plt.plot(delta_array, Fpredx1, color='y')
     plt.plot(delta_array, Fpredx2, color='r')#, linestyle=':')
     #plt.plot(delta_array[1:]-dx/2, Ffinite1, color='g', linestyle=':')
 
     plt.figure(2)
-    plt.plot(delta_array, Etest1, color='c')
+    plt.plot(delta_array, Etest2, color='c')
     #plt.plot(delta_array, Epredict1, color='y')
     plt.plot(delta_array, Epredict2, color='r')#, linestyle=':')
     plt.plot(delta_array, Epredict2-Eerror2, color='k', linestyle=':')

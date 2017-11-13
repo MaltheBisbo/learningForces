@@ -18,10 +18,9 @@ class gaussComparator():
             self.featureMat = featureMat
         else:
             print("You need to supply a feature matrix")
-
-        self.similarityMat = np.array([[self.single_comparison(f1, f2, self.sigma)
-                                        for f2 in self.featureMat]
-                                       for f1 in self.featureMat])
+        
+        d = cdist(self.featureMat, self.featureMat, metric='sqeuclidean')
+        self.similarityMat = np.exp(-1/(2*self.sigma**2)*d)
         return self.similarityMat
 
     def get_similarity_vector(self, fnew, featureMat=None):
