@@ -6,9 +6,10 @@ def extract(i):
     except OSError:
         print('No file')
 
-data = np.zeros((200,6))
+Ndata = 200
+data = np.zeros((Ndata,7))
 k = 0
-for i in range(200):
+for i in range(Ndata):
     output = extract(i)
     if output is not None:
         data[k,:] = output

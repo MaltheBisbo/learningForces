@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "performanceML_new.py", line 85, in <module>
-    main(arg)
-  File "performanceML_new.py", line 38, in main
-    optim.runOptimizer()
-  File "/scratch/434496.in1/globalOptim_new.py", line 166, in runOptimizer
-    EnewML, XnewML, error, theta0, Nback = self.relax(Xnew_unrelaxed, ML=True)  # two last for TESTING
-TypeError: 'NoneType' object is not iterable
