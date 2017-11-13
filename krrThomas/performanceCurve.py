@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 ### BASECASE ###
-data = np.loadtxt('grendel/basecase_data/all_performance_base.txt', delimiter='\t')
+data = np.loadtxt('grendel/dataN19_basecase/all_performance_base.txt', delimiter='\t')
 data = data.reshape((200,3))
 data = data[~np.isnan(data[:,0])]
 
@@ -17,7 +17,7 @@ Niter_cum = np.cumsum(Niter_values)
 Nfev_cum = np.cumsum(Nfev_values)
 
 ### MLenhanced ###
-dataML = np.loadtxt('grendel/MLenhanced_data/all_performance_MLenhanced.txt', delimiter='\t')
+dataML = np.loadtxt('grendel/dataN19_ML_multipleTargetRelax/all_performance_MLenhanced.txt', delimiter='\t')
 
 NiterML = dataML[:,0]
 NfevML = dataML[:,1]
@@ -29,23 +29,22 @@ NfevML_values, NfevML_base = np.histogram(NfevML, 1000)
 NiterML_cum = np.cumsum(NiterML_values)
 NfevML_cum = np.cumsum(NfevML_values)
 
-### MLenhanced - single target relax (Saving relaxed + unrelaxed)###
-dataML2 = np.loadtxt('grendel/dataN19_ML_singleTargetRelax7/all_performance_MLenhanced.txt', delimiter='\t')
+### MLenhanced - single target relax (Saving relaxed + unrelaxed) ###
+### {r_min, r_max} structure-validity check ###
+dataML2 = np.loadtxt('grendel/dataN19_ML_singleTargetRelax2/all_performance_MLenhanced.txt', delimiter='\t')
 dataML2 = dataML2.reshape((200,7))
 dataML2 = dataML2[~np.isnan(dataML2[:,0])]
 
 NiterML2 = dataML2[:,0]
 NfevML2 = dataML2[:,1]
 EbestML2 = dataML2[:,2]
-t_run2 = dataML2[:,-4]
-t_relax2 = dataML2[:,-3]
-t_train2 = dataML2[:,-2]
-t_NerrorAbove2 = dataML2[:,-1]
+t_run2 = dataML2[:,-3]
+t_relax2 = dataML2[:,-2]
+t_train2 = dataML2[:,-1]
 
 print('t_run:', np.mean(t_run2))
 print('t_relax:', np.mean(t_relax2))
 print('t_train:', np.mean(t_train2))
-print('t_NerrorAbove5:', np.mean(t_NerrorAbove2))
 
 NiterML2_values, NiterML2_base = np.histogram(NiterML2, 1000)
 NfevML2_values, NfevML2_base = np.histogram(NfevML2, 1000)
@@ -53,8 +52,10 @@ NfevML2_values, NfevML2_base = np.histogram(NfevML2, 1000)
 NiterML2_cum = np.cumsum(NiterML2_values)
 NfevML2_cum = np.cumsum(NfevML2_values)
 
-### MLenhanced - single target relax (Saving only relaxed)###
-dataML3 = np.loadtxt('grendel/dataN19_ML_singleTargetRelax13/all_performance_MLenhanced.txt', delimiter='\t')
+### MLenhanced - single target relax (Saving only relaxed) ###
+### E<0 structure-validity check ###
+### No new perturbation when E>0 ###
+dataML3 = np.loadtxt('grendel/dataN19_ML_singleTargetRelax3/all_performance_MLenhanced.txt', delimiter='\t')
 dataML3 = dataML3.reshape((200,8))
 dataML3 = dataML3[~np.isnan(dataML3[:,0])]
 
@@ -75,8 +76,9 @@ NfevML3_values, NfevML3_base = np.histogram(NfevML3, 1000)
 NiterML3_cum = np.cumsum(NiterML3_values)
 NfevML3_cum = np.cumsum(NfevML3_values)
 
-### MLenhanced - single target relax (Saving only relaxed)###                                                                             
-dataML4 = np.loadtxt('grendel/dataN19_ML_singleTargetRelax14/all_performance_MLenhanced.txt', delimiter='\t')
+### MLenhanced - single target relax (Saving only relaxed) ###
+### err/sqrt(theta0) < 0.01 structure-validity check ###                                                                             
+dataML4 = np.loadtxt('grendel/dataN19_ML_singleTargetRelax4/all_performance_MLenhanced.txt', delimiter='\t')
 dataML4 = dataML4.reshape((200,8))
 dataML4 = dataML4[~np.isnan(dataML4[:,0])]
 
