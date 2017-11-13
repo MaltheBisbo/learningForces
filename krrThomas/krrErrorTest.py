@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 def extract(i):
     try:
-        return np.loadtxt('grendel/dataN19_ML_singleTargetRelax13/relaxedEnergiesML' + str(i) + '.txt', delimiter=' ')
+        return np.loadtxt('grendel/dataN19_ML_singleTargetRelax3/relaxedEnergiesML' + str(i) + '.txt', delimiter=' ')
     except OSError:
         print('No file')
 
@@ -40,7 +40,7 @@ plt.xscale('log')
 plt.scatter(error, dE)
 plt.scatter(error[error > 1], dE[error > 1], color='r')
 
-filter3 = ErelTrue > -30
+filter3 = ErelTrue > 0
 plt.figure(3)
 plt.yscale('log')
 plt.xscale('log')
