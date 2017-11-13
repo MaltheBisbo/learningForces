@@ -45,8 +45,8 @@ NiterML5_cum = np.cumsum(NiterML5_values)
 NfevML5_cum = np.cumsum(NfevML5_values)
 
 ### MLenhanced - single target relax (Saving only relaxed)###
-dataML6 = np.loadtxt('grendel/dataN19_ML_singleTargetRelax7/all_performance_MLenhanced.txt', delimiter='\t')
-dataML6 = dataML6.reshape((200,7))
+dataML6 = np.loadtxt('grendel/dataN19_ML_singleTargetRelax10/all_performance_MLenhanced.txt', delimiter='\t')
+dataML6 = dataML6.reshape((200,8))
 dataML6 = dataML6[~np.isnan(dataML6[:,0])]
 
 NiterML6 = dataML6[:,0]
