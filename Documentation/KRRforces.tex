@@ -1,0 +1,150 @@
+\documentclass[english,a4paper,oneside, twocolumn,article,9pt]{memoir}
+\usepackage[english]{babel}		
+\usepackage[utf8x]{inputenc}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{xspace}
+\usepackage{mathrsfs}
+\usepackage{slashed}
+\usepackage[inline]{enumitem}
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\usepackage{cleveref}
+
+\setlength\parindent{0pt}
+
+\newcommand{\mb}[1]{\mathbf{#1}}
+
+\newcommand{\deriv}[1]{% \deriv[<order>]{<func>}{<var>}
+	\ensuremath{\frac{\partial}{\partial {#1}}}}
+
+\newcommand{\Deriv}[3][]{% \deriv[<order>]{<func>}{<var>}
+	\ensuremath{\frac{\partial^{#1} {#2}}{\partial {#3}^{#1}}}}
+
+\newcommand{\ket}[1]{\vert #1 \rangle}
+\newcommand{\bra}[1]{\langle#1\vert}
+\newcommand{\LL}{\ensuremath{\mathcal{L}}}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{Forces with KRR}
+\author{Malthe Kjær Bisbo}
+\date{\today}
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+
+\chapter{Kernel Ridge Regression}
+Kernel Ridge Regression (KRR) is basically an upgraded version of regularized linear regression, which is made linear by the kernel trick $x^Tx' \rightarrow k(x,x')$, where $k(.,.)$ is the kernel.
+
+\subsection*{Regularized linear regression}
+In regularized linear (least square) regression we seek the coefficients $w$ that minimizes the cost function
+
+\begin{align*}
+\min\limits_{w}\left(\sum_{i}^{N}(\vec{w}^Tx_i - y_i)^2 + \lambda\sum_{i}^{N}w_i^2\right)
+\end{align*}
+or
+\begin{align*}
+\min\limits_{w}\left((X\vec{w} - \vec{y})^2 + \lambda \norm{\vec{w}}^2\right)
+\end{align*}
+
+Where $X$ is the matrix with the $x_i^T$'s as it's rows.
+
+The solution is
+
+\begin{align*}
+\vec{w} = X^T(XX^T + \lambda I)^{-1}\vec{y} = X^T\vec{\alpha}
+\end{align*}
+
+Where we define $\vec{\alpha} = (XX^T + \lambda I)^{-1}\vec{y}$.
+
+Predictions are then performed using
+
+\begin{align*}
+y' = \vec{w}^T x' = (X^T\vec{\alpha})^T x' = \vec{\alpha}^T Xx'
+\end{align*}
+
+\bigskip
+\textbf{Result:} To train and use the regularized linear regression model as an ML-predictor We thus need two steps.
+
+\bigskip
+
+\textbf{1. Training:}
+
+Calculate $\vec{\alpha}$ from training data.
+\begin{align*}
+\vec{\alpha} = (XX^T + \lambda I)^{-1}\vec{y}
+\end{align*} 
+
+\textbf{2. Prediction:}
+
+Predict new value $y'$ using
+\begin{align*}
+y' = \vec{\alpha}^T Xx'
+\end{align*}
+
+\subsection{Kernel Trick $\rightarrow$ KRR}
+Applying the kernel trick using the kernel $k(.,.)$ we get
+\begin{align*}
+XX^T \rightarrow \mb{K} \quad \text{where} \quad \mb{K}_{ij} = k(\vec{x_i},\vec{x_j})
+\end{align*}
+and
+\begin{align*}
+Xx' \rightarrow \vec{\kappa} \quad \text{where} \quad \mb{\kappa}_{i} = k(\vec{x_i},\vec{x'})
+\end{align*}
+
+\textbf{Result:} To use \textit{Kernel Ridge Regression} for training and prediction we need the two results.
+
+\bigskip
+
+\textbf{1. Training:}
+
+Calculate $\vec{\alpha}$ from training data.
+\begin{align}
+\vec{\alpha} = (\mb{K} + \lambda I)^{-1}\vec{y}
+\end{align} 
+
+\textbf{2. Prediction:}
+
+Predict new value $y'$ using
+\begin{align}
+y' = \vec{\alpha}^T \vec{\kappa}
+\end{align}
+
+\subsection{Kernel function}
+
+One choice is the \textit{Gaussian kernel}
+
+\begin{align}
+k(\vec{x}, \vec{x'}) = \exp\left(\frac{d(\vec{x}, \vec{x'})^2}{2\sigma^2}\right)
+\end{align}
+where
+\begin{align}
+d(\vec{x}, \vec{x'}) = \sqrt{\sum_{k}^{M}(x_k - x_k')^2}
+\end{align}
+
+\subsection{KRR prediction-error estimate}
+The estimate of the prediction error on a new point $x'$ is
+\begin{align}
+\text{err}(x') = \sqrt{\left|\theta_0[1-\vec{\kappa}(x')\cdot\vec{\alpha_2}(x')]\right|}
+\end{align}
+where
+\begin{align*}
+\vec{\alpha_2}(x') = (\mb{K} + \lambda I)^{-1}\vec{\kappa}(x')
+\end{align*}
+and
+\begin{align*}
+\theta_0 = \frac{y\cdot \alpha_1}{N_{train}}
+\end{align*}
+
+
+\chapter{Feature}
+
+
+
+\end{document}
