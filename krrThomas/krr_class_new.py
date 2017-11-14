@@ -23,7 +23,7 @@ class krr_class():
         self.reg = reg
 
         # Initialize data arrays
-        max_data = 3000
+        max_data = 15000
         length_feature = featureCalculator.Nbins
         self.data_values = np.zeros(max_data)
         self.featureMat = np.zeros((max_data, length_feature))
@@ -151,15 +151,19 @@ class krr_class():
         FVU_min = None
         best_args = np.zeros(2).astype(int)
         best_similarityMat = None
+        
         for i, sigma in enumerate(sigma_array):
+            # Calculate similarity matrix for current sigma
             self.comparator.set_args(sigma=sigma)
             similarityMat = self.comparator.get_similarity_matrix(featureMat)
+
             for j, reg in enumerate(reg_array):
                 FVU = self.__cross_validation(data_values, similarityMat, k=k, reg=reg)
                 if FVU_min is None or FVU < FVU_min:
                     FVU_min = FVU
                     best_args = np.array([i, j])
                     best_similarityMat = similarityMat
+
         self.sigma = sigma_array[best_args[0]]
         self.reg = reg_array[best_args[1]]
 
