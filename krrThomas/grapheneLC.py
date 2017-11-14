@@ -45,7 +45,7 @@ def energyANDforceLC():
     reg = 1e-7
     sig = 30
     X, E, F = loadTraj(Ndata)
-    featureCalculator = fingerprintFeature(dim=3)
+    featureCalculator = fingerprintFeature(dim=3, rcut=6, binwidth=0.1, sigma=0.3)
     t0 = time.time()
     G = featureCalculator.get_featureMat(X)
     print('Time to calculate features:', time.time() - t0)
