@@ -4,6 +4,7 @@ from krr_class_new import krr_class
 from doubleLJ import doubleLJ
 from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
+from gaussComparator_cosdist import gaussComparator_cosdist
 import time
 
 from ase.io import read, write
@@ -25,7 +26,7 @@ def loadTraj(Ndata):
         E[i] = a.get_potential_energy()
         F[i] = a.get_forces()
 
-    permutation = np.random.permutation(Ndata)
+    permutation = np.random.permutation(Ntraj)
     pos = pos[permutation]
     E = E[permutation]
     F = F[permutation]
@@ -50,6 +51,13 @@ def energyANDforceLC():
     G = featureCalculator.get_featureMat(X)
     print('Time to calculate features:', time.time() - t0)
 
+    """
+    np.savetxt('work_folder/graphene_all_positions.txt', X, delimiter='\t')
+    np.savetxt('work_folder/graphene_all_features.txt', G, delimiter='\t')
+    np.savetxt('work_folder/graphene_all_Energies.txt', E, delimiter='\t')
+    np.savetxt('work_folder/graphene_all_Forces.txt', F, delimiter='\t')
+    """
+    
     comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 

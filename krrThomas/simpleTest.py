@@ -2,6 +2,8 @@ import numpy as np
 from doubleLJ import doubleLJ
 from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
+from gaussComparator_cosdist import gaussComparator_cosdist
+from eksponentialComparator import eksponentialComparator
 from krr_class_new import krr_class as krr_class_new
 import time
 
@@ -49,7 +51,7 @@ def testModel(model, Ndata, theta=0, new=False):
     # Train model
     t0 = time.time()
     #gridSearch
-    GSkwargs = {'reg': np.logspace(-7, -7, 1), 'sigma': np.logspace(0, 2, 10)}
+    GSkwargs = {'reg': np.logspace(-7, -7, 1), 'sigma': np.logspace(-1, 2, 20)}
     if new:
         MAE, params = model.train(E, G, **GSkwargs)
     else:
@@ -142,7 +144,7 @@ if __name__ == "__main__":
     # Model 2
     np.random.seed(10)
     featureCalculator = fingerprintFeature(rcut=4)
-    comparator = gaussComparator(sigma=sig)
+    comparator = gaussComparator_cosdist(sigma=sig)
     krr2 = krr_class_new(comparator=comparator, featureCalculator=featureCalculator)
 
     print('Model 2')
