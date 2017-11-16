@@ -145,8 +145,8 @@ class fingerprintFeature():
                 value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * N_distances
 
                 # Add to the the gradient matrix
-                fingerprint_grad[newbin, 2*index[0]:2*index[0]+2] += value/deltaR*dx
-                fingerprint_grad[newbin, 2*index[1]:2*index[1]+2] += -value/deltaR*dx
+                fingerprint_grad[newbin, self.dim*index[0]:self.dim*index[0]+self.dim] += value/deltaR*dx
+                fingerprint_grad[newbin, self.dim*index[1]:self.dim*index[1]+self.dim] += -value/deltaR*dx
         return fingerprint_grad
 
     def get_gradientMat(self, X):
@@ -186,12 +186,15 @@ class fingerprintFeature():
         x = x.reshape((Natoms, self.dim))
         Rvec = np.zeros(Ndistances)
         dxMat = np.zeros((Ndistances, self.dim))
-        indexMat = np.zeros((Ndistances, self.dim)).astype(int)
+        indexMat = np.zeros((Ndistances, 2)).astype(int)
         k = 0
         for i in range(Natoms):
             for j in range(i+1, Natoms):
                 Rvec[k] = euclidean(x[i],x[j])
-                dxMat[k,:] = np.array([x[i,0] - x[j,0] , x[i,1] - x[j,1]])
+                if self.dim == 2:
+                    dxMat[k,:] = np.array([x[i,0] - x[j,0] , x[i,1] - x[j,1]])
+                if self.dim == 3:
+                    dxMat[k,:] = np.array([x[i,0] - x[j,0] , x[i,1] - x[j,1], x[i,2] - x[j,2]])
                 indexMat[k,:] = np.array([i,j])
                 k += 1
         return Rvec, dxMat, indexMat
