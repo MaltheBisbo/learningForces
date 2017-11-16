@@ -50,59 +50,47 @@ def main():
     reg = 1e-7
     sig = 30
 
-    X = np.loadtxt('work_folder/graphene_all_positions.txt', delimiter='\t')
-    G = np.loadtxt('work_folder/graphene_all_features.txt', delimiter='\t')
-    E = np.loadtxt('work_folder/graphene_all_Energies.txt', delimiter='\t')
-    F = np.loadtxt('work_folder/graphene_all_Forces.txt', delimiter='\t')
+    X = np.loadtxt('work_folder/graphene_all_ordered_positions.txt', delimiter='\t')
+    G = np.loadtxt('work_folder/graphene_all_ordered_features.txt', delimiter='\t')
+    E = np.loadtxt('work_folder/graphene_all_ordered_Energies.txt', delimiter='\t')
+    F = np.loadtxt('work_folder/graphene_all_ordered_Forces.txt', delimiter='\t')
 
+    Nstructs = len(E)
+    
     # Find local extremas in E
     idx_maxE = argrelextrema(E, np.greater, order=3)[0]
-    idx_maxE = np.r_[0, idx_maxE]
-    #print(idx_maxE)
-    #plt.plot(np.arange(len(E)), E)
-    #plt.show()
 
+    idx_traj = np.split(np.arange(len(E)), idx_maxE)
+    print(idx_traj[0].shape)
+    Ntraj = len(idx_traj)
+    print(Ntraj)
+    idx_minE = np.zeros(Ntraj).astype(int)
+    idx_rest = np.zeros(Nstructs - 2*Ntraj).astype(int)
+    k=0
+    for i in range(Ntraj):
+        traj = idx_traj[i]
+        len_traj = len(traj)
+        idx_minE[i] = traj[-1]
+        idx_rest[k:k+len_traj-2] = traj[1:-1]
+        k += len_traj - 2
+    idx_maxE = np.r_[0, idx_maxE]
+
+    Ntrain = 1000
+    idx_rest_permut = np.random.permutation(idx_rest)
+    idx_train = np.r_[idx_minE, idx_rest_permut[:Ntrain - Ntraj]]
+    print(idx_train.shape)
+    
     featureCalculator = fingerprintFeature(dim=3, rcut=6, binwidth=0.1, sigma=0.3)
     comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
-    idx = np.arange(len(E))
-    idx_traj = np.split(np.arange(len(E)), idx_maxE[1:])
-    Ntraj = len(idx_traj)
-    idx_minE = np.zeros(Ntraj)
-    idx_rest = np.zeros(len(E) - 2*Ntraj)
-    k = 0
-    for i, traj in enumerate(idx_traj[0]):
-        print(traj)
-        len_traj = len(traj)
-        idx_minE[i] = traj[0]
-        
-        idx_rest[k:len_traj-2] = traj[1:-1]
-        k += len_traj - 2
+    Esub = E[idx_train]
+    Fsub = F[idx_train]
+    Xsub = X[idx_train]
+    Gsub = G[idx_train]
 
-    print(len(idx_maxE))
-    print(len(idx_minE))
-    print(len(idx_rest))
-    print(len(E))
-        
-    idx_traj = np.array([list(index) for index in idx_traj])
-    print(idx_traj.shape)
-    
-    Ntrain = 1000
-    i_traj = 3
-    idx_relax = idx_maxE[i_traj]
-    idx_minE = idx_maxE[1:] - 1
-    idx_min_train  = np.r_[idx_minE[:i_traj], idx_minE[i_traj+1:]]
-    [idx_train1, idx_test, idx_train2] = np.split(np.arange(len(E)), [idx_maxE[i], idx_maxE[i+1]]) 
-    idx_train = np.r_[idx_train1, idx_train2]
-    idx_train_sub = np.random.permutation(idx_train)[:Ntrain]
-        
-    Esub = E[idx_train_sub]
-    Fsub = F[idx_train_sub]
-    Xsub = X[idx_train_sub]
-    Gsub = G[idx_train_sub]
-
-    GSkwargs = {'reg': [1e-7], 'sigma': np.logspace(0,2,6)}
+    GSkwargs = {'reg': np.logspace(-1, -7, 10), 'sigma': np.logspace(-1,2,10)}
+    print(GSkwargs)
     #FVU_energy_array[i], FVU_force_array[i, :] = krr.train(Esub, Fsub, Gsub, Xsub, reg=reg)
     FVU_E, params = krr.train(Esub, featureMat=Gsub, positionMat=Xsub, add_new_data=False, **GSkwargs)
     print('params:', params)
@@ -110,11 +98,11 @@ def main():
 
     label='grapheneMLrelax/grapheneML'
     calculator = krr_calculator(krr, label)
-
-    x_to_relax = X[idx_maxE[3]].reshape((-1,3))
+    
+    x_to_relax = X[idx_maxE[10]].reshape((-1,3))
     a = Atoms('C24', x_to_relax)
     a.set_calculator(calculator)
-    dyn = BFGS(a, trajectory='grapheneMLrelax/graphene_1000RestRand.traj')
+    dyn = BFGS(a, trajectory='grapheneMLrelax/graphene10.traj')
     dyn.run(fmax=0.1)
 
 if __name__ == "__main__":
