@@ -11,9 +11,9 @@ from ase.io import read, write
 
 def loadTraj(Ndata):
     atoms = read('work_folder/all_ordered.traj', index=':')
-    #atoms = atoms[0:15000]
-    #atoms = atoms[::10]
-    #atoms = atoms[:Ndata]
+    atoms = atoms[0:15000]
+    atoms = atoms[::10]
+    atoms = atoms[:Ndata]
     Na = 24
     dim = 3
     Ntraj = len(atoms)
@@ -26,10 +26,10 @@ def loadTraj(Ndata):
         E[i] = a.get_potential_energy()
         F[i] = a.get_forces()
 
-    #permutation = np.random.permutation(Ntraj)
-    #pos = pos[permutation]
-    #E = E[permutation]
-    #F = F[permutation]
+    permutation = np.random.permutation(Ntraj)
+    pos = pos[permutation]
+    E = E[permutation]
+    F = F[permutation]
     print('Data loaded')
     return pos.reshape((Ntraj, Na*dim)), E, F.reshape((Ntraj, Na*dim))
 
@@ -51,12 +51,12 @@ def energyANDforceLC():
     G = featureCalculator.get_featureMat(X)
     print('Time to calculate features:', time.time() - t0)
 
-    
+    """
     np.savetxt('work_folder/graphene_all_ordered_positions.txt', X, delimiter='\t')
     np.savetxt('work_folder/graphene_all_ordered_features.txt', G, delimiter='\t')
     np.savetxt('work_folder/graphene_all_ordered_Energies.txt', E, delimiter='\t')
     np.savetxt('work_folder/graphene_all_ordered_Forces.txt', F, delimiter='\t')
-    
+    """
     
     comparator = gaussComparator(sigma=sig)
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
