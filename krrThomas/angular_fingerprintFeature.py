@@ -28,7 +28,7 @@ class Angular_Fingerprint(object):
         self.n_atoms = atoms.get_number_of_atoms()
         self.num = atoms.get_atomic_numbers()
         self.atomic_types = sorted(list(set(self.num)))
-        self.atomic_count =[list(self.num).count(i) for i in self.atomic_types]
+        self.atomic_count = [list(self.num).count(i) for i in self.atomic_types]
         self.volume = atoms.get_volume()
 
     def get_features(self,atoms,individual=False):
@@ -45,7 +45,7 @@ class Angular_Fingerprint(object):
         volume = self.volume
 
         # get_neighbourcells
-        Rc_max = max(self.Rc1, 2*self.Rc2) # relevant cutoff
+        Rc_max = max(self.Rc1, 2*self.Rc2)  # relevant cutoff
         cell_vec_norms = np.linalg.norm(cell, axis=0)
         neighbours = []
         for i in range(3):

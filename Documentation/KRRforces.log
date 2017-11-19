@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.10)  15 NOV 2017 10:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.8.30)  19 NOV 2017 12:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1105,7 +1105,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 150.
  ) 
 Here is how much of TeX's memory you used:
  24039 strings out of 492995
- 440680 string characters out of 6132703
+ 440680 string characters out of 6132704
  599338 words of memory out of 5000000
  27322 multiletter control sequences out of 15000+600000
  15618 words of font info for 78 fonts, out of 8000000 for 9000
@@ -1124,7 +1124,7 @@ texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/tex
 live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texli
 ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on KRRforces.pdf (1 page, 139880 bytes).
+Output written on KRRforces.pdf (1 page, 139845 bytes).
 PDF statistics:
  86 PDF objects out of 1000 (max. 8388607)
  69 compressed objects within 1 object stream
