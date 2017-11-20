@@ -1,4 +1,1 @@
 \select@language {english}
-\beamer@sectionintoc {1}{Test}{12}{0}{1}
-\beamer@subsectionintoc {1}{1}{Test subsection}{13}{0}{1}
-\beamer@subsectionintoc {1}{2}{Test subsection 2}{14}{0}{1}

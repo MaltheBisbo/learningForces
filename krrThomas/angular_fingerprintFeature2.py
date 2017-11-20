@@ -3,6 +3,7 @@ import sys
 import numpy as np
 from math import erf
 from itertools import product
+from scipy.spatial.distance import cdist
 
 try:
     cwd = sys.argv[1]
@@ -28,21 +29,24 @@ class Angular_Fingerprint(object):
         self.n_atoms = atoms.get_number_of_atoms()
         self.num = atoms.get_atomic_numbers()
         self.atomic_types = sorted(list(set(self.num)))
-        self.atomic_count = [list(self.num).count(i) for i in self.atomic_types]
+        self.atomic_count = {type:list(self.num).count(type) for type in self.atomic_types}
         self.volume = atoms.get_volume()
+        self.dim = 3
 
-    def get_features(self,atoms,individual=False):
-        """
-        """
-        feature = [None]*2
-        pbc = self.pbc
-        cell = self.cell
-        n_atoms = self.n_atoms
-        pos = atoms.get_positions()
-        num = atoms.get_atomic_numbers()
-        atomic_types = self.atomic_types
-        atomic_count = self.atomic_count
-        volume = self.volume
+        # parameters for the binning:
+        self.m1 = int(np.ceil(self.nsigma*self.sigma1/self.binwidth1))  # number of neighbour bins included.
+        self.smearing_norm1 = erf(0.25*np.sqrt(2)*self.binwidth1*(2*self.m1+1)*1./self.sigma1)  # Integral of the included part of the gauss
+        self.Nbins1 = int(np.ceil(self.Rc1/self.binwidth1))
+
+        self.m2 = int(np.ceil(self.nsigma*self.sigma2/self.binwidth2))  # number of neighbour bins included.
+        self.smearing_norm2 = erf(0.25*np.sqrt(2)*self.binwidth2*(2*self.m2+1)*1./self.sigma2)  # Integral of the included part of the gauss
+        self.Nbins2 = int(np.ceil(self.Rc2/self.binwidth2))
+
+        # Cutoff surface areas
+        self.cutoff_surface_area1 = 4*np.pi*self.Rc1**2
+        self.cutoff_surface_area2 = 4*np.pi*self.Rc2**2
+        
+    def __get_neighbour_lists(self, pos, num, pbc, cell, n_atoms):
 
         # get_neighbourcells
         Rc_max = max(self.Rc1, 2*self.Rc2)  # relevant cutoff
@@ -58,76 +62,102 @@ class Angular_Fingerprint(object):
         for x,y,z in product(*neighbours):
             neighbourcells.append((x,y,z))  # maybe: if norm(cell*[x,y,z]) < Rc_max: append
 
-        # get_neighbour_lists                                                                                                       
-        neighbour_list = [{} for _ in range(n_atoms)]
-        neighbour_list_exp = [{} for _ in range(n_atoms)]
+        # get_neighbour_lists
+        neighbour_distVec = [[] for _ in range(n_atoms)]
+        neighbour_deltaRs = [[] for _ in range(n_atoms)]
+        neighbour_bondtype = [[] for _ in range(n_atoms)]
+        neighbour_index = [[] for _ in range(n_atoms)]
         for i in range(n_atoms):
             for xyz in neighbourcells:
-                displacement = np.dot(cell.T,np.array(xyz).T)
-                displaced_pos = pos + displacement
-                deltaRs = np.apply_along_axis(np.linalg.norm,1,displaced_pos-pos[i])
+                cell_displacement = xyz @ cell
+                distVec = pos + cell_displacement
+                deltaRs = cdist(pos[i].reshape((1,self.dim)), displaced_pos)
                 for j in range(n_atoms):
-                    if deltaRs[j] < self.Rc and deltaRs[j] > 1e-6:
-                        neighbour_list[i][(xyz,j)] = deltaRs[j]
-                    elif deltaRs[j] < 2*self.Rc and deltaRs[j] > 1e-6:
-                        neighbour_list_exp[i][(xyz,j)] = deltaRs[j]
+                    if deltaRs[j] < max(self.Rc1, self.Rc2) and deltaRs[j] > 1e-6:
+                        neighbour_distVec[i].append(displaced)
+                        neighbour_deltaRs[i].append(deltaRs[j])
+                        neighbour_bondtype[i].append(tuple(sorted([num[i], num[j]])))
+                        neighbour_index[i].append(j)
 
-        # two component features
-        feature[0] = [None]*n_atoms
+        return neighbour_distVec, neighbour_deltaRs, neighbour_bondtype, neighbour_index
+        
+    def get_features(self,atoms,individual=False):
+        """
+        """
+        feature = [None]*2
+        pbc = self.pbc
+        cell = self.cell
+        n_atoms = self.n_atoms
+        pos = atoms.get_positions()
+        num = atoms.get_atomic_numbers()
+        atomic_types = self.atomic_types
+        atomic_count = self.atomic_count
+        volume = self.volume
+
+        nb_distVec, nb_deltaRs, nb_bondtype, np_index = self.__get_neighbour_lists(pos, num, pbc, cell, n_atoms)
+
+        # Initialize fingerprint object
+        feature = [{} for _ in range(2)]  # [None]*2
+
+        # two body
+        for type1 in self.atomic_types:
+            for type2 in self.atomic_types:
+                key = tuple(sorted([type1, type2]))
+                if key not in feature[0]: 
+                    feature[0][key] = np.zeros(self.Nbins1)
+
+        # three body
+        for type1 in self.atomic_types:
+            for type2 in self.atomic_types:
+                for type3 in self.atomic_types:
+                    key = tuple([type1] + sorted([type1, type2]))
+                    if key not in feature[0]:
+                        feature[1][key] = np.zeros(self.Nbins2)
+        
         for i in range(n_atoms):
-            feature[0][i] = {}
-            for j in atomic_types:
-                if (not sum(pbc)) and num[i] == j and atomic_count[atomic_types.index(j)] == 1:  # If i is the only atom of its type + no pbc
-                    continue
-                else:
-                    bond_type = tuple(sorted([num[i],j]))
-                    feature[0][i][bond_type] = []
-            neighbours_i = neighbour_list[i].items()
-            for j in range(len(neighbours_i)):
-                neighbour_j = neighbours_i[j]
-                _,index_j = neighbour_j[0]
-                Rij = neighbour_j[1]
-                bond_type = tuple(sorted([num[i],num[index_j]]))
-                feature[0][i][bond_type].append(Rij)
+            for n in range(len(nb_distvec[i])):
+                (N1,N2) =nb_bondtype[i][n]
+                deltaR = np_deltaRs[i][n]
+                rbin = int(np.floor(deltaR/self.binwidth1))
+                binpos = (deltaR % self.binwidth1) / self.binwidth1  # From 0 to binwidth (set constant at 0.5*binwidth for original)
+                rabove = int(binpos > 0.5)
+                
+                # Lower and upper range of bins affected by the current atomic distance deltaR.
+                minbin_lim = -self.m1-(1-rabove)
+                maxbin_lim = self.m1+1+rabove
+                for i in range(minbin_lim, maxbin_lim):
+                    newbin = rbin + i  # maybe abs() to make negative bins contribute aswell.
+                    if newbin < 0 or newbin >= self.Nbins1:
+                        continue
+                
+                    c = 0.25*np.sqrt(2)*self.binwidth1*1./self.sigma1
+                    if i == minbin_lim:
+                        erfarg_low = -(self.m1+0.5)
+                        erfarg_up = i+(1-binpos)
+                    elif i == maxbin_lim-1:
+                        erfarg_low = i-binpos
+                        erfarg_up = self.m1+0.5
+                    else:
+                        erfarg_low = i-binpos
+                        erfarg_up = i+(1-binpos)
+                    value = 0.5*erf(2*c*erfarg_up)-0.5*erf(2*c*erfarg_low)
+                        
+                    # divide by smearing_norm
+                    value /= self.smearing_norm1
+                    value /= (4*np.pi*deltaR**2)/self.cutoff_surface_area1 * self.binwidth1 * N1 * N2  # take N1=N2 into account
+                    #value *= f_cutoff
+                    feature[0][newbin] += value
+        return fingerprint
 
-        # three component features
-        feature[1] = [None]*n_atoms
-        for i in range(n_atoms):
-            feature[1][i] = {}
-            for j in atomic_types:
-                if (not sum(pbc)) and  num[i] == j and atomic_count[atomic_types.index(j)] == 1:
-                    continue
-                else:
-                    for k in atomic_types:
-                        if (not sum(pbc)) and ((j == k and atomic_count[atomic_types.index(j)] == 1) or\
-                                (num[i] == k and atomic_count[atomic_types.index(k)] == 1) or\
-                                ((num[i] == j and j == k) and atomic_count[atomic_types.index(k)] < 3)):
-                            continue
-                        else:
-                            bond_type = tuple([num[i]] + sorted([j,k]))
-                            feature[1][i][bond_type] = []
-            neighbours_i = neighbour_list[i].items()
-            for j in range(len(neighbours_i)):
-                neighbour_j = neighbours_i[j]
-                shift_j,index_j = neighbour_j[0]
-                Rij = neighbour_j[1]
-                neighbours_j = neighbour_list[index_j]
-                neighbours_j_exp = neighbour_list_exp[index_j]
-                for k in range(j+1,len(neighbours_i)):
-                    neighbour_k = neighbours_i[k]
-                    shift_k,index_k = neighbour_k[0]
-                    nxyz = (shift_k[0]-shift_j[0],shift_k[1]-shift_j[1],shift_k[2]-shift_j[2])
-                    Rik = neighbour_k[1]
-                    try:
-                        Rjk = neighbours_j[(nxyz,index_k)]
-                    except:
-                        Rjk = neighbours_j_exp[(nxyz,index_k)]
-                    lengths = [(num[i],num[index_j],Rij),(num[i],num[index_k],Rik),(num[index_j],num[index_k],Rjk)]
-                    lengths = sorted(lengths[:2]) + [lengths[2]]
-                    lengths = [lengths[0][2],lengths[1][2],lengths[2][2]]
-                    bond_type = tuple([num[i]] + sorted([num[index_j],num[index_k]]))
-                    feature[1][i][bond_type].append(lengths)
 
+
+
+
+
+
+            
+
+            
 
         # the fingerprint function
         fingerprints = {}

@@ -65,17 +65,23 @@
 	\end{flalign*}
 \end{frame}
 
-\begin{frame}{Kernel}
-	Gaussian kernel
+\begin{frame}
+	\begin{block}{Kernel}
+		Gaussian kernel
 	\begin{flalign*}
 	k(\vec{x'},\vec{x}) = \exp\left(-\frac{d(\vec{x'},\vec{x})^2}{2\sigma^2}\right)
 	\end{flalign*}
 	with the 2-norm for the dissimilarity d.
+	\end{block}
+	\begin{block}{Feature}
+	For each atomic type combination, the feature is a sum over the gausian-smoothed radial distributions of each atom.
+	\begin{flalign*}
+	F_{A,B}\left(R\right) = \sum_{A_i, B_j} \frac{\delta\left(R-R_{ij}\right)}{4\pi R^2_{ij}\Delta\left(\frac{N_AN_B}{V}\right)} -1
+	\end{flalign*}
+	The features for each atomic type combination is concatenated.
+	\end{block}
 \end{frame}
 
-\begin{frame}{Feature}
-
-\end{frame}
 \begin{frame}{KRR predictions}
 \begin{block}{Predicting the gradient}
 	\setlength\abovedisplayskip{0pt}
@@ -107,8 +113,8 @@
 		\end{subfigure}%
 		\begin{subfigure}{0.5\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{structureExample}
-			\caption*{Ground state for $N_{atoms}=7$}
+			\includegraphics[width=\linewidth]{groundstateStructureN19}
+			\caption*{Ground state for 19 atoms}
 		\end{subfigure}
 	\end{figure}
 \end{frame}
