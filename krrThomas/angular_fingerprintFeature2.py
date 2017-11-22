@@ -112,9 +112,8 @@ class Angular_Fingerprint(object):
                     value /= self.smearing_norm1
                     value /= (4*np.pi*deltaR**2)/self.cutoff_surface_area1 * self.binwidth1 * N1 * N2  # take N1=N2 into account
                     #value *= f_cutoff
-                    feature[0][newbin] += value
-        fingerprint = 
-        return fingerprint
+                    feature[0][newbin] += value 
+        return feature[0]
 
     def get_singleGradient(self, atoms):
         """
