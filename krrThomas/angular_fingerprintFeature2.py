@@ -14,7 +14,7 @@ class Angular_Fingerprint(object):
     """ comparator for construction of angular fingerprints
     """
 
-    def __init__(self, atoms, Rc1=6.5, Rc2=4.0, binwidth1=0.05, binwidth2=0.025, sigma1=0.5, sigma2=0.25, nsigma=4):
+    def __init__(self, atoms, Rc1=4.0, Rc2=4.0, binwidth1=0.1, binwidth2=0.025, sigma1=0.2, sigma2=0.25, nsigma=4):
         """ Set a common cut of radius
         """
         self.Rc1 = Rc1
@@ -30,7 +30,8 @@ class Angular_Fingerprint(object):
         self.num = atoms.get_atomic_numbers()
         self.atomic_types = sorted(list(set(self.num)))
         self.atomic_count = {type:list(self.num).count(type) for type in self.atomic_types}
-        self.volume = atoms.get_volume()
+        if sum(self.pbc) != 0:
+            self.volume = atoms.get_volume()
         self.dim = 3
 
         # parameters for the binning:
@@ -58,7 +59,8 @@ class Angular_Fingerprint(object):
         num = atoms.get_atomic_numbers()
         atomic_types = self.atomic_types
         atomic_count = self.atomic_count
-        volume = self.volume
+        if sum(pbc) != 0:
+            volume = self.volume
 
         nb_distVec, nb_deltaRs, nb_bondtype, np_index = self.__get_neighbour_lists(pos, num, pbc, cell, n_atoms)
 
@@ -79,11 +81,15 @@ class Angular_Fingerprint(object):
                     key = tuple([type1] + sorted([type1, type2]))
                     if key not in feature[0]:
                         feature[1][key] = np.zeros(self.Nbins2)
-        
-        for i in range(n_atoms):
-            for n in range(len(nb_distVec[i])):
-                (N1,N2) = nb_bondtype[i][n]
-                deltaR = nb_deltaRs[i][n]
+        print(n_atoms)
+        print(len(nb_distVec))
+        print(nb_distVec)
+        print(nb_distVec[0][1])
+        for j in range(n_atoms):
+            for n in range(len(nb_distVec[j])):
+                print(j, n)
+                N1,N2 = nb_bondtype[j][n]
+                deltaR = nb_deltaRs[j][n]
                 rbin = int(np.floor(deltaR/self.binwidth1))
                 binpos = (deltaR % self.binwidth1) / self.binwidth1  # From 0 to binwidth (set constant at 0.5*binwidth for original)
                 rabove = int(binpos > 0.5)
@@ -111,8 +117,8 @@ class Angular_Fingerprint(object):
                     # divide by smearing_norm
                     value /= self.smearing_norm1
                     value /= (4*np.pi*deltaR**2)/self.cutoff_surface_area1 * self.binwidth1 * N1 * N2  # take N1=N2 into account
-                    #value *= f_cutoff
-                    feature[0][newbin] += value 
+                    #print(feature)
+                    feature[0][(79,79)][newbin] += value 
         return feature[0]
 
     def get_singleGradient(self, atoms):
@@ -212,12 +218,20 @@ class Angular_Fingerprint(object):
             for xyz in neighbourcells:
                 cell_displacement = xyz @ cell
                 distVec = pos + cell_displacement
-                deltaRs = cdist(pos[i].reshape((1,self.dim)), displaced_pos)
-                for j in range(n_atoms):
-                    if deltaRs[j] < max(self.Rc1+self.nsigma*self.sigma1, self.Rc2) and deltaRs[j] > 1e-6:
-                        neighbour_distVec[i].append(displaced)
-                        neighbour_deltaRs[i].append(deltaRs[j])
-                        neighbour_bondtype[i].append(tuple(sorted([num[i], num[j]])))
-                        neighbour_index[i].append(j)
+                deltaRs = cdist(pos[i].reshape((1, self.dim)), distVec).reshape(-1)
+                if xyz == (0,0,0):
+                    for j in range(i+1, n_atoms):
+                        if deltaRs[j] < max(self.Rc1+self.nsigma*self.sigma1, self.Rc2) and deltaRs[j] > 1e-6:
+                            neighbour_distVec[i].append(distVec[j])
+                            neighbour_deltaRs[i].append(deltaRs[j])
+                            neighbour_bondtype[i].append(tuple(sorted([num[i], num[j]])))
+                            neighbour_index[i].append(j)
+                else:
+                    for j in range(n_atoms):
+                        if deltaRs[j] < max(self.Rc1+self.nsigma*self.sigma1, self.Rc2) and deltaRs[j] > 1e-6:
+                            neighbour_distVec[i].append(distVec[j])
+                            neighbour_deltaRs[i].append(deltaRs[j])
+                            neighbour_bondtype[i].append(tuple(sorted([num[i], num[j]])))
+                            neighbour_index[i].append(j)
 
         return neighbour_distVec, neighbour_deltaRs, neighbour_bondtype, neighbour_index
