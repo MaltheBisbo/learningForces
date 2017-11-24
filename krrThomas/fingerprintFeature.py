@@ -81,7 +81,6 @@ class fingerprintFeature():
                 # divide by smearing_norm
                 value /= self.smearing_norm
                 value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * N_distances
-                #value *= f_cutoff
                 fingerprint[newbin] += value
         return fingerprint
 
@@ -191,10 +190,11 @@ class fingerprintFeature():
         for i in range(Natoms):
             for j in range(i+1, Natoms):
                 Rvec[k] = euclidean(x[i],x[j])
-                if self.dim == 2:
-                    dxMat[k,:] = np.array([x[i,0] - x[j,0] , x[i,1] - x[j,1]])
-                if self.dim == 3:
-                    dxMat[k,:] = np.array([x[i,0] - x[j,0] , x[i,1] - x[j,1], x[i,2] - x[j,2]])
+                dxMat[k,:] = x[i] - x[j]
+                #if self.dim == 2:
+                #    dxMat[k,:] = np.array([x[i,0] - x[j,0] , x[i,1] - x[j,1]])
+                #if self.dim == 3:
+                #    dxMat[k,:] = np.array([x[i,0] - x[j,0] , x[i,1] - x[j,1], x[i,2] - x[j,2]])
                 indexMat[k,:] = np.array([i,j])
                 k += 1
         return Rvec, dxMat, indexMat

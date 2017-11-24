@@ -14,13 +14,13 @@ class Angular_Fingerprint(object):
     """ comparator for construction of angular fingerprints
     """
 
-    def __init__(self, atoms, Rc1=4.0, Rc2=4.0, binwidth1=0.1, binwidth2=0.025, sigma1=0.2, sigma2=0.25, nsigma=4):
+    def __init__(self, atoms, Rc1=4.0, Rc2=4.0, binwidth1=0.1, Nbins2=40, sigma1=0.2, sigma2=0.20, nsigma=4):
         """ Set a common cut of radius
         """
         self.Rc1 = Rc1
         self.Rc2 = Rc2
         self.binwidth1 = binwidth1
-        self.binwidth2 = binwidth2
+        self.Nbins2 = Nbins2
         self.sigma1 = sigma1
         self.sigma2 = sigma2
         self.nsigma = nsigma
@@ -41,8 +41,8 @@ class Angular_Fingerprint(object):
 
         self.m2 = int(np.ceil(self.nsigma*self.sigma2/self.binwidth2))  # number of neighbour bins included.
         self.smearing_norm2 = erf(0.25*np.sqrt(2)*self.binwidth2*(2*self.m2+1)*1./self.sigma2)  # Integral of the included part of the gauss
-        self.Nbins2 = int(np.ceil(self.Rc2/self.binwidth2))
-
+        self.binwidth2 = np.pi/Nbins2
+        
         # Cutoff surface areas
         self.cutoff_surface_area1 = 4*np.pi*self.Rc1**2
         self.cutoff_surface_area2 = 4*np.pi*self.Rc2**2
@@ -62,7 +62,7 @@ class Angular_Fingerprint(object):
         if sum(pbc) != 0:
             volume = self.volume
 
-        nb_distVec, nb_deltaRs, nb_bondtype, np_index = self.__get_neighbour_lists(pos, num, pbc, cell, n_atoms)
+        nb_distVec, nb_deltaRs, nb_bondtype, nb_index, nb_distVec_ang, nb_deltaRs_ang, nb_bondtype_ang, nb_index_ang = self.__get_neighbour_lists(pos, num, pbc, cell, n_atoms)
 
         # Initialize fingerprint object
         feature = [{} for _ in range(2)]  # [None]*2
@@ -79,26 +79,26 @@ class Angular_Fingerprint(object):
             for type2 in self.atomic_types:
                 for type3 in self.atomic_types:
                     key = tuple([type1] + sorted([type1, type2]))
-                    if key not in feature[0]:
+                    if key not in feature[1]:
                         feature[1][key] = np.zeros(self.Nbins2)
-        print(n_atoms)
-        print(len(nb_distVec))
-        print(nb_distVec)
-        print(nb_distVec[0][1])
+
+        # Count the number of interacting atom-pairs
+        N_distances = sum([len(x) for x in nb_deltaRs])
+
         for j in range(n_atoms):
-            for n in range(len(nb_distVec[j])):
-                print(j, n)
-                N1,N2 = nb_bondtype[j][n]
+            for n in range(len(nb_deltaRs[j])):
                 deltaR = nb_deltaRs[j][n]
-                rbin = int(np.floor(deltaR/self.binwidth1))
+                if deltaR > self.Rc1:
+                    continue
+                center_bin = int(np.floor(deltaR/self.binwidth1))
                 binpos = (deltaR % self.binwidth1) / self.binwidth1  # From 0 to binwidth (set constant at 0.5*binwidth for original)
-                rabove = int(binpos > 0.5)
+                above_bin_center = int(binpos > 0.5)
                 
                 # Lower and upper range of bins affected by the current atomic distance deltaR.
-                minbin_lim = -self.m1-(1-rabove)
-                maxbin_lim = self.m1+1+rabove
-                for i in range(minbin_lim, maxbin_lim):
-                    newbin = rbin + i  # maybe abs() to make negative bins contribute aswell.
+                minbin_lim = -self.m1 - (1-above_bin_center)
+                maxbin_lim = self.m1 + above_bin_center
+                for i in range(minbin_lim, maxbin_lim + 1):
+                    newbin = center_bin + i  # maybe abs() to make negative bins contribute aswell.
                     if newbin < 0 or newbin >= self.Nbins1:
                         continue
                 
@@ -106,7 +106,7 @@ class Angular_Fingerprint(object):
                     if i == minbin_lim:
                         erfarg_low = -(self.m1+0.5)
                         erfarg_up = i+(1-binpos)
-                    elif i == maxbin_lim-1:
+                    elif i == maxbin_lim:
                         erfarg_low = i-binpos
                         erfarg_up = self.m1+0.5
                     else:
@@ -116,12 +116,50 @@ class Angular_Fingerprint(object):
                         
                     # divide by smearing_norm
                     value /= self.smearing_norm1
-                    value /= (4*np.pi*deltaR**2)/self.cutoff_surface_area1 * self.binwidth1 * N1 * N2  # take N1=N2 into account
-                    #print(feature)
-                    feature[0][(79,79)][newbin] += value 
+                    value /= (4*np.pi*deltaR**2)/self.cutoff_surface_area1 * self.binwidth1 * N_distances
+                    feature[0][nb_bondtype[j][n]][newbin] += value
+
+        for j in range(n_atoms):
+            for n in range(len(nb_deltaRs_ang[j])):
+                for m in range(n+1, len(nb_deltaRs_ang[j])):
+                    deltaR_n, deltaR_m = nb_deltaRs_ang[j][n], nb_deltaRs_ang[j][m]
+                    if deltaR_n > self.Rc2 or deltaR_m > self.Rc2:
+                        continue
+                    angle = self.__angle(nb_distVec_ang[j][n], nb_distVec_ang[j][m])
+                    print(angle)
+                    center_bin = int(np.floor(deltaR/self.binwidth1))
+                    binpos = (deltaR % self.binwidth1) / self.binwidth1  # From 0 to binwidth (set constant at 0.5*binwidth for original)
+                    above_bin_center = int(binpos > 0.5)
+                    
+                    # Lower and upper range of bins affected by the current atomic distance deltaR.
+                    minbin_lim = -self.m1 - (1-above_bin_center)
+                    maxbin_lim = self.m1 + above_bin_center
+                    for i in range(minbin_lim, maxbin_lim + 1):
+                        newbin = center_bin + i
+                        newbin = self.Nbins2 - (newbin % self.Nbins2)
+                        if newbin < 0 or newbin >= self.Nbins1:
+                            continue
+                        
+                        c = 0.25*np.sqrt(2)*self.binwidth1*1./self.sigma1
+                        if i == minbin_lim:
+                            erfarg_low = -(self.m1+0.5)
+                            erfarg_up = i+(1-binpos)
+                        elif i == maxbin_lim:
+                            erfarg_low = i-binpos
+                            erfarg_up = self.m1+0.5
+                        else:
+                            erfarg_low = i-binpos
+                            erfarg_up = i+(1-binpos)
+                        value = 0.5*erf(2*c*erfarg_up)-0.5*erf(2*c*erfarg_low)
+                        
+                        # divide by smearing_norm
+                        value /= self.smearing_norm1
+                        value /= (4*np.pi*deltaR**2)/self.cutoff_surface_area1 * self.binwidth1 * N_distances
+                        feature[0][nb_bondtype[j][n]][newbin] += value
+
         return feature[0]
 
-    def get_singleGradient(self, atoms):
+    def get_featureGradients(self, atoms):
         """
         --input--
         x: atomic positions for a single structure in the form [x1, y1, ... , xN, yN]
@@ -135,63 +173,74 @@ class Angular_Fingerprint(object):
         num = atoms.get_atomic_numbers()
         atomic_types = self.atomic_types
         atomic_count = self.atomic_count
-        volume = self.volume
+        if sum(pbc) != 0:
+            volume = self.volume
 
-        nb_distVec, nb_deltaRs, nb_bondtype, np_index = self.__get_neighbour_lists(pos, num, pbc, cell, n_atoms)
+        nb_distVec, nb_deltaRs, nb_bondtype, nb_index, nb_distVec_ang, nb_deltaRs_ang, nb_bondtype_ang, nb_index_ang = self.__get_neighbour_lists(pos, num, pbc, cell, n_atoms)
 
         # Initialize fingerprint object
-        feature = [{} for _ in range(2)]  # [None]*2
+        feature_grad = [{} for _ in range(2)]  # [None]*2
 
         # two body
         for type1 in self.atomic_types:
             for type2 in self.atomic_types:
                 key = tuple(sorted([type1, type2]))
-                if key not in feature[0]: 
-                    feature[0][key] = np.zeros(self.Nbins1)
+                if key not in feature_grad[0]: 
+                    feature_grad[0][key] = np.zeros((self.Nbins1, n_atoms*self.dim))
 
         # three body
         for type1 in self.atomic_types:
             for type2 in self.atomic_types:
                 for type3 in self.atomic_types:
                     key = tuple([type1] + sorted([type1, type2]))
-                    if key not in feature[0]:
-                        feature[1][key] = np.zeros(self.Nbins2)
+                    if key not in feature_grad[1]:
+                        feature_grad[1][key] = np.zeros((self.Nbins2, n_atoms*self.dim))
 
-        for deltaR, dx, index in zip(R, dxMat, indexMat):
-            rbin = int(np.floor(deltaR/self.binwidth))
-            binpos = (deltaR % self.binwidth) / self.binwidth  # From 0 to binwidth (set constant at 0.5*binwidth for original)
-            rabove = int(binpos > 0.5)
+        # Count the number of interacting atom-pairs
+        N_distances = sum([len(x) for x in nb_deltaRs])
 
-            # Lower and upper range of bins affected by the current atomic distance deltaR.
-            minbin_lim = -self.m-(1-rabove)
-            maxbin_lim = self.m+1+rabove
-            for i in range(minbin_lim, maxbin_lim):
-                newbin = rbin + i  # maybe abs() to make negative bins contribute aswell.
-                if newbin < 0 or newbin >= self.Nbins:
+        for j in range(n_atoms):
+            for n in range(len(nb_deltaRs[j])):
+                deltaR = nb_deltaRs[j][n]
+                if deltaR > self.Rc1:
                     continue
+                dx = nb_distVec[j][n]
+                index = nb_index[j][n]
 
-                c = 0.25*np.sqrt(2)*self.binwidth*1./self.sigma
-                if i == minbin_lim:
-                    arg_low = -(self.m+0.5)
-                    arg_up = i+(1-binpos)
-                elif i == maxbin_lim:
-                    arg_low = i-binpos
-                    arg_up = self.m+0.5
-                else:
-                    arg_low = i-binpos
-                    arg_up = i+(1-binpos)
-                value1 = -1./deltaR*(erf(2*c*arg_up)-erf(2*c*arg_low))
-                value2 = -2*(np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))  # 2 in front..
-                value = value1 + value2
+                center_bin = int(np.floor(deltaR/self.binwidth1))
+                binpos = (deltaR % self.binwidth1) / self.binwidth1  # From 0 to binwidth (set constant at 0.5*binwidth for original)
+                above_bin_center = int(binpos > 0.5)
+                
+                # Lower and upper range of bins affected by the current atomic distance deltaR.
+                minbin_lim = -self.m1 - (1-above_bin_center)
+                maxbin_lim = self.m1 + above_bin_center
+                for i in range(minbin_lim, maxbin_lim + 1):
+                    newbin = center_bin + i  # maybe abs() to make negative bins contribute aswell.
+                    if newbin < 0 or newbin >= self.Nbins1:
+                        continue
 
-                # divide by smearing_norm
-                value /= self.smearing_norm
-                value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * N_distances
+                    c = 0.25*np.sqrt(2)*self.binwidth1*1./self.sigma1
+                    if i == minbin_lim:
+                        arg_low = -(self.m1+0.5)
+                        arg_up = i+(1-binpos)
+                    elif i == maxbin_lim:
+                        arg_low = i-binpos
+                        arg_up = self.m1+0.5
+                    else:
+                        arg_low = i-binpos
+                        arg_up = i+(1-binpos)
+                    value1 = -1./deltaR*(erf(2*c*arg_up)-erf(2*c*arg_low))
+                    value2 = -2*(np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))  # 2 in front..
+                    value = value1 + value2
+                    
+                    # divide by smearing_norm
+                    value /= self.smearing_norm1
+                    value /= (4*np.pi*deltaR**2)/self.cutoff_surface_area1 * self.binwidth1 * N_distances
 
-                # Add to the the gradient matrix
-                fingerprint_grad[newbin, self.dim*index[0]:self.dim*index[0]+self.dim] += value/deltaR*dx
-                fingerprint_grad[newbin, self.dim*index[1]:self.dim*index[1]+self.dim] += -value/deltaR*dx
-        return fingerprint_grad
+                    # Add to the the gradient matrix
+                    feature_grad[0][nb_bondtype[j][n]][newbin, self.dim*index[0]:self.dim*index[0]+self.dim] += -value/deltaR*dx
+                    feature_grad[0][nb_bondtype[j][n]][newbin, self.dim*index[1]:self.dim*index[1]+self.dim] += value/deltaR*dx
+        return feature_grad[0]
     
     def __get_neighbour_lists(self, pos, num, pbc, cell, n_atoms):
 
@@ -214,24 +263,47 @@ class Angular_Fingerprint(object):
         neighbour_deltaRs = [[] for _ in range(n_atoms)]
         neighbour_bondtype = [[] for _ in range(n_atoms)]
         neighbour_index = [[] for _ in range(n_atoms)]
+
+        neighbour_distVec_ang = [[] for _ in range(n_atoms)]
+        neighbour_deltaRs_ang = [[] for _ in range(n_atoms)]
+        neighbour_bondtype_ang = [[] for _ in range(n_atoms)]
+        neighbour_index_ang = [[] for _ in range(n_atoms)]
         for i in range(n_atoms):
             for xyz in neighbourcells:
                 cell_displacement = xyz @ cell
                 distVec = pos + cell_displacement
                 deltaRs = cdist(pos[i].reshape((1, self.dim)), distVec).reshape(-1)
                 if xyz == (0,0,0):
-                    for j in range(i+1, n_atoms):
+                    for j in range(n_atoms):
+                        
                         if deltaRs[j] < max(self.Rc1+self.nsigma*self.sigma1, self.Rc2) and deltaRs[j] > 1e-6:
-                            neighbour_distVec[i].append(distVec[j])
-                            neighbour_deltaRs[i].append(deltaRs[j])
-                            neighbour_bondtype[i].append(tuple(sorted([num[i], num[j]])))
-                            neighbour_index[i].append(j)
+                            if j > i:    
+                                neighbour_distVec[i].append(distVec[j] - pos[i])
+                                neighbour_deltaRs[i].append(deltaRs[j])
+                                neighbour_bondtype[i].append(tuple(sorted([num[i], num[j]])))
+                                neighbour_index[i].append((i,j))
+
+                            neighbour_distVec_ang[i].append(distVec[j] - pos[i])
+                            neighbour_deltaRs_ang[i].append(deltaRs[j])
+                            neighbour_bondtype_ang[i].append(tuple(sorted([num[i], num[j]])))
+                            neighbour_index_ang[i].append((i,j))
+                            
                 else:
                     for j in range(n_atoms):
                         if deltaRs[j] < max(self.Rc1+self.nsigma*self.sigma1, self.Rc2) and deltaRs[j] > 1e-6:
-                            neighbour_distVec[i].append(distVec[j])
+                            neighbour_distVec[i].append(distVec[j] - pos[i])
                             neighbour_deltaRs[i].append(deltaRs[j])
                             neighbour_bondtype[i].append(tuple(sorted([num[i], num[j]])))
-                            neighbour_index[i].append(j)
+                            neighbour_index[i].append((i,j))
 
-        return neighbour_distVec, neighbour_deltaRs, neighbour_bondtype, neighbour_index
+                            neighbour_distVec_ang[i].append(distVec[j] - pos[i])
+                            neighbour_deltaRs_ang[i].append(deltaRs[j])
+                            neighbour_bondtype_ang[i].append(tuple(sorted([num[i], num[j]])))
+                            neighbour_index_ang[i].append((i,j))
+
+        return neighbour_distVec, neighbour_deltaRs, neighbour_bondtype, neighbour_index, neighbour_distVec_ang, neighbour_deltaRs_ang, neighbour_bondtype_ang, neighbour_index_ang
+
+    def __angle(self, vec1, vec2):
+        norm1 = np.linalg.norm(vec1)
+        norm2 = np.linalg.norm(vec2)
+        return np.arccos(np.dot(vec1,vec2)/(norm1*norm2))
