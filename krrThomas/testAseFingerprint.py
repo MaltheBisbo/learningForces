@@ -38,19 +38,33 @@ if __name__ == "__main__":
     theta = 0
 
     X = createData(Ndata, theta)
-    xtest = np.array([(0, 0, 0), (0, 1.1, 0), (1.9, 0.4, 0)]) 
-    #atoms = Atoms('Au', positions=xtest)
-    atoms = Atoms('Au3', [(0, 0, 0), (0, 1.1, 0), (0.9, 0.4, 0)])
+    xtest = np.array([(0, 0, 0), (0, 1.1, 0), (1.9, -0.4, 0)])
+    atoms = Atoms('Au3', xtest)
 
     featureCalculator1 = fingerprintFeature(rcut=4, dim=3)
     G1 = featureCalculator1.get_singleFeature(xtest.reshape(-1))
-
+    G1_grad = featureCalculator1.get_singleGradient(xtest.reshape(-1))
+    
+    print('\n ase\n')
     featureCalculator2 = Angular_Fingerprint(atoms)
     res2 = featureCalculator2.get_features(atoms)
+    res2_grad = featureCalculator2.get_featureGradients(atoms)
     G2 = res2[(79,79)]
-    
+    G2_grad = res2_grad[(79,79)]
+
+    plt.figure(1)
     plt.plot(np.arange(len(G1)), G1)
-    plt.plot(np.arange(len(G2)), G2)
+    plt.plot(np.arange(len(G2)), G2, linestyle='--')
+
+    plt.figure(2)
+    plt.plot(np.arange(len(G1)), G1_grad)
+    plt.plot(np.arange(len(G2)), G2_grad, linestyle='--')
+    
+    #plt.figure(3)
+    #plt.scatter(xtest[:,0], xtest[:,1])
+    #plt.gca().set_aspect('equal', adjustable='box')
     plt.show()
+
+    
     
     
