@@ -5,6 +5,7 @@ from fingerprintFeature import fingerprintFeature
 from angular_fingerprintFeature2 import Angular_Fingerprint
 
 from ase import Atoms
+from ase.visualize import view
 
 def createData(Ndata, theta):
     # Define fixed points
@@ -39,31 +40,34 @@ if __name__ == "__main__":
 
     X = createData(Ndata, theta)
     xtest = np.array([(0, 0, 0), (0, 1.1, 0), (1.9, -0.4, 0)])
-    atoms = Atoms('Au3', xtest)
-
+    atoms = Atoms('H3', xtest)
+    
     featureCalculator1 = fingerprintFeature(rcut=4, dim=3)
     G1 = featureCalculator1.get_singleFeature(xtest.reshape(-1))
     G1_grad = featureCalculator1.get_singleGradient(xtest.reshape(-1))
     
     print('\n ase\n')
     featureCalculator2 = Angular_Fingerprint(atoms)
-    res2 = featureCalculator2.get_features(atoms)
+    res2_2body, res2_3body  = featureCalculator2.get_features(atoms)
     res2_grad = featureCalculator2.get_featureGradients(atoms)
-    G2 = res2[(79,79)]
-    G2_grad = res2_grad[(79,79)]
+    G2_2body = res2_2body[(1,1)]
+    G2_3body = res2_3body[(1,1,1)]
+    G2_grad = res2_grad[(1,1)]
+
+    view(atoms)
 
     plt.figure(1)
     plt.plot(np.arange(len(G1)), G1)
-    plt.plot(np.arange(len(G2)), G2, linestyle='--')
+    plt.plot(np.arange(len(G2_2body)), G2_2body, linestyle='--')
 
     plt.figure(2)
     plt.plot(np.arange(len(G1)), G1_grad)
-    plt.plot(np.arange(len(G2)), G2_grad, linestyle='--')
-    
-    #plt.figure(3)
-    #plt.scatter(xtest[:,0], xtest[:,1])
-    #plt.gca().set_aspect('equal', adjustable='box')
+    plt.plot(np.arange(len(G2_grad)), G2_grad, linestyle='--')
+
+    plt.figure(3)
+    plt.plot(np.arange(len(G2_3body))/40*180, G2_3body)
     plt.show()
+    
 
     
     
