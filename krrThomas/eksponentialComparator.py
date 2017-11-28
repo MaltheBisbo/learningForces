@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.spatial.distance import euclidean
+from scipy.spatial.distance import sqeuclidean
 
 
 class eksponentialComparator():
@@ -21,9 +22,13 @@ class eksponentialComparator():
         self.similarityMat = np.array([[self.single_comparison(f1, f2, self.sigma)
                                         for f2 in self.featureMat]
                                        for f1 in self.featureMat])
+        #d = cdist(self.featureMat, self.featureMat, metric='euclidean')
+        #self.similarityMat = np.exp(-1/(2*self.sigma**2)*d)
         return self.similarityMat
 
-    def get_similarity_vector(self, fnew):
+    def get_similarity_vector(self, fnew, featureMat=None):
+        if featureMat is not None:
+            self.featureMat = featureMat
 
         self.similarityVec = np.array([self.single_comparison(fnew, f, self.sigma)
                                        for f in self.featureMat])
@@ -37,7 +42,7 @@ class eksponentialComparator():
 
     def get_jac(self, fnew, kappa=None, featureMat=None):
         """
-        Calculates tor jacobian of the similarity vector 'k' with respect
+        Calculates the jacobian of the similarity vector 'k' with respect
         to the feature vector 'f' of the new data-point.
         ie. calculates dk_df.
         Using the chain rule: dk_df = dk_dd*dd_df , where d is the distance measure

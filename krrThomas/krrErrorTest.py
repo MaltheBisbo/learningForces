@@ -34,11 +34,14 @@ plt.yscale('log')
 plt.scatter(error, dE)
 plt.scatter(error[ErelTrue > 0], dE[ErelTrue > 0], color='r')
 
+filter2 = ErelTrue > 0
 plt.figure(2)
 plt.yscale('log')
 plt.xscale('log')
 plt.scatter(error, dE)
-plt.scatter(error[error > 1], dE[error > 1], color='r')
+plt.scatter(error[filter2], dE[filter2], color='r')
+plt.xlabel('krr_error')
+plt.ylabel('abs(Epredict - Etarget)')
 
 filter3 = ErelTrue > 0
 plt.figure(3)
@@ -46,6 +49,8 @@ plt.yscale('log')
 plt.xscale('log')
 plt.scatter(error/np.sqrt(theta), dE)
 plt.scatter(error[filter3]/np.sqrt(theta[filter3]), dE[filter3], color='r')
+plt.xlabel('krr_error/sqrt(theta0)')
+plt.ylabel('abs(Epredict - Etarget)')
 plt.show()
 
 plt.figure(4)

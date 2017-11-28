@@ -5,7 +5,7 @@ from scipy.special import erf
 import time
 
 class fingerprintFeature():
-    def __init__(self, X=None, rcut=4, binwidth=0.1, sigma=0.2, nsigma=4):
+    def __init__(self, X=None, dim=2, rcut=4, binwidth=0.1, sigma=0.2, nsigma=4):
         """
         --input--
         X:                                                                                                                                     Contains data. Each row tepresents a structure given by cartesian coordinates
@@ -26,6 +26,7 @@ class fingerprintFeature():
         that distance). 
         """
         self.X = X
+        self.dim=dim
         self.rcut = rcut
         self.binwidth = binwidth
         self.sigma = sigma
@@ -80,7 +81,6 @@ class fingerprintFeature():
                 # divide by smearing_norm
                 value /= self.smearing_norm
                 value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * N_distances
-                #value *= f_cutoff
                 fingerprint[newbin] += value
         return fingerprint
 
@@ -100,7 +100,7 @@ class fingerprintFeature():
         --input--
         x: atomic positions for a single structure in the form [x1, y1, ... , xN, yN]
         """
-        Natoms = int(x.shape[0]/2)
+        Natoms = int(x.shape[0]/self.dim)
 
         R, dxMat, indexMat = self.radiusVector_grad(x)
         # Number of interatomic distances in the structure
@@ -111,7 +111,7 @@ class fingerprintFeature():
         dxMat = dxMat[filter]
         indexMat = indexMat[filter]
         
-        fingerprint_grad = np.zeros((self.Nbins, 2*Natoms))
+        fingerprint_grad = np.zeros((self.Nbins, self.dim*Natoms))
         for deltaR, dx, index in zip(R, dxMat, indexMat):
             rbin = int(np.floor(deltaR/self.binwidth))
             binpos = (deltaR % self.binwidth) / self.binwidth  # From 0 to binwidth (set constant at 0.5*binwidth for original)
@@ -144,8 +144,8 @@ class fingerprintFeature():
                 value /= (4*np.pi*deltaR**2)/self.cutoffVolume * self.binwidth * N_distances
 
                 # Add to the the gradient matrix
-                fingerprint_grad[newbin, 2*index[0]:2*index[0]+2] += value/deltaR*dx
-                fingerprint_grad[newbin, 2*index[1]:2*index[1]+2] += -value/deltaR*dx
+                fingerprint_grad[newbin, self.dim*index[0]:self.dim*index[0]+self.dim] += value/deltaR*dx
+                fingerprint_grad[newbin, self.dim*index[1]:self.dim*index[1]+self.dim] += -value/deltaR*dx
         return fingerprint_grad
 
     def get_gradientMat(self, X):
@@ -163,9 +163,8 @@ class fingerprintFeature():
         """
         Calculates the matrix consisting of all pairwise euclidean distances.
         """
-        Ndim = 2
         Natoms = int(x.shape[0])
-        x = x.reshape((Natoms, Ndim))
+        x = x.reshape((Natoms, self.dim))
         R = np.array([[euclidean(xi, xj) for xj in x] for xi in x])
         return R
     
@@ -173,27 +172,29 @@ class fingerprintFeature():
         """
         Calculates the vector consisting of all pairwise euclidean distances.
         """
-        Ndim = 2
-        Natoms = int(x.shape[0]/Ndim)
-        x = x.reshape((Natoms, Ndim))
+        Natoms = int(x.shape[0]/self.dim)
+        x = x.reshape((Natoms, self.dim))
         return pdist(x, metric='euclidean')
     
     def radiusVector_grad(self, x):
         """
         Calculates the vector consisting of all pairwise euclidean distances.
         """
-        Ndim = 2
-        Natoms = int(x.shape[0]/2)
+        Natoms = int(x.shape[0]/self.dim)
         Ndistances = int(Natoms*(Natoms-1)/2)
-        x = x.reshape((Natoms, Ndim))
+        x = x.reshape((Natoms, self.dim))
         Rvec = np.zeros(Ndistances)
-        dxMat = np.zeros((Ndistances, Ndim))
-        indexMat = np.zeros((Ndistances, Ndim)).astype(int)
+        dxMat = np.zeros((Ndistances, self.dim))
+        indexMat = np.zeros((Ndistances, 2)).astype(int)
         k = 0
         for i in range(Natoms):
             for j in range(i+1, Natoms):
                 Rvec[k] = euclidean(x[i],x[j])
-                dxMat[k,:] = np.array([x[i,0] - x[j,0] , x[i,1] - x[j,1]])
+                dxMat[k,:] = x[i] - x[j]
+                #if self.dim == 2:
+                #    dxMat[k,:] = np.array([x[i,0] - x[j,0] , x[i,1] - x[j,1]])
+                #if self.dim == 3:
+                #    dxMat[k,:] = np.array([x[i,0] - x[j,0] , x[i,1] - x[j,1], x[i,2] - x[j,2]])
                 indexMat[k,:] = np.array([i,j])
                 k += 1
         return Rvec, dxMat, indexMat
