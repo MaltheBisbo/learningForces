@@ -26,6 +26,8 @@ class Angular_Fingerprint(object):
         self.sigma2 = sigma2
         self.nsigma = nsigma
         self.gamma = gamma
+        self.use_angular = use_angular
+
         self.pbc = atoms.get_pbc()
         self.cell = atoms.get_cell()
         self.n_atoms = atoms.get_number_of_atoms()
@@ -35,6 +37,7 @@ class Angular_Fingerprint(object):
         if sum(self.pbc) != 0:
             self.volume = atoms.get_volume()
         self.dim = 3
+
 
         # parameters for the binning:
         self.m1 = int(np.ceil(self.nsigma*self.sigma1/self.binwidth1))  # number of neighbour bins included.
@@ -48,6 +51,17 @@ class Angular_Fingerprint(object):
         # Cutoff surface areas
         self.cutoff_surface_area1 = 4*np.pi*self.Rc1**2
         self.cutoff_surface_area2 = 4*np.pi*self.Rc2**2
+
+        # Elements in feature
+        Nbondtypes_2body = 0
+        for type1 in self.atomic_types:
+            for type2 in self.atomic_types:
+                if type1 < type2:
+                    Nbondtypes_2body += 1
+                elif type1 == type2:  # and self.atomic_count[type1] > 1:
+                    Nbondtypes_2body += 1
+        Nelements_2body = self.Nbins1 * Nbondtypes_2body
+        self.Nelements = Nelements_2body
         
     def get_features(self, atoms):
         """
@@ -90,8 +104,6 @@ class Angular_Fingerprint(object):
         # Count the number of interacting atom-pairs
         N_distances = sum([len(x) for x in nb_deltaRs])
         
-        print(sorted(keys_2body))
-        print(keys_3body)
         # Two body
         for j in range(n_atoms):
             for n in range(len(nb_deltaRs[j])):
@@ -130,8 +142,14 @@ class Angular_Fingerprint(object):
                              atomic_count[type1] * atomic_count[type2]
                     feature[0][nb_bondtype[j][n]][newbin] += value
 
-        if not use_angular:
-            return 
+        if not self.use_angular:
+            keys_2body = sorted(feature[0].keys())
+            Nelements = len(keys_2body) * self.Nbins1
+            fingerprint = np.zeros(Nelements)
+            for i, key in enumerate(keys_2body):
+                fingerprint[i*self.Nbins1 : (i+1)*self.Nbins1] = feature[0][key]
+            return fingerprint
+        
         # Three body
         for j in range(n_atoms):
             for n in range(len(nb_deltaRs_ang[j])):
