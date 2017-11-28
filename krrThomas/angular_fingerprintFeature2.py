@@ -14,7 +14,7 @@ class Angular_Fingerprint(object):
     """ comparator for construction of angular fingerprints
     """
 
-    def __init__(self, atoms, Rc1=4.0, Rc2=4.0, binwidth1=0.1, Nbins2=30, sigma1=0.2, sigma2=0.10, nsigma=4, gamma=3):
+    def __init__(self, atoms, Rc1=4.0, Rc2=4.0, binwidth1=0.1, Nbins2=30, sigma1=0.2, sigma2=0.10, nsigma=4, gamma=3, use_angular=True):
         """ Set a common cut of radius
         """
         self.Rc1 = Rc1
@@ -90,7 +90,7 @@ class Angular_Fingerprint(object):
         # Count the number of interacting atom-pairs
         N_distances = sum([len(x) for x in nb_deltaRs])
         
-        print(keys_2body)
+        print(sorted(keys_2body))
         print(keys_3body)
         # Two body
         for j in range(n_atoms):
@@ -129,7 +129,9 @@ class Angular_Fingerprint(object):
                     value /= (4*np.pi*deltaR**2)/self.cutoff_surface_area1 * self.binwidth1 * \
                              atomic_count[type1] * atomic_count[type2]
                     feature[0][nb_bondtype[j][n]][newbin] += value
-            
+
+        if not use_angular:
+            return 
         # Three body
         for j in range(n_atoms):
             for n in range(len(nb_deltaRs_ang[j])):
@@ -179,8 +181,17 @@ class Angular_Fingerprint(object):
                                  atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
                         value *= self.__f_cutoff(deltaR_n, self.gamma, self.Rc2)*self.__f_cutoff(deltaR_m, self.gamma, self.Rc2)
                         feature[1][bondtype_3body][newbin] += value
-                        
-        return feature[0], feature[1]
+
+        keys_2body = sorted(feature[0].keys())
+        keys_3body = sorted(feature[1].keys())
+        Nelements = len(keys_2body) * self.Nbins1 + len(keys_3body) * self.Nbins2
+        fingerprint = np.zeros(Nelements)
+        for i, key in enumerate(keys_2body):
+            fingerprint[i*self.Nbins1 : (i+1)*self.Nbins1] = feature[0][key]
+        for i, key in enumerate(keys_3body):
+            fingerprint[i*self.Nbins2 + len(keys_2body) * self.Nbins1 : (i+1)*self.Nbins2 + len(keys_2body) * self.Nbins1] = feature[1][key]
+        
+        return fingerprint
 
     def get_featureGradients(self, atoms):
         """
