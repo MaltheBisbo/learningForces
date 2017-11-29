@@ -10,6 +10,8 @@ try:
 except:
     cwd = os.getcwd()
 
+global_count1 = 0
+
 class Angular_Fingerprint(object):
     """ comparator for construction of angular fingerprints
     """
@@ -37,7 +39,6 @@ class Angular_Fingerprint(object):
         if sum(self.pbc) != 0:
             self.volume = atoms.get_volume()
         self.dim = 3
-
 
         # parameters for the binning:
         self.m1 = int(np.ceil(self.nsigma*self.sigma1/self.binwidth1))  # number of neighbour bins included.
@@ -108,12 +109,16 @@ class Angular_Fingerprint(object):
         for j in range(n_atoms):
             for n in range(len(nb_deltaRs[j])):
                 deltaR = nb_deltaRs[j][n]
-                if deltaR > self.Rc1:
-                    continue
-
+                
+                #if deltaR > self.Rc1  # + self.nsigma*self.sigma1:
+                #    continue
+                global global_count1
+                global_count1 += 1
+                
                 # Identify what bin 'deltaR' belongs to + it's position in this bin
                 center_bin = int(np.floor(deltaR/self.binwidth1))
                 binpos = (deltaR % self.binwidth1) / self.binwidth1  # From 0 to binwidth (set constant at 0.5*binwidth for original)
+
                 # Lower and upper range of bins affected by the current atomic distance deltaR.
                 above_bin_center = int(binpos > 0.5)
                 minbin_lim = -self.m1 - (1-above_bin_center)
@@ -138,8 +143,13 @@ class Angular_Fingerprint(object):
                     # divide by smearing_norm
                     value /= self.smearing_norm1
                     type1, type2 = nb_bondtype[j][n]
+                    #if type1 == type2:
+                    #    numbers = 0.5 * atomic_count[type1] * (atomic_count[type1] - 1)
+                    #else:
+                    #    numbers = atomic_count[type1] * atomic_count[type2]
                     value /= (4*np.pi*deltaR**2)/self.cutoff_surface_area1 * self.binwidth1 * \
                              atomic_count[type1] * atomic_count[type2]
+
                     feature[0][nb_bondtype[j][n]][newbin] += value
 
         if not self.use_angular:
@@ -148,6 +158,7 @@ class Angular_Fingerprint(object):
             fingerprint = np.zeros(Nelements)
             for i, key in enumerate(keys_2body):
                 fingerprint[i*self.Nbins1 : (i+1)*self.Nbins1] = feature[0][key]
+            print('count1:', global_count1)
             return fingerprint
         
         # Three body

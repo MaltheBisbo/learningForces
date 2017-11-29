@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 from fingerprintFeature import fingerprintFeature
 from angular_fingerprintFeature2 import Angular_Fingerprint
+from angular_fingerprintFeature import Angular_Fingerprint_tho
 
 from ase import Atoms
 from ase.visualize import view
