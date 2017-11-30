@@ -18,7 +18,7 @@ print('Ndata:', Ndata)
 
 E = np.array([a.get_potential_energy() for a in atoms])
 
-Rc1 = 10
+Rc1 = 5
 Rc2 = 5
 binwidth1 = 0.1
 sigma1 = 0.5
@@ -28,7 +28,7 @@ featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth
 fingerprint0 = featureCalculator.get_features(a0)
 length_feature = len(fingerprint0)
 
-featureCalculator_tho = Angular_Fingerprint_tho(a0, Rc=Rc1, binwidth1=binwidth1, sigma1=sigma1, sigma2=sigma2)
+featureCalculator_tho = Angular_Fingerprint_tho(a0, Rc=Rc1, binwidth1=binwidth1, binwidth2=0.5, sigma1=sigma1, sigma2=0.05)
 res0_tho = featureCalculator_tho.get_features(a0)
 keys_2body = list(res0_tho.keys())[:3]
 print(keys_2body)
@@ -42,51 +42,77 @@ plt.figure(3)
 plt.plot(np.arange(len(fingerprint0))*binwidth1, fingerprint0, label="new")
 plt.plot(np.arange(len(fingerprint0_tho))*binwidth1, (fingerprint0_tho + 1)*sum(fingerprint0)/sum(fingerprint0_tho + 1), label="old")
 plt.legend()
-plt.show()
 
-"""
+filename = 'SnO_features/SnO_radialFeatures_gauss_Rc1_{}_binwidth1_{}_sigma1_{}.txt'.format(Rc1, binwidth1, sigma1)
 try:
-    fingerprints = np.loadtxt('SnO_features/SnO_radialFeatures_test2_Rc1_{}_binwidth1_{}_sigma1_{}.txt'.format(Rc1, binwidth1, sigma1), delimiter='\t')
+    fingerprints = np.loadtxt(filename, delimiter='\t')
 except IOError:
     fingerprints = np.zeros((Ndata, length_feature))
     for i, structure in enumerate(atoms):
         print('calculating features: {}/{}\r'.format(i, Ndata), end='')
         fingerprints[i] = featureCalculator.get_features(structure)
-    np.savetxt('SnO_features/SnO_radialFeatures_test2_Rc1_{}_binwidth1_{}_sigma1_{}.txt'.format(Rc1, binwidth1, sigma1),
-               fingerprints, delimiter='\t')
+    np.savetxt(filename, fingerprints, delimiter='\t')
 
-print('\n',fingerprints.shape)
+
+"""
+try:
+    fingerprints_tho = np.loadtxt('SnO_features/SnO_radialFeatures_tho_Rc1_{}_binwidth1_{}_sigma1_{}.txt'.format(Rc1, binwidth1, sigma1), delimiter='\t')
+except IOError:
+    fingerprints = np.zeros((Ndata, length_feature))
+    for i, structure in enumerate(atoms):
+        print('calculating features: {}/{}\r'.format(i, Ndata), end='')
+        res_tho = featureCalculator_tho.get_features(structure)
+        keys_2body = list(res_tho.keys())[:3]
+        Nbins1 = int(Rc1/binwidth1)
+        Nelements = len(keys_2body) * Nbins1
+        fingerprint_i_tho = np.zeros(Nelements)
+        for i, key in enumerate(keys_2body):
+            fingerprint_i_tho[i*Nbins1 : (i+1)*Nbins1] = res_tho[key]
+        fingerprints[i] = fingerprint_i_tho 
+    np.savetxt('SnO_features/SnO_radialFeatures_tho_test2_Rc1_{}_binwidth1_{}_sigma1_{}.txt'.format(Rc1, binwidth1, sigma1),
+               fingerprints, delimiter='\t')
+"""
 
 # comparator = gaussComparator()
-comparator = eksponentialComparator()
+comparator = gaussComparator()
 krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
 np.random.seed(101)
-permutation = np.random.permutation(Ndata)
-E = E[permutation]
-fingerprints = fingerprints[permutation]
-
 Npoints = 10
+Npermutations = 10
 N_array = np.logspace(1, np.log10(Ndata), Npoints).astype(int)
-FVU = np.zeros(Npoints)
+FVU = np.zeros((Npermutations, Npoints))
 GSkwargs = {'reg': np.logspace(-2, -7, 10), 'sigma': np.logspace(0,2,10)}
-for i, N in enumerate(N_array):
-    Esub = E[:N]
-    fingerprints_sub = fingerprints[:N]
-    
-    #FVU_energy_array[i], FVU_force_array[i, :] = krr.train(Esub, Fsub, Gsub, Xsub, reg=reg)
-    FVU[i], params = krr.train(Esub, featureMat=fingerprints_sub, add_new_data=False, k=10, **GSkwargs)
-    print('params:', params)
-    print('FVU_energy: {}\n'.format(FVU[i]))
+
+for k in range(Npermutations):
+    print('training: {}/{}'.format(k, Npermutations))
+    permutation = np.random.permutation(Ndata)
+    E = E[permutation]
+    fingerprints = fingerprints[permutation]
+
+    for i, N in enumerate(N_array):
+        Esub = E[:N]
+        fingerprints_sub = fingerprints[:N]
+        
+        #FVU_energy_array[i], FVU_force_array[i, :] = krr.train(Esub, Fsub, Gsub, Xsub, reg=reg)
+        FVU_temp, params = krr.train(Esub, featureMat=fingerprints_sub, add_new_data=False, k=10, **GSkwargs)
+        FVU[k, i] += FVU_temp
+        #print('params:', params)
+        #print('FVU_energy: {}\n'.format(FVU[i]))
+FVU /= Npermutations
+FVU_mean = FVU.mean(axis=0)
+FVU_std = FVU.std(axis=0)
+print(FVU_mean)
+print(FVU_std)
 
 plt.figure(1)
 plt.loglog(N_array, FVU)
 plt.ylim([10**-1, 10**1])
 
 plt.figure(2)
-plt.plot(np.arange(len(fingerprint0))*binwidth1, np.c_[fingerprints[0], fingerprints[10], fingerprints[20], fingerprints[100]])
+plt.plot(np.arange(len(fingerprints[0]))*binwidth1, np.c_[fingerprints[0], fingerprints[10], fingerprints[20], fingerprints[100]])
 plt.show()
-"""
+
     
 
 
