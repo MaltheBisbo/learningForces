@@ -334,7 +334,7 @@ class Angular_Fingerprint(object):
         neighbour_index_ang = [[] for _ in range(n_atoms)]
         for i in range(n_atoms):
             for xyz in neighbourcells:
-                cell_displacement = xyz @ cell
+                cell_displacement = np.dot(xyz, cell)
                 distVec = pos + cell_displacement
                 deltaRs = cdist(pos[i].reshape((1, self.dim)), distVec).reshape(-1)
                 for j in range(n_atoms):

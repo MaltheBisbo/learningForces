@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# set the number of nodes and processes per node
+#PBS -l nodes=25:ppn=8
+
+# set nodes to use
+#PBS -q q8n
+
+# set max wallclock time
+#PBS -l walltime=100:00:00
+
+# set name of job
+#PBS -N gloPer
+
+#  Copy the inputfiles and the program to the local scratch-
+#  directory on each node. One set of files per executionnode!
+#  pbsdsh-flags: -s : one node at a time; -u : once on each node 
+pbsdsh -s -u cp $PBS_O_WORKDIR/performanceML_new.py  /scratch/$PBS_JOBID
+pbsdsh -s -u cp $PBS_O_WORKDIR/../globalOptim_new.py  /scratch/$PBS_JOBID
+pbsdsh -s -u cp $PBS_O_WORKDIR/../krr_class_new.py    /scratch/$PBS_JOBID
+pbsdsh -s -u cp $PBS_O_WORKDIR/../doubleLJ.py    /scratch/$PBS_JOBID
+pbsdsh -s -u cp $PBS_O_WORKDIR/../fingerprintFeature.py    /scratch/$PBS_JOBID
+pbsdsh -s -u cp $PBS_O_WORKDIR/../gaussComparator.py    /scratch/$PBS_JOBID
+
+# Set up runtime environment
+cd $PBS_O_WORKDIR
+module load python/3.4.1
+source ~/virtualEnvs/py3env/bin/activate
+cd /scratch/$PBS_JOBID
+
+#  Launch dispatch with these flags::
+#  -T 4 :     Allocate 4 cores per subtask (set OMP_NUM_THREADS=4)
+#  -e ssh :   Use ssh to spawn subtasks on other nodes
+#             Remember to setup passwordless login!
+#  -SS :      Log runtime statistics for each subtask
+#  {0..9} : Specify arguments for the 9 subtasks: 0,...,9
+dispatch -T 1 -e ssh -SS -c "python performanceML_new.py" {0..199}
+
+pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/*.txt  $PBS_O_WORKDIR/dataN19_ML_singleTargetRelax14/'
