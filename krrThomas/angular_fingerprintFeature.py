@@ -9,6 +9,8 @@ try:
 except:
     cwd = os.getcwd()
 
+global_count2 = 0
+
 class Angular_Fingerprint(object):
     """ comparator for construction of angular fingerprints
     """
@@ -45,18 +47,21 @@ class Angular_Fingerprint(object):
         atomic_count = self.atomic_count
         volume = self.volume
 
-        # get_neighbourcells                                                                                                        
-        cell_vec_norms = np.apply_along_axis(np.linalg.norm,0,cell)
-        neighbours = []
-        for i in range(3):
-            ncellmax = int(np.ceil(abs(2*self.Rc/cell_vec_norms[i])))+2
-            if pbc[i]:
-                neighbours.append(range(-ncellmax,ncellmax+1))
-            else:
-                neighbours.append([0])
-        neighbourcells = []
-        for x,y,z in product(*neighbours):
-            neighbourcells.append((x,y,z))
+        # get_neighbourcells
+        if sum(pbc):
+            cell_vec_norms = np.apply_along_axis(np.linalg.norm,0,cell)
+            neighbours = []
+            for i in range(3):
+                ncellmax = int(np.ceil(abs(2*self.Rc/cell_vec_norms[i])))+2
+                if pbc[i]:
+                    neighbours.append(range(-ncellmax,ncellmax+1))
+                else:
+                    neighbours.append([0])
+            neighbourcells = []
+            for x,y,z in product(*neighbours):
+                neighbourcells.append((x,y,z))
+        else:
+            neighbourcells = [(0,0,0)]  # Added by Malthe
 
         # get_neighbour_lists                                                                                                       
         neighbour_list = [{} for _ in range(n_atoms)]
@@ -67,9 +72,11 @@ class Angular_Fingerprint(object):
                 displaced_pos = pos + displacement
                 deltaRs = np.apply_along_axis(np.linalg.norm,1,displaced_pos-pos[i])
                 for j in range(n_atoms):
-                    if deltaRs[j] < self.Rc and deltaRs[j] > 1e-6:
+                    if deltaRs[j] < self.Rc + self.sigma1*self.nsigma and deltaRs[j] > 1e-6:
                         neighbour_list[i][(xyz,j)] = deltaRs[j]
-                    elif deltaRs[j] < 2*self.Rc and deltaRs[j] > 1e-6:
+                        global global_count2
+                        global_count2 += 1
+                    elif deltaRs[j] < 2*self.Rc + self.sigma1*self.nsigma and deltaRs[j] > 1e-6:
                         neighbour_list_exp[i][(xyz,j)] = deltaRs[j]
 
         # two component features
@@ -90,7 +97,7 @@ class Angular_Fingerprint(object):
                 bond_type = tuple(sorted([num[i],num[index_j]]))
                 feature[0][i][bond_type].append(Rij)
 
-        print(sorted())
+        """
         # three component features
         feature[1] = [None]*n_atoms
         for i in range(n_atoms):
@@ -128,6 +135,7 @@ class Angular_Fingerprint(object):
                     lengths = [lengths[0][2],lengths[1][2],lengths[2][2]]
                     bond_type = tuple([num[i]] + sorted([num[index_j],num[index_k]]))
                     feature[1][i][bond_type].append(lengths)
+        """
 
         # the fingerprint function
         fingerprints = {}
@@ -136,7 +144,6 @@ class Angular_Fingerprint(object):
             for type2 in atomic_types[i:]:
                 type_combinations.append((type1,type2))
 
-        print(type_combinations)
         # two component fingerprints
         nbins = int(np.ceil(self.Rc*1./self.binwidth1))
         m = int(np.ceil(self.nsigma*self.sigma1/self.binwidth1))
@@ -146,17 +153,19 @@ class Angular_Fingerprint(object):
         for type1,type2 in type_combinations:
             key = (type1,type2)
             fingerprints[key] = np.zeros(nbins)
-            for i in range(len(atoms)):
-                type1 = num[i]
-                for type2 in atomic_types:
-                    key = tuple(sorted([type1,type2]))
-                    fingerprints[key] += self._get_atomic_rdf(feature[0][i][key], nbins, m, smearing_norm, c)
-            for type1,type2 in type_combinations:
-                key = (type1,type2)
-                fingerprints[key] /= 2*self.binwidth1*atomic_count[atomic_types.index(type1)]\
-                                     *atomic_count[atomic_types.index(type2)]/volume
-                fingerprints[key] -= 1
-
+        for i in range(len(atoms)):
+            type1 = num[i]
+            for type2 in atomic_types:
+                key = tuple(sorted([type1,type2]))
+                fingerprints[key] += self._get_atomic_rdf(feature[0][i][key], nbins, m, smearing_norm, c)
+        for type1,type2 in type_combinations:
+            key = (type1,type2)
+            fingerprints[key] /= 2*self.binwidth1*atomic_count[atomic_types.index(type1)]\
+                                 *atomic_count[atomic_types.index(type2)]/volume  # removed /volume
+            fingerprints[key] -= 1
+        print('count2:', global_count2)
+        return fingerprints # TESTING
+            
         # three component fingerprints
         nbins = int(np.ceil(np.pi/self.binwidth2))
         m = int(np.ceil(self.nsigma*self.sigma2/self.binwidth2))
@@ -167,18 +176,19 @@ class Angular_Fingerprint(object):
             for type2,type3 in type_combinations:
                 key = (type1,type2,type3)
                 fingerprints[key] = np.zeros(nbins)
-                for i in range(len(atoms)):
-                    type1 = num[i]
-                for type2,type3 in type_combinations:
-                    key = (type1,type2,type3)
-                    fingerprints[key] += self._get_atomic_adf(feature[1][i][key], nbins, m, smearing_norm, c)
-            for type1 in atomic_types:
-                for type2,type3 in type_combinations:
-                    key = (type1,type2,type3)
-                    fingerprints[key] /= self.binwidth2*atomic_count[atomic_types.index(type1)]\
-                                         *atomic_count[atomic_types.index(type2)]*atomic_count[atomic_types.index(type3)]/volume
-                    fingerprints[key] -= 1
+        for i in range(len(atoms)):
+            type1 = num[i]
+            for type2,type3 in type_combinations:
+                key = (type1,type2,type3)
+                fingerprints[key] += self._get_atomic_adf(feature[1][i][key], nbins, m, smearing_norm, c)
+        for type1 in atomic_types:
+            for type2,type3 in type_combinations:
+                key = (type1,type2,type3)
+                fingerprints[key] /= self.binwidth2*atomic_count[atomic_types.index(type1)]\
+                                     *atomic_count[atomic_types.index(type2)]*atomic_count[atomic_types.index(type3)]/volume  # removed /volume
+                fingerprints[key] -= 1
 
+        print('count2:', global_count2)
         return fingerprints
 
     def _get_atomic_rdf(self, bonds, nbins, m, smearing_norm, c):

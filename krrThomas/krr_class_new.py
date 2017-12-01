@@ -24,7 +24,7 @@ class krr_class():
 
         # Initialize data arrays
         max_data = 15000
-        length_feature = featureCalculator.Nbins
+        length_feature = featureCalculator.Nelements  # featureCalculator.Nbins
         self.data_values = np.zeros(max_data)
         self.featureMat = np.zeros((max_data, length_feature))
         
@@ -201,7 +201,8 @@ class krr_class():
     def __get_FVU_energy(self, data_values, test_similarities):
         #Epred = np.array([self.predict_energy(similarityVec=similarity) for similarity in test_similarities])
         Epred = self.predict_energy(similarityVec=test_similarities)
+        MAE = np.mean(np.abs(Epred - data_values))
         MSE = np.mean((Epred - data_values)**2)
         var = np.var(data_values)
-        return MSE / var
+        return MAE  # MSE / var 
 

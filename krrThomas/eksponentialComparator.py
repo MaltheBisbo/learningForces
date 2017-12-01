@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.spatial.distance import euclidean
 from scipy.spatial.distance import sqeuclidean
-
+from scipy.spatial.distance import cdist
 
 class eksponentialComparator():
     def __init__(self, featureMat=None, **kwargs):
@@ -19,19 +19,21 @@ class eksponentialComparator():
         else:
             print("You need to supply a feature matrix")
 
-        self.similarityMat = np.array([[self.single_comparison(f1, f2, self.sigma)
-                                        for f2 in self.featureMat]
-                                       for f1 in self.featureMat])
-        #d = cdist(self.featureMat, self.featureMat, metric='euclidean')
-        #self.similarityMat = np.exp(-1/(2*self.sigma**2)*d)
+        #self.similarityMat = np.array([[self.single_comparison(f1, f2, self.sigma)
+        #                                for f2 in self.featureMat]
+        #                               for f1 in self.featureMat])
+        d = cdist(self.featureMat, self.featureMat, metric='euclidean')
+        self.similarityMat = np.exp(-1/(2*self.sigma**2)*d)
         return self.similarityMat
 
     def get_similarity_vector(self, fnew, featureMat=None):
         if featureMat is not None:
             self.featureMat = featureMat
 
-        self.similarityVec = np.array([self.single_comparison(fnew, f, self.sigma)
-                                       for f in self.featureMat])
+        #self.similarityVec = np.array([self.single_comparison(fnew, f, self.sigma)
+        #                               for f in self.featureMat])
+        d = cdist(fnew.reshape((1,len(fnew))), self.featureMat, metric='euclidean')
+        self.similarityVec = np.exp(-1/(2*self.sigma**2)*d).reshape(-1)
         return self.similarityVec
 
     def single_comparison(self, feature1, feature2, sigma=None):

@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 from fingerprintFeature import fingerprintFeature
 from angular_fingerprintFeature2 import Angular_Fingerprint
+from angular_fingerprintFeature import Angular_Fingerprint as Angular_Fingerprint_tho
 
 from ase import Atoms
 from ase.visualize import view
@@ -45,27 +46,28 @@ if __name__ == "__main__":
     featureCalculator1 = fingerprintFeature(rcut=4, dim=3)
     G1 = featureCalculator1.get_singleFeature(xtest.reshape(-1))
     G1_grad = featureCalculator1.get_singleGradient(xtest.reshape(-1))
+
+    Rc1 = 5
+    binwidth1 = 0.1
+    sigma1 = 0.2
     
     print('\n ase\n')
-    featureCalculator2 = Angular_Fingerprint(atoms)
-    res2_2body, res2_3body  = featureCalculator2.get_features(atoms)
-    res2_grad = featureCalculator2.get_featureGradients(atoms)
-    G2_2body = res2_2body[(1,1)]
-    G2_3body = res2_3body[(1,1,1)]
-    G2_grad = res2_grad[(1,1)]
-
-    view(atoms)
+    featureCalculator2 = Angular_Fingerprint(atoms, Rc1=Rc1, binwidth1=binwidth1, sigma1=sigma1, use_angular=False)
+    G2_2body  = featureCalculator2.get_features(atoms)
+    #res2_grad = featureCalculator2.get_featureGradients(atoms)
+    
+    featureCalculator3 = Angular_Fingerprint_tho(atoms, Rc=Rc1, binwidth1=binwidth1, sigma1=sigma1)
+    res3 = featureCalculator3.get_features(atoms)
+    G3_2body = np.array(list(res3.values())[0])
+    print(G3_2body)
+    #view(atoms)
 
     plt.figure(1)
-    plt.plot(np.arange(len(G1)), G1)
-    plt.plot(np.arange(len(G2_2body)), G2_2body, linestyle='--')
-
-    plt.figure(2)
-    plt.plot(np.arange(len(G1)), G1_grad)
-    plt.plot(np.arange(len(G2_grad)), G2_grad, linestyle='--')
-
-    plt.figure(3)
-    plt.plot(np.arange(len(G2_3body))/40*180, G2_3body)
+    plt.plot(np.arange(len(G1)), G1, label='no ase')
+    plt.plot(np.arange(len(G2_2body)), G2_2body, label='ase')
+    plt.plot(np.arange(len(G3_2body)), G3_2body, label='ase_tho')
+    plt.legend()
+    
     plt.show()
     
 
