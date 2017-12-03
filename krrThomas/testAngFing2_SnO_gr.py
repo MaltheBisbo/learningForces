@@ -24,13 +24,16 @@ binwidth1_array = np.linspace(0.02, 0.2, 10)
 sigma1_array = np.linspace(0.1, 1, 10)
 
 Rc1 = 7
-binwidth1 = binwidth1_array[arg // 10]
-sigma1 = sigma1_array[arg % 10]
+binwidth1 = 0.1  # binwidth1_array[arg // 10]
+sigma1 = 0.4  # sigma1_array[arg % 10]
 
 Rc2 = 5
+Nbins2 = 30
 sigma2 = 0.1
+gamma = 3
+eta = 5
 
-featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, sigma1=sigma1, sigma2=sigma2, use_angular=False)
+featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, use_angular=True)
 fingerprint0 = featureCalculator.get_features(a0)
 length_feature = len(fingerprint0)
 

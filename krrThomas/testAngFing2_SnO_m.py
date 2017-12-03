@@ -14,24 +14,24 @@ atoms = read('fromThomas/data_SnO.traj', index=':')
 Ndata = len(atoms)
 a0 = atoms[10]
 print('Ndata:', Ndata)
-
+view(a0)
 E = np.array([a.get_potential_energy() for a in atoms])
 
 Rc1 = 5
 Rc2 = 5
 binwidth1 = 0.1
 Nbins2 = 30
-sigma1 = 0.5
+sigma1 = 0.4
 sigma2 = 0.1
 gamma = 3
-eta = 5
+eta = 20
 
-featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=False)
+featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=True)
 fingerprint0 = featureCalculator.get_features(a0)
 length_feature = len(fingerprint0)
 
 # Save file
-filename = 'SnO_features/SnO_radialAngFeatures_gauss_Rc1_2_{}_{}_binwidth1_{}_Nbins2_{}_sigma1_2_{}_{}_gamma_{}.txt'.format(Rc1, Rc2, binwidth1, Nbins2, sigma1, sigma2, gamma)
+filename = 'SnO_features/SnO_radialAngFeatures_gauss_Rc1_2_{0:d}_{1:d}_binwidth1_{2:.1f}_Nbins2_{3:d}_sigma1_2_{4:.1f}_{5:.2f}_gamma_{6:d}.txt'.format(Rc1, Rc2, binwidth1, Nbins2, sigma1, sigma2, gamma)
 try:
     fingerprints = np.loadtxt(filename, delimiter='\t')
 except IOError:
@@ -52,7 +52,7 @@ krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 # Perform training with cross-validation
 np.random.seed(101)
 Npoints = 10
-Npermutations = 2
+Npermutations = 10
 N_array = np.logspace(1, np.log10(Ndata), Npoints).astype(int)
 FVU = np.zeros((Npermutations, Npoints))
 GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0,2,10)}

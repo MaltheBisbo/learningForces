@@ -99,7 +99,7 @@ class Angular_Fingerprint(object):
         for type1 in self.atomic_types:
             for type2 in self.atomic_types:
                 key = tuple(sorted([type1, type2]))
-                if key not in feature[0]: 
+                if key not in feature[0]:
                     feature[0][key] = np.zeros(self.Nbins1)
 
         keys_2body = feature[0].keys()
@@ -114,9 +114,6 @@ class Angular_Fingerprint(object):
 
         keys_3body = feature[1].keys()
 
-        # Count the number of interacting atom-pairs
-        N_distances = sum([len(x) for x in nb_deltaRs])
-        
         # Two body
         for j in range(n_atoms):
             for n in range(len(nb_deltaRs[j])):
@@ -130,7 +127,7 @@ class Angular_Fingerprint(object):
                 
                 # Identify what bin 'deltaR' belongs to + it's position in this bin
                 center_bin = int(np.floor(deltaR/self.binwidth1))
-                binpos = (deltaR % self.binwidth1) / self.binwidth1  # From 0 to binwidth (set constant at 0.5*binwidth for original)
+                binpos = (deltaR % self.binwidth1) / self.binwidth1
 
                 # Lower and upper range of bins affected by the current atomic distance deltaR.
                 above_bin_center = int(binpos > 0.5)
@@ -161,14 +158,13 @@ class Angular_Fingerprint(object):
                     
                     feature[0][nb_bondtype[j][n]][newbin] += value
 
-        #if not self.use_angular:
-        #    keys_2body = sorted(feature[0].keys())
-        #    Nelements = len(keys_2body) * self.Nbins1
-        #    fingerprint = np.zeros(Nelements)
-        #    for i, key in enumerate(keys_2body):
-        #        fingerprint[i*self.Nbins1 : (i+1)*self.Nbins1] = feature[0][key]
-        #    #print('count1:', global_count1)
-        #    return fingerprint
+        if not self.use_angular:
+            keys_2body = sorted(feature[0].keys())
+            Nelements = len(keys_2body) * self.Nbins1
+            fingerprint = np.zeros(Nelements)
+            for i, key in enumerate(keys_2body):
+                fingerprint[i*self.Nbins1: (i+1)*self.Nbins1] = feature[0][key]
+            return fingerprint
         
         # Three body
         for j in range(n_atoms):
@@ -182,11 +178,7 @@ class Angular_Fingerprint(object):
                         continue
                     angle = self.__angle(nb_distVec_ang[j][n], nb_distVec_ang[j][m])
                     center_bin = int(np.floor(angle/self.binwidth2))
-                    binpos = (angle % self.binwidth2) / self.binwidth2  # From 0 to binwidth (set constant at 0.5*binwidth for original)
-                    
-                    #print('center bin:', center_bin/self.Nbins2*180)
-                    #print('binpos:', binpos/self.Nbins2*180)
-                    
+                    binpos = (angle % self.binwidth2) / self.binwidth2
                     
                     # Lower and upper range of bins affected by the current atomic distance deltaR.
                     above_bin_center = int(binpos > 0.5)
@@ -198,8 +190,7 @@ class Angular_Fingerprint(object):
                             newbin = abs(newbin)
                         if newbin > self.Nbins2-1:
                             newbin = self.Nbins2 - newbin % (self.Nbins2 - 1)
-                        #print((newbin)/self.Nbins2*180)
-                        #print(newbin)
+
                         c = 0.25*np.sqrt(2)*self.binwidth2*1./self.sigma2
                         if i == minbin_lim:
                             erfarg_low = -(self.m2+0.5)
@@ -214,9 +205,8 @@ class Angular_Fingerprint(object):
                         
                         # divide by smearing_norm
                         value /= self.smearing_norm2
-                        # CHECK: considder if deltaR part is relevant
-                        value /= (4*np.pi*(deltaR_n**2 + deltaR_m**2))/self.cutoff_surface_area2 * self.binwidth2 * \
-                                 atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
+                        value /= (4*np.pi*(deltaR_n**2 + deltaR_m**2))/self.cutoff_surface_area2 * self.binwidth2 * atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
+                        
                         value *= self.__f_cutoff(deltaR_n, self.gamma, self.Rc2)*self.__f_cutoff(deltaR_m, self.gamma, self.Rc2)
                         feature[1][bondtype_3body][newbin] += value
 
@@ -225,9 +215,9 @@ class Angular_Fingerprint(object):
         Nelements = len(keys_2body) * self.Nbins1 + len(keys_3body) * self.Nbins2
         fingerprint = np.zeros(Nelements)
         for i, key in enumerate(keys_2body):
-            fingerprint[i*self.Nbins1 : (i+1)*self.Nbins1] = feature[0][key]
+            fingerprint[i*self.Nbins1: (i+1)*self.Nbins1] = feature[0][key]
         for i, key in enumerate(keys_3body):
-            fingerprint[i*self.Nbins2 + len(keys_2body) * self.Nbins1 : (i+1)*self.Nbins2 + len(keys_2body) * self.Nbins1] = self.eta * feature[1][key]
+            fingerprint[i*self.Nbins2 + len(keys_2body) * self.Nbins1: (i+1)*self.Nbins2 + len(keys_2body) * self.Nbins1] = self.eta * feature[1][key]
         
         return fingerprint
 
