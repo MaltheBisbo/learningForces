@@ -10,7 +10,7 @@
 #PBS -l walltime=100:00:00
 
 # set name of job
-#PBS -N paramOptim
+#PBS -N paramOptimRc7
 
 #  Copy the inputfiles and the program to the local scratch-
 #  directory on each node. One set of files per executionnode!
@@ -37,4 +37,4 @@ cd /scratch/$PBS_JOBID
 dispatch -T 1 -e ssh -SS -c "python testAngFing2_SnO_gr.py" {0..99}
 
 pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/SnO_radialFeatures*.txt  $PBS_O_WORKDIR/SnO_features_radialFing/'
-pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/SnO_radialResults*.txt  $PBS_O_WORKDIR/results_radialFing/'
+pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/SnO_radialResults*.txt  $PBS_O_WORKDIR/results_radialFing/Rc7/'
