@@ -23,7 +23,7 @@ print('arg:', arg)
 binwidth1_array = np.linspace(0.02, 0.2, 10)
 sigma1_array = np.linspace(0.1, 1, 10)
 
-Rc1 = 5
+Rc1 = 7
 binwidth1 = binwidth1_array[arg // 10]
 sigma1 = sigma1_array[arg % 10]
 
