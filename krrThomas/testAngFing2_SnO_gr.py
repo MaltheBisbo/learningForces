@@ -35,7 +35,7 @@ fingerprint0 = featureCalculator.get_features(a0)
 length_feature = len(fingerprint0)
 
 # Save file
-filename = 'SnO_radialFeatures_gauss_Rc1_{}_binwidth1_{0:.2f}_sigma1_{0:.1f}.txt'.format(Rc1, binwidth1, sigma1)
+filename = 'SnO_radialFeatures_gauss_Rc1_{0:d}_binwidth1_{1:.2f}_sigma1_{2:.1f}.txt'.format(Rc1, binwidth1, sigma1)
 try:
     fingerprints = np.loadtxt(filename, delimiter='\t')
 except IOError:
@@ -73,7 +73,7 @@ FVU_mean = FVU.mean(axis=0)
 FVU_std = FVU.std(axis=0)
 
 result = np.r_[Rc1, binwidth1, sigma1, FVU_mean, FVU_std]
-np.savetxt('SnO_radialResults_gauss_Rc1_{}_binwidth1_{0:.2f}_sigma1_{0:.1f}.txt'.format(Rc1, binwidth1, sigma1), result, delimiter='\t')
+np.savetxt('SnO_radialResults_gauss_Rc1_{0:d}_binwidth1_{1:.2f}_sigma1_{2:.1f}.txt'.format(Rc1, binwidth1, sigma1), result, delimiter='\t')
 
     
 
