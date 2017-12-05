@@ -40,7 +40,7 @@ except IOError:
         print('calculating features: {}/{}\r'.format(i, Ndata), end='')
         fingerprints[i] = featureCalculator.get_features(structure)
     np.savetxt(filename, fingerprints, delimiter='\t')
-
+print(filename)
 Nradial = int(Rc1/binwidth1)
 print(Nradial)
 fingerprints[:, 3*Nradial:] *= eta

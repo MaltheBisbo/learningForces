@@ -47,8 +47,8 @@ def FVU_train(fingerprints, E, krr_model, Npoints, Npermutations):
     FVU_mean = FVU.mean(axis=0)
     return FVU_mean[-1]
 
-
-eta_array = np.linspace(1, 30, 30)
+Neta = 15
+eta_array = np.linspace(1, 30, Neta).astype(int)
 results = []
 
 plt.figure(1)
@@ -63,13 +63,18 @@ for name in ['', '_r_fcut', '_fcut']:
         comparator = gaussComparator()
         krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
         
-        MAEcurve = np.zeros(30)
+        MAEcurve = np.zeros(Neta)
         for i, eta in enumerate(eta_array):
-            MAEcurve[i] = FVU_train(fingerprints, E, krr, Npoints=10, Npermutations=3)
-        plt.plot(eta_array)
+            Nradial = int(Rc1/binwidth1)
+            fingerprints_eta = fingerprints.copy()
+            fingerprints_eta[:, 3*Nradial:] *= eta
+            MAEcurve[i] = FVU_train(fingerprints_eta, E, krr, Npoints=10, Npermutations=5)
+            print(MAEcurve)
+        plt.plot(eta_array, MAEcurve, label='{0:s} sigmaAng={1:.2f}'.format(name, sigma2))
         results.append(MAEcurve)
 
 results = np.array(results)
-np.savetxt('resultsAngFing_paramCurves', results, delimiter='\t')
+np.savetxt('resultsAngFing_paramCurves2.txt', results, delimiter='\t')
 
-plt.show
+plt.legend()
+plt.show()
