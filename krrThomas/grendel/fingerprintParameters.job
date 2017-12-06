@@ -17,7 +17,7 @@
 #  pbsdsh-flags: -s : one node at a time; -u : once on each node 
 pbsdsh -s -u cp $PBS_O_WORKDIR/../testAngFing2_SnO_gr.py  /scratch/$PBS_JOBID
 pbsdsh -s -u cp $PBS_O_WORKDIR/../krr_class_new.py    /scratch/$PBS_JOBID
-pbsdsh -s -u cp $PBS_O_WORKDIR/../angular_fingerprintFeature2.py    /scratch/$PBS_JOBID
+pbsdsh -s -u cp $PBS_O_WORKDIR/../angular_fingerprintFeature_m.py    /scratch/$PBS_JOBID
 pbsdsh -s -u cp $PBS_O_WORKDIR/../gaussComparator.py    /scratch/$PBS_JOBID
 pbsdsh -s -u cp -r $PBS_O_WORKDIR/../fromThomas    /scratch/$PBS_JOBID
 
@@ -34,7 +34,7 @@ cd /scratch/$PBS_JOBID
 #             Remember to setup passwordless login!
 #  -SS :      Log runtime statistics for each subtask
 #  {0..9} : Specify arguments for the 9 subtasks: 0,...,9
-dispatch -T 1 -e ssh -SS -c "python testAngFing2_SnO_gr.py" {0..99}
+dispatch -T 1 -e ssh -SS -c "python testAngFing2_SnO_gr.py" {1..20}
 
 pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/SnO_radialFeatures*.txt  $PBS_O_WORKDIR/SnO_features_radialFing/'
 pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/SnO_radialResults*.txt  $PBS_O_WORKDIR/results_radialFing/Rc7/'
