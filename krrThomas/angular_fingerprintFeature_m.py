@@ -51,7 +51,7 @@ class Angular_Fingerprint(object):
         self.binwidth2 = np.pi/Nbins2
         
         # Cutoff surface areas
-        self.cutoff_surface_area1 = 4*np.pi*self.Rc1**2
+        self.cutoff_volume1 = 4/3*np.pi*self.Rc1**3
         self.cutoff_surface_area2 = 4*np.pi*self.Rc2**2
 
         # Elements in feature
@@ -73,8 +73,11 @@ class Angular_Fingerprint(object):
                     elif type2 == type3:  # and self.atomic_count[type1] > 1:
                         Nbondtypes_3body += 1
         Nelements_3body = self.Nbins2 * Nbondtypes_3body
-        
-        self.Nelements = Nelements_2body + Nelements_3body
+
+        if use_angular:
+            self.Nelements = Nelements_2body + Nelements_3body
+        else:
+            self.Nelements = Nelements_2body
         
     def get_features(self, atoms):
         """
@@ -89,6 +92,8 @@ class Angular_Fingerprint(object):
         atomic_count = self.atomic_count
         if sum(pbc) != 0:
             volume = self.volume
+        else:
+            volume = self.cutoff_volume1
 
         nb_distVec, nb_deltaRs, nb_bondtype, nb_index, nb_distVec_ang, nb_deltaRs_ang, nb_bondtype_ang, nb_index_ang = self.__get_neighbour_lists(pos, num, pbc, cell, n_atoms)
 
@@ -153,8 +158,12 @@ class Angular_Fingerprint(object):
                     # divide by smearing_norm
                     value /= self.smearing_norm1
                     type1, type2 = nb_bondtype[j][n]
-                    value /= self.__surface_area(deltaR)/self.cutoff_surface_area1 * self.binwidth1 * \
-                             atomic_count[type1] * atomic_count[type2]
+                    if type1 == type2:
+                        num_pairs = 0.5 * atomic_count[type1] * (atomic_count[type1] - 1)
+                    else:
+                        num_pairs = atomic_count[type1] * atomic_count[type2]
+                    value /= self.__surface_area(deltaR) * self.binwidth1 * num_pairs/volume
+                    value *= self.__f_cutoff(deltaR, self.gamma, self.Rc1)
                     
                     feature[0][nb_bondtype[j][n]][newbin] += value
 
