@@ -71,20 +71,20 @@ for k in range(Npermutations):
         
         FVU_temp, params = krr.train(Esub, featureMat=fingerprints_sub, add_new_data=False, k=10, **GSkwargs)
         FVU[k, i] += FVU_temp
-        print('params:', params)
-    print(k)
+        #print('params:', params)
+    #print(k)
 FVU_mean = FVU.mean(axis=0)
 FVU_std = FVU.std(axis=0)
 
-print(FVU_mean)
-print(FVU_std)
+#print(FVU_mean)
+#print(FVU_std)
 
 result = np.r_[Rc1, binwidth1, sigma1, FVU_mean, FVU_std]
 np.savetxt('SnO_radialResults_gauss_Rc1_{0:d}_binwidth1_{1:.2f}_sigma1_{2:.1f}_gamma{3:d}.txt'.format(Rc1, binwidth1, sigma1, gamma), result, delimiter='\t')
 
-import matplotlib.pyplot as plt
-plt.figure()
-plt.plot(np.arange(len(fingerprints[0]))*binwidth1, np.c_[fingerprints[0], fingerprints[10], fingerprints[20], fingerprints[100]])
-plt.show()
+#import matplotlib.pyplot as plt
+#plt.figure()
+#plt.plot(np.arange(len(fingerprints[0]))*binwidth1, np.c_[fingerprints[0], fingerprints[10], fingerprints[20], fingerprints[100]])
+#plt.show()
 
 

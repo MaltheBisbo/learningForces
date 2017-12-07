@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # set the number of nodes and processes per node
-#PBS -l nodes=13:ppn=8
+#PBS -l nodes=3:ppn=8
 
 # set nodes to use
-#PBS -q q8n
+#PBS -q q8
 
 # set max wallclock time
-#PBS -l walltime=100:00:00
+#PBS -l walltime=4:00:00
 
 # set name of job
-#PBS -N paramOptimRc7
+#PBS -N paramOptimRc7gamma
 
 #  Copy the inputfiles and the program to the local scratch-
 #  directory on each node. One set of files per executionnode!
@@ -34,7 +34,7 @@ cd /scratch/$PBS_JOBID
 #             Remember to setup passwordless login!
 #  -SS :      Log runtime statistics for each subtask
 #  {0..9} : Specify arguments for the 9 subtasks: 0,...,9
-dispatch -T 1 -e ssh -SS -c "python testAngFing2_SnO_gr.py" {1..20}
+dispatch -T 1 -e ssh -SS -c "python testAngFing2_SnO_gr.py" {1..24}
 
 pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/SnO_radialFeatures*.txt  $PBS_O_WORKDIR/SnO_features_radialFing/'
-pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/SnO_radialResults*.txt  $PBS_O_WORKDIR/results_radialFing/Rc7/'
+pbsdsh -s -u bash -c 'cp -r /scratch/$PBS_JOBID/SnO_radialResults*.txt  $PBS_O_WORKDIR/results_radialFing/Rc7_gammaVaried/'
