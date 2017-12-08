@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 
-Rc1 = 5
+Rc1 = 7
 binwidth1_array = np.linspace(0.02, 0.2, 10)
 sigma1_array = np.linspace(0.1, 1, 10)
 MAEgrid = np.zeros((10, 10))
@@ -25,4 +25,9 @@ surf = ax.plot_surface(binwidth1_array, sigma1_array, MAEgrid, cmap=cm.coolwarm,
 # Add a color bar which maps values to colors.
 fig.colorbar(surf, shrink=0.5, aspect=5)
 
+#ax.text2D(0.2, 0.95, 'Radial fingerprint: Rcut=7, no fcut', transform=ax.transAxes)
+ax.set_title('Radial fingerprint: Rcut=7, no fcut')
+ax.set_xlabel('binwidth')
+ax.set_ylabel('sigma')
+ax.set_zlabel('MAE')
 plt.show()
