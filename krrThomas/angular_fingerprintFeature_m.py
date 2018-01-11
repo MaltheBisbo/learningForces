@@ -100,7 +100,7 @@ class Angular_Fingerprint(object):
         # Initialize fingerprint object
         feature = [{} for _ in range(2)]  # [None]*2
 
-        # two body
+        # Create 2body type-combination dictionary 
         for type1 in self.atomic_types:
             for type2 in self.atomic_types:
                 key = tuple(sorted([type1, type2]))
@@ -109,17 +109,7 @@ class Angular_Fingerprint(object):
 
         keys_2body = feature[0].keys()
         
-        # three body
-        for type1 in self.atomic_types:
-            for type2 in self.atomic_types:
-                for type3 in self.atomic_types:
-                    key = tuple([type1] + sorted([type2, type3]))
-                    if key not in feature[1]:
-                        feature[1][key] = np.zeros(self.Nbins2)
-
-        keys_3body = feature[1].keys()
-
-        # Two body
+        # Calculate radial features
         for j in range(n_atoms):
             for n in range(len(nb_deltaRs[j])):
                 deltaR = nb_deltaRs[j][n]
@@ -174,8 +164,19 @@ class Angular_Fingerprint(object):
             for i, key in enumerate(keys_2body):
                 fingerprint[i*self.Nbins1: (i+1)*self.Nbins1] = feature[0][key]
             return fingerprint
+
+        ## Angular part ##
         
-        # Three body
+        # Create 3body type-combination dictionary
+        for type1 in self.atomic_types:
+            for type2 in self.atomic_types:
+                for type3 in self.atomic_types:
+                    key = tuple([type1] + sorted([type2, type3]))
+                    if key not in feature[1]:
+                        feature[1][key] = np.zeros(self.Nbins2)
+        keys_3body = feature[1].keys()
+        
+        # Calculate angular features
         for j in range(n_atoms):
             for n in range(len(nb_deltaRs_ang[j])):
                 for m in range(n+1, len(nb_deltaRs_ang[j])):
@@ -214,7 +215,7 @@ class Angular_Fingerprint(object):
                         
                         # divide by smearing_norm
                         value /= self.smearing_norm2
-                        value /= (4*np.pi*(deltaR_n**2 + deltaR_m**2))/self.cutoff_surface_area2 * self.binwidth2 * atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
+                        value /= (4*np.pi*(deltaR_n**2 + deltaR_m**2))/volume * self.binwidth1 * atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
                         
                         value *= self.__f_cutoff(deltaR_n, self.gamma, self.Rc2)*self.__f_cutoff(deltaR_m, self.gamma, self.Rc2)
                         feature[1][bondtype_3body][newbin] += value
@@ -246,29 +247,22 @@ class Angular_Fingerprint(object):
         atomic_count = self.atomic_count
         if sum(pbc) != 0:
             volume = self.volume
+        else:
+            volume = self.cutoff_volume1
 
         nb_distVec, nb_deltaRs, nb_bondtype, nb_index, nb_distVec_ang, nb_deltaRs_ang, nb_bondtype_ang, nb_index_ang = self.__get_neighbour_lists(pos, num, pbc, cell, n_atoms)
 
         # Initialize fingerprint object
-        feature_grad = [{} for _ in range(2)]  # [None]*2
+        feature_grad = [{} for _ in range(2)]
 
-        # two body
+        # Create 2body type-combination dictionary 
         for type1 in self.atomic_types:
             for type2 in self.atomic_types:
                 key = tuple(sorted([type1, type2]))
-                if key not in feature_grad[0]: 
+                if key not in feature_grad[0]:
                     feature_grad[0][key] = np.zeros((self.Nbins1, n_atoms*self.dim))
 
-        # three body
-        for type1 in self.atomic_types:
-            for type2 in self.atomic_types:
-                for type3 in self.atomic_types:
-                    key = tuple([type1] + sorted([type1, type2]))
-                    if key not in feature_grad[1]:
-                        feature_grad[1][key] = np.zeros((self.Nbins2, n_atoms*self.dim))
-
-        # Count the number of interacting atom-pairs
-        N_distances = sum([len(x) for x in nb_deltaRs])
+        keys_2body = feature_grad[0].keys()
 
         for j in range(n_atoms):
             for n in range(len(nb_deltaRs[j])):
@@ -300,18 +294,34 @@ class Angular_Fingerprint(object):
                     else:
                         arg_low = i-binpos
                         arg_up = i+(1-binpos)
-                    value1 = -1./deltaR*(erf(2*c*arg_up)-erf(2*c*arg_low))
-                    value2 = -2*(np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))  # 2 in front..
+                    fc = self.__f_cutoff(deltaR, self.gamma, self.Rc1)
+                    fc_grad = self.__f_cutoff_grad(deltaR, self.gamma, self.Rc1)
+                    value1 = (fc_grad - 1./deltaR*fc)*(erf(2*c*arg_up)-erf(2*c*arg_low))
+                    value2 = -2*fc*(np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))  # 2 in front..
+                    
                     value = value1 + value2
                     
                     # divide by smearing_norm
                     value /= self.smearing_norm1
-                    value /= (4*np.pi*deltaR**2)/self.cutoff_surface_area1 * self.binwidth1 * N_distances
+
+                    # Normalize
+                    if type1 == type2:
+                        num_pairs = 0.5 * atomic_count[type1] * (atomic_count[type1] - 1)
+                    else:
+                        num_pairs = atomic_count[type1] * atomic_count[type2]
+                    value /= self.__surface_area(deltaR) * self.binwidth1 * num_pairs/volume
 
                     # Add to the the gradient matrix
                     feature_grad[0][nb_bondtype[j][n]][newbin, self.dim*index[0]:self.dim*index[0]+self.dim] += -value/deltaR*dx
                     feature_grad[0][nb_bondtype[j][n]][newbin, self.dim*index[1]:self.dim*index[1]+self.dim] += value/deltaR*dx
-        return feature_grad[0]
+
+        if not self.use_angular:
+            keys_2body = sorted(feature_grad[0].keys())
+            Nelements = len(keys_2body) * self.Nbins1
+            fingerprint_grad = np.zeros((Nelements, n_atoms*self.dim))
+            for i, key in enumerate(keys_2body):
+                fingerprint_grad[i*self.Nbins1: (i+1)*self.Nbins1, :] = feature_grad[0][key]
+            return fingerprint_grad
     
     def __get_neighbour_lists(self, pos, num, pbc, cell, n_atoms):
 
@@ -380,3 +390,6 @@ class Angular_Fingerprint(object):
         For large gamma, the function goes towards a step function at Rc.
         """
         return 1 + gamma*(r/Rc)**(gamma+1) - (gamma+1)*(r/Rc)**gamma
+
+    def __f_cutoff_grad(self, r, gamma, Rc):
+        return gamma*(gamma+1)/Rc * ((r/Rc)**gamma - (r/Rc)**(gamma-1))

@@ -1,0 +1,6 @@
+import numpy as np
+
+for i in np.linspace(1,24,24).astype(int)
+filename = 'SnO_radialFeatures_gauss_Rc1_{0:d}_binwidth1_{1:.2f}_sigma1_{2:.1f}_gamma{3:d}.txt'.format(Rc1, binwidth1, sigma1, gamma)
+try:
+    fingerprints = np.loadtxt(filename, delimiter='\t')
