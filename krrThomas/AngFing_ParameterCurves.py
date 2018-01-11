@@ -22,9 +22,6 @@ sigma1 = 0.4
 gamma = 3
 
 
-
-
-
 def FVU_train(fingerprints, E, krr_model, Npoints, Npermutations):
     # Perform training with cross-validation
     np.random.seed(101)
