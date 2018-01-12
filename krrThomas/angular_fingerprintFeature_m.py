@@ -389,7 +389,10 @@ class Angular_Fingerprint(object):
         gamma = 2 resembels the cosine cutoff function.
         For large gamma, the function goes towards a step function at Rc.
         """
-        return 1 + gamma*(r/Rc)**(gamma+1) - (gamma+1)*(r/Rc)**gamma
-
+        if not gamma == 0:
+            return 1 + gamma*(r/Rc)**(gamma+1) - (gamma+1)*(r/Rc)**gamma
+        else:
+            return 1
+        
     def __f_cutoff_grad(self, r, gamma, Rc):
         return gamma*(gamma+1)/Rc * ((r/Rc)**gamma - (r/Rc)**(gamma-1))

@@ -43,21 +43,25 @@ if __name__ == "__main__":
     X = createData(Ndata, theta)
     xtest = np.array([(0, 0, 0), (0, 1.1, 0), (1.9, -0.4, 0)])
     atoms = Atoms('H3', xtest)
+
+    rcut = 4
+    binwidth = 0.1
+    sigma = 0.2
     
-    featureCalculator1 = fingerprintFeature(rcut=4, dim=3)
+    featureCalculator1 = fingerprintFeature(rcut=rcut, binwidth=binwidth, sigma=sigma, dim=3)
     G1 = featureCalculator1.get_singleFeature(xtest.reshape(-1))
     G1_grad = featureCalculator1.get_singleGradient(xtest.reshape(-1))
 
-    Rc1 = 3.63
+    Rc1 = 4
     binwidth1 = 0.1
     sigma1 = 0.2
     
     print('\n ase\n')
-    featureCalculator2 = Angular_Fingerprint(atoms, Rc1=Rc1, binwidth1=binwidth1, sigma1=sigma1, gamma=5, use_angular=False)
-    G2_2body  = featureCalculator2.get_features(atoms)
+    featureCalculator2 = Angular_Fingerprint(atoms, Rc1=Rc1, binwidth1=binwidth1, sigma1=sigma1, gamma=30, use_angular=False)
+    G2_2body  = featureCalculator2.get_features(atoms)  # *0.75
     G2_grad = featureCalculator2.get_featureGradients(atoms)
     print(G2_grad)
-    
+
     featureCalculator3 = Angular_Fingerprint_tho(atoms, Rc=Rc1, binwidth1=binwidth1, sigma1=sigma1)
     res3 = featureCalculator3.get_features(atoms)
     G3_2body = np.array(list(res3.values())[0])
@@ -76,6 +80,7 @@ if __name__ == "__main__":
 
     plt.figure(3)
     plt.scatter(xtest[:,0], xtest[:,1])
+
     plt.show()
     
 
