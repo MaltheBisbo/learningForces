@@ -26,7 +26,7 @@ class fingerprintFeature():
         that distance). 
         """
         self.X = X
-        self.dim=dim
+        self.dim = dim
         self.rcut = rcut
         self.binwidth = binwidth
         self.sigma = sigma

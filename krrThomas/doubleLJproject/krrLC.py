@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from krr_class import krr_class
+from krr_class_new import krr_class
 from doubleLJ import doubleLJ
 from bob_features import bob_features
 from gaussComparator import gaussComparator
