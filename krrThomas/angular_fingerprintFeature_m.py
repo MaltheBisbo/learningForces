@@ -108,6 +108,8 @@ class Angular_Fingerprint(object):
                     feature[0][key] = np.zeros(self.Nbins1)
 
         keys_2body = feature[0].keys()
+
+        print(nb_deltaRs)
         
         # Calculate radial features
         for j in range(n_atoms):
@@ -122,8 +124,8 @@ class Angular_Fingerprint(object):
                 
                 # Identify what bin 'deltaR' belongs to + it's position in this bin
                 center_bin = int(np.floor(deltaR/self.binwidth1))
-                binpos = (deltaR % self.binwidth1) / self.binwidth1
-
+                binpos = (deltaR % self.binwidth1) / self.binwidth1  # From 0 to binwidth (set constant at 0.5*binwidth for original)
+                
                 # Lower and upper range of bins affected by the current atomic distance deltaR.
                 above_bin_center = int(binpos > 0.5)
                 minbin_lim = -self.m1 - (1-above_bin_center)
@@ -335,6 +337,7 @@ class Angular_Fingerprint(object):
                 neighbours.append(range(-ncellmax,ncellmax+1))
             else:
                 neighbours.append([0])
+
         neighbourcells = []
         for x,y,z in product(*neighbours):
             neighbourcells.append((x,y,z))  # maybe: if norm(cell*[x,y,z]) < Rc_max: append
@@ -356,7 +359,7 @@ class Angular_Fingerprint(object):
                 deltaRs = cdist(pos[i].reshape((1, self.dim)), distVec).reshape(-1)
                 for j in range(n_atoms):
                     if deltaRs[j] < max(self.Rc1+self.nsigma*self.sigma1, self.Rc2) and deltaRs[j] > 1e-6:
-                        if j > i:
+                        if j >= i:
                             neighbour_distVec[i].append(distVec[j] - pos[i])
                             neighbour_deltaRs[i].append(deltaRs[j])
                             neighbour_bondtype[i].append(tuple(sorted([num[i], num[j]])))
