@@ -144,7 +144,7 @@ if __name__ == "__main__":
     # Model 2
     np.random.seed(10)
     featureCalculator = fingerprintFeature(rcut=4)
-    comparator = gaussComparator_cosdist(sigma=sig)
+    comparator = gaussComparator(sigma=sig)
     krr2 = krr_class_new(comparator=comparator, featureCalculator=featureCalculator)
 
     print('Model 2')

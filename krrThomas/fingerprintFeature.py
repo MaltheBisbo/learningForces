@@ -37,6 +37,7 @@ class fingerprintFeature():
         self.smearing_norm = erf(0.25*np.sqrt(2)*self.binwidth*(2*self.m+1)*1./self.sigma)  # Integral of the included part of the gauss
         self.Nbins = int(np.ceil(rcut/binwidth))
 
+        self.Nelements = self.Nbins
         # Cutoff volume
         self.cutoffVolume = 4*np.pi*self.rcut**2
 
