@@ -215,7 +215,7 @@ class Angular_Fingerprint(object):
                         continue
 
                     bondtype = tuple([type_j] + sorted([type_n, type_m]))
-                    angle = self.__angle(nb_distVec_ang[j][n], nb_distVec_ang[j][m])
+                    angle, _ = self.__angle(nb_distVec_ang[j][n], nb_distVec_ang[j][m])
                     
                     # Identify what bin 'angle' belongs to + it's position in this bin
                     center_bin = int(np.floor(angle/self.binwidth2))
@@ -374,7 +374,130 @@ class Angular_Fingerprint(object):
             for i, key in enumerate(self.bondtypes_2body):
                 fingerprint_grad[i*self.Nbins1: (i+1)*self.Nbins1, :] = feature_grad[0][key]
             return fingerprint_grad
-    
+
+        ## Angular part ##
+        
+        # Calculate neighbour lists - 3body
+        nb_deltaRs_ang = [[] for _ in range(n_atoms)]
+        nb_bondtype_ang = [[] for _ in range(n_atoms)]
+        nb_distVec_ang = [[] for _ in range(n_atoms)]
+        nb_index_ang = [[] for _ in range(n_atoms)]
+        for i in range(n_atoms):
+            for xyz in neighbourcells:
+                cell_displacement = np.dot(xyz, cell)
+                distVec = pos + cell_displacement
+                deltaRs = cdist(pos[i].reshape((1, self.dim)), distVec).reshape(-1)
+                for j in range(n_atoms):
+                    if deltaRs[j] < self.Rc2 and deltaRs[j] > 1e-6:
+                        if j >= 0:
+                            nb_deltaRs_ang[i].append(deltaRs[j])
+                            nb_bondtype_ang[i].append(tuple([num[i], num[j]]))
+                            nb_distVec_ang[i].append(distVec[j] - pos[i])
+                            nb_index_ang[i].append((i,j))
+                            
+        # Initialize 3body bondtype dictionary
+        for bondtype in self.bondtypes_3body:
+            feature_grad[1][bondtype] = np.zeros((self.Nbins2, n_atoms*self.dim))
+            
+        # Calculate angular features
+        for j in range(n_atoms):
+            for n in range(len(nb_deltaRs_ang[j])):
+                for m in range(n+1, len(nb_deltaRs_ang[j])):
+                    type_j, type_n, type_m = nb_bondtype_ang[j][n][0], nb_bondtype_ang[j][n][1], nb_bondtype_ang[j][m][1]
+                    deltaR_n, deltaR_m = nb_deltaRs_ang[j][n], nb_deltaRs_ang[j][m]
+
+                    # Use only distances relevant for 3body part
+                    if deltaR_n > self.Rc2 or deltaR_m > self.Rc2:
+                        continue
+
+                    bondtype = tuple([type_j] + sorted([type_n, type_m]))
+                    angle, cos_angle = self.__angle(nb_distVec_ang[j][n], nb_distVec_ang[j][m])
+                    
+                    # Identify what bin 'angle' belongs to + it's position in this bin
+                    center_bin = int(np.floor(angle/self.binwidth2))
+                    binpos = angle/self.binwidth2 - center_bin
+
+                    # Lower and upper range of bins affected by the current angle.
+                    above_bin_center = int(binpos > 0.5)
+                    minbin_lim = -self.m2 - (1-above_bin_center)
+                    maxbin_lim = self.m2 + above_bin_center
+                    for i in range(minbin_lim, maxbin_lim + 1):
+                        newbin = center_bin + i
+
+                        # Wrap current bin into correct bin-range
+                        if newbin < 0:
+                            newbin = abs(newbin)
+                        if newbin > self.Nbins2 - 1:
+                            newbin = self.Nbins2 - newbin % (self.Nbins2 - 1)
+
+                        # Calculate gauss contribution to current bin
+                        c = 0.25*np.sqrt(2)*self.binwidth2 / self.sigma2
+                        if i == minbin_lim:
+                            erfarg_low = -(self.m2+0.5)
+                            erfarg_up = i+(1-binpos)
+                        elif i == maxbin_lim:
+                            erfarg_low = i-binpos
+                            erfarg_up = self.m2+0.5
+                        else:
+                            erfarg_low = i-binpos
+                            erfarg_up = i+(1-binpos)
+                        value1 = 0.5*erf(2*c*erfarg_up)-0.5*erf(2*c*erfarg_low)
+                        value2 = -1/(self.sigma1*np.sqrt(2*np.pi)) * (np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))
+
+                        
+
+                        
+                        
+                        # divide by smearing_norm
+                        value1 /= self.smearing_norm2
+                        value2 /= self.smearing_norm2
+
+                        # Normalize
+                        num_pairs = atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
+                        value1 /= num_pairs/self.volume
+                        value2 /= num_pairs/self.volume
+
+                        
+                        fc_jn = self.__f_cutoff(deltaR_n, self.gamma, self.Rc2)
+                        fc_jm = self.__f_cutoff(deltaR_m, self.gamma, self.Rc2)
+                        fc_jn_grad = self.__f_cutoff_grad(deltaR_n, self.gamma, self.Rc2)
+                        fc_jm_grad = self.__f_cutoff_grad(deltaR_m, self.gamma, self.Rc2)
+
+                        dx_jn = nb_distVec[j][n]
+                        dx_jm = nb_distVec[j][m]
+                        index_jn = nb_index[j][n]
+                        index_jm = nb_index[j][m]
+
+                        
+                        a = -1/np.sqrt(1 - cos_angle**2)
+                        angle_j_grad = a * ( - (dx_jn + dx_jm)/(deltaR_n*deltaR_m) + cos_angle*(dx_jn/deltaR_n**2 + dx_jm/deltaR_m**2) ) 
+                        angle_n_grad = a * ( dx_jm/(deltaR_n*deltaR_m) - cos_angle*dx_jn/deltaR_n**2 )
+                        angle_m_grad = a * ( dx_jn/(deltaR_n*deltaR_m) - cos_angle*dx_jm/deltaR_m**2 )
+                        
+                        # Define the index range of the gradient that belongs to each atom
+                        index_range_j = np.arange(self.dim*index_jn[0]:self.dim*index_jn[0]+self.dim)
+                        index_range_n = np.arange(self.dim*index_jn[1]:self.dim*index_jn[1]+self.dim)
+                        index_range_m = np.arange(self.dim*index_jm[1]:self.dim*index_jm[1]+self.dim)
+                        
+                        # Add to the the gradient matrix
+                        feature_grad[1][nb_bondtype[j][n]][newbin, index_range_j] += -value1 * fc_jm*fc_jn_grad * dx/deltaR_n
+                        feature_grad[1][nb_bondtype[j][n]][newbin, index_range_n] += value1 * fc_jm*fc_jn_grad * dx/deltaR_n
+
+                        feature_grad[1][nb_bondtype[j][m]][newbin, index_range_j] += -value1 * fc_jn*fc_jm_grad * dx/deltaR_m
+                        feature_grad[1][nb_bondtype[j][m]][newbin, index_range_m] += value1 * fc_jn*fc_jm_grad * dx/deltaR_m
+
+                        feature_grad[1][nb_bondtype[j][n]][newbin, index_range_j] += value2 * angle_j_grad * fc_jn * fc_jm
+                        feature_grad[1][nb_bondtype[j][n]][newbin, index_range_n] += value2 * angle_n_grad * fc_jn * fc_jm
+                        feature_grad[1][nb_bondtype[j][m]][newbin, index_range_m] += value2 * angle_m_grad * fc_jn * fc_jm
+
+                        
+        fingerprint = np.zeros(self.Nelements)
+        for i, key in enumerate(self.bondtypes_2body):
+            fingerprint[i*self.Nbins1: (i+1)*self.Nbins1] = feature[0][key]
+        for i, key in enumerate(self.bondtypes_3body):
+            fingerprint[i*self.Nbins2 + len(self.bondtypes_2body) * self.Nbins1: (i+1)*self.Nbins2 + len(self.bondtypes_2body) * self.Nbins1] = self.eta * feature[1][key]
+
+        
     def __get_neighbour_cells(self, pbc, cell):
 
         # Calculate neighbour cells
@@ -406,7 +529,7 @@ class Angular_Fingerprint(object):
             arg = -1.
         elif arg > 1:
             arg = 1.
-        return np.arccos(arg)
+        return np.arccos(arg), arg
 
     def __f_cutoff(self, r, gamma, Rc):
         """
