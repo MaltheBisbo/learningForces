@@ -262,9 +262,9 @@ class Angular_Fingerprint(object):
         fingerprint = np.zeros(self.Nelements)
         for i, key in enumerate(self.bondtypes_2body):
             fingerprint[i*self.Nbins1: (i+1)*self.Nbins1] = feature[0][key]
+        Nelements_2body = self.Nbins1 * len(self.bondtypes_2body)
         for i, key in enumerate(self.bondtypes_3body):
-            fingerprint[i*self.Nbins2 + len(self.bondtypes_2body) * self.Nbins1: (i+1)*self.Nbins2 + len(self.bondtypes_2body) * self.Nbins1] = self.eta * feature[1][key]
-        
+            fingerprint[i*self.Nbins2 + Nelements_2body: (i+1)*self.Nbins2 + Nelements_2body] = self.eta * feature[1][key]
         return fingerprint
 
     def get_featureGradients(self, atoms):
@@ -433,16 +433,16 @@ class Angular_Fingerprint(object):
                         # Calculate gauss contribution to current bin
                         c = 0.25*np.sqrt(2)*self.binwidth2 / self.sigma2
                         if i == minbin_lim:
-                            erfarg_low = -(self.m2+0.5)
-                            erfarg_up = i+(1-binpos)
+                            arg_low = -(self.m2+0.5)
+                            arg_up = i+(1-binpos)
                         elif i == maxbin_lim:
-                            erfarg_low = i-binpos
-                            erfarg_up = self.m2+0.5
+                            arg_low = i-binpos
+                            arg_up = self.m2+0.5
                         else:
-                            erfarg_low = i-binpos
-                            erfarg_up = i+(1-binpos)
-                        value1 = 0.5*erf(2*c*erfarg_up)-0.5*erf(2*c*erfarg_low)
-                        value2 = -1/(self.sigma1*np.sqrt(2*np.pi)) * (np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))
+                            arg_low = i-binpos
+                            arg_up = i+(1-binpos)
+                        value1 = 0.5*erf(2*c*arg_up)-0.5*erf(2*c*arg_low)
+                        value2 = -1/(self.sigma2*np.sqrt(2*np.pi)) * (np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))
 
                         
 
@@ -456,7 +456,6 @@ class Angular_Fingerprint(object):
                         num_pairs = atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
                         value1 /= num_pairs/self.volume
                         value2 /= num_pairs/self.volume
-
                         
                         fc_jn = self.__f_cutoff(deltaR_n, self.gamma, self.Rc2)
                         fc_jm = self.__f_cutoff(deltaR_m, self.gamma, self.Rc2)
@@ -467,36 +466,35 @@ class Angular_Fingerprint(object):
                         dx_jm = nb_distVec[j][m]
                         index_jn = nb_index[j][n]
                         index_jm = nb_index[j][m]
-
                         
                         a = -1/np.sqrt(1 - cos_angle**2)
-                        angle_j_grad = a * ( - (dx_jn + dx_jm)/(deltaR_n*deltaR_m) + cos_angle*(dx_jn/deltaR_n**2 + dx_jm/deltaR_m**2) ) 
-                        angle_n_grad = a * ( dx_jm/(deltaR_n*deltaR_m) - cos_angle*dx_jn/deltaR_n**2 )
-                        angle_m_grad = a * ( dx_jn/(deltaR_n*deltaR_m) - cos_angle*dx_jm/deltaR_m**2 )
+                        angle_j_grad = a * (-(dx_jn + dx_jm)/(deltaR_n*deltaR_m) + cos_angle*(dx_jn/deltaR_n**2 + dx_jm/deltaR_m**2))
+                        angle_n_grad = a * (dx_jm/(deltaR_n*deltaR_m) - cos_angle*dx_jn/deltaR_n**2)
+                        angle_m_grad = a * (dx_jn/(deltaR_n*deltaR_m) - cos_angle*dx_jm/deltaR_m**2)
                         
                         # Define the index range of the gradient that belongs to each atom
-                        index_range_j = np.arange(self.dim*index_jn[0]:self.dim*index_jn[0]+self.dim)
-                        index_range_n = np.arange(self.dim*index_jn[1]:self.dim*index_jn[1]+self.dim)
-                        index_range_m = np.arange(self.dim*index_jm[1]:self.dim*index_jm[1]+self.dim)
+                        index_range_j = np.arange(self.dim*index_jn[0], self.dim*index_jn[0]+self.dim)
+                        index_range_n = np.arange(self.dim*index_jn[1], self.dim*index_jn[1]+self.dim)
+                        index_range_m = np.arange(self.dim*index_jm[1], self.dim*index_jm[1]+self.dim)
                         
                         # Add to the the gradient matrix
-                        feature_grad[1][nb_bondtype[j][n]][newbin, index_range_j] += -value1 * fc_jm*fc_jn_grad * dx/deltaR_n
-                        feature_grad[1][nb_bondtype[j][n]][newbin, index_range_n] += value1 * fc_jm*fc_jn_grad * dx/deltaR_n
+                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jm*fc_jn_grad * dx/deltaR_n
+                        feature_grad[1][bondtype][newbin, index_range_n] += value1 * fc_jm*fc_jn_grad * dx/deltaR_n
 
-                        feature_grad[1][nb_bondtype[j][m]][newbin, index_range_j] += -value1 * fc_jn*fc_jm_grad * dx/deltaR_m
-                        feature_grad[1][nb_bondtype[j][m]][newbin, index_range_m] += value1 * fc_jn*fc_jm_grad * dx/deltaR_m
+                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jn*fc_jm_grad * dx/deltaR_m
+                        feature_grad[1][bondtype][newbin, index_range_m] += value1 * fc_jn*fc_jm_grad * dx/deltaR_m
 
-                        feature_grad[1][nb_bondtype[j][n]][newbin, index_range_j] += value2 * angle_j_grad * fc_jn * fc_jm
-                        feature_grad[1][nb_bondtype[j][n]][newbin, index_range_n] += value2 * angle_n_grad * fc_jn * fc_jm
-                        feature_grad[1][nb_bondtype[j][m]][newbin, index_range_m] += value2 * angle_m_grad * fc_jn * fc_jm
+                        feature_grad[1][bondtype][newbin, index_range_j] += value2 * angle_j_grad * fc_jn * fc_jm
+                        feature_grad[1][bondtype][newbin, index_range_n] += value2 * angle_n_grad * fc_jn * fc_jm
+                        feature_grad[1][bondtype][newbin, index_range_m] += value2 * angle_m_grad * fc_jn * fc_jm
 
-                        
-        fingerprint = np.zeros(self.Nelements)
+        fingerprint_grad = np.zeros((self.Nelements, n_atoms*self.dim))
         for i, key in enumerate(self.bondtypes_2body):
-            fingerprint[i*self.Nbins1: (i+1)*self.Nbins1] = feature[0][key]
+            fingerprint_grad[i*self.Nbins1: (i+1)*self.Nbins1] = feature_grad[0][key]
+        Nelements_2body = self.Nbins1 * len(self.bondtypes_2body)
         for i, key in enumerate(self.bondtypes_3body):
-            fingerprint[i*self.Nbins2 + len(self.bondtypes_2body) * self.Nbins1: (i+1)*self.Nbins2 + len(self.bondtypes_2body) * self.Nbins1] = self.eta * feature[1][key]
-
+            fingerprint_grad[i*self.Nbins2 + Nelements_2body: (i+1)*self.Nbins2 + Nelements_2body] = self.eta * feature_grad[1][key]
+        return fingerprint_grad
         
     def __get_neighbour_cells(self, pbc, cell):
 
@@ -530,7 +528,7 @@ class Angular_Fingerprint(object):
         elif arg > 1:
             arg = 1.
         return np.arccos(arg), arg
-
+    
     def __f_cutoff(self, r, gamma, Rc):
         """
         Polinomial cutoff function in the, with the steepness determined by "gamma"

@@ -11,7 +11,7 @@ dim = 3
 
 L = 2
 d = 1
-pbc = [1,1,1]
+pbc = [0,0,1]
 
 """
 #x = np.array([0.2*L, 0.7*L, d/2])
@@ -49,14 +49,14 @@ a = Atoms('H4',
 
     
 Rc1 = 4
-binwidth1 = 0.05
+binwidth1 = 0.1
 sigma1 = 0.2
 
-Rc2 = 1
-Nbins2 = 30
-sigma2 = 0.1
+Rc2 = 4
+Nbins2 = 50
+sigma2 = 0.2
 
-featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, sigma1=sigma1, sigma2=sigma2, gamma=0, use_angular=False)
+featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=0, use_angular=True)
 fingerprint = featureCalculator.get_features(a)
 grad_fingerprint = featureCalculator.get_featureGradients(a)
 
@@ -78,6 +78,8 @@ for i in range(N*dim):
 #print(fingerprint)
 #print(num_grad_fingerprint[0])
 #print(grad_fingerprint)
+print(featureCalculator.bondtypes_2body)
+print(featureCalculator.bondtypes_3body)
 
 r_array = np.arange(len(fingerprint))*binwidth1+binwidth1/2
 print(np.trapz(fingerprint, r_array))
