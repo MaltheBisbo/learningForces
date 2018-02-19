@@ -50,11 +50,6 @@ def main():
     reg = 1e-7
     sig = 30
 
-    X = np.loadtxt('work_folder/graphene_all_ordered_positions.txt', delimiter='\t')
-    G = np.loadtxt('work_folder/graphene_all_ordered_features.txt', delimiter='\t')
-    E = np.loadtxt('work_folder/graphene_all_ordered_Energies.txt', delimiter='\t')
-    F = np.loadtxt('work_folder/graphene_all_ordered_Forces.txt', delimiter='\t')
-
     Nstructs = len(E)
     
     # Find local extremas in E

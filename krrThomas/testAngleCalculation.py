@@ -42,14 +42,19 @@ def angle2_grad(ri, rj, rk):
     b = RijVec/Rij + RikVec/Rik
     
     a_grad_j = np.sum((-1/Rij**3 * RijMat + 1/Rij * np.identity(3)), axis=1)
-    b_grad_j = np.sum((1/Rij**3 * RijMat - 1/Rij * np.identity(3)), axis=1)
+    b_grad_j = a_grad_j
+    #b_grad_j = np.sum((1/Rij**3 * RijMat - 1/Rij * np.identity(3)), axis=1)
 
     a_sum_j = np.sum(a*a_grad_j, axis=1)
     b_sum_j = np.sum(b*b_grad_j, axis=1)
     
     grad_j = 2/(1+D**2) * (1/(A*B) * a_sum_j - A/(B**3) * b_sum_j)
 
-    
+    a_grad_k = np.sum((1/Rik**3 * RikMat - 1/Rik * np.identity(3)), axis=1)
+    b_grad_k = -a_grad_j
+
+    a_sum_k = np.sum(a*a_grad_k, axis=1)
+    b_sum_k = np.sum(b*b_grad_k, axis=1)
 
 
 L = 2
