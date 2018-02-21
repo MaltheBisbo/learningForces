@@ -1,8 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from krr_class_new import krr_class
-from doubleLJ import doubleLJ
-from fingerprintFeature import fingerprintFeature
+from angular_fingerprintFeature_m import Angular_Fingerprint
 from gaussComparator import gaussComparator
 from gaussComparator_cosdist import gaussComparator_cosdist
 from scipy.signal import argrelextrema
@@ -13,91 +12,63 @@ from ase import Atoms
 from ase.optimize import BFGS
 from ase.io import read, write
 
-def loadTraj(Ndata):
-    atoms = read('work_folder/all.traj', index=':')
-    atoms = atoms[0:15000]
-    atoms = atoms[::10]
-    atoms = atoms[:Ndata]
-    Na = 24
-    dim = 3
-    Ntraj = len(atoms)
-    
-    pos = np.zeros((Ntraj,Na,dim))
-    E = np.zeros(Ntraj)
-    F = np.zeros((Ntraj, Na, dim))
-    for i, a in enumerate(atoms):
-        pos[i] = a.positions
-        E[i] = a.get_potential_energy()
-        F[i] = a.get_forces()
-
-    permutation = np.random.permutation(Ntraj)
-    pos = pos[permutation]
-    E = E[permutation]
-    F = F[permutation]
-    print('Data loaded')
-    return pos.reshape((Ntraj, Na*dim)), E, F.reshape((Ntraj, Na*dim))
-
 def main():
-    #np.random.seed(455)
-    Ndata = 1500
-    Natoms = 24
+    atoms = read('graphene_data/graphene_all2.traj', index=':')
+
+    a0 = atoms[0]
+    Ndata = len(atoms)
+    Nrelaxations = int(Ndata/4)
+    print(Nrelaxations)
     
-    # parameters for potential
-    eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
-    params = (eps, r0, sigma)
-
-    # parameters for kernel and regression
-    reg = 1e-7
-    sig = 30
-
-    Nstructs = len(E)
+    # Split data into training and testing
+    atoms_train = atoms[0:(Nrelaxations - 10)*3]
+    atoms_test = atoms[(Nrelaxations - 10)*3:]
+    atoms_test_start = atoms[(Nrelaxations - 10)*3::4]
+    atoms_test_target = atoms[(Nrelaxations - 10)*3 + 3::4]
     
-    # Find local extremas in E
-    idx_maxE = argrelextrema(E, np.greater, order=3)[0]
+    E_train = [a.get_potential_energy() for a in atoms_train]
+    E_test = [a.get_potential_energy() for a in atoms_test]
+    E_test_start = [a.get_potential_energy() for a in atoms_test_start]
+    E_test_target = [a.get_potential_energy() for a in atoms_test_target]
 
-    idx_traj = np.split(np.arange(len(E)), idx_maxE)
-    print(idx_traj[0].shape)
-    Ntraj = len(idx_traj)
-    print(Ntraj)
-    idx_minE = np.zeros(Ntraj).astype(int)
-    idx_rest = np.zeros(Nstructs - 2*Ntraj).astype(int)
-    k=0
-    for i in range(Ntraj):
-        traj = idx_traj[i]
-        len_traj = len(traj)
-        idx_minE[i] = traj[-1]
-        idx_rest[k:k+len_traj-2] = traj[1:-1]
-        k += len_traj - 2
-    idx_maxE = np.r_[0, idx_maxE]
-
-    Ntrain = 1000
-    idx_rest_permut = np.random.permutation(idx_rest)
-    idx_train = np.r_[idx_minE, idx_rest_permut[:Ntrain - Ntraj]]
-    print(idx_train.shape)
+    # angular fingerprint parameters
+    Rc1 = 5
+    binwidth1 = 0.2
+    sigma1 = 0.2
     
-    featureCalculator = fingerprintFeature(dim=3, rcut=6, binwidth=0.1, sigma=0.3)
-    comparator = gaussComparator(sigma=sig)
+    Rc2 = 4
+    Nbins2 = 30
+    sigma2 = 0.2
+
+    use_angular = True
+    gamma = 1
+    eta = 50
+
+    # Initialize featureCalculator
+    featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=use_angular)
+    fingerprints_train = []
+    for i, a in enumerate(atoms_train):
+        print('Calculating training features {}/{}\r'.format(i, len(atoms_train)), end='')
+        fingerprints_train.append(featureCalculator.get_features(a))
+    print('\n')
+    fingerprints_train = np.array(fingerprints_train)
+    print(fingerprints_train.shape)
+
+    # Initialize comparator and KRR model
+    comparator = gaussComparator()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
-    Esub = E[idx_train]
-    Fsub = F[idx_train]
-    Xsub = X[idx_train]
-    Gsub = G[idx_train]
-
-    GSkwargs = {'reg': np.logspace(-1, -7, 10), 'sigma': np.logspace(-1,2,10)}
-    print(GSkwargs)
-    #FVU_energy_array[i], FVU_force_array[i, :] = krr.train(Esub, Fsub, Gsub, Xsub, reg=reg)
-    FVU_E, params = krr.train(Esub, featureMat=Gsub, positionMat=Xsub, add_new_data=False, **GSkwargs)
+    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0,2,10)}
+    MAE, params = krr.train(E_train, featureMat=fingerprints_train, add_new_data=False, k=10, **GSkwargs)
     print('params:', params)
-    print('FVU_energy: {}\n'.format(FVU_E))
+    print('MAE_energy: ', MAE)
 
     label='grapheneMLrelax/grapheneML'
     calculator = krr_calculator(krr, label)
     
-    x_to_relax = X[idx_maxE[10]].reshape((-1,3))
-    a = Atoms('C24', x_to_relax)
+    a = atoms_test_start[0]
     a.set_calculator(calculator)
-    dyn = BFGS(a, trajectory='grapheneMLrelax/graphene10.traj')
+    dyn = BFGS(a, trajectory='grapheneMLrelax/graphene1.traj')
     dyn.run(fmax=0.1)
 
 if __name__ == "__main__":

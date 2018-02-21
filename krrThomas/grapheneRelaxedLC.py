@@ -90,7 +90,7 @@ plt.figure(1)
 plt.title('Feature examples - graphene: \nRc2={0:d}, Nbins2={1:d}, sigma2={2:.1f}, gamma={3:d}'.format(Rc2, Nbins2, sigma2, gamma))
 
 for i, eta in enumerate(eta_array):
-    atoms = read('graphene_data/graphene_all1.traj', index=':')
+    atoms = read('graphene_data/graphene_all2.traj', index=':')
     a0 = atoms[10]
         
     featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=use_angular)
@@ -99,16 +99,16 @@ for i, eta in enumerate(eta_array):
 
     # Save file
     if not use_angular:
-        filename = 'graphene_features/graphene_unrelaxed1_radialFeatures_gauss_Rc1_{0:d}_binwidth1_{1:.2f}_sigma1_{2:.1f}_gamma_{3:d}.txt'.format(Rc1, binwidth1, sigma1, gamma)
+        filename = 'graphene_features/graphene_unrelaxed3_radialFeatures_gauss_Rc1_{0:d}_binwidth1_{1:.2f}_sigma1_{2:.1f}_gamma_{3:d}.txt'.format(Rc1, binwidth1, sigma1, gamma)
     else:
-        filename = 'graphene_features/graphene_unrelaxed1_radialAngFeatures_gauss_Rc1_2_{0:d}_{1:d}_binwidth1_{2:.1f}_Nbins2_{3:d}_sigma1_2_{4:.1f}_{5:.2f}_gamma_{6:d}.txt'.format(Rc1, Rc2, binwidth1, Nbins2, sigma1, sigma2, gamma)
+        filename = 'graphene_features/graphene_unrelaxed3_radialAngFeatures_gauss_Rc1_2_{0:d}_{1:d}_binwidth1_{2:.1f}_Nbins2_{3:d}_sigma1_2_{4:.1f}_{5:.2f}_gamma_{6:d}.txt'.format(Rc1, Rc2, binwidth1, Nbins2, sigma1, sigma2, gamma)
 
     MAE_mean, MAE_std, N_array, fingerprints = LC(atoms, featureCalculator, feature_filename=filename, N_LCpoints=N_LCpoints, use_angular=use_angular, eta=eta)
     
     MAE[i] = MAE_mean
     plt.plot(np.arange(len(fingerprints[0])), fingerprints[0])
     
-np.savetxt('grapheneFingParams/angFing_unrelaxed1_Rc2_4_Nbins2_30_sigma2_0.2_gamma_1.txt', MAE, delimiter='\t')
+np.savetxt('grapheneFingParams/angFing_unrelaxed3_Rc2_4_Nbins2_30_sigma2_0.2_gamma_1.txt', MAE, delimiter='\t')
 
 plt.figure(2)
 plt.title('Learning curve - graphene: \nRc2={0:d}, Nbins2={1:d}, sigma2={2:.1f}, gamma={3:d}'.format(Rc2, Nbins2, sigma2, gamma))
@@ -118,6 +118,6 @@ plt.legend()
 plt.xlabel('# training data')
 plt.ylabel('MAE')
 
-plt.savefig('grapheneFingParams/results/angLC_unrelaxed1_Rc2_{0:d}_Nbins2_{1:d}_sigma2_{2:.1f}_gamma_{3:d}.png'.format(Rc2, Nbins2, sigma2, gamma), bbox_inches='tight')
+plt.savefig('grapheneFingParams/results/angLC_unrelaxed3_Rc2_{0:d}_Nbins2_{1:d}_sigma2_{2:.1f}_gamma_{3:d}.png'.format(Rc2, Nbins2, sigma2, gamma), bbox_inches='tight')
 plt.show()
 

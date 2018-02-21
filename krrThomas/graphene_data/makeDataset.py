@@ -16,6 +16,7 @@ while cand_number < 420:
         continue
     NrelaxSteps = len(a)
     atoms.append(a[0])
+    atoms.append(a[int(NrelaxSteps/10)])
     atoms.append(a[int(NrelaxSteps/4)])
     atoms.append(a[-1])
-write('graphene_all1.traj', atoms)
+write('graphene_all2.traj', atoms)
