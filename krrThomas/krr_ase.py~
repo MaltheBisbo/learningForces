@@ -101,7 +101,7 @@ class krr_class():
         A = similarityMat + reg*np.identity(len(data_values))
         self.alpha = np.linalg.solve(A, data_values - self.beta)
         
-    def train(self, data_values=None, featureMat=None, positionMat=None, add_new_data=True, k=3, **GSkwargs):
+    def train(self, data_values, featureMat=None, positionMat=None, add_new_data=True, k=3, **GSkwargs):
         """ 
         Train the model using gridsearch and cross-validation
             
@@ -123,7 +123,7 @@ class krr_class():
 
         **GSkwargs:
         Dict containing the sequences of the kernel-width and regularization parameter to be
-        used in gridsearch. The labels are 'sigma' and 'reg' respectively.
+        used in grissearch. The labels are 'sigma' and 'reg' respectively.
         """
         if featureMat is None:
             featureMat = self.featureCalculator.get_featureMat(positionMat)

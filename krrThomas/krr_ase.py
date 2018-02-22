@@ -31,13 +31,13 @@ class krr_class():
         # Initialize data counter
         self.Ndata = 0
 
-    def predict_energy(self, fnew=None, pos=None, similarityVec=None, return_error=False):
+    def predict_energy(self, atoms=None, fnew=None, similarityVec=None, return_error=False):
         """
         Predict the energy of a new structure.
         """
         if similarityVec is None:
             if fnew is None:
-                fnew = self.featureCalculator.get_singleFeature(x=pos)
+                fnew = self.featureCalculator.get_feature(atoms)
             similarityVec = self.comparator.get_similarity_vector(fnew, self.featureMat[:self.Ndata])
 
         predicted_value = similarityVec.dot(self.alpha) + self.beta
@@ -53,14 +53,14 @@ class krr_class():
         
         return predicted_value
     
-    def predict_force(self, pos, fnew=None):
+    def predict_force(self, atoms, fnew=None):
         """
         Predict the force of a new structure.
         """
         if fnew is None:
-            fnew = self.featureCalculator.get_singleFeature(pos)
+            fnew = self.featureCalculator.get_feature(atoms)
         
-        df_dR = self.featureCalculator.get_singleGradient(pos)
+        df_dR = self.featureCalculator.get_featureGradient(atoms)
         dk_df = self.comparator.get_jac(fnew, featureMat=self.featureMat[:self.Ndata])
 
         kernelDeriv = np.dot(dk_df, df_dR)
@@ -101,7 +101,7 @@ class krr_class():
         A = similarityMat + reg*np.identity(len(data_values))
         self.alpha = np.linalg.solve(A, data_values - self.beta)
         
-    def train(self, data_values=None, featureMat=None, positionMat=None, add_new_data=True, k=3, **GSkwargs):
+    def train(self, atoms_list=None, data_values=None, featureMat=None, add_new_data=True, k=3, **GSkwargs):
         """ 
         Train the model using gridsearch and cross-validation
             
@@ -123,11 +123,12 @@ class krr_class():
 
         **GSkwargs:
         Dict containing the sequences of the kernel-width and regularization parameter to be
-        used in gridsearch. The labels are 'sigma' and 'reg' respectively.
+        used in grissearch. The labels are 'sigma' and 'reg' respectively.
         """
         if featureMat is None:
-            featureMat = self.featureCalculator.get_featureMat(positionMat)
-
+            featureMat = self.featureCalculator.get_featureMat(atoms)
+            data_values = np.array([atoms.get_potential_energy() for atoms in atoms_list])
+            
         if add_new_data:
             self.add_data(data_values, featureMat)
         else:

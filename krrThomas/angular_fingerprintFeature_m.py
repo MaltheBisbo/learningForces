@@ -88,7 +88,7 @@ class Angular_Fingerprint(object):
         else:
             self.Nelements = Nelements_2body
         
-    def get_features(self, atoms):
+    def get_feature(self, atoms):
         """
         """
         # Wrap atoms into unit-cell
@@ -267,7 +267,7 @@ class Angular_Fingerprint(object):
             fingerprint[i*self.Nbins2 + Nelements_2body: (i+1)*self.Nbins2 + Nelements_2body] = self.eta * feature[1][key]
         return fingerprint
 
-    def get_featureGradients(self, atoms):
+    def get_featureGradient(self, atoms):
         """
         --input--
         x: atomic positions for a single structure in the form [x1, y1, ... , xN, yN]

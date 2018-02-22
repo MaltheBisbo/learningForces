@@ -8,26 +8,30 @@ from eksponentialComparator import eksponentialComparator
 from krr_class_new import krr_class as krr_class_new
 import time
 
-def createData(Ndata, theta):
+def createData(Ndata, theta, dim=3):
     # Define fixed points
     x1 = np.array([-1, 0, 1])
     x2 = np.array([0, 0, 0])
+    x3 = np.array([0, 0, 0])
 
     # rotate ficed coordinates
     x1rot = np.cos(theta) * x1 - np.sin(theta) * x2
     x2rot = np.sin(theta) * x1 + np.cos(theta) * x2
-    xrot = np.c_[x1rot, x2rot].reshape((1, 2*x1rot.shape[0]))
+    x3rot = x3
+    xrot = np.c_[x1rot, x2rot, x3rot].reshape((1, dim*x1rot.shape[0]))
 
     # Define an array of positions for the last point
     # xnew = np.c_[np.random.rand(Ndata)+0.5, np.random.rand(Ndata)+1]
     x1new = np.linspace(0, 1.5, Ndata)
     x2new = np.ones(Ndata)
+    x3new = np.zeros(Ndata)
 
     # rotate new coordinates
     x1new_rot = np.cos(theta) * x1new - np.sin(theta) * x2new
     x2new_rot = np.sin(theta) * x1new + np.cos(theta) * x2new
+    x3new_rot = x3new
     
-    xnew_rot = np.c_[x1new_rot, x2new_rot]
+    xnew_rot = np.c_[x1new_rot, x2new_rot, x3new_rot]
 
     # Make X matrix with rows beeing the coordinates for each point in a structure.
     # row example: [x1, y1, x2, y2, ...]
@@ -35,7 +39,7 @@ def createData(Ndata, theta):
     return X
 
 
-def testModel(model, Ndata, theta=0, new=False):
+def testModel(model, Ndata, theta=0, dim=3, new=False):
     Natoms = 4
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
@@ -44,7 +48,7 @@ def testModel(model, Ndata, theta=0, new=False):
     
     # Calculate energies for each structure
     E = np.zeros(Ndata)
-    F = np.zeros((Ndata, 2*Natoms))
+    F = np.zeros((Ndata, dim*Natoms))
     for i in range(Ndata):
         E[i], grad = doubleLJ(X[i], eps, r0, sigma)
         F[i, :] = -grad
