@@ -71,7 +71,7 @@ def main():
     a.set_calculator(calculator)
     #dyn = SciPyFminBFGS(a, trajectory='grapheneMLrelax/graphene1.traj')
     dyn = BFGS(a, trajectory='grapheneMLrelax/graphene1.traj')
-    dyn.run(fmax=0.1)
+    dyn.run(fmax=0.1, n=200)
 
 if __name__ == "__main__":
     main()
