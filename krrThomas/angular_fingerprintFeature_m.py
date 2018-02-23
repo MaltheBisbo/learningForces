@@ -471,12 +471,13 @@ class Angular_Fingerprint(object):
                         dx_jm = nb_distVec[j][m]
                         index_jn = nb_index[j][n]
                         index_jm = nb_index[j][m]
-                        
+
                         a = -1/np.sqrt(1 - cos_angle**2)
                         angle_j_grad = a * (-(dx_jn + dx_jm)/(deltaR_n*deltaR_m) + cos_angle*(dx_jn/deltaR_n**2 + dx_jm/deltaR_m**2))
                         angle_n_grad = a * (dx_jm/(deltaR_n*deltaR_m) - cos_angle*dx_jn/deltaR_n**2)
                         angle_m_grad = a * (dx_jn/(deltaR_n*deltaR_m) - cos_angle*dx_jm/deltaR_m**2)
                         
+                            
                         # Define the index range of the gradient that belongs to each atom
                         index_range_j = np.arange(self.dim*index_jn[0], self.dim*index_jn[0]+self.dim)
                         index_range_n = np.arange(self.dim*index_jn[1], self.dim*index_jn[1]+self.dim)
