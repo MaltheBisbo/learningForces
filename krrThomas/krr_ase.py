@@ -1,4 +1,5 @@
 import numpy as np
+import pdb
 
 
 class krr_class():
@@ -67,7 +68,7 @@ class krr_class():
         return -(kernelDeriv.T).dot(self.alpha)
 
     def add_data(self, data_values_add, featureMat_add):
-        """ 
+        """
         Adds data to previously saved data.
         """
         Nadd = len(data_values_add)
@@ -92,7 +93,7 @@ class krr_class():
         self.Ndata -= N_remove
         
     def __fit(self, data_values, similarityMat, reg):
-        """ 
+        """
         Fit the model based on training data.
         - i.e. find the alpha coeficients.
         """
@@ -102,7 +103,7 @@ class krr_class():
         self.alpha = np.linalg.solve(A, data_values - self.beta)
         
     def train(self, atoms_list=None, data_values=None, featureMat=None, add_new_data=True, k=3, **GSkwargs):
-        """ 
+        """
         Train the model using gridsearch and cross-validation
             
         --- Input ---
@@ -113,7 +114,7 @@ class krr_class():
         The features of the new training structures.
 
         positionMat:
-        The atomic positions of the new training structures. 
+        The atomic positions of the new training structures.
 
         add_new_data:
         If True, the data passed will be added to previously saved data (if any).
@@ -125,8 +126,9 @@ class krr_class():
         Dict containing the sequences of the kernel-width and regularization parameter to be
         used in grissearch. The labels are 'sigma' and 'reg' respectively.
         """
+        
         if featureMat is None:
-            featureMat = self.featureCalculator.get_featureMat(atoms)
+            featureMat = self.featureCalculator.get_featureMat(atoms_list)
             data_values = np.array([atoms.get_potential_energy() for atoms in atoms_list])
             
         if add_new_data:

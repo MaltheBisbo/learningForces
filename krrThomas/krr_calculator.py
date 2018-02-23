@@ -1,6 +1,5 @@
 import numpy as np
 from ase.calculators.calculator import Calculator
-from krr_class_new import krr_class
 
 class krr_calculator(Calculator):
 
@@ -16,11 +15,7 @@ class krr_calculator(Calculator):
 
         Calculator.calculate(self, atoms, properties, system_changes)
 
-        positions = atoms.get_positions()
-        dim = positions.shape[1]
-        positions = positions.reshape(-1)
+        self.results['energy'] = self.MLmodel.predict_energy(atoms)
+        self.results['forces'] = self.MLmodel.predict_force(atoms).reshape((-1,3))
         
-        self.results['energy'] = self.MLmodel.predict_energy(pos=positions)
-        self.results['forces'] = self.MLmodel.predict_force(pos=positions).reshape((-1,dim))
-
         return self.results['energy'], self.results['forces']

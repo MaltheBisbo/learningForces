@@ -4,7 +4,6 @@ import numpy as np
 from math import erf
 from itertools import product
 from scipy.spatial.distance import cdist
-from ase.visualize import view
 
 try:
     cwd = sys.argv[1]
@@ -92,7 +91,7 @@ class Angular_Fingerprint(object):
         """
         """
         # Wrap atoms into unit-cell
-        atoms.wrap()
+        #atoms.wrap()
         
         pbc = self.pbc
         cell = self.cell
@@ -267,14 +266,20 @@ class Angular_Fingerprint(object):
             fingerprint[i*self.Nbins2 + Nelements_2body: (i+1)*self.Nbins2 + Nelements_2body] = self.eta * feature[1][key]
         return fingerprint
 
+    def get_featureMat(self, atoms_list):
+        featureMat = []
+        for i, atoms in enumerate(atoms_list):
+            print('Calculating FeatureMat {}/{}\r'.format(i, len(atoms_list)), end='')
+            featureMat.append(self.get_feature(atoms))
+        print('\n')
+        #featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])
+        return featureMat
+    
     def get_featureGradient(self, atoms):
         """
         --input--
         x: atomic positions for a single structure in the form [x1, y1, ... , xN, yN]
         """
-
-        # Wrap atoms into unit-cell
-        atoms.wrap()
         
         pbc = self.pbc
         cell = self.cell
@@ -504,7 +509,7 @@ class Angular_Fingerprint(object):
         neighbours = []
         for i in range(3):
             if pbc[i]:
-                ncellmax = int(np.ceil(abs(Rc_max/cell_vec_norms[i])))  # + 1  # +1 because atoms can be outside unitcell.
+                ncellmax = int(np.ceil(abs(Rc_max/cell_vec_norms[i]))) + 1  # +1 because atoms can be outside unitcell.
                 neighbours.append(range(-ncellmax,ncellmax+1))
             else:
                 neighbours.append([0])

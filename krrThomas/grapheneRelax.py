@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from krr_class_new import krr_class
+from krr_ase import krr_class as KRR
 from angular_fingerprintFeature_m import Angular_Fingerprint
 from gaussComparator import gaussComparator
 from gaussComparator_cosdist import gaussComparator_cosdist
@@ -10,6 +10,7 @@ import time
 
 from ase import Atoms
 from ase.optimize import BFGS
+from ase.optimize.sciopt import SciPyFminBFGS
 from ase.io import read, write
 
 def main():
@@ -40,7 +41,7 @@ def main():
     Nbins2 = 30
     sigma2 = 0.2
 
-    use_angular = True
+    use_angular = False
     gamma = 1
     eta = 50
 
@@ -49,25 +50,26 @@ def main():
     fingerprints_train = []
     for i, a in enumerate(atoms_train):
         print('Calculating training features {}/{}\r'.format(i, len(atoms_train)), end='')
-        fingerprints_train.append(featureCalculator.get_features(a))
+        fingerprints_train.append(featureCalculator.get_feature(a))
     print('\n')
     fingerprints_train = np.array(fingerprints_train)
     print(fingerprints_train.shape)
 
     # Initialize comparator and KRR model
     comparator = gaussComparator()
-    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
+    krr = KRR(comparator=comparator, featureCalculator=featureCalculator)
 
     GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0,2,10)}
-    MAE, params = krr.train(E_train, featureMat=fingerprints_train, add_new_data=False, k=10, **GSkwargs)
+    MAE, params = krr.train(data_values=E_train, featureMat=fingerprints_train, add_new_data=False, k=10, **GSkwargs)
     print('params:', params)
     print('MAE_energy: ', MAE)
 
-    label='grapheneMLrelax/grapheneML'
+    label = 'grapheneMLrelax/grapheneML'
     calculator = krr_calculator(krr, label)
     
     a = atoms_test_start[0]
     a.set_calculator(calculator)
+    #dyn = SciPyFminBFGS(a, trajectory='grapheneMLrelax/graphene1.traj')
     dyn = BFGS(a, trajectory='grapheneMLrelax/graphene1.traj')
     dyn.run(fmax=0.1)
 

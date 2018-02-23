@@ -4,11 +4,13 @@ import matplotlib.pyplot as plt
 from angular_fingerprintFeature_m import Angular_Fingerprint
 from gaussComparator import gaussComparator
 from krr_class_new import krr_class
-
+from krr_ase import krr_class as krr_ase
 
 from ase import Atoms
 from ase.io import read, write
 from ase.visualize import view
+
+import pdb
 
 atoms = read('graphene_data/all_done.traj', index=':')
 E = [a.get_potential_energy() for a in atoms]
@@ -28,7 +30,7 @@ gamma = 1
 eta = 50
 
 featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=use_angular)
-fingerprint0 = featureCalculator.get_features(a0)
+fingerprint0 = featureCalculator.get_feature(a0)
 length_feature = len(fingerprint0)
 
 # Filename
@@ -47,24 +49,42 @@ except IOError:
         fingerprints[i] = featureCalculator.get_features(structure)
     np.savetxt(filename, fingerprints, delimiter='\t')
 
-# Set up KRR-model
-comparator = gaussComparator()
-krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
-
+# Stuff for learning curves
 N_LCpoints = 10
 N_array = np.logspace(1, np.log10(Ndata), N_LCpoints).astype(int)
-FVU = np.zeros(N_LCpoints)
 GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0,2,10)}
+
+np.random.seed(111)
+# Set up KRR-model
+comparator = gaussComparator()
+krr = krr_ase(comparator=comparator, featureCalculator=featureCalculator)
+
+FVU = np.zeros(N_LCpoints)
 for i, N in enumerate(N_array):
     Esub = E[:N]
     fingerprints_sub = fingerprints[:N]
     
-    FVU_temp, params = krr.train(Esub, featureMat=fingerprints_sub, add_new_data=False, k=10, **GSkwargs)
+    FVU_temp, params = krr.train(data_values=Esub, featureMat=fingerprints_sub, add_new_data=False, k=10, **GSkwargs)
     FVU[i] = FVU_temp
 
+atoms = read('graphene_data/all_done.traj', index=':')
+
+np.random.seed(111)
+# Set up KRR-model 2
+comparator = gaussComparator()
+krr_ase = krr_ase(comparator=comparator, featureCalculator=featureCalculator)
+
+
+FVU_ase = np.zeros(N_LCpoints)
+for i, N in enumerate(N_array):
+    atoms_sub = atoms[:N]
+    FVU_temp, params = krr_ase.train(atoms_list=atoms_sub, add_new_data=False, k=10, **GSkwargs)
+    print(FVU_temp)
+    FVU_ase[i] = FVU_temp
 
 plt.figure()
 plt.loglog(N_array, FVU)
+plt.loglog(N_array, FVU_ase, linestyle=':')
 plt.show()
 
 
