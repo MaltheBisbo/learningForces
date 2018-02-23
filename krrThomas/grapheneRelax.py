@@ -12,6 +12,7 @@ from ase import Atoms
 from ase.optimize import BFGS
 from ase.optimize.sciopt import SciPyFminBFGS
 from ase.io import read, write
+from ase.visualize import view
 
 def main():
     atoms = read('graphene_data/graphene_all2.traj', index=':')
@@ -22,15 +23,21 @@ def main():
     print(Nrelaxations)
     
     # Split data into training and testing
-    atoms_train = atoms[0:(Nrelaxations - 10)*3]
-    atoms_test = atoms[(Nrelaxations - 10)*3:]
-    atoms_test_start = atoms[(Nrelaxations - 10)*3::4]
-    atoms_test_target = atoms[(Nrelaxations - 10)*3 + 3::4]
+    atoms_train = atoms[0:(Nrelaxations - 10)*4]
+    atoms_test = atoms[(Nrelaxations - 10)*4:]
+    atoms_test_start = atoms[(Nrelaxations - 10)*4::4]
+    atoms_test_relaxed = atoms[(Nrelaxations - 10)*4 + 3::4]
+    print(len(atoms))
+    print(len(atoms_train))
+    print(len(atoms_test))
     
+    write('grapheneMLrelax/graphene1_start.traj', atoms_test_start)
+    write('grapheneMLrelax/graphene1_relaxed.traj', atoms_test_relaxed)
+
     E_train = [a.get_potential_energy() for a in atoms_train]
     E_test = [a.get_potential_energy() for a in atoms_test]
     E_test_start = [a.get_potential_energy() for a in atoms_test_start]
-    E_test_target = [a.get_potential_energy() for a in atoms_test_target]
+    E_test_relaxed = [a.get_potential_energy() for a in atoms_test_relaxed]
 
     # angular fingerprint parameters
     Rc1 = 5
@@ -64,14 +71,25 @@ def main():
     print('params:', params)
     print('MAE_energy: ', MAE)
 
-    label = 'grapheneMLrelax/grapheneML'
+    label = 'grapheneMLrelax/graphene1'
     calculator = krr_calculator(krr, label)
-    
-    a = atoms_test_start[0]
-    a.set_calculator(calculator)
-    #dyn = SciPyFminBFGS(a, trajectory='grapheneMLrelax/graphene1.traj')
-    dyn = BFGS(a, trajectory='grapheneMLrelax/graphene1.traj')
-    dyn.run(fmax=0.1)
 
+    E_test_MLrelaxed = []
+    atoms_test_MLrelaxed = []
+    for i, a in enumerate(atoms_test_start):
+        a.set_calculator(calculator)
+        #dyn = SciPyFminBFGS(a, trajectory='grapheneMLrelax/graphene1.traj')
+        dyn = BFGS(a, trajectory='grapheneMLrelax/graphene_test{}.traj'.format(i))
+        dyn.run(fmax=0.1)
+        atoms_test_MLrelaxed.append(a)
+        E_test_MLrelaxed.append(krr.predict_energy(a))
+
+    write('grapheneMLrelax/graphene_MLrelaxed.traj', atoms_test_MLrelaxed)
+    energies = np.array([E_test_start, E_test_relaxed, E_test_MLrelaxed])
+    energy_diff = np.array(E_test_relaxed) - np.array(E_test_MLrelaxed)
+    np.savetxt('grapheneMLrelax/graphene_MLrelaxed_E.txt', energies, delimiter='\t')
+    print('Energy differende:\n', energy_diff)
+    
+    
 if __name__ == "__main__":
     main()
