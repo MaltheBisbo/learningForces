@@ -4,6 +4,7 @@ import numpy as np
 from math import erf
 from itertools import product
 from scipy.spatial.distance import cdist
+import pdb
 
 try:
     cwd = sys.argv[1]
@@ -403,7 +404,7 @@ class Angular_Fingerprint(object):
         # Initialize 3body bondtype dictionary
         for bondtype in self.bondtypes_3body:
             feature_grad[1][bondtype] = np.zeros((self.Nbins2, n_atoms*self.dim))
-            
+
         # Calculate angular features
         for j in range(n_atoms):
             for n in range(len(nb_deltaRs_ang[j])):
@@ -467,17 +468,19 @@ class Angular_Fingerprint(object):
                         fc_jn_grad = self.__f_cutoff_grad(deltaR_n, self.gamma, self.Rc2)
                         fc_jm_grad = self.__f_cutoff_grad(deltaR_m, self.gamma, self.Rc2)
 
-                        dx_jn = nb_distVec[j][n]
-                        dx_jm = nb_distVec[j][m]
-                        index_jn = nb_index[j][n]
-                        index_jm = nb_index[j][m]
+                        dx_jn = nb_distVec_ang[j][n]
+                        dx_jm = nb_distVec_ang[j][m]
+                        index_jn = nb_index_ang[j][n]
+                        index_jm = nb_index_ang[j][m]
 
-                        a = -1/np.sqrt(1 - cos_angle**2)
-                        angle_j_grad = a * (-(dx_jn + dx_jm)/(deltaR_n*deltaR_m) + cos_angle*(dx_jn/deltaR_n**2 + dx_jm/deltaR_m**2))
-                        angle_n_grad = a * (dx_jm/(deltaR_n*deltaR_m) - cos_angle*dx_jn/deltaR_n**2)
-                        angle_m_grad = a * (dx_jn/(deltaR_n*deltaR_m) - cos_angle*dx_jm/deltaR_m**2)
-                        
-                            
+                        if not (angle == 0 or angle == np.pi):
+                            a = -1/np.sqrt(1 - cos_angle**2)
+                            angle_n_grad = a * (dx_jm/(deltaR_n*deltaR_m) - cos_angle*dx_jn/deltaR_n**2)
+                            angle_m_grad = a * (dx_jn/(deltaR_n*deltaR_m) - cos_angle*dx_jm/deltaR_m**2)
+                            angle_j_grad = -(angle_n_grad + angle_m_grad)
+                        else:
+                            angle_j_grad, angle_n_grad, angle_m_grad = (0,0,0)
+
                         # Define the index range of the gradient that belongs to each atom
                         index_range_j = np.arange(self.dim*index_jn[0], self.dim*index_jn[0]+self.dim)
                         index_range_n = np.arange(self.dim*index_jn[1], self.dim*index_jn[1]+self.dim)
@@ -551,3 +554,45 @@ class Angular_Fingerprint(object):
             return gamma*(gamma+1)/Rc * ((r/Rc)**gamma - (r/Rc)**(gamma-1))
         else:
             return 0
+        
+    def angle2_grad(self, RijVec, RikVec):
+        Rij = np.linalg.norm(RijVec)
+        Rik = np.linalg.norm(RikVec)
+        
+        a = RijVec/Rij - RikVec/Rik
+        b = RijVec/Rij + RikVec/Rik
+        A = np.linalg.norm(a)
+        B = np.linalg.norm(b)
+        D = A/B
+        
+        RijMat = np.dot(RijVec[:,np.newaxis], RijVec[:,np.newaxis].T)
+        RikMat = np.dot(RikVec[:,np.newaxis], RikVec[:,np.newaxis].T)
+
+        a_grad_j = -1/Rij**3 * RijMat + 1/Rij * np.identity(3)
+        b_grad_j = a_grad_j
+        
+        a_sum_j = np.sum(a*a_grad_j, axis=1)
+        b_sum_j = np.sum(b*b_grad_j, axis=1)
+        
+        grad_j = 2/(1+D**2) * (1/(A*B) * a_sum_j - A/(B**3) * b_sum_j)
+        
+        
+        
+        a_grad_k = 1/Rik**3 * RikMat - 1/Rik * np.identity(3)
+        b_grad_k = -a_grad_k
+        
+        a_sum_k = np.sum(a*a_grad_k, axis=1)
+        b_sum_k = np.sum(b*b_grad_k, axis=1)
+        
+        grad_k = 2/(1+D**2) * (1/(A*B) * a_sum_k - A/(B**3) * b_sum_k)
+        
+        
+        a_grad_i = -(a_grad_j + a_grad_k)
+        b_grad_i = -(b_grad_j + b_grad_k)
+        
+        a_sum_i = np.sum(a*a_grad_i, axis=1)
+        b_sum_i = np.sum(b*b_grad_i, axis=1)
+        
+        grad_i = 2/(1+D**2) * (1/(A*B) * a_sum_i - A/(B**3) * b_sum_i)
+        
+        return grad_i, grad_j, grad_k

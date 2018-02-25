@@ -6,26 +6,27 @@ from angular_fingerprintFeature_m import Angular_Fingerprint
 from ase import Atoms
 from ase.visualize import view
 
-N = 2
+N = 3
 dim = 3
 
 L = 2
 d = 1
-pbc = [0,1,0]
+pbc = [1,0,1]
 
 """
 #x = np.array([0.2*L, 0.7*L, d/2])
 x = np.array([0.8*L, 0.2*L, d/2])
 positions = x.reshape((-1, dim))
-a = Atoms('H',
+atomtypes = ['H']
+a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
           pbc=pbc)
-"""
+
 x = np.array([0.2*L, 0.5*L, d/2, 0.7*L, 0.5*L, d/2])
 #x = np.array([0.2*L, 0.7*L, d/2, 0.8*L, 0.2*L, d/2])
 positions = x.reshape((-1, dim))
-atomtypes=['H', 'H']
+atomtypes = ['H', 'H']
 a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
@@ -38,7 +39,7 @@ a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
           pbc=pbc)
-
+"""
 x = np.array([1, 0, 0, 2, 0, 0, 3, 0, 0, 1.5, 1, 0])
 positions = x.reshape((-1,dim))
 a = Atoms('H4',
@@ -66,7 +67,7 @@ Rc1 = 4
 binwidth1 = 0.1
 sigma1 = 0.2
 
-Rc2 = 2.1
+Rc2 = 3
 Nbins2 = 50
 sigma2 = 0.2
 
@@ -103,6 +104,6 @@ plt.plot(np.arange(len(fingerprint))*binwidth1+binwidth1/2, fingerprint)
 
 plt.figure(21)
 plt.plot(np.arange(len(fingerprint))*binwidth1, num_grad_fingerprint.T)
-plt.plot(np.arange(len(fingerprint))*binwidth1, grad_fingerprint, linestyle=':')
+plt.plot(np.arange(len(fingerprint))*binwidth1, grad_fingerprint, linestyle=':', color='k')
 plt.show()
 

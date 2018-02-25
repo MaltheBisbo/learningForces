@@ -48,7 +48,7 @@ def main():
     Nbins2 = 30
     sigma2 = 0.2
 
-    use_angular = False
+    use_angular = True
     gamma = 1
     eta = 50
 
@@ -73,30 +73,20 @@ def main():
 
     label = 'grapheneMLrelax/graphene1'
     calculator = krr_calculator(krr, label)
-<<<<<<< HEAD
-    
-    a = atoms_test_start[0]
-    a.set_calculator(calculator)
-    #dyn = SciPyFminBFGS(a, trajectory='grapheneMLrelax/graphene1.traj')
-    dyn = BFGS(a, trajectory='grapheneMLrelax/graphene1.traj')
-    dyn.run(fmax=0.1, n=200)
-=======
->>>>>>> d735d251e9d6370d2fc614064d979fa91b04cec5
 
     E_test_MLrelaxed = []
     atoms_test_MLrelaxed = []
     for i, a in enumerate(atoms_test_start):
         a.set_calculator(calculator)
-        #dyn = SciPyFminBFGS(a, trajectory='grapheneMLrelax/graphene1.traj')
-        dyn = BFGS(a, trajectory='grapheneMLrelax/graphene_test{}.traj'.format(i))
+        dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneAng_test{}.traj'.format(i))
         dyn.run(fmax=0.1)
         atoms_test_MLrelaxed.append(a)
         E_test_MLrelaxed.append(krr.predict_energy(a))
 
-    write('grapheneMLrelax/graphene_MLrelaxed.traj', atoms_test_MLrelaxed)
+    write('grapheneMLrelax/grapheneAng_MLrelaxed.traj', atoms_test_MLrelaxed)
     energies = np.array([E_test_start, E_test_relaxed, E_test_MLrelaxed])
     energy_diff = np.array(E_test_relaxed) - np.array(E_test_MLrelaxed)
-    np.savetxt('grapheneMLrelax/graphene_MLrelaxed_E.txt', energies, delimiter='\t')
+    np.savetxt('grapheneMLrelax/grapheneAng_MLrelaxed_E.txt', energies, delimiter='\t')
     print('Energy differende:\n', energy_diff)
     
     
