@@ -31,8 +31,8 @@ def main():
     print(len(atoms_train))
     print(len(atoms_test))
     
-    write('grapheneMLrelax/graphene1_start.traj', atoms_test_start)
-    write('grapheneMLrelax/graphene1_relaxed.traj', atoms_test_relaxed)
+    write('grapheneMLrelax/graphene_test_start.traj', atoms_test_start)
+    write('grapheneMLrelax/graphene_test_relaxed.traj', atoms_test_relaxed)
 
     E_train = [a.get_potential_energy() for a in atoms_train]
     E_test = [a.get_potential_energy() for a in atoms_test]
