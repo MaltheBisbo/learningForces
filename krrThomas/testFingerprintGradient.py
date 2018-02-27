@@ -12,7 +12,7 @@ dim = 3
 
 L = 2
 d = 1
-pbc = [0,0,0]
+pbc = [1,1,1]
 
 """
 #x = np.array([0.2*L, 0.7*L, d/2])
@@ -23,7 +23,7 @@ a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
           pbc=pbc)
-"""
+
 N = 2
 x = np.array([0.2*L, 0.5*L, d/2, 0.7*L, 0.5*L, d/2])
 #x = np.array([0.2*L, 0.7*L, d/2, 0.8*L, 0.2*L, d/2])
@@ -33,7 +33,7 @@ a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
           pbc=pbc)
-"""
+
 N = 3
 x = np.array([0.2*L, 0.7*L, d/2,
               0.3*L, 0.2*L, d/2,
@@ -52,18 +52,20 @@ a = Atoms('H4',
           cell=[4,2,1],
           pbc=[0, 0, 0])
 
-
+"""
+N = 5
 x = np.array([0.2*L, 0.7*L, d/2,
               0.3*L, 0.2*L, d/2,
               0.7*L, 0.9*L, d/2,
-              0.7*L, 0.5*L, d/2])
+              0.7*L, 0.5*L, d/2,
+              0.9*L, 0.1*L, d/2])
 positions = x.reshape((-1,dim))
-atomtypes = ['H', 'H', 'He', 'He']
+atomtypes = ['H', 'H', 'He', 'He', 'H']
 a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
           pbc=pbc)
-
+"""
 
 atoms = read('graphene_data/graphene_all2.traj', index=':')
 a = atoms[0]
@@ -82,7 +84,7 @@ Rc2 = 3
 Nbins2 = 50
 sigma2 = 0.2
 
-featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=0, use_angular=False)
+featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=0, use_angular=True)
 fingerprint = featureCalculator.get_feature(a)
 
 t0_analytic = time.time()
