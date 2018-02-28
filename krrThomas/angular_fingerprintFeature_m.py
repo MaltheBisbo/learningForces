@@ -114,7 +114,7 @@ class Angular_Fingerprint(object):
                 distVec = pos + cell_displacement
                 deltaRs = cdist(pos[i].reshape((1, self.dim)), distVec).reshape(-1)
                 for j in range(n_atoms):
-                    if deltaRs[j] < max(self.Rc1+self.nsigma*self.sigma1, self.Rc2) and deltaRs[j] > 1e-6:
+                    if deltaRs[j] < self.Rc1+self.nsigma*self.sigma1 and deltaRs[j] > 1e-6:
                         if j >= 0:
                             nb_deltaRs[i].append(deltaRs[j])
                             nb_bondtype[i].append(tuple(sorted([num[i], num[j]])))
@@ -132,10 +132,6 @@ class Angular_Fingerprint(object):
         for j in range(n_atoms):
             for n in range(len(nb_deltaRs[j])):
                 deltaR = nb_deltaRs[j][n]
-
-                # use only distances relevant for 2body part
-                if deltaR > self.Rc1 + self.nsigma*self.sigma1:
-                    continue
 
                 # Identify what bin 'deltaR' belongs to + it's position in this bin
                 center_bin = int(np.floor(deltaR/self.binwidth1))
@@ -172,6 +168,9 @@ class Angular_Fingerprint(object):
                     value /= 4*np.pi*deltaR**2 * self.binwidth1 * num_pairs/self.volume
                     #value *= self.__f_cutoff(deltaR, self.gamma, self.Rc1)
 
+                    if nb_bondtype[j][n] == (1,2) and newbin == 2 and deltaR > 2.5:
+                        print(deltaR, center_bin, newbin, value, erfarg_low, erfarg_up)
+                    
                     feature[0][nb_bondtype[j][n]][newbin] += value
 
         # Return feature - if angular part is not required
