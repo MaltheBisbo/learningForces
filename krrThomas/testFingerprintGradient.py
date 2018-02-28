@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from angular_fingerprintFeature_m import Angular_Fingerprint
+from angular_fingerprintFeature_test import Angular_Fingerprint_test
 import time
 import pdb
 
@@ -103,9 +104,6 @@ t0_analytic = time.time()
 grad_fingerprint = featureCalculator.get_featureGradient(a)
 t1_analytic = time.time()
 
-if np.any(np.isnan(grad_fingerprint)):
-    print('ERROR: nan in feature gradient')
-
 t0_numeric = time.time()
 dx = 0.000001
 num_grad_fingerprint = np.zeros((N*dim, len(fingerprint)))
@@ -120,8 +118,6 @@ for i in range(N*dim):
     fingerprint_down = featureCalculator.get_feature(a_down)
     fingerprint_up = featureCalculator.get_feature(a_up)
     num_grad_fingerprint[i] = (fingerprint_up - fingerprint_down)/dx
-    if np.any(num_grad_fingerprint[i] > 10):
-        pdb.set_trace()
 t1_numeric = time.time()
 
 print('Calculation time - analytic:', t1_analytic - t0_analytic)
@@ -130,20 +126,62 @@ print('Calculation time - numeric:', t1_numeric - t0_numeric)
 print(featureCalculator.bondtypes_2body)
 print(featureCalculator.bondtypes_3body)
 
-print('analytic:\n', grad_fingerprint[1])
-print('numeric:\n', num_grad_fingerprint.T[1])
-print('Difference:\n', (num_grad_fingerprint.T - grad_fingerprint)[1])
-
 r_array = np.arange(len(fingerprint))*binwidth1+binwidth1/2
-print(np.trapz(fingerprint, r_array))
 
-plt.figure(20)
+plt.figure(10)
 plt.plot(np.arange(len(fingerprint))*binwidth1+binwidth1/2, fingerprint)
 
-plt.figure(21)
+plt.figure(11)
 plt.plot(np.arange(len(fingerprint))*binwidth1, num_grad_fingerprint.T)
 plt.plot(np.arange(len(fingerprint))*binwidth1, grad_fingerprint, linestyle=':', color='k')
 
-plt.figure(22)
+plt.figure(12)
 plt.plot(np.arange(len(fingerprint))*binwidth1, num_grad_fingerprint.T - grad_fingerprint)
+
+featureCalculator_test = Angular_Fingerprint_test(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=0, use_angular=True)
+fingerprint_test = featureCalculator_test.get_feature(a)
+
+t0_analytic_test = time.time()
+grad_fingerprint_test = featureCalculator_test.get_featureGradient(a)
+t1_analytic_test = time.time()
+
+t0_numeric_test = time.time()
+dx = 0.000001
+num_grad_fingerprint_test = np.zeros((N*dim, len(fingerprint_test)))
+for i in range(N*dim):
+    x_pertub = np.zeros(N*dim)
+    x_pertub[i] = dx
+    pos_down = np.reshape(x - x_pertub/2, (-1, dim))
+    pos_up = np.reshape(x + x_pertub/2, (-1, dim))
+
+    a_down = Atoms(atomtypes, positions=pos_down, cell=[L,L,d], pbc=pbc)
+    a_up = Atoms(atomtypes, positions=pos_up, cell=[L,L,d], pbc=pbc)
+    fingerprint_down = featureCalculator_test.get_feature(a_down)
+    fingerprint_up = featureCalculator_test.get_feature(a_up)
+    num_grad_fingerprint_test[i] = (fingerprint_up - fingerprint_down)/dx
+t1_numeric_test = time.time()
+
+print('Calculation time - analytic:', t1_analytic_test - t0_analytic_test)
+print('Calculation time - numeric:', t1_numeric_test - t0_numeric_test)
+
+print(featureCalculator_test.bondtypes_2body)
+print(featureCalculator_test.bondtypes_3body)
+
+r_array = np.arange(len(fingerprint_test))*binwidth1+binwidth1/2
+
+plt.figure(20)
+plt.plot(np.arange(len(fingerprint_test))*binwidth1+binwidth1/2, fingerprint_test)
+
+plt.figure(21)
+plt.plot(np.arange(len(fingerprint_test))*binwidth1, num_grad_fingerprint_test.T)
+plt.plot(np.arange(len(fingerprint_test))*binwidth1, grad_fingerprint_test, linestyle=':', color='k')
+
+plt.figure(22)
+plt.plot(np.arange(len(fingerprint_test))*binwidth1, num_grad_fingerprint_test.T - grad_fingerprint_test)
+
+plt.figure(30)
+plt.plot(np.arange(len(fingerprint_test))*binwidth1, grad_fingerprint - grad_fingerprint_test)
+
+plt.figure(31)
+plt.plot(np.arange(len(fingerprint_test))*binwidth1, num_grad_fingerprint.T - num_grad_fingerprint_test.T)
 plt.show()
