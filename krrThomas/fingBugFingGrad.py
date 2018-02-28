@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from angular_fingerprintFeature_m import Angular_Fingerprint
+from angular_fingerprintFeature_test import Angular_Fingerprint
 import time
 import pdb
 
@@ -56,7 +56,7 @@ a2 = Atoms(atomtypes,
            cell=[L,L,d],
            pbc=pbc)
     
-Rc1 = 1.6
+Rc1 = 1.8
 binwidth1 = 0.6
 sigma1 = 0.2
 
@@ -64,13 +64,13 @@ Rc2 = 3
 Nbins2 = 50
 sigma2 = 0.2
 
-featureCalculator = Angular_Fingerprint(a1, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, nsigma=5, gamma=1, use_angular=False)
+featureCalculator = Angular_Fingerprint(a1, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=1, use_angular=False)
 print('first 3')
 fingerprint1 = featureCalculator.get_feature(a1)
 print('second 3')
 fingerprint2 = featureCalculator.get_feature(a2)
 
-Rc1 = 1.59999
+Rc1 = 1.79999
 featureCalculator2 = Angular_Fingerprint(a1, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=1, use_angular=False)
 print('first 2.99999')
 fingerprint1_new = featureCalculator2.get_feature(a1)
