@@ -171,7 +171,7 @@ class Angular_Fingerprint(object):
                     num_pairs = atomic_count[type1] * atomic_count[type2]
                     value /= 4*np.pi*deltaR**2 * self.binwidth1 * num_pairs/self.volume
                     #value *= self.__f_cutoff(deltaR, self.gamma, self.Rc1)
-                    
+
                     feature[0][nb_bondtype[j][n]][newbin] += value
 
         # Return feature - if angular part is not required
@@ -199,6 +199,10 @@ class Angular_Fingerprint(object):
                             nb_bondtype_ang[i].append(tuple([num[i], num[j]]))
                             nb_distVec_ang[i].append(distVec[j] - pos[i])
 
+        #print([len(l) for l in nb_deltaRs_ang])
+        d4 = np.array(nb_deltaRs_ang[4])
+        print(d4[d4 > 2.95])
+    
         # Initialize 3body bondtype dictionary
         for bondtype in self.bondtypes_3body:
             feature[1][bondtype] = np.zeros(self.Nbins2)
