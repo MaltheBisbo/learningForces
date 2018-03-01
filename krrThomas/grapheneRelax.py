@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from krr_ase import krr_class as KRR
-from angular_fingerprintFeature_m import Angular_Fingerprint
+from angular_fingerprintFeature_test import Angular_Fingerprint
 from gaussComparator import gaussComparator
 from gaussComparator_cosdist import gaussComparator_cosdist
 from scipy.signal import argrelextrema
@@ -50,16 +50,11 @@ def main():
 
     use_angular = True
     gamma = 1
-    eta = 50
+    eta = 20
 
     # Initialize featureCalculator
-    featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=use_angular)
-    fingerprints_train = []
-    for i, a in enumerate(atoms_train):
-        print('Calculating training features {}/{}\r'.format(i, len(atoms_train)), end='')
-        fingerprints_train.append(featureCalculator.get_feature(a))
-    print('\n')
-    fingerprints_train = np.array(fingerprints_train)
+    featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
+    fingerprints_train = featureCalculator.get_featureMat(atoms_train, show_progress=True)
     print(fingerprints_train.shape)
 
     # Initialize comparator and KRR model
@@ -76,18 +71,18 @@ def main():
 
     E_test_MLrelaxed = []
     atoms_test_MLrelaxed = []
-    for i, a in enumerate(atoms_test_start):
+    for i, a in enumerate(atoms_train[-20:-1:4]):
         a.set_calculator(calculator)
-        dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneAng_test{}.traj'.format(i))
+        dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneAng_train-{}.traj'.format(i))
         dyn.run(fmax=0.1)
         atoms_test_MLrelaxed.append(a)
         E_test_MLrelaxed.append(krr.predict_energy(a))
 
-    write('grapheneMLrelax/grapheneAng_MLrelaxed.traj', atoms_test_MLrelaxed)
-    energies = np.array([E_test_start, E_test_relaxed, E_test_MLrelaxed])
-    energy_diff = np.array(E_test_relaxed) - np.array(E_test_MLrelaxed)
-    np.savetxt('grapheneMLrelax/grapheneAng_MLrelaxed_E.txt', energies, delimiter='\t')
-    print('Energy differende:\n', energy_diff)
+    #write('grapheneMLrelax/grapheneAng_MLrelaxed.traj', atoms_test_MLrelaxed)
+    #energies = np.array([E_test_start, E_test_relaxed, E_test_MLrelaxed])
+    #energy_diff = np.array(E_test_relaxed) - np.array(E_test_MLrelaxed)
+    #np.savetxt('grapheneMLrelax/grapheneAng_MLrelaxed_E.txt', energies, delimiter='\t')
+    #print('Energy differende:\n', energy_diff)
     
     
 if __name__ == "__main__":

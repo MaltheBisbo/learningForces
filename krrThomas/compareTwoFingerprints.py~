@@ -14,7 +14,7 @@ dim = 3
 
 L = 2
 d = 1
-pbc = [0,0,0]
+pbc = [1,1,1]
 
 """
 #x = np.array([0.2*L, 0.7*L, d/2])
@@ -65,7 +65,7 @@ a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
           pbc=pbc)
-
+"""
 N = 5
 x = np.array([0.2*L, 0.7*L, d/2,
               0.3*L, 0.2*L, d/2,
@@ -81,28 +81,24 @@ a = Atoms(atomtypes,
 """
 
 atoms = read('graphene_data/graphene_all2.traj', index=':')
-a = atoms[3]
+a = atoms[0]
 atomtypes = a.get_atomic_numbers()
 N = len(a.get_atomic_numbers())
 x = a.get_positions().reshape(-1)
-
+"""
 view(a)
 
-dx = 0.000001
     
-Rc1 = 5
-binwidth1 = 0.2
+Rc1 = 1.8
+binwidth1 = 0.6
 sigma1 = 0.2
 
-Rc2 = 4
-Nbins2 = 30
+Rc2 = 3
+Nbins2 = 50
 sigma2 = 0.2
-
-gamma = 1
-eta = 50
 use_angular = True
 
-featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
+featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=0, use_angular=use_angular)
 fingerprint = featureCalculator.get_feature(a)
 
 t0_analytic = time.time()
@@ -110,6 +106,7 @@ grad_fingerprint = featureCalculator.get_featureGradient(a)
 t1_analytic = time.time()
 
 t0_numeric = time.time()
+dx = 0.000001
 num_grad_fingerprint = np.zeros((N*dim, len(fingerprint)))
 for i in range(N*dim):
     x_pertub = np.zeros(N*dim)
@@ -141,9 +138,8 @@ plt.plot(np.arange(len(fingerprint))*binwidth1, grad_fingerprint, linestyle=':',
 
 plt.figure(12)
 plt.plot(np.arange(len(fingerprint))*binwidth1, num_grad_fingerprint.T - grad_fingerprint)
-plt.show()
-"""
-featureCalculator_test = Angular_Fingerprint_test(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, nsigma=5, gamma=gamma, use_angular=use_angular)
+
+featureCalculator_test = Angular_Fingerprint_test(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=0, use_angular=use_angular)
 fingerprint_test = featureCalculator_test.get_feature(a)
 
 t0_analytic_test = time.time()
@@ -151,6 +147,7 @@ grad_fingerprint_test = featureCalculator_test.get_featureGradient(a)
 t1_analytic_test = time.time()
 
 t0_numeric_test = time.time()
+dx = 0.000001
 num_grad_fingerprint_test = np.zeros((N*dim, len(fingerprint_test)))
 for i in range(N*dim):
     x_pertub = np.zeros(N*dim)
@@ -189,4 +186,3 @@ plt.plot(np.arange(len(fingerprint_test))*binwidth1, grad_fingerprint - grad_fin
 plt.figure(31)
 plt.plot(np.arange(len(fingerprint_test))*binwidth1, num_grad_fingerprint.T - num_grad_fingerprint_test.T)
 plt.show()
-"""

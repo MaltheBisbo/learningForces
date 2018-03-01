@@ -168,9 +168,6 @@ class Angular_Fingerprint(object):
                     value /= 4*np.pi*deltaR**2 * self.binwidth1 * num_pairs/self.volume
                     #value *= self.__f_cutoff(deltaR, self.gamma, self.Rc1)
 
-                    if nb_bondtype[j][n] == (1,2) and newbin == 1 and deltaR > 2.5:
-                        print(deltaR, center_bin, binpos, newbin, value, erfarg_low, erfarg_up, minbin_lim, i, self.m1)
-                    
                     feature[0][nb_bondtype[j][n]][newbin] += value
 
         # Return feature - if angular part is not required
@@ -198,10 +195,6 @@ class Angular_Fingerprint(object):
                             nb_bondtype_ang[i].append(tuple([num[i], num[j]]))
                             nb_distVec_ang[i].append(distVec[j] - pos[i])
 
-        #print([len(l) for l in nb_deltaRs_ang])
-        d4 = np.array(nb_deltaRs_ang[4])
-        print(d4[d4 > 2.95])
-    
         # Initialize 3body bondtype dictionary
         for bondtype in self.bondtypes_3body:
             feature[1][bondtype] = np.zeros(self.Nbins2)
@@ -452,9 +445,6 @@ class Angular_Fingerprint(object):
                             arg_up = i+(1-binpos)
                         value1 = 0.5*erf(2*c*arg_up)-0.5*erf(2*c*arg_low)
                         value2 = -1/(self.sigma2*np.sqrt(2*np.pi)) * (np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))
-
-                        
-
                         
                         
                         # divide by smearing_norm
@@ -490,11 +480,11 @@ class Angular_Fingerprint(object):
                         index_range_m = np.arange(self.dim*index_jm[1], self.dim*index_jm[1]+self.dim)
                         
                         # Add to the the gradient matrix
-                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jm*fc_jn_grad * dx/deltaR_n
-                        feature_grad[1][bondtype][newbin, index_range_n] += value1 * fc_jm*fc_jn_grad * dx/deltaR_n
+                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jm*fc_jn_grad * dx_jn/deltaR_n
+                        feature_grad[1][bondtype][newbin, index_range_n] += value1 * fc_jm*fc_jn_grad * dx_jn/deltaR_n
 
-                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jn*fc_jm_grad * dx/deltaR_m
-                        feature_grad[1][bondtype][newbin, index_range_m] += value1 * fc_jn*fc_jm_grad * dx/deltaR_m
+                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jn*fc_jm_grad * dx_jm/deltaR_m
+                        feature_grad[1][bondtype][newbin, index_range_m] += value1 * fc_jn*fc_jm_grad * dx_jm/deltaR_m
 
                         feature_grad[1][bondtype][newbin, index_range_j] += value2 * angle_j_grad * fc_jn * fc_jm
                         feature_grad[1][bondtype][newbin, index_range_n] += value2 * angle_n_grad * fc_jn * fc_jm

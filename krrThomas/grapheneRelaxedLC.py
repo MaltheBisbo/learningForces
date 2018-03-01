@@ -1,5 +1,5 @@
 import numpy as np
-from angular_fingerprintFeature_m import Angular_Fingerprint
+from angular_fingerprintFeature_test import Angular_Fingerprint
 from gaussComparator import gaussComparator
 from gaussComparator_cosdist import gaussComparator_cosdist
 from eksponentialComparator import eksponentialComparator
@@ -24,7 +24,7 @@ def LC(atoms, featureCalculator, feature_filename, N_LCpoints=10, Npermutations=
         fingerprints = np.zeros((Ndata, length_feature))
         for i, structure in enumerate(atoms):
             print('calculating features: {}/{}\r'.format(i, Ndata), end='')
-            fingerprints[i] = featureCalculator.get_features(structure)
+            fingerprints[i] = featureCalculator.get_feature(structure)
         np.savetxt(filename, fingerprints, delimiter='\t')
     print(filename)
     Nradial = int(np.ceil(Rc1/binwidth1))
@@ -69,7 +69,6 @@ def LC(atoms, featureCalculator, feature_filename, N_LCpoints=10, Npermutations=
     return FVU_mean, FVU_std, N_array, fingerprints
 
 
-
 Rc1 = 5
 binwidth1 = 0.2
 sigma1 = 0.2
@@ -90,24 +89,34 @@ plt.figure(1)
 plt.title('Feature examples - graphene: \nRc2={0:d}, Nbins2={1:d}, sigma2={2:.1f}, gamma={3:d}'.format(Rc2, Nbins2, sigma2, gamma))
 
 for i, eta in enumerate(eta_array):
-    atoms = read('graphene_data/graphene_all2.traj', index=':')
+    atoms = read('graphene_data/all_done.traj', index=':')
     a0 = atoms[10]
         
     featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=use_angular)
-    fingerprint0 = featureCalculator.get_features(a0)
+    fingerprint0 = featureCalculator.get_feature(a0)
     length_feature = len(fingerprint0)
 
     # Save file
     if not use_angular:
-        filename = 'graphene_features/graphene_unrelaxed3_radialFeatures_gauss_Rc1_{0:d}_binwidth1_{1:.2f}_sigma1_{2:.1f}_gamma_{3:d}.txt'.format(Rc1, binwidth1, sigma1, gamma)
+        filename = 'graphene_features/graphene_radialFeatures_gauss_Rc1_{0:d}_binwidth1_{1:.2f}_sigma1_{2:.1f}_gamma_{3:d}.txt'.format(Rc1, binwidth1, sigma1, gamma)
     else:
-        filename = 'graphene_features/graphene_unrelaxed3_radialAngFeatures_gauss_Rc1_2_{0:d}_{1:d}_binwidth1_{2:.1f}_Nbins2_{3:d}_sigma1_2_{4:.1f}_{5:.2f}_gamma_{6:d}.txt'.format(Rc1, Rc2, binwidth1, Nbins2, sigma1, sigma2, gamma)
+        filename = 'graphene_features/graphene_radialAngFeatures_gauss_Rc1_2_{0:d}_{1:d}_binwidth1_{2:.1f}_Nbins2_{3:d}_sigma1_2_{4:.1f}_{5:.2f}_gamma_{6:d}.txt'.format(Rc1, Rc2, binwidth1, Nbins2, sigma1, sigma2, gamma)
 
     MAE_mean, MAE_std, N_array, fingerprints = LC(atoms, featureCalculator, feature_filename=filename, N_LCpoints=N_LCpoints, use_angular=use_angular, eta=eta)
     
     MAE[i] = MAE_mean
     plt.plot(np.arange(len(fingerprints[0])), fingerprints[0])
-    
+
+
+plt.figure(2)
+plt.title('Learning curve - graphene: \nRc2={0:d}, Nbins2={1:d}, sigma2={2:.1f}, gamma={3:d}'.format(Rc2, Nbins2, sigma2, gamma))
+for i, eta in enumerate(eta_array):
+    plt.loglog(N_array, MAE[i], label='eta={0}, MAE={1:.3f}'.format(eta, MAE[i,-1]))
+plt.legend()
+plt.xlabel('# training data')
+plt.ylabel('MAE')
+plt.show()
+"""
 np.savetxt('grapheneFingParams/angFing_unrelaxed3_Rc2_4_Nbins2_30_sigma2_0.2_gamma_1.txt', MAE, delimiter='\t')
 
 plt.figure(2)
@@ -120,4 +129,4 @@ plt.ylabel('MAE')
 
 plt.savefig('grapheneFingParams/results/angLC_unrelaxed3_Rc2_{0:d}_Nbins2_{1:d}_sigma2_{2:.1f}_gamma_{3:d}.png'.format(Rc2, Nbins2, sigma2, gamma), bbox_inches='tight')
 plt.show()
-
+"""

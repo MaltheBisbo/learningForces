@@ -41,11 +41,11 @@ class Angular_Fingerprint(object):
 
         # parameters for the binning:
         self.m1 = self.nsigma*self.sigma1/self.binwidth1  # number of neighbour bins included.
-        self.smearing_norm1 = erf(1/np.sqrt(2) * self.binwidth1*self.m1/self.sigma1)  # Integral of the included part of the gauss
+        self.smearing_norm1 = erf(1/np.sqrt(2) * self.m1 * self.binwidth1/self.sigma1)  # Integral of the included part of the gauss
         self.Nbins1 = int(np.ceil(self.Rc1/self.binwidth1))
 
-        self.m2 = int(np.ceil(self.nsigma*self.sigma2/self.binwidth2))  # number of neighbour bins included.
-        self.smearing_norm2 = erf(0.25*np.sqrt(2)*self.binwidth2*(2*self.m2+1)*1./self.sigma2)  # Integral of the included part of the gauss
+        self.m2 = self.nsigma*self.sigma2/self.binwidth2  # number of neighbour bins included.
+        self.smearing_norm2 = erf(1/np.sqrt(2) * self.m2 * self.binwidth2/self.sigma2)  # Integral of the included part of the gauss
         self.binwidth2 = np.pi/Nbins2
         
         # Cutoff surface areas
@@ -91,15 +91,12 @@ class Angular_Fingerprint(object):
     def get_feature(self, atoms):
         """
         """
-        # Wrap atoms into unit-cell
-        #atoms.wrap()
         
         pbc = self.pbc
         cell = self.cell
         n_atoms = self.n_atoms
         pos = atoms.get_positions()
         num = atoms.get_atomic_numbers()
-        atomic_types = self.atomic_types
         atomic_count = self.atomic_count
 
         # Get relevant neighbour unit-cells
@@ -139,8 +136,8 @@ class Angular_Fingerprint(object):
                 
                 # Lower and upper range of bins affected by the current atomic distance deltaR.
                 above_bin_center = int(binpos > 0.5)
-                minbin_lim = -int(np.ceil(self.m1 - binpos))  # -self.m1 - (1-above_bin_center)
-                maxbin_lim = int(np.ceil(self.m1 - (1-binpos)))  # self.m1 + above_bin_center
+                minbin_lim = -int(np.ceil(self.m1 - binpos))
+                maxbin_lim = int(np.ceil(self.m1 - (1-binpos)))
 
                 for i in range(minbin_lim, maxbin_lim + 1):
                     newbin = center_bin + i
@@ -151,17 +148,6 @@ class Angular_Fingerprint(object):
                     c = 0.25*np.sqrt(2)*self.binwidth1*1./self.sigma1
                     erfarg_low = max(-self.m1, i-binpos)
                     erfarg_up = min(self.m1, i+(1-binpos))
-                    """
-                    if i == minbin_lim:
-                        erfarg_low = -self.m1
-                        erfarg_up = i+(1-binpos)
-                    elif i == maxbin_lim:
-                        erfarg_low = i-binpos
-                        erfarg_up = self.m1
-                    else:
-                        erfarg_low = i-binpos
-                        erfarg_up = i+(1-binpos)
-                    """
                     value = 0.5*erf(2*c*erfarg_up)-0.5*erf(2*c*erfarg_low)
                     
                     # divide by smearing_norm
@@ -173,9 +159,6 @@ class Angular_Fingerprint(object):
                     value /= 4*np.pi*deltaR**2 * self.binwidth1 * num_pairs/self.volume
                     #value *= self.__f_cutoff(deltaR, self.gamma, self.Rc1)
 
-                    if nb_bondtype[j][n] == (1,2) and newbin == 2 and deltaR > 2.5:
-                        print(deltaR, center_bin, binpos, value, erfarg_low, erfarg_up, minbin_lim, i, self.m1)
-                    
                     feature[0][nb_bondtype[j][n]][newbin] += value
 
         # Return feature - if angular part is not required
@@ -203,10 +186,6 @@ class Angular_Fingerprint(object):
                             nb_bondtype_ang[i].append(tuple([num[i], num[j]]))
                             nb_distVec_ang[i].append(distVec[j] - pos[i])
 
-        #print([len(l) for l in nb_deltaRs_ang])
-        d4 = np.array(nb_deltaRs_ang[4])
-        print(d4[d4 > 2.95])
-    
         # Initialize 3body bondtype dictionary
         for bondtype in self.bondtypes_3body:
             feature[1][bondtype] = np.zeros(self.Nbins2)
@@ -230,9 +209,8 @@ class Angular_Fingerprint(object):
                     binpos = angle/self.binwidth2 - center_bin
 
                     # Lower and upper range of bins affected by the current angle.
-                    above_bin_center = int(binpos > 0.5)
-                    minbin_lim = -self.m2 - (1-above_bin_center)
-                    maxbin_lim = self.m2 + above_bin_center
+                    minbin_lim = -int(np.ceil(self.m2 - binpos))
+                    maxbin_lim = int(np.ceil(self.m2 - (1-binpos)))
                     for i in range(minbin_lim, maxbin_lim + 1):
                         newbin = center_bin + i
 
@@ -244,24 +222,15 @@ class Angular_Fingerprint(object):
 
                         # Calculate gauss contribution to current bin
                         c = 0.25*np.sqrt(2)*self.binwidth2*1./self.sigma2
-                        if i == minbin_lim:
-                            erfarg_low = -(self.m2+0.5)
-                            erfarg_up = i+(1-binpos)
-                        elif i == maxbin_lim:
-                            erfarg_low = i-binpos
-                            erfarg_up = self.m2+0.5
-                        else:
-                            erfarg_low = i-binpos
-                            erfarg_up = i+(1-binpos)
+                        erfarg_low = max(-self.m2, i-binpos)
+                        erfarg_up = min(self.m2, i+(1-binpos))
                         value = 0.5*erf(2*c*erfarg_up)-0.5*erf(2*c*erfarg_low)
                         
                         # divide by smearing_norm
                         value /= self.smearing_norm2
 
                         num_pairs = atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
-                        #bin_volume = 2/3*np.pi*self.Rc2**3*(np.cos(angle-self.binwidth2/2) - np.cos(angle+self.binwidth2/2))
                         value /= num_pairs/self.volume
-                        #value /= bin_volume * num_pairs/self.volume
                         #value /= (4*np.pi*(deltaR_n**2 + deltaR_m**2)) * self.binwidth2 * num_pairs/self.volume
                         value *= self.__f_cutoff(deltaR_n, self.gamma, self.Rc2)*self.__f_cutoff(deltaR_m, self.gamma, self.Rc2)
 
@@ -275,13 +244,16 @@ class Angular_Fingerprint(object):
             fingerprint[i*self.Nbins2 + Nelements_2body: (i+1)*self.Nbins2 + Nelements_2body] = self.eta * feature[1][key]
         return fingerprint
 
-    def get_featureMat(self, atoms_list):
-        featureMat = []
-        for i, atoms in enumerate(atoms_list):
-            print('Calculating FeatureMat {}/{}\r'.format(i, len(atoms_list)), end='')
-            featureMat.append(self.get_feature(atoms))
-        print('\n')
-        #featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])
+    def get_featureMat(self, atoms_list, show_progress=False):
+        if show_progress:
+            featureMat = []
+            for i, atoms in enumerate(atoms_list):
+                print('Calculating FeatureMat {}/{}\r'.format(i, len(atoms_list)), end='')
+                featureMat.append(self.get_feature(atoms))
+            print('\n')
+        else:
+            featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])
+        featureMat = np.array(featureMat)
         return featureMat
     
     def get_featureGradient(self, atoms):
@@ -353,15 +325,9 @@ class Angular_Fingerprint(object):
                         continue
 
                     c = 0.25*np.sqrt(2)*self.binwidth1/self.sigma1
-                    if i == minbin_lim:
-                        arg_low = -self.m1
-                        arg_up = i+(1-binpos)
-                    elif i == maxbin_lim:
-                        arg_low = i-binpos
-                        arg_up = self.m1
-                    else:
-                        arg_low = i-binpos
-                        arg_up = i+(1-binpos)
+                    arg_low = max(-self.m1, i-binpos)
+                    arg_up = min(self.m1, i+(1-binpos))
+
                     #fc = self.__f_cutoff(deltaR, self.gamma, self.Rc1)
                     #fc_grad = self.__f_cutoff_grad(deltaR, self.gamma, self.Rc1)
                     #value1 = (0.5*fc_grad - fc/deltaR)*(erf(2*c*arg_up)-erf(2*c*arg_low))
@@ -432,9 +398,8 @@ class Angular_Fingerprint(object):
                     binpos = angle/self.binwidth2 - center_bin
 
                     # Lower and upper range of bins affected by the current angle.
-                    above_bin_center = int(binpos > 0.5)
-                    minbin_lim = -self.m2 - (1-above_bin_center)
-                    maxbin_lim = self.m2 + above_bin_center
+                    minbin_lim = -int(np.ceil(self.m2 - binpos))
+                    maxbin_lim = int(np.ceil(self.m2 - (1-binpos)))
                     for i in range(minbin_lim, maxbin_lim + 1):
                         newbin = center_bin + i
 
@@ -446,22 +411,11 @@ class Angular_Fingerprint(object):
 
                         # Calculate gauss contribution to current bin
                         c = 0.25*np.sqrt(2)*self.binwidth2 / self.sigma2
-                        if i == minbin_lim:
-                            arg_low = -(self.m2+0.5)
-                            arg_up = i+(1-binpos)
-                        elif i == maxbin_lim:
-                            arg_low = i-binpos
-                            arg_up = self.m2+0.5
-                        else:
-                            arg_low = i-binpos
-                            arg_up = i+(1-binpos)
+                        arg_low = max(-self.m2, i-binpos)
+                        arg_up = min(self.m2, i+(1-binpos))
+
                         value1 = 0.5*erf(2*c*arg_up)-0.5*erf(2*c*arg_low)
                         value2 = -1/(self.sigma2*np.sqrt(2*np.pi)) * (np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))
-
-                        
-
-                        
-                        
                         # divide by smearing_norm
                         value1 /= self.smearing_norm2
                         value2 /= self.smearing_norm2
@@ -495,11 +449,11 @@ class Angular_Fingerprint(object):
                         index_range_m = np.arange(self.dim*index_jm[1], self.dim*index_jm[1]+self.dim)
                         
                         # Add to the the gradient matrix
-                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jm*fc_jn_grad * dx/deltaR_n
-                        feature_grad[1][bondtype][newbin, index_range_n] += value1 * fc_jm*fc_jn_grad * dx/deltaR_n
+                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jm*fc_jn_grad * dx_jn/deltaR_n
+                        feature_grad[1][bondtype][newbin, index_range_n] += value1 * fc_jm*fc_jn_grad * dx_jn/deltaR_n
 
-                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jn*fc_jm_grad * dx/deltaR_m
-                        feature_grad[1][bondtype][newbin, index_range_m] += value1 * fc_jn*fc_jm_grad * dx/deltaR_m
+                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jn*fc_jm_grad * dx_jm/deltaR_m
+                        feature_grad[1][bondtype][newbin, index_range_m] += value1 * fc_jn*fc_jm_grad * dx_jm/deltaR_m
 
                         feature_grad[1][bondtype][newbin, index_range_j] += value2 * angle_j_grad * fc_jn * fc_jm
                         feature_grad[1][bondtype][newbin, index_range_n] += value2 * angle_n_grad * fc_jn * fc_jm
