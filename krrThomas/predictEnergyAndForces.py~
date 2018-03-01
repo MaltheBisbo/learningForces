@@ -1,0 +1,38 @@
+import numpy as np
+
+from angular_fingerprintFeature_test import Angular_Fingerprint
+from gaussComparator import gaussComparator
+from krr_class_new import krr_class
+
+import matplotlib.pyplot as plt
+
+from ase import Atoms
+from ase.io import read, write
+from ase.visualize import view
+
+def LC(atoms, featureCalculator, feature_filename, eta=1):
+
+    Ndata = len(atoms)
+    E = np.array([a.get_potential_energy() for a in atoms])
+    F = np.array([a.get_forces() for a in atoms])
+    try:
+        fingerprints = np.loadtxt(feature_filename, delimiter='\t')
+    except IOError:
+        fingerprints = np.zeros((Ndata, length_feature))
+        for i, structure in enumerate(atoms):
+            print('calculating features: {}/{}\r'.format(i, Ndata), end='')
+            fingerprints[i] = featureCalculator.get_feature(structure)
+        np.savetxt(filename, fingerprints, delimiter='\t')
+    print(filename)
+    Nradial = int(np.ceil(Rc1/binwidth1))
+    print('Nradiea:', Nradial)
+    Nbondtypes_2body = len(featureCalculator.bondtypes_2body)
+    if use_angular:
+        fingerprints[:, Nbondtypes_2body*Nradial:] *= eta
+    print('Nbins1:', featureCalculator.Nbins1)
+    print(len(fingerprints[0]))
+    print(featureCalculator.bondtypes_3body)
+    
+    # Set up KRR-model
+    comparator = gaussComparator()
+    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)

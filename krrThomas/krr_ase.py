@@ -54,17 +54,17 @@ class krr_class():
         
         return predicted_value
     
-    def predict_force(self, atoms, fnew=None):
+    def predict_force(self, atoms=None, fnew=None, fgrad=None):
         """
         Predict the force of a new structure.
         """
         if fnew is None:
             fnew = self.featureCalculator.get_feature(atoms)
-        
-        df_dR = self.featureCalculator.get_featureGradient(atoms)
+        if fgrad is None:
+            fgrad = self.featureCalculator.get_featureGradient(atoms)
         dk_df = self.comparator.get_jac(fnew, featureMat=self.featureMat[:self.Ndata])
 
-        kernelDeriv = np.dot(dk_df, df_dR)
+        kernelDeriv = np.dot(dk_df, fgrad.T)
         return -(kernelDeriv.T).dot(self.alpha)
 
     def add_data(self, data_values_add, featureMat_add):

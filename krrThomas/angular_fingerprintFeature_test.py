@@ -135,7 +135,6 @@ class Angular_Fingerprint(object):
                 binpos = deltaR/self.binwidth1 - center_bin  # From 0 to binwidth (set constant at 0.5*binwidth for original)
                 
                 # Lower and upper range of bins affected by the current atomic distance deltaR.
-                above_bin_center = int(binpos > 0.5)
                 minbin_lim = -int(np.ceil(self.m1 - binpos))
                 maxbin_lim = int(np.ceil(self.m1 - (1-binpos)))
 
@@ -267,7 +266,6 @@ class Angular_Fingerprint(object):
         n_atoms = self.n_atoms
         pos = atoms.get_positions()
         num = atoms.get_atomic_numbers()
-        atomic_types = self.atomic_types
         atomic_count = self.atomic_count
 
         # Get relevant neighbour unit-cells
@@ -316,7 +314,6 @@ class Angular_Fingerprint(object):
                 binpos = deltaR/self.binwidth1 - center_bin  # From 0 to binwidth (set constant at 0.5*binwidth for original)
 
                 # Lower and upper range of bins affected by the current atomic distance deltaR.
-                above_bin_center = int(binpos > 0.5)
                 minbin_lim = -int(np.ceil(self.m1 - binpos))  # -self.m1 - (1-above_bin_center)
                 maxbin_lim = int(np.ceil(self.m1 - (1-binpos)))  # self.m1 + above_bin_center
                 for i in range(minbin_lim, maxbin_lim + 1):
@@ -350,9 +347,9 @@ class Angular_Fingerprint(object):
 
         # Return feature - if angular part is not required
         if not self.use_angular:
-            fingerprint_grad = np.zeros((self.Nelements, n_atoms*self.dim))
+            fingerprint_grad = np.zeros((n_atoms*self.dim, self.Nelements))
             for i, key in enumerate(self.bondtypes_2body):
-                fingerprint_grad[i*self.Nbins1: (i+1)*self.Nbins1, :] = feature_grad[0][key]
+                fingerprint_grad[:, i*self.Nbins1: (i+1)*self.Nbins1] = feature_grad[0][key].T
             return fingerprint_grad
 
         ## Angular part ##
@@ -459,14 +456,26 @@ class Angular_Fingerprint(object):
                         feature_grad[1][bondtype][newbin, index_range_n] += value2 * angle_n_grad * fc_jn * fc_jm
                         feature_grad[1][bondtype][newbin, index_range_m] += value2 * angle_m_grad * fc_jn * fc_jm
 
-        fingerprint_grad = np.zeros((self.Nelements, n_atoms*self.dim))
+        fingerprint_grad = np.zeros((n_atoms*self.dim, self.Nelements))
         for i, key in enumerate(self.bondtypes_2body):
-            fingerprint_grad[i*self.Nbins1: (i+1)*self.Nbins1] = feature_grad[0][key]
+            fingerprint_grad[:, i*self.Nbins1: (i+1)*self.Nbins1] = feature_grad[0][key].T
         Nelements_2body = self.Nbins1 * len(self.bondtypes_2body)
         for i, key in enumerate(self.bondtypes_3body):
-            fingerprint_grad[i*self.Nbins2 + Nelements_2body: (i+1)*self.Nbins2 + Nelements_2body] = self.eta * feature_grad[1][key]
+            fingerprint_grad[:, i*self.Nbins2 + Nelements_2body: (i+1)*self.Nbins2 + Nelements_2body] = self.eta * feature_grad[1][key].T
         return fingerprint_grad
-        
+
+    def get_all_featureGradients(self, atoms_list, show_progress=False):
+        if show_progress:
+            feature_grads = []
+            for i, atoms in enumerate(atoms_list):
+                print('Calculating Feature Gradients {}/{}\r'.format(i, len(atoms_list)), end='')
+                feature_grads.append(self.get_featureGradient(atoms))
+            print('\n')
+        else:
+            feature_grads = np.array([self.get_featureGradient(atoms) for atoms in atoms_list])
+        feature_grads = np.array(feature_grads)
+        return feature_grads
+    
     def __get_neighbour_cells(self, pbc, cell):
 
         # Calculate neighbour cells
