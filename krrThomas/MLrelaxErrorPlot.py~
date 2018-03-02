@@ -67,9 +67,9 @@ def predictEandF(atoms, featureCalculator, feature_filename, feature_grad_filena
         feature_gradients_test = feature_gradients[i_test]
 
         # Perform training
-        MAE, params = krr.train(data_values=E_train, featureMat=features_train, add_new_data=False, k=5, **GSkwargs)
-        print('MAE:', MAE)
-        
+        FVU, params = krr.train(data_values=E_train, featureMat=features_train, add_new_data=False, k=5, **GSkwargs)
+
+        print(features_test.shape)
         # Perform testing
         E_predict[i_test] = np.array([krr.predict_energy(fnew=f) for f in features_test])
         F_predict[i_test] = np.array([krr.predict_force(fnew=features_test[i], fgrad=feature_gradients_test[i])
@@ -131,7 +131,7 @@ if __name__ == '__main__':
     featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=use_angular)
 
     # Predicting
-    Nsplit = 10
+    Nsplit = 2
     filepath = 'grapheneMLrelax/correlation/features/'
     feature_filename = filepath + 'features_all2'
     feature_grad_filename = filepath + 'feature_grads_all2'
