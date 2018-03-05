@@ -4,13 +4,12 @@ import numpy as np
 from math import erf
 from itertools import product
 from scipy.spatial.distance import cdist
-import pdb
 
 try:
     cwd = sys.argv[1]
 except:
     cwd = os.getcwd()
-    
+
 class Angular_Fingerprint(object):
     """ comparator for construction of angular fingerprints
     """
@@ -18,6 +17,7 @@ class Angular_Fingerprint(object):
     def __init__(self, atoms, Rc1=4.0, Rc2=4.0, binwidth1=0.1, Nbins2=30, sigma1=0.2, sigma2=0.10, nsigma=4, eta=1, gamma=3, use_angular=True):
         """ Set a common cut of radius
         """
+
         self.Rc1 = Rc1
         self.Rc2 = Rc2
         self.binwidth1 = binwidth1
@@ -40,17 +40,13 @@ class Angular_Fingerprint(object):
         self.dim = 3
 
         # parameters for the binning:
-        self.m1 = int(np.ceil(self.nsigma*self.sigma1/self.binwidth1))  # number of neighbour bins included.
-        self.smearing_norm1 = erf(0.25*np.sqrt(2)*self.binwidth1*(2*self.m1+1)*1./self.sigma1)  # Integral of the included part of the gauss
+        self.m1 = self.nsigma*self.sigma1/self.binwidth1  # number of neighbour bins included.
+        self.smearing_norm1 = erf(1/np.sqrt(2) * self.m1 * self.binwidth1/self.sigma1)  # Integral of the included part of the gauss
         self.Nbins1 = int(np.ceil(self.Rc1/self.binwidth1))
 
-        self.m2 = int(np.ceil(self.nsigma*self.sigma2/self.binwidth2))  # number of neighbour bins included.
-        self.smearing_norm2 = erf(0.25*np.sqrt(2)*self.binwidth2*(2*self.m2+1)*1./self.sigma2)  # Integral of the included part of the gauss
+        self.m2 = self.nsigma*self.sigma2/self.binwidth2  # number of neighbour bins included.
+        self.smearing_norm2 = erf(1/np.sqrt(2) * self.m2 * self.binwidth2/self.sigma2)  # Integral of the included part of the gauss
         self.binwidth2 = np.pi/Nbins2
-        
-        # Cutoff surface areas
-        self.cutoff_volume1 = 4/3*np.pi*self.Rc1**3
-        self.cutoff_surface_area2 = 4*np.pi*self.Rc2**2
 
         # Create bondtype lists
         # 2body
@@ -87,23 +83,25 @@ class Angular_Fingerprint(object):
             self.Nelements = Nelements_2body + Nelements_3body
         else:
             self.Nelements = Nelements_2body
-        
+
     def get_feature(self, atoms):
         """
         """
-        # Wrap atoms into unit-cell
-        #atoms.wrap()
-        
+
         pbc = self.pbc
         cell = self.cell
         n_atoms = self.n_atoms
         pos = atoms.get_positions()
         num = atoms.get_atomic_numbers()
-        atomic_types = self.atomic_types
         atomic_count = self.atomic_count
+
+        # Initialize fingerprint
+        feature = [{} for _ in range(2)]
 
         # Get relevant neighbour unit-cells
         neighbourcells = self.__get_neighbour_cells(pbc, cell)
+
+        ## Radial part ##
 
         # Calculate neighbour lists - 2body
         nb_deltaRs = [[] for _ in range(n_atoms)]
@@ -118,59 +116,45 @@ class Angular_Fingerprint(object):
                         if j >= 0:
                             nb_deltaRs[i].append(deltaRs[j])
                             nb_bondtype[i].append(tuple(sorted([num[i], num[j]])))
-        
-        # Initialize fingerprint object
-        feature = [{} for _ in range(2)]
 
-        ## Radial part ##
-        
         # Initialize 2body bondtype dictionary
         for bondtype in self.bondtypes_2body:
             feature[0][bondtype] = np.zeros(self.Nbins1)
-            
+
         # Calculate radial features
         for j in range(n_atoms):
             for n in range(len(nb_deltaRs[j])):
                 deltaR = nb_deltaRs[j][n]
 
+                # Calculate normalization
+                type1, type2 = nb_bondtype[j][n]
+                num_pairs = atomic_count[type1] * atomic_count[type2]
+                normalization = 1./self.smearing_norm1
+                normalization /= 4*np.pi*deltaR**2 * self.binwidth1 * num_pairs/self.volume
+                #value *= self.__f_cutoff(deltaR, self.gamma, self.Rc1)
+
                 # Identify what bin 'deltaR' belongs to + it's position in this bin
                 center_bin = int(np.floor(deltaR/self.binwidth1))
-                binpos = deltaR/self.binwidth1 - center_bin  # From 0 to binwidth (set constant at 0.5*binwidth for original)
+                binpos = deltaR/self.binwidth1 - center_bin
 
                 # Lower and upper range of bins affected by the current atomic distance deltaR.
-                above_bin_center = int(binpos > 0.5)
-                minbin_lim = -self.m1 - (1-above_bin_center)
-                maxbin_lim = self.m1 + above_bin_center
+                minbin_lim = -int(np.ceil(self.m1 - binpos))
+                maxbin_lim = int(np.ceil(self.m1 - (1-binpos)))
+
                 for i in range(minbin_lim, maxbin_lim + 1):
                     newbin = center_bin + i
                     if newbin < 0 or newbin >= self.Nbins1:
                         continue
 
                     # Calculate gauss contribution to current bin
-                    c = 0.25*np.sqrt(2)*self.binwidth1*1./self.sigma1
-                    if i == minbin_lim:
-                        erfarg_low = -(self.m1+0.5)
-                        erfarg_up = i+(1-binpos)
-                    elif i == maxbin_lim:
-                        erfarg_low = i-binpos
-                        erfarg_up = self.m1+0.5
-                    else:
-                        erfarg_low = i-binpos
-                        erfarg_up = i+(1-binpos)
-                    value = 0.5*erf(2*c*erfarg_up)-0.5*erf(2*c*erfarg_low)
-                    
-                    # divide by smearing_norm
-                    value /= self.smearing_norm1
+                    c = 1./np.sqrt(2)*self.binwidth1/self.sigma1
+                    erfarg_low = max(-self.m1, i-binpos)
+                    erfarg_up = min(self.m1, i+(1-binpos))
+                    value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)
 
-                    # Normalize
-                    type1, type2 = nb_bondtype[j][n]
-                    num_pairs = atomic_count[type1] * atomic_count[type2]
-                    value /= 4*np.pi*deltaR**2 * self.binwidth1 * num_pairs/self.volume
-                    #value *= self.__f_cutoff(deltaR, self.gamma, self.Rc1)
+                    # Apply normalization
+                    value *= normalization
 
-                    if nb_bondtype[j][n] == (1,2) and newbin == 1 and deltaR > 2.5:
-                        print(deltaR, center_bin, binpos, newbin, value, erfarg_low, erfarg_up, minbin_lim, i, self.m1)
-                    
                     feature[0][nb_bondtype[j][n]][newbin] += value
 
         # Return feature - if angular part is not required
@@ -198,14 +182,10 @@ class Angular_Fingerprint(object):
                             nb_bondtype_ang[i].append(tuple([num[i], num[j]]))
                             nb_distVec_ang[i].append(distVec[j] - pos[i])
 
-        #print([len(l) for l in nb_deltaRs_ang])
-        d4 = np.array(nb_deltaRs_ang[4])
-        print(d4[d4 > 2.95])
-    
         # Initialize 3body bondtype dictionary
         for bondtype in self.bondtypes_3body:
             feature[1][bondtype] = np.zeros(self.Nbins2)
-            
+
         # Calculate angular features
         for j in range(n_atoms):
             for n in range(len(nb_deltaRs_ang[j])):
@@ -219,15 +199,19 @@ class Angular_Fingerprint(object):
 
                     bondtype = tuple([type_j] + sorted([type_n, type_m]))
                     angle, _ = self.__angle(nb_distVec_ang[j][n], nb_distVec_ang[j][m])
-                    
+
+                    # Calculate normalization
+                    num_pairs = atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
+                    normalization = 1./self.smearing_norm2
+                    normalization /= num_pairs/self.volume
+
                     # Identify what bin 'angle' belongs to + it's position in this bin
                     center_bin = int(np.floor(angle/self.binwidth2))
                     binpos = angle/self.binwidth2 - center_bin
 
                     # Lower and upper range of bins affected by the current angle.
-                    above_bin_center = int(binpos > 0.5)
-                    minbin_lim = -self.m2 - (1-above_bin_center)
-                    maxbin_lim = self.m2 + above_bin_center
+                    minbin_lim = -int(np.ceil(self.m2 - binpos))
+                    maxbin_lim = int(np.ceil(self.m2 - (1-binpos)))
                     for i in range(minbin_lim, maxbin_lim + 1):
                         newbin = center_bin + i
 
@@ -235,33 +219,21 @@ class Angular_Fingerprint(object):
                         if newbin < 0:
                             newbin = abs(newbin)
                         if newbin > self.Nbins2-1:
-                            newbin = self.Nbins2 - newbin % (self.Nbins2 - 1)
+                            newbin = 2*self.Nbins2 - newbin - 1
 
-                        # Calculate gauss contribution to current bin
-                        c = 0.25*np.sqrt(2)*self.binwidth2*1./self.sigma2
-                        if i == minbin_lim:
-                            erfarg_low = -(self.m2+0.5)
-                            erfarg_up = i+(1-binpos)
-                        elif i == maxbin_lim:
-                            erfarg_low = i-binpos
-                            erfarg_up = self.m2+0.5
-                        else:
-                            erfarg_low = i-binpos
-                            erfarg_up = i+(1-binpos)
-                        value = 0.5*erf(2*c*erfarg_up)-0.5*erf(2*c*erfarg_low)
-                        
-                        # divide by smearing_norm
-                        value /= self.smearing_norm2
+                        # Calculate gauss+cutoff contribution to current bin
+                        c = 1./np.sqrt(2)*self.binwidth2/self.sigma2
+                        erfarg_low = max(-self.m2, i-binpos)
+                        erfarg_up = min(self.m2, i+(1-binpos))
+                        value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)
+                        value *= self.__f_cutoff(deltaR_n, self.gamma, self.Rc2)
+                        value *= self.__f_cutoff(deltaR_m, self.gamma, self.Rc2)
 
-                        num_pairs = atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
-                        #bin_volume = 2/3*np.pi*self.Rc2**3*(np.cos(angle-self.binwidth2/2) - np.cos(angle+self.binwidth2/2))
-                        value /= num_pairs/self.volume
-                        #value /= bin_volume * num_pairs/self.volume
-                        #value /= (4*np.pi*(deltaR_n**2 + deltaR_m**2)) * self.binwidth2 * num_pairs/self.volume
-                        value *= self.__f_cutoff(deltaR_n, self.gamma, self.Rc2)*self.__f_cutoff(deltaR_m, self.gamma, self.Rc2)
+                        # Apply normalization
+                        value *= normalization
 
                         feature[1][bondtype][newbin] += value
-        
+
         fingerprint = np.zeros(self.Nelements)
         for i, key in enumerate(self.bondtypes_2body):
             fingerprint[i*self.Nbins1: (i+1)*self.Nbins1] = feature[0][key]
@@ -270,27 +242,22 @@ class Angular_Fingerprint(object):
             fingerprint[i*self.Nbins2 + Nelements_2body: (i+1)*self.Nbins2 + Nelements_2body] = self.eta * feature[1][key]
         return fingerprint
 
-    def get_featureMat(self, atoms_list):
-        featureMat = []
-        for i, atoms in enumerate(atoms_list):
-            print('Calculating FeatureMat {}/{}\r'.format(i, len(atoms_list)), end='')
-            featureMat.append(self.get_feature(atoms))
-        print('\n')
-        #featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])
+    def get_featureMat(self, atoms_list, show_progress=False):
+        featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])
+        featureMat = np.array(featureMat)
         return featureMat
-    
+
     def get_featureGradient(self, atoms):
         """
         --input--
         x: atomic positions for a single structure in the form [x1, y1, ... , xN, yN]
         """
-        
+
         pbc = self.pbc
         cell = self.cell
         n_atoms = self.n_atoms
         pos = atoms.get_positions()
         num = atoms.get_atomic_numbers()
-        atomic_types = self.atomic_types
         atomic_count = self.atomic_count
 
         # Get relevant neighbour unit-cells
@@ -313,12 +280,12 @@ class Angular_Fingerprint(object):
                             nb_deltaRs[i].append(deltaRs[j])
                             nb_bondtype[i].append(tuple(sorted([num[i], num[j]])))
                             nb_index[i].append((i,j))
-        
+
         # Initialize fingerprint gradient dictionaries
         feature_grad = [{} for _ in range(2)]
 
         ## Radial part ##
-        
+
         # Initialize 2body bondtype dictionary
         for bondtype in self.bondtypes_2body:
             feature_grad[0][bondtype] = np.zeros((self.Nbins1, n_atoms*self.dim))
@@ -334,44 +301,34 @@ class Angular_Fingerprint(object):
                 dx = nb_distVec[j][n]
                 index = nb_index[j][n]
 
+                # Calculate normalization
+                type1, type2 = nb_bondtype[j][n]
+                num_pairs = atomic_count[type1] * atomic_count[type2]
+                normalization = 1/self.smearing_norm1
+                normalization /= 4*np.pi*deltaR**2 * self.binwidth1 * num_pairs/self.volume
+
                 # Identify what bin 'deltaR' belongs to + it's position in this bin
                 center_bin = int(np.floor(deltaR/self.binwidth1))
-                binpos = deltaR/self.binwidth1 - center_bin  # From 0 to binwidth (set constant at 0.5*binwidth for original)
+                binpos = deltaR/self.binwidth1 - center_bin
 
                 # Lower and upper range of bins affected by the current atomic distance deltaR.
-                above_bin_center = int(binpos > 0.5)
-                minbin_lim = -self.m1 - (1-above_bin_center)
-                maxbin_lim = self.m1 + above_bin_center
+                minbin_lim = -int(np.ceil(self.m1 - binpos))
+                maxbin_lim = int(np.ceil(self.m1 - (1-binpos)))
                 for i in range(minbin_lim, maxbin_lim + 1):
                     newbin = center_bin + i
                     if newbin < 0 or newbin >= self.Nbins1:
                         continue
 
-                    c = 0.25*np.sqrt(2)*self.binwidth1/self.sigma1
-                    if i == minbin_lim:
-                        arg_low = -(self.m1+0.5)
-                        arg_up = i+(1-binpos)
-                    elif i == maxbin_lim:
-                        arg_low = i-binpos
-                        arg_up = self.m1+0.5
-                    else:
-                        arg_low = i-binpos
-                        arg_up = i+(1-binpos)
-                    #fc = self.__f_cutoff(deltaR, self.gamma, self.Rc1)
-                    #fc_grad = self.__f_cutoff_grad(deltaR, self.gamma, self.Rc1)
-                    #value1 = (0.5*fc_grad - fc/deltaR)*(erf(2*c*arg_up)-erf(2*c*arg_low))
-                    #value2 = -fc * 1/(self.sigma1*np.sqrt(2*np.pi)) * (np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))
-                    value1 = -1./deltaR*(erf(2*c*arg_up)-erf(2*c*arg_low))
-                    value2 = -1/(self.sigma1*np.sqrt(2*np.pi)) * (np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))
+                    # Calculate gauss contribution to current bin
+                    c = 1/np.sqrt(2)*self.binwidth1/self.sigma1
+                    arg_low = max(-self.m1, i-binpos)
+                    arg_up = min(self.m1, i+(1-binpos))
+                    value1 = -1./deltaR*(erf(c*arg_up)-erf(c*arg_low))
+                    value2 = -1/(self.sigma1*np.sqrt(2*np.pi)) * (np.exp(-(c*arg_up)**2) - np.exp(-(c*arg_low)**2))
                     value = value1 + value2
-                    
-                    # divide by smearing_norm
-                    value /= self.smearing_norm1
 
-                    # Normalize
-                    type1, type2 = nb_bondtype[j][n]
-                    num_pairs = atomic_count[type1] * atomic_count[type2]
-                    value /= 4*np.pi*deltaR**2 * self.binwidth1 * num_pairs/self.volume
+                    # Apply normalization
+                    value *= normalization
 
                     # Add to the the gradient matrix
                     feature_grad[0][nb_bondtype[j][n]][newbin, self.dim*index[0]:self.dim*index[0]+self.dim] += -value/deltaR*dx
@@ -379,13 +336,13 @@ class Angular_Fingerprint(object):
 
         # Return feature - if angular part is not required
         if not self.use_angular:
-            fingerprint_grad = np.zeros((self.Nelements, n_atoms*self.dim))
+            fingerprint_grad = np.zeros((n_atoms*self.dim, self.Nelements))
             for i, key in enumerate(self.bondtypes_2body):
-                fingerprint_grad[i*self.Nbins1: (i+1)*self.Nbins1, :] = feature_grad[0][key]
+                fingerprint_grad[:, i*self.Nbins1: (i+1)*self.Nbins1] = feature_grad[0][key].T
             return fingerprint_grad
 
         ## Angular part ##
-        
+
         # Calculate neighbour lists - 3body
         nb_deltaRs_ang = [[] for _ in range(n_atoms)]
         nb_bondtype_ang = [[] for _ in range(n_atoms)]
@@ -403,7 +360,7 @@ class Angular_Fingerprint(object):
                             nb_bondtype_ang[i].append(tuple([num[i], num[j]]))
                             nb_distVec_ang[i].append(distVec[j] - pos[i])
                             nb_index_ang[i].append((i,j))
-                            
+
         # Initialize 3body bondtype dictionary
         for bondtype in self.bondtypes_3body:
             feature_grad[1][bondtype] = np.zeros((self.Nbins2, n_atoms*self.dim))
@@ -421,15 +378,19 @@ class Angular_Fingerprint(object):
 
                     bondtype = tuple([type_j] + sorted([type_n, type_m]))
                     angle, cos_angle = self.__angle(nb_distVec_ang[j][n], nb_distVec_ang[j][m])
-                    
+
+                    # Calculate normalization
+                    num_pairs = atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
+                    normalization = 1./self.smearing_norm2
+                    normalization /= num_pairs/self.volume
+
                     # Identify what bin 'angle' belongs to + it's position in this bin
                     center_bin = int(np.floor(angle/self.binwidth2))
                     binpos = angle/self.binwidth2 - center_bin
 
                     # Lower and upper range of bins affected by the current angle.
-                    above_bin_center = int(binpos > 0.5)
-                    minbin_lim = -self.m2 - (1-above_bin_center)
-                    maxbin_lim = self.m2 + above_bin_center
+                    minbin_lim = -int(np.ceil(self.m2 - binpos))
+                    maxbin_lim = int(np.ceil(self.m2 - (1-binpos)))
                     for i in range(minbin_lim, maxbin_lim + 1):
                         newbin = center_bin + i
 
@@ -437,35 +398,19 @@ class Angular_Fingerprint(object):
                         if newbin < 0:
                             newbin = abs(newbin)
                         if newbin > self.Nbins2 - 1:
-                            newbin = self.Nbins2 - newbin % (self.Nbins2 - 1)
+                            newbin = 2*self.Nbins2 - newbin - 1
 
                         # Calculate gauss contribution to current bin
-                        c = 0.25*np.sqrt(2)*self.binwidth2 / self.sigma2
-                        if i == minbin_lim:
-                            arg_low = -(self.m2+0.5)
-                            arg_up = i+(1-binpos)
-                        elif i == maxbin_lim:
-                            arg_low = i-binpos
-                            arg_up = self.m2+0.5
-                        else:
-                            arg_low = i-binpos
-                            arg_up = i+(1-binpos)
-                        value1 = 0.5*erf(2*c*arg_up)-0.5*erf(2*c*arg_low)
-                        value2 = -1/(self.sigma2*np.sqrt(2*np.pi)) * (np.exp(-(2*c*arg_up)**2) - np.exp(-(2*c*arg_low)**2))
+                        c = 1./np.sqrt(2)*self.binwidth2 / self.sigma2
+                        arg_low = max(-self.m2, i-binpos)
+                        arg_up = min(self.m2, i+(1-binpos))
+                        value1 = 0.5*erf(c*arg_up)-0.5*erf(c*arg_low)
+                        value2 = -1./(self.sigma2*np.sqrt(2*np.pi)) * (np.exp(-(c*arg_up)**2) - np.exp(-(c*arg_low)**2))
 
-                        
+                        # Apply normalization
+                        value1 *= normalization
+                        value2 *= normalization
 
-                        
-                        
-                        # divide by smearing_norm
-                        value1 /= self.smearing_norm2
-                        value2 /= self.smearing_norm2
-
-                        # Normalize
-                        num_pairs = atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
-                        value1 /= num_pairs/self.volume
-                        value2 /= num_pairs/self.volume
-                        
                         fc_jn = self.__f_cutoff(deltaR_n, self.gamma, self.Rc2)
                         fc_jm = self.__f_cutoff(deltaR_m, self.gamma, self.Rc2)
                         fc_jn_grad = self.__f_cutoff_grad(deltaR_n, self.gamma, self.Rc2)
@@ -488,26 +433,31 @@ class Angular_Fingerprint(object):
                         index_range_j = np.arange(self.dim*index_jn[0], self.dim*index_jn[0]+self.dim)
                         index_range_n = np.arange(self.dim*index_jn[1], self.dim*index_jn[1]+self.dim)
                         index_range_m = np.arange(self.dim*index_jm[1], self.dim*index_jm[1]+self.dim)
-                        
-                        # Add to the the gradient matrix
-                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jm*fc_jn_grad * dx/deltaR_n
-                        feature_grad[1][bondtype][newbin, index_range_n] += value1 * fc_jm*fc_jn_grad * dx/deltaR_n
 
-                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jn*fc_jm_grad * dx/deltaR_m
-                        feature_grad[1][bondtype][newbin, index_range_m] += value1 * fc_jn*fc_jm_grad * dx/deltaR_m
+                        # Add to the the gradient matrix
+                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jm*fc_jn_grad * dx_jn/deltaR_n
+                        feature_grad[1][bondtype][newbin, index_range_n] += value1 * fc_jm*fc_jn_grad * dx_jn/deltaR_n
+
+                        feature_grad[1][bondtype][newbin, index_range_j] += -value1 * fc_jn*fc_jm_grad * dx_jm/deltaR_m
+                        feature_grad[1][bondtype][newbin, index_range_m] += value1 * fc_jn*fc_jm_grad * dx_jm/deltaR_m
 
                         feature_grad[1][bondtype][newbin, index_range_j] += value2 * angle_j_grad * fc_jn * fc_jm
                         feature_grad[1][bondtype][newbin, index_range_n] += value2 * angle_n_grad * fc_jn * fc_jm
                         feature_grad[1][bondtype][newbin, index_range_m] += value2 * angle_m_grad * fc_jn * fc_jm
 
-        fingerprint_grad = np.zeros((self.Nelements, n_atoms*self.dim))
+        fingerprint_grad = np.zeros((n_atoms*self.dim, self.Nelements))
         for i, key in enumerate(self.bondtypes_2body):
-            fingerprint_grad[i*self.Nbins1: (i+1)*self.Nbins1] = feature_grad[0][key]
+            fingerprint_grad[:, i*self.Nbins1: (i+1)*self.Nbins1] = feature_grad[0][key].T
         Nelements_2body = self.Nbins1 * len(self.bondtypes_2body)
         for i, key in enumerate(self.bondtypes_3body):
-            fingerprint_grad[i*self.Nbins2 + Nelements_2body: (i+1)*self.Nbins2 + Nelements_2body] = self.eta * feature_grad[1][key]
+            fingerprint_grad[:, i*self.Nbins2 + Nelements_2body: (i+1)*self.Nbins2 + Nelements_2body] = self.eta * feature_grad[1][key].T
         return fingerprint_grad
-        
+
+    def get_all_featureGradients(self, atoms_list, show_progress=False):
+        feature_grads = np.array([self.get_featureGradient(atoms) for atoms in atoms_list])
+        feature_grads = np.array(feature_grads)
+        return feature_grads
+
     def __get_neighbour_cells(self, pbc, cell):
 
         # Calculate neighbour cells
@@ -526,7 +476,7 @@ class Angular_Fingerprint(object):
             neighbourcells.append((x,y,z))
 
         return neighbourcells
-    
+
     def __angle(self, vec1, vec2):
         """
         Returns angle with convention [0,pi]
@@ -540,7 +490,7 @@ class Angular_Fingerprint(object):
         elif arg > 1:
             arg = 1.
         return np.arccos(arg), arg
-    
+
     def __f_cutoff(self, r, gamma, Rc):
         """
         Polinomial cutoff function in the, with the steepness determined by "gamma"
@@ -551,51 +501,51 @@ class Angular_Fingerprint(object):
             return 1 + gamma*(r/Rc)**(gamma+1) - (gamma+1)*(r/Rc)**gamma
         else:
             return 1
-        
+
     def __f_cutoff_grad(self, r, gamma, Rc):
         if not gamma == 0:
             return gamma*(gamma+1)/Rc * ((r/Rc)**gamma - (r/Rc)**(gamma-1))
         else:
             return 0
-        
+
     def angle2_grad(self, RijVec, RikVec):
         Rij = np.linalg.norm(RijVec)
         Rik = np.linalg.norm(RikVec)
-        
+
         a = RijVec/Rij - RikVec/Rik
         b = RijVec/Rij + RikVec/Rik
         A = np.linalg.norm(a)
         B = np.linalg.norm(b)
         D = A/B
-        
+
         RijMat = np.dot(RijVec[:,np.newaxis], RijVec[:,np.newaxis].T)
         RikMat = np.dot(RikVec[:,np.newaxis], RikVec[:,np.newaxis].T)
 
         a_grad_j = -1/Rij**3 * RijMat + 1/Rij * np.identity(3)
         b_grad_j = a_grad_j
-        
+
         a_sum_j = np.sum(a*a_grad_j, axis=1)
         b_sum_j = np.sum(b*b_grad_j, axis=1)
-        
+
         grad_j = 2/(1+D**2) * (1/(A*B) * a_sum_j - A/(B**3) * b_sum_j)
-        
-        
-        
+
+
+
         a_grad_k = 1/Rik**3 * RikMat - 1/Rik * np.identity(3)
         b_grad_k = -a_grad_k
-        
+
         a_sum_k = np.sum(a*a_grad_k, axis=1)
         b_sum_k = np.sum(b*b_grad_k, axis=1)
-        
+
         grad_k = 2/(1+D**2) * (1/(A*B) * a_sum_k - A/(B**3) * b_sum_k)
-        
-        
+
+
         a_grad_i = -(a_grad_j + a_grad_k)
         b_grad_i = -(b_grad_j + b_grad_k)
-        
+
         a_sum_i = np.sum(a*a_grad_i, axis=1)
         b_sum_i = np.sum(b*b_grad_i, axis=1)
-        
+
         grad_i = 2/(1+D**2) * (1/(A*B) * a_sum_i - A/(B**3) * b_sum_i)
-        
+
         return grad_i, grad_j, grad_k
