@@ -2,7 +2,7 @@ import numpy as np
 import pdb
 
 
-class krr_class():
+class vector_krr_class():
     """
     comparator:
     Class to calculate similarities between structures based on their feature vectors.
@@ -26,8 +26,12 @@ class krr_class():
         # Initialize data arrays
         max_data = 15000
         length_feature = featureCalculator.Nelements  # featureCalculator.Nbins
-        self.data_values = np.zeros(max_data)
+        self.Natoms = featureCalculator.n_atoms
+        self.dim = featureCalculator.dim
+
+        self.data_values = np.zeros((max_data, self.Natoms*self.dim))
         self.featureMat = np.zeros((max_data, length_feature))
+        self.featureGradMat = np.zeros((max_data, self.Natoms*self.dim, length_feature))
         
         # Initialize data counter
         self.Ndata = 0
@@ -102,7 +106,7 @@ class krr_class():
         A = similarityMat + reg*np.identity(len(data_values))
         self.alpha = np.linalg.solve(A, data_values - self.beta)
         
-    def train(self, atoms_list=None, data_values=None, featureMat=None, add_new_data=True, k=3, **GSkwargs):
+    def train(self, atoms_list=None, forces=None, featureMat=None, add_new_data=True, k=3, **GSkwargs):
         """
         Train the model using gridsearch and cross-validation
             
@@ -129,39 +133,53 @@ class krr_class():
         
         if featureMat is None:
             featureMat = self.featureCalculator.get_featureMat(atoms_list)
-            data_values = np.array([atoms.get_potential_energy() for atoms in atoms_list])
+            featureGradMat = self.featureCalculator.get_all_featureGradients(atoms_list)
+
+        if forces is None:
+            forces = np.array([atoms.get_forces() for atoms in atoms_list])
             
         if add_new_data:
-            self.add_data(data_values, featureMat)
+            pass
+            # self.add_data(data_values, featureMat)
         else:
-            self.Ndata = len(data_values)
-            self.data_values[0:self.Ndata] = data_values
+            self.Ndata = len(atoms_list)
+            self.data_values[0:self.Ndata] = forces.reshape((self.Ndata, -1))
             self.featureMat[0:self.Ndata] = featureMat
+            self.featureGradMat[0:self.Ndata] = featureGradMat
 
-        FVU, params = self.__gridSearch(self.data_values[:self.Ndata], self.featureMat[:self.Ndata], k=k, **GSkwargs)
+        FVU, params = self.__gridSearch(self.forces[:self.Ndata], self.featureMat[:self.Ndata],
+                                        self.featureGradMat[0:self.Ndata], k=k, **GSkwargs)
 
         return FVU, params
             
-    def __gridSearch(self, data_values, featureMat, k, **GSkwargs):
+    def __gridSearch(self, forces, featureMat, featureGradMat, k, **GSkwargs):
         """
         Performs grid search in the set of hyperparameters specified in **GSkwargs.
 
         Used k-fold cross-validation for error estimates.
         """
+        Ncoord = self.Natoms*self.dim
+        
         sigma_array = GSkwargs['sigma']
         reg_array = GSkwargs['reg']
 
         FVU_min = None
         best_args = np.zeros(2).astype(int)
         best_similarityMat = None
-
+        
         for i, sigma in enumerate(sigma_array):
             # Calculate similarity matrix for current sigma
+            kernel_Hess_mat = np.zeros((Ncoord*self.Ndata, Ncoord*self.Ndata))
+            for n in range(self.Ndata):
+                for m in range(self.Ndata):
+                    kernel_Hess = self.comparator.get_Hess_single(featureMat[n], featureMat[m])
+                    kernel_Hess_mat[n*Ncoord:(n+1)*Ncoord,
+                                    m*Ncoord:(m+1)*Ncoord] = featureGradMat[n].T @ kernel_Hess @ featureGradMat[m]
             self.comparator.set_args(sigma=sigma)
             similarityMat = self.comparator.get_similarity_matrix(featureMat)
 
             for j, reg in enumerate(reg_array):
-                FVU = self.__cross_validation(data_values, similarityMat, k=k, reg=reg)
+                FVU = self.__cross_validation(forces, similarityMat, k=k, reg=reg)
                 if FVU_min is None or FVU < FVU_min:
                     FVU_min = FVU
                     best_args = np.array([i, j])

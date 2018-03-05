@@ -47,38 +47,6 @@ def predictE(atoms_train, atoms_predict, featureCalculator, feature_filename, et
 
     return Epred, Epred_error, theta0
 
-def correlationPlot(values1, values2, title='', xlabel='', ylabel='', color_weights=None):
-    plt.figure()
-    max_value = max(np.max(values1), np.max(values2))
-    min_value = min(np.min(values1), np.min(values2))
-    
-    plt.xlim(min_value, max_value)
-    plt.ylim(min_value, max_value)
-    # Plot line
-    line = [min_value,max_value]
-    plt.plot(line, line, color='r')
-    # Plot points
-    # Set title and labels
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    if color_weights is not None:
-        cm = plt.cm.get_cmap('RdYlBu_r')
-        sc = plt.scatter(values1, values2, c=color_weights, alpha=0.7, vmin=0, vmax=2, cmap=cm)
-        cbar = plt.colorbar(sc)
-        cbar.set_label('cosine distance')
-    else:
-        plt.scatter(values1, values2, alpha=0.5)
-
-def distributionPlot(x, title='', xlabel=''):
-    plt.figure()
-    bins = np.linspace(0, np.max(x), max(int(len(x)/20), 10))
-    plt.hist(x, bins=bins)
-    # Set title and labels
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel('counts')
-
 
 if __name__ == '__main__':
     atoms_train = read('graphene_data/graphene_all2.traj', index=':')

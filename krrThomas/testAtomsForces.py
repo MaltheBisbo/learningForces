@@ -112,61 +112,18 @@ def distributionPlot(x, title='', xlabel=''):
     
 if __name__ == '__main__':
     atoms = read('graphene_data/graphene_all2.traj', index=':')
-    Ndata = len(atoms)
-    a0 = atoms[0]
 
-    # Setting up the featureCalculator
-    Rc1 = 5
-    binwidth1 = 0.2
-    sigma1 = 0.2
+    pos_all = np.array([a.get_positions() for a in atoms])
+    F_all = np.array([a.get_forces() for a in atoms])
+
+    F0 = F_all[0].reshape(-1)[:5]
+    F1 = F_all[1].reshape(-1)[:5]
     
-    Rc2 = 4
-    Nbins2 = 30
-    sigma2 = 0.2
-    
-    use_angular = True
-    gamma = 1
-    eta = 50
-    
-    featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=use_angular)
-
-    # Predicting
-    Nsplit = 10
-    filepath = 'grapheneMLrelax/correlation/features/'
-    feature_filename = filepath + 'features_all2'
-    feature_grad_filename = filepath + 'feature_grads_all2'
-    E, F, Epred, Fpred = predictEandF(atoms, featureCalculator, feature_filename=feature_filename, feature_grad_filename=feature_grad_filename, Nsplit=Nsplit, eta=eta)
-    print('shape F:', F.shape)
-    print('shape Fpred:', Fpred.shape)
-
-    F = F.reshape((Ndata, -1))
-    cos_dists = np.array([cosine(F[i], Fpred[i]) for i in range(Ndata)])
-    distributionPlot(cos_dists, title='Cosine distance distribution between target and predicted forces\n0=paralel, 1=orthogonal, 2=anti-parallel',
-                     xlabel='cosine distance')
-
-    print(F.shape)
-    F_norm = np.linalg.norm(F, axis=1)
-    Fpred_norm = np.linalg.norm(Fpred, axis=1)
-    print(F_norm.shape)
-    correlationPlot(Fpred_norm, F_norm, title='Force-norm correlation', xlabel='|F| predicted', ylabel='|F| target', color_weights=cos_dists)
-    
-    # reshape forces
-    F = F.reshape(-1)
-    Fpred = Fpred.reshape(-1)
-
-    correlationPlot(Epred, E, title='Energy correlation', xlabel='E predicted', ylabel='E target')
-    correlationPlot(Fpred, F, title='Force correlation', xlabel='F predicted', ylabel='F target')
-
-    # reshape back
-    F = F.reshape((Ndata, -1))
-    Fpred = Fpred.reshape((Ndata, -1))
-    
-    
-    
-
-
-
-    plt.show()
-
-    
+    Fnew = np.r_[F0,F1]
+    print(F0.shape)
+    print(F1.shape)
+    print(Fnew.shape)
+    print(F0)
+    print(F1)
+    print(Fnew)
     
