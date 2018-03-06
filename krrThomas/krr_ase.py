@@ -51,8 +51,6 @@ class krr_class():
             return predicted_value, predicted_error, theta0
         else:
             return predicted_value
-        
-        return predicted_value
     
     def predict_force(self, atoms=None, fnew=None, fgrad=None):
         """

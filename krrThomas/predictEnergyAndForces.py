@@ -141,21 +141,21 @@ if __name__ == '__main__':
 
     F = F.reshape((Ndata, -1))
     cos_dists = np.array([cosine(F[i], Fpred[i]) for i in range(Ndata)])
-    distributionPlot(cos_dists, title='Cosine distance distribution between target and predicted forces\n0=paralel, 1=orthogonal, 2=anti-parallel',
+    distributionPlot(cos_dists, title='Cosine distance distribution between target and predicted forces\n0=parallel, 1=orthogonal, 2=anti-parallel',
                      xlabel='cosine distance')
 
     print(F.shape)
     F_norm = np.linalg.norm(F, axis=1)
     Fpred_norm = np.linalg.norm(Fpred, axis=1)
     print(F_norm.shape)
-    correlationPlot(Fpred_norm, F_norm, title='Force-norm correlation', xlabel='|F| predicted', ylabel='|F| target', color_weights=cos_dists)
+    correlationPlot(Fpred_norm, F_norm, title='Correlation between force magnitude + direction (color)', xlabel='|F| predicted', ylabel='|F| target', color_weights=cos_dists)
     
     # reshape forces
     F = F.reshape(-1)
     Fpred = Fpred.reshape(-1)
 
     correlationPlot(Epred, E, title='Energy correlation', xlabel='E predicted', ylabel='E target')
-    correlationPlot(Fpred, F, title='Force correlation', xlabel='F predicted', ylabel='F target')
+    correlationPlot(Fpred, F, title='Correllation between force components', xlabel='F predicted', ylabel='F target')
 
     # reshape back
     F = F.reshape((Ndata, -1))
