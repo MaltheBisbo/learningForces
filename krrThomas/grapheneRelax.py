@@ -6,6 +6,7 @@ from gaussComparator import gaussComparator
 from gaussComparator_cosdist import gaussComparator_cosdist
 from scipy.signal import argrelextrema
 from krr_calculator import krr_calculator
+from krr_calculator_no_z import krr_calculator as krr_calculator_no_z
 import time
 
 from ase import Atoms
@@ -67,13 +68,13 @@ def main():
     print('MAE_energy: ', MAE)
 
     label = 'grapheneMLrelax/graphene1'
-    calculator = krr_calculator(krr, label)
+    calculator = krr_calculator_no_z(krr, label)
 
     E_test_MLrelaxed = []
     atoms_test_MLrelaxed = []
     for i, a in enumerate(atoms_train[-20:-1:4]):
         a.set_calculator(calculator)
-        dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneAng_train-{}.traj'.format(i))
+        dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneAngNoZ_train-{}.traj'.format(i))
         dyn.run(fmax=0.1)
         atoms_test_MLrelaxed.append(a)
         E_test_MLrelaxed.append(krr.predict_energy(a))

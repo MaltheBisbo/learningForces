@@ -48,24 +48,26 @@ class vector_krr_class():
 
         kernel_Jac_vec = np.zeros((1,self.Ncoord*self.Ndata))
         for i in range(self.Ndata):
-            kernel_Jac_vec[:, i*self.Ncoord:(i+1)*self.Ncoord] = kernel_Jac[i, :] @ self.featureGrad[i]
+            kernel_Jac_vec[:, i*self.Ncoord:(i+1)*self.Ncoord] = kernel_Jac[i, :] @ self.featureGradMat[i].T
 
         return -kernel_Jac_vec @ self.alpha
     
-    def predict_force(self, atoms=None, fnew=None, fnew_grad=None):
+    def predict_force(self, atoms=None, fnew=None, fnew_grad=None, kernel_Hess_vec=None):
         """
         Predict the force of a new structure.
         """
-        if fnew is None:
-            fnew = self.featureCalculator.get_feature(atoms)
-        if fnew_grad is None:
-            fnew_grad = self.featureCalculator.get_featureGradient(atoms)
-
-        kernel_Hess_vec = np.zeros((self.Ncoord, self.Ncoord*self.Ndata))
-        for j in range(self.Ndata):
-            kernel_Hess = self.comparator.get_Hess_single(fnew, self.featureMat[j])
-            kernel_Hess_vec[:, j*self.Ncoord:(j+1)*self.Ncoord] = fnew_grad.T @ kernel_Hess @ self.featureGradMat[j]
-
+        
+        if kernel_Hess_vec is None:
+            if fnew is None:
+                fnew = self.featureCalculator.get_feature(atoms)
+            if fnew_grad is None:
+                fnew_grad = self.featureCalculator.get_featureGradient(atoms)
+            
+            kernel_Hess_vec = np.zeros((self.Ncoord, self.Ncoord*self.Ndata))
+            for j in range(self.Ndata):
+                kernel_Hess = self.comparator.get_single_Hess(fnew, self.featureMat[j])
+                kernel_Hess_vec[:, j*self.Ncoord:(j+1)*self.Ncoord] = fnew_grad @ kernel_Hess @ self.featureGradMat[j].T
+            pdb.set_trace()
         return kernel_Hess_vec @ self.alpha
 
     def add_data(self, data_values_add, featureMat_add):
@@ -98,11 +100,12 @@ class vector_krr_class():
         Fit the model based on training data.
         - i.e. find the alpha coeficients.
         """
+        Ndata_fit = len(forces)
         forces = forces.reshape(-1)
-        A = kernel_Hess_mat - self.reg*np.identity(self.Ndata*self.Ncoord)
-        self.alpha = np.linalg.solve(A, self.forceVec)
+        A = kernel_Hess_mat - self.reg*np.identity(Ndata_fit*self.Ncoord)
+        self.alpha = np.linalg.solve(A, forces)
         
-    def train(self, atoms_list=None, forces=None, featureMat=None, add_new_data=True, k=3, **GSkwargs):
+    def train(self, atoms_list=None, forces=None, featureMat=None, featureGradMat=None, add_new_data=True, k=3, **GSkwargs):
         """
         Train the model using gridsearch and cross-validation
             
@@ -130,6 +133,7 @@ class vector_krr_class():
         
         if featureMat is None:
             featureMat = self.featureCalculator.get_featureMat(atoms_list)
+        if featureGradMat is None:
             featureGradMat = self.featureCalculator.get_all_featureGradients(atoms_list)
 
         if forces is None:
@@ -139,7 +143,7 @@ class vector_krr_class():
             pass
             # self.add_data(data_values, featureMat)
         else:
-            self.Ndata = len(atoms_list)
+            self.Ndata = len(forces)
             self.forces[0:self.Ndata] = forces.reshape((self.Ndata, Ncoord))
             self.featureMat[0:self.Ndata] = featureMat
             self.featureGradMat[0:self.Ndata] = featureGradMat
@@ -159,7 +163,7 @@ class vector_krr_class():
             for m in range(self.Ndata):
                 kernel_Hess = self.comparator.get_single_Hess(featureMat[n], featureMat[m])
                 kernel_Hess_mat[n*Ncoord:(n+1)*Ncoord,
-                                m*Ncoord:(m+1)*Ncoord] = featureGradMat[n].T @ kernel_Hess @ featureGradMat[m]
+                                m*Ncoord:(m+1)*Ncoord] = featureGradMat[n] @ kernel_Hess @ featureGradMat[m].T
         return kernel_Hess_mat
     
     def __gridSearch(self, forces, featureMat, featureGradMat, k, **GSkwargs):
@@ -172,20 +176,20 @@ class vector_krr_class():
         sigma_array = GSkwargs['sigma']
         reg_array = GSkwargs['reg']
 
-        FVU_min = None
+        MAE_min = None
         best_args = np.zeros(2).astype(int)
-        best_similarityMat = None
+        best_kernel_Hess_mat = None
         
         for i, sigma in enumerate(sigma_array):
             # Calculate matrix of Hessians
             kernel_Hess_mat = self.__calculate_kernelHess(featureMat, featureGradMat, sigma)
 
             for j, reg in enumerate(reg_array):
-                FVU = self.__cross_validation(forces, similarityMat, k=k, reg=reg)
-                if FVU_min is None or FVU < FVU_min:
-                    FVU_min = FVU
+                MAE = self.__cross_validation(forces, kernel_Hess_mat, k=k, reg=reg)
+                if MAE_min is None or MAE < MAE_min:
+                    MAE_min = MAE
                     best_args = np.array([i, j])
-                    best_similarityMat = similarityMat
+                    best_kernel_Hess_mat = kernel_Hess_mat
 
         self.sigma = sigma_array[best_args[0]]
         self.reg = reg_array[best_args[1]]
@@ -194,12 +198,12 @@ class vector_krr_class():
         self.comparator.set_args(sigma=self.sigma)
 
         # Set similarity matrix to best
-        self.similarityMat = best_similarityMat
+        self.kernel_Hess_mat = best_kernel_Hess_mat
         
         # Train with best parameters using all data
-        self.__fit(data_values, best_similarityMat, reg=self.reg)
+        self.__fit(forces, best_kernel_Hess_mat, reg=self.reg)
 
-        return FVU_min, {'sigma': self.sigma, 'reg': self.reg}
+        return MAE_min, {'sigma': self.sigma, 'reg': self.reg}
 
     def __permute_kernel_Hess_mat(self, kernel_Hess_mat, permutation):
         Ndata = self.Ndata
@@ -226,20 +230,25 @@ class vector_krr_class():
         kernel_Hess_mat = self.__permute_kernel_Hess_mat(kernel_Hess_mat, permutation)
         
         Ntest = int(np.floor(Ndata/k))
-        FVU = np.zeros(k)
+        MAE = np.zeros(k)
         for ik in range(k):
             [i_train1, i_test, i_train2] = np.split(np.arange(Ndata), [ik*Ntest, (ik+1)*Ntest])
             i_train = np.r_[i_train1, i_train2]
-            self.__fit(forces[i_train], similarityMat[i_train,:][:,i_train], reg=reg)
+
+            # Training
+            kernel_Hess_mat_train = self.__subset_kernel_Hess_mat(kernel_Hess_mat, i_train, i_train)
+            self.__fit(forces[i_train], kernel_Hess_mat_train, reg=reg)
 
             # Validation
-            test_similarities = similarityMat[i_test,:][:,i_train]
-            FVU[ik] = self.__get_FVU_energy(data_values[i_test], test_similarities)
-        return np.mean(FVU)
+            kernel_Hess_mat_test = self.__subset_kernel_Hess_mat(kernel_Hess_mat, i_test, i_train)
+            MAE[ik] = self.__get_MAE_energy(forces[i_test], kernel_Hess_mat_test)
+        return np.mean(MAE)
 
-    def __get_FVU_energy(self, data_values, test_similarities):
-        Epred = self.predict_energy(similarityVec=test_similarities)
-        MAE = np.mean(np.abs(Epred - data_values))
+    def __get_MAE_energy(self, forces, kernel_Hess_mat_test):
+        Fpred = self.predict_force(kernel_Hess_vec=kernel_Hess_mat_test)
+        forces = forces.reshape(-1)
+        Fpred = Fpred.reshape(-1)
+        MAE = np.mean(np.abs(Fpred - forces))
         #MSE = np.mean((Epred - data_values)**2)
         #var = np.var(data_values)
         #FVU = MSE / var
