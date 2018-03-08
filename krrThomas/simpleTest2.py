@@ -44,6 +44,7 @@ def testModel(model, Ndata, theta=0, dim=3, new=False):
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
     X = createData(Ndata, theta, dim)
+    print(X.shape)
     G = model.featureCalculator.get_featureMat(X)
     
     # Calculate energies for each structure
