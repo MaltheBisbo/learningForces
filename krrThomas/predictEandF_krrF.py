@@ -38,14 +38,14 @@ def predictEandF(atoms, featureCalculator, feature_filename, feature_grad_filena
         feature_gradients[:, :, Nbondtypes_2body*Nbins1:] *= 50
 
     # Permute data
-    permut = np.random.permutation(Ndata)
-    E = E[permut]
-    F = F[permut]
-    features = features[permut]
-    feature_gradients = feature_gradients[permut]
+    #permut = np.random.permutation(Ndata)
+    #E = E[permut]
+    #F = F[permut]
+    #features = features[permut]
+    #feature_gradients = feature_gradients[permut]
 
     # Considder subset of data
-    Ndata = 10
+    Ndata = 50
     E = E[:Ndata]
     F = F[:Ndata]
     features = features[:Ndata]
@@ -60,7 +60,7 @@ def predictEandF(atoms, featureCalculator, feature_filename, feature_grad_filena
     E_predict = np.zeros(Ndata)
     F_predict = np.zeros((Ndata, Natoms*dim))
 
-    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(6,7,2)}
+    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(-1,2,20)}
     Ntest = int(np.ceil(Ndata/Nsplit))
     for i in range(Nsplit):
         # Split into test and training
@@ -90,7 +90,7 @@ def predictEandF(atoms, featureCalculator, feature_filename, feature_grad_filena
         E_predict[i_test] = np.array([krr.predict_energy(fnew=f) for f in features_test]).reshape(-1)
         F_predict[i_test] = np.array([krr.predict_force(fnew=features_test[i], fnew_grad=feature_gradients_test[i])
                                       for i in range(len(i_test))])
-
+    
     return E, F, E_predict, F_predict, Ndata
 
 
@@ -140,7 +140,7 @@ if __name__ == '__main__':
     Nbins2 = 30
     sigma2 = 0.2
     
-    use_angular = True
+    use_angular = False
     gamma = 1
     eta = 50
     
@@ -149,8 +149,8 @@ if __name__ == '__main__':
     # Predicting
     Nsplit = 10
     filepath = 'grapheneMLrelax/correlation/features/'
-    feature_filename = filepath + 'features_all2'
-    feature_grad_filename = filepath + 'feature_grads_all2'
+    feature_filename = filepath + 'features_radial_all2'
+    feature_grad_filename = filepath + 'feature_grads_radial_all2'
 
     E, F, Epred, Fpred, Ndata = predictEandF(atoms, featureCalculator, feature_filename=feature_filename, feature_grad_filename=feature_grad_filename, Nsplit=Nsplit, eta=eta)
     print('shape F:', F.shape)

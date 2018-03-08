@@ -56,7 +56,7 @@ class krr_force_class():
         kernel_Hess_mat = np.zeros((Ncoord*Ndata, Ncoord*Ndata))
         for i in range(Ndata):
             for j in range(Ndata):
-                kernel_Hess = self.comparator.get_Hess_single(self.featureMat[i], self.featureMat[j])
+                kernel_Hess = self.comparator.get_single_Hess(self.featureMat[i], self.featureMat[j])
                 kernel_Hess_mat[i*Ncoord:(i+1)*Ncoord,
                                 j*Ncoord:(j+1)*Ncoord] = self.featureGrad[i].T @ kernel_Hess @ self.featureGrad[j]
 
@@ -73,7 +73,7 @@ class krr_force_class():
 
         kernel_Hess_vec = np.zeros((Ncoord, Ncoord*Ndata))
         for j in range(Ndata):
-            kernel_Hess = self.comparator.get_Hess_single(fnew, self.featureMat[j])
+            kernel_Hess = self.comparator.get_single_Hess(fnew, self.featureMat[j])
             kernel_Hess_vec[:, j*Ncoord:(j+1)*Ncoord] = featureGrad_new.T @ kernel_Hess @ self.featureGrad[j]
 
         return kernel_Hess_vec @ self.alpha
@@ -179,7 +179,7 @@ if __name__ == "__main__":
     Natoms = 5
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 10
+    Ndata = 6
     reg = 1e-7  # 1e-7
     sig = 0.40  # 0.13
 

@@ -4,6 +4,7 @@ from doubleLJ import doubleLJ
 from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
 
+import pdb
 
 class krr_force_class():
     """
@@ -70,7 +71,7 @@ class krr_force_class():
 
         kernel_Hess_vec = np.zeros((Ncoord, Ncoord*Ndata))
         for j in range(Ndata):
-            kernel_Hess = self.comparator.get_Hess_single(fnew, self.featureMat[j])
+            kernel_Hess = self.comparator.get_single_Hess(fnew, self.featureMat[j])
             kernel_Hess_vec[:, j*Ncoord:(j+1)*Ncoord] = featureGrad_new.T @ kernel_Hess @ self.featureGrad[j]
 
         return kernel_Hess_vec @ self.alpha
@@ -179,7 +180,7 @@ if __name__ == "__main__":
     Natoms = 5
     eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-    Ndata = 10
+    Ndata = 6
     reg = 1e-7  # 1e-7
     sig = 3.5  # 0.13
 

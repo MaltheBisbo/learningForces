@@ -70,13 +70,18 @@ def createData2d(Ndata, theta, pos_start=0, pos_end=1.5):
     X = np.c_[np.repeat(xrot, Ndata, axis=0), xnew_rot]
     return X, x1new
 
+def force3d(x, eps, r0, sigma):
+    F_2d = -doubleLJ_gradient(x, eps, r0, sigma).reshape((-1,2))
+    F_3d = np.c_[F_2d, np.zeros(len(F_2d))]
+    return F_3d.reshape(-1)
+
 
 theta = 0
 
 # Parameters for potential
 eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
 
-X_3d = createData3d(100, theta)
+#X_3d = createData3d(100, theta)
 
 dim = 3
 
@@ -86,12 +91,13 @@ pbc = [0,0,0]
 atomtypes = ['H', 'H', 'H', 'H']
 cell = [L,L,d]
 
+Ntrain = 3
 # Training forces
-X_2d_train = createData2d(20, theta, pos_start=-1.5, pos_end=1.5)
-Ftrain = -np.array([doubleLJ_gradient(x, eps, r0, sigma)[6] for x in X_2d_train])
+X_2d_train, _ = createData2d(Ntrain, theta, pos_start=-1.5, pos_end=1.5)
+Ftrain = np.array([force3d(x, eps, r0, sigma) for x in X_2d_train])
 
 # Atoms list for training
-X_3d_train = createData3d(20, theta, pos_start=-1.5, pos_end=1.5)
+X_3d_train = createData3d(Ntrain, theta, pos_start=-1.5, pos_end=1.5)
 atoms_train = []
 for x_test in X_3d_train:
     positions = x_test.reshape((-1,dim))
@@ -113,7 +119,7 @@ sigma2 = 0.2
 
 gamma = 1
 eta = 50
-use_angular = True
+use_angular = False
 
 featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
 
@@ -122,8 +128,10 @@ comparator = gaussComparator()
 krr = vector_krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
 # Training
-MAE, params = krr.train(atoms_list=atoms_train, forces=Ftrain, add_new_data=False)
-
+GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(-1,2,20)}
+MAE, params = krr.train(atoms_list=atoms_train, forces=Ftrain, add_new_data=False, **GSkwargs)
+print(MAE)
+print(params)
 
 
 
@@ -133,7 +141,7 @@ dx = Xpertub[1] - Xpertub[0]
 Xpertub_F = Xpertub[:-1]+dx/2
 
 E = np.array([doubleLJ_energy(x, eps, r0, sigma) for x in X_2d])
-F = -np.array([doubleLJ_gradient(x, eps, r0, sigma)[6] for x in X_2d])
+F = -np.array([doubleLJ_gradient(x, eps, r0, sigma)[2] for x in X_2d])
 
 X_3d_test = createData3d(100, theta, pos_start=-1.5, pos_end=1.5)
 atoms_test = []
@@ -145,10 +153,12 @@ for x_test in X_3d_test:
               pbc=pbc)
     atoms_test.append(a)
 
-Fpred = np.array([krr.predict_force(a)[6] for a in atoms_test])
+Fpred = np.array([krr.predict_force(a)[3] for a in atoms_test])
 
-plt.figure()
+plt.figure(1)
 plt.plot(Xpertub, E)
+
+plt.figure(2)
 plt.plot(Xpertub, F)
-plt.plot(Xpertub, Fpred)
+plt.plot(Xpertub, Fpred, linestyle=':')
 plt.show()

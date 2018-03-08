@@ -2,6 +2,7 @@ import numpy as np
 from itertools import product
 from scipy.spatial.distance import cdist, squareform
 
+from ase import Atoms
 from ase.io import read, write
 from ase.visualize import view
 
@@ -45,3 +46,4 @@ if __name__ == "__main__":
     kk = {type:list(atomic_numbers).count(type) for type in atomic_types}
 
     print(kk)
+

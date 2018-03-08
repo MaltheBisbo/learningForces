@@ -1,6 +1,12 @@
 import numpy as np
 import pdb
 
+from doubleLJ import doubleLJ_energy, doubleLJ_gradient
+from doubleLJ import doubleLJ
+from angular_fingerprintFeature_test3 import Angular_Fingerprint
+from fingerprintFeature import fingerprintFeature
+from gaussComparator import gaussComparator
+
 
 class vector_krr_class():
     """
@@ -67,7 +73,7 @@ class vector_krr_class():
             for j in range(self.Ndata):
                 kernel_Hess = self.comparator.get_single_Hess(fnew, self.featureMat[j])
                 kernel_Hess_vec[:, j*self.Ncoord:(j+1)*self.Ncoord] = fnew_grad @ kernel_Hess @ self.featureGradMat[j].T
-            pdb.set_trace()
+
         return kernel_Hess_vec @ self.alpha
 
     def add_data(self, data_values_add, featureMat_add):
@@ -242,6 +248,7 @@ class vector_krr_class():
             # Validation
             kernel_Hess_mat_test = self.__subset_kernel_Hess_mat(kernel_Hess_mat, i_test, i_train)
             MAE[ik] = self.__get_MAE_energy(forces[i_test], kernel_Hess_mat_test)
+        pdb.set_trace()
         return np.mean(MAE)
 
     def __get_MAE_energy(self, forces, kernel_Hess_mat_test):
@@ -249,8 +256,110 @@ class vector_krr_class():
         forces = forces.reshape(-1)
         Fpred = Fpred.reshape(-1)
         MAE = np.mean(np.abs(Fpred - forces))
-        #MSE = np.mean((Epred - data_values)**2)
-        #var = np.var(data_values)
-        #FVU = MSE / var
-        return MAE
+        MSE = np.mean((Fpred - forces)**2)
+        var = np.var(forces)
+        FVU = MSE / var
+        #pdb.set_trace()
+        return FVU
 
+def createData(Ndata, theta):
+    # Define fixed points
+    x1 = np.array([-1, 0, 1, 2])
+    x2 = np.array([0, 0, 0, 0])
+
+    # rotate ficed coordinates
+    x1rot = np.cos(theta) * x1 - np.sin(theta) * x2
+    x2rot = np.sin(theta) * x1 + np.cos(theta) * x2
+    xrot = np.c_[x1rot, x2rot].reshape((1, 8))
+
+    # Define an array of positions for the last pointB
+    # xnew = np.c_[np.random.rand(Ndata)+0.5, np.random.rand(Ndata)+1]
+    x1new = np.linspace(0.5, 2, Ndata)
+    x2new = np.ones(Ndata)
+
+    # rotate new coordinates
+    x1new_rot = np.cos(theta) * x1new - np.sin(theta) * x2new
+    x2new_rot = np.sin(theta) * x1new + np.cos(theta) * x2new
+
+    xnew_rot = np.c_[x1new_rot, x2new_rot]
+
+    # Make X matrix with rows beeing the coordinates for each point in a structure.
+    # row example: [x1, y1, x2, y2, ...]
+    X = np.c_[np.repeat(xrot, Ndata, axis=0), xnew_rot]
+    return X
+
+
+if __name__ == "__main__":
+
+    Natoms = 5
+    eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
+
+    Ndata = 6
+    reg = 1e-7  # 1e-7
+    sig = 3.5  # 0.13
+
+    theta = 0.1*np.pi
+
+    X = createData(Ndata, theta)
+    featureCalculator = fingerprintFeature()
+    G = featureCalculator.get_featureMat(X)
+    
+    # Calculate energies for each structure
+    E = np.zeros(Ndata)
+    F = np.zeros((Ndata, 2*Natoms))
+    for i in range(Ndata):
+        E[i], F[i, :] = doubleLJ(X[i], eps, r0, sigma)
+
+    Xtrain = X[:-1]
+    Gtrain = G[:-1]
+    Ftrain = F[:-1]
+
+    # Train model
+    comparator = gaussComparator(sigma=sig)
+    krr = vector_krr_class(comparator=comparator, featureCalculator=featureCalculator)
+
+    GSkwargs = {'sigma': np.logspace(-2,2,20), 'reg': [1e-7]}
+    FVU, params = krr.train(F, X, **GSkwargs)
+    
+    #krr.fit(Ftrain, Xtrain, reg=reg)
+
+    Npoints = 1000
+    Epred = np.zeros(Npoints)
+    Fpredx = np.zeros(Npoints)
+    Etest = np.zeros(Npoints)
+    Ftestx = np.zeros(Npoints)
+    Xtest0 = X[-1]
+    Xtest = np.zeros((Npoints, 2*Natoms))
+    print(Xtest.shape)
+    # delta_array = np.linspace(-3.5, 0.5, Npoints)
+    delta_array = np.linspace(-4, 1, Npoints)
+    for i in range(Npoints):
+        delta = delta_array[i]
+        Xtest[i] = Xtest0
+        pertub = np.array([delta, 0])
+        pertub_rot = np.array([np.cos(theta) * pertub[0] - np.sin(theta) * pertub[1],
+                               np.sin(theta) * pertub[0] + np.cos(theta) * pertub[1]])
+        Xtest[i, -2:] += pertub_rot
+
+        Etest[i], Ftest = doubleLJ(Xtest[i], eps, r0, sigma)
+        Ftestx[i] = np.cos(theta) * Ftest[-2] + np.cos(np.pi/2 - theta) * Ftest[-1]
+    
+        Fpred = krr.predict_force(Xtest[i])
+        Fpredx[i] = np.cos(theta) * Fpred[-2] + np.cos(np.pi/2 - theta) * Fpred[-1]
+        Epred[i] = krr.predict_energy(Xtest[i])
+    plt.figure(1)
+    plt.plot(delta_array, Ftestx, color='c')
+    plt.plot(delta_array, Fpredx, color='y')
+    plt.plot(delta_array, Etest, color='b')
+    plt.plot(delta_array, Epred, color='r')
+    
+    # Plot first structure
+    plt.figure(2)
+    #plt.scatter(Xtest[:, -2], Xtest[:, -1], color='r')
+    plt.plot(Xtest[:, -2], Xtest[:, -1], color='r')
+    plt.scatter(Xtest[0, -2], Xtest[0, -1], color='y')
+    
+    x = X[-1].reshape((Natoms, 2))
+    plt.scatter(x[:, 0], x[:, 1])
+    plt.gca().set_aspect('equal', adjustable='box')
+    plt.show()

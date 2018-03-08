@@ -202,8 +202,8 @@ class krr_class():
     def __get_FVU_energy(self, data_values, test_similarities):
         Epred = self.predict_energy(similarityVec=test_similarities)
         MAE = np.mean(np.abs(Epred - data_values))
-        #MSE = np.mean((Epred - data_values)**2)
-        #var = np.var(data_values)
-        #FVU = MSE / var
+        MSE = np.mean((Epred - data_values)**2)
+        var = np.var(data_values)
+        FVU = MSE / var
         return MAE
 
