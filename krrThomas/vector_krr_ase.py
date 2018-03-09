@@ -205,10 +205,10 @@ class vector_krr_class():
 
         # Set similarity matrix to best
         self.kernel_Hess_mat = best_kernel_Hess_mat
-        
+
         # Train with best parameters using all data
         self.__fit(forces, best_kernel_Hess_mat, reg=self.reg)
-
+        
         return MAE_min, {'sigma': self.sigma, 'reg': self.reg}
 
     def __permute_kernel_Hess_mat(self, kernel_Hess_mat, permutation):
@@ -248,7 +248,6 @@ class vector_krr_class():
             # Validation
             kernel_Hess_mat_test = self.__subset_kernel_Hess_mat(kernel_Hess_mat, i_test, i_train)
             MAE[ik] = self.__get_MAE_energy(forces[i_test], kernel_Hess_mat_test)
-        pdb.set_trace()
         return np.mean(MAE)
 
     def __get_MAE_energy(self, forces, kernel_Hess_mat_test):
@@ -259,7 +258,6 @@ class vector_krr_class():
         MSE = np.mean((Fpred - forces)**2)
         var = np.var(forces)
         FVU = MSE / var
-        #pdb.set_trace()
         return FVU
 
 def createData(Ndata, theta):

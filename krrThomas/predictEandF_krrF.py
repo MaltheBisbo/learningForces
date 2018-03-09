@@ -45,7 +45,7 @@ def predictEandF(atoms, featureCalculator, feature_filename, feature_grad_filena
     #feature_gradients = feature_gradients[permut]
 
     # Considder subset of data
-    Ndata = 50
+    Ndata = 10
     E = E[:Ndata]
     F = F[:Ndata]
     features = features[:Ndata]
