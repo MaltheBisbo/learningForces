@@ -84,7 +84,7 @@ class maternComparator():
         c = np.sqrt(2*v)/self.sigma
         
         # kernel between the two features
-        k1, k2, d = self.get_kernel(f1, f2)
+        k1, k2, d = self.get_kernel(f1, f2, split=True)
 
         dk1_dd = -c*k1
         dk2_dd = self.__get_Pn_deriv(d)

@@ -17,7 +17,8 @@ from ase.visualize import view
 
 def main():
     atoms = read('graphene_data/graphene_all2.traj', index=':')
-
+    E = [a.get_potential_energy() for a in atoms]
+    
     a0 = atoms[0]
     Ndata = len(atoms)
     Nrelaxations = int(Ndata/4)
@@ -55,15 +56,14 @@ def main():
 
     # Initialize featureCalculator
     featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
-    fingerprints_train = featureCalculator.get_featureMat(atoms_train, show_progress=True)
-    print(fingerprints_train.shape)
+    fingerprints = featureCalculator.get_featureMat(atoms, show_progress=True)
 
     # Initialize comparator and KRR model
     comparator = gaussComparator()
     krr = KRR(comparator=comparator, featureCalculator=featureCalculator)
 
     GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0,2,10)}
-    MAE, params = krr.train(data_values=E_train, featureMat=fingerprints_train, add_new_data=False, k=10, **GSkwargs)
+    MAE, params = krr.train(data_values=E, featureMat=fingerprints, add_new_data=False, k=10, **GSkwargs)
     print('params:', params)
     print('MAE_energy: ', MAE)
 
@@ -72,9 +72,9 @@ def main():
 
     E_test_MLrelaxed = []
     atoms_test_MLrelaxed = []
-    for i, a in enumerate(atoms_train[-20:-1:4]):
+    for i, a in enumerate(atoms_test_relaxed):
         a.set_calculator(calculator)
-        dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneAngNoZ_train-{}.traj'.format(i))
+        dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneAngNoZ_testRelaxed{}.traj'.format(i))
         dyn.run(fmax=0.1)
         atoms_test_MLrelaxed.append(a)
         E_test_MLrelaxed.append(krr.predict_energy(a))
