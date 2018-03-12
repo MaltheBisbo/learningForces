@@ -45,11 +45,12 @@ def predictEandF(atoms, featureCalculator, feature_filename, feature_grad_filena
     #feature_gradients = feature_gradients[permut]
 
     # Considder subset of data
-    Ndata = 10
-    E = E[:Ndata]
-    F = F[:Ndata]
-    features = features[:Ndata]
-    feature_gradients = feature_gradients[:Ndata]
+    Ndata = 50
+    index = np.arange(100, 100+Ndata)
+    E = E[index]
+    F = F[index]
+    features = features[index]
+    feature_gradients = feature_gradients[index]
         
     
         
@@ -60,7 +61,7 @@ def predictEandF(atoms, featureCalculator, feature_filename, feature_grad_filena
     E_predict = np.zeros(Ndata)
     F_predict = np.zeros((Ndata, Natoms*dim))
 
-    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(-1,2,20)}
+    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(2,5,20)}
     Ntest = int(np.ceil(Ndata/Nsplit))
     for i in range(Nsplit):
         # Split into test and training
@@ -147,7 +148,7 @@ if __name__ == '__main__':
     featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=use_angular)
 
     # Predicting
-    Nsplit = 10
+    Nsplit = 5
     filepath = 'grapheneMLrelax/correlation/features/'
     feature_filename = filepath + 'features_radial_all2'
     feature_grad_filename = filepath + 'feature_grads_radial_all2'

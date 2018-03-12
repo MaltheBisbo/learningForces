@@ -90,7 +90,7 @@ pbc = [0,0,0]
 atomtypes = ['H', 'H', 'H', 'H']
 cell = [L,L,d]
 
-Ntrain = 3
+Ntrain = 2
 # Training forces
 X_2d_train, Xpertub_train = createData2d(Ntrain, theta_train, pos_start=0, pos_end=1.5)
 Ftrain = np.array([force3d(x, eps, r0, sigma) for x in X_2d_train])
@@ -129,8 +129,9 @@ krr = vector_krr_class(comparator=comparator, featureCalculator=featureCalculato
 
 print(Ftrain.shape)
 # Training
-GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0,2,20)}
-MAE, params = krr.train(atoms_list=atoms_train, forces=Ftrain, add_new_data=False, **GSkwargs)
+#GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0,2,20)}
+GSkwargs = {'reg': [1e-5], 'sigma': [0.2]}
+MAE, params = krr.train(atoms_list=atoms_train, forces=Ftrain, add_new_data=False, k=2, **GSkwargs)
 print(MAE)
 print(params)
 

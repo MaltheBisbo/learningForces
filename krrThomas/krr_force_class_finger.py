@@ -145,6 +145,8 @@ class krr_force_class():
                           for i in range(force.shape[0])])
         MSE_force = np.mean((Fpred - force)**2, axis=0)
         var_force = np.var(force, axis=0)
+        print(MSE_force)
+        print(var_force)
         return MSE_force / var_force
 
 

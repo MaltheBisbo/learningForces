@@ -170,6 +170,7 @@ class vector_krr_class():
                 kernel_Hess = self.comparator.get_single_Hess(featureMat[n], featureMat[m])
                 kernel_Hess_mat[n*Ncoord:(n+1)*Ncoord,
                                 m*Ncoord:(m+1)*Ncoord] = featureGradMat[n] @ kernel_Hess @ featureGradMat[m].T
+        #pdb.set_trace()
         return kernel_Hess_mat
     
     def __gridSearch(self, forces, featureMat, featureGradMat, k, **GSkwargs):
@@ -247,10 +248,10 @@ class vector_krr_class():
 
             # Validation
             kernel_Hess_mat_test = self.__subset_kernel_Hess_mat(kernel_Hess_mat, i_test, i_train)
-            MAE[ik] = self.__get_MAE_energy(forces[i_test], kernel_Hess_mat_test)
+            MAE[ik] = self.__get_MAE_force(forces[i_test], kernel_Hess_mat_test)
         return np.mean(MAE)
 
-    def __get_MAE_energy(self, forces, kernel_Hess_mat_test):
+    def __get_MAE_force(self, forces, kernel_Hess_mat_test):
         Fpred = self.predict_force(kernel_Hess_vec=kernel_Hess_mat_test)
         forces = forces.reshape(-1)
         Fpred = Fpred.reshape(-1)
@@ -258,6 +259,15 @@ class vector_krr_class():
         MSE = np.mean((Fpred - forces)**2)
         var = np.var(forces)
         FVU = MSE / var
+        return FVU
+
+    def __get_MAE_force2(self, forces, kernel_Hess_mat_test):
+        Fpred = self.predict_force(kernel_Hess_vec=kernel_Hess_mat_test)
+        forces = forces.reshape((-1, self.Ncoord))
+        Fpred = Fpred.reshape((-1, self.Ncoord))
+        MSE = np.mean((Fpred - forces)**2, axis=0)
+        var = np.var(forces, axis=0)
+        FVU = np.mean(MSE / var)
         return FVU
 
 def createData(Ndata, theta):
