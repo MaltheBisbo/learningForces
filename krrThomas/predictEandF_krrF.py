@@ -3,6 +3,7 @@ from scipy.spatial.distance import cosine
 
 from angular_fingerprintFeature_test3 import Angular_Fingerprint
 from gaussComparator import gaussComparator
+from maternComparator import maternComparator
 from vector_krr_ase import vector_krr_class
 
 import matplotlib.pyplot as plt
@@ -55,7 +56,7 @@ def predictEandF(atoms, featureCalculator, feature_filename, feature_grad_filena
     
         
     # Set up KRR-model
-    comparator = gaussComparator()
+    comparator = maternComparator()
     krr = vector_krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
     E_predict = np.zeros(Ndata)

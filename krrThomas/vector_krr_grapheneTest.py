@@ -1,8 +1,9 @@
 import numpy as np
-from vector_krr_ase import vector_krr_class
+from vector_krr_ase2 import vector_krr_class
 
 from angular_fingerprintFeature_test3 import Angular_Fingerprint
 from gaussComparator import gaussComparator
+from maternComparator import maternComparator
 
 from ase import Atoms
 from ase.io import read, write
@@ -30,7 +31,7 @@ Rc2 = 4
 Nbins2 = 30
 sigma2 = 0.2
 
-use_angular = True
+use_angular = False
 gamma = 1
 eta = 20
 
@@ -38,12 +39,12 @@ featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth
 
 
 # Set up KRR model
-comparator = gaussComparator()
+comparator = maternComparator()
 vector_krr = vector_krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
 # Training
-GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(2,12,120)}
-#GSkwargs = {'reg': [1e-5], 'sigma': [100]}
+#GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0,6,40)}
+GSkwargs = {'reg': [1e-5], 'sigma': [1]}
 MAE, params = vector_krr.train(atoms_list=atoms, forces=F, add_new_data=False, **GSkwargs)
 print(MAE, params)
 
