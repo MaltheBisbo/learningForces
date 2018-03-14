@@ -170,41 +170,67 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
     from gaussComparator2 import gaussComparator
     matern = maternComparator()
-    
-    kwargs = {'sigma': 30}
+
+    def num_derivative(func, x, x_pertub):
+        x_d = x - x_pertub
+        x_u = x + x_pertub
+        kernel_d = matern.get_kernel(x_d,x0)
+        kernel_u = matern.get_kernel(x_u,x0)
+        Jac_num = (kernel_u - kernel_d)/dx
+        return Jac_num
+        
+    kwargs = {'sigma': 3}
     matern.set_args(**kwargs)
-    f0 = np.array([0.2, 0.1])
-    f1 = np.array([1, 0.3])
+    f0 = np.array([0, 10, 20])
+    f1 = np.array([0.001, 0, 0])
     print(matern.get_kernel_Hess(f0,f1))
     
     Npoints = 4001
     x_array = np.linspace(-2,2,Npoints)
+    dx = x_array[1] - x_array[0]
     
     kernel = np.zeros(Npoints)
     kernel_Jac = np.zeros((Npoints,2))
     kernel_Hess = np.zeros((Npoints,2,2))
+
+    kernel_Jac_num = np.zeros((Npoints,2))
+    kernel_Hess_num = np.zeros((Npoints,4))
     
-    Pn = np.zeros(Npoints)
-    Pn_deriv = np.zeros(Npoints)
-    Pn_2deriv = np.zeros(Npoints)
-    
-    x0 = np.array([0,0.1])
+    x_pertub = dx/2*np.identity(2)
+    x0 = np.array([0,0.5])
     for i, x in enumerate(x_array):
-        x1 = np.array([x,0.3])
+        x1 = np.array([x,0.3*x])
         
         kernel[i] = matern.get_kernel(x1,x0)
         kernel_Jac[i] = matern.get_kernel_Jac(x1,x0)
         kernel_Hess[i] = matern.get_kernel_Hess(x1,x0)
+
+        # Numeric Jacobian
+        for j in range(2):
+            Jac_num = num_derivative(matern.get_kernel, x1, x_pertub[j])
+            kernel_Jac_num[i,j] = Jac_num
+
+        # Numeric Hessian
+        for j in range(2):
+            x1_d = x1 - x_pertub[j]
+            x1_u = x1 + x_pertub[j]
+            for k in range(2):
+                kernel_deriv_d = num_derivative(matern.get_kernel, x1_d, x_pertub[k])
+                kernel_deriv_u = num_derivative(matern.get_kernel, x1_u, x_pertub[k])
+                Hess_num = (kernel_deriv_u - kernel_deriv_d)/dx
+                kernel_Hess_num[i,2*j+k] = Hess_num
         
-    dx = x_array[1] - x_array[0]
     plt.figure()
     plt.plot(x_array, kernel)
-    
+
     plt.figure()
     plt.plot(x_array, kernel_Jac)
-    plt.plot(x_array, np.gradient(kernel, x_array), linestyle=':')
+    plt.plot(x_array, kernel_Jac_num, linestyle=':', color='k')
+    #plt.plot(x_array, np.gradient(kernel, x_array), linestyle=':')
+    
     
     plt.figure()
     plt.plot(x_array, kernel_Hess.reshape((Npoints,-1)))
-    plt.plot(x_array, np.gradient(np.gradient(kernel, x_array), x_array), linestyle=':')
+    plt.plot(x_array, kernel_Hess_num, linestyle=':', color='k')
+    #plt.plot(x_array, np.gradient(np.gradient(kernel, x_array), x_array), linestyle=':')
     plt.show()

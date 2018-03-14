@@ -12,7 +12,7 @@ from ase.visualize import view
 import pdb
 
 
-atoms = read('graphene_data/graphene_all2.traj', index='100:150')
+atoms = read('graphene_data/graphene_all2.traj', index='100:110')
 #atoms = read('graphene_data/all_done.traj', index='100:150')
 Natoms = len(atoms)
 a0 = atoms[0]
