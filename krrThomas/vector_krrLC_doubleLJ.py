@@ -2,7 +2,8 @@ import numpy as np
 from doubleLJ import doubleLJ_energy_ase, doubleLJ_gradient_ase
 from angular_fingerprintFeature_test3 import Angular_Fingerprint
 from gaussComparator import gaussComparator
-from vector_krr_ase import vector_krr_class
+from maternComparator import maternComparator
+from vector_krr_ase2 import vector_krr_class
 
 import pdb
 
@@ -69,7 +70,7 @@ def makeConstrainedStructure3d(Natoms):
     return Xinit
 
 
-Nstructures = 50
+Nstructures = 10
 Natoms = 24
 
 boxsize = 1.5 * np.sqrt(Natoms)
@@ -108,12 +109,12 @@ use_angular = False
 featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
 
 # Set up KRR-model
-comparator = gaussComparator()
+comparator = maternComparator()
 krr = vector_krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
 # Training
-GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0,4,20)}
+GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(-2,4,30)}
 #GSkwargs = {'reg': [1e-5], 'sigma': [0.2]}
-MAE, params = krr.train(atoms_list=atoms, forces=F, add_new_data=False, k=2, **GSkwargs)
+MAE, params = krr.train(atoms_list=atoms, forces=F, add_new_data=False, k=10, **GSkwargs)
 print(MAE)
 print(params)

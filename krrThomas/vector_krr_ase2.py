@@ -6,7 +6,7 @@ from doubleLJ import doubleLJ
 from angular_fingerprintFeature_test3 import Angular_Fingerprint
 from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
-
+from scipy.spatial.distance import cdist
 
 class vector_krr_class():
     """
@@ -50,7 +50,7 @@ class vector_krr_class():
         if fnew is None:
             fnew = self.featureCalculator.get_feature(atoms)
 
-        kernel_Jac = self.comparator.get_kernel_Jac(fnew, self.featureMat)
+        kernel_Jac = self.comparator.get_kernelVec_Jac(fnew, self.featureMat)
 
         kernel_Jac_vec = np.zeros((1,self.Ncoord*self.Ndata))
         for i in range(self.Ndata):
@@ -170,7 +170,7 @@ class vector_krr_class():
                 kernel_Hess = self.comparator.get_kernel_Hess(featureMat[n], featureMat[m])
                 kernel_Hess_mat[n*Ncoord:(n+1)*Ncoord,
                                 m*Ncoord:(m+1)*Ncoord] = featureGradMat[n] @ kernel_Hess @ featureGradMat[m].T
-        pdb.set_trace()
+        #pdb.set_trace()
         return kernel_Hess_mat
     
     def __gridSearch(self, forces, featureMat, featureGradMat, k, **GSkwargs):
@@ -197,7 +197,8 @@ class vector_krr_class():
                     MAE_min = MAE
                     best_args = np.array([i, j])
                     best_kernel_Hess_mat = kernel_Hess_mat
-
+            print(MAE, sigma)
+                    
         self.sigma = sigma_array[best_args[0]]
         self.reg = reg_array[best_args[1]]
 

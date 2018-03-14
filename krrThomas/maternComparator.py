@@ -185,9 +185,9 @@ if __name__ == '__main__':
     f1 = np.array([0.001, 0, 0])
     print(matern.get_kernel_Hess(f0,f1))
     
-    Npoints = 4001
+    Npoints = 2001
     x_array = np.linspace(-2,2,Npoints)
-    dx = x_array[1] - x_array[0]
+    dx = 0.00001
     
     kernel = np.zeros(Npoints)
     kernel_Jac = np.zeros((Npoints,2))
