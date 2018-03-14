@@ -32,7 +32,7 @@ def predictEandF(atoms, featureCalculator, Nsplit=5):
     E_predict = np.zeros(Ndata)
     F_predict = np.zeros((Ndata, Natoms*dim))
 
-    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(-2,4,20)}
+    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1,3,10)}
     Ntest = int(np.ceil(Ndata/Nsplit))
     for i in range(Nsplit):
         # Split into test and training
@@ -100,23 +100,22 @@ def distributionPlot(x, title='', xlabel=''):
     
 if __name__ == '__main__':
     atoms = read('graphene_data/graphene_all2.traj', index=':')
-    atoms = atoms[0::2]
+    #atoms = atoms[0::2]
     atoms = atoms[:40]
-    #atoms = read('graphene_data/all_done.traj', index=':40')
     a0 = atoms[0]
     Ndata = len(atoms)
     
     # Setting up the featureCalculator
-    Rc1 = 4
+    Rc1 = 5
     binwidth1 = 0.2
     sigma1 = 0.2
     
-    Rc2 = 3
+    Rc2 = 4
     Nbins2 = 30
     sigma2 = 0.2
     
-    use_angular = True
-    gamma = 3
+    use_angular = False
+    gamma = 1
     eta = 20
     
     featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=use_angular)

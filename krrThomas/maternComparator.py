@@ -64,13 +64,13 @@ class maternComparator():
         """
         k1Vec, k2Vec, dVec = self.get_kernelVec(f, featureMat, split=True)
         v = self.n + 0.5
-        
         c = np.sqrt(2*v)/self.sigma
+
         dk1Vec_dd = -c*k1Vec
         dk2Vec_dd = self.get_Pn_deriv(dVec)
-        
-        dkVec_dd = (k1Vec*dk2Vec_dd + k2Vec*dk1Vec_dd).reshape((len(k1Vec), 1))
-        dd_df = -(featureMat - f.reshape((1, len(f)))) / dVec.reshape((1,-1))
+
+        dkVec_dd = (k1Vec*dk2Vec_dd + k2Vec*dk1Vec_dd).reshape((-1, 1))
+        dd_df = -(featureMat - f.reshape((1, len(f)))) / dVec.reshape((-1,1))
 
         dk_df = np.multiply(dkVec_dd, dd_df)
         return dk_df

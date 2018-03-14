@@ -14,56 +14,43 @@ from ase.visualize import view
 
 import pdb
 
-def predictEandF(atoms, featureCalculator, Nsplit=5):
-    Ndata = len(atoms)
-    Natoms = atoms[0].get_number_of_atoms()
-    dim = 3
+def predictEandF(atoms_train, atoms_test, featureCalculator, Nsplit=5):
+    Ntrain = len(atoms_train)
+    Ntest = len(atoms_test)
     
-    E = np.array([a.get_potential_energy() for a in atoms])
-    F = np.array([a.get_forces() for a in atoms])
+    E_train = np.array([a.get_potential_energy() for a in atoms_train])
+    F_train = np.array([a.get_forces() for a in atoms_train])
+
+    E_test = np.array([a.get_potential_energy() for a in atoms_test])
+    F_test = np.array([a.get_forces() for a in atoms_test])
     
-    features = featureCalculator.get_featureMat(atoms, show_progress=True)
-    feature_gradients = featureCalculator.get_all_featureGradients(atoms, show_progress=True)
+    features_train = featureCalculator.get_featureMat(atoms_train, show_progress=True)
+    feature_gradients_train = featureCalculator.get_all_featureGradients(atoms_train, show_progress=True)
+
+    features_test = featureCalculator.get_featureMat(atoms_test, show_progress=True)
+    feature_gradients_test = featureCalculator.get_all_featureGradients(atoms_test, show_progress=True)
 
     # Set up KRR-model
     comparator = maternComparator()
     krr = vector_krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
-    E_predict = np.zeros(Ndata)
-    F_predict = np.zeros((Ndata, Natoms*dim))
-
-    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(-2,4,20)}
-    Ntest = int(np.ceil(Ndata/Nsplit))
-    for i in range(Nsplit):
-        # Split into test and training
-        [i_train1, i_test, i_train2] = np.split(np.arange(Ndata), [i*Ntest, min((i+1)*Ntest, Ndata)])
-        i_train = np.r_[i_train1, i_train2]
-
-        # Training data
-        features_train = features[i_train]
-        feature_gradients_train = feature_gradients[i_train]
-        F_train = F[i_train]
-
-        # Test data
-        features_test = features[i_test]
-        feature_gradients_test = feature_gradients[i_test]
-
-        # Perform training
-        MAE, params = krr.train(forces=F_train,
-                                featureMat=features_train,
-                                featureGradMat=feature_gradients_train,
-                                add_new_data=False,
-                                k=5,
-                                **GSkwargs)
-        print('MAE:', MAE)
-        print(params)
-        
-        # Perform testing
-        E_predict[i_test] = np.array([krr.predict_energy(fnew=f) for f in features_test]).reshape(-1)
-        F_predict[i_test] = np.array([krr.predict_force(fnew=features_test[i], fnew_grad=feature_gradients_test[i])
-                                      for i in range(len(i_test))])
+    # Train
+    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1,3,10)}
+    MAE, params = krr.train(forces=F_train,
+                            featureMat=features_train,
+                            featureGradMat=feature_gradients_train,
+                            add_new_data=False,
+                            k=5,
+                            **GSkwargs)
+    print('MAE:', MAE)
+    print(params)
     
-    return E, F, E_predict, F_predict, Ndata
+    # Perform testing
+    E_predict = np.array([krr.predict_energy(fnew=f) for f in features_test]).reshape(-1)
+    F_predict = np.array([krr.predict_force(fnew=f, fnew_grad=f_grad)
+                          for f, f_grad in zip(features_test, feature_gradients_test)])
+    
+    return E_test, F_test, E_predict, F_predict
 
 
 def correlationPlot(values1, values2, title='', xlabel='', ylabel='', color_weights=None):
@@ -100,23 +87,23 @@ def distributionPlot(x, title='', xlabel=''):
     
 if __name__ == '__main__':
     atoms = read('graphene_data/graphene_all2.traj', index=':')
-    atoms = atoms[0::2]
-    atoms = atoms[:40]
-    #atoms = read('graphene_data/all_done.traj', index=':40')
+    #atoms = atoms[0::2]
+    atoms_train = atoms[:80]
+    atoms_test = atoms[80:]
     a0 = atoms[0]
-    Ndata = len(atoms)
+    Ntest = len(atoms_test)
     
     # Setting up the featureCalculator
-    Rc1 = 4
+    Rc1 = 5
     binwidth1 = 0.2
     sigma1 = 0.2
     
-    Rc2 = 3
+    Rc2 = 4
     Nbins2 = 30
     sigma2 = 0.2
     
-    use_angular = True
-    gamma = 3
+    use_angular = False
+    gamma = 1
     eta = 20
     
     featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=use_angular)
@@ -124,12 +111,12 @@ if __name__ == '__main__':
     # Predicting
     Nsplit = 2
 
-    E, F, Epred, Fpred, Ndata = predictEandF(atoms, featureCalculator, Nsplit=Nsplit)
+    E, F, Epred, Fpred = predictEandF(atoms_train, atoms_test, featureCalculator, Nsplit=Nsplit)
     print('shape F:', F.shape)
     print('shape Fpred:', Fpred.shape)
 
-    F = F.reshape((Ndata, -1))
-    cos_dists = np.array([cosine(F[i], Fpred[i]) for i in range(Ndata)])
+    F = F.reshape((Ntest, -1))
+    cos_dists = np.array([cosine(Fi, Fpredi) for Fi, Fpredi in zip(F, Fpred)])
     distributionPlot(cos_dists, title='Cosine distance distribution between target and predicted forces\n0=parallel, 1=orthogonal, 2=anti-parallel',
                      xlabel='cosine distance')
 
@@ -145,15 +132,6 @@ if __name__ == '__main__':
 
     correlationPlot(Epred, E, title='Energy correlation', xlabel='E predicted', ylabel='E target')
     correlationPlot(Fpred, F, title='Correllation between force components', xlabel='F predicted', ylabel='F target')
-
-    # reshape back
-    F = F.reshape((Ndata, -1))
-    Fpred = Fpred.reshape((Ndata, -1))
-    
-    
-    
-
-
 
     plt.show()
 

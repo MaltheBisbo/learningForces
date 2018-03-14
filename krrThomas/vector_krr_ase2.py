@@ -50,7 +50,7 @@ class vector_krr_class():
         if fnew is None:
             fnew = self.featureCalculator.get_feature(atoms)
 
-        kernel_Jac = self.comparator.get_kernelVec_Jac(fnew, self.featureMat)
+        kernel_Jac = self.comparator.get_kernelVec_Jac(fnew, self.featureMat[:self.Ndata])
 
         kernel_Jac_vec = np.zeros((1,self.Ncoord*self.Ndata))
         for i in range(self.Ndata):
@@ -281,7 +281,7 @@ def createData(Ndata, theta):
     x2rot = np.sin(theta) * x1 + np.cos(theta) * x2
     xrot = np.c_[x1rot, x2rot].reshape((1, 8))
 
-    # Define an array of positions for the last pointB
+    # Define an array of positions for the last point
     # xnew = np.c_[np.random.rand(Ndata)+0.5, np.random.rand(Ndata)+1]
     x1new = np.linspace(0.5, 2, Ndata)
     x2new = np.ones(Ndata)
