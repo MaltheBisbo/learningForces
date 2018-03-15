@@ -65,8 +65,8 @@ class globalOptim():
     distance rmin from each other, and have atleast one neighbour less than rmax away.
 
     """
-    def __init__(self, Efun, gradfun, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=10,
-                 saveStep=3, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, maxNtrain=1e3,
+    def __init__(self, calculator, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=10,
+                 saveStep=3, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, maxNtrain=1.5e3,
                  fracPerturb=0.4, radiusRange=[0.9, 1.5], stat=False):
 
         self.Efun = Efun
@@ -130,19 +130,16 @@ class globalOptim():
         self.Ebest = self.E
         self.Xbest = self.X
         k = 0
-        
-        # Save stuff for performance curve
-        self.Erelaxed[0] = self.E
-        self.Nfev_array[0] = self.Nfev
 
         # Run global search
         for i in range(self.Niter):
             
             # Use MLmodel - if it excists + sufficient data is available
-            if self.MLmodel is not None and self.ksaved > self.NstartML:
+            useML_cond = self.MLmodel is not None and self.ksaved > self.NstartML
+            if useML_cond:
                 
                 # Reduce training data - If there is too much
-                if self.ksaved > 1.1*self.maxNtrain:
+                if self.ksaved > self.maxNtrain:
                     
                     Nremove = self.ksaved - self.maxNtrain
                     self.Xsaved[:self.maxNtrain] = self.Xsaved[Nremove:self.ksaved]
