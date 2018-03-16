@@ -5,7 +5,7 @@ from angular_fingerprintFeature_test import Angular_Fingerprint
 from gaussComparator import gaussComparator
 from gaussComparator_cosdist import gaussComparator_cosdist
 from scipy.signal import argrelextrema
-from krr_calculator import krr_calculator
+from custom_calculators import krr_calculator
 from krr_calculator_no_z import krr_calculator as krr_calculator_no_z
 import time
 
@@ -50,7 +50,7 @@ def main():
     Nbins2 = 30
     sigma2 = 0.2
 
-    use_angular = True
+    use_angular = False
     gamma = 1
     eta = 20
 
@@ -67,14 +67,13 @@ def main():
     print('params:', params)
     print('MAE_energy: ', MAE)
 
-    label = 'grapheneMLrelax/graphene1'
-    calculator = krr_calculator_no_z(krr, label)
+    calculator = krr_calculator_no_z(krr)
 
     E_test_MLrelaxed = []
     atoms_test_MLrelaxed = []
     for i, a in enumerate(atoms_test_relaxed):
         a.set_calculator(calculator)
-        dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneAngNoZ_testRelaxed{}.traj'.format(i))
+        dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneNoZ_remove{}.traj'.format(i))
         dyn.run(fmax=0.1)
         atoms_test_MLrelaxed.append(a)
         E_test_MLrelaxed.append(krr.predict_energy(a))

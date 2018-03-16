@@ -19,10 +19,12 @@ class krr_calculator(Calculator):
 
         Calculator.calculate(self, atoms, properties, system_changes)
 
-        self.results['energy'] = self.MLmodel.predict_energy(atoms)
-        self.results['forces'] = self.MLmodel.predict_force(atoms).reshape((-1,3))
+        if 'energy' in properties:
+            self.results['energy'] = self.MLmodel.predict_energy(atoms)
+        if 'forces' in properties:
+            self.results['forces'] = self.MLmodel.predict_force(atoms).reshape((-1,3))
         
-        return self.results['energy'], self.results['forces']
+        #return self.results['energy'], self.results['forces']
 
 
 class doubleLJ_calculator(Calculator):
@@ -40,10 +42,10 @@ class doubleLJ_calculator(Calculator):
     def calculate(self, atoms=None, properties=['energy', 'forces'], system_changes=['positions']):
         Calculator.calculate(self, atoms, properties, system_changes)
 
-        self.results['energy'] = self.energy(atoms)
-        self.results['forces'] = self.force(atoms)
-        
-        return self.results['energy'], self.results['forces']
+        if 'energy' in properties:
+            self.results['energy'] = self.energy(atoms)
+        if 'forces' in properties:
+            self.results['forces'] = self.forces(atoms)
 
     def energy(self, a):
         x = a.get_positions()
@@ -57,7 +59,7 @@ class doubleLJ_calculator(Calculator):
                     E += E1 + E2
         return E
 
-    def doubleLJ_gradient_ase(self, a):
+    def forces(self, a):
         x = a.get_positions()
         Natoms, dim = x.shape
         dE = np.zeros((Natoms, dim))

@@ -2,8 +2,53 @@ import numpy as np
 from scipy.optimize import minimize
 from scipy.spatial.distance import euclidean
 import time
-# import matplotlib.pyplot as plt
 
+from startgenerator import StartGenerator
+from custom_calculators import krr_calculator
+
+from ase import Atoms
+from ase.ga.utilities import closest_distances_generator
+
+def createInitalStructure():
+    '''
+    Creates an initial structure of 24 Carbon atoms
+    '''    
+    number_type1 = 6  # Carbon
+    number_opt1 = 24  # number of atoms
+    atom_numbers = number_opt1 * [number_type1]
+
+    cell = np.array([[24, 0, 0],
+                     [0, 24, 0],
+                     [0, 0, 18]])
+    pbc = [False, False, False]
+
+    template = Atoms('')
+    template.set_cell(cell)
+    template.set_pbc(pbc)
+    # define the volume in which the adsorbed cluster is optimized
+    # the volume is defined by a a center position (p0)
+    # and three spanning vectors
+    
+    a = np.array((4.5, 0., 0.))
+    b = np.array((0, 4.5, 0))
+    z = np.array((0, 0, 1.5))
+    p0 = np.array((0., 0., 9-0.75))
+    center = np.array((11.5, 11.5))
+    
+    # define the closest distance two atoms of a given species can be to each other
+    cd = closest_distances_generator(atom_numbers=atom_numbers,
+                                     ratio_of_covalent_radii=0.7)
+
+    # create the start structure
+    sg = StartGenerator(slab=template,
+                        atom_numbers=atom_numbers,
+                        closest_allowed_distances=cd,
+                        box_to_place_in=[p0, [a, b, z], center],
+                        elliptic=True,
+                        cluster=False)
+
+    structure = sg.get_new_candidate()
+    return structure
 
 class globalOptim():
     """
@@ -65,18 +110,14 @@ class globalOptim():
     distance rmin from each other, and have atleast one neighbour less than rmax away.
 
     """
-    def __init__(self, calculator, MLmodel=None, Natoms=6, Niter=50, boxsize=None, dmax=0.1, sigma=1, Nstag=10,
+    def __init__(self, calculator, MLmodel=None, Natoms=6, Niter=50, dmax=0.1, sigma=1, Nstag=10,
                  saveStep=3, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, maxNtrain=1.5e3,
-                 fracPerturb=0.4, radiusRange=[0.9, 1.5], stat=False):
+                 fracPerturb=0.4):
 
-        self.Efun = Efun
-        self.gradfun = gradfun
+        self.calculator = calculator
         self.MLmodel = MLmodel
+
         self.Natoms = Natoms
-        if boxsize is not None:
-            self.boxsize = boxsize
-        else:
-            self.boxsize = 1.5 * np.sqrt(self.Natoms)
         self.bounds = [(0, boxsize)] * Natoms * 2
         self.dmax = dmax
         self.Niter = Niter
@@ -88,47 +129,14 @@ class globalOptim():
         self.NstartML = NstartML
         self.maxNtrain = int(maxNtrain)
         self.Nperturb = max(2, int(np.ceil(self.Natoms*fracPerturb)))
-        self.rmin, self.rmax = radiusRange
 
-        # Initialize arrays to store structures for model training
-        self.Xsaved = np.zeros((6000, 2*Natoms))
-        self.Esaved = np.zeros(6000)
-        # initialize counter to keep track of the ammount of data saved
-        self.ksaved = 0
-
-        # Initialize array containing Energies of all relaxed structures
-        self.Erelaxed = np.zeros(Niter)
-
-        # Initialize counters for function evaluations
-        self.Nfev = 0
-        self.Nfev_array = np.zeros(Niter)
-
-        # Counters for timing
-        self.time_relaxML = 0
-        self.time_train = 0
-
-        # Save number of accepted ML-relaxations
-        self.NacceptedML = 0
-
-        # ML and target energy of relaxed structures
-        self.ErelML = np.zeros(Niter)
-        self.ErelTrue = np.zeros(Niter)
-
-        # ML error of relaxed structure
-        self.MLerror = np.zeros(Niter)
-        self.theta0 = np.zeros(Niter)
-        self.Nbacktrack = np.zeros(Niter)
-        self.Nerror_too_high = 0
+        # List of structures to be added in next training
+        self.a_add = []
         
-        # For extracting statistics (Only for testing)
-        self.stat = stat
-        if stat:
-            self.initializeStatistics()
-
     def runOptimizer(self):
-        self.makeInitialStructure()
-        self.Ebest = self.E
-        self.Xbest = self.X
+        self.a_best = createInitalStructure()
+        self.a_best.set_calculator(self.calculator)
+        Ebest = a_best.get_potential_energy()
         k = 0
 
         # Run global search
@@ -140,62 +148,23 @@ class globalOptim():
                 
                 # Reduce training data - If there is too much
                 if self.ksaved > self.maxNtrain:
-                    
                     Nremove = self.ksaved - self.maxNtrain
-                    self.Xsaved[:self.maxNtrain] = self.Xsaved[Nremove:self.ksaved]
-                    self.Esaved[:self.maxNtrain] = self.Esaved[Nremove:self.ksaved]
                     self.ksaved = self.maxNtrain
-                    
+
+                    # Remove data in MLmodel
                     self.MLmodel.remove_data(Nremove)
                         
                 # Train ML model + ML-relaxation
-                t0 = time.time()
                 self.trainModel()
-                self.time_train += time.time() - t0
 
-                acceptableStructure = False
-                while not acceptableStructure:
-                    # Perturb current structure
-                    Xnew_unrelaxed = self.makeNewCandidate()
-                    
-                    # Relax with MLmodel
-                    t0 = time.time()
-                    EnewML, XnewML, error, theta0, Nback = self.relax(Xnew_unrelaxed, ML=True)  # two last for TESTING
-                    self.time_relaxML += time.time() - t0
-
-                    # Measure of acceptability
-                    acceptableStructure = error/np.sqrt(theta0) < 0.01
-                    
-                    if acceptableStructure:
-                        # Target energy of relaxed structure
-                        EnewML_true = self.Efun(XnewML)
-                        self.Nfev += 1
-                        
-                        # Save target energy
-                        self.Xsaved[self.ksaved] = XnewML
-                        self.Esaved[self.ksaved] = EnewML_true
-                        self.ksaved += 1
-                    
-                        ## TESTING
-                        # Save ML and target energy of relaxed structure (For testing)
-                        self.ErelML[i] = EnewML  # TESTING
-                        self.ErelTrue[i] = EnewML_true  # TESTING
-                        
-                        self.MLerror[i] = error  # TESTING
-                        self.theta0[i] = theta0  # TESTING
-                        self.Nbacktrack[i] = Nback  # TESTING
-                        ## TESTING DONE
-                    
-                # Accept ML-relaxed structure based on precision criteria
-                if abs(EnewML - EnewML_true) < self.MLerrorMargin:
-                    Enew, Xnew = EnewML_true, XnewML
-                    self.NacceptedML += 1
-                else:
-                    continue
+                # Perturb current structure
+                a_new = self.makeNewCandidate(a_best)
+                
+                # Relax with MLmodel
+                EnewML, XnewML, error, theta0, Nback = self.relax(Xnew_unrelaxed, ML=True)  # two last for TESTING
                 
             else:
                 # Perturb current structure to make new candidate
-                # Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
                 Xnew_unrelaxed = self.makeNewCandidate()
 
                 # Relax with true potential
@@ -235,158 +204,34 @@ class globalOptim():
                 break
             """
             
-    def makeInitialStructure(self):
-        """
-        Generates an initial structure by placing an atom one at a time inside
-        a square of size self.boxsize and cheking if it satisfies the constraints
-        based on the previously placed atoms.
+    def makeNewCandidate(self, a):
         
-        Constraints:
-        1) Distance to all atoms must be > self.rmin
-        2) Distance to nearest neighbor must be < self.rmax
-        """
-        # Check if position of a new atom is valid with respect to
-        # the preciously placed atoms.
-        def validPosition(X, xnew):
-            Natoms = int(len(X)/2) # Current number of atoms
-            if Natoms == 0:
-                return True
-            connected = False
-            for i in range(Natoms):
-                r = np.linalg.norm(xnew - X[2*i:2*i+2])
-                if r < self.rmin:
-                    return False
-                if r < self.rmax:
-                    connected = True
-            return connected
-
-        # Iteratively place a new atom into the box
-        Xinit = np.zeros(2*self.Natoms)
-        for i in range(self.Natoms):
-            while True:
-                xnew = np.random.rand(2) * self.boxsize
-                if validPosition(Xinit[:2*i], xnew):
-                    Xinit[2*i:2*i+2] = xnew
-                    break
-
-        self.E, self.X = self.relax(Xinit)
+        a_new = a.copy()
+        a_new.rattle()
+        a_new.set_calculator(self.calculator)
         
-    def makeNewCandidate(self):
-        """
-        Makes a new candidate by perturbing a subset of the atoms in the
-        current structure.
-
-        The perturbed atoms are added to the fixed atoms one at a time.
-
-        Pertubations are applied to an atom until it satisfies the
-        constraints with respect to the fixed atoms and the previously
-        placed perturbed atoms.
-
-        Constraints:
-        1) Distance to all atoms must be > self.rmin
-        2) Distance to nearest neighbor must be < self.rmax
-        """
-                
-        # Function to determine if perturbation of a single atom is valid
-        # with respect to a set of static atoms.
-        def validPerturbation(X, index, perturbation, index_static):
-            connected = False
-            xnew = X[2*index:2*index+2] + perturbation
-            for i in index_static:
-                if i == index:
-                    continue
-                r = np.linalg.norm(xnew - X[2*i:2*i+2])
-                if r < self.rmin:
-                    return False
-                if r < self.rmax:
-                    connected = True
-            return connected
-
-        """
-        # Check if unperturbed structure satisfies constraints
-        InitialStructureOkay = np.array([validPerturbation(self.X, i, np.array([0,0]), np.arange(self.Natoms))
-                                         for i in range(self.Natoms)])
-        if not np.all(InitialStructureOkay):
-            print('Einit:', self.Efun(self.X))
-            assert np.all(InitialStructureOkay)
-        """
-
-        # Pick atoms to perturb
-        i_permuted = np.random.permutation(self.Natoms)
-        i_perturb = i_permuted[:self.Nperturb]
-        i_static = i_permuted[self.Nperturb:]
-        Xperturb = self.X.copy()
-        for i in i_perturb:
-            # Make valid perturbation on this atom
-            while True:
-                perturbation = 2*self.dmax * (np.random.rand(2) - 0.5)
-            
-                # check if perturbation rersult in acceptable structure
-                if validPerturbation(Xperturb, i, perturbation, i_static):
-                    Xperturb[2*i:2*i+2] += perturbation
-                    # Add the perturbed atom just accepted to the static set
-                    i_static = np.append(i_static, i)
-                    break
-
-        return Xperturb
-    
-    def structureValidity(self, x):
-        connected_array = np.zeros(self.Natoms).astype(int)
-        for i in range(self.Natoms):
-            xi = x[2*i:2*(i+1)]
-            for j in range(i+1, self.Natoms):
-                xj = x[2*j:2*(j+1)]
-                distance = euclidean(xi, xj)
-                if distance < self.rmin:
-                    return False
-                if distance < self.rmax:
-                    connected_array[i] = 1
-                    connected_array[j] = 1
-        return np.all(connected_array == 1)
+        return a_new
     
     def trainModel(self):
-        
-        Eadd = self.Esaved[self.MLmodel.Ndata:self.ksaved]
-        Xadd = self.Xsaved[self.MLmodel.Ndata:self.ksaved]
-
         GSkwargs = {'reg': np.logspace(-7, -7, 1), 'sigma': np.logspace(0, 2, 5)}
-        FVU, params = self.MLmodel.train(Eadd,
-                                         positionMat=Xadd,
+        FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
                                          **GSkwargs)
+        self.a_add = []
         
-    def relax(self, X=None, ML=False):
+    def relax(self, a, ML=False):
         ## determine which model to use for relaxation ##
         if ML:
-            # Use ML potential and forces
-            def Efun(pos):
-                return self.MLmodel.predict_energy(pos=pos)  # + self.artificialPotential(pos)
-
-            def gradfun(pos):
-                return -self.MLmodel.predict_force(pos=pos)
-
-            def callback(x_cur):
-                global Xtraj
-                Xtraj.append(x_cur)
-                
-            def localMinimizer(X):
-                global Xtraj
-                Xtraj = []
-                res = minimize(Efun, X, method="BFGS", jac=gradfun, tol=1e-5, callback=callback)
-                Xtraj = np.array(Xtraj)
-                return res, Xtraj
+            # Set up krr calculator
+            krr_calc = krr_calculator(self.MLmodel)
+            a.set_calculator(krr_calc)
+            dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneNoZ_ree{}.traj'.format(i))
+            dyn.run(fmax=0.1)
         else:
-            # Use double Lennard-Johnes
-            def callback(x_cur):
-                global Xtraj
-                Xtraj.append(x_cur)
-
-            def localMinimizer(X):
-                global Xtraj
-                Xtraj = []
-                res = minimize(self.Efun, X, method="BFGS", jac=self.gradfun, tol=1e-5, callback=callback)
-                Xtraj = np.array(Xtraj)
-                return res, Xtraj
+            a.set_calculator(self.calculator)
+            dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneNoZ_ree{}.traj'.format(i))
+            dyn.run(fmax=0.1)
+            
 
         # Function that extracts the subset, of the relaxation trajectory, relevant for training.
         def trimData(Etraj):
