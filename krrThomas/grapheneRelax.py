@@ -1,109 +1,90 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from krr_class_new import krr_class
-from doubleLJ import doubleLJ
-from fingerprintFeature import fingerprintFeature
+from krr_ase import krr_class as KRR
+from angular_fingerprintFeature_test import Angular_Fingerprint
 from gaussComparator import gaussComparator
 from gaussComparator_cosdist import gaussComparator_cosdist
 from scipy.signal import argrelextrema
 from krr_calculator import krr_calculator
+from krr_calculator_no_z import krr_calculator as krr_calculator_no_z
 import time
 
 from ase import Atoms
 from ase.optimize import BFGS
+from ase.optimize.sciopt import SciPyFminBFGS
 from ase.io import read, write
-
-def loadTraj(Ndata):
-    atoms = read('work_folder/all.traj', index=':')
-    atoms = atoms[0:15000]
-    atoms = atoms[::10]
-    atoms = atoms[:Ndata]
-    Na = 24
-    dim = 3
-    Ntraj = len(atoms)
-    
-    pos = np.zeros((Ntraj,Na,dim))
-    E = np.zeros(Ntraj)
-    F = np.zeros((Ntraj, Na, dim))
-    for i, a in enumerate(atoms):
-        pos[i] = a.positions
-        E[i] = a.get_potential_energy()
-        F[i] = a.get_forces()
-
-    permutation = np.random.permutation(Ntraj)
-    pos = pos[permutation]
-    E = E[permutation]
-    F = F[permutation]
-    print('Data loaded')
-    return pos.reshape((Ntraj, Na*dim)), E, F.reshape((Ntraj, Na*dim))
+from ase.visualize import view
 
 def main():
-    #np.random.seed(455)
-    Ndata = 1500
-    Natoms = 24
+    atoms = read('graphene_data/graphene_all2.traj', index=':')
+    E = [a.get_potential_energy() for a in atoms]
     
-    # parameters for potential
-    eps, r0, sigma = 1.8, 1.1, np.sqrt(0.02)
-    params = (eps, r0, sigma)
-
-    # parameters for kernel and regression
-    reg = 1e-7
-    sig = 30
-
-    X = np.loadtxt('work_folder/graphene_all_ordered_positions.txt', delimiter='\t')
-    G = np.loadtxt('work_folder/graphene_all_ordered_features.txt', delimiter='\t')
-    E = np.loadtxt('work_folder/graphene_all_ordered_Energies.txt', delimiter='\t')
-    F = np.loadtxt('work_folder/graphene_all_ordered_Forces.txt', delimiter='\t')
-
-    Nstructs = len(E)
+    a0 = atoms[0]
+    Ndata = len(atoms)
+    Nrelaxations = int(Ndata/4)
+    print(Nrelaxations)
     
-    # Find local extremas in E
-    idx_maxE = argrelextrema(E, np.greater, order=3)[0]
-
-    idx_traj = np.split(np.arange(len(E)), idx_maxE)
-    print(idx_traj[0].shape)
-    Ntraj = len(idx_traj)
-    print(Ntraj)
-    idx_minE = np.zeros(Ntraj).astype(int)
-    idx_rest = np.zeros(Nstructs - 2*Ntraj).astype(int)
-    k=0
-    for i in range(Ntraj):
-        traj = idx_traj[i]
-        len_traj = len(traj)
-        idx_minE[i] = traj[-1]
-        idx_rest[k:k+len_traj-2] = traj[1:-1]
-        k += len_traj - 2
-    idx_maxE = np.r_[0, idx_maxE]
-
-    Ntrain = 1000
-    idx_rest_permut = np.random.permutation(idx_rest)
-    idx_train = np.r_[idx_minE, idx_rest_permut[:Ntrain - Ntraj]]
-    print(idx_train.shape)
+    # Split data into training and testing
+    atoms_train = atoms[0:(Nrelaxations - 10)*4]
+    atoms_test = atoms[(Nrelaxations - 10)*4:]
+    atoms_test_start = atoms[(Nrelaxations - 10)*4::4]
+    atoms_test_relaxed = atoms[(Nrelaxations - 10)*4 + 3::4]
+    print(len(atoms))
+    print(len(atoms_train))
+    print(len(atoms_test))
     
-    featureCalculator = fingerprintFeature(dim=3, rcut=6, binwidth=0.1, sigma=0.3)
-    comparator = gaussComparator(sigma=sig)
-    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
+    write('grapheneMLrelax/graphene_test_start.traj', atoms_test_start)
+    write('grapheneMLrelax/graphene_test_relaxed.traj', atoms_test_relaxed)
 
-    Esub = E[idx_train]
-    Fsub = F[idx_train]
-    Xsub = X[idx_train]
-    Gsub = G[idx_train]
+    E_train = [a.get_potential_energy() for a in atoms_train]
+    E_test = [a.get_potential_energy() for a in atoms_test]
+    E_test_start = [a.get_potential_energy() for a in atoms_test_start]
+    E_test_relaxed = [a.get_potential_energy() for a in atoms_test_relaxed]
 
-    GSkwargs = {'reg': np.logspace(-1, -7, 10), 'sigma': np.logspace(-1,2,10)}
-    print(GSkwargs)
-    #FVU_energy_array[i], FVU_force_array[i, :] = krr.train(Esub, Fsub, Gsub, Xsub, reg=reg)
-    FVU_E, params = krr.train(Esub, featureMat=Gsub, positionMat=Xsub, add_new_data=False, **GSkwargs)
+    # angular fingerprint parameters
+    Rc1 = 5
+    binwidth1 = 0.2
+    sigma1 = 0.2
+    
+    Rc2 = 4
+    Nbins2 = 30
+    sigma2 = 0.2
+
+    use_angular = True
+    gamma = 1
+    eta = 20
+
+    # Initialize featureCalculator
+    featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
+    fingerprints = featureCalculator.get_featureMat(atoms, show_progress=True)
+
+    # Initialize comparator and KRR model
+    comparator = gaussComparator()
+    krr = KRR(comparator=comparator, featureCalculator=featureCalculator)
+
+    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0,2,10)}
+    MAE, params = krr.train(data_values=E, featureMat=fingerprints, add_new_data=False, k=10, **GSkwargs)
     print('params:', params)
-    print('FVU_energy: {}\n'.format(FVU_E))
+    print('MAE_energy: ', MAE)
 
-    label='grapheneMLrelax/grapheneML'
-    calculator = krr_calculator(krr, label)
+    label = 'grapheneMLrelax/graphene1'
+    calculator = krr_calculator_no_z(krr, label)
+
+    E_test_MLrelaxed = []
+    atoms_test_MLrelaxed = []
+    for i, a in enumerate(atoms_test_relaxed):
+        a.set_calculator(calculator)
+        dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneAngNoZ_testRelaxed{}.traj'.format(i))
+        dyn.run(fmax=0.1)
+        atoms_test_MLrelaxed.append(a)
+        E_test_MLrelaxed.append(krr.predict_energy(a))
+
+    #write('grapheneMLrelax/grapheneAng_MLrelaxed.traj', atoms_test_MLrelaxed)
+    #energies = np.array([E_test_start, E_test_relaxed, E_test_MLrelaxed])
+    #energy_diff = np.array(E_test_relaxed) - np.array(E_test_MLrelaxed)
+    #np.savetxt('grapheneMLrelax/grapheneAng_MLrelaxed_E.txt', energies, delimiter='\t')
+    #print('Energy differende:\n', energy_diff)
     
-    x_to_relax = X[idx_maxE[10]].reshape((-1,3))
-    a = Atoms('C24', x_to_relax)
-    a.set_calculator(calculator)
-    dyn = BFGS(a, trajectory='grapheneMLrelax/graphene10.traj')
-    dyn.run(fmax=0.1)
-
+    
 if __name__ == "__main__":
     main()

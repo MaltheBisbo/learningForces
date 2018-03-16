@@ -101,7 +101,7 @@ class krr_class():
         A = similarityMat + reg*np.identity(len(data_values))
         self.alpha = np.linalg.solve(A, data_values - self.beta)
         
-    def train(self, data_values, featureMat=None, positionMat=None, add_new_data=True, k=3, **GSkwargs):
+    def train(self, data_values=None, featureMat=None, positionMat=None, add_new_data=True, k=3, **GSkwargs):
         """ 
         Train the model using gridsearch and cross-validation
             
@@ -123,7 +123,7 @@ class krr_class():
 
         **GSkwargs:
         Dict containing the sequences of the kernel-width and regularization parameter to be
-        used in grissearch. The labels are 'sigma' and 'reg' respectively.
+        used in gridsearch. The labels are 'sigma' and 'reg' respectively.
         """
         if featureMat is None:
             featureMat = self.featureCalculator.get_featureMat(positionMat)
@@ -199,10 +199,10 @@ class krr_class():
         return np.mean(FVU)
 
     def __get_FVU_energy(self, data_values, test_similarities):
-        #Epred = np.array([self.predict_energy(similarityVec=similarity) for similarity in test_similarities])
         Epred = self.predict_energy(similarityVec=test_similarities)
         MAE = np.mean(np.abs(Epred - data_values))
-        MSE = np.mean((Epred - data_values)**2)
-        var = np.var(data_values)
-        return MAE  # MSE / var 
+        #MSE = np.mean((Epred - data_values)**2)
+        #var = np.var(data_values)
+        #FVU = MSE / var
+        return MAE
 

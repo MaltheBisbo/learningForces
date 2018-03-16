@@ -1,8 +1,8 @@
 import numpy as np
 from angular_fingerprintFeature_m import Angular_Fingerprint
 from gaussComparator import gaussComparator
+from gaussComparator_cosdist import gaussComparator_cosdist
 from eksponentialComparator import eksponentialComparator
-from angular_fingerprintFeature import Angular_Fingerprint as Angular_Fingerprint_tho
 import matplotlib.pyplot as plt
 from krr_class_new import krr_class
 
@@ -18,19 +18,23 @@ view(a0)
 E = np.array([a.get_potential_energy() for a in atoms])
 
 Rc1 = 5
-Rc2 = 5
-binwidth1 = 0.1
-Nbins2 = 30
+binwidth1 = 0.3
 sigma1 = 0.4
-sigma2 = 0.1
-gamma = 3
-eta = 20
 
-featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=True)
+Rc2 = 4
+Nbins2 = 30
+sigma2 = 0.2
+
+use_angular = True
+gamma = 1
+eta = 50
+
+featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, use_angular=use_angular)
 fingerprint0 = featureCalculator.get_features(a0)
 length_feature = len(fingerprint0)
 
 # Save file
+#filename = 'SnO_features/SnO_radialFeatures_gauss_Rc1_{0:d}_binwidth1_{1:.1f}_sigma1_{2:.1f}_gamma_{3:d}.txt'.format(Rc1, binwidth1, sigma1, gamma)
 filename = 'SnO_features/SnO_radialAngFeatures_gauss_Rc1_2_{0:d}_{1:d}_binwidth1_{2:.1f}_Nbins2_{3:d}_sigma1_2_{4:.1f}_{5:.2f}_gamma_{6:d}.txt'.format(Rc1, Rc2, binwidth1, Nbins2, sigma1, sigma2, gamma)
 try:
     fingerprints = np.loadtxt(filename, delimiter='\t')
@@ -41,9 +45,14 @@ except IOError:
         fingerprints[i] = featureCalculator.get_features(structure)
     np.savetxt(filename, fingerprints, delimiter='\t')
 print(filename)
-Nradial = int(Rc1/binwidth1)
+Nradial = int(np.ceil(Rc1/binwidth1))
 print(Nradial)
-fingerprints[:, 3*Nradial:] *= eta
+if use_angular:
+    fingerprints[:, 3*Nradial:] *= eta
+
+print(len(fingerprints[0]))
+print(featureCalculator.bondtypes_3body)
+fingerprints[:, :3*Nradial] = 0
     
 # Set up KRR-model
 comparator = gaussComparator()
@@ -69,7 +78,7 @@ for k in range(Npermutations):
         
         FVU_temp, params = krr.train(Esub, featureMat=fingerprints_sub, add_new_data=False, k=10, **GSkwargs)
         FVU[k, i] += FVU_temp
-        print('params:', params)
+        #print('params:', params)
 FVU_mean = FVU.mean(axis=0)
 FVU_std = FVU.std(axis=0)
 print(FVU_mean)
@@ -78,14 +87,11 @@ print(FVU_std)
 result = np.r_[Rc1, binwidth1, sigma1, FVU_mean, FVU_std]
 
 plt.figure(1)
+plt.title('Learning curve - SnO (only angular part): \nRc2={0:d}, Nbins2={1:d}, sigma2={2:.1f}, gamma={3:d}'.format(Rc2, Nbins2, sigma2, gamma))
 plt.loglog(N_array, FVU_mean)
-plt.ylim([10**-1, 10**1])
+
 
 plt.figure(2)
-plt.plot(np.arange(len(fingerprints[0]))*binwidth1, np.c_[fingerprints[0], fingerprints[10], fingerprints[20], fingerprints[100]])
+plt.title('Feature examples - SnO (only angular part): \nRc2={0:d}, Nbins2={1:d}, sigma2={2:.1f}, gamma={3:d}'.format(Rc2, Nbins2, sigma2, gamma))
+plt.plot(np.arange(len(fingerprints[0])), np.c_[fingerprints[0], fingerprints[10], fingerprints[20], fingerprints[100]])
 plt.show()
-
-    
-
-
-

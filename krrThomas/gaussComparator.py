@@ -64,7 +64,7 @@ class gaussComparator():
         dk_df = np.multiply(dk_dd, dd_df)
         return dk_df
     
-    def get_Hess_single(self, f1, f2):
+    def get_single_Hess(self, f1, f2):
         """
         Calculated the hessian of the kernel function with respect to
         the two features f1 and f2.
@@ -80,5 +80,5 @@ class gaussComparator():
         d2d_df1df2 = -2*np.identity(Nf)
         u = -1/(2*self.sigma**2)
 
-        Hess = u*kernel * (u*np.outer(dd_df1, dd_df2.T) + d2d_df1df2)
+        Hess = self.sigma**2 * u*kernel * (u*np.outer(dd_df1, dd_df2.T) + d2d_df1df2)
         return Hess
