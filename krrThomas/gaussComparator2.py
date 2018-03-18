@@ -67,7 +67,7 @@ class gaussComparator():
         dd_df1 = -2*(f2-f1).reshape((Nf,1))
         dd_df2 = -dd_df1
         d2d_df1df2 = -2*np.identity(Nf)
-        u = -1/(2*self.sigma**2)
+        u = 1/(2*self.sigma**2)
 
-        Hess = self.sigma**2 * u*kernel * (u*np.outer(dd_df1, dd_df2.T) + d2d_df1df2)
+        Hess = -u*kernel * (u*np.outer(dd_df1, dd_df2.T) - d2d_df1df2)
         return Hess

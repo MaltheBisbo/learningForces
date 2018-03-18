@@ -7,7 +7,48 @@ from startgenerator import StartGenerator
 from custom_calculators import krr_calculator
 
 from ase import Atoms
+from ase.io import read, write
 from ase.ga.utilities import closest_distances_generator
+from ase.optimize import BFGS
+from ase.calculators.singlepoint import SinglePointCalculator
+from ase.constraints import FixedPlane
+
+def createInitalStructure2d(Natoms):
+    dim = 3
+    boxsize = 2 * np.sqrt(Natoms)
+    rmin = 0.9
+    rmax = 2.2
+
+    def validPosition(X, xnew):
+        Natoms = int(len(X)/dim)  # Current number of atoms
+        if Natoms == 0:
+            return True
+        connected = False
+        for i in range(Natoms):
+            r = np.linalg.norm(xnew - X[dim*i:dim*(i+1)])
+            if r < rmin:
+                return False
+            if r < rmax:
+                connected = True
+        return connected
+
+    X = np.zeros(dim*Natoms)
+    for i in range(Natoms):
+        while True:
+            xnew = np.r_[np.random.rand(dim-1) * boxsize, boxsize/2]
+            if validPosition(X[:dim*i], xnew):
+                X[dim*i:dim*(i+1)] = xnew
+                break
+    X = X.reshape((-1, 3))
+
+    atomtypes = str(Natoms) + 'He'
+    pbc = [0,0,0]
+    cell = [boxsize]*3
+    a = Atoms(atomtypes,
+              positions=X,
+              pbc=pbc,
+              cell=cell)
+    return a
 
 def createInitalStructure():
     '''
@@ -110,21 +151,21 @@ class globalOptim():
     distance rmin from each other, and have atleast one neighbour less than rmax away.
 
     """
-    def __init__(self, calculator, MLmodel=None, Natoms=6, Niter=50, dmax=0.1, sigma=1, Nstag=10,
-                 saveStep=3, min_saveDifference=0.1, MLerrorMargin=0.1, NstartML=20, maxNtrain=1.5e3,
+    def __init__(self, calculator, traj_namebase, MLmodel=None, Natoms=6, Niter=50, std_rattle=0.1, kbT=1, Nstag=10,
+                 min_saveDifference=0.3, minSampleStep=10, MLerrorMargin=0.1, NstartML=20, maxNtrain=1.5e3,
                  fracPerturb=0.4):
 
         self.calculator = calculator
+        self.traj_namebase = traj_namebase
         self.MLmodel = MLmodel
 
         self.Natoms = Natoms
-        self.bounds = [(0, boxsize)] * Natoms * 2
-        self.dmax = dmax
+        self.std_rattle = std_rattle
         self.Niter = Niter
-        self.sigma = sigma
+        self.kbT = kbT
         self.Nstag = Nstag
-        self.saveStep = saveStep
         self.min_saveDifference = min_saveDifference
+        self.minSampleStep = minSampleStep
         self.MLerrorMargin = MLerrorMargin
         self.NstartML = NstartML
         self.maxNtrain = int(maxNtrain)
@@ -132,271 +173,172 @@ class globalOptim():
 
         # List of structures to be added in next training
         self.a_add = []
+
+        self.traj_counter = 0
+        self.ksaved = 0
         
     def runOptimizer(self):
-        self.a_best = createInitalStructure()
-        self.a_best.set_calculator(self.calculator)
-        Ebest = a_best.get_potential_energy()
-        k = 0
+        # Initial structure
+        a_init = createInitalStructure2d(self.Natoms)
+        self.a, self.E = self.relax(a_init, ML=False)
 
+        # Initialize the best structure
+        self.a_best = self.a.copy()
+        self.Ebest = self.E.copy()
+        
         # Run global search
+        stagnation_counter = 0
         for i in range(self.Niter):
+            # Perturb current structure
+            a_new_unrelaxed = self.makeNewCandidate(self.a)
             
             # Use MLmodel - if it excists + sufficient data is available
             useML_cond = self.MLmodel is not None and self.ksaved > self.NstartML
             if useML_cond:
-                
-                # Reduce training data - If there is too much
-                if self.ksaved > self.maxNtrain:
-                    Nremove = self.ksaved - self.maxNtrain
-                    self.ksaved = self.maxNtrain
+                # Train ML model if new data is available
+                if len(self.a_add) > 0:
+                    self.trainModel()
 
-                    # Remove data in MLmodel
-                    self.MLmodel.remove_data(Nremove)
-                        
-                # Train ML model + ML-relaxation
-                self.trainModel()
-
-                # Perturb current structure
-                a_new = self.makeNewCandidate(a_best)
-                
                 # Relax with MLmodel
-                EnewML, XnewML, error, theta0, Nback = self.relax(Xnew_unrelaxed, ML=True)  # two last for TESTING
-                
-            else:
-                # Perturb current structure to make new candidate
-                Xnew_unrelaxed = self.makeNewCandidate()
+                a_new, EnewML = self.relax(a_new_unrelaxed, ML=True)
 
+                # Singlepoint with objective potential
+                Enew = self.singlePoint(a_new)
+
+                """
+                # Accept ML-relaxed structure based on precision criteria
+                if abs(EnewML - Enew) < self.MLerrorMargin:
+                else:
+                    continue
+                """
+            else:
                 # Relax with true potential
-                Enew, Xnew = self.relax(Xnew_unrelaxed)
+                a_new, Enew = self.relax(a_new_unrelaxed, ML=False)
 
             dE = Enew - self.E
             if dE <= 0:  # Accept better structure
                 self.E = Enew
-                self.X = Xnew
-                k = 0
+                self.a = a_new.copy()
+                stagnation_counter = 0
                 if Enew < self.Ebest:  # Update the best structure
                     self.Ebest = Enew
-                    self.Xbest = Xnew
+                    self.a_best = a_new.copy()
             else:
                 p = np.random.rand()
-                if p < np.exp(-dE/self.sigma):  # Accept worse structure
+                if p < np.exp(-dE/self.kbT):  # Accept worse structure
                     self.E = Enew
-                    self.X = Xnew
-                    k = 0
+                    self.a = a_new.copy()
+                    stagnation_counter = 0
                 else:  # Reject structure
-                    k += 1
+                    stagnation_counter += 1
 
-            # Save stuff for performance curve
-            self.Erelaxed[i] = self.E
-            self.Nfev_array[i] = self.Nfev
-            
-            if k >= self.Nstag:  # The search has converged or stagnated.
+            if stagnation_counter >= self.Nstag:  # The search has converged or stagnated.
                 print('The convergence/stagnation criteria was reached')
                 break
-
-            """
-            # Other termination criterias (for testing)
-            if self.stat:
-                if self.testCounter > self.NtestPoints-1:
-                    break
-            if self.ksaved > 1500:
-                break
-            """
             
     def makeNewCandidate(self, a):
-        
         a_new = a.copy()
-        a_new.rattle()
-        a_new.set_calculator(self.calculator)
-        
+        a_new.set_constraint([FixedPlane(ai.index, (0,0,1)) for ai in a_new])
+        a_new.rattle(self.std_rattle)
         return a_new
     
     def trainModel(self):
+        """
+        # Reduce training data - If there is too much
+        if self.ksaved > self.maxNtrain:
+            Nremove = self.ksaved - self.maxNtrain
+            self.ksaved = self.maxNtrain
+            self.MLmodel.remove_data(Nremove)
+        """
         GSkwargs = {'reg': np.logspace(-7, -7, 1), 'sigma': np.logspace(0, 2, 5)}
         FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
                                          **GSkwargs)
         self.a_add = []
+
+    def add_trajectory_to_training(self, trajectory_file):
+        atoms = read(filename=trajectory_file, index=':')
+        E = [a.get_potential_energy() for a in atoms]
+        Nstep = len(atoms)
+
+        # Always add start structure
+        self.a_add.append(atoms[0])
+
+        n_last = 0
+        Ecurrent = E[0]
+        for i in range(1,Nstep):
+            n_last += 1
+            if Ecurrent - E[i] > self.min_saveDifference and n_last > 10:
+                self.a_add.append(atoms[i])
+                Ecurrent = E[i]
+                self.ksaved += 1
+                n_last = 0
         
     def relax(self, a, ML=False):
-        ## determine which model to use for relaxation ##
         if ML:
-            # Set up krr calculator
+            traj_name = self.traj_namebase + 'ML{}.traj'.format(self.traj_counter)
             krr_calc = krr_calculator(self.MLmodel)
             a.set_calculator(krr_calc)
-            dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneNoZ_ree{}.traj'.format(i))
+            dyn = BFGS(a, trajectory=traj_name)
             dyn.run(fmax=0.1)
         else:
+            traj_name = self.traj_namebase + '{}.traj'.format(self.traj_counter)
             a.set_calculator(self.calculator)
-            dyn = BFGS(a, trajectory='grapheneMLrelax/grapheneNoZ_ree{}.traj'.format(i))
+            dyn = BFGS(a, trajectory=traj_name)
             dyn.run(fmax=0.1)
+
+            self.add_trajectory_to_training(traj_name)
+
+        self.traj_counter += 1
+        Erelaxed = a.get_potential_energy()
+        return a, Erelaxed
             
+    def singlePoint(self, a):
+        a.set_calculator(self.calculator)
+        E = a.get_potential_energy()
+        results = {'energy': E}
+        calc = SinglePointCalculator(a, **results)
+        a.set_calculator(calc)
+        self.a_add.append(a)
+        self.ksaved += 1
+        return E
 
-        # Function that extracts the subset, of the relaxation trajectory, relevant for training.
-        def trimData(Etraj):
-            Nstep = len(Etraj)
-            index = []
-            k = 0
-            Ecur = Etraj[0]
-            while k < Nstep:
-                if len(index) == 0:
-                    index.append(0)
-                    continue
-                elif Ecur - Etraj[k] > self.min_saveDifference:
-                    index.append(k)
-                    Ecur = Etraj[k]
-                k += self.saveStep
-            index[-1] = Nstep - 1
-            return index
-            
-        ## Run Local minimization ##
-        if ML is False:
-            # Relax
-            res, Xtraj = localMinimizer(X)
-            Etraj = np.array([self.Efun(x) for x in Xtraj])
+if __name__ == '__main__':
+    from custom_calculators import doubleLJ_calculator
+    from gaussComparator import gaussComparator
+    from angular_fingerprintFeature_test3 import Angular_Fingerprint
+    from krr_ase import krr_class
+    
+    Natoms = 10
+    
+    # Set up featureCalculator
+    a = createInitalStructure2d(Natoms)
 
-            # Extract subset of trajectory for training
-            trimIndices = trimData(Etraj)
-            Xtrim = Xtraj[trimIndices]
-            Etrim = Etraj[trimIndices]
+    Rc1 = 5
+    binwidth1 = 0.2
+    sigma1 = 0.2
+    
+    Rc2 = 4
+    Nbins2 = 30
+    sigma2 = 0.2
+    
+    gamma = 1
+    eta = 10
+    use_angular = False
+    
+    featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
+    
+    # Set up KRR-model
+    comparator = gaussComparator()
+    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
-            # Save new training data
-            Ntrim = len(trimIndices)
-            # print('right:', Xtrim.shape, 'left:', self.Xsaved[self.ksaved : self.ksaved + Ntrim].shape)
-            # print('Ntrim:', Ntrim, 'ksaved:', self.ksaved)
-            self.Xsaved[self.ksaved:self.ksaved + Ntrim] = Xtrim
-            self.Esaved[self.ksaved:self.ksaved + Ntrim] = Etrim
-            self.ksaved += Ntrim
-
-            # Count number of function evaluations
-            self.Nfev += res.nfev
-
-            return res.fun, res.x
-        else:
-            # Minimize using ML potential
-            res, Xtraj = localMinimizer(X)
-            k = 0
-            for x in reversed(Xtraj):
-                E, error, theta0 = self.MLmodel.predict_energy(pos=x, return_error=True)
-                #if error < 0.95*np.sqrt(theta0):  # 0.5 as first trial (testing)
-                return E, x, error, theta0, k  # two last is only for TESTING
-                #k += 1
-            #self.Nerror_too_high += 1
-            #return res.fun, res.x, np.nan, np.nan, np.nan
-
-    def initializeStatistics(self):
-        ### Statistics ###
-        # Function evaluations
-        self.Nfeval = 0
-        # Predicted energy of structure relaxed with ML model
-        self.ErelML = []
-        # Energy of structure relaxed with true potential
-        self.ErelTrue = []
-        # True energy of resulting from relaxation with ML model
-        self.ErelMLTrue = []
-        # Energy of structure relaxed with ML model followed by relaxation with true potential
-        self.E2rel = []
-        # Predicted energy of unrelaxed structure
-        self.EunrelML = []
-        # Energy of unrelaxed structure
-        self.Eunrel = []
-        # All force components of unrelaxed structure (ML)
-        self.FunrelML = []
-        # All force components of unrelaxed structure (True)
-        self.FunrelTrue = []
-        # The number of training data used
-        self.ktrain = []
-
-        self.testCounter = 0
-        self.NtestPoints = 10
-        self.Ntest_array = np.logspace(1, 3, self.NtestPoints)
-        
-    def saveStatistics(self):
-        print('ksaved=', self.ksaved)
-        
-        self.testCounter += 1
-        self.trainModel()
-        self.ktrain.append(self.ksaved)
-        # New unrelaxed structure
-        Enew_unrelaxed, Xnew_unrelaxed = self.makeNewCandidate()
-        # relax with true potential
-        Enew, Xnew = self.relax(Xnew_unrelaxed)
-        # relax with ML potential
-        ErelML, XrelML = self.relax(Xnew_unrelaxed, ML=True)
-        ErelML_relax, XrelML_relax = self.relax(XrelML)
-        # self.plotStructures(Xnew, XrelML, Xnew_unrelaxed)
-        ErelMLTrue = self.Efun(XrelML)
-        
-        # Data for relaxed energies
-        self.ErelML.append(ErelML)
-        self.ErelMLTrue.append(ErelMLTrue)
-        self.ErelTrue.append(Enew)
-        self.E2rel.append(ErelML_relax)
-        
-        # Data for unrelaxed energies
-        self.Eunrel.append(Enew_unrelaxed)
-        self.EunrelML.append(self.MLmodel.predict_energy(pos=Xnew_unrelaxed))
-        
-        # Data for unrelaxed forces
-        FnewML = self.MLmodel.predict_force(pos=Xnew_unrelaxed)
-        FnewTrue = -self.gradfun(Xnew_unrelaxed)
-        self.FunrelML.append(FnewML)
-        self.FunrelTrue.append(FnewTrue)
-        
-        return Enew, Xnew
-    """
-    def plotStructures(self, X1=None, X2=None, X3=None):
-        xbox = np.array([0, self.boxsize, self.boxsize, 0, 0])
-        ybox = np.array([0, 0, self.boxsize, self.boxsize, 0])
-
-        plt.gca().cla()
-        x1 = X1[0::2]
-        y1 = X1[1::2]
-        x2 = X2[0::2]
-        y2 = X2[1::2]
-        x3 = X3[0::2]
-        y3 = X3[1::2]
-        plt.plot(xbox, ybox, color='k')
-        plt.scatter(x1, y1, s=22, color='r')
-        plt.scatter(x2, y2, s=22, color='b')
-        plt.scatter(x3, y3, s=22, color='g', marker='x')
-        plt.gca().set_aspect('equal', adjustable='box')
-        plt.pause(2)
-    """
+    traj_namebase = 'globalTest/global'
 
     
-    """
-    options = {'maxiter': self.maxIterLocal}  # , 'gtol': 1e-3}
-    def localMinimizer(X):
-        res = minimize(self.Efun, X, method="L-BFGS-B", jac=self.gradfun, tol=1e-5,
-                       bounds=self.bounds, options=options)
-        return res
-    """
+    optimizer = globalOptim(calculator=doubleLJ_calculator(),
+                            traj_namebase=traj_namebase,
+                            MLmodel=krr,
+                            Natoms=Natoms,
+                            std_rattle=0.2)
 
-    """
-    if ML is False:
-            # Minimize using double-LJ potential + save trajectories
-            X0 = X.copy()
-            for i in range(100):
-                res = localMinimizer(X0)
-                # Save training data
-                if np.isnan(res.fun):
-                    print('NaN value during relaxation')
-                if res.fun < 0 and res.fun:  # < self.Esaved[self.ksaved-1] - 0.2:
-                    self.Xsaved[self.ksaved] = res.x
-                    self.Esaved[self.ksaved] = res.fun
-                    self.ksaved += 1
-                # print('Number of iterations:', res.nit, 'fev:', res.nfev)
-                if res.success: # Converged
-                    break
-                X0 = res.x
-            return self.Esaved[self.ksaved-1], self.Xsaved[self.ksaved-1]
-        else:
-            # Minimize using ML potential
-            res = localMinimizer(X)
-            print('Number of ML iterations:', res.nit, 'fev:', res.nfev)
-            print('Convergence status:', res.status)
-            print(res.message)
-            return res.fun, res.x
-    """
+    optimizer.runOptimizer()

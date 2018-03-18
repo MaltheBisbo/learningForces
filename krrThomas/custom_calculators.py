@@ -73,4 +73,4 @@ class doubleLJ_calculator(Calculator):
                     dE2 = self.eps*(r-self.r0)*rijVec / (r*self.sigma**2) * np.exp(-(r - self.r0)**2 / (2*self.sigma**2))
                     
                     dE[i] += dE1 + dE2
-        return dE
+        return -dE

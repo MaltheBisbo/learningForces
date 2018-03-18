@@ -169,7 +169,7 @@ class maternComparator():
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
     from gaussComparator2 import gaussComparator
-    matern = maternComparator()
+    matern = gaussComparator()
 
     def num_derivative(func, x, x_pertub):
         x_d = x - x_pertub

@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from angular_fingerprintFeature_test3 import Angular_Fingerprint
-from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint as Angular_Fingerprint_test
+from angular_fingerprintFeature import Angular_Fingerprint
+from angular_fingerprintFeature_m import Angular_Fingerprint as Angular_Fingerprint_test
 import time
 import pdb
 
@@ -131,11 +131,11 @@ plt.plot(np.arange(len(fingerprint_test))*binwidth1+binwidth1/2, fingerprint_tes
 
 plt.figure(2)
 plt.plot(np.arange(len(fingerprint_test))*binwidth1, grad_fingerprint.T)
-plt.plot(np.arange(len(fingerprint_test))*binwidth1, grad_fingerprint_test.T, linestyle=':', color='k')
+plt.plot(np.arange(len(fingerprint_test))*binwidth1, grad_fingerprint_test, linestyle=':', color='k')
 
 plt.figure(3)
 plt.plot(np.arange(len(fingerprint_test))*binwidth1+binwidth1/2, fingerprint - fingerprint_test)
 
 plt.figure(4)
-plt.plot(np.arange(len(fingerprint_test))*binwidth1, grad_fingerprint.T - grad_fingerprint_test.T)
+plt.plot(np.arange(len(fingerprint_test))*binwidth1, grad_fingerprint.T - grad_fingerprint_test)
 plt.show()

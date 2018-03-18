@@ -6,6 +6,8 @@ from ase import Atoms
 from ase.visualize import view
 from ase.io import read, write
 from ase.ga.utilities import closest_distances_generator
+from ase.optimize import BFGS
+from ase.constraints import FixedPlane
 
 def createInitalStructure():
     '''
@@ -49,17 +51,59 @@ def createInitalStructure():
     structure = sg.get_new_candidate()
     return structure
 
+def makeStructure(Natoms):
+    dim = 3
+    boxsize = 2 * np.sqrt(Natoms)
+    rmin = 0.9
+    rmax = 2.2
 
-a = createInitalStructure()
+    def validPosition(X, xnew):
+        Natoms = int(len(X)/dim)  # Current number of atoms
+        if Natoms == 0:
+            return True
+        connected = False
+        for i in range(Natoms):
+            r = np.linalg.norm(xnew - X[dim*i:dim*(i+1)])
+            if r < rmin:
+                return False
+            if r < rmax:
+                connected = True
+        return connected
+
+    X = np.zeros(dim*Natoms)
+    for i in range(Natoms):
+        while True:
+            xnew = np.r_[np.random.rand(dim-1) * boxsize, boxsize/2]
+            if validPosition(X[:dim*i], xnew):
+                X[dim*i:dim*(i+1)] = xnew
+                break
+    X = X.reshape((-1, 3))
+
+    atomtypes = str(Natoms) + 'He'
+    pbc = [0,0,0]
+    cell = [boxsize]*3
+    a = Atoms(atomtypes,
+              positions=X,
+              pbc=pbc,
+              cell=cell)
+    return a
+
+
+atoms = createInitalStructure()
+atoms1 = makeStructure(20)
+
+plane = FixedPlane([0], direction=(0,0,1))
+atoms1.set_constraint([FixedPlane(a.index, (0,0,1)) for a in atoms1])
+view(atoms1)
+atoms1.rattle(stdev=0.1, seed=42)
+view(atoms1)
 
 calc = doubleLJ_calculator()
-a.set_calculator(calc)
-print(a.get_potential_energy())
-anew = a.copy()
-anew.rattle()
-anew.set_calculator(calc)
-print(a.get_potential_energy())
-print(anew.get_potential_energy())
-view(a)
+atoms.set_calculator(calc)
+
+#dyn = BFGS(a, trajectory='testLJ.traj')
+#dyn.run(fmax=0.1)
+
+
 
 
