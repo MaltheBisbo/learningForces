@@ -13,46 +13,72 @@ from ase.optimize import BFGS
 from ase.calculators.singlepoint import SinglePointCalculator
 from ase.constraints import FixedPlane
 
-def rattleAtom(struc, index_rattle, rmax_rattle, rmin, rmax):
+def rattle_atom(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
     Natoms = struct.get_number_of_atoms()
     
-    strucRattle = struc.copy()
+    structRattle = struct.copy()
     mindis = 0
     mindisAtom = 10
- 
-    while mindis < rmin or mindisAtom > rmax:  # If the atom is too close or too far away
+
+    for i in range(Ntries):
+        #while mindis < rmin or mindisAtom > rmax:  # If the atom is too close or too far away
         # First load original positions
-        posRattle = struc.positions.copy()
+        positions = struct.positions.copy()
         
         # Then Rattle within a circle
-        r = rmax_rattle * np.sqrt(rd.random())
+        r = rmax_rattle * np.sqrt(np.random.rand())
         theta = np.random.uniform(low=0, high=2*np.pi)
-        posRattle[index_rattle] += r * np.array([np.cos(theta), np.sin(theta), 0])
+        positions[index_rattle] += r * np.array([np.cos(theta), np.sin(theta), 0])
 
-        strucRattle.positions = posRattle
-        dis = strucRattle.get_all_distances()
+        structRattle.positions = positions
+        dis = structRattle.get_all_distances()
         mindis = np.min(dis[np.nonzero(dis)])  # Check that we are not too close
-        mindisAtom = np.min(strucRattle.get_distances(index_rattle, np.delete(np.arange(Natoms), index_rattle)))  # check that we are not too far                                                                                                    
-
+        mindisAtom = np.min(structRattle.get_distances(index_rattle, np.delete(np.arange(Natoms), index_rattle)))  # check that we are not too far
+        
         # If it does not fit, try to wiggle it into place using small circle
-        if mindis < 1:
+        if mindis < rmin:
             for i in range(10):
-                r = 0.5 * np.sqrt(rd.random())
-                theta = np.random.uniform(low = 0, high = 2 * np.pi)
-                coordinates[coordinate] += r * np.array([np.cos(theta), np.sin(theta), 0])
-                strucRattle.positions = coordinates
-                dis = strucRattle.get_all_distances()
+                r = 0.5 * np.sqrt(np.random.rand())
+                theta = np.random.uniform(low=0, high=2 * np.pi)
+                positions[index_rattle] += r * np.array([np.cos(theta), np.sin(theta), 0])
+                structRattle.positions = positions
+                dis = structRattle.get_all_distances()
                 mindis = np.min(dis[np.nonzero(dis)])
 
                 # If it works break
-                if mindis > 1:
+                if mindis > rmin:
                     break
 
                 # Otherwise reset coordinate
                 else:
-                    coordinates[coordinate] -= r * np.array([np.cos(theta), np.sin(theta), 0])
+                    positions[index_rattle] -= r * np.array([np.cos(theta), np.sin(theta), 0])
 
-    return coordinates[coordinate].copy()
+        # Return structure if acceptance criteria is satisfied.
+        if mindis > rmin and mindisAtom < rmax:
+            return structRattle
+    
+    # Return None if no acceptable rattle was found
+    return None
+
+def rattle_Natoms(struct, Nrattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
+    structRattle = struct.copy()
+    
+    Natoms = struct.get_number_of_atoms()
+    i_permuted = np.random.permutation(Natoms)
+
+    rattle_counter = 0
+    for index in i_permuted:
+        newStruct = rattle_atom(structRattle, index, rmax_rattle, rmin, rmax, Ntries)
+        if newStruct is not None:
+            structRattle = newStruct.copy()
+            rattle_counter += 1
+
+        # The desired number of rattles have been performed
+        if rattle_counter > Nrattle:
+            return structRattle
+
+    # The desired number of succesfull rattles was not reached
+    return structRattle
 
 def createInitalStructure2d(Natoms):
     dim = 3
@@ -240,12 +266,13 @@ class globalOptim():
         # Run global search
         stagnation_counter = 0
         for i in range(self.Niter):
-            if hasZ(self.a):
-                print('self.a has z-components')
             # Perturb current structure
-            a_new_unrelaxed = self.makeNewCandidate(self.a)
-            if hasZ(a_new_unrelaxed):
-                print('a_new_unrelaxed has z-components')
+            a_new_unrelaxed = rattle_Natoms(struct=self.a,
+                                            Nrattle=self.Nperturb,
+                                            rmax_rattle=self.rattle_maxDist,
+                                            rmin=self.rmin,
+                                            rmax=self.rmax)
+            #a_new_unrelaxed = self.makeNewCandidate(self.a)
             
             # Use MLmodel - if it excists + sufficient data is available
             useML_cond = self.MLmodel is not None and self.ksaved > self.NstartML
@@ -258,12 +285,11 @@ class globalOptim():
 
                 # Relax with MLmodel
                 a_new, EnewML = self.relax(a_new_unrelaxed, ML=True)
-                if hasZ(a_new):
-                    print('a_new has z-components (ML)')
                 
                 # Singlepoint with objective potential
                 Enew = self.singlePoint(a_new)
-
+                print('True energy of relaxed structure:', Enew)
+                
                 """
                 # Accept ML-relaxed structure based on precision criteria
                 if abs(EnewML - Enew) < self.MLerrorMargin:
@@ -273,8 +299,6 @@ class globalOptim():
             else:
                 # Relax with true potential
                 a_new, Enew = self.relax(a_new_unrelaxed, ML=False)
-                if hasZ(a_new):
-                    print('a_new has z-components (objective)')
 
             dE = Enew - self.E
             if dE <= 0:  # Accept better structure
@@ -293,7 +317,6 @@ class globalOptim():
                 else:  # Reject structure
                     stagnation_counter += 1
 
-            print("iteration done")
             if stagnation_counter >= self.Nstag:  # The search has converged or stagnated.
                 print('The convergence/stagnation criteria was reached')
                 break
