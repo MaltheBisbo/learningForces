@@ -13,6 +13,47 @@ from ase.optimize import BFGS
 from ase.calculators.singlepoint import SinglePointCalculator
 from ase.constraints import FixedPlane
 
+def rattleAtom(struc, index_rattle, rmax_rattle, rmin, rmax):
+    Natoms = struct.get_number_of_atoms()
+    
+    strucRattle = struc.copy()
+    mindis = 0
+    mindisAtom = 10
+ 
+    while mindis < rmin or mindisAtom > rmax:  # If the atom is too close or too far away
+        # First load original positions
+        posRattle = struc.positions.copy()
+        
+        # Then Rattle within a circle
+        r = rmax_rattle * np.sqrt(rd.random())
+        theta = np.random.uniform(low=0, high=2*np.pi)
+        posRattle[index_rattle] += r * np.array([np.cos(theta), np.sin(theta), 0])
+
+        strucRattle.positions = posRattle
+        dis = strucRattle.get_all_distances()
+        mindis = np.min(dis[np.nonzero(dis)])  # Check that we are not too close
+        mindisAtom = np.min(strucRattle.get_distances(index_rattle, np.delete(np.arange(Natoms), index_rattle)))  # check that we are not too far                                                                                                    
+
+        # If it does not fit, try to wiggle it into place using small circle
+        if mindis < 1:
+            for i in range(10):
+                r = 0.5 * np.sqrt(rd.random())
+                theta = np.random.uniform(low = 0, high = 2 * np.pi)
+                coordinates[coordinate] += r * np.array([np.cos(theta), np.sin(theta), 0])
+                strucRattle.positions = coordinates
+                dis = strucRattle.get_all_distances()
+                mindis = np.min(dis[np.nonzero(dis)])
+
+                # If it works break
+                if mindis > 1:
+                    break
+
+                # Otherwise reset coordinate
+                else:
+                    coordinates[coordinate] -= r * np.array([np.cos(theta), np.sin(theta), 0])
+
+    return coordinates[coordinate].copy()
+
 def createInitalStructure2d(Natoms):
     dim = 3
     boxsize = 2 * np.sqrt(Natoms)
@@ -91,6 +132,14 @@ def createInitalStructure():
     structure = sg.get_new_candidate()
     return structure
 
+def hasZ(a):
+    pos = a.get_positions()
+    pos_z = pos[:, -1]
+    if np.abs(pos_z).max() - np.abs(pos_z).min() > 1e-7:
+        return True
+    else:
+        return False
+
 class globalOptim():
     """
     --Input--
@@ -151,16 +200,16 @@ class globalOptim():
     distance rmin from each other, and have atleast one neighbour less than rmax away.
 
     """
-    def __init__(self, calculator, traj_namebase, MLmodel=None, Natoms=6, Niter=50, std_rattle=0.1, kbT=1, Nstag=10,
+    def __init__(self, calculator, traj_namebase, MLmodel=None, Natoms=6, Niter=50, rattle_maxDist=0.5, kbT=1, Nstag=10,
                  min_saveDifference=0.3, minSampleStep=10, MLerrorMargin=0.1, NstartML=20, maxNtrain=1.5e3,
-                 fracPerturb=0.4):
+                 radiusRange=[0.9, 1.5], fracPerturb=0.3, noZ=False):
 
         self.calculator = calculator
         self.traj_namebase = traj_namebase
         self.MLmodel = MLmodel
 
         self.Natoms = Natoms
-        self.std_rattle = std_rattle
+        self.rattle_maxDist = rattle_maxDist
         self.Niter = Niter
         self.kbT = kbT
         self.Nstag = Nstag
@@ -169,7 +218,9 @@ class globalOptim():
         self.MLerrorMargin = MLerrorMargin
         self.NstartML = NstartML
         self.maxNtrain = int(maxNtrain)
+        self.rmin, self.rmax = radiusRange
         self.Nperturb = max(2, int(np.ceil(self.Natoms*fracPerturb)))
+        self.noZ = noZ
 
         # List of structures to be added in next training
         self.a_add = []
@@ -189,19 +240,27 @@ class globalOptim():
         # Run global search
         stagnation_counter = 0
         for i in range(self.Niter):
+            if hasZ(self.a):
+                print('self.a has z-components')
             # Perturb current structure
             a_new_unrelaxed = self.makeNewCandidate(self.a)
+            if hasZ(a_new_unrelaxed):
+                print('a_new_unrelaxed has z-components')
             
             # Use MLmodel - if it excists + sufficient data is available
             useML_cond = self.MLmodel is not None and self.ksaved > self.NstartML
             if useML_cond:
+                print("Begin training")
                 # Train ML model if new data is available
                 if len(self.a_add) > 0:
                     self.trainModel()
+                print("training ended")
 
                 # Relax with MLmodel
                 a_new, EnewML = self.relax(a_new_unrelaxed, ML=True)
-
+                if hasZ(a_new):
+                    print('a_new has z-components (ML)')
+                
                 # Singlepoint with objective potential
                 Enew = self.singlePoint(a_new)
 
@@ -214,6 +273,8 @@ class globalOptim():
             else:
                 # Relax with true potential
                 a_new, Enew = self.relax(a_new_unrelaxed, ML=False)
+                if hasZ(a_new):
+                    print('a_new has z-components (objective)')
 
             dE = Enew - self.E
             if dE <= 0:  # Accept better structure
@@ -232,14 +293,70 @@ class globalOptim():
                 else:  # Reject structure
                     stagnation_counter += 1
 
+            print("iteration done")
             if stagnation_counter >= self.Nstag:  # The search has converged or stagnated.
                 print('The convergence/stagnation criteria was reached')
                 break
             
     def makeNewCandidate(self, a):
+        """
+        Makes a new candidate by perturbing a subset of the atoms in the
+        current structure.
+
+        The perturbed atoms are added to the fixed atoms one at a time.
+
+        Pertubations are applied to an atom until it satisfies the
+        constraints with respect to the fixed atoms and the previously
+        placed perturbed atoms.
+
+        Constraints:
+        1) Distance to all atoms must be > self.rmin
+        2) Distance to nearest neighbor must be < self.rmax
+        """
+        
+        # Function to determine if perturbation of a single atom is valid
+        # with respect to a set of static atoms.
+        def validPerturbation(X, index, perturbation, index_static):
+            connected = False
+            xnew = X[index] + perturbation
+            for i in index_static:
+                if i == index:
+                    continue
+                r = np.linalg.norm(xnew - X[i])
+                if r < self.rmin:
+                    return False
+                if r < self.rmax:
+                    connected = True
+            return connected
+
+        """
+        # Check if unperturbed structure satisfies constraints
+        InitialStructureOkay = np.array([validPerturbation(self.X, i, np.array([0,0]), np.arange(self.Natoms))
+                                         for i in range(self.Natoms)])
+        if not np.all(InitialStructureOkay):
+            print('Einit:', self.Efun(self.X))
+            assert np.all(InitialStructureOkay)
+        """
         a_new = a.copy()
-        a_new.set_constraint([FixedPlane(ai.index, (0,0,1)) for ai in a_new])
-        a_new.rattle(self.std_rattle)
+
+        # Pick atoms to perturb
+        Xperturb = a_new.get_positions()
+        i_permuted = np.random.permutation(self.Natoms)
+        i_perturb = i_permuted[:self.Nperturb]
+        i_static = i_permuted[self.Nperturb:]
+        
+        for i in i_perturb:
+            # Make valid perturbation on this atom
+            while True:
+                perturbation = np.r_[2*self.rattle_maxDist * (np.random.rand(2) - 0.5), 0]
+                # check if perturbation rersult in acceptable structure
+                if validPerturbation(Xperturb, i, perturbation, i_static):
+                    Xperturb[i] += perturbation
+                    # Add the perturbed atom just accepted to the static set
+                    i_static = np.append(i_static, i)
+                    break
+        a_new.set_positions(Xperturb)
+
         return a_new
     
     def trainModel(self):
@@ -275,14 +392,18 @@ class globalOptim():
                 n_last = 0
         
     def relax(self, a, ML=False):
+        if len(str(self.traj_counter)) == 1:
+            traj_counter = '00' + str(self.traj_counter)
+        if len(str(self.traj_counter)) == 2:
+            traj_counter = '0' + str(self.traj_counter)
         if ML:
-            traj_name = self.traj_namebase + 'ML{}.traj'.format(self.traj_counter)
-            krr_calc = krr_calculator(self.MLmodel)
+            traj_name = self.traj_namebase + 'ML{}.traj'.format(traj_counter)
+            krr_calc = krr_calculator(self.MLmodel, noZ=self.noZ)
             a.set_calculator(krr_calc)
             dyn = BFGS(a, trajectory=traj_name)
             dyn.run(fmax=0.1)
         else:
-            traj_name = self.traj_namebase + '{}.traj'.format(self.traj_counter)
+            traj_name = self.traj_namebase + '{}.traj'.format(traj_counter)
             a.set_calculator(self.calculator)
             dyn = BFGS(a, trajectory=traj_name)
             dyn.run(fmax=0.1)
@@ -309,7 +430,7 @@ if __name__ == '__main__':
     from angular_fingerprintFeature import Angular_Fingerprint
     from krr_ase import krr_class
     
-    Natoms = 10
+    Natoms = 19
     
     # Set up featureCalculator
     a = createInitalStructure2d(Natoms)
@@ -335,10 +456,13 @@ if __name__ == '__main__':
     traj_namebase = 'globalTest/global'
 
     
-    optimizer = globalOptim(calculator=doubleLJ_calculator(),
+    optimizer = globalOptim(calculator=doubleLJ_calculator(noZ=True),
                             traj_namebase=traj_namebase,
                             MLmodel=krr,
                             Natoms=Natoms,
-                            std_rattle=0.2)
+                            Niter=20,
+                            fracPerturb=0.4,
+                            rattle_maxDist=1,
+                            noZ=True)
 
     optimizer.runOptimizer()

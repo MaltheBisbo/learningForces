@@ -306,7 +306,7 @@ class globalOptim():
 if __name__ == '__main__':
     from custom_calculators import doubleLJ_calculator
     from gaussComparator import gaussComparator
-    from angular_fingerprintFeature import Angular_Fingerprint
+    from angular_fingerprintFeature_test3 import Angular_Fingerprint
     from krr_ase import krr_class
     
     Natoms = 10

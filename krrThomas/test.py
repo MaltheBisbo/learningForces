@@ -92,12 +92,6 @@ def makeStructure(Natoms):
 atoms = createInitalStructure()
 atoms1 = makeStructure(20)
 
-plane = FixedPlane([0], direction=(0,0,1))
-atoms1.set_constraint([FixedPlane(a.index, (0,0,1)) for a in atoms1])
-view(atoms1)
-atoms1.rattle(stdev=0.1, seed=42)
-view(atoms1)
-
 calc = doubleLJ_calculator()
 atoms.set_calculator(calc)
 
