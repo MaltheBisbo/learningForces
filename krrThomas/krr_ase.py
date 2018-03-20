@@ -44,11 +44,12 @@ class krr_class():
         predicted_value = similarityVec.dot(self.alpha) + self.beta
 
         if return_error:
-            A = self.similarityMat + self.reg*np.identity(self.Ndata)
-            alpha_err = np.linalg.solve(A, similarityVec)
+            alpha_err = np.dot(self.Ainv, similarityVec)
+            #A = self.similarityMat + self.reg*np.identity(self.Ndata)
+            #alpha_err = np.linalg.solve(A, similarityVec)
             theta0 = np.dot(self.data_values[:self.Ndata], self.alpha) / self.Ndata
-            predicted_error = np.sqrt(np.abs(theta0*(1 - np.dot(similarityVec, alpha_err))))
-            return predicted_value, predicted_error, theta0
+            prediction_error = np.sqrt(np.abs(theta0*(1 - np.dot(similarityVec, alpha_err))))
+            return predicted_value, prediction_error, theta0
         else:
             return predicted_value
     
@@ -98,7 +99,9 @@ class krr_class():
         self.beta = np.mean(data_values)
 
         A = similarityMat + reg*np.identity(len(data_values))
-        self.alpha = np.linalg.solve(A, data_values - self.beta)
+        self.Ainv = np.linalg.inv(A)
+        self.alpha = np.dot(self.Ainv, data_values - self.beta)
+        #self.alpha = np.linalg.solve(A, data_values - self.beta)
         
     def train(self, atoms_list=None, data_values=None, featureMat=None, add_new_data=True, k=3, **GSkwargs):
         """
