@@ -13,7 +13,7 @@ from ase.optimize import BFGS
 from ase.calculators.singlepoint import SinglePointCalculator
 from ase.constraints import FixedPlane
 
-def rattle_atom(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
+def rattle_atom2d(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
     Natoms = struct.get_number_of_atoms()
     
     structRattle = struct.copy()
@@ -21,7 +21,6 @@ def rattle_atom(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntrie
     mindisAtom = 10
 
     for i in range(Ntries):
-        #while mindis < rmin or mindisAtom > rmax:  # If the atom is too close or too far away
         # First load original positions
         positions = struct.positions.copy()
         
@@ -53,14 +52,14 @@ def rattle_atom(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntrie
                 else:
                     positions[index_rattle] -= r * np.array([np.cos(theta), np.sin(theta), 0])
 
-        # Return structure if acceptance criteria is satisfied.
+        # STOP CRITERION
         if mindis > rmin and mindisAtom < rmax:
             return structRattle
     
     # Return None if no acceptable rattle was found
     return None
 
-def rattle_Natoms(struct, Nrattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
+def rattle_Natoms2d(struct, Nrattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
     structRattle = struct.copy()
     
     Natoms = struct.get_number_of_atoms()
@@ -68,7 +67,7 @@ def rattle_Natoms(struct, Nrattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=1
 
     rattle_counter = 0
     for index in i_permuted:
-        newStruct = rattle_atom(structRattle, index, rmax_rattle, rmin, rmax, Ntries)
+        newStruct = rattle_atom2d(structRattle, index, rmax_rattle, rmin, rmax, Ntries)
         if newStruct is not None:
             structRattle = newStruct.copy()
             rattle_counter += 1
@@ -82,7 +81,7 @@ def rattle_Natoms(struct, Nrattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=1
 
 def createInitalStructure2d(Natoms):
     dim = 3
-    boxsize = 2 * np.sqrt(Natoms)
+    boxsize = 1.5 * np.sqrt(Natoms)
     rmin = 0.9
     rmax = 2.2
 
@@ -267,12 +266,11 @@ class globalOptim():
         stagnation_counter = 0
         for i in range(self.Niter):
             # Perturb current structure
-            a_new_unrelaxed = rattle_Natoms(struct=self.a,
-                                            Nrattle=self.Nperturb,
-                                            rmax_rattle=self.rattle_maxDist,
-                                            rmin=self.rmin,
-                                            rmax=self.rmax)
-            #a_new_unrelaxed = self.makeNewCandidate(self.a)
+            a_new_unrelaxed = rattle_Natoms2d(struct=self.a,
+                                              Nrattle=self.Nperturb,
+                                              rmax_rattle=self.rattle_maxDist,
+                                              rmin=self.rmin,
+                                              rmax=self.rmax)
             
             # Use MLmodel - if it excists + sufficient data is available
             useML_cond = self.MLmodel is not None and self.ksaved > self.NstartML
@@ -321,67 +319,6 @@ class globalOptim():
                 print('The convergence/stagnation criteria was reached')
                 break
             
-    def makeNewCandidate(self, a):
-        """
-        Makes a new candidate by perturbing a subset of the atoms in the
-        current structure.
-
-        The perturbed atoms are added to the fixed atoms one at a time.
-
-        Pertubations are applied to an atom until it satisfies the
-        constraints with respect to the fixed atoms and the previously
-        placed perturbed atoms.
-
-        Constraints:
-        1) Distance to all atoms must be > self.rmin
-        2) Distance to nearest neighbor must be < self.rmax
-        """
-        
-        # Function to determine if perturbation of a single atom is valid
-        # with respect to a set of static atoms.
-        def validPerturbation(X, index, perturbation, index_static):
-            connected = False
-            xnew = X[index] + perturbation
-            for i in index_static:
-                if i == index:
-                    continue
-                r = np.linalg.norm(xnew - X[i])
-                if r < self.rmin:
-                    return False
-                if r < self.rmax:
-                    connected = True
-            return connected
-
-        """
-        # Check if unperturbed structure satisfies constraints
-        InitialStructureOkay = np.array([validPerturbation(self.X, i, np.array([0,0]), np.arange(self.Natoms))
-                                         for i in range(self.Natoms)])
-        if not np.all(InitialStructureOkay):
-            print('Einit:', self.Efun(self.X))
-            assert np.all(InitialStructureOkay)
-        """
-        a_new = a.copy()
-
-        # Pick atoms to perturb
-        Xperturb = a_new.get_positions()
-        i_permuted = np.random.permutation(self.Natoms)
-        i_perturb = i_permuted[:self.Nperturb]
-        i_static = i_permuted[self.Nperturb:]
-        
-        for i in i_perturb:
-            # Make valid perturbation on this atom
-            while True:
-                perturbation = np.r_[2*self.rattle_maxDist * (np.random.rand(2) - 0.5), 0]
-                # check if perturbation rersult in acceptable structure
-                if validPerturbation(Xperturb, i, perturbation, i_static):
-                    Xperturb[i] += perturbation
-                    # Add the perturbed atom just accepted to the static set
-                    i_static = np.append(i_static, i)
-                    break
-        a_new.set_positions(Xperturb)
-
-        return a_new
-    
     def trainModel(self):
         """
         # Reduce training data - If there is too much
