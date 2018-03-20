@@ -25,7 +25,7 @@ if __name__ == "__main__":
     volume = struct.get_volume()
     print(pbc)
     print(cell)
-    print(Natoms)
+    print('Natoms:', Natoms)
     print(atomic_numbers)
     print(atomic_types)
     print(atomic_count)

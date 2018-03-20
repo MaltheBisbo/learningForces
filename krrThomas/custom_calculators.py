@@ -10,19 +10,29 @@ class krr_calculator(Calculator):
     implemented_properties = ['energy', 'forces']
     default_parameters = {}
 
-    def __init__(self, MLmodel, label='MLmodel', **kwargs):
+    def __init__(self, MLmodel, label='MLmodel', noZ=False, **kwargs):
         self.MLmodel = MLmodel
-
+        self.noZ = noZ
+        
         Calculator.__init__(self, **kwargs)
 
     def calculate(self, atoms=None, properties=['energy', 'forces'], system_changes=['positions']):
 
         Calculator.calculate(self, atoms, properties, system_changes)
 
-        self.results['energy'] = self.MLmodel.predict_energy(atoms)
-        self.results['forces'] = self.MLmodel.predict_force(atoms).reshape((-1,3))
+        E, E_error, _ = self.MLmodel.predict_energy(atoms, return_error=True)
+        F = self.MLmodel.predict_force(atoms).reshape((-1,3))
+
+        if self.noZ:
+            F[:,-1] = 0
         
-        return self.results['energy'], self.results['forces']
+        if 'energy' in properties:
+            self.results['energy'] = E
+        if 'forces' in properties:
+            self.results['forces'] = F
+
+        if E_error > 2:
+            print("Error too great")
 
 
 class doubleLJ_calculator(Calculator):
@@ -30,21 +40,29 @@ class doubleLJ_calculator(Calculator):
     implemented_properties = ['energy', 'forces']
     default_parameters = {}
 
-    def __init__(self, eps=1.8, r0=1.1, sigma=np.sqrt(0.02), label='doubleLJ', **kwargs):
+    def __init__(self, eps=1.8, r0=1.1, sigma=np.sqrt(0.02), label='doubleLJ', noZ=False, **kwargs):
         self.eps = eps
         self.r0 = r0
         self.sigma = sigma
+
+        self.noZ = noZ
         
         Calculator.__init__(self, **kwargs)
 
     def calculate(self, atoms=None, properties=['energy', 'forces'], system_changes=['positions']):
         Calculator.calculate(self, atoms, properties, system_changes)
 
-        self.results['energy'] = self.energy(atoms)
-        self.results['forces'] = self.force(atoms)
         
-        return self.results['energy'], self.results['forces']
-
+        
+        if 'energy' in properties:
+            self.results['energy'] = self.energy(atoms)
+        if 'forces' in properties:
+            F = self.forces(atoms)
+            if self.noZ:
+                F[:,-1] = 0
+            self.results['forces'] = F
+        
+            
     def energy(self, a):
         x = a.get_positions()
         E = 0
@@ -57,7 +75,7 @@ class doubleLJ_calculator(Calculator):
                     E += E1 + E2
         return E
 
-    def doubleLJ_gradient_ase(self, a):
+    def forces(self, a):
         x = a.get_positions()
         Natoms, dim = x.shape
         dE = np.zeros((Natoms, dim))
@@ -71,4 +89,4 @@ class doubleLJ_calculator(Calculator):
                     dE2 = self.eps*(r-self.r0)*rijVec / (r*self.sigma**2) * np.exp(-(r - self.r0)**2 / (2*self.sigma**2))
                     
                     dE[i] += dE1 + dE2
-        return dE
+        return -dE
