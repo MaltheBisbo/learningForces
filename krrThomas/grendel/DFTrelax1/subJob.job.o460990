@@ -1,0 +1,3665 @@
+Begin training
+training ended
+Error too great
+Error too great
+      Step     Time          Energy         fmax
+BFGS:    0 21:56:05      -54.745855       14.9607
+Error too great
+Error too great
+BFGS:    1 21:56:06      -59.388251       25.0843
+Error too great
+Error too great
+BFGS:    2 21:56:08      -63.146148       27.6466
+Error too great
+Error too great
+BFGS:    3 21:56:09      -66.784164       30.8231
+Error too great
+Error too great
+BFGS:    4 21:56:11      -70.220670       32.7009
+Error too great
+Error too great
+BFGS:    5 21:56:13      -73.418123       33.6614
+Error too great
+Error too great
+BFGS:    6 21:56:14      -76.818866       32.2640
+Error too great
+Error too great
+BFGS:    7 21:56:16      -79.481877       31.0763
+Error too great
+Error too great
+BFGS:    8 21:56:17      -81.680282       28.8976
+Error too great
+Error too great
+BFGS:    9 21:56:19      -83.757415       25.5619
+Error too great
+Error too great
+BFGS:   10 21:56:20      -85.570856       23.3869
+Error too great
+Error too great
+BFGS:   11 21:56:22      -87.053052       20.3307
+Error too great
+Error too great
+BFGS:   12 21:56:23      -88.300220       18.4094
+Error too great
+Error too great
+BFGS:   13 21:56:25      -89.451524       17.9978
+BFGS:   14 21:56:26      -90.577888       15.5243
+BFGS:   15 21:56:28      -91.612545       13.9012
+BFGS:   16 21:56:29      -92.342205       10.7642
+BFGS:   17 21:56:31      -92.933568        8.3306
+BFGS:   18 21:56:32      -93.354667        5.6213
+BFGS:   19 21:56:33      -93.629601        3.4167
+BFGS:   20 21:56:35      -93.758871        1.7311
+BFGS:   21 21:56:36      -93.846094        1.0275
+BFGS:   22 21:56:38      -93.884964        1.5320
+Error too great
+Error too great
+BFGS:   23 21:56:39      -93.959545        1.9097
+Error too great
+Error too great
+BFGS:   24 21:56:41      -94.015776        2.1591
+Error too great
+Error too great
+BFGS:   25 21:56:42      -94.064779        2.2225
+Error too great
+Error too great
+BFGS:   26 21:56:44      -94.104546        2.1129
+Error too great
+Error too great
+BFGS:   27 21:56:45      -94.138982        1.9753
+Error too great
+Error too great
+BFGS:   28 21:56:47      -94.185439        1.8814
+Error too great
+Error too great
+BFGS:   29 21:56:49      -94.261941        1.5827
+Error too great
+Error too great
+BFGS:   30 21:56:50      -94.324868        1.1576
+Error too great
+Error too great
+BFGS:   31 21:56:52      -94.366206        0.8290
+Error too great
+Error too great
+BFGS:   32 21:56:53      -94.380320        0.6936
+Error too great
+Error too great
+BFGS:   33 21:56:54      -94.358750        0.5479
+Error too great
+Error too great
+BFGS:   34 21:56:56      -94.350431        0.5048
+Error too great
+Error too great
+BFGS:   35 21:56:57      -94.339591        0.3301
+Error too great
+Error too great
+BFGS:   36 21:56:59      -94.335619        0.3223
+Error too great
+Error too great
+BFGS:   37 21:57:00      -94.332954        0.4460
+Error too great
+Error too great
+BFGS:   38 21:57:02      -94.333211        0.6565
+Error too great
+Error too great
+BFGS:   39 21:57:03      -94.355884        0.9956
+Error too great
+Error too great
+BFGS:   40 21:57:05      -94.409395        1.1919
+Error too great
+Error too great
+BFGS:   41 21:57:06      -94.479868        1.3259
+Error too great
+Error too great
+BFGS:   42 21:57:08      -94.539468        1.6657
+Error too great
+Error too great
+BFGS:   43 21:57:09      -94.581424        1.9525
+Error too great
+Error too great
+BFGS:   44 21:57:11      -94.610015        1.9831
+Error too great
+Error too great
+BFGS:   45 21:57:12      -94.635677        1.8669
+Error too great
+Error too great
+BFGS:   46 21:57:14      -94.662684        1.6819
+Error too great
+Error too great
+BFGS:   47 21:57:15      -94.686676        1.7434
+Error too great
+Error too great
+BFGS:   48 21:57:17      -94.713968        1.9466
+Error too great
+Error too great
+BFGS:   49 21:57:19      -94.740051        2.1441
+Error too great
+Error too great
+BFGS:   50 21:57:20      -94.761140        2.3557
+Error too great
+Error too great
+BFGS:   51 21:57:22      -94.831146        3.1125
+Error too great
+Error too great
+BFGS:   52 21:57:23      -94.931464        3.8004
+Error too great
+Error too great
+BFGS:   53 21:57:25      -95.113833        4.1063
+Error too great
+Error too great
+BFGS:   54 21:57:27      -95.286571        4.2540
+Error too great
+Error too great
+BFGS:   55 21:57:29      -95.432111        3.9134
+Error too great
+Error too great
+BFGS:   56 21:57:30      -95.542951        2.8029
+Error too great
+Error too great
+BFGS:   57 21:57:32      -95.649603        3.2773
+Error too great
+Error too great
+BFGS:   58 21:57:34      -95.798914        3.5522
+Error too great
+Error too great
+BFGS:   59 21:57:36      -95.914064        3.3382
+Error too great
+Error too great
+BFGS:   60 21:57:37      -96.020674        3.0138
+Error too great
+Error too great
+BFGS:   61 21:57:39      -96.103558        2.7436
+Error too great
+Error too great
+BFGS:   62 21:57:41      -96.167827        2.4644
+Error too great
+Error too great
+BFGS:   63 21:57:43      -96.200470        2.1164
+Error too great
+Error too great
+BFGS:   64 21:57:45      -96.192441        1.6472
+Error too great
+Error too great
+BFGS:   65 21:57:47      -96.181352        1.6133
+Error too great
+Error too great
+BFGS:   66 21:57:49      -96.178964        1.3719
+Error too great
+Error too great
+BFGS:   67 21:57:51      -96.186826        0.9979
+Error too great
+Error too great
+BFGS:   68 21:57:53      -96.241642        0.9308
+Error too great
+Error too great
+BFGS:   69 21:57:55      -96.281716        0.8495
+Error too great
+Error too great
+BFGS:   70 21:57:57      -96.307494        0.8338
+Error too great
+Error too great
+BFGS:   71 21:57:58      -96.323626        0.7820
+Error too great
+Error too great
+BFGS:   72 21:58:00      -96.320816        0.7533
+Error too great
+Error too great
+BFGS:   73 21:58:02      -96.320939        0.7529
+Error too great
+Error too great
+BFGS:   74 21:58:04      -96.323028        0.7268
+Error too great
+Error too great
+BFGS:   75 21:58:06      -96.334289        0.7575
+Error too great
+Error too great
+BFGS:   76 21:58:08      -96.362145        0.8078
+Error too great
+Error too great
+BFGS:   77 21:58:10      -96.413934        0.8904
+Error too great
+Error too great
+BFGS:   78 21:58:12      -96.469336        0.8739
+Error too great
+Error too great
+BFGS:   79 21:58:13      -96.524563        0.7109
+Error too great
+Error too great
+BFGS:   80 21:58:15      -96.571811        0.5907
+Error too great
+Error too great
+BFGS:   81 21:58:17      -96.586648        0.5865
+Error too great
+Error too great
+BFGS:   82 21:58:19      -96.586215        0.4951
+Error too great
+Error too great
+BFGS:   83 21:58:21      -96.587742        0.3922
+Error too great
+Error too great
+BFGS:   84 21:58:23      -96.593990        0.3000
+Error too great
+Error too great
+BFGS:   85 21:58:25      -96.605673        0.2485
+Error too great
+Error too great
+BFGS:   86 21:58:27      -96.614137        0.2376
+Error too great
+Error too great
+BFGS:   87 21:58:29      -96.627178        0.2913
+Error too great
+Error too great
+BFGS:   88 21:58:30      -96.630627        0.3158
+Error too great
+Error too great
+BFGS:   89 21:58:32      -96.632269        0.3409
+Error too great
+Error too great
+BFGS:   90 21:58:34      -96.635404        0.3629
+Error too great
+Error too great
+BFGS:   91 21:58:36      -96.642229        0.4103
+Error too great
+Error too great
+BFGS:   92 21:58:38      -96.653947        0.4405
+Error too great
+Error too great
+BFGS:   93 21:58:40      -96.662726        0.4792
+Error too great
+Error too great
+BFGS:   94 21:58:42      -96.667314        0.5262
+Error too great
+Error too great
+BFGS:   95 21:58:44      -96.667059        0.5164
+Error too great
+Error too great
+BFGS:   96 21:58:46      -96.664980        0.4758
+Error too great
+Error too great
+BFGS:   97 21:58:48      -96.658480        0.3732
+Error too great
+Error too great
+BFGS:   98 21:58:50      -96.654044        0.3278
+Error too great
+Error too great
+BFGS:   99 21:58:52      -96.647848        0.3621
+Error too great
+Error too great
+BFGS:  100 21:58:54      -96.643016        0.3665
+Error too great
+Error too great
+BFGS:  101 21:58:55      -96.634915        0.2989
+Error too great
+Error too great
+BFGS:  102 21:58:57      -96.631554        0.1783
+Error too great
+Error too great
+BFGS:  103 21:58:59      -96.632335        0.1595
+Error too great
+Error too great
+BFGS:  104 21:59:01      -96.638816        0.1050
+Error too great
+Error too great
+BFGS:  105 21:59:03      -96.642806        0.1047
+Error too great
+Error too great
+BFGS:  106 21:59:05      -96.644482        0.1009
+Error too great
+Error too great
+BFGS:  107 21:59:07      -96.645655        0.0907
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+('True energy of relaxed structure:', -86.189184859051878)
+Begin training
+training ended
+Error too great
+Error too great
+      Step     Time          Energy         fmax
+BFGS:    0 21:59:32      -69.275736       34.9632
+Error too great
+Error too great
+BFGS:    1 21:59:33      -73.995219       35.5514
+Error too great
+Error too great
+BFGS:    2 21:59:35      -78.205552       32.1249
+Error too great
+Error too great
+BFGS:    3 21:59:36      -80.717327       28.1741
+Error too great
+Error too great
+BFGS:    4 21:59:38      -82.543192       24.9641
+Error too great
+Error too great
+BFGS:    5 21:59:39      -83.906157       21.3936
+Error too great
+Error too great
+BFGS:    6 21:59:41      -85.122708       18.2070
+Error too great
+Error too great
+BFGS:    7 21:59:42      -86.108811       14.1082
+BFGS:    8 21:59:43      -86.885796       10.7715
+BFGS:    9 21:59:45      -87.559159        7.4650
+BFGS:   10 21:59:46      -88.054910        5.4194
+BFGS:   11 21:59:48      -88.631296        3.9235
+BFGS:   12 21:59:49      -89.132672        2.8464
+BFGS:   13 21:59:50      -89.605959        2.3471
+BFGS:   14 21:59:52      -89.960342        2.2070
+BFGS:   15 21:59:54      -90.221230        2.1710
+BFGS:   16 21:59:55      -90.402323        2.3027
+BFGS:   17 21:59:57      -90.524379        2.2345
+BFGS:   18 21:59:58      -90.593980        2.1974
+BFGS:   19 22:00:00      -90.644337        2.4157
+BFGS:   20 22:00:02      -90.689772        2.6472
+BFGS:   21 22:00:03      -90.725052        2.9463
+BFGS:   22 22:00:05      -90.732730        3.2690
+BFGS:   23 22:00:06      -90.699162        3.4531
+BFGS:   24 22:00:08      -90.623539        3.2328
+BFGS:   25 22:00:09      -90.544039        2.7171
+BFGS:   26 22:00:11      -90.496002        2.8298
+BFGS:   27 22:00:12      -90.500347        2.9218
+BFGS:   28 22:00:13      -90.569048        2.8519
+BFGS:   29 22:00:15      -90.688012        2.7664
+BFGS:   30 22:00:16      -90.867556        2.9143
+BFGS:   31 22:00:18      -91.103385        2.8274
+BFGS:   32 22:00:19      -91.364043        2.6580
+BFGS:   33 22:00:20      -91.642580        2.1629
+BFGS:   34 22:00:22      -91.872857        1.9641
+BFGS:   35 22:00:23      -92.126266        1.8002
+BFGS:   36 22:00:24      -92.201364        1.9377
+BFGS:   37 22:00:26      -92.250553        1.6329
+BFGS:   38 22:00:27      -92.205742        1.3759
+BFGS:   39 22:00:28      -92.188401        0.8857
+BFGS:   40 22:00:30      -92.191533        0.9240
+BFGS:   41 22:00:31      -92.214047        0.8362
+BFGS:   42 22:00:32      -92.256779        0.7788
+BFGS:   43 22:00:34      -92.309079        0.5765
+BFGS:   44 22:00:35      -92.352842        0.4278
+BFGS:   45 22:00:36      -92.383687        0.3492
+BFGS:   46 22:00:38      -92.410553        0.3475
+BFGS:   47 22:00:39      -92.436184        0.3139
+BFGS:   48 22:00:40      -92.443689        0.2578
+BFGS:   49 22:00:42      -92.442374        0.1953
+BFGS:   50 22:00:43      -92.435797        0.1759
+BFGS:   51 22:00:44      -92.431689        0.1583
+BFGS:   52 22:00:46      -92.427611        0.1723
+BFGS:   53 22:00:47      -92.427599        0.1908
+BFGS:   54 22:00:48      -92.429912        0.2168
+BFGS:   55 22:00:50      -92.434140        0.2341
+BFGS:   56 22:00:51      -92.436025        0.2453
+BFGS:   57 22:00:52      -92.437717        0.2441
+BFGS:   58 22:00:54      -92.438080        0.2362
+BFGS:   59 22:00:55      -92.438873        0.2236
+BFGS:   60 22:00:56      -92.439268        0.2186
+BFGS:   61 22:00:58      -92.440200        0.2184
+BFGS:   62 22:00:59      -92.440426        0.2257
+BFGS:   63 22:01:00      -92.440046        0.2342
+BFGS:   64 22:01:02      -92.438269        0.2432
+BFGS:   65 22:01:03      -92.436073        0.2470
+BFGS:   66 22:01:04      -92.434026        0.2450
+BFGS:   67 22:01:06      -92.433084        0.2393
+BFGS:   68 22:01:07      -92.433358        0.2341
+BFGS:   69 22:01:08      -92.434871        0.2318
+BFGS:   70 22:01:10      -92.437051        0.2332
+BFGS:   71 22:01:11      -92.439492        0.2372
+BFGS:   72 22:01:12      -92.442320        0.2440
+BFGS:   73 22:01:14      -92.445727        0.2543
+BFGS:   74 22:01:15      -92.449325        0.2688
+BFGS:   75 22:01:16      -92.452105        0.2876
+BFGS:   76 22:01:18      -92.452679        0.2902
+BFGS:   77 22:01:19      -92.451922        0.2789
+BFGS:   78 22:01:20      -92.450264        0.2553
+BFGS:   79 22:01:22      -92.447601        0.2170
+BFGS:   80 22:01:23      -92.443704        0.1604
+BFGS:   81 22:01:24      -92.438315        0.1009
+BFGS:   82 22:01:26      -92.432777        0.0647
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+('True energy of relaxed structure:', -82.266940592721795)
+Begin training
+training ended
+Error too great
+Error too great
+      Step     Time          Energy         fmax
+BFGS:    0 22:01:47      -64.919981       45.9361
+Error too great
+Error too great
+BFGS:    1 22:01:49      -70.668873       42.1832
+Error too great
+Error too great
+BFGS:    2 22:01:50      -75.777025       34.5196
+Error too great
+Error too great
+BFGS:    3 22:01:52      -79.569527       33.7736
+Error too great
+Error too great
+BFGS:    4 22:01:53      -81.779084       33.7675
+Error too great
+Error too great
+BFGS:    5 22:01:55      -83.651799       33.5622
+Error too great
+Error too great
+BFGS:    6 22:01:56      -85.350666       32.7140
+Error too great
+Error too great
+BFGS:    7 22:01:58      -87.027198       30.8695
+Error too great
+Error too great
+BFGS:    8 22:01:59      -88.687478       27.8112
+BFGS:    9 22:02:01      -90.329948       23.0690
+BFGS:   10 22:02:02      -91.642387       17.7754
+BFGS:   11 22:02:04      -92.453199       13.3442
+BFGS:   12 22:02:06      -92.890800       11.4864
+BFGS:   13 22:02:07      -93.247856       12.3316
+Error too great
+Error too great
+BFGS:   14 22:02:09      -93.398680       12.5372
+Error too great
+Error too great
+BFGS:   15 22:02:11      -93.590997       13.3038
+Error too great
+Error too great
+BFGS:   16 22:02:12      -93.660715       14.3206
+Error too great
+Error too great
+BFGS:   17 22:02:14      -93.770031       15.1441
+Error too great
+Error too great
+BFGS:   18 22:02:15      -93.835365       14.9768
+Error too great
+Error too great
+BFGS:   19 22:02:17      -93.905254       14.8621
+Error too great
+Error too great
+BFGS:   20 22:02:19      -93.954308       13.6286
+Error too great
+Error too great
+BFGS:   21 22:02:20      -94.006791       12.5526
+Error too great
+Error too great
+BFGS:   22 22:02:22      -94.112144       10.1644
+Error too great
+Error too great
+BFGS:   23 22:02:24      -94.270856        8.5631
+Error too great
+Error too great
+BFGS:   24 22:02:25      -94.452127        6.1353
+Error too great
+Error too great
+BFGS:   25 22:02:27      -94.557465        4.5812
+Error too great
+Error too great
+BFGS:   26 22:02:28      -94.605426        4.6662
+Error too great
+Error too great
+BFGS:   27 22:02:30      -94.536280        5.2407
+Error too great
+Error too great
+BFGS:   28 22:02:32      -94.478926        5.4290
+Error too great
+Error too great
+BFGS:   29 22:02:33      -94.422086        7.0340
+Error too great
+Error too great
+BFGS:   30 22:02:35      -94.456454        8.6572
+Error too great
+Error too great
+BFGS:   31 22:02:37      -94.575551        9.2171
+Error too great
+Error too great
+BFGS:   32 22:02:38      -94.754081        9.1697
+Error too great
+Error too great
+BFGS:   33 22:02:40      -94.941083        8.8469
+Error too great
+Error too great
+BFGS:   34 22:02:42      -95.137472        8.3294
+Error too great
+Error too great
+BFGS:   35 22:02:44      -95.334636        7.7102
+Error too great
+Error too great
+BFGS:   36 22:02:45      -95.549039        7.3369
+Error too great
+Error too great
+BFGS:   37 22:02:47      -95.780433        6.8838
+Error too great
+Error too great
+BFGS:   38 22:02:49      -96.018845        6.7624
+Error too great
+Error too great
+BFGS:   39 22:02:50      -96.229364        6.8010
+Error too great
+Error too great
+BFGS:   40 22:02:52      -96.404280        7.3300
+Error too great
+Error too great
+BFGS:   41 22:02:54      -96.548694        7.5727
+Error too great
+Error too great
+BFGS:   42 22:02:56      -96.661311        7.5303
+Error too great
+Error too great
+BFGS:   43 22:02:57      -96.742869        7.1863
+Error too great
+Error too great
+BFGS:   44 22:02:59      -96.801980        6.5095
+Error too great
+Error too great
+BFGS:   45 22:03:01      -96.840345        6.5499
+Error too great
+Error too great
+BFGS:   46 22:03:02      -96.842111        6.4538
+Error too great
+Error too great
+BFGS:   47 22:03:04      -96.827158        7.1994
+Error too great
+Error too great
+BFGS:   48 22:03:05      -96.818110        7.6393
+Error too great
+Error too great
+BFGS:   49 22:03:07      -96.794621        7.4053
+Error too great
+Error too great
+BFGS:   50 22:03:09      -96.796616        6.6607
+Error too great
+Error too great
+BFGS:   51 22:03:11      -96.802354        6.0337
+Error too great
+Error too great
+BFGS:   52 22:03:12      -96.805808        4.7779
+Error too great
+Error too great
+BFGS:   53 22:03:14      -96.813985        4.1572
+Error too great
+Error too great
+BFGS:   54 22:03:16      -96.826296        3.3776
+Error too great
+Error too great
+BFGS:   55 22:03:17      -96.863954        3.0656
+Error too great
+Error too great
+BFGS:   56 22:03:19      -96.895299        2.9556
+Error too great
+Error too great
+BFGS:   57 22:03:21      -96.943469        2.7414
+Error too great
+Error too great
+BFGS:   58 22:03:23      -96.973202        2.5022
+Error too great
+Error too great
+BFGS:   59 22:03:24      -97.011541        2.2284
+Error too great
+Error too great
+BFGS:   60 22:03:26      -97.024091        2.0868
+Error too great
+Error too great
+BFGS:   61 22:03:28      -97.048573        1.9470
+Error too great
+Error too great
+BFGS:   62 22:03:30      -97.059212        1.8748
+Error too great
+Error too great
+BFGS:   63 22:03:31      -97.068925        1.8198
+Error too great
+Error too great
+BFGS:   64 22:03:33      -97.083823        1.7256
+Error too great
+Error too great
+BFGS:   65 22:03:35      -97.096162        1.6711
+Error too great
+Error too great
+BFGS:   66 22:03:37      -97.111108        1.6316
+Error too great
+Error too great
+BFGS:   67 22:03:38      -97.126281        1.6198
+Error too great
+Error too great
+BFGS:   68 22:03:40      -97.142721        1.6392
+Error too great
+Error too great
+BFGS:   69 22:03:42      -97.157540        1.6146
+Error too great
+Error too great
+BFGS:   70 22:03:44      -97.162710        1.5824
+Error too great
+Error too great
+BFGS:   71 22:03:45      -97.170712        1.5048
+Error too great
+Error too great
+BFGS:   72 22:03:47      -97.177614        1.4234
+Error too great
+Error too great
+BFGS:   73 22:03:49      -97.181112        1.3508
+Error too great
+Error too great
+BFGS:   74 22:03:51      -97.180420        1.3409
+Error too great
+Error too great
+BFGS:   75 22:03:53      -97.178477        1.3624
+Error too great
+Error too great
+BFGS:   76 22:03:54      -97.177829        1.3965
+Error too great
+Error too great
+BFGS:   77 22:03:56      -97.178069        1.4286
+Error too great
+Error too great
+BFGS:   78 22:03:58      -97.179280        1.4525
+Error too great
+Error too great
+BFGS:   79 22:04:00      -97.180465        1.4678
+Error too great
+Error too great
+BFGS:   80 22:04:01      -97.181520        1.4760
+Error too great
+Error too great
+BFGS:   81 22:04:03      -97.182270        1.4812
+Error too great
+Error too great
+BFGS:   82 22:04:05      -97.182651        1.4831
+Error too great
+Error too great
+BFGS:   83 22:04:07      -97.183087        1.4855
+Error too great
+Error too great
+BFGS:   84 22:04:08      -97.183228        1.4860
+Error too great
+Error too great
+BFGS:   85 22:04:10      -97.183672        1.4879
+Error too great
+Error too great
+BFGS:   86 22:04:12      -97.184226        1.4898
+Error too great
+Error too great
+BFGS:   87 22:04:14      -97.185084        1.4928
+Error too great
+Error too great
+BFGS:   88 22:04:15      -97.186487        1.4966
+Error too great
+Error too great
+BFGS:   89 22:04:17      -97.188806        1.5020
+Error too great
+Error too great
+BFGS:   90 22:04:19      -97.193084        1.5079
+Error too great
+Error too great
+BFGS:   91 22:04:21      -97.201284        1.5125
+Error too great
+Error too great
+BFGS:   92 22:04:22      -97.218366        1.5076
+Error too great
+Error too great
+BFGS:   93 22:04:24      -97.248758        1.4754
+Error too great
+Error too great
+BFGS:   94 22:04:26      -97.284653        1.4083
+Error too great
+Error too great
+BFGS:   95 22:04:28      -97.323369        1.2950
+Error too great
+Error too great
+BFGS:   96 22:04:29      -97.359496        1.1216
+Error too great
+Error too great
+BFGS:   97 22:04:31      -97.385960        0.8690
+Error too great
+Error too great
+BFGS:   98 22:04:33      -97.395459        0.4971
+Error too great
+Error too great
+BFGS:   99 22:04:34      -97.377824        0.1348
+Error too great
+Error too great
+BFGS:  100 22:04:36      -97.372916        0.0684
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+('True energy of relaxed structure:', -85.622948370450473)
+Begin training
+training ended
+Error too great
+Error too great
+      Step     Time          Energy         fmax
+BFGS:    0 22:05:04      -64.930401       56.3241
+Error too great
+Error too great
+BFGS:    1 22:05:05      -73.033187       45.6342
+Error too great
+Error too great
+BFGS:    2 22:05:07      -77.677355       37.5365
+Error too great
+Error too great
+BFGS:    3 22:05:09      -81.200264       29.1410
+Error too great
+Error too great
+BFGS:    4 22:05:11      -82.909626       24.0091
+Error too great
+Error too great
+BFGS:    5 22:05:12      -84.100359       19.2293
+Error too great
+Error too great
+BFGS:    6 22:05:14      -84.955875       14.0098
+Error too great
+Error too great
+BFGS:    7 22:05:16      -85.439863        9.0056
+BFGS:    8 22:05:17      -85.734688        5.2389
+Error too great
+Error too great
+BFGS:    9 22:05:19      -85.846012        3.0675
+Error too great
+Error too great
+BFGS:   10 22:05:21      -85.932031        2.0346
+BFGS:   11 22:05:22      -86.045227        2.1877
+BFGS:   12 22:05:24      -86.179487        2.4871
+BFGS:   13 22:05:26      -86.356891        3.1427
+BFGS:   14 22:05:27      -86.598147        3.5278
+BFGS:   15 22:05:29      -86.878329        4.1738
+BFGS:   16 22:05:30      -87.207770        4.6016
+BFGS:   17 22:05:32      -87.594260        4.8538
+BFGS:   18 22:05:34      -88.038005        4.6740
+BFGS:   19 22:05:35      -88.532351        4.6144
+BFGS:   20 22:05:37      -88.946922        4.1961
+BFGS:   21 22:05:38      -89.284079        3.4844
+BFGS:   22 22:05:40      -89.525125        2.7142
+BFGS:   23 22:05:41      -89.610539        2.3910
+BFGS:   24 22:05:43      -89.533148        2.1745
+BFGS:   25 22:05:45      -89.303392        2.1545
+BFGS:   26 22:05:46      -89.086895        2.8645
+BFGS:   27 22:05:48      -88.681376        3.4294
+Error too great
+Error too great
+BFGS:   28 22:05:50      -88.131766        4.7822
+Error too great
+Error too great
+BFGS:   29 22:05:51      -88.832037        4.7877
+Error too great
+Error too great
+BFGS:   30 22:05:53      -88.896972        4.9508
+Error too great
+Error too great
+BFGS:   31 22:05:55      -88.930798        4.3591
+Error too great
+Error too great
+BFGS:   32 22:05:56      -88.869245        4.7544
+Error too great
+Error too great
+BFGS:   33 22:05:58      -88.730851        4.4985
+Error too great
+Error too great
+BFGS:   34 22:06:00      -88.538274        3.6148
+Error too great
+Error too great
+BFGS:   35 22:06:02      -88.331896        2.3784
+Error too great
+Error too great
+BFGS:   36 22:06:03      -88.101698        1.6785
+Error too great
+Error too great
+BFGS:   37 22:06:05      -88.016632        1.0961
+Error too great
+Error too great
+BFGS:   38 22:06:07      -87.987990        1.1257
+Error too great
+Error too great
+BFGS:   39 22:06:09      -87.992928        1.3118
+Error too great
+Error too great
+BFGS:   40 22:06:10      -88.079026        1.4169
+Error too great
+Error too great
+BFGS:   41 22:06:12      -88.315582        2.6789
+Error too great
+Error too great
+BFGS:   42 22:06:14      -88.665951        3.6984
+Error too great
+Error too great
+BFGS:   43 22:06:16      -89.128901        3.0425
+Error too great
+Error too great
+BFGS:   44 22:06:18      -89.441011        1.9820
+Error too great
+Error too great
+BFGS:   45 22:06:19      -89.578332        1.6680
+Error too great
+Error too great
+BFGS:   46 22:06:21      -89.559654        2.8095
+Error too great
+Error too great
+BFGS:   47 22:06:23      -89.496920        3.7809
+Error too great
+Error too great
+BFGS:   48 22:06:25      -89.443558        4.5712
+Error too great
+Error too great
+BFGS:   49 22:06:27      -89.452417        5.0790
+Error too great
+Error too great
+BFGS:   50 22:06:29      -89.552481        5.3747
+Error too great
+Error too great
+BFGS:   51 22:06:31      -89.756747        5.5845
+Error too great
+Error too great
+BFGS:   52 22:06:33      -90.032432        5.8008
+Error too great
+Error too great
+BFGS:   53 22:06:35      -90.296902        6.2007
+Error too great
+Error too great
+BFGS:   54 22:06:37      -90.462266        6.4520
+Error too great
+Error too great
+BFGS:   55 22:06:39      -90.526735        6.5244
+Error too great
+Error too great
+BFGS:   56 22:06:41      -90.511867        5.9902
+Error too great
+Error too great
+BFGS:   57 22:06:44      -90.562026        5.0917
+Error too great
+Error too great
+BFGS:   58 22:06:46      -90.638591        3.9442
+Error too great
+Error too great
+BFGS:   59 22:06:48      -90.728737        3.5772
+Error too great
+Error too great
+BFGS:   60 22:06:50      -90.855829        3.2159
+Error too great
+Error too great
+BFGS:   61 22:06:52      -90.936431        2.9978
+Error too great
+Error too great
+BFGS:   62 22:06:55      -91.032484        2.8906
+Error too great
+Error too great
+BFGS:   63 22:06:57      -91.011863        3.0291
+Error too great
+Error too great
+BFGS:   64 22:06:59      -91.061567        3.0707
+Error too great
+Error too great
+BFGS:   65 22:07:01      -90.839568        2.6612
+Error too great
+Error too great
+BFGS:   66 22:07:03      -90.822293        2.8749
+Error too great
+Error too great
+BFGS:   67 22:07:06      -90.713873        3.2738
+Error too great
+Error too great
+BFGS:   68 22:07:08      -90.610679        4.2627
+Error too great
+Error too great
+BFGS:   69 22:07:10      -90.368614        4.8530
+Error too great
+Error too great
+BFGS:   70 22:07:12      -90.085308        5.4784
+Error too great
+Error too great
+BFGS:   71 22:07:14      -89.693183        5.6786
+Error too great
+Error too great
+BFGS:   72 22:07:16      -89.258739        5.7469
+Error too great
+Error too great
+BFGS:   73 22:07:18      -88.810791        5.6315
+Error too great
+Error too great
+BFGS:   74 22:07:20      -88.380412        5.4007
+Error too great
+Error too great
+BFGS:   75 22:07:22      -87.928244        5.3476
+Error too great
+Error too great
+BFGS:   76 22:07:25      -87.390715        6.1579
+Error too great
+Error too great
+BFGS:   77 22:07:27      -86.762975        6.5232
+Error too great
+Error too great
+BFGS:   78 22:07:30      -86.127370        6.6352
+Error too great
+Error too great
+BFGS:   79 22:07:32      -85.493014        6.9443
+Error too great
+Error too great
+BFGS:   80 22:07:35      -84.855394        7.1547
+Error too great
+Error too great
+BFGS:   81 22:07:37      -84.228653        7.3542
+Error too great
+Error too great
+BFGS:   82 22:07:40      -83.637597        7.5567
+Error too great
+Error too great
+BFGS:   83 22:07:43      -83.096102        7.7005
+Error too great
+Error too great
+BFGS:   84 22:07:45      -82.627708        7.6216
+Error too great
+Error too great
+BFGS:   85 22:07:48      -82.245033        7.1735
+Error too great
+Error too great
+BFGS:   86 22:07:51      -82.039485        6.4649
+Error too great
+Error too great
+BFGS:   87 22:07:53      -82.298311        5.9555
+Error too great
+Error too great
+BFGS:   88 22:07:56      -82.952900        5.4752
+Error too great
+Error too great
+BFGS:   89 22:07:59      -83.423995        4.5212
+Error too great
+Error too great
+BFGS:   90 22:08:01      -83.509067        3.9856
+Error too great
+Error too great
+BFGS:   91 22:08:04      -83.470153        3.3523
+Error too great
+Error too great
+BFGS:   92 22:08:07      -83.326246        2.6731
+Error too great
+Error too great
+BFGS:   93 22:08:10      -83.209967        2.4338
+Error too great
+Error too great
+BFGS:   94 22:08:12      -83.099876        2.3181
+Error too great
+Error too great
+BFGS:   95 22:08:15      -83.050123        2.5823
+Error too great
+Error too great
+BFGS:   96 22:08:18      -83.200385        2.8469
+Error too great
+Error too great
+BFGS:   97 22:08:21      -83.384374        2.5770
+Error too great
+Error too great
+BFGS:   98 22:08:23      -83.545094        2.6838
+Error too great
+Error too great
+BFGS:   99 22:08:26      -83.589518        2.7941
+Error too great
+Error too great
+BFGS:  100 22:08:29      -83.600486        2.9805
+Error too great
+Error too great
+BFGS:  101 22:08:32      -83.587530        2.8876
+Error too great
+Error too great
+BFGS:  102 22:08:34      -83.580826        2.5879
+Error too great
+Error too great
+BFGS:  103 22:08:37      -83.570619        2.7934
+Error too great
+Error too great
+BFGS:  104 22:08:40      -83.557545        2.9178
+Error too great
+Error too great
+BFGS:  105 22:08:43      -83.539390        3.0003
+Error too great
+Error too great
+BFGS:  106 22:08:46      -83.517629        3.1039
+Error too great
+Error too great
+BFGS:  107 22:08:49      -83.491725        3.2487
+Error too great
+Error too great
+BFGS:  108 22:08:52      -83.461098        3.4110
+Error too great
+Error too great
+BFGS:  109 22:08:55      -83.443980        3.4562
+Error too great
+Error too great
+BFGS:  110 22:08:58      -83.457806        3.4303
+Error too great
+Error too great
+BFGS:  111 22:09:01      -83.501861        3.3874
+Error too great
+Error too great
+BFGS:  112 22:09:04      -83.571041        3.5303
+Error too great
+Error too great
+BFGS:  113 22:09:07      -83.616460        3.5185
+Error too great
+Error too great
+BFGS:  114 22:09:10      -83.703497        3.4333
+Error too great
+Error too great
+BFGS:  115 22:09:13      -83.813580        3.4355
+Error too great
+Error too great
+BFGS:  116 22:09:16      -83.953222        3.3639
+Error too great
+Error too great
+BFGS:  117 22:09:19      -84.110355        3.2064
+Error too great
+Error too great
+BFGS:  118 22:09:22      -84.267439        2.9770
+Error too great
+Error too great
+BFGS:  119 22:09:25      -84.403643        2.7148
+Error too great
+Error too great
+BFGS:  120 22:09:28      -84.515896        2.4819
+Error too great
+Error too great
+BFGS:  121 22:09:31      -84.627660        2.3388
+Error too great
+Error too great
+BFGS:  122 22:09:35      -84.739732        2.2665
+Error too great
+Error too great
+BFGS:  123 22:09:38      -84.839920        2.5881
+Error too great
+Error too great
+BFGS:  124 22:09:41      -84.945019        3.1749
+Error too great
+Error too great
+BFGS:  125 22:09:44      -85.056913        3.6601
+Error too great
+Error too great
+BFGS:  126 22:09:47      -85.188502        3.9495
+Error too great
+Error too great
+BFGS:  127 22:09:50      -85.348808        3.8674
+Error too great
+Error too great
+BFGS:  128 22:09:53      -85.580282        3.3098
+Error too great
+Error too great
+BFGS:  129 22:09:56      -85.870212        2.3020
+Error too great
+Error too great
+BFGS:  130 22:09:59      -86.109662        1.9850
+Error too great
+Error too great
+BFGS:  131 22:10:02      -86.128624        1.6453
+Error too great
+Error too great
+BFGS:  132 22:10:05      -86.105651        1.5052
+Error too great
+Error too great
+BFGS:  133 22:10:08      -86.170992        1.5938
+Error too great
+Error too great
+BFGS:  134 22:10:12      -86.323604        1.5420
+Error too great
+Error too great
+BFGS:  135 22:10:15      -86.481109        1.3822
+Error too great
+Error too great
+BFGS:  136 22:10:18      -86.653588        1.4320
+Error too great
+Error too great
+BFGS:  137 22:10:21      -86.794129        1.3854
+Error too great
+Error too great
+BFGS:  138 22:10:24      -86.960164        1.5473
+Error too great
+Error too great
+BFGS:  139 22:10:27      -87.026211        1.4430
+Error too great
+Error too great
+BFGS:  140 22:10:30      -87.136552        1.6322
+Error too great
+Error too great
+BFGS:  141 22:10:33      -87.127415        1.6431
+Error too great
+Error too great
+BFGS:  142 22:10:36      -87.223535        1.7898
+Error too great
+Error too great
+BFGS:  143 22:10:40      -87.318403        1.8467
+Error too great
+Error too great
+BFGS:  144 22:10:43      -87.407569        1.9191
+Error too great
+Error too great
+BFGS:  145 22:10:46      -87.411187        1.9664
+Error too great
+Error too great
+BFGS:  146 22:10:49      -87.503012        1.9627
+Error too great
+Error too great
+BFGS:  147 22:10:52      -87.531629        1.8620
+Error too great
+Error too great
+BFGS:  148 22:10:55      -87.648351        1.6299
+Error too great
+Error too great
+BFGS:  149 22:10:58      -87.685893        1.2829
+Error too great
+Error too great
+BFGS:  150 22:11:01      -87.759535        1.0214
+Error too great
+Error too great
+BFGS:  151 22:11:04      -87.711670        0.7960
+Error too great
+Error too great
+BFGS:  152 22:11:07      -87.631576        0.6460
+Error too great
+Error too great
+BFGS:  153 22:11:10      -87.567945        0.5948
+Error too great
+Error too great
+BFGS:  154 22:11:13      -87.536699        0.5596
+Error too great
+Error too great
+BFGS:  155 22:11:16      -87.519853        0.5241
+Error too great
+Error too great
+BFGS:  156 22:11:19      -87.513570        0.5077
+Error too great
+Error too great
+BFGS:  157 22:11:22      -87.512056        0.5097
+Error too great
+Error too great
+BFGS:  158 22:11:25      -87.510775        0.5291
+Error too great
+Error too great
+BFGS:  159 22:11:29      -87.511687        0.5607
+Error too great
+Error too great
+BFGS:  160 22:11:32      -87.511092        0.5960
+Error too great
+Error too great
+BFGS:  161 22:11:35      -87.508794        0.6320
+Error too great
+Error too great
+BFGS:  162 22:11:38      -87.501884        0.6444
+Error too great
+Error too great
+BFGS:  163 22:11:41      -87.492201        0.6124
+Error too great
+Error too great
+BFGS:  164 22:11:44      -87.483636        0.5523
+Error too great
+Error too great
+BFGS:  165 22:11:47      -87.478547        0.4948
+Error too great
+Error too great
+BFGS:  166 22:11:51      -87.475287        0.4451
+Error too great
+Error too great
+BFGS:  167 22:11:54      -87.471838        0.3978
+Error too great
+Error too great
+BFGS:  168 22:11:57      -87.465156        0.3514
+Error too great
+Error too great
+BFGS:  169 22:12:00      -87.451208        0.3118
+Error too great
+Error too great
+BFGS:  170 22:12:03      -87.430491        0.3346
+Error too great
+Error too great
+BFGS:  171 22:12:06      -87.414767        0.3530
+Error too great
+Error too great
+BFGS:  172 22:12:10      -87.410179        0.3465
+Error too great
+Error too great
+BFGS:  173 22:12:13      -87.409231        0.3334
+Error too great
+Error too great
+BFGS:  174 22:12:16      -87.408148        0.3196
+Error too great
+Error too great
+BFGS:  175 22:12:19      -87.407613        0.3114
+Error too great
+Error too great
+BFGS:  176 22:12:22      -87.407574        0.3066
+Error too great
+Error too great
+BFGS:  177 22:12:25      -87.408252        0.3065
+Error too great
+Error too great
+BFGS:  178 22:12:28      -87.409832        0.3094
+Error too great
+Error too great
+BFGS:  179 22:12:32      -87.412192        0.3139
+Error too great
+Error too great
+BFGS:  180 22:12:35      -87.415290        0.3182
+Error too great
+Error too great
+BFGS:  181 22:12:38      -87.418306        0.3192
+Error too great
+Error too great
+BFGS:  182 22:12:41      -87.420000        0.3126
+Error too great
+Error too great
+BFGS:  183 22:12:44      -87.418250        0.2939
+Error too great
+Error too great
+BFGS:  184 22:12:47      -87.411166        0.2638
+Error too great
+Error too great
+BFGS:  185 22:12:51      -87.400623        0.2361
+Error too great
+Error too great
+BFGS:  186 22:12:54      -87.392885        0.2250
+Error too great
+Error too great
+BFGS:  187 22:12:57      -87.390812        0.2253
+Error too great
+Error too great
+BFGS:  188 22:13:00      -87.391037        0.2268
+Error too great
+Error too great
+BFGS:  189 22:13:03      -87.391595        0.2270
+Error too great
+Error too great
+BFGS:  190 22:13:06      -87.391848        0.2258
+Error too great
+Error too great
+BFGS:  191 22:13:09      -87.391706        0.2249
+Error too great
+Error too great
+BFGS:  192 22:13:13      -87.391530        0.2265
+Error too great
+Error too great
+BFGS:  193 22:13:16      -87.390999        0.2278
+Error too great
+Error too great
+BFGS:  194 22:13:19      -87.390921        0.2274
+Error too great
+Error too great
+BFGS:  195 22:13:22      -87.390816        0.2249
+Error too great
+Error too great
+BFGS:  196 22:13:25      -87.390913        0.2216
+Error too great
+Error too great
+BFGS:  197 22:13:28      -87.391541        0.2245
+Error too great
+Error too great
+BFGS:  198 22:13:32      -87.393572        0.2302
+Error too great
+Error too great
+BFGS:  199 22:13:35      -87.399175        0.2402
+Error too great
+Error too great
+BFGS:  200 22:13:38      -87.413483        0.2552
+Error too great
+Error too great
+BFGS:  201 22:13:41      -87.446972        0.2711
+Error too great
+Error too great
+BFGS:  202 22:13:44      -87.511895        0.2707
+Error too great
+Error too great
+BFGS:  203 22:13:47      -87.600227        0.2722
+Error too great
+Error too great
+BFGS:  204 22:13:50      -87.672880        0.2041
+Error too great
+Error too great
+BFGS:  205 22:13:54      -87.704988        0.1004
+Error too great
+Error too great
+BFGS:  206 22:13:57      -87.705786        0.0971
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+('True energy of relaxed structure:', -68.082521880642986)
+Begin training
+training ended
+Error too great
+Error too great
+      Step     Time          Energy         fmax
+BFGS:    0 22:14:26      -80.066595        4.3236
+Error too great
+Error too great
+BFGS:    1 22:14:27      -80.877743        2.9257
+Error too great
+Error too great
+BFGS:    2 22:14:29      -81.398654        2.7600
+Error too great
+Error too great
+BFGS:    3 22:14:31      -81.861926        2.2092
+Error too great
+Error too great
+BFGS:    4 22:14:33      -82.246518        1.7031
+Error too great
+Error too great
+BFGS:    5 22:14:34      -82.517557        1.1568
+Error too great
+Error too great
+BFGS:    6 22:14:36      -82.674480        0.6782
+Error too great
+Error too great
+BFGS:    7 22:14:38      -82.747116        0.3459
+Error too great
+Error too great
+BFGS:    8 22:14:39      -82.774693        0.1702
+Error too great
+Error too great
+BFGS:    9 22:14:41      -82.785790        0.0789
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+('True energy of relaxed structure:', 17.422451329613118)
+Begin training
+training ended
+Error too great
+Error too great
+      Step     Time          Energy         fmax
+BFGS:    0 22:15:07      -18.013948       62.9164
+Error too great
+Error too great
+BFGS:    1 22:15:08      -29.608877       63.1382
+Error too great
+Error too great
+BFGS:    2 22:15:09      -36.332073       52.7963
+Error too great
+Error too great
+BFGS:    3 22:15:11      -44.066307       53.8058
+Error too great
+Error too great
+BFGS:    4 22:15:12      -50.956560       51.1753
+Error too great
+Error too great
+BFGS:    5 22:15:13      -57.244362       50.9111
+Error too great
+Error too great
+BFGS:    6 22:15:14      -63.197144       49.5678
+Error too great
+Error too great
+BFGS:    7 22:15:16      -68.418826       46.5113
+Error too great
+Error too great
+BFGS:    8 22:15:17      -73.293293       43.1099
+Error too great
+Error too great
+BFGS:    9 22:15:18      -77.036628       38.9304
+Error too great
+Error too great
+BFGS:   10 22:15:19      -79.731092       34.5877
+Error too great
+Error too great
+BFGS:   11 22:15:21      -82.378146       30.5495
+Error too great
+Error too great
+BFGS:   12 22:15:22      -84.172188       25.0206
+Error too great
+Error too great
+BFGS:   13 22:15:24      -85.463363       21.1117
+Error too great
+Error too great
+BFGS:   14 22:15:25      -86.243205       18.0478
+Error too great
+Error too great
+BFGS:   15 22:15:26      -86.893459       14.1694
+Error too great
+Error too great
+BFGS:   16 22:15:28      -87.284724       11.6388
+Error too great
+Error too great
+BFGS:   17 22:15:29      -87.543611        9.1364
+BFGS:   18 22:15:31      -87.588262        8.7391
+BFGS:   19 22:15:32      -87.414596        8.1899
+BFGS:   20 22:15:34      -87.117344        8.0011
+BFGS:   21 22:15:36      -86.825118        7.7759
+BFGS:   22 22:15:37      -86.534097        7.7302
+BFGS:   23 22:15:39      -86.227044        7.6964
+BFGS:   24 22:15:40      -85.914109        7.6884
+BFGS:   25 22:15:42      -85.613907        7.5369
+Error too great
+Error too great
+BFGS:   26 22:15:44      -85.382378        7.4079
+Error too great
+Error too great
+BFGS:   27 22:15:46      -85.328839        7.7521
+Error too great
+Error too great
+BFGS:   28 22:15:48      -85.353208        8.0494
+Error too great
+Error too great
+BFGS:   29 22:15:50      -85.363975        8.2075
+Error too great
+Error too great
+BFGS:   30 22:15:52      -85.358413        8.2383
+Error too great
+Error too great
+BFGS:   31 22:15:54      -85.454357        8.3424
+Error too great
+Error too great
+BFGS:   32 22:15:55      -85.430730        7.3263
+Error too great
+Error too great
+BFGS:   33 22:15:57      -85.546308        6.4854
+BFGS:   34 22:15:59      -85.746768        7.0767
+BFGS:   35 22:16:01      -85.750350        8.1270
+BFGS:   36 22:16:03      -85.764466        6.7755
+BFGS:   37 22:16:05      -85.584291        6.2739
+BFGS:   38 22:16:07      -85.508798        4.3200
+BFGS:   39 22:16:09      -85.534923        3.7854
+BFGS:   40 22:16:11      -85.695486        3.6325
+BFGS:   41 22:16:12      -85.875670        3.4408
+BFGS:   42 22:16:14      -86.056313        3.3064
+Error too great
+Error too great
+BFGS:   43 22:16:16      -86.227215        3.2939
+Error too great
+Error too great
+BFGS:   44 22:16:18      -86.386838        3.1829
+Error too great
+Error too great
+BFGS:   45 22:16:20      -86.529132        2.9435
+Error too great
+Error too great
+BFGS:   46 22:16:22      -86.639993        2.6964
+Error too great
+Error too great
+BFGS:   47 22:16:24      -86.698817        3.1131
+Error too great
+Error too great
+BFGS:   48 22:16:26      -86.698645        3.3700
+Error too great
+Error too great
+BFGS:   49 22:16:28      -86.660968        3.4224
+Error too great
+Error too great
+BFGS:   50 22:16:30      -86.611814        3.2844
+Error too great
+Error too great
+BFGS:   51 22:16:32      -86.567205        2.9456
+Error too great
+Error too great
+BFGS:   52 22:16:33      -86.520538        3.2480
+Error too great
+Error too great
+BFGS:   53 22:16:35      -86.434027        3.8968
+Error too great
+Error too great
+BFGS:   54 22:16:38      -86.360173        4.1769
+Error too great
+Error too great
+BFGS:   55 22:16:40      -86.267664        4.9331
+Error too great
+Error too great
+BFGS:   56 22:16:42      -86.126197        6.1976
+Error too great
+Error too great
+BFGS:   57 22:16:44      -86.042376        6.8194
+Error too great
+Error too great
+BFGS:   58 22:16:46      -85.990907        6.9246
+Error too great
+Error too great
+BFGS:   59 22:16:48      -85.988542        6.6285
+Error too great
+Error too great
+BFGS:   60 22:16:50      -86.051066        5.9284
+Error too great
+Error too great
+BFGS:   61 22:16:52      -86.243059        4.8056
+Error too great
+Error too great
+BFGS:   62 22:16:54      -86.630341        3.3954
+Error too great
+Error too great
+BFGS:   63 22:16:56      -87.100187        2.3249
+Error too great
+Error too great
+BFGS:   64 22:16:58      -87.615402        1.9498
+Error too great
+Error too great
+BFGS:   65 22:17:00      -88.155178        1.4750
+Error too great
+Error too great
+BFGS:   66 22:17:02      -88.669467        1.4661
+Error too great
+Error too great
+BFGS:   67 22:17:04      -89.076968        1.6480
+Error too great
+Error too great
+BFGS:   68 22:17:06      -89.195179        1.6498
+Error too great
+Error too great
+BFGS:   69 22:17:08      -89.181810        2.3283
+Error too great
+Error too great
+BFGS:   70 22:17:11      -89.051114        2.7727
+Error too great
+Error too great
+BFGS:   71 22:17:13      -88.805412        3.0229
+Error too great
+Error too great
+BFGS:   72 22:17:15      -88.521273        2.3686
+Error too great
+Error too great
+BFGS:   73 22:17:17      -88.221795        2.7357
+Error too great
+Error too great
+BFGS:   74 22:17:19      -87.991478        3.1146
+Error too great
+Error too great
+BFGS:   75 22:17:21      -87.839850        3.1782
+Error too great
+Error too great
+BFGS:   76 22:17:23      -87.752685        2.8971
+Error too great
+Error too great
+BFGS:   77 22:17:25      -87.707108        2.4627
+Error too great
+Error too great
+BFGS:   78 22:17:27      -87.611503        2.2356
+Error too great
+Error too great
+BFGS:   79 22:17:29      -87.364359        2.7999
+Error too great
+Error too great
+BFGS:   80 22:17:31      -86.977809        3.2995
+Error too great
+Error too great
+BFGS:   81 22:17:33      -86.574547        4.2353
+Error too great
+Error too great
+BFGS:   82 22:17:35      -86.328452        4.9621
+Error too great
+Error too great
+BFGS:   83 22:17:38      -86.222674        5.3689
+Error too great
+Error too great
+BFGS:   84 22:17:40      -86.138781        5.4255
+Error too great
+Error too great
+BFGS:   85 22:17:42      -86.129030        5.1143
+Error too great
+Error too great
+BFGS:   86 22:17:44      -86.042613        4.3090
+Error too great
+Error too great
+BFGS:   87 22:17:47      -86.036498        3.4156
+Error too great
+Error too great
+BFGS:   88 22:17:49      -85.724046        2.8730
+Error too great
+Error too great
+BFGS:   89 22:17:51      -85.907304        2.5929
+Error too great
+Error too great
+BFGS:   90 22:17:53      -86.207300        2.5336
+Error too great
+Error too great
+BFGS:   91 22:17:55      -86.504914        2.8339
+Error too great
+Error too great
+BFGS:   92 22:17:58      -86.643308        3.0700
+Error too great
+Error too great
+BFGS:   93 22:18:00      -86.731044        3.2721
+Error too great
+Error too great
+BFGS:   94 22:18:02      -86.789987        3.3303
+Error too great
+Error too great
+BFGS:   95 22:18:05      -86.853262        3.2240
+Error too great
+Error too great
+BFGS:   96 22:18:07      -86.940393        2.9155
+Error too great
+Error too great
+BFGS:   97 22:18:10      -87.064874        2.5516
+Error too great
+Error too great
+BFGS:   98 22:18:12      -87.198762        2.5625
+Error too great
+Error too great
+BFGS:   99 22:18:15      -87.335969        2.6208
+Error too great
+Error too great
+BFGS:  100 22:18:17      -87.432839        2.4265
+Error too great
+Error too great
+BFGS:  101 22:18:20      -87.624666        2.6079
+Error too great
+Error too great
+BFGS:  102 22:18:22      -87.765838        2.8312
+Error too great
+Error too great
+BFGS:  103 22:18:25      -87.853218        3.1478
+Error too great
+Error too great
+BFGS:  104 22:18:27      -87.770004        3.2475
+Error too great
+Error too great
+BFGS:  105 22:18:30      -87.683608        3.3935
+Error too great
+Error too great
+BFGS:  106 22:18:32      -87.524412        3.1899
+Error too great
+Error too great
+BFGS:  107 22:18:35      -87.454209        3.1761
+Error too great
+Error too great
+BFGS:  108 22:18:37      -87.397922        3.1610
+Error too great
+Error too great
+BFGS:  109 22:18:40      -87.375114        3.0188
+Error too great
+Error too great
+BFGS:  110 22:18:42      -87.298078        2.7324
+Error too great
+Error too great
+BFGS:  111 22:18:45      -87.174801        2.3433
+Error too great
+Error too great
+BFGS:  112 22:18:48      -86.990176        1.8869
+Error too great
+Error too great
+BFGS:  113 22:18:50      -86.755541        1.8472
+Error too great
+Error too great
+BFGS:  114 22:18:53      -86.535497        1.7656
+Error too great
+Error too great
+BFGS:  115 22:18:55      -86.499683        1.6121
+Error too great
+Error too great
+BFGS:  116 22:18:58      -86.572293        1.6977
+Error too great
+Error too great
+BFGS:  117 22:19:00      -86.686420        1.8336
+Error too great
+Error too great
+BFGS:  118 22:19:03      -86.735736        2.1583
+Error too great
+Error too great
+BFGS:  119 22:19:06      -86.916415        2.2170
+Error too great
+Error too great
+BFGS:  120 22:19:08      -86.825774        1.9705
+Error too great
+Error too great
+BFGS:  121 22:19:11      -86.610634        1.8113
+Error too great
+Error too great
+BFGS:  122 22:19:13      -86.511288        1.7424
+Error too great
+Error too great
+BFGS:  123 22:19:16      -86.385476        1.7359
+Error too great
+Error too great
+BFGS:  124 22:19:19      -86.297938        1.6516
+Error too great
+Error too great
+BFGS:  125 22:19:21      -86.274703        1.5672
+Error too great
+Error too great
+BFGS:  126 22:19:24      -86.297687        1.6662
+Error too great
+Error too great
+BFGS:  127 22:19:27      -86.345902        1.7480
+Error too great
+Error too great
+BFGS:  128 22:19:29      -86.416805        1.7722
+Error too great
+Error too great
+BFGS:  129 22:19:32      -86.516915        1.6734
+Error too great
+Error too great
+BFGS:  130 22:19:34      -86.615339        1.6402
+Error too great
+Error too great
+BFGS:  131 22:19:37      -86.695790        1.7684
+Error too great
+Error too great
+BFGS:  132 22:19:40      -86.737962        1.7694
+Error too great
+Error too great
+BFGS:  133 22:19:42      -86.765444        1.6463
+Error too great
+Error too great
+BFGS:  134 22:19:45      -86.782073        1.3649
+Error too great
+Error too great
+BFGS:  135 22:19:48      -86.781504        1.2841
+Error too great
+Error too great
+BFGS:  136 22:19:50      -86.764272        1.1850
+Error too great
+Error too great
+BFGS:  137 22:19:53      -86.732327        1.0724
+Error too great
+Error too great
+BFGS:  138 22:19:56      -86.706645        1.0569
+Error too great
+Error too great
+BFGS:  139 22:19:58      -86.689126        0.9619
+Error too great
+Error too great
+BFGS:  140 22:20:01      -86.704358        0.8554
+Error too great
+Error too great
+BFGS:  141 22:20:03      -86.742549        0.8450
+Error too great
+Error too great
+BFGS:  142 22:20:06      -86.810429        0.9403
+Error too great
+Error too great
+BFGS:  143 22:20:09      -86.884842        0.9611
+Error too great
+Error too great
+BFGS:  144 22:20:11      -86.994890        1.0697
+Error too great
+Error too great
+BFGS:  145 22:20:14      -87.118739        1.2129
+Error too great
+Error too great
+BFGS:  146 22:20:17      -87.287176        1.3547
+Error too great
+Error too great
+BFGS:  147 22:20:19      -87.392762        1.3898
+Error too great
+Error too great
+BFGS:  148 22:20:22      -87.402214        1.2379
+Error too great
+Error too great
+BFGS:  149 22:20:25      -87.318666        0.9693
+Error too great
+Error too great
+BFGS:  150 22:20:27      -87.146029        0.6932
+Error too great
+Error too great
+BFGS:  151 22:20:30      -86.921760        0.6420
+Error too great
+Error too great
+BFGS:  152 22:20:32      -86.797489        0.4121
+Error too great
+Error too great
+BFGS:  153 22:20:35      -86.716065        0.1902
+Error too great
+Error too great
+BFGS:  154 22:20:38      -86.704423        0.0950
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+('True energy of relaxed structure:', -80.591639421353591)
+Begin training
+training ended
+Error too great
+Error too great
+      Step     Time          Energy         fmax
+BFGS:    0 22:21:02      -26.609935       21.0243
+Error too great
+Error too great
+BFGS:    1 22:21:04      -30.304844       17.0871
+Error too great
+Error too great
+BFGS:    2 22:21:05      -34.270572       16.3849
+Error too great
+Error too great
+BFGS:    3 22:21:07      -38.223329       20.6667
+Error too great
+Error too great
+BFGS:    4 22:21:08      -42.220660       24.5425
+Error too great
+Error too great
+BFGS:    5 22:21:10      -46.194706       26.1238
+Error too great
+Error too great
+BFGS:    6 22:21:11      -49.070633       31.7415
+Error too great
+Error too great
+BFGS:    7 22:21:13      -51.679888       35.7329
+Error too great
+Error too great
+BFGS:    8 22:21:15      -54.650412       38.2347
+Error too great
+Error too great
+BFGS:    9 22:21:16      -57.426658       38.8612
+Error too great
+Error too great
+BFGS:   10 22:21:18      -59.842517       38.4521
+Error too great
+Error too great
+BFGS:   11 22:21:19      -62.196583       36.4014
+Error too great
+Error too great
+BFGS:   12 22:21:21      -64.687528       33.9175
+Error too great
+Error too great
+BFGS:   13 22:21:22      -68.306101       29.6949
+Error too great
+Error too great
+BFGS:   14 22:21:24      -70.951863       26.5557
+Error too great
+Error too great
+BFGS:   15 22:21:25      -73.850481       22.5665
+Error too great
+Error too great
+BFGS:   16 22:21:27      -76.671475       15.5897
+Error too great
+Error too great
+BFGS:   17 22:21:28      -78.270936        9.2273
+Error too great
+Error too great
+BFGS:   18 22:21:30      -79.103984        5.1473
+Error too great
+Error too great
+BFGS:   19 22:21:32      -79.508329        3.0300
+Error too great
+Error too great
+BFGS:   20 22:21:33      -79.662472        0.8694
+Error too great
+Error too great
+BFGS:   21 22:21:35      -79.680775        0.3526
+Error too great
+Error too great
+BFGS:   22 22:21:36      -79.685949        0.1579
+Error too great
+Error too great
+BFGS:   23 22:21:38      -79.687832        0.0725
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+('True energy of relaxed structure:', 481.94693394625318)
+Begin training
+training ended
+Error too great
+Error too great
+      Step     Time          Energy         fmax
+BFGS:    0 22:22:15      -41.352759       65.6759
+Error too great
+Error too great
+BFGS:    1 22:22:17      -53.756948       55.9930
+Error too great
+Error too great
+BFGS:    2 22:22:18      -62.589514       51.4139
+Error too great
+Error too great
+BFGS:    3 22:22:19      -67.746758       39.8658
+Error too great
+Error too great
+BFGS:    4 22:22:21      -73.079419       34.6821
+Error too great
+Error too great
+BFGS:    5 22:22:22      -76.318734       28.7373
+Error too great
+Error too great
+BFGS:    6 22:22:24      -78.803827       23.8813
+Error too great
+Error too great
+BFGS:    7 22:22:25      -80.538400       20.7717
+Error too great
+Error too great
+BFGS:    8 22:22:27      -82.032664       17.0844
+Error too great
+Error too great
+BFGS:    9 22:22:28      -83.251694       14.4609
+Error too great
+Error too great
+BFGS:   10 22:22:30      -84.370395       11.6917
+Error too great
+Error too great
+BFGS:   11 22:22:31      -85.425819        9.2348
+Error too great
+Error too great
+BFGS:   12 22:22:33      -86.404783        9.0525
+Error too great
+Error too great
+BFGS:   13 22:22:35      -87.294465        8.4964
+Error too great
+Error too great
+BFGS:   14 22:22:36      -88.042481        6.7682
+Error too great
+Error too great
+BFGS:   15 22:22:38      -88.648919        4.3247
+Error too great
+Error too great
+BFGS:   16 22:22:39      -89.155887        2.0992
+Error too great
+Error too great
+BFGS:   17 22:22:41      -89.449845        1.5498
+Error too great
+Error too great
+BFGS:   18 22:22:43      -89.654269        1.4061
+Error too great
+Error too great
+BFGS:   19 22:22:44      -89.491371        1.8597
+Error too great
+Error too great
+BFGS:   20 22:22:46      -89.431549        1.4506
+Error too great
+Error too great
+BFGS:   21 22:22:48      -89.381251        0.9989
+Error too great
+Error too great
+BFGS:   22 22:22:50      -89.362920        0.7818
+Error too great
+Error too great
+BFGS:   23 22:22:51      -89.358078        0.5646
+Error too great
+Error too great
+BFGS:   24 22:22:53      -89.408095        0.9946
+Error too great
+Error too great
+BFGS:   25 22:22:55      -89.502400        1.1250
+Error too great
+Error too great
+BFGS:   26 22:22:57      -89.621078        0.7449
+Error too great
+Error too great
+BFGS:   27 22:22:59      -89.690838        0.4486
+Error too great
+Error too great
+BFGS:   28 22:23:00      -89.762240        0.8100
+Error too great
+Error too great
+BFGS:   29 22:23:02      -89.757452        1.0622
+Error too great
+Error too great
+BFGS:   30 22:23:04      -89.707677        0.6968
+Error too great
+Error too great
+BFGS:   31 22:23:05      -89.665987        0.2296
+Error too great
+Error too great
+BFGS:   32 22:23:07      -89.653252        0.1558
+Error too great
+Error too great
+BFGS:   33 22:23:09      -89.633151        0.1135
+Error too great
+Error too great
+BFGS:   34 22:23:10      -89.620328        0.0991
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+('True energy of relaxed structure:', -79.107115328391629)
+Begin training
+training ended
+Error too great
+Error too great
+      Step     Time          Energy         fmax
+BFGS:    0 22:23:34      -42.860157       78.2376
+Error too great
+Error too great
+BFGS:    1 22:23:36      -54.952533       67.2003
+Error too great
+Error too great
+BFGS:    2 22:23:37      -62.002987       64.9455
+Error too great
+Error too great
+BFGS:    3 22:23:39      -66.868303       57.6544
+Error too great
+Error too great
+BFGS:    4 22:23:40      -71.222859       50.7586
+Error too great
+Error too great
+BFGS:    5 22:23:42      -74.903044       43.7248
+Error too great
+Error too great
+BFGS:    6 22:23:43      -78.098094       40.2083
+Error too great
+Error too great
+BFGS:    7 22:23:45      -80.686069       35.8125
+Error too great
+Error too great
+BFGS:    8 22:23:46      -82.422818       31.6340
+Error too great
+Error too great
+BFGS:    9 22:23:48      -83.792580       27.3984
+Error too great
+Error too great
+BFGS:   10 22:23:49      -84.840459       21.9929
+Error too great
+Error too great
+BFGS:   11 22:23:51      -85.787204       16.3584
+Error too great
+Error too great
+BFGS:   12 22:23:52      -86.589567       15.8602
+Error too great
+Error too great
+BFGS:   13 22:23:54      -87.337297       16.6679
+Error too great
+Error too great
+BFGS:   14 22:23:55      -87.891578       16.9832
+Error too great
+Error too great
+BFGS:   15 22:23:57      -88.267761       16.5824
+Error too great
+Error too great
+BFGS:   16 22:23:58      -88.523252       15.5810
+Error too great
+Error too great
+BFGS:   17 22:24:00      -88.696235       14.1746
+Error too great
+Error too great
+BFGS:   18 22:24:02      -88.803700       12.1929
+Error too great
+Error too great
+BFGS:   19 22:24:03      -88.845341        9.3170
+Error too great
+Error too great
+BFGS:   20 22:24:05      -88.817915        5.1457
+Error too great
+Error too great
+BFGS:   21 22:24:06      -88.683750        2.2666
+Error too great
+Error too great
+BFGS:   22 22:24:08      -88.581593        1.3980
+Error too great
+Error too great
+BFGS:   23 22:24:09      -88.440495        1.1576
+Error too great
+Error too great
+BFGS:   24 22:24:11      -88.475300        1.3046
+Error too great
+Error too great
+BFGS:   25 22:24:12      -88.218910        1.7533
+Error too great
+Error too great
+BFGS:   26 22:24:14      -87.935260        2.1225
+Error too great
+Error too great
+BFGS:   27 22:24:16      -87.792741        2.3003
+Error too great
+Error too great
+BFGS:   28 22:24:17      -87.668772        2.3590
+Error too great
+Error too great
+BFGS:   29 22:24:19      -87.571547        2.3899
+Error too great
+Error too great
+BFGS:   30 22:24:20      -87.499036        2.3806
+Error too great
+Error too great
+BFGS:   31 22:24:22      -87.452095        2.3129
+Error too great
+Error too great
+BFGS:   32 22:24:24      -87.464962        2.1970
+Error too great
+Error too great
+BFGS:   33 22:24:25      -87.495569        2.4791
+Error too great
+Error too great
+BFGS:   34 22:24:27      -87.589397        2.7617
+Error too great
+Error too great
+BFGS:   35 22:24:29      -87.625703        2.9404
+Error too great
+Error too great
+BFGS:   36 22:24:30      -87.685312        2.9499
+Error too great
+Error too great
+BFGS:   37 22:24:32      -87.657466        2.8705
+Error too great
+Error too great
+BFGS:   38 22:24:34      -87.592950        2.7266
+Error too great
+Error too great
+BFGS:   39 22:24:36      -87.477891        2.6271
+Error too great
+Error too great
+BFGS:   40 22:24:37      -87.334151        2.7731
+Error too great
+Error too great
+BFGS:   41 22:24:39      -87.196609        3.3535
+Error too great
+Error too great
+BFGS:   42 22:24:41      -87.064199        4.0104
+Error too great
+Error too great
+BFGS:   43 22:24:43      -86.928172        4.5638
+Error too great
+Error too great
+BFGS:   44 22:24:45      -86.781926        4.8863
+Error too great
+Error too great
+BFGS:   45 22:24:47      -86.599057        4.7869
+Error too great
+Error too great
+BFGS:   46 22:24:49      -86.400170        4.3829
+Error too great
+Error too great
+BFGS:   47 22:24:51      -86.105271        4.1670
+Error too great
+Error too great
+BFGS:   48 22:24:53      -86.010691        4.0813
+Error too great
+Error too great
+BFGS:   49 22:24:55      -85.814138        3.5271
+Error too great
+Error too great
+BFGS:   50 22:24:57      -85.730445        3.0932
+Error too great
+Error too great
+BFGS:   51 22:24:58      -85.680275        2.9738
+Error too great
+Error too great
+BFGS:   52 22:25:00      -85.500843        3.2524
+Error too great
+Error too great
+BFGS:   53 22:25:02      -85.503380        3.1677
+Error too great
+Error too great
+BFGS:   54 22:25:04      -85.247193        3.1912
+Error too great
+Error too great
+BFGS:   55 22:25:05      -85.081907        3.0516
+Error too great
+Error too great
+BFGS:   56 22:25:07      -84.817942        2.7066
+Error too great
+Error too great
+BFGS:   57 22:25:09      -84.582551        2.3938
+Error too great
+Error too great
+BFGS:   58 22:25:11      -84.413907        2.9386
+Error too great
+Error too great
+BFGS:   59 22:25:13      -84.481226        3.1103
+Error too great
+Error too great
+BFGS:   60 22:25:14      -84.553580        3.3134
+Error too great
+Error too great
+BFGS:   61 22:25:16      -84.599355        2.8441
+Error too great
+Error too great
+BFGS:   62 22:25:18      -84.649415        2.6241
+Error too great
+Error too great
+BFGS:   63 22:25:20      -84.588004        2.0604
+Error too great
+Error too great
+BFGS:   64 22:25:21      -84.538364        1.9245
+Error too great
+Error too great
+BFGS:   65 22:25:23      -84.466323        1.6113
+Error too great
+Error too great
+BFGS:   66 22:25:25      -84.396687        1.7346
+Error too great
+Error too great
+BFGS:   67 22:25:27      -84.358081        1.4359
+Error too great
+Error too great
+BFGS:   68 22:25:29      -84.334693        1.5268
+Error too great
+Error too great
+BFGS:   69 22:25:31      -84.329271        1.4200
+Error too great
+Error too great
+BFGS:   70 22:25:32      -84.376316        1.4329
+Error too great
+Error too great
+BFGS:   71 22:25:34      -84.360664        1.2693
+Error too great
+Error too great
+BFGS:   72 22:25:36      -84.491333        1.3144
+Error too great
+Error too great
+BFGS:   73 22:25:38      -84.487678        1.1136
+Error too great
+Error too great
+BFGS:   74 22:25:40      -84.484852        0.9933
+Error too great
+Error too great
+BFGS:   75 22:25:41      -84.429671        0.7604
+Error too great
+Error too great
+BFGS:   76 22:25:43      -84.354143        0.6832
+Error too great
+Error too great
+BFGS:   77 22:25:45      -84.267163        1.0943
+Error too great
+Error too great
+BFGS:   78 22:25:47      -84.156535        1.8414
+Error too great
+Error too great
+BFGS:   79 22:25:49      -83.965423        2.6249
+Error too great
+Error too great
+BFGS:   80 22:25:50      -83.833039        2.5129
+Error too great
+Error too great
+BFGS:   81 22:25:52      -83.569230        3.1263
+Error too great
+Error too great
+BFGS:   82 22:25:54      -83.164655        4.2648
+Error too great
+Error too great
+BFGS:   83 22:25:56      -82.706169        5.6477
+Error too great
+Error too great
+BFGS:   84 22:25:58      -82.480172        4.8363
+Error too great
+Error too great
+BFGS:   85 22:26:00      -82.570225        4.9363
+Error too great
+Error too great
+BFGS:   86 22:26:03      -82.575388        4.5627
+Error too great
+Error too great
+BFGS:   87 22:26:05      -82.652764        4.5454
+Error too great
+Error too great
+BFGS:   88 22:26:07      -82.633589        4.4464
+Error too great
+Error too great
+BFGS:   89 22:26:09      -82.632424        4.3588
+Error too great
+Error too great
+BFGS:   90 22:26:11      -82.603791        4.1755
+Error too great
+Error too great
+BFGS:   91 22:26:14      -82.578829        3.9291
+Error too great
+Error too great
+BFGS:   92 22:26:16      -82.566536        3.6637
+Error too great
+Error too great
+BFGS:   93 22:26:18      -82.556423        3.3741
+Error too great
+Error too great
+BFGS:   94 22:26:20      -82.560780        3.2636
+Error too great
+Error too great
+BFGS:   95 22:26:23      -82.556379        3.0173
+Error too great
+Error too great
+BFGS:   96 22:26:25      -82.580875        2.9121
+Error too great
+Error too great
+BFGS:   97 22:26:27      -82.552550        2.7963
+Error too great
+Error too great
+BFGS:   98 22:26:29      -82.621842        2.6047
+Error too great
+Error too great
+BFGS:   99 22:26:32      -82.543546        2.4380
+Error too great
+Error too great
+BFGS:  100 22:26:34      -82.595636        2.1524
+Error too great
+Error too great
+BFGS:  101 22:26:36      -82.564861        1.9326
+Error too great
+Error too great
+BFGS:  102 22:26:39      -82.577705        1.6813
+Error too great
+Error too great
+BFGS:  103 22:26:41      -82.592967        2.2714
+Error too great
+Error too great
+BFGS:  104 22:26:43      -82.619829        2.2061
+Error too great
+Error too great
+BFGS:  105 22:26:45      -82.661874        2.3384
+Error too great
+Error too great
+BFGS:  106 22:26:47      -82.692122        2.2487
+Error too great
+Error too great
+BFGS:  107 22:26:49      -82.704532        2.1112
+Error too great
+Error too great
+BFGS:  108 22:26:52      -82.679467        1.6000
+Error too great
+Error too great
+BFGS:  109 22:26:54      -82.656269        1.1950
+Error too great
+Error too great
+BFGS:  110 22:26:56      -82.596002        1.2722
+Error too great
+Error too great
+BFGS:  111 22:26:58      -82.651153        0.9149
+Error too great
+Error too great
+BFGS:  112 22:27:00      -82.634971        0.6862
+Error too great
+Error too great
+BFGS:  113 22:27:02      -82.650472        0.7463
+Error too great
+Error too great
+BFGS:  114 22:27:04      -82.579898        0.8728
+Error too great
+Error too great
+BFGS:  115 22:27:07      -82.598163        0.9314
+Error too great
+Error too great
+BFGS:  116 22:27:09      -82.563983        1.0177
+Error too great
+Error too great
+BFGS:  117 22:27:11      -82.536705        0.9368
+Error too great
+Error too great
+BFGS:  118 22:27:13      -82.529600        0.7423
+Error too great
+Error too great
+BFGS:  119 22:27:15      -82.522025        0.6560
+Error too great
+Error too great
+BFGS:  120 22:27:17      -82.544253        0.6024
+Error too great
+Error too great
+BFGS:  121 22:27:20      -82.567062        0.6127
+Error too great
+Error too great
+BFGS:  122 22:27:22      -82.608630        0.6120
+Error too great
+Error too great
+BFGS:  123 22:27:24      -82.662944        0.5887
+Error too great
+Error too great
+BFGS:  124 22:27:26      -82.739822        0.6869
+Error too great
+Error too great
+BFGS:  125 22:27:28      -82.812457        0.7163
+Error too great
+Error too great
+BFGS:  126 22:27:30      -82.866823        0.6720
+Error too great
+Error too great
+BFGS:  127 22:27:32      -82.897428        0.6049
+Error too great
+Error too great
+BFGS:  128 22:27:35      -82.917585        0.5290
+Error too great
+Error too great
+BFGS:  129 22:27:37      -82.931878        0.4383
+Error too great
+Error too great
+BFGS:  130 22:27:39      -82.935829        0.3311
+Error too great
+Error too great
+BFGS:  131 22:27:41      -82.921371        0.2197
+Error too great
+Error too great
+BFGS:  132 22:27:43      -82.892857        0.1620
+Error too great
+Error too great
+BFGS:  133 22:27:45      -82.871997        0.1439
+Error too great
+Error too great
+BFGS:  134 22:27:47      -82.865701        0.1465
+Error too great
+Error too great
+BFGS:  135 22:27:50      -82.863570        0.1444
+Error too great
+Error too great
+BFGS:  136 22:27:52      -82.862051        0.1366
+Error too great
+Error too great
+BFGS:  137 22:27:54      -82.860680        0.1240
+Error too great
+Error too great
+BFGS:  138 22:27:56      -82.860040        0.1268
+Error too great
+Error too great
+BFGS:  139 22:27:58      -82.861090        0.1351
+Error too great
+Error too great
+BFGS:  140 22:28:00      -82.866846        0.1323
+Error too great
+Error too great
+BFGS:  141 22:28:02      -82.878216        0.1092
+Error too great
+Error too great
+BFGS:  142 22:28:05      -82.890387        0.0871
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+('True energy of relaxed structure:', -78.281927736501132)
+Begin training
+training ended
+Error too great
+Error too great
+      Step     Time          Energy         fmax
+BFGS:    0 22:28:33      -41.070257       56.1260
+Error too great
+Error too great
+BFGS:    1 22:28:35      -49.714893       54.2185
+Error too great
+Error too great
+BFGS:    2 22:28:37      -56.350038       51.6953
+Error too great
+Error too great
+BFGS:    3 22:28:38      -61.969379       46.2237
+Error too great
+Error too great
+BFGS:    4 22:28:40      -66.671669       39.9335
+Error too great
+Error too great
+BFGS:    5 22:28:42      -69.936833       35.3973
+Error too great
+Error too great
+BFGS:    6 22:28:44      -72.793370       29.4022
+Error too great
+Error too great
+BFGS:    7 22:28:46      -74.728520       24.4725
+Error too great
+Error too great
+BFGS:    8 22:28:48      -76.061502       22.2410
+Error too great
+Error too great
+BFGS:    9 22:28:50      -76.583413       14.1654
+Error too great
+Error too great
+BFGS:   10 22:28:52      -77.105032       14.3170
+Error too great
+Error too great
+BFGS:   11 22:28:54      -77.244910       12.1827
+Error too great
+Error too great
+BFGS:   12 22:28:55      -77.207001       12.1483
+Error too great
+Error too great
+BFGS:   13 22:28:57      -77.705358       13.6053
+Error too great
+Error too great
+BFGS:   14 22:28:59      -77.670789       13.9231
+Error too great
+Error too great
+BFGS:   15 22:29:01      -78.053446       14.2978
+Error too great
+Error too great
+BFGS:   16 22:29:03      -78.467805       14.3627
+Error too great
+Error too great
+BFGS:   17 22:29:05      -79.026704       14.0693
+Error too great
+Error too great
+BFGS:   18 22:29:07      -79.649690       13.3530
+Error too great
+Error too great
+BFGS:   19 22:29:09      -80.308549       12.0506
+Error too great
+Error too great
+BFGS:   20 22:29:10      -80.994776       10.0042
+Error too great
+Error too great
+BFGS:   21 22:29:12      -81.630257        7.1265
+Error too great
+Error too great
+BFGS:   22 22:29:14      -82.254568        3.5113
+Error too great
+Error too great
+BFGS:   23 22:29:16      -82.676318        2.5200
+Error too great
+Error too great
+BFGS:   24 22:29:18      -82.952851        1.9675
+Error too great
+Error too great
+BFGS:   25 22:29:20      -83.296371        1.3329
+Error too great
+Error too great
+BFGS:   26 22:29:22      -83.539860        1.7533
+Error too great
+Error too great
+BFGS:   27 22:29:23      -83.533047        2.1077
+Error too great
+Error too great
+BFGS:   28 22:29:25      -83.524630        2.5631
+Error too great
+Error too great
+BFGS:   29 22:29:27      -83.483920        3.0209
+Error too great
+Error too great
+BFGS:   30 22:29:29      -83.442634        3.4777
+Error too great
+Error too great
+BFGS:   31 22:29:31      -83.386239        3.8713
+Error too great
+Error too great
+BFGS:   32 22:29:33      -83.306744        4.1648
+Error too great
+Error too great
+BFGS:   33 22:29:34      -83.187820        4.3214
+Error too great
+Error too great
+BFGS:   34 22:29:36      -83.013673        4.3205
+Error too great
+Error too great
+BFGS:   35 22:29:38      -82.765334        4.1485
+Error too great
+Error too great
+BFGS:   36 22:29:40      -82.429676        3.8122
+Error too great
+Error too great
+BFGS:   37 22:29:42      -82.020389        3.3584
+Error too great
+Error too great
+BFGS:   38 22:29:44      -81.597904        3.6495
+Error too great
+Error too great
+BFGS:   39 22:29:46      -81.025938        4.2010
+Error too great
+Error too great
+BFGS:   40 22:29:48      -80.427164        4.9349
+Error too great
+Error too great
+BFGS:   41 22:29:50      -79.788963        5.7327
+Error too great
+Error too great
+BFGS:   42 22:29:52      -79.245207        6.4730
+Error too great
+Error too great
+BFGS:   43 22:29:54      -78.845115        6.9713
+Error too great
+Error too great
+BFGS:   44 22:29:56      -78.406175        7.3994
+Error too great
+Error too great
+BFGS:   45 22:29:58      -77.996664        7.6420
+Error too great
+Error too great
+BFGS:   46 22:30:00      -77.266323        7.7797
+Error too great
+Error too great
+BFGS:   47 22:30:02      -76.858039        7.4910
+Error too great
+Error too great
+BFGS:   48 22:30:04      -76.317648        7.1226
+Error too great
+Error too great
+BFGS:   49 22:30:06      -76.012624        6.6023
+Error too great
+Error too great
+BFGS:   50 22:30:08      -75.791652        6.1294
+Error too great
+Error too great
+BFGS:   51 22:30:10      -75.576027        5.6161
+Error too great
+Error too great
+BFGS:   52 22:30:12      -75.350929        4.9233
+Error too great
+Error too great
+BFGS:   53 22:30:15      -75.108608        4.0655
+Error too great
+Error too great
+BFGS:   54 22:30:17      -74.830516        3.1119
+Error too great
+Error too great
+BFGS:   55 22:30:19      -74.519313        2.3397
+Error too great
+Error too great
+BFGS:   56 22:30:21      -74.475263        2.8402
+Error too great
+Error too great
+BFGS:   57 22:30:23      -74.177842        2.4575
+Error too great
+Error too great
+BFGS:   58 22:30:25      -74.098608        2.7272
+Error too great
+Error too great
+BFGS:   59 22:30:27      -74.020424        2.8286
+Error too great
+Error too great
+BFGS:   60 22:30:30      -73.941144        3.2305
+Error too great
+Error too great
+BFGS:   61 22:30:32      -73.819613        3.7594
+Error too great
+Error too great
+BFGS:   62 22:30:34      -73.664608        4.1384
+Error too great
+Error too great
+BFGS:   63 22:30:36      -73.471805        4.3769
+Error too great
+Error too great
+BFGS:   64 22:30:39      -73.306975        4.3448
+Error too great
+Error too great
+BFGS:   65 22:30:41      -73.355758        3.9478
+Error too great
+Error too great
+BFGS:   66 22:30:44      -73.776612        2.5871
+Error too great
+Error too great
+BFGS:   67 22:30:46      -74.161866        2.0381
+Error too great
+Error too great
+BFGS:   68 22:30:49      -74.367677        3.1291
+Error too great
+Error too great
+BFGS:   69 22:30:51      -74.248391        3.6906
+Error too great
+Error too great
+BFGS:   70 22:30:53      -74.027389        4.5423
+Error too great
+Error too great
+BFGS:   71 22:30:56      -73.613334        5.2810
+Error too great
+Error too great
+BFGS:   72 22:30:58      -73.050133        6.2248
+Error too great
+Error too great
+BFGS:   73 22:31:01      -72.361177        6.6563
+Error too great
+Error too great
+BFGS:   74 22:31:03      -71.536743        6.4099
+Error too great
+Error too great
+BFGS:   75 22:31:05      -70.819218        5.0119
+Error too great
+Error too great
+BFGS:   76 22:31:08      -70.321170        3.6427
+Error too great
+Error too great
+BFGS:   77 22:31:11      -70.246584        4.1122
+Error too great
+Error too great
+BFGS:   78 22:31:13      -70.088839        3.3716
+Error too great
+Error too great
+BFGS:   79 22:31:16      -70.538747        2.6170
+Error too great
+Error too great
+BFGS:   80 22:31:19      -70.894982        2.2758
+Error too great
+Error too great
+BFGS:   81 22:31:21      -71.161478        1.9266
+Error too great
+Error too great
+BFGS:   82 22:31:24      -71.445889        1.6537
+Error too great
+Error too great
+BFGS:   83 22:31:26      -71.643245        1.8395
+Error too great
+Error too great
+BFGS:   84 22:31:29      -71.866597        2.3698
+Error too great
+Error too great
+BFGS:   85 22:31:31      -72.101880        2.7076
+Error too great
+Error too great
+BFGS:   86 22:31:34      -72.293905        3.0162
+Error too great
+Error too great
+BFGS:   87 22:31:36      -72.265117        2.9801
+Error too great
+Error too great
+BFGS:   88 22:31:39      -71.915797        2.6000
+Error too great
+Error too great
+BFGS:   89 22:31:42      -71.621917        1.5096
+Error too great
+Error too great
+BFGS:   90 22:31:44      -71.299860        1.1588
+Error too great
+Error too great
+BFGS:   91 22:31:47      -71.455605        1.1015
+Error too great
+Error too great
+BFGS:   92 22:31:49      -71.445796        0.9199
+Error too great
+Error too great
+BFGS:   93 22:31:52      -71.293649        0.9803
+Error too great
+Error too great
+BFGS:   94 22:31:54      -71.071811        1.1828
+Error too great
+Error too great
+BFGS:   95 22:31:57      -70.855857        1.1777
+Error too great
+Error too great
+BFGS:   96 22:32:00      -70.793668        0.9489
+Error too great
+Error too great
+BFGS:   97 22:32:02      -70.823153        0.7999
+Error too great
+Error too great
+BFGS:   98 22:32:05      -70.883223        0.6719
+Error too great
+Error too great
+BFGS:   99 22:32:07      -70.888913        0.5963
+Error too great
+Error too great
+BFGS:  100 22:32:10      -70.846026        0.6262
+Error too great
+Error too great
+BFGS:  101 22:32:12      -70.786581        0.7267
+Error too great
+Error too great
+BFGS:  102 22:32:15      -70.766983        0.6671
+Error too great
+Error too great
+BFGS:  103 22:32:18      -70.755513        0.6070
+Error too great
+Error too great
+BFGS:  104 22:32:20      -70.760361        0.5243
+Error too great
+Error too great
+BFGS:  105 22:32:23      -70.745752        0.4460
+Error too great
+Error too great
+BFGS:  106 22:32:25      -70.708996        0.4202
+Error too great
+Error too great
+BFGS:  107 22:32:28      -70.600531        0.4054
+Error too great
+Error too great
+BFGS:  108 22:32:30      -70.488346        0.5245
+Error too great
+Error too great
+BFGS:  109 22:32:33      -70.322839        0.5295
+Error too great
+Error too great
+BFGS:  110 22:32:35      -70.156687        0.3550
+Error too great
+Error too great
+BFGS:  111 22:32:38      -70.017466        0.3916
+Error too great
+Error too great
+BFGS:  112 22:32:41      -69.818345        0.4493
+Error too great
+Error too great
+BFGS:  113 22:32:43      -69.400000        1.0677
+Error too great
+Error too great
+BFGS:  114 22:32:46      -68.770172        1.7116
+Error too great
+Error too great
+BFGS:  115 22:32:49      -68.335826        3.1161
+Error too great
+Error too great
+BFGS:  116 22:32:51      -68.205394        2.4124
+Error too great
+Error too great
+BFGS:  117 22:32:54      -67.920143        2.6216
+Error too great
+Error too great
+BFGS:  118 22:32:56      -67.669036        2.6945
+Error too great
+Error too great
+BFGS:  119 22:32:59      -67.476436        2.9708
+Error too great
+Error too great
+BFGS:  120 22:33:02      -67.312504        3.6240
+Error too great
+Error too great
+BFGS:  121 22:33:04      -67.202063        5.1625
+Error too great
+Error too great
+BFGS:  122 22:33:07      -67.215602        6.3138
+Error too great
+Error too great
+BFGS:  123 22:33:10      -67.422759        6.5524
+Error too great
+Error too great
+BFGS:  124 22:33:12      -67.703804        6.1599
+Error too great
+Error too great
+BFGS:  125 22:33:15      -67.931662        5.4336
+Error too great
+Error too great
+BFGS:  126 22:33:18      -67.984714        4.5356
+Error too great
+Error too great
+BFGS:  127 22:33:20      -67.792081        3.7607
+Error too great
+Error too great
+BFGS:  128 22:33:23      -67.539172        3.6517
+Error too great
+Error too great
+BFGS:  129 22:33:26      -67.254541        3.6654
+Error too great
+Error too great
+BFGS:  130 22:33:29      -66.436496        4.5556
+Error too great
+Error too great
+BFGS:  131 22:33:32      -65.799355        5.7793
+Error too great
+Error too great
+BFGS:  132 22:33:35      -65.216450        6.5964
+Error too great
+Error too great
+BFGS:  133 22:33:38      -64.775495        7.1672
+Error too great
+Error too great
+BFGS:  134 22:33:41      -64.428245        7.0409
+Error too great
+Error too great
+BFGS:  135 22:33:44      -64.240337        6.8919
+Error too great
+Error too great
+BFGS:  136 22:33:47      -64.106739        5.4703
+Error too great
+Error too great
+BFGS:  137 22:33:49      -64.105400        4.9624
+Error too great
+Error too great
+BFGS:  138 22:33:52      -64.088597        4.1210
+Error too great
+Error too great
+BFGS:  139 22:33:55      -64.087676        3.4942
+Error too great
+Error too great
+BFGS:  140 22:33:58      -64.074931        3.1466
+Error too great
+Error too great
+BFGS:  141 22:34:01      -64.050152        3.3181
+Error too great
+Error too great
+BFGS:  142 22:34:04      -64.053670        3.4375
+Error too great
+Error too great
+BFGS:  143 22:34:07      -64.095045        3.4257
+Error too great
+Error too great
+BFGS:  144 22:34:10      -64.204737        3.6601
+Error too great
+Error too great
+BFGS:  145 22:34:13      -64.381730        4.1734
+Error too great
+Error too great
+BFGS:  146 22:34:16      -64.552910        5.4308
+Error too great
+Error too great
+BFGS:  147 22:34:19      -64.788107        6.0086
+Error too great
+Error too great
+BFGS:  148 22:34:23      -64.979475        6.1653
+Error too great
+Error too great
+BFGS:  149 22:34:26      -65.139876        5.7243
+Error too great
+Error too great
+BFGS:  150 22:34:29      -65.241202        5.3184
+Error too great
+Error too great
+BFGS:  151 22:34:32      -65.270781        4.9337
+Error too great
+Error too great
+BFGS:  152 22:34:35      -65.270891        4.1970
+Error too great
+Error too great
+BFGS:  153 22:34:38      -65.223900        4.0960
+Error too great
+Error too great
+BFGS:  154 22:34:41      -65.174465        4.2108
+Error too great
+Error too great
+BFGS:  155 22:34:44      -65.119933        4.2719
+Error too great
+Error too great
+BFGS:  156 22:34:47      -65.058710        4.1975
+Error too great
+Error too great
+BFGS:  157 22:34:50      -65.023393        4.5634
+Error too great
+Error too great
+BFGS:  158 22:34:54      -65.062139        4.9574
+Error too great
+Error too great
+BFGS:  159 22:34:57      -65.110135        4.9297
+Error too great
+Error too great
+BFGS:  160 22:35:00      -65.153416        4.9362
+Error too great
+Error too great
+BFGS:  161 22:35:03      -65.226767        4.6636
+Error too great
+Error too great
+BFGS:  162 22:35:06      -65.314315        3.7677
+Error too great
+Error too great
+BFGS:  163 22:35:10      -65.348131        3.0184
+Error too great
+Error too great
+BFGS:  164 22:35:13      -65.333834        2.9232
+Error too great
+Error too great
+BFGS:  165 22:35:16      -65.312937        3.2860
+Error too great
+Error too great
+BFGS:  166 22:35:19      -65.262701        3.5493
+Error too great
+Error too great
+BFGS:  167 22:35:22      -65.252787        3.1111
+Error too great
+Error too great
+BFGS:  168 22:35:26      -65.100153        3.1079
+Error too great
+Error too great
+BFGS:  169 22:35:29      -65.056238        2.8364
+Error too great
+Error too great
+BFGS:  170 22:35:32      -64.946891        2.5233
+Error too great
+Error too great
+BFGS:  171 22:35:35      -65.053394        2.2144
+Error too great
+Error too great
+BFGS:  172 22:35:38      -65.116320        2.0025
+Error too great
+Error too great
+BFGS:  173 22:35:42      -65.136728        2.1406
+Error too great
+Error too great
+BFGS:  174 22:35:45      -65.153117        2.4470
+Error too great
+Error too great
+BFGS:  175 22:35:48      -65.137206        2.5284
+Error too great
+Error too great
+BFGS:  176 22:35:51      -65.101727        2.5559
+Error too great
+Error too great
+BFGS:  177 22:35:54      -65.077585        2.4703
+Error too great
+Error too great
+BFGS:  178 22:35:58      -65.052162        2.2469
+Error too great
+Error too great
+BFGS:  179 22:36:01      -65.044752        2.1207
+Error too great
+Error too great
+BFGS:  180 22:36:04      -65.043600        2.0145
+Error too great
+Error too great
+BFGS:  181 22:36:07      -65.041099        1.9867
+Error too great
+Error too great
+BFGS:  182 22:36:11      -65.034008        1.9789
+Error too great
+Error too great
+BFGS:  183 22:36:14      -65.025276        2.0102
+Error too great
+Error too great
+BFGS:  184 22:36:17      -65.013106        2.0546
+Error too great
+Error too great
+BFGS:  185 22:36:20      -65.005766        2.0699
+Error too great
+Error too great
+BFGS:  186 22:36:23      -65.000360        2.0579
+Error too great
+Error too great
+BFGS:  187 22:36:27      -64.998663        2.0283
+Error too great
+Error too great
+BFGS:  188 22:36:30      -64.997664        1.9959
+Error too great
+Error too great
+BFGS:  189 22:36:33      -64.996036        1.9741
+Error too great
+Error too great
+BFGS:  190 22:36:36      -64.992555        1.9570
+Error too great
+Error too great
+BFGS:  191 22:36:39      -64.988614        1.9519
+Error too great
+Error too great
+BFGS:  192 22:36:43      -64.982969        1.9556
+Error too great
+Error too great
+BFGS:  193 22:36:46      -64.979835        1.9637
+Error too great
+Error too great
+BFGS:  194 22:36:49      -64.976985        1.9767
+Error too great
+Error too great
+BFGS:  195 22:36:52      -64.976040        1.9846
+Error too great
+Error too great
+BFGS:  196 22:36:55      -64.976447        1.9877
+Error too great
+Error too great
+BFGS:  197 22:36:59      -64.977466        1.9847
+Error too great
+Error too great
+BFGS:  198 22:37:02      -64.978348        1.9803
+Error too great
+Error too great
+BFGS:  199 22:37:05      -64.978805        1.9768
+Error too great
+Error too great
+BFGS:  200 22:37:08      -64.979075        1.9738
+Error too great
+Error too great
+BFGS:  201 22:37:11      -64.979144        1.9726
+Error too great
+Error too great
+BFGS:  202 22:37:15      -64.979252        1.9698
+Error too great
+Error too great
+BFGS:  203 22:37:18      -64.979294        1.9688
+Error too great
+Error too great
+BFGS:  204 22:37:21      -64.979536        1.9650
+Error too great
+Error too great
+BFGS:  205 22:37:24      -64.979921        1.9602
+Error too great
+Error too great
+BFGS:  206 22:37:27      -64.980705        1.9517
+Error too great
+Error too great
+BFGS:  207 22:37:31      -64.982051        1.9388
+Error too great
+Error too great
+BFGS:  208 22:37:34      -64.984491        1.9172
+Error too great
+Error too great
+BFGS:  209 22:37:37      -64.988645        1.8831
+Error too great
+Error too great
+BFGS:  210 22:37:40      -64.995921        1.8266
+Error too great
+Error too great
+BFGS:  211 22:37:44      -65.008401        1.7520
+Error too great
+Error too great
+BFGS:  212 22:37:47      -65.030231        1.7621
+Error too great
+Error too great
+BFGS:  213 22:37:50      -65.068145        1.7748
+Error too great
+Error too great
+BFGS:  214 22:37:53      -65.133264        1.7805
+Error too great
+Error too great
+BFGS:  215 22:37:56      -65.236548        1.7331
+Error too great
+Error too great
+BFGS:  216 22:38:00      -65.369343        1.5382
+Error too great
+Error too great
+BFGS:  217 22:38:03      -65.473272        1.6696
+Error too great
+Error too great
+BFGS:  218 22:38:06      -65.486317        1.6379
+Error too great
+Error too great
+BFGS:  219 22:38:09      -65.450699        1.5616
+Error too great
+Error too great
+BFGS:  220 22:38:12      -65.417643        1.5120
+Error too great
+Error too great
+BFGS:  221 22:38:16      -65.370230        1.5106
+Error too great
+Error too great
+BFGS:  222 22:38:19      -65.348347        1.5558
+Error too great
+Error too great
+BFGS:  223 22:38:22      -65.291251        1.7391
+Error too great
+Error too great
+BFGS:  224 22:38:25      -65.261713        1.8746
+Error too great
+Error too great
+BFGS:  225 22:38:28      -65.177022        2.2415
+Error too great
+Error too great
+BFGS:  226 22:38:32      -64.966751        3.1276
+Error too great
+Error too great
+BFGS:  227 22:38:35      -64.808421        3.9416
+Error too great
+Error too great
+BFGS:  228 22:38:39      -64.765110        4.6162
+Error too great
+Error too great
+BFGS:  229 22:38:42      -64.867138        5.0858
+Error too great
+Error too great
+BFGS:  230 22:38:46      -65.107095        5.3828
+Error too great
+Error too great
+BFGS:  231 22:38:49      -65.446190        5.5067
+Error too great
+Error too great
+BFGS:  232 22:38:53      -65.883131        5.4965
+Error too great
+Error too great
+BFGS:  233 22:38:56      -66.396112        5.3844
+Error too great
+Error too great
+BFGS:  234 22:39:00      -66.922383        5.2672
+Error too great
+Error too great
+BFGS:  235 22:39:03      -67.477825        4.9141
+Error too great
+Error too great
+BFGS:  236 22:39:07      -67.915578        4.6929
+Error too great
+Error too great
+BFGS:  237 22:39:10      -68.319055        4.2071
+Error too great
+Error too great
+BFGS:  238 22:39:14      -68.518556        3.7121
+Error too great
+Error too great
+BFGS:  239 22:39:17      -68.844819        3.4659
+Error too great
+Error too great
+BFGS:  240 22:39:21      -68.857355        3.1120
+Error too great
+Error too great
+BFGS:  241 22:39:24      -69.015360        3.1422
+Error too great
+Error too great
+BFGS:  242 22:39:28      -69.127088        3.2037
+Error too great
+Error too great
+BFGS:  243 22:39:32      -69.218033        3.0865
+Error too great
+Error too great
+BFGS:  244 22:39:35      -69.318681        2.9572
+Error too great
+Error too great
+BFGS:  245 22:39:39      -69.376026        2.5992
+Error too great
+Error too great
+BFGS:  246 22:39:42      -69.420244        2.4563
+Error too great
+Error too great
+BFGS:  247 22:39:46      -69.516930        2.4350
+Error too great
+Error too great
+BFGS:  248 22:39:49      -69.591145        2.3400
+Error too great
+Error too great
+BFGS:  249 22:39:53      -69.682320        2.3250
+Error too great
+Error too great
+BFGS:  250 22:39:57      -69.729185        2.4796
+Error too great
+Error too great
+BFGS:  251 22:40:00      -69.681342        2.7039
+Error too great
+Error too great
+BFGS:  252 22:40:04      -69.582740        2.6710
+Error too great
+Error too great
+BFGS:  253 22:40:07      -69.454640        2.6841
+Error too great
+Error too great
+BFGS:  254 22:40:11      -69.382280        2.6301
+Error too great
+Error too great
+BFGS:  255 22:40:15      -69.330203        2.6325
+Error too great
+Error too great
+BFGS:  256 22:40:18      -69.296664        2.6385
+Error too great
+Error too great
+BFGS:  257 22:40:22      -69.273729        2.6573
+Error too great
+Error too great
+BFGS:  258 22:40:25      -69.255456        2.6762
+Error too great
+Error too great
+BFGS:  259 22:40:29      -69.248542        2.6779
+Error too great
+Error too great
+BFGS:  260 22:40:32      -69.240739        2.6797
+Error too great
+Error too great
+BFGS:  261 22:40:36      -69.235946        2.6761
+Error too great
+Error too great
+BFGS:  262 22:40:40      -69.229851        2.6667
+Error too great
+Error too great
+BFGS:  263 22:40:43      -69.222979        2.6510
+Error too great
+Error too great
+BFGS:  264 22:40:47      -69.217867        2.6232
+Error too great
+Error too great
+BFGS:  265 22:40:50      -69.221881        2.5785
+Error too great
+Error too great
+BFGS:  266 22:40:54      -69.261731        2.4961
+Error too great
+Error too great
+BFGS:  267 22:40:57      -69.359371        2.3668
+Error too great
+Error too great
+BFGS:  268 22:41:01      -69.483430        2.2201
+Error too great
+Error too great
+BFGS:  269 22:41:04      -69.619244        2.0843
+Error too great
+Error too great
+BFGS:  270 22:41:08      -69.756572        2.1206
+Error too great
+Error too great
+BFGS:  271 22:41:11      -69.888619        2.2762
+Error too great
+Error too great
+BFGS:  272 22:41:15      -70.012126        2.3670
+Error too great
+Error too great
+BFGS:  273 22:41:18      -70.126091        2.3472
+Error too great
+Error too great
+BFGS:  274 22:41:22      -70.229410        2.1404
+Error too great
+Error too great
+BFGS:  275 22:41:25      -70.315457        1.6494
+Error too great
+Error too great
+BFGS:  276 22:41:29      -70.365103        0.7516
+Error too great
+Error too great
+BFGS:  277 22:41:32      -70.361916        0.4986
+Error too great
+Error too great
+BFGS:  278 22:41:36      -70.360259        0.4968
+Error too great
+Error too great
+BFGS:  279 22:41:39      -70.365479        0.5233
+Error too great
+Error too great
+BFGS:  280 22:41:43      -70.361895        0.5241
+Error too great
+Error too great
+BFGS:  281 22:41:46      -70.361830        0.5229
+Error too great
+Error too great
+BFGS:  282 22:41:50      -70.361084        0.5223
+Error too great
+Error too great
+BFGS:  283 22:41:53      -70.361718        0.5222
+Error too great
+Error too great
+BFGS:  284 22:41:57      -70.362610        0.5246
+Error too great
+Error too great
+BFGS:  285 22:42:00      -70.365112        0.5259
+Error too great
+Error too great
+BFGS:  286 22:42:04      -70.369801        0.5264
+Error too great
+Error too great
+BFGS:  287 22:42:07      -70.378760        0.5173
+Error too great
+Error too great
+BFGS:  288 22:42:11      -70.392989        0.4832
+Error too great
+Error too great
+BFGS:  289 22:42:14      -70.410843        0.3912
+Error too great
+Error too great
+BFGS:  290 22:42:18      -70.419115        0.3418
+Error too great
+Error too great
+BFGS:  291 22:42:21      -70.403397        0.2554
+Error too great
+Error too great
+BFGS:  292 22:42:24      -70.379351        0.1291
+Error too great
+Error too great
+BFGS:  293 22:42:28      -70.367774        0.1157
+Error too great
+Error too great
+BFGS:  294 22:42:31      -70.365150        0.1154
+Error too great
+Error too great
+BFGS:  295 22:42:35      -70.363564        0.1148
+Error too great
+Error too great
+BFGS:  296 22:42:38      -70.362986        0.1143
+Error too great
+Error too great
+BFGS:  297 22:42:42      -70.362901        0.1139
+Error too great
+Error too great
+BFGS:  298 22:42:45      -70.363026        0.1138
+Error too great
+Error too great
+BFGS:  299 22:42:49      -70.363541        0.1135
+Error too great
+Error too great
+BFGS:  300 22:42:52      -70.363851        0.1134
+Error too great
+Error too great
+BFGS:  301 22:42:56      -70.364978        0.1131
+Error too great
+Error too great
+BFGS:  302 22:42:59      -70.366573        0.1124
+Error too great
+Error too great
+BFGS:  303 22:43:03      -70.369510        0.1099
+Error too great
+Error too great
+BFGS:  304 22:43:06      -70.373999        0.1160
+Error too great
+Error too great
+BFGS:  305 22:43:10      -70.380015        0.1294
+Error too great
+Error too great
+BFGS:  306 22:43:13      -70.384669        0.1257
+Error too great
+Error too great
+BFGS:  307 22:43:17      -70.382811        0.0780
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+('True energy of relaxed structure:', -75.636566125709095)
+The convergence/stagnation criteria was reached

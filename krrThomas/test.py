@@ -1,5 +1,6 @@
 import numpy as np
 from startgenerator import StartGenerator
+from startgenerator2d import StartGenerator as StartGenerator2d
 from custom_calculators import doubleLJ_calculator
 
 from ase import Atoms
@@ -8,6 +9,48 @@ from ase.io import read, write
 from ase.ga.utilities import closest_distances_generator
 from ase.optimize import BFGS
 from ase.constraints import FixedPlane
+from ase.calculators.dftb import Dftb
+from ase.constraints import FixedPlane
+
+
+def createInitalStructure2d(Natoms):
+    '''
+    Creates an initial structure of 24 Carbon atoms
+    '''    
+    number_type1 = 6  # Carbon
+    number_opt1 = Natoms  # number of atoms
+    atom_numbers = number_opt1 * [number_type1]
+
+    cell = np.array([[24, 0, 0],
+                     [0, 24, 0],
+                     [0, 0, 18]])
+    pbc = [False, False, False]
+
+    template = Atoms('')
+    template.set_cell(cell)
+    template.set_pbc(pbc)
+    # define the volume in which the adsorbed cluster is optimized
+    # the volume is defined by a a center position (p0)
+    # and three spanning vectors
+    
+    a = np.array((4.5, 0., 0.))
+    b = np.array((0, 4.5, 0))
+    center = np.array((11.5, 11.5, 9))
+    
+    # define the closest distance two atoms of a given species can be to each other
+    cd = closest_distances_generator(atom_numbers=atom_numbers,
+                                     ratio_of_covalent_radii=0.7)
+
+    # create the start structure
+    sg = StartGenerator2d(slab=template,
+                          atom_numbers=atom_numbers,
+                          closest_allowed_distances=cd,
+                          plane_to_place_in=[[a, b], center],
+                          elliptic=False,
+                          cluster=False)
+
+    structure = sg.get_new_candidate()
+    return structure
 
 def createInitalStructure():
     '''
@@ -89,14 +132,29 @@ def makeStructure(Natoms):
     return a
 
 
-atoms = createInitalStructure()
-atoms1 = makeStructure(20)
+atoms = createInitalStructure2d(13)
+#atoms1 = makeStructure(20)
 
-calc = doubleLJ_calculator()
+calc = Dftb(label='C',
+            Hamiltonian_SCC='No',
+#            kpts=(1,1,1),   # Hvis man paa et tidspunkt skal bruge periodiske graensebetingelser
+            Hamiltonian_Eigensolver='Standard {}',
+            Hamiltonian_MaxAngularMomentum_='',
+            Hamiltonian_MaxAngularMomentum_C='"p"',
+            Hamiltonian_Charge='0.000000',
+            Hamiltonian_Filling ='Fermi {',
+            Hamiltonian_Filling_empty= 'Temperature [Kelvin] = 0.000000')
+
 atoms.set_calculator(calc)
+poss = atoms.positions
+for pos in poss:
+    pos[2] = 9
 
-#dyn = BFGS(a, trajectory='testLJ.traj')
-#dyn.run(fmax=0.1)
+atoms.set_positions(poss)
+plane = [FixedPlane(x, (0, 0, 1)) for x in range(len(atoms))]
+atoms.set_constraint(plane)
+dyn = BFGS(atoms, trajectory='testLJ.traj')
+dyn.run(fmax=0.1)
 
 
 

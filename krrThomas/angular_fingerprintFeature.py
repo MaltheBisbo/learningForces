@@ -1,9 +1,11 @@
+from __future__ import print_function
 import os
 import sys
 import numpy as np
 from math import erf
 from itertools import product
 from scipy.spatial.distance import cdist
+
 import pdb
 
 try:

@@ -4,10 +4,92 @@ from startgenerator import StartGenerator
 from custom_calculators import krr_calculator
 
 from ase import Atoms
-from ase.io import read, write
+from ase.io import read, write, Trajectory
 from ase.ga.utilities import closest_distances_generator
 from ase.optimize import BFGS
 from ase.calculators.singlepoint import SinglePointCalculator
+
+from gpaw import GPAW, FermiDirac, PoissonSolver, Mixer
+from gpaw import extra_parameters
+extra_parameters['blacs'] = True
+from gpaw.utilities import h2gpts
+from ase.ga.relax_attaches import VariansBreak
+
+import ase.parallel as mpi
+world = mpi.world
+
+
+def relaxGPAW(structure, label):
+    '''
+    Relax a structure and saves the trajectory based in the index i
+
+    Parameters
+    ----------
+    structure : ase Atoms object to be relaxed
+
+    i : index which the trajectory is saved under
+
+    ranks: ranks of the processors to relax the structure 
+
+    Returns
+    -------
+    structure : relaxed Atoms object
+    '''
+
+    # Create calculator
+    calc=GPAW(poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),
+              mode = 'lcao',
+              basis = 'dzp',
+              xc='PBE',
+              gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),
+              occupations=FermiDirac(0.1),
+              maxiter=99,
+              mixer=Mixer(nmaxold=5, beta=0.05, weight=75),
+              nbands=-50,
+              kpts=(1,1,1),
+              txt = label+ '_lcao.txt')
+
+    # Set calculator 
+    structure.set_calculator(calc)
+
+    # loop a number of times to capture if minimization stops with high force
+    # due to the VariansBreak calls
+    forcemax = 0.1
+    niter = 0
+
+    # If the structure is already fully relaxed just return it
+    if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
+        return structure
+    traj = Trajectory(label+'_lcao.traj','a')
+    while (structure.get_forces()**2).sum(axis = 1).max()**0.5 > forcemax and niter < 10:
+        dyn = BFGS(structure,
+                   logfile=label+'.log')
+        vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
+        dyn.attach(traj)
+        dyn.attach(vb)
+        dyn.run(fmax = forcemax, steps = 500)
+        niter += 1
+
+    return structure
+
+def singleGPAW(structure, label):
+    # Create calculator
+    calc=GPAW(poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),
+              mode = 'lcao',
+              basis = 'dzp',
+              xc='PBE',
+              gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),
+              occupations=FermiDirac(0.1),
+              maxiter=99,
+              mixer=Mixer(nmaxold=5, beta=0.05, weight=75),
+              nbands=-50,
+              kpts=(1,1,1),
+              txt = label+'_single_lcao.txt')
+
+    # Set calculator 
+    structure.set_calculator(calc)
+    
+    return structure.get_potential_energy()
 
 def rattle_atom2d(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
     Natoms = struct.get_number_of_atoms()
@@ -55,6 +137,7 @@ def rattle_atom2d(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntr
     # Return None if no acceptable rattle was found
     return None
 
+
 def rattle_Natoms2d(struct, Nrattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
     structRattle = struct.copy()
     
@@ -74,6 +157,7 @@ def rattle_Natoms2d(struct, Nrattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries
 
     # The desired number of succesfull rattles was not reached
     return structRattle
+
 
 def createInitalStructure(Natoms):
     '''
@@ -115,6 +199,7 @@ def createInitalStructure(Natoms):
 
     structure = sg.get_new_candidate()
     return structure
+
 
 class globalOptim():
     """
@@ -198,72 +283,85 @@ class globalOptim():
 
         self.traj_counter = 0
         self.ksaved = 0
+
+        self.master = world.rank == 0
         
+
     def runOptimizer(self):
         # Initial structure
         a_init = createInitalStructure(self.Natoms)
         self.a, self.E = self.relax(a_init, ML=False)
 
         # Initialize the best structure
-        self.a_best = self.a.copy()
-        self.Ebest = self.E.copy()
+        if self.master:
+            self.a_best = self.a.copy()
+            self.Ebest = self.E
         
+        # Initialize a_new
+        a_new = self.a.copy()
+
         # Run global search
         stagnation_counter = 0
         for i in range(self.Niter):
             # Perturb current structure
-            a_new_unrelaxed = rattle_Natoms2d(struct=self.a,
-                                              Nrattle=self.Nperturb,
-                                              rmax_rattle=self.rattle_maxDist,
-                                              rmin=self.rmin,
-                                              rmax=self.rmax)
+            positions_unrelaxed = np.zeros((Natoms, 3))
+            if self.master:
+                a_new = rattle_Natoms2d(struct=self.a,
+                                        Nrattle=self.Nperturb,
+                                        rmax_rattle=self.rattle_maxDist,
+                                        rmin=self.rmin,
+                                        rmax=self.rmax)
+                positions_unrelaxed = a_new.positions
+            world.broadcast(positions_unrelaxed, 0)
+            a_new.positions = positions_unrelaxed
+            world.barrier()
             
             # Use MLmodel - if it excists + sufficient data is available
             useML_cond = self.MLmodel is not None and self.ksaved > self.NstartML
             if useML_cond:
-                print("Begin training")
-                # Train ML model if new data is available
-                if len(self.a_add) > 0:
-                    self.trainModel()
-                print("training ended")
+                positions_MLrelaxed = np.zeros((Natoms, 3))
+                if self.master:
+                    print("Begin training")
+                    # Train ML model if new data is available
+                    if len(self.a_add) > 0:
+                        self.trainModel()
+                    
+                    # Relax with MLmodel
+                    a_new, EnewML = self.relax(a_new, ML=True)
+                    positions_MLrelaxed = a_new.positions
+                world.broadcast(positions_MLrelaxed, 0)
+                a_new.positions = positions_MLrelaxed
+                world.barrier()
 
-                # Relax with MLmodel
-                a_new, EnewML = self.relax(a_new_unrelaxed, ML=True)
-                
                 # Singlepoint with objective potential
                 Enew = self.singlePoint(a_new)
-                print('True energy of relaxed structure:', Enew)
-                
-                """
-                # Accept ML-relaxed structure based on precision criteria
-                if abs(EnewML - Enew) < self.MLerrorMargin:
-                else:
-                    continue
-                """
+                if self.master:
+                    print('True energy of relaxed structure:', Enew)
             else:
                 # Relax with true potential
-                a_new, Enew = self.relax(a_new_unrelaxed, ML=False)
-
-            dE = Enew - self.E
-            if dE <= 0:  # Accept better structure
-                self.E = Enew
-                self.a = a_new.copy()
-                stagnation_counter = 0
-                if Enew < self.Ebest:  # Update the best structure
-                    self.Ebest = Enew
-                    self.a_best = a_new.copy()
-            else:
-                p = np.random.rand()
-                if p < np.exp(-dE/self.kbT):  # Accept worse structure
+                a_new, Enew = self.relax(a_new, ML=False)
+            
+            if self.master:
+                dE = Enew - self.E
+                if dE <= 0:  # Accept better structure
                     self.E = Enew
                     self.a = a_new.copy()
                     stagnation_counter = 0
-                else:  # Reject structure
-                    stagnation_counter += 1
+                    if Enew < self.Ebest:  # Update the best structure
+                        self.Ebest = Enew
+                        self.a_best = a_new.copy()
+                else:
+                    p = np.random.rand()
+                    if p < np.exp(-dE/self.kbT):  # Accept worse structure
+                        self.E = Enew
+                        self.a = a_new.copy()
+                        stagnation_counter = 0
+                    else:  # Reject structure
+                        stagnation_counter += 1
 
-            if stagnation_counter >= self.Nstag:  # The search has converged or stagnated.
-                print('The convergence/stagnation criteria was reached')
-                break
+                if stagnation_counter >= self.Nstag:  # The search has converged or stagnated.
+                    print('The convergence/stagnation criteria was reached')
+                    break
             
     def trainModel(self):
         """
@@ -289,7 +387,7 @@ class globalOptim():
 
         n_last = 0
         Ecurrent = E[0]
-        for i in range(1,Nstep):
+        for i in range(1, Nstep):
             n_last += 1
             if Ecurrent - E[i] > self.min_saveDifference and n_last > 10:
                 self.a_add.append(atoms[i])
@@ -298,22 +396,32 @@ class globalOptim():
                 n_last = 0
         
     def relax(self, a, ML=False):
+        # Trajectory name
         if len(str(self.traj_counter)) == 1:
             traj_counter = '00' + str(self.traj_counter)
         if len(str(self.traj_counter)) == 2:
             traj_counter = '0' + str(self.traj_counter)
+        
+        # Relax with ML or target potential
         if ML:
-            traj_name = self.traj_namebase + 'ML{}.traj'.format(traj_counter)
+            traj_name = self.traj_namebase + '{}_ML.traj'.format(traj_counter)
             krr_calc = krr_calculator(self.MLmodel, noZ=self.noZ)
             a.set_calculator(krr_calc)
             dyn = BFGS(a, trajectory=traj_name)
             dyn.run(fmax=0.1)
         else:
-            traj_name = self.traj_namebase + '{}.traj'.format(traj_counter)
-            a.set_calculator(self.calculator)
-            dyn = BFGS(a, trajectory=traj_name)
-            dyn.run(fmax=0.1)
+            # Broadcast structure to all cores
+            positions = a.positions
+            if self.master:
+                positions = a.positions
+            world.broadcast(positions, 0)
+            a.positions = positions
+            world.barrier()
+            
+            label = self.traj_namebase + '{}'.format(traj_counter)
+            a = relaxGPAW(a, label)
 
+            traj_name = label+'_lcao.traj'
             self.add_trajectory_to_training(traj_name)
 
         self.traj_counter += 1
@@ -321,8 +429,22 @@ class globalOptim():
         return a, Erelaxed
             
     def singlePoint(self, a):
-        a.set_calculator(self.calculator)
-        E = a.get_potential_energy()
+        # Trajectory name
+        if len(str(self.traj_counter)) == 1:
+            traj_counter = '00' + str(self.traj_counter)
+        if len(str(self.traj_counter)) == 2:
+            traj_counter = '0' + str(self.traj_counter)
+
+        label = self.traj_namebase + '{}'.format(traj_counter)
+
+        positions = a.positions
+        if self.master:
+            positions = a.positions
+        world.broadcast(positions, 0)
+        a.positions = positions
+        world.barrier()
+        
+        E = singleGPAW(a, label)
         results = {'energy': E}
         calc = SinglePointCalculator(a, **results)
         a.set_calculator(calc)
@@ -330,13 +452,14 @@ class globalOptim():
         self.ksaved += 1
         return E
 
+    
 if __name__ == '__main__':
     from custom_calculators import doubleLJ_calculator
     from gaussComparator import gaussComparator
     from angular_fingerprintFeature import Angular_Fingerprint
     from krr_ase import krr_class
     
-    Natoms = 24
+    Natoms = 13
     
     # Set up featureCalculator
     a = createInitalStructure(Natoms)
@@ -350,8 +473,8 @@ if __name__ == '__main__':
     sigma2 = 0.2
     
     gamma = 1
-    eta = 10
-    use_angular = False
+    eta = 20
+    use_angular = True
     
     featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
     
@@ -359,14 +482,14 @@ if __name__ == '__main__':
     comparator = gaussComparator()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
-    traj_namebase = 'globalTest/global'
+    traj_namebase = 'grendel/DFTrelax2/global'
 
-    
     optimizer = globalOptim(calculator=doubleLJ_calculator(noZ=True),
                             traj_namebase=traj_namebase,
                             MLmodel=krr,
                             Natoms=Natoms,
-                            Niter=20,
+                            Niter=50,
+                            NstartML=10,
                             fracPerturb=0.4,
                             rattle_maxDist=1,
                             noZ=True)

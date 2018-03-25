@@ -1,0 +1,397 @@
+
+  ___ ___ ___ _ _ _  
+ |   |   |_  | | | | 
+ | | | | | . | | | | 
+ |__ |  _|___|_____|  1.3.1b1
+ |___|_|             
+
+User:   mkb@s91n12.grendel.cscaa.dk
+Date:   Fri Mar 23 10:40:00 2018
+Arch:   x86_64
+Pid:    423519
+Python: 2.7.13
+gpaw:   /home/mkb/gpaw/gpaw
+_gpaw:  /home/mkb/gpaw/build/bin.linux-x86_64-2.7/gpaw-python
+ase:    /home/mkb/ase/ase (version 3.15.1b1)
+numpy:  /comm/swstack/core/python/2.7.13/lib/python2.7/site-packages/numpy (version 1.13.3)
+scipy:  /comm/swstack/core/python/2.7.13/lib/python2.7/site-packages/scipy (version 0.19.1)
+units:  Angstrom and eV
+cores:  36
+Extra parameters: {'blacs': True}
+
+Input parameters:
+  basis: dzp
+  gpts: [120 120  88]
+  kpts: [1 1 1]
+  maxiter: 99
+  mixer: {backend: pulay,
+          beta: 0.05,
+          method: separate,
+          nmaxold: 5,
+          weight: 75}
+  mode: lcao
+  nbands: -50
+  occupations: {name: fermi-dirac,
+                width: 0.1}
+  poissonsolver: {eps: 1e-07,
+                  name: fd,
+                  nn: 3,
+                  relax: GS}
+  xc: PBE
+
+System changes: positions, numbers, cell, pbc, initial_charges, initial_magmoms 
+
+Initialize ...
+
+C-setup:
+  name: Carbon
+  id: 4aa54d4b901d75f77cc0ea3eec22967b
+  Z: 6
+  valence: 4
+  core: 2
+  charge: 0.0
+  file: /home/esb/DFT/gpaw-setups-0.8.7929/C.PBE.gz
+  cutoffs: 0.64(comp), 1.14(filt), 1.14(core), lmax=2
+  valence states:
+                energy  radius
+    2s(2.00)   -13.751   0.635
+    2p(2.00)    -5.284   0.635
+    *s          13.461   0.635
+    *p          21.927   0.635
+    *d           0.000   0.635
+
+  LCAO basis set for C:
+    Name: dzp
+    File: /home/esb/DFT/gpaw-setups-0.8.7929/C.dzp.basis.gz
+    Number of radial functions: 5
+    Number of spherical harmonics: 13
+      l=0, rc=5.5469 Bohr: 2s-sz confined orbital
+      l=1, rc=6.6719 Bohr: 2p-sz confined orbital
+      l=0, rc=3.0312 Bohr: 2s-dz split-valence wave
+      l=1, rc=3.7500 Bohr: 2p-dz split-valence wave
+      l=2, rc=6.6719 Bohr: d-type Gaussian polarization
+
+Reference energy: -13359.165501
+
+Spin-paired calculation
+
+Occupation numbers:
+  Fermi-Dirac: width=0.1000 eV
+
+Convergence criteria:
+  Maximum total energy change: 0.0005 eV / electron
+  Maximum integral of absolute density change: 0.0001 electrons
+  Maximum integral of absolute eigenstate change: 4e-08 eV^2
+  Maximum number of iterations: 99
+
+Symmetries present (total): 1
+
+  ( 1  0  0)
+  ( 0  1  0)
+  ( 0  0  1)
+
+1 k-point (Gamma)
+1 k-point in the irreducible part of the Brillouin zone
+       k-points in crystal coordinates                weights
+   0:     0.00000000    0.00000000    0.00000000          1/1
+
+Wave functions: LCAO
+  Diagonalizer: Serial LAPACK
+  Atomic Correction: dense with blas
+  Datatype: float
+  Eigensolver: None 
+
+LCAO using direct dense diagonalizer 
+
+Densities:
+  Coarse grid: 120*120*88 grid
+  Fine grid: 240*240*176 grid
+  Total Charge: 0.000000 
+
+Density mixing:
+  Method: separate
+  Backend: pulay
+  Linear mixing parameter: 0.05
+  Mixing with 5 old densities
+  Damping of long wave oscillations: 75 
+
+Hamiltonian:
+  XC and Coulomb potentials evaluated on a 240*240*176 grid
+  Using the PBE Exchange-Correlation functional
+  Interpolation: tri-quintic (5. degree polynomial)
+  Poisson solver: Gauss-Seidel solver with 5 multi-grid levels
+    Coarsest grid: 15 x 15 x 11 points
+    Stencil: 6*3+1=19 point O(h^6) finite-difference Laplacian
+    Max iterations: 1000
+    Tolerance: 1.000000e-07 
+
+Memory estimate:
+  Process memory now: 221.78 MiB
+  Calculator: 19.91 MiB
+    Density: 9.40 MiB
+      Arrays: 6.69 MiB
+      Localized functions: 0.21 MiB
+      Mixer: 2.50 MiB
+    Hamiltonian: 9.40 MiB
+      Arrays: 4.38 MiB
+      XC: 0.00 MiB
+      Poisson: 5.01 MiB
+      vbar: 0.02 MiB
+    Wavefunctions: 1.11 MiB
+      C [qnM]: 0.10 MiB
+      S, T [2 x qmm]: 0.44 MiB
+      P [aqMi]: 0.00 MiB
+      TCI: 0.00 MiB
+      BasisFunctions: 0.57 MiB
+      Eigensolver: 0.00 MiB
+
+Total number of cores used: 36
+Domain decomposition: 3 x 4 x 3
+
+Number of atoms: 13
+Number of atomic orbitals: 169
+Number of bands in calculation: 76
+Bands to converge: occupied states only
+Number of valence electrons: 52
+
+... initialized
+
+Initializing position-dependent things.
+
+Density initialized from atomic densities
+                .----------------------------------------------------------.  
+               /|                                                          |  
+              / |                                                          |  
+             /  |                                                          |  
+            /   |                                                          |  
+           /    |                                                          |  
+          /     |                                                          |  
+         /      |                                                          |  
+        /       |                                                          |  
+       /        |                                                          |  
+      /         |                                                          |  
+     /          |                                                          |  
+    /           |                                                          |  
+   /            |                                                          |  
+  /             |                                                          |  
+ *              |                                                          |  
+ |              |              C                                           |  
+ |              |              C     C   C                                 |  
+ |              |                 C    CC                                  |  
+ |              |                      C                                   |  
+ |              |                     C                                    |  
+ |              |                     C                                    |  
+ |              .--------------------C-------------------------------------.  
+ |             /                    C                                     /   
+ |            /                     C                                    /    
+ |           /                                                          /     
+ |          /                                                          /      
+ |         /                                                          /       
+ |        /                                                          /        
+ |       /                                                          /         
+ |      /                                                          /          
+ |     /                                                          /           
+ |    /                                                          /            
+ |   /                                                          /             
+ |  /                                                          /              
+ | /                                                          /               
+ |/                                                          /                
+ *----------------------------------------------------------*                 
+
+Positions:
+   0 C     12.589497    9.693150    8.885035
+   1 C     12.229309   13.709960    8.904719
+   2 C      9.100831   12.895597    9.371677
+   3 C     12.844053    7.013142    8.827631
+   4 C     12.402698   12.373032    8.901791
+   5 C     12.475896   11.030106    8.898762
+   6 C      9.796978   13.977383    8.762376
+   7 C      8.648800   14.197340    9.582620
+   8 C     12.740693    8.355619    8.856514
+   9 C     11.077222   14.515257    8.991288
+  10 C     12.314288   15.113161    8.921727
+  11 C     13.018649    4.295160    8.729178
+  12 C     12.903289    5.668896    8.790969
+
+Unit cell:
+           periodic     x           y           z      points  spacing
+  1. axis:    no    24.000000    0.000000    0.000000   120     0.2000
+  2. axis:    no     0.000000   24.000000    0.000000   120     0.2000
+  3. axis:    no     0.000000    0.000000   18.000000    88     0.2045
+
+  Lengths:  24.000000  24.000000  18.000000
+  Angles:   90.000000  90.000000  90.000000
+
+Effective grid spacing dv^(1/3) = 0.2015
+
+                     log10-error:    total        iterations:
+           time      wfs    density  energy       fermi  poisson
+iter:   1  10:40:01          +inf   -92.561202    1      6      
+iter:   2  10:40:02         -0.87   -92.137706    3      3      
+iter:   3  10:40:02         -0.92   -91.373152    33     3      
+iter:   4  10:40:03         -1.05   -90.997207    34     4      
+iter:   5  10:40:03         -1.38   -90.835092    3      2      
+iter:   6  10:40:04         -1.49   -90.787052    3      3      
+iter:   7  10:40:05         -1.69   -90.755221    3      3      
+iter:   8  10:40:05         -1.85   -90.743945    2      2      
+iter:   9  10:40:06         -2.01   -90.743490    3      2      
+iter:  10  10:40:06         -2.06   -90.736390    4      2      
+iter:  11  10:40:07         -2.59   -90.729024    2      2      
+iter:  12  10:40:07         -2.62   -90.726394    2      2      
+iter:  13  10:40:07         -2.87   -90.727374    1      1      
+iter:  14  10:40:08         -2.92   -90.724473    2      2      
+iter:  15  10:40:08         -3.07   -90.724150    2      1      
+iter:  16  10:40:09         -3.15   -90.727284    2      1      
+iter:  17  10:40:09         -3.31   -90.724554    2      1      
+iter:  18  10:40:10         -3.34   -90.717950    2      1      
+iter:  19  10:40:10         -3.48   -90.722858    2      1      
+iter:  20  10:40:11         -3.72   -90.724310    2      1      
+iter:  21  10:40:11         -3.77   -90.724606    2      1      
+iter:  22  10:40:12         -3.73   -90.725465    2      1      
+iter:  23  10:40:12         -4.02   -90.725580    2      1      
+
+Converged after 23 iterations.
+
+Dipole moment: (0.070597, 0.685386, -0.148712) |e|*Ang
+
+Energy contributions relative to reference atoms: (reference = -13359.165501)
+
+Kinetic:        +39.294592
+Potential:      -47.664507
+External:        +0.000000
+XC:             -83.717605
+Entropy (-ST):   -0.266082
+Local:           +1.494980
+--------------------------
+Free energy:    -90.858622
+Extrapolated:   -90.725580
+
+Fermi level: -5.88997
+
+ Band  Eigenvalues  Occupancy
+    0    -25.32733    2.00000
+    1    -23.98467    2.00000
+    2    -21.41901    2.00000
+    3    -20.73439    2.00000
+    4    -19.76937    2.00000
+    5    -18.62868    2.00000
+    6    -18.10741    2.00000
+    7    -17.30434    2.00000
+    8    -15.93756    2.00000
+    9    -14.79258    2.00000
+   10    -13.23651    2.00000
+   11    -12.27009    2.00000
+   12    -11.65974    2.00000
+   13    -11.37309    2.00000
+   14    -10.99430    2.00000
+   15    -10.18149    2.00000
+   16    -10.12262    2.00000
+   17     -9.67150    2.00000
+   18     -9.04406    2.00000
+   19     -8.92413    2.00000
+   20     -7.69790    2.00000
+   21     -7.51494    2.00000
+   22     -7.24785    2.00000
+   23     -6.90314    1.99992
+   24     -6.73833    1.99959
+   25     -5.94045    1.24715
+   26     -5.83944    0.75257
+   27     -5.10127    0.00075
+   28     -4.75554    0.00002
+   29     -3.69447    0.00000
+   30     -2.75467    0.00000
+   31     -1.86850    0.00000
+   32     -1.63788    0.00000
+   33     -1.41820    0.00000
+   34     -0.09384    0.00000
+   35      0.99041    0.00000
+   36      1.13105    0.00000
+   37      1.85670    0.00000
+   38      2.31288    0.00000
+   39      2.99310    0.00000
+   40      3.14328    0.00000
+   41      3.87870    0.00000
+   42      4.32856    0.00000
+   43      4.99728    0.00000
+   44      5.81109    0.00000
+   45      6.25595    0.00000
+   46      7.02581    0.00000
+   47      7.26674    0.00000
+   48      7.43333    0.00000
+   49      7.74214    0.00000
+   50      8.27829    0.00000
+   51      8.53775    0.00000
+   52      8.57491    0.00000
+   53      8.79533    0.00000
+   54      8.89608    0.00000
+   55      9.16375    0.00000
+   56      9.29027    0.00000
+   57      9.30666    0.00000
+   58      9.41509    0.00000
+   59      9.93273    0.00000
+   60     10.10298    0.00000
+   61     10.16125    0.00000
+   62     10.48702    0.00000
+   63     10.91648    0.00000
+   64     11.02512    0.00000
+   65     11.31129    0.00000
+   66     11.44439    0.00000
+   67     11.80292    0.00000
+   68     11.86975    0.00000
+   69     12.39565    0.00000
+   70     12.66596    0.00000
+   71     12.90445    0.00000
+   72     12.92747    0.00000
+   73     13.24842    0.00000
+   74     13.98717    0.00000
+   75     14.28358    0.00000
+
+Timing:                              incl.     excl.
+-----------------------------------------------------------
+Basic WFS set positions:             0.000     0.000   0.0% |
+Basis functions set positions:       0.013     0.013   0.1% |
+LCAO WFS Initialize:                 0.525     0.013   0.1% |
+ Hamiltonian:                        0.512     0.000   0.0% |
+  Atomic:                            0.000     0.000   0.0% |
+   XC Correction:                    0.000     0.000   0.0% |
+  Calculate atomic Hamiltonians:     0.000     0.000   0.0% |
+  Communicate:                       0.043     0.043   0.4% |
+  Hartree integrate/restrict:        0.007     0.007   0.1% |
+  Initialize Hamiltonian:            0.002     0.002   0.0% |
+  Poisson:                           0.298     0.298   2.5% ||
+  XC 3D grid:                        0.161     0.161   1.4% ||
+  vbar:                              0.002     0.002   0.0% |
+SCF-cycle:                          10.817     0.011   0.1% |
+ Density:                            2.108     0.000   0.0% |
+  Atomic density matrices:           1.884     1.884  15.9% |-----|
+  Mix:                               0.207     0.207   1.8% ||
+  Multipole moments:                 0.004     0.004   0.0% |
+  Normalize:                         0.002     0.002   0.0% |
+  Pseudo density:                    0.010     0.004   0.0% |
+   Calculate density matrix:         0.006     0.006   0.1% |
+   Construct density:                0.000     0.000   0.0% |
+   Symmetrize density:               0.000     0.000   0.0% |
+ Hamiltonian:                        6.731     0.002   0.0% |
+  Atomic:                            0.004     0.004   0.0% |
+   XC Correction:                    0.000     0.000   0.0% |
+  Calculate atomic Hamiltonians:     0.006     0.006   0.1% |
+  Communicate:                       0.935     0.935   7.9% |--|
+  Hartree integrate/restrict:        0.151     0.151   1.3% ||
+  Poisson:                           2.036     2.036  17.2% |------|
+  XC 3D grid:                        3.556     3.556  30.1% |-----------|
+  vbar:                              0.041     0.041   0.3% |
+ LCAO eigensolver:                   1.967     0.002   0.0% |
+  Calculate projections:             0.000     0.000   0.0% |
+  DenseAtomicCorrection:             0.000     0.000   0.0% |
+  Distribute overlap matrix:         1.818     1.818  15.4% |-----|
+  Orbital Layouts:                   0.144     0.144   1.2% |
+  Potential matrix:                  0.002     0.002   0.0% |
+Set symmetry:                        0.092     0.092   0.8% |
+TCI: Calculate S, T, P:              0.003     0.003   0.0% |
+TCI: Evaluate splines:               0.062     0.062   0.5% |
+Other:                               0.298     0.298   2.5% ||
+-----------------------------------------------------------
+Total:                                        11.810 100.0%
+
+Memory usage: 221.78 MiB
+Date: Fri Mar 23 10:40:12 2018

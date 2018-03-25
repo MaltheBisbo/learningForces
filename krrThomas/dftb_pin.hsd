@@ -1,0 +1,76 @@
+Geometry = GenFormat {
+13  C
+C
+1      1     14.305686204084850     13.072472805424800      9.000000000000000
+2      1     11.986846361551686     11.760462504020829      9.000000000000000
+3      1     11.472693969091432     11.660351196302852      9.000000000000000
+4      1     11.677770928497171     12.847722178510725      9.000000000000000
+5      1      9.963139160541987     11.199990925546949      9.000000000000000
+6      1     14.145076030053232     12.343743712109207      9.000000000000000
+7      1     10.183668525836998     10.459639738351923      9.000000000000000
+8      1     14.149409948451090     11.924748682810359      9.000000000000000
+9      1     10.926925740016380     11.420310015466104      9.000000000000000
+10     1      9.212307896153069     15.693448363540174      9.000000000000000
+11     1     14.448127391405226     10.296832933001006      9.000000000000000
+12     1     12.608655161375886      8.477749234238049      9.000000000000000
+13     1     14.066324716781473     11.453201482619553      9.000000000000000
+}
+Driver = ConjugateGradient {
+  MaxForceComponent = 1E-4
+  MaxSteps = 0
+  LatticeOpt = No
+  MovedAtoms = "1:-1"
+  OutputPrefix = "geo_end"
+  AppendGeometries = No
+  ConvergentForcesOnly = Yes
+  Constraints = {}
+}
+Hamiltonian = DFTB {
+  Charge = 0.000000
+  Eigensolver = Standard {}
+  Filling = Fermi {
+    Temperature [Kelvin] = 0.000000
+  }
+  MaxAngularMomentum = {
+    C = "p"
+  }
+  SCC = No
+  SlaterKosterFiles = Type2FileNames {
+    Prefix = /home/groves/DFT/dftb_parameters/probAlreadyhave/
+    Separator = "-"
+    Suffix = ".skf"
+    LowerCaseTypeName = No
+  }
+  PolynomialRepulsive = {}
+  OldRepulsiveSum = No
+  OrbitalResolvedSCC = No
+  OldSKInterpolation = No
+  Dispersion = {}
+  ThirdOrder = No
+  ThirdOrderFull = No
+}
+Options = {
+  WriteResultsTag = Yes
+  MullikenAnalysis = No
+  WriteEigenvectors = No
+  WriteAutotestTag = No
+  WriteDetailedXML = No
+  WriteDetailedOut = Yes
+  WriteBandOut = Yes
+  AtomResolvedEnergies = No
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+}
+ParserOptions = {
+  IgnoreUnprocessedNodes = Yes
+  ParserVersion = 4
+  WriteHSDInput = Yes
+  WriteXMLInput = No
+  StopAfterParsing = No
+}
+Analysis = {
+  ProjectStates = {}
+}

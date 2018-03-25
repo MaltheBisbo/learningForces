@@ -1,6 +1,7 @@
 import numpy as np
 
 from startgenerator import StartGenerator
+from startgenerator2d import StartGenerator as StartGenerator2d
 from custom_calculators import krr_calculator
 
 from ase import Atoms
@@ -8,6 +9,7 @@ from ase.io import read, write
 from ase.ga.utilities import closest_distances_generator
 from ase.optimize import BFGS
 from ase.calculators.singlepoint import SinglePointCalculator
+from ase.constraints import FixedPlane
 
 def rattle_atom2d(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
     Natoms = struct.get_number_of_atoms()
@@ -75,6 +77,87 @@ def rattle_Natoms2d(struct, Nrattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries
     # The desired number of succesfull rattles was not reached
     return structRattle
 
+def rattle_atom2d_center(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
+    Natoms = struct.get_number_of_atoms()
+    
+    structRattle = struct.copy()
+    mindis = 0
+    mindisAtom = 10
+
+    # Get unit-cell center
+    center = struct.cell.sum(axis=0)/2
+
+    for i in range(Ntries):
+        # First load original positions
+        positions = struct.positions.copy()
+        
+        # Randomly chooce rattle range and angle
+        r = rmax_rattle * np.sqrt(np.random.rand())
+        theta = np.random.uniform(low=0, high=2*np.pi)
+
+        # Apply rattle from center
+        positions[index_rattle] = center
+        positions[index_rattle] += r * np.array([np.cos(theta), np.sin(theta), 0])
+
+        structRattle.positions = positions
+        dis = structRattle.get_all_distances()
+        mindis = np.min(dis[np.nonzero(dis)])  # Check that we are not too close
+        mindisAtom = np.min(structRattle.get_distances(index_rattle, np.delete(np.arange(Natoms), index_rattle)))  # check that we are not too far
+        
+        # If it does not fit, try to wiggle it into place using small circle
+        if mindis < rmin:
+            for i in range(10):
+                r = 0.5 * np.sqrt(np.random.rand())
+                theta = np.random.uniform(low=0, high=2 * np.pi)
+                positions[index_rattle] += r * np.array([np.cos(theta), np.sin(theta), 0])
+                structRattle.positions = positions
+                dis = structRattle.get_all_distances()
+                mindis = np.min(dis[np.nonzero(dis)])
+
+                # If it works break
+                if mindis > rmin:
+                    break
+
+                # Otherwise reset coordinate
+                else:
+                    positions[index_rattle] -= r * np.array([np.cos(theta), np.sin(theta), 0])
+
+        # STOP CRITERION
+        if mindis > rmin and mindisAtom < rmax:
+            return structRattle
+    
+    # Return None if no acceptable rattle was found
+    return None
+
+def rattle_Natoms2d_center(struct, Nrattle, rmax_rattle=3.0, Ntries=10):
+    structRattle = struct.copy()
+    
+    Natoms = struct.get_number_of_atoms()
+    i_permuted = np.random.permutation(Natoms)
+    atom_numbers = struct.get_atomic_numbers()
+
+    # define the closest distance two atoms of a given species can be to each other
+    cd = closest_distances_generator(atom_numbers=atom_numbers,
+                                     ratio_of_covalent_radii=0.7)
+    
+    cov_radii = cd[(6,6)]  # hard coded
+    rmin = 0.7*cov_radii
+    rmax = 1.4*cov_radii
+
+    rattle_counter = 0
+    for index in i_permuted:
+        newStruct = rattle_atom2d_center(structRattle, index, rmax_rattle, rmin, rmax, Ntries)
+        if newStruct is not None:
+            structRattle = newStruct.copy()
+            rattle_counter += 1
+
+        # The desired number of rattles have been performed
+        if rattle_counter > Nrattle:
+            return structRattle
+
+    # The desired number of succesfull rattles was not reached
+    return structRattle
+
 def createInitalStructure(Natoms):
     '''
     Creates an initial structure of 24 Carbon atoms
@@ -112,6 +195,45 @@ def createInitalStructure(Natoms):
                         box_to_place_in=[p0, [a, b, z], center],
                         elliptic=True,
                         cluster=False)
+
+    structure = sg.get_new_candidate()
+    return structure
+
+def createInitalStructure2d(Natoms):
+    '''
+    Creates an initial structure of 24 Carbon atoms
+    '''    
+    number_type1 = 6  # Carbon
+    number_opt1 = Natoms  # number of atoms
+    atom_numbers = number_opt1 * [number_type1]
+
+    cell = np.array([[24, 0, 0],
+                     [0, 24, 0],
+                     [0, 0, 18]])
+    pbc = [False, False, False]
+
+    template = Atoms('')
+    template.set_cell(cell)
+    template.set_pbc(pbc)
+    # define the volume in which the adsorbed cluster is optimized
+    # the volume is defined by a a center position (p0)
+    # and three spanning vectors
+    
+    a = np.array((4.5, 0., 0.))
+    b = np.array((0, 4.5, 0))
+    center = np.array((11.5, 11.5, 9))
+    
+    # define the closest distance two atoms of a given species can be to each other
+    cd = closest_distances_generator(atom_numbers=atom_numbers,
+                                     ratio_of_covalent_radii=0.7)
+
+    # create the start structure
+    sg = StartGenerator2d(slab=template,
+                          atom_numbers=atom_numbers,
+                          closest_allowed_distances=cd,
+                          plane_to_place_in=[[a, b], center],
+                          elliptic=False,
+                          cluster=False)
 
     structure = sg.get_new_candidate()
     return structure
@@ -171,9 +293,7 @@ class globalOptim():
     noZ:
     Atoms are not mooved in the z-direction during relaxation.
     """
-    def __init__(self, calculator, traj_namebase, MLmodel=None, Natoms=6, Niter=50, rattle_maxDist=0.5, kbT=1, Nstag=10,
-                 min_saveDifference=0.3, minSampleStep=10, MLerrorMargin=0.1, NstartML=20, maxNtrain=1.5e3,
-                 radiusRange=[0.9, 1.5], fracPerturb=0.3, noZ=False):
+    def __init__(self, calculator, traj_namebase, MLmodel=None, Natoms=6, Niter=50, rattle_maxDist=0.5, kbT=1, Nstag=10, min_saveDifference=0.3, minSampleStep=10, MLerrorMargin=0.1, NstartML=20, maxNtrain=1.5e3, fracPerturb=0.3, noZ=False):
 
         self.calculator = calculator
         self.traj_namebase = traj_namebase
@@ -189,7 +309,6 @@ class globalOptim():
         self.MLerrorMargin = MLerrorMargin
         self.NstartML = NstartML
         self.maxNtrain = int(maxNtrain)
-        self.rmin, self.rmax = radiusRange
         self.Nperturb = max(2, int(np.ceil(self.Natoms*fracPerturb)))
         self.noZ = noZ
 
@@ -201,22 +320,20 @@ class globalOptim():
         
     def runOptimizer(self):
         # Initial structure
-        a_init = createInitalStructure(self.Natoms)
+        a_init = createInitalStructure2d(self.Natoms)
         self.a, self.E = self.relax(a_init, ML=False)
 
         # Initialize the best structure
         self.a_best = self.a.copy()
-        self.Ebest = self.E.copy()
+        self.Ebest = self.E
         
         # Run global search
         stagnation_counter = 0
         for i in range(self.Niter):
             # Perturb current structure
-            a_new_unrelaxed = rattle_Natoms2d(struct=self.a,
-                                              Nrattle=self.Nperturb,
-                                              rmax_rattle=self.rattle_maxDist,
-                                              rmin=self.rmin,
-                                              rmax=self.rmax)
+            a_new_unrelaxed = rattle_Natoms2d_center(struct=self.a,
+                                                     Nrattle=self.Nperturb,
+                                                     rmax_rattle=self.rattle_maxDist)
             
             # Use MLmodel - if it excists + sufficient data is available
             useML_cond = self.MLmodel is not None and self.ksaved > self.NstartML
@@ -302,9 +419,15 @@ class globalOptim():
             traj_counter = '00' + str(self.traj_counter)
         if len(str(self.traj_counter)) == 2:
             traj_counter = '0' + str(self.traj_counter)
+        
+        if self.noZ:
+            plane = [FixedPlane(x, (0, 0, 1)) for x in range(len(a))]
+            a.set_constraint(plane)
+        
+        # Relax
         if ML:
             traj_name = self.traj_namebase + 'ML{}.traj'.format(traj_counter)
-            krr_calc = krr_calculator(self.MLmodel, noZ=self.noZ)
+            krr_calc = krr_calculator(self.MLmodel)
             a.set_calculator(krr_calc)
             dyn = BFGS(a, trajectory=traj_name)
             dyn.run(fmax=0.1)
@@ -335,8 +458,10 @@ if __name__ == '__main__':
     from gaussComparator import gaussComparator
     from angular_fingerprintFeature import Angular_Fingerprint
     from krr_ase import krr_class
-    
-    Natoms = 24
+    from ase.calculators.dftb import Dftb
+    import sys
+
+    Natoms = 13
     
     # Set up featureCalculator
     a = createInitalStructure(Natoms)
@@ -350,8 +475,8 @@ if __name__ == '__main__':
     sigma2 = 0.2
     
     gamma = 1
-    eta = 10
-    use_angular = False
+    eta = 20
+    use_angular = True
     
     featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
     
@@ -359,16 +484,35 @@ if __name__ == '__main__':
     comparator = gaussComparator()
     krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
-    traj_namebase = 'globalTest/global'
+    # Savefile setup
+    savefiles_path = sys.argv[1]
+    try:
+        run_num = sys.argv[2]
+    except IndexError:
+        run_num = ''
+    savefiles_namebase = savefiles_path + 'global' + run_num + '_' 
 
-    
-    optimizer = globalOptim(calculator=doubleLJ_calculator(noZ=True),
-                            traj_namebase=traj_namebase,
+    # Calculator
+    #calc = doubleLJ_calculator(noZ=True)
+    calc = Dftb(label='C',
+                Hamiltonian_SCC='No',
+                #            kpts=(1,1,1),   # Hvis man paa et tidspunkt skal bruge periodiske graensebetingelser
+                Hamiltonian_Eigensolver='Standard {}',
+                Hamiltonian_MaxAngularMomentum_='',
+                Hamiltonian_MaxAngularMomentum_C='"p"',
+                Hamiltonian_Charge='0.000000',
+                Hamiltonian_Filling ='Fermi {',
+                Hamiltonian_Filling_empty= 'Temperature [Kelvin] = 0.000000')
+
+    optimizer = globalOptim(calculator=calc,
+                            traj_namebase=savefiles_namebase,
                             MLmodel=krr,
                             Natoms=Natoms,
-                            Niter=20,
+                            Niter=100,
+                            Nstag=100,
+                            NstartML=40,
                             fracPerturb=0.4,
-                            rattle_maxDist=1,
+                            rattle_maxDist=3,
                             noZ=True)
 
     optimizer.runOptimizer()

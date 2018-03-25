@@ -6,7 +6,7 @@ from ase.ga.utilities import get_mic_distance
 from math import *
 from copy import deepcopy
 from time import sleep
-from builtins import *  # to get range in python 2.7
+#from builtins import *  # to get range in python 2.7
 
 def random_pos(box):
     """ Returns a random position within the box

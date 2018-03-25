@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "globalOptim_ase3d.py", line 518, in <module>
+    optimizer.runOptimizer()
+  File "globalOptim_ase3d.py", line 351, in runOptimizer
+    Enew = self.singlePoint(a_new)
+  File "globalOptim_ase3d.py", line 448, in singlePoint
+    E = a.get_potential_energy()
+  File "/home/mkb/virtualEnvs/python-2.7.13/lib/python2.7/site-packages/ase/atoms.py", line 684, in get_potential_energy
+    energy = self._calc.get_potential_energy(self)
+  File "/home/mkb/virtualEnvs/python-2.7.13/lib/python2.7/site-packages/ase/calculators/calculator.py", line 441, in get_potential_energy
+    energy = self.get_property('energy', atoms)
+  File "/home/mkb/virtualEnvs/python-2.7.13/lib/python2.7/site-packages/ase/calculators/calculator.py", line 486, in get_property
+    self.calculate(atoms, [name], system_changes)
+  File "/home/mkb/virtualEnvs/python-2.7.13/lib/python2.7/site-packages/ase/calculators/calculator.py", line 650, in calculate
+    self.read_results()
+  File "/home/mkb/virtualEnvs/python-2.7.13/lib/python2.7/site-packages/ase/calculators/dftb.py", line 206, in read_results
+    myfile = open(os.path.join(self.directory, 'results.tag'), 'r')
+IOError: [Errno 2] No such file or directory: './results.tag'

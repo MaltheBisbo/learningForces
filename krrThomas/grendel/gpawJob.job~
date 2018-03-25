@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name=C6
+#SBATCH --partition=q36
+#SBATCH --mem=376G
+#SBATCH --nodes=1
+#SBATCH --time=50:00:00
+#SBATCH --ntasks-per-node=36
+#SBATCH --cpus-per-task=1
+#SBATCH --no-requeue
+
+source /home/mkb/.asegpaw_git
+source /home/mkb/virtualEnvs/python-2.7.13/bin/activate
+
+# Go to the directory where this job was submitted
+cd $SLURM_SUBMIT_DIR/../..
+mpiexec --mca mpi_warn_on_fork 0 gpaw-python globalOptim_ase3d_gr.py
