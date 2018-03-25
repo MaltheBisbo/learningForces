@@ -9,6 +9,8 @@ from ase.ga.utilities import closest_distances_generator
 from ase.optimize import BFGS
 from ase.constraints import FixedPlane
 
+import sys
+
 def createInitalStructure():
     '''
     Creates an initial structure of 24 Carbon atoms
@@ -90,7 +92,7 @@ def makeStructure(Natoms):
 
 
 atoms = createInitalStructure()
-atoms1 = makeStructure(20)
+
 
 calc = doubleLJ_calculator()
 atoms.set_calculator(calc)
