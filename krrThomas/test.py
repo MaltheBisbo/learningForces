@@ -52,6 +52,8 @@ def createInitalStructure2d(Natoms):
     structure = sg.get_new_candidate()
     return structure
 
+import sys
+
 def createInitalStructure():
     '''
     Creates an initial structure of 24 Carbon atoms
@@ -132,8 +134,13 @@ def makeStructure(Natoms):
     return a
 
 
+<<<<<<< HEAD
 atoms = createInitalStructure2d(13)
 #atoms1 = makeStructure(20)
+=======
+atoms = createInitalStructure()
+
+>>>>>>> 13e29e4863d4fa3f9e97202047ae5d4dbc6756b7
 
 calc = Dftb(label='C',
             Hamiltonian_SCC='No',
