@@ -6,9 +6,9 @@ cimport cython
 cpdef double test(int N):
     cdef np.ndarray[np.double_t, ndim=2] pos
     pos = np.random.rand(N,2)
+    #cdef list pos = np.random.rand(N,2).tolist()
     cdef double Rij = 0
-    cdef np.ndarray[np.double_t, ndim=2] diffVec
-    diffVec = np.zeros(3, dtype=np.double)
+
     cdef int i, j
     for i in range(N):
         for j in range(N):
