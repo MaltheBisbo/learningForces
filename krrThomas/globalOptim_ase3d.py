@@ -5,11 +5,46 @@ from startgenerator2d import StartGenerator as StartGenerator2d
 from custom_calculators import krr_calculator
 
 from ase import Atoms
-from ase.io import read, write
+from ase.io import read, write, Trajectory
+from ase.io.trajectory import TrajectoryWriter
 from ase.ga.utilities import closest_distances_generator
 from ase.optimize import BFGS
 from ase.calculators.singlepoint import SinglePointCalculator
 from ase.constraints import FixedPlane
+from ase.ga.relax_attaches import VariansBreak
+
+def relax_VarianceBreak(structure, calc, label):
+    '''
+    Relax a structure and saves the trajectory based in the index i
+
+    Parameters
+    ----------
+    structure : ase Atoms object to be relaxed
+
+    Returns
+    -------
+    '''
+
+    # Set calculator 
+    structure.set_calculator(calc)
+
+    # loop a number of times to capture if minimization stops with high force
+    # due to the VariansBreak calls
+    forcemax = 0.1
+    niter = 0
+
+    # If the structure is already fully relaxed just return it
+    if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
+        return structure
+    traj = Trajectory(label+'.traj','a', structure)
+    while (structure.get_forces()**2).sum(axis = 1).max()**0.5 > forcemax and niter < 10:
+        dyn = BFGS(structure,
+                   logfile=label+'.log')
+        vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
+        dyn.attach(traj)
+        dyn.attach(vb)
+        dyn.run(fmax = forcemax, steps = 500)
+        niter += 1
 
 def rattle_atom2d(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
     Natoms = struct.get_number_of_atoms()
@@ -61,8 +96,9 @@ def rattle_Natoms2d(struct, Nrattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries
     structRattle = struct.copy()
     
     Natoms = struct.get_number_of_atoms()
-    i_permuted = np.random.permutation(Natoms)
-
+    i_rattle = np.random.permutation(Natoms)
+    i_rattle = i_rattle[:Nrattle]
+    
     rattle_counter = 0
     for index in i_permuted:
         newStruct = rattle_atom2d(structRattle, index, rmax_rattle, rmin, rmax, Ntries)
@@ -219,8 +255,8 @@ def createInitalStructure2d(Natoms):
     # the volume is defined by a a center position (p0)
     # and three spanning vectors
     
-    a = np.array((4.5, 0., 0.))
-    b = np.array((0, 4.5, 0))
+    a = np.array((6, 0., 0.))
+    b = np.array((0, 6, 0))
     center = np.array((11.5, 11.5, 9))
     
     # define the closest distance two atoms of a given species can be to each other
@@ -293,7 +329,7 @@ class globalOptim():
     noZ:
     Atoms are not mooved in the z-direction during relaxation.
     """
-    def __init__(self, calculator, traj_namebase, MLmodel=None, Natoms=6, Niter=50, rattle_maxDist=0.5, kbT=1, Nstag=10, min_saveDifference=0.3, minSampleStep=10, MLerrorMargin=0.1, NstartML=20, maxNtrain=1.5e3, fracPerturb=0.3, noZ=False):
+    def __init__(self, calculator, traj_namebase, MLmodel=None, Natoms=6, Niter=50, rattle_maxDist=0.5, kbT=1, Nstag=10, min_saveDifference=0.3, minSampleStep=10, MLerrorMargin=0.1, Nstart_pop=5, maxNtrain=1.5e3, fracPerturb=0.3, noZ=False):
 
         self.calculator = calculator
         self.traj_namebase = traj_namebase
@@ -307,7 +343,8 @@ class globalOptim():
         self.min_saveDifference = min_saveDifference
         self.minSampleStep = minSampleStep
         self.MLerrorMargin = MLerrorMargin
-        self.NstartML = NstartML
+        #self.NstartML = NstartML
+        self.Nstart_pop = Nstart_pop
         self.maxNtrain = int(maxNtrain)
         self.Nperturb = max(2, int(np.ceil(self.Natoms*fracPerturb)))
         self.noZ = noZ
@@ -317,11 +354,25 @@ class globalOptim():
 
         self.traj_counter = 0
         self.ksaved = 0
-        
+
+        # Trajectory names
+        self.writer_initTrain = TrajectoryWriter(filename=traj_namebase+'initTrain.traj', mode='a')
+        self.writer_spTrain = TrajectoryWriter(filename=traj_namebase+'spTrain.traj', mode='a')
+
     def runOptimizer(self):
+
+        # Initial structures
+        self.E = np.inf
+        for i in range(self.Nstart_pop):
+            a_init = createInitalStructure2d(self.Natoms)
+            a, E = self.relax(a_init, ML=False)
+            if E < self.E:
+                self.a = a.copy()
+                self.E = E
+
         # Initial structure
-        a_init = createInitalStructure2d(self.Natoms)
-        self.a, self.E = self.relax(a_init, ML=False)
+        #a_init = createInitalStructure2d(self.Natoms)
+        #self.a, self.E = self.relax(a_init, ML=False)
 
         # Initialize the best structure
         self.a_best = self.a.copy()
@@ -335,9 +386,8 @@ class globalOptim():
                                                      Nrattle=self.Nperturb,
                                                      rmax_rattle=self.rattle_maxDist)
             
-            # Use MLmodel - if it excists + sufficient data is available
-            useML_cond = self.MLmodel is not None and self.ksaved > self.NstartML
-            if useML_cond:
+            # Use MLmodel - if it excists
+            if self.MLmodel is not None:
                 print("Begin training")
                 # Train ML model if new data is available
                 if len(self.a_add) > 0:
@@ -401,19 +451,27 @@ class globalOptim():
         E = [a.get_potential_energy() for a in atoms]
         Nstep = len(atoms)
 
-        # Always add start structure
+        # Always add+save start structure
         self.a_add.append(atoms[0])
+        self.writer_initTrain.write(atoms[0], energy=E[0])
 
         n_last = 0
         Ecurrent = E[0]
-        for i in range(1,Nstep):
+        for i in range(1,Nstep-int(self.minSampleStep/2)):
             n_last += 1
-            if Ecurrent - E[i] > self.min_saveDifference and n_last > 10:
+            if Ecurrent - E[i] > self.min_saveDifference and n_last > self.minSampleStep:
                 self.a_add.append(atoms[i])
                 Ecurrent = E[i]
                 self.ksaved += 1
                 n_last = 0
-        
+                
+                # Save to initTrain-trajectory
+                self.writer_initTrain.write(atoms[i], energy=E[i])
+
+        # Always save+add last structure
+        self.a_add.append(atoms[-1])
+        self.writer_initTrain.write(atoms[-1], energy=E[-1])
+                
     def relax(self, a, ML=False):
         if len(str(self.traj_counter)) == 1:
             traj_counter = '00' + str(self.traj_counter)
@@ -426,18 +484,20 @@ class globalOptim():
         
         # Relax
         if ML:
-            traj_name = self.traj_namebase + 'ML{}.traj'.format(traj_counter)
+            label = self.traj_namebase + 'ML{}'.format(traj_counter)
             krr_calc = krr_calculator(self.MLmodel)
-            a.set_calculator(krr_calc)
-            dyn = BFGS(a, trajectory=traj_name)
-            dyn.run(fmax=0.1)
+            relax_VarianceBreak(a, krr_calc, label)
+            #a.set_calculator(krr_calc)
+            #dyn = BFGS(a, trajectory=label+'.traj')
+            #dyn.run(fmax=0.1)            
         else:
-            traj_name = self.traj_namebase + '{}.traj'.format(traj_counter)
-            a.set_calculator(self.calculator)
-            dyn = BFGS(a, trajectory=traj_name)
-            dyn.run(fmax=0.1)
-
-            self.add_trajectory_to_training(traj_name)
+            label = self.traj_namebase + '{}'.format(traj_counter)
+            relax_VarianceBreak(a, self.calculator, label)
+            #a.set_calculator(self.calculator)
+            #dyn = BFGS(a, trajectory=label+'.traj')
+            #dyn.run(fmax=0.1)
+            
+            self.add_trajectory_to_training(label+'.traj')
 
         self.traj_counter += 1
         Erelaxed = a.get_potential_energy()
@@ -446,10 +506,13 @@ class globalOptim():
     def singlePoint(self, a):
         a.set_calculator(self.calculator)
         E = a.get_potential_energy()
-        results = {'energy': E}
-        calc = SinglePointCalculator(a, **results)
-        a.set_calculator(calc)
+        a.energy = E
+        #results = {'energy': E}
+        #calc = SinglePointCalculator(a, **results)
+        #a.set_calculator(calc)
         self.a_add.append(a)
+        # Save to spTrain-trajectory
+        self.writer_spTrain.write(a, energy=E)
         self.ksaved += 1
         return E
 
@@ -510,7 +573,7 @@ if __name__ == '__main__':
                             Natoms=Natoms,
                             Niter=100,
                             Nstag=100,
-                            NstartML=40,
+                            Nstart_pop=5,
                             fracPerturb=0.4,
                             rattle_maxDist=3,
                             noZ=True)
