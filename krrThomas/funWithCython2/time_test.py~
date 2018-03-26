@@ -1,0 +1,4 @@
+from test_cy import test as test_cy
+from test import test as test_py
+
+print(test_cy(5))
