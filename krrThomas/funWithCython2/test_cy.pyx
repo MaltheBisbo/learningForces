@@ -6,7 +6,7 @@ from libc.math cimport sqrt
 
 from cymem.cymem cimport Pool
 cimport cython
-
+"""
 ctypedef struct Point:
     double x
     double y
@@ -25,6 +25,36 @@ cdef double norm(Point p):
 cdef double euclidean(Point p1, Point p2):
     return norm(subtract(p1,p2))
 
+
+cdef double* subtract(double* p1, double* p2):
+    cdef double* p
+    p[0] = p1[0] - p2[0]
+    p[1] = p1[1] - p2[1]
+    p[2] = p1[2] - p2[2]
+    return p
+
+cdef double norm(double* p):
+    return sqrt(p[0]*p[0] + p[1]*p[1] + p[2]*p[2])
+
+cdef double euclidean(double* p1, double* p2):
+    return norm(subtract(p1,p2))
+"""
+ctypedef struct Point:
+    double coord[3]
+
+cdef Point subtract(Point p1, Point p2):
+    cdef Point p
+    p.coord[0] = p1.coord[0] - p2.coord[0]
+    p.coord[1] = p1.coord[1] - p2.coord[1]
+    p.coord[2] = p1.coord[2] - p2.coord[2]
+    return p
+
+cdef double norm(Point p):
+    return sqrt(p.coord[0]*p.coord[0] + p.coord[1]*p.coord[1] + p.coord[2]*p.coord[2])
+
+cdef double euclidean(Point p1, Point p2):
+    return norm(subtract(p1,p2))
+
 @cython.boundscheck(False)
 cpdef double test(int N):
     cdef Pool mem
@@ -37,9 +67,9 @@ cpdef double test(int N):
     pos = <Point*>mem.alloc(N, sizeof(Point))
     cdef int k
     for k in range(N):
-        pos[k].x = pos_np[k][0]
-        pos[k].y = pos_np[k][1]
-        pos[k].z = pos_np[k][2]
+        pos[k].coord[0] = pos_np[k][0]
+        pos[k].coord[1] = pos_np[k][1]
+        pos[k].coord[2] = pos_np[k][2]
     cdef double Rij = 0
 
     cdef int i, j

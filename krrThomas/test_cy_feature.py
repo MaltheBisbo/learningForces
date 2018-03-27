@@ -27,13 +27,12 @@ a = Atoms(atomtypes,
           cell=[L,L,d],
           pbc=pbc)
 
-
 N = 3
-x = np.array([0.3*L, 0.2*L, d/2,
-              0.7*L, 0.9*L, d/2,
-              0.7*L, 0.5*L, d/2,])
+x = np.array([0.5*L, 0.2*L, d/2,
+              0.5*L, 0.9*L, d/2,
+              0.5*L, 0.5*L, d/2,])
 positions = x.reshape((-1,dim))
-atomtypes = ['H', 'He', 'He']
+atomtypes = ['H', 'H', 'H']
 a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
@@ -92,23 +91,34 @@ use_angular = True
 featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=0, use_angular=use_angular)
 t0 = time()
 fingerprint = featureCalculator.get_feature(a)
+fingerprint_grad = featureCalculator.get_featureGradient(a)
 runtime = time() - t0
+
 
 featureCalculator_cy = Angular_Fingerprint_cy(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=0, use_angular=use_angular)
 t0_cy = time()
 fingerprint_cy = featureCalculator_cy.get_feature(a)
+fingerprint_grad_cy = featureCalculator_cy.get_featureGradient(a)
 runtime_cy = time() - t0_cy
 
-print(fingerprint_cy)
 
 print('runtime python:', runtime)
 print('runtime cython:', runtime_cy)
 print('times faster:', runtime/runtime_cy)
 Nbins1 = int(np.ceil(Rc1/binwidth1))
-Nbins = Nbins1 + Nbins2
+if use_angular:
+    Nbins = Nbins1 + Nbins2
+else:
+    Nbins = Nbins1
 r = np.linspace(0,Rc1, Nbins)
 
-plt.figure()
+
+plt.figure(1)
 plt.plot(r, fingerprint)
 plt.plot(r, fingerprint_cy, linestyle=':', color='k')
+
+plt.figure(2)
+plt.plot(r, fingerprint_grad.T)
+plt.plot(r, fingerprint_grad_cy.T, linestyle=':', color='k')
+
 plt.show()
