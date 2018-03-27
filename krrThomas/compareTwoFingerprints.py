@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from angular_fingerprintFeature import Angular_Fingerprint
-from angular_fingerprintFeature_m import Angular_Fingerprint as Angular_Fingerprint_test
+from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint as Angular_Fingerprint_test
 import time
 import pdb
 

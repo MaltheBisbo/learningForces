@@ -1,23 +1,78 @@
 import os
 import sys
-import numpy as np
-cimport numpy as np
 from math import erf
 from itertools import product
 from scipy.spatial.distance import cdist
+
+import time
+
+import numpy as np
+cimport numpy as np
+
+from libc.math cimport *  #sqrt, M_PI
+
+from cymem.cymem cimport Pool
+cimport cython
 
 try:
     cwd = sys.argv[1]
 except:
     cwd = os.getcwd()
 
-class Angular_Fingerprint(object):
+# Custom functions
+ctypedef struct Point:
+    double x
+    double y
+    double z
+
+cdef Point subtract(Point p1, Point p2):
+    cdef Point p
+    p.x = p1.x - p2.x
+    p.y = p1.y - p2.y
+    p.z = p1.z - p2.z
+    return p
+
+cdef double norm(Point p):
+    return sqrt(p.x*p.x + p.y*p.y + p.z*p.z)
+
+cdef double euclidean(Point p1, Point p2):
+    return norm(subtract(p1,p2))
+
+
+cdef class Angular_Fingerprint:
     """ comparator for construction of angular fingerprints
     """
 
+    cdef Pool mem
+    cdef double Rc1
+    cdef double Rc2
+    cdef double binwidth1
+    cdef double binwidth2
+    cdef int Nbins1
+    cdef int Nbins2
+    cdef double sigma1
+    cdef double sigma2
+    cdef int nsigma
+
+    cdef double eta
+    cdef double gamma
+    cdef use_angular
+
+    cdef double volume
+    cdef  int Natoms
+    cdef int dim
+
+    cdef double m1
+    cdef double m2
+    cdef double smearing_norm1
+    cdef double smearing_norm2
+
+    cdef int Nelements
     def __init__(self, atoms, Rc1=4.0, Rc2=4.0, binwidth1=0.1, Nbins2=30, sigma1=0.2, sigma2=0.10, nsigma=4, eta=1, gamma=3, use_angular=True):
         """ Set a common cut of radius
         """
+        self.mem = Pool()
+
         self.Rc1 = Rc1
         self.Rc2 = Rc2
         self.binwidth1 = binwidth1
@@ -30,13 +85,8 @@ class Angular_Fingerprint(object):
         self.gamma = gamma
         self.use_angular = use_angular
 
-        self.pbc = atoms.get_pbc()
-        self.cell = atoms.get_cell()
-        self.n_atoms = atoms.get_number_of_atoms()
-        self.num = atoms.get_atomic_numbers()
-        self.atomic_types = sorted(list(set(self.num)))
-        self.atomic_count = {type:list(self.num).count(type) for type in self.atomic_types}
         self.volume = atoms.get_volume()
+        self.Natoms = atoms.get_number_of_atoms()
         self.dim = 3
 
         # parameters for the binning:
@@ -59,24 +109,70 @@ class Angular_Fingerprint(object):
     def get_feature(self, atoms):
         """
         """
+        cell = atoms.get_cell()
+        cdef int Natoms = self.Natoms
 
-        cell = self.cell
-        cdef int Natoms = self.n_atoms
-        cdef np.ndarray[np.double_t, ndim=2] pos
-        pos = atoms.get_positions()
-        num = atoms.get_atomic_numbers()
-        atomic_count = self.atomic_count
+        # Get positions and convert to Point-struct
+        cdef list pos_np = atoms.get_positions().tolist()
+        cdef Point *pos
+        pos = <Point*>self.mem.alloc(Natoms, sizeof(Point))
+        cdef int m
+        for m in range(Natoms):
+            pos[m].x = pos_np[m][0]
+            pos[m].y = pos_np[m][1]
+            pos[m].z = pos_np[m][2]
 
         cdef double Rij
 
-        cdef double sum_Rij = 0
-        cdef int i, j
-        for i in range(Natoms):
-            for j in range(i+1, Natoms):
-                Rij = pos[i,0]
+        # Initialize feature
+        cdef double *feature
+        feature = <double*>self.mem.alloc(self.Nelements, sizeof(double))
 
-                sum_Rij += Rij
-        return Rij
+        cdef int num_pairs, center_bin, minbin_lim, maxbin_lim, newbin
+        cdef double normalization, binpos, c, erfarg_low, erfarg_up, value
+        cdef int i, j, k
+        for i in range(Natoms):
+            for j in range(Natoms):
+                Rij = euclidean(pos[i], pos[j])
+
+                # Stop if distance too long or atoms are the same one.
+                if Rij > self.Rc1+self.nsigma*self.sigma1 or Rij < 1e-6:
+                    continue
+
+                # Calculate normalization
+                num_pairs = Natoms*Natoms
+                normalization = 1./(4*M_PI*Rij*Rij * self.binwidth1 * num_pairs/self.volume * self.smearing_norm1)
+
+                # Identify what bin 'Rij' belongs to + it's position in this bin
+                center_bin = <int> floor(Rij/self.binwidth1)
+                binpos = Rij/self.binwidth1 - center_bin
+
+                # Lower and upper range of bins affected by the current atomic distance deltaR.
+                minbin_lim = <int> -ceil(self.m1 - binpos)
+                maxbin_lim = <int> ceil(self.m1 - (1-binpos))
+
+                for k in range(minbin_lim, maxbin_lim + 1):
+                    newbin = center_bin + k
+                    if newbin < 0 or newbin >= self.Nbins1:
+                        continue
+
+                    # Calculate gauss contribution to current bin
+                    c = 1./sqrt(2)*self.binwidth1/self.sigma1
+                    erfarg_low = max(-self.m1, k-binpos)
+                    erfarg_up = min(self.m1, k+(1-binpos))
+                    value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)
+
+                    # Apply normalization
+                    value *= normalization
+
+                    feature[newbin] += value
+
+        # Convert feature to numpy array
+        feature_np = np.zeros(self.Nelements)
+        for m in range(self.Nelements):
+            feature_np[m] = feature[m]
+
+        return feature_np
 
     def __angle(self, vec1, vec2):
         """
