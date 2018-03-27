@@ -25,6 +25,27 @@ ctypedef struct Point:
     double y
     double z
 
+"""
+ctypedef struct Point:
+    double *coord[3]
+
+cdef Point subtract(Point p1, Point p2):
+    cdef Point p
+    p.coord[0] = p1.coord[0] - p2.coord[0]
+    p.coord[1] = p1.coord[1] - p2.coord[1]
+    p.coord[2] = p1.coord[2] - p2.coord[2]
+    return p
+
+cdef double norm(Point p):
+    return sqrt(p.coord[0]*p.coord[0] + p.coord[1]*p.coord[1] + p.coord[2]*p.coord[2])
+
+cdef double euclidean(Point p1, Point p2):
+    return norm(subtract(p1,p2))
+
+cdef double dot(Point v1, Point v2):
+    return v1.coord[0]*v2.coord[0] + v1.coord[1]*v2.coord[1] + v1.coord[2]*v2.coord[2]
+
+"""
 cdef Point subtract(Point p1, Point p2):
     cdef Point p
     p.x = p1.x - p2.x
@@ -38,6 +59,34 @@ cdef double norm(Point p):
 cdef double euclidean(Point p1, Point p2):
     return norm(subtract(p1,p2))
 
+cdef double dot(Point v1, Point v2):
+    return v1.x*v2.x + v1.y*v2.y + v1.z*v2.z
+
+cdef double get_angle(Point v1, Point v2):
+    """
+    Returns angle with convention [0,pi]
+    """
+    norm1 = norm(v1)
+    norm2 = norm(v2)
+    arg = dot(v1,v2)/(norm1*norm2)
+    # This is added to correct for numerical errors
+    if arg < -1:
+        arg = -1.
+    elif arg > 1:
+        arg = 1.
+    return acos(arg)
+
+@cython.cdivision(True)
+cdef double f_cutoff(double r, double gamma, double Rcut):
+    """
+    Polinomial cutoff function in the, with the steepness determined by "gamma"
+    gamma = 2 resembels the cosine cutoff function.
+    For large gamma, the function goes towards a step function at Rc.
+    """
+    if not gamma == 0:
+        return 1 + gamma*pow(r/Rcut, gamma+1) - (gamma+1)*pow(r/Rcut, gamma)
+    else:
+        return 1
 
 cdef class Angular_Fingerprint:
     """ comparator for construction of angular fingerprints
@@ -67,6 +116,8 @@ cdef class Angular_Fingerprint:
     cdef double smearing_norm1
     cdef double smearing_norm2
 
+    cdef int Nelements_2body
+    cdef int Nelements_3body
     cdef int Nelements
     def __init__(self, atoms, Rc1=4.0, Rc2=4.0, binwidth1=0.1, Nbins2=30, sigma1=0.2, sigma2=0.10, nsigma=4, eta=1, gamma=3, use_angular=True):
         """ Set a common cut of radius
@@ -98,13 +149,13 @@ cdef class Angular_Fingerprint:
         self.smearing_norm2 = erf(1/np.sqrt(2) * self.m2 * self.binwidth2/self.sigma2)  # Integral of the included part of the gauss
         self.binwidth2 = np.pi/Nbins2
 
-        Nelements_2body = self.Nbins1
-        Nelements_3body = self.Nbins2
+        self.Nelements_2body = self.Nbins1
+        self.Nelements_3body = self.Nbins2
 
         if use_angular:
-            self.Nelements = Nelements_2body + Nelements_3body
+            self.Nelements = self.Nelements_2body + self.Nelements_3body
         else:
-            self.Nelements = Nelements_2body
+            self.Nelements = self.Nelements_2body
 
     def get_feature(self, atoms):
         """
@@ -122,15 +173,15 @@ cdef class Angular_Fingerprint:
             pos[m].y = pos_np[m][1]
             pos[m].z = pos_np[m][2]
 
-        cdef double Rij
+        # RADIAL FEATURE
 
-        # Initialize feature
-        cdef double *feature
-        feature = <double*>self.mem.alloc(self.Nelements, sizeof(double))
+        # Initialize radial feature
+        cdef double *feature1
+        feature1 = <double*>self.mem.alloc(self.Nelements_2body, sizeof(double))
 
         cdef int num_pairs, center_bin, minbin_lim, maxbin_lim, newbin
-        cdef double normalization, binpos, c, erfarg_low, erfarg_up, value
-        cdef int i, j, k
+        cdef double Rij, normalization, binpos, c, erfarg_low, erfarg_up, value
+        cdef int i, j, n
         for i in range(Natoms):
             for j in range(Natoms):
                 Rij = euclidean(pos[i], pos[j])
@@ -141,7 +192,8 @@ cdef class Angular_Fingerprint:
 
                 # Calculate normalization
                 num_pairs = Natoms*Natoms
-                normalization = 1./(4*M_PI*Rij*Rij * self.binwidth1 * num_pairs/self.volume * self.smearing_norm1)
+                normalization = 1./self.smearing_norm1
+                normalization /= 4*M_PI*Rij*Rij * self.binwidth1 * num_pairs/self.volume
 
                 # Identify what bin 'Rij' belongs to + it's position in this bin
                 center_bin = <int> floor(Rij/self.binwidth1)
@@ -151,28 +203,247 @@ cdef class Angular_Fingerprint:
                 minbin_lim = <int> -ceil(self.m1 - binpos)
                 maxbin_lim = <int> ceil(self.m1 - (1-binpos))
 
-                for k in range(minbin_lim, maxbin_lim + 1):
-                    newbin = center_bin + k
+                for n in range(minbin_lim, maxbin_lim + 1):
+                    newbin = center_bin + n
                     if newbin < 0 or newbin >= self.Nbins1:
                         continue
 
                     # Calculate gauss contribution to current bin
                     c = 1./sqrt(2)*self.binwidth1/self.sigma1
-                    erfarg_low = max(-self.m1, k-binpos)
-                    erfarg_up = min(self.m1, k+(1-binpos))
+                    erfarg_low = max(-self.m1, n-binpos)
+                    erfarg_up = min(self.m1, n+(1-binpos))
                     value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)
 
                     # Apply normalization
                     value *= normalization
 
-                    feature[newbin] += value
+                    feature1[newbin] += value
 
-        # Convert feature to numpy array
+        # Convert radial feature to numpy array
+        feature1_np = np.zeros(self.Nelements_2body)
+        for m in range(self.Nelements_2body):
+            feature1_np[m] = feature1[m]
+
+        # Return feature if only radial part is desired
+        if not self.use_angular:
+            return feature1_np
+
+        # ANGULAR FEATURE
+
+        # Initialize angular feature
+        cdef double *feature2
+        feature2 = <double*>self.mem.alloc(self.Nelements_3body, sizeof(double))
+
+        cdef Point RijVec, RikVec
+        cdef double angle
+        cdef int k, cond_ij, cond_ik
+        for i in range(Natoms):
+            for j in range(Natoms):
+                for k in range(j+1, Natoms):
+                    Rij = euclidean(pos[i], pos[j])
+                    Rik = euclidean(pos[i], pos[k])
+
+                    # Stop if distance too long or atoms are the same one.
+                    cond_ij = Rij > self.Rc2 or Rij < 1e-6
+                    cond_ik = Rik > self.Rc2 or Rik < 1e-6
+                    if cond_ij or cond_ik:
+                        continue
+
+                    # Calculate angle
+                    RijVec = subtract(pos[j],pos[i])
+                    RikVec = subtract(pos[k], pos[i])
+                    angle = get_angle(RijVec, RikVec)
+
+                    # Calculate normalization
+                    num_pairs = Natoms*Natoms*Natoms
+                    normalization = 1./self.smearing_norm2
+                    normalization /= num_pairs/self.volume
+
+                    # Identify what bin 'Rij' belongs to + it's position in this bin
+                    center_bin = <int> floor(angle/self.binwidth1)
+                    binpos = angle/self.binwidth2 - center_bin
+
+                    # Lower and upper range of bins affected by the current atomic distance deltaR.
+                    minbin_lim = <int> -ceil(self.m2 - binpos)
+                    maxbin_lim = <int> ceil(self.m2 - (1-binpos))
+
+                    for n in range(minbin_lim, maxbin_lim + 1):
+                        newbin = center_bin + n
+
+                        # Wrap current bin into correct bin-range
+                        if newbin < 0:
+                            newbin = abs(newbin)
+                        if newbin > self.Nbins2-1:
+                            newbin = 2*self.Nbins2 - newbin - 1
+
+                        # Calculate gauss contribution to current bin
+                        c = 1./sqrt(2)*self.binwidth2/self.sigma2
+                        erfarg_low = max(-self.m2, n-binpos)
+                        erfarg_up = min(self.m2, n+(1-binpos))
+                        value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)
+                        value *= f_cutoff(Rij, self.gamma, self.Rc2) * f_cutoff(Rik, self.gamma, self.Rc2)
+                        # Apply normalization
+                        value *= normalization
+
+                        feature2[newbin] += value
+
+        # Convert angular feature to numpy array
+        feature2_np = np.zeros(self.Nelements_3body)
+        for m in range(self.Nelements_3body):
+            feature2_np[m] = feature2[m]
+
         feature_np = np.zeros(self.Nelements)
-        for m in range(self.Nelements):
-            feature_np[m] = feature[m]
-
+        feature_np[:self.Nelements_2body] = feature1_np
+        feature_np[self.Nelements_2body:] = feature2_np
         return feature_np
+
+    """
+    def get_featureGradient(self, atoms):
+        cell = atoms.get_cell()
+        cdef int Natoms = self.Natoms
+
+        # Get positions and convert to Point-struct
+        cdef list pos_np = atoms.get_positions().tolist()
+        cdef Point *pos
+        pos = <Point*>self.mem.alloc(Natoms, sizeof(Point2))
+        cdef int m
+        for m in range(Natoms):
+            pos[m].x = pos_np[m][0]
+            pos[m].y = pos_np[m][1]
+            pos[m].z = pos_np[m][2]
+
+        # RADIAL FEATURE GRADIENT
+
+        # Initialize radial feature-gradient
+        cdef double *featureGrad1
+        feature_grad1 = <double*>self.mem.alloc(self.Nelements_2body * Natoms * self.dim, sizeof(double))
+
+        cdef double *RijVec[3]
+        cdef int num_pairs, center_bin, minbin_lim, maxbin_lim, newbin
+        cdef double Rij, normalization, binpos, c, erfarg_low, erfarg_up, value1, value2, value
+        cdef int i, j, n
+        for i in range(Natoms):
+            for j in range(Natoms):
+                Rij = euclidean(pos[i], pos[j])
+
+                # Stop if distance too long or atoms are the same one.
+                if Rij > self.Rc1+self.nsigma*self.sigma1 or Rij < 1e-6:
+                    continue
+                RijVec = subtract(pos[j],pos[i])
+
+                # Calculate normalization
+                num_pairs = Natoms*Natoms
+                normalization = 1./self.smearing_norm1
+                normalization /= 4*M_PI*Rij*Rij * self.binwidth1 * num_pairs/self.volume
+
+                # Identify what bin 'Rij' belongs to + it's position in this bin
+                center_bin = <int> floor(Rij/self.binwidth1)
+                binpos = Rij/self.binwidth1 - center_bin
+
+                # Lower and upper range of bins affected by the current atomic distance deltaR.
+                minbin_lim = <int> -ceil(self.m1 - binpos)
+                maxbin_lim = <int> ceil(self.m1 - (1-binpos))
+
+                for n in range(minbin_lim, maxbin_lim + 1):
+                    newbin = center_bin + n
+                    if newbin < 0 or newbin >= self.Nbins1:
+                        continue
+
+                    # Calculate gauss contribution to current bin
+                    c = 1./sqrt(2)*self.binwidth1/self.sigma1
+                    erfarg_low = max(-self.m1, n-binpos)
+                    erfarg_up = min(self.m1, n+(1-binpos))
+                    value1 = -1./Rij * (erf(c*erfarg_up) - erf(c*erfarg_low))
+                    value2 = -1./(self.sigma1*sqrt(2*M_PI)) * (exp(-pow(c*arg_up,2)) - exp(-pow(c*arg_low,2)))
+                    value = value1 + value2
+
+                    # Apply normalization
+                    value *= normalization
+
+                    # Add to the the gradient matrix
+                    for m in range(3):
+                        feature_grad1[newbin, self.dim*i:self.dim*i+m] += -value/deltaR*RijVec[m]
+                        feature_grad1[newbin, self.dim*j:self.dim*j+m] += value/deltaR*RijVec[m]
+
+
+        # Convert radial feature to numpy array
+        feature_grad1_np = np.zeros(Natoms*self.dim, self.Nelements_2body)
+        for m in range(self.Nelements_2body):
+            feature_grad1_np[m] = feature_grad1[m]
+
+        # Return feature if only radial part is desired
+        if not self.use_angular:
+            return feature_grad1_np
+
+            # ANGULAR FEATURE-GRADIENT
+
+            # Initialize angular feature-gradient
+            cdef double *feature2
+            feature2 = <double*>self.mem.alloc(self.Nelements_3body, sizeof(double))
+
+            cdef Point RijVec, RikVec
+            cdef double angle
+            cdef int k, cond_ij, cond_ik
+            for i in range(Natoms):
+                for j in range(Natoms):
+                    for k in range(j+1, Natoms):
+                        Rij = euclidean(pos[i], pos[j])
+                        Rik = euclidean(pos[i], pos[k])
+
+                        # Stop if distance too long or atoms are the same one.
+                        cond_ij = Rij > self.Rc2 or Rij < 1e-6
+                        cond_ik = Rik > self.Rc2 or Rik < 1e-6
+                        if cond_ij or cond_ik:
+                            continue
+
+                        # Calculate angle
+                        RijVec = subtract(pos[j],pos[i])
+                        RikVec = subtract(pos[k], pos[i])
+                        angle = get_angle(RijVec, RikVec)
+
+                        # Calculate normalization
+                        num_pairs = Natoms*Natoms*Natoms
+                        normalization = 1./self.smearing_norm2
+                        normalization /= num_pairs/self.volume
+
+                        # Identify what bin 'Rij' belongs to + it's position in this bin
+                        center_bin = <int> floor(angle/self.binwidth1)
+                        binpos = angle/self.binwidth2 - center_bin
+
+                        # Lower and upper range of bins affected by the current atomic distance deltaR.
+                        minbin_lim = <int> -ceil(self.m2 - binpos)
+                        maxbin_lim = <int> ceil(self.m2 - (1-binpos))
+
+                        for n in range(minbin_lim, maxbin_lim + 1):
+                            newbin = center_bin + n
+
+                            # Wrap current bin into correct bin-range
+                            if newbin < 0:
+                                newbin = abs(newbin)
+                            if newbin > self.Nbins2-1:
+                                newbin = 2*self.Nbins2 - newbin - 1
+
+                            # Calculate gauss contribution to current bin
+                            c = 1./sqrt(2)*self.binwidth2/self.sigma2
+                            erfarg_low = max(-self.m2, n-binpos)
+                            erfarg_up = min(self.m2, n+(1-binpos))
+                            value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)
+                            value *= f_cutoff(Rij, self.gamma, self.Rc2) * f_cutoff(Rik, self.gamma, self.Rc2)
+                            # Apply normalization
+                            value *= normalization
+
+                            feature2[newbin] += value
+
+            # Convert angular feature to numpy array
+            feature2_np = np.zeros(self.Nelements_3body)
+            for m in range(self.Nelements_3body):
+                feature2_np[m] = feature2[m]
+
+            feature_np = np.zeros(self.Nelements)
+            feature_np[:self.Nelements_2body] = feature1_np
+            feature_np[self.Nelements_2body:] = feature2_np
+            return feature_np
+        """
 
     def __angle(self, vec1, vec2):
         """

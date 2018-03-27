@@ -87,7 +87,7 @@ sigma1 = 0.2
 Rc2 = 3
 Nbins2 = 50
 sigma2 = 0.2
-use_angular = False
+use_angular = True
 
 featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=0, use_angular=use_angular)
 t0 = time()
@@ -99,11 +99,15 @@ t0_cy = time()
 fingerprint_cy = featureCalculator_cy.get_feature(a)
 runtime_cy = time() - t0_cy
 
+print(fingerprint_cy)
+
 print('runtime python:', runtime)
 print('runtime cython:', runtime_cy)
 print('times faster:', runtime/runtime_cy)
 Nbins1 = int(np.ceil(Rc1/binwidth1))
-r = np.linspace(0,Rc1, Nbins1)
+Nbins = Nbins1 + Nbins2
+r = np.linspace(0,Rc1, Nbins)
+
 plt.figure()
 plt.plot(r, fingerprint)
 plt.plot(r, fingerprint_cy, linestyle=':', color='k')
