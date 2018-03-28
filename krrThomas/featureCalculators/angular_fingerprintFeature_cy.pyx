@@ -274,7 +274,7 @@ cdef class Angular_Fingerprint:
         # Convert angular feature to numpy array
         feature2_np = np.zeros(self.Nelements_3body)
         for m in range(self.Nelements_3body):
-            feature2_np[m] = feature2[m]
+            feature2_np[m] = self.eta * feature2[m]
 
         feature_np = np.zeros(self.Nelements)
         feature_np[:self.Nelements_2body] = feature1_np
@@ -457,7 +457,7 @@ cdef class Angular_Fingerprint:
         feature_grad2_np = np.zeros((Natoms*self.dim, self.Nelements_3body))
         for m in range(self.Nelements_3body):
             for grad_index in range(Natoms*self.dim):
-                feature_grad2_np[grad_index][m] = feature_grad2[m * Natoms*self.dim + grad_index]
+                feature_grad2_np[grad_index][m] = self.eta * feature_grad2[m * Natoms*self.dim + grad_index]
 
         feature_grad_np = np.zeros((Natoms*self.dim, self.Nelements))
         feature_grad_np[:, :self.Nelements_2body] = feature_grad1_np
