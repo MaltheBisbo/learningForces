@@ -519,7 +519,8 @@ class globalOptim():
 if __name__ == '__main__':
     from custom_calculators import doubleLJ_calculator
     from gaussComparator import gaussComparator
-    from angular_fingerprintFeature import Angular_Fingerprint
+    #from angular_fingerprintFeature import Angular_Fingerprint
+    from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
     from krr_ase import krr_class
     from ase.calculators.dftb import Dftb
     import sys
@@ -538,7 +539,7 @@ if __name__ == '__main__':
     sigma2 = 0.2
     
     gamma = 1
-    eta = 20
+    eta = 30
     use_angular = True
     
     featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)

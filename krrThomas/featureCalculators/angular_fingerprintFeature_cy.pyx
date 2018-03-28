@@ -141,6 +141,9 @@ cdef class Angular_Fingerprint:
         else:
             self.Nelements = self.Nelements_2body
 
+    def get_Nelements(self):
+        return self.Nelements
+
     def get_feature(self, atoms):
         """
         """

@@ -71,13 +71,13 @@ a = Atoms(atomtypes,
           pbc=pbc)
 """
 atoms = read('graphene_data/graphene_all2.traj', index=':')
-a = atoms[0]
+a = atoms[100]
 atomtypes = a.get_atomic_numbers()
 N = len(a.get_atomic_numbers())
 x = a.get_positions().reshape(-1)
 
 
-#view(a)
+view(a)
 
 Rc1 = 4
 binwidth1 = 0.1
@@ -86,20 +86,28 @@ sigma1 = 0.2
 Rc2 = 3
 Nbins2 = 50
 sigma2 = 0.2
+
+eta = 30
+gamma = 2
 use_angular = True
 
-featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=0, use_angular=use_angular)
+
+featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2,
+                                        eta=eta, gamma=gamma, use_angular=use_angular)
 t0 = time()
 fingerprint = featureCalculator.get_feature(a)
 fingerprint_grad = featureCalculator.get_featureGradient(a)
 runtime = time() - t0
 
 
-featureCalculator_cy = Angular_Fingerprint_cy(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=0, use_angular=use_angular)
+featureCalculator_cy = Angular_Fingerprint_cy(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2,
+                                              eta=eta, gamma=gamma, use_angular=use_angular)
 t0_cy = time()
 fingerprint_cy = featureCalculator_cy.get_feature(a)
 fingerprint_grad_cy = featureCalculator_cy.get_featureGradient(a)
 runtime_cy = time() - t0_cy
+
+print(featureCalculator_cy.get_Nelements())
 
 
 print('runtime python:', runtime)
