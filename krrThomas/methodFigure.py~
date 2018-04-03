@@ -1,0 +1,9 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+x_ML = np.linspace(-1.5,1.5,100)
+x_true = np.linspace(-1,1,100)
+f_ML = 0.5*x_ML**2
+f_true = x_true**2-2
+
+plt.plot
