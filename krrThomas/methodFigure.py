@@ -4,12 +4,10 @@ import matplotlib.pyplot as plt
 x_ML_offset = 0.3
 def func_ML(x):
     offset = x_ML_offset
-    #f_ML = 0.7*(x - offset)**2
     f_ML = - 1.6*np.exp(-(x-offset)**2/2) + 1.3 
     return f_ML
 
 def func_true(x):
-    #f_true = x**2 - 1
     f_true = -1.5*np.exp(-x**2)
     return f_true
 
@@ -23,6 +21,7 @@ def make_arrow(p1,p2, head_width, head_length, stop_before):
     vec = p2 - p1
     diff = vec - (head_length + stop_before) * vec/np.linalg.norm(vec)
     plt.arrow(p1[0], p1[1], diff[0], diff[1], head_width=0.05, head_length=0.1, fc='k', ec='k')
+
 
 plt.figure()
 plt.axis('equal')
