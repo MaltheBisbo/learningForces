@@ -18,21 +18,25 @@ f_ML = func_ML(x_ML)
 f_true = func_true(x_true)
 
 def make_arrow(p1,p2, head_width, head_length, stop_before):
+    p1 = np.array(p1)
+    p2 = np.array(p2)
     vec = p2 - p1
     diff = vec - (head_length + stop_before) * vec/np.linalg.norm(vec)
     plt.arrow(p1[0], p1[1], diff[0], diff[1], head_width=0.05, head_length=0.1, fc='k', ec='k')
 
 
-plt.figure()
-plt.axis('equal')
-plt.axis([-2, 2.5, -2, 1.5])
+plt.figure(figsize=(5,6))
+#plt.axis('equal')
+#plt.gca().set_aspect('equal', adjustable='box')
+plt.axis('off')
+plt.axis([-1.7, 1.8, -1.6, 1.2])
 
 # Plot functions
 plt.plot(x_ML, f_ML)
 plt.plot(x_true, f_true)
 
 # Plot new point
-plt.scatter(1.4, func_ML(1.4), color='r')
+plt.plot(1.4, func_ML(1.4), 'ro')
 
 # Plot relaxation arrows
 p1 = np.array([1.35, func_ML(1.35)+0.03])
@@ -44,7 +48,7 @@ make_arrow(p2,p3, head_width=0.05, head_length=0.1, stop_before=0.03)
 make_arrow(p3,p4, head_width=0.05, head_length=0.1, stop_before=0.03)
 
 # Plot ML_relaxed point
-plt.scatter(0.3, func_ML(0.3), color='g')
+plt.plot(0.3, func_ML(0.3), 'go')
 
 # Plot arrow from ML to true potential
 p = np.array([0.3, func_ML(0.3)-0.08])
@@ -52,7 +56,7 @@ q = np.array([0.3, func_true(0.3)+0.05])
 make_arrow(p,q, head_width=0.05, head_length=0.1, stop_before=0.03)
 
 # Plot ML_relaxed point on true surface
-plt.scatter(0.3, func_true(0.3), color='g')
+plt.plot(0.3, func_true(0.3), 'go')
 
 # Plot text
 plt.text(-0.35, -0.9, 'Calculate\ntrue\nenergy')
@@ -63,7 +67,16 @@ plt.text(0.6, 0.1, 'Relax')
 p1 = np.array([1.4, 0.9])
 p2 = np.array([1.4, 0.47])
 make_arrow(p1,p2, head_width=0.05, head_length=0.1, stop_before=0.03)
-plt.text(1.1, 1.0, 'New structure')
+plt.text(0.8, 1.0, 'New structure')
 
+p1 = np.array([1.4, 0.9])
+p2 = np.array([1.4, 0.47])
+make_arrow(p1,p2, head_width=0.05, head_length=0.1, stop_before=0.03)
+plt.text(0.8, 1.0, 'New structure')
+
+make_arrow([0.9, -1.38],[0.4, -1.38], head_width=0.05, head_length=0.1, stop_before=0.03)
+plt.text(1.0, -1.5, 'Use for\ntraining')
+
+plt.savefig('MLrelaxFigure.pdf', format='pdf')
 plt.show()
 
