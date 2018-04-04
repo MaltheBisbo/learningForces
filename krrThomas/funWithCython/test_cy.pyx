@@ -1,7 +1,10 @@
 
-cpdef int test(int x):
-    cdef int y = 0
-    cdef int i
-    for i in range(x):
-        y += i
-    return y
+cdef class myClass1:
+
+    def __init__(self):
+        self.N = 2
+
+
+class myClass2(object):
+    def __init__(self):
+        self.N = 2

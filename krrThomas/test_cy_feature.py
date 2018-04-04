@@ -107,7 +107,7 @@ fingerprint_cy = featureCalculator_cy.get_feature(a)
 fingerprint_grad_cy = featureCalculator_cy.get_featureGradient(a)
 runtime_cy = time() - t0_cy
 
-print(featureCalculator_cy.get_Nelements())
+print(featureCalculator_cy.Nelements)
 
 
 print('runtime python:', runtime)
