@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "globalOptim_ase3d.py", line 582, in <module>
+    optimizer.runOptimizer()
+  File "globalOptim_ase3d.py", line 394, in runOptimizer
+    self.trainModel()
+  File "globalOptim_ase3d.py", line 446, in trainModel
+    **GSkwargs)
+  File "/home/mkb/GitHub/learningForces/krrThomas/krr_ase.py", line 132, in train
+    featureMat = self.featureCalculator.get_featureMat(atoms_list)
+AttributeError: 'Angular_Fingerprint' object has no attribute 'get_featureMat'
