@@ -356,6 +356,10 @@ class globalOptim():
             traj_counter = '00' + str(self.traj_counter)
         if len(str(self.traj_counter)) == 2:
             traj_counter = '0' + str(self.traj_counter)
+
+        plane = [FixedPlane(x, (0, 0, 1)) for x in range(len(a))]
+        a.set_constraint(plane)
+            
         if ML:
             traj_name = self.traj_namebase + 'ML{}.traj'.format(traj_counter)
             krr_calc = krr_calculator(self.MLmodel, noZ=self.noZ)
@@ -387,7 +391,7 @@ class globalOptim():
 if __name__ == '__main__':
     from custom_calculators import doubleLJ_calculator
     from gaussComparator import gaussComparator
-    from angular_fingerprintFeature import Angular_Fingerprint
+    from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
     from krr_ase import krr_class
     
     Natoms = 19
