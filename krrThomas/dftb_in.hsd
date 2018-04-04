@@ -17,7 +17,7 @@ Hamiltonian = DFTB{
    } 
    SCC = No 
    SlaterKosterFiles = Type2FileNames{ 
-      Prefix = ./ 
+      Prefix = /home/groves/DFT/dftb_parameters/probAlreadyhave/ 
       Separator = "-" 
       Suffix = ".skf" 
    } 
