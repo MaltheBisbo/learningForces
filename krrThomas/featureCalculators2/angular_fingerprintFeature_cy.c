@@ -805,6 +805,7 @@ static const char *__pyx_filename;
 
 static const char *__pyx_f[] = {
   "featureCalculators/angular_fingerprintFeature_cy.pyx",
+  "stringsource",
   "__init__.pxd",
   "type.pxd",
   "cymem.pxd",
@@ -814,7 +815,7 @@ static const char *__pyx_f[] = {
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":730
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":730
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * # in Cython to enable them only on the right systems.
  * 
  * ctypedef npy_int8       int8_t             # <<<<<<<<<<<<<<
@@ -827,7 +828,7 @@ typedef npy_int8 __pyx_t_5numpy_int8_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":731
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":731
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t             # <<<<<<<<<<<<<<
@@ -840,7 +841,7 @@ typedef npy_int16 __pyx_t_5numpy_int16_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":732
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":732
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t             # <<<<<<<<<<<<<<
@@ -853,7 +854,7 @@ typedef npy_int32 __pyx_t_5numpy_int32_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":733
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":733
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t
  * ctypedef npy_int64      int64_t             # <<<<<<<<<<<<<<
@@ -866,7 +867,7 @@ typedef npy_int64 __pyx_t_5numpy_int64_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":737
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":737
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * #ctypedef npy_int128     int128_t
  * 
  * ctypedef npy_uint8      uint8_t             # <<<<<<<<<<<<<<
@@ -879,7 +880,7 @@ typedef npy_uint8 __pyx_t_5numpy_uint8_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":738
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":738
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t             # <<<<<<<<<<<<<<
@@ -892,7 +893,7 @@ typedef npy_uint16 __pyx_t_5numpy_uint16_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":739
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":739
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t             # <<<<<<<<<<<<<<
@@ -905,7 +906,7 @@ typedef npy_uint32 __pyx_t_5numpy_uint32_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":740
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":740
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t
  * ctypedef npy_uint64     uint64_t             # <<<<<<<<<<<<<<
@@ -918,7 +919,7 @@ typedef npy_uint64 __pyx_t_5numpy_uint64_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":744
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":744
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * #ctypedef npy_uint128    uint128_t
  * 
  * ctypedef npy_float32    float32_t             # <<<<<<<<<<<<<<
@@ -931,7 +932,7 @@ typedef npy_float32 __pyx_t_5numpy_float32_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":745
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":745
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * ctypedef npy_float32    float32_t
  * ctypedef npy_float64    float64_t             # <<<<<<<<<<<<<<
@@ -944,7 +945,7 @@ typedef npy_float64 __pyx_t_5numpy_float64_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":754
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":754
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * # The int types are mapped a bit surprising --
  * # numpy.int corresponds to 'l' and numpy.long to 'q'
  * ctypedef npy_long       int_t             # <<<<<<<<<<<<<<
@@ -957,7 +958,7 @@ typedef npy_long __pyx_t_5numpy_int_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":755
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":755
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * # numpy.int corresponds to 'l' and numpy.long to 'q'
  * ctypedef npy_long       int_t
  * ctypedef npy_longlong   long_t             # <<<<<<<<<<<<<<
@@ -970,7 +971,7 @@ typedef npy_longlong __pyx_t_5numpy_long_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":756
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":756
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_long       int_t
  * ctypedef npy_longlong   long_t
  * ctypedef npy_longlong   longlong_t             # <<<<<<<<<<<<<<
@@ -983,7 +984,7 @@ typedef npy_longlong __pyx_t_5numpy_longlong_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":758
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":758
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_longlong   longlong_t
  * 
  * ctypedef npy_ulong      uint_t             # <<<<<<<<<<<<<<
@@ -996,7 +997,7 @@ typedef npy_ulong __pyx_t_5numpy_uint_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":759
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":759
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * ctypedef npy_ulong      uint_t
  * ctypedef npy_ulonglong  ulong_t             # <<<<<<<<<<<<<<
@@ -1009,7 +1010,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulong_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":760
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":760
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_ulong      uint_t
  * ctypedef npy_ulonglong  ulong_t
  * ctypedef npy_ulonglong  ulonglong_t             # <<<<<<<<<<<<<<
@@ -1022,7 +1023,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":762
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":762
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_ulonglong  ulonglong_t
  * 
  * ctypedef npy_intp       intp_t             # <<<<<<<<<<<<<<
@@ -1035,7 +1036,7 @@ typedef npy_intp __pyx_t_5numpy_intp_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":763
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":763
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * ctypedef npy_intp       intp_t
  * ctypedef npy_uintp      uintp_t             # <<<<<<<<<<<<<<
@@ -1048,7 +1049,7 @@ typedef npy_uintp __pyx_t_5numpy_uintp_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":765
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":765
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_uintp      uintp_t
  * 
  * ctypedef npy_double     float_t             # <<<<<<<<<<<<<<
@@ -1061,7 +1062,7 @@ typedef npy_double __pyx_t_5numpy_float_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":766
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":766
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t             # <<<<<<<<<<<<<<
@@ -1074,7 +1075,7 @@ typedef npy_double __pyx_t_5numpy_double_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":767
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":767
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t
  * ctypedef npy_longdouble longdouble_t             # <<<<<<<<<<<<<<
@@ -1110,12 +1111,13 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
 /*--- Type declarations ---*/
 struct __pyx_obj_5cymem_5cymem_Pool;
 struct __pyx_obj_5cymem_5cymem_Address;
+struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint;
 
 <<<<<<< HEAD
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":769
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":769
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_longdouble longdouble_t
  * 
  * ctypedef npy_cfloat      cfloat_t             # <<<<<<<<<<<<<<
@@ -1128,7 +1130,7 @@ typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":770
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":770
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * ctypedef npy_cfloat      cfloat_t
  * ctypedef npy_cdouble     cdouble_t             # <<<<<<<<<<<<<<
@@ -1141,7 +1143,7 @@ typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":771
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":771
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_cfloat      cfloat_t
  * ctypedef npy_cdouble     cdouble_t
  * ctypedef npy_clongdouble clongdouble_t             # <<<<<<<<<<<<<<
@@ -1154,7 +1156,7 @@ typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":773
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":773
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_clongdouble clongdouble_t
  * 
  * ctypedef npy_cdouble     complex_t             # <<<<<<<<<<<<<<
@@ -1199,6 +1201,41 @@ struct __pyx_obj_5cymem_5cymem_Pool {
 struct __pyx_obj_5cymem_5cymem_Address {
   PyObject_HEAD
   void *ptr;
+};
+
+
+/* "featureCalculators/angular_fingerprintFeature_cy.pyx":75
+ *         return 0
+ * 
+ * cdef class Angular_Fingerprint:             # <<<<<<<<<<<<<<
+ *     """ comparator for construction of angular fingerprints
+ *     """
+ */
+struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint {
+  PyObject_HEAD
+  struct __pyx_obj_5cymem_5cymem_Pool *mem;
+  double Rc1;
+  double Rc2;
+  double binwidth1;
+  double binwidth2;
+  int Nbins1;
+  int Nbins2;
+  double sigma1;
+  double sigma2;
+  int nsigma;
+  double eta;
+  double gamma;
+  PyObject *use_angular;
+  double volume;
+  int Natoms;
+  int dim;
+  double m1;
+  double m2;
+  double smearing_norm1;
+  double smearing_norm2;
+  int Nelements_2body;
+  int Nelements_3body;
+  int Nelements;
 };
 
 
@@ -1331,10 +1368,6 @@ static void __Pyx_WriteUnraisable(const char *name, int clineno,
                                   int lineno, const char *filename,
                                   int full_traceback, int nogil);
 
-/* RaiseArgTupleInvalid.proto */
-static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
-    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
-
 /* RaiseDoubleKeywords.proto */
 static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_name);
 
@@ -1343,24 +1376,9 @@ static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
     PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
     const char* function_name);
 
-/* PyObjectSetAttrStr.proto */
-#if CYTHON_USE_TYPE_SLOTS
-#define __Pyx_PyObject_DelAttrStr(o,n) __Pyx_PyObject_SetAttrStr(o, n, NULL)
-static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value);
-#else
-#define __Pyx_PyObject_DelAttrStr(o,n)   PyObject_DelAttr(o,n)
-#define __Pyx_PyObject_SetAttrStr(o,n,v) PyObject_SetAttr(o,n,v)
-#endif
-
-/* GetModuleGlobalName.proto */
-static CYTHON_INLINE PyObject *__Pyx_GetModuleGlobalName(PyObject *name);
-
-/* PyCFunctionFastCall.proto */
-#if CYTHON_FAST_PYCCALL
-static CYTHON_INLINE PyObject *__Pyx_PyCFunction_FastCall(PyObject *func, PyObject **args, Py_ssize_t nargs);
-#else
-#define __Pyx_PyCFunction_FastCall(func, args, nargs)  (assert(0), NULL)
-#endif
+/* RaiseArgTupleInvalid.proto */
+static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
+    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
 
 /* PyFunctionFastCall.proto */
 #if CYTHON_FAST_PYCALL
@@ -1385,15 +1403,25 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg);
 #endif
 
-/* PyObjectCallOneArg.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
-
 /* PyObjectCallNoArg.proto */
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func);
 #else
 #define __Pyx_PyObject_CallNoArg(func) __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL)
 #endif
+
+/* GetModuleGlobalName.proto */
+static CYTHON_INLINE PyObject *__Pyx_GetModuleGlobalName(PyObject *name);
+
+/* PyCFunctionFastCall.proto */
+#if CYTHON_FAST_PYCCALL
+static CYTHON_INLINE PyObject *__Pyx_PyCFunction_FastCall(PyObject *func, PyObject **args, Py_ssize_t nargs);
+#else
+#define __Pyx_PyCFunction_FastCall(func, args, nargs)  (assert(0), NULL)
+#endif
+
+/* PyObjectCallOneArg.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
 
 /* GetItemInt.proto */
 #define __Pyx_GetItemInt(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
@@ -1452,8 +1480,34 @@ static CYTHON_INLINE int __Pyx_ListComp_Append(PyObject* list, PyObject* x) {
 #define __Pyx_ListComp_Append(L,x) PyList_Append(L,x)
 #endif
 
+/* PyErrExceptionMatches.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err);
+#else
+#define __Pyx_PyErr_ExceptionMatches(err)  PyErr_ExceptionMatches(err)
+#endif
+
+/* GetAttr.proto */
+static CYTHON_INLINE PyObject *__Pyx_GetAttr(PyObject *, PyObject *);
+
+/* GetAttr3.proto */
+static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *, PyObject *, PyObject *);
+
+/* Import.proto */
+static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level);
+
+/* ImportFrom.proto */
+static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name);
+
 /* RaiseException.proto */
 static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
+
+/* ExtTypeTest.proto */
+static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type);
+
+/* HasAttr.proto */
+static CYTHON_INLINE int __Pyx_HasAttr(PyObject *, PyObject *);
 
 /* DictGetItem.proto */
 #if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
@@ -1475,9 +1529,6 @@ static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index);
 /* RaiseNoneIterError.proto */
 static CYTHON_INLINE void __Pyx_RaiseNoneNotIterableError(void);
 
-/* ExtTypeTest.proto */
-static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type);
-
 /* SaveResetException.proto */
 #if CYTHON_FAST_THREAD_STATE
 #define __Pyx_ExceptionSave(type, value, tb)  __Pyx__ExceptionSave(__pyx_tstate, type, value, tb)
@@ -1489,14 +1540,6 @@ static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject 
 #define __Pyx_ExceptionReset(type, value, tb)  PyErr_SetExcInfo(type, value, tb)
 #endif
 
-/* PyErrExceptionMatches.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
-static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err);
-#else
-#define __Pyx_PyErr_ExceptionMatches(err)  PyErr_ExceptionMatches(err)
-#endif
-
 /* GetException.proto */
 #if CYTHON_FAST_THREAD_STATE
 #define __Pyx_GetException(type, value, tb)  __Pyx__GetException(__pyx_tstate, type, value, tb)
@@ -1505,90 +1548,25 @@ static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject 
 static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb);
 #endif
 
+/* PyObject_GenericGetAttrNoDict.proto */
+#if CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP && PY_VERSION_HEX < 0x03070000
+static CYTHON_INLINE PyObject* __Pyx_PyObject_GenericGetAttrNoDict(PyObject* obj, PyObject* attr_name);
+#else
+#define __Pyx_PyObject_GenericGetAttrNoDict PyObject_GenericGetAttr
+#endif
+
+/* PyObject_GenericGetAttr.proto */
+#if CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP && PY_VERSION_HEX < 0x03070000
+static PyObject* __Pyx_PyObject_GenericGetAttr(PyObject* obj, PyObject* attr_name);
+#else
+#define __Pyx_PyObject_GenericGetAttr PyObject_GenericGetAttr
+#endif
+
+/* SetupReduce.proto */
+static int __Pyx_setup_reduce(PyObject* type_obj);
+
 /* GetVTable.proto */
 static void* __Pyx_GetVtable(PyObject *dict);
-
-/* Import.proto */
-static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level);
-
-/* ImportFrom.proto */
-static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name);
-
-/* CalculateMetaclass.proto */
-static PyObject *__Pyx_CalculateMetaclass(PyTypeObject *metaclass, PyObject *bases);
-
-/* FetchCommonType.proto */
-static PyTypeObject* __Pyx_FetchCommonType(PyTypeObject* type);
-
-/* CythonFunction.proto */
-#define __Pyx_CyFunction_USED 1
-#define __Pyx_CYFUNCTION_STATICMETHOD  0x01
-#define __Pyx_CYFUNCTION_CLASSMETHOD   0x02
-#define __Pyx_CYFUNCTION_CCLASS        0x04
-#define __Pyx_CyFunction_GetClosure(f)\
-    (((__pyx_CyFunctionObject *) (f))->func_closure)
-#define __Pyx_CyFunction_GetClassObj(f)\
-    (((__pyx_CyFunctionObject *) (f))->func_classobj)
-#define __Pyx_CyFunction_Defaults(type, f)\
-    ((type *)(((__pyx_CyFunctionObject *) (f))->defaults))
-#define __Pyx_CyFunction_SetDefaultsGetter(f, g)\
-    ((__pyx_CyFunctionObject *) (f))->defaults_getter = (g)
-typedef struct {
-    PyCFunctionObject func;
-#if PY_VERSION_HEX < 0x030500A0
-    PyObject *func_weakreflist;
-#endif
-    PyObject *func_dict;
-    PyObject *func_name;
-    PyObject *func_qualname;
-    PyObject *func_doc;
-    PyObject *func_globals;
-    PyObject *func_code;
-    PyObject *func_closure;
-    PyObject *func_classobj;
-    void *defaults;
-    int defaults_pyobjects;
-    int flags;
-    PyObject *defaults_tuple;
-    PyObject *defaults_kwdict;
-    PyObject *(*defaults_getter)(PyObject *);
-    PyObject *func_annotations;
-} __pyx_CyFunctionObject;
-static PyTypeObject *__pyx_CyFunctionType = 0;
-#define __Pyx_CyFunction_NewEx(ml, flags, qualname, self, module, globals, code)\
-    __Pyx_CyFunction_New(__pyx_CyFunctionType, ml, flags, qualname, self, module, globals, code)
-static PyObject *__Pyx_CyFunction_New(PyTypeObject *, PyMethodDef *ml,
-                                      int flags, PyObject* qualname,
-                                      PyObject *self,
-                                      PyObject *module, PyObject *globals,
-                                      PyObject* code);
-static CYTHON_INLINE void *__Pyx_CyFunction_InitDefaults(PyObject *m,
-                                                         size_t size,
-                                                         int pyobjects);
-static CYTHON_INLINE void __Pyx_CyFunction_SetDefaultsTuple(PyObject *m,
-                                                            PyObject *tuple);
-static CYTHON_INLINE void __Pyx_CyFunction_SetDefaultsKwDict(PyObject *m,
-                                                             PyObject *dict);
-static CYTHON_INLINE void __Pyx_CyFunction_SetAnnotationsDict(PyObject *m,
-                                                              PyObject *dict);
-static int __pyx_CyFunction_init(void);
-
-/* SetNameInClass.proto */
-#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030500A1
-#define __Pyx_SetNameInClass(ns, name, value)\
-    (likely(PyDict_CheckExact(ns)) ? _PyDict_SetItem_KnownHash(ns, name, value, ((PyASCIIObject *) name)->hash) : PyObject_SetItem(ns, name, value))
-#elif CYTHON_COMPILING_IN_CPYTHON
-#define __Pyx_SetNameInClass(ns, name, value)\
-    (likely(PyDict_CheckExact(ns)) ? PyDict_SetItem(ns, name, value) : PyObject_SetItem(ns, name, value))
-#else
-#define __Pyx_SetNameInClass(ns, name, value)  PyObject_SetItem(ns, name, value)
-#endif
-
-/* Py3ClassCreate.proto */
-static PyObject *__Pyx_Py3MetaclassPrepare(PyObject *metaclass, PyObject *bases, PyObject *name, PyObject *qualname,
-                                           PyObject *mkw, PyObject *modname, PyObject *doc);
-static PyObject *__Pyx_Py3ClassCreate(PyObject *metaclass, PyObject *name, PyObject *bases, PyObject *dict,
-                                      PyObject *mkw, int calculate_metaclass, int allow_py2_metaclass);
 
 /* CLineInTraceback.proto */
 #ifdef CYTHON_CLINE_IN_TRACEBACK
@@ -1617,10 +1595,10 @@ static void __Pyx_AddTraceback(const char *funcname, int c_line,
                                int py_line, const char *filename);
 
 /* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
 
 /* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
 /* RealImag.proto */
 #if CYTHON_CCOMPLEX
@@ -1802,6 +1780,7 @@ static PyTypeObject *__pyx_ptype_5cymem_5cymem_Address = 0;
 /* Module declarations from 'cython' */
 
 /* Module declarations from 'featureCalculators.angular_fingerprintFeature_cy' */
+static PyTypeObject *__pyx_ptype_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint = 0;
 static __pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_subtract(__pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point, __pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point); /*proto*/
 static double __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_norm(__pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point); /*proto*/
 static double __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_euclidean(__pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point, __pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point); /*proto*/
@@ -1809,303 +1788,178 @@ static double __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_dot(_
 static double __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_get_angle(__pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point, __pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point); /*proto*/
 static double __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff(double, double, double); /*proto*/
 static double __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff_grad(double, double, double); /*proto*/
+static PyObject *__pyx_f_18featureCalculators_29angular_fingerprintFeature_cy___pyx_unpickle_Angular_Fingerprint__set_state(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *, PyObject *); /*proto*/
 #define __Pyx_MODULE_NAME "featureCalculators.angular_fingerprintFeature_cy"
 extern int __pyx_module_is_main_featureCalculators__angular_fingerprintFeature_cy;
 int __pyx_module_is_main_featureCalculators__angular_fingerprintFeature_cy = 0;
 
 /* Implementation of 'featureCalculators.angular_fingerprintFeature_cy' */
-static PyObject *__pyx_builtin_object;
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_RuntimeError;
 static PyObject *__pyx_builtin_ImportError;
-static const char __pyx_k_a[] = "a";
-static const char __pyx_k_c[] = "c";
-static const char __pyx_k_i[] = "i";
-static const char __pyx_k_j[] = "j";
-static const char __pyx_k_k[] = "k";
-static const char __pyx_k_m[] = "m";
-static const char __pyx_k_n[] = "n";
-static const char __pyx_k_m1[] = "m1";
-static const char __pyx_k_m2[] = "m2";
 static const char __pyx_k_np[] = "np";
 static const char __pyx_k_os[] = "os";
 static const char __pyx_k_pi[] = "pi";
 static const char __pyx_k_Rc1[] = "Rc1";
 static const char __pyx_k_Rc2[] = "Rc2";
-static const char __pyx_k_Rij[] = "Rij";
-static const char __pyx_k_Rik[] = "Rik";
 static const char __pyx_k_cwd[] = "cwd";
-static const char __pyx_k_dim[] = "dim";
-static const char __pyx_k_doc[] = "__doc__";
 static const char __pyx_k_erf[] = "erf";
 static const char __pyx_k_eta[] = "eta";
-static const char __pyx_k_mem[] = "mem";
-static const char __pyx_k_pos[] = "pos";
+static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_sys[] = "sys";
 static const char __pyx_k_argv[] = "argv";
 static const char __pyx_k_ceil[] = "ceil";
-static const char __pyx_k_cell[] = "cell";
-static const char __pyx_k_init[] = "__init__";
+static const char __pyx_k_dict[] = "__dict__";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_math[] = "math";
-static const char __pyx_k_self[] = "self";
+static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_sqrt[] = "sqrt";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_time[] = "time";
-static const char __pyx_k_angle[] = "angle";
 static const char __pyx_k_array[] = "array";
 static const char __pyx_k_atoms[] = "atoms";
 static const char __pyx_k_cdist[] = "cdist";
-static const char __pyx_k_fc_ij[] = "fc_ij";
-static const char __pyx_k_fc_ik[] = "fc_ik";
 static const char __pyx_k_gamma[] = "gamma";
 static const char __pyx_k_numpy[] = "numpy";
 static const char __pyx_k_range[] = "range";
-static const char __pyx_k_value[] = "value";
 static const char __pyx_k_zeros[] = "zeros";
-static const char __pyx_k_Natoms[] = "Natoms";
-static const char __pyx_k_Nbins1[] = "Nbins1";
 static const char __pyx_k_Nbins2[] = "Nbins2";
-static const char __pyx_k_RijVec[] = "RijVec";
-static const char __pyx_k_RikVec[] = "RikVec";
-static const char __pyx_k_arg_up[] = "arg_up";
-static const char __pyx_k_binpos[] = "binpos";
 static const char __pyx_k_getcwd[] = "getcwd";
 static const char __pyx_k_import[] = "__import__";
-static const char __pyx_k_module[] = "__module__";
-static const char __pyx_k_newbin[] = "newbin";
 static const char __pyx_k_nsigma[] = "nsigma";
-static const char __pyx_k_object[] = "object";
-static const char __pyx_k_pos_np[] = "pos_np";
+static const char __pyx_k_pickle[] = "pickle";
+static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_sigma1[] = "sigma1";
 static const char __pyx_k_sigma2[] = "sigma2";
 static const char __pyx_k_tolist[] = "tolist";
-static const char __pyx_k_value1[] = "value1";
-static const char __pyx_k_value2[] = "value2";
-static const char __pyx_k_volume[] = "volume";
-static const char __pyx_k_arg_low[] = "arg_low";
-static const char __pyx_k_cond_ij[] = "cond_ij";
-static const char __pyx_k_cond_ik[] = "cond_ik";
-static const char __pyx_k_prepare[] = "__prepare__";
+static const char __pyx_k_update[] = "update";
 static const char __pyx_k_product[] = "product";
-static const char __pyx_k_feature1[] = "feature1";
-static const char __pyx_k_feature2[] = "feature2";
 static const char __pyx_k_get_cell[] = "get_cell";
-static const char __pyx_k_qualname[] = "__qualname__";
-static const char __pyx_k_Nelements[] = "Nelements";
-static const char __pyx_k_bin_index[] = "bin_index";
+static const char __pyx_k_getstate[] = "__getstate__";
+static const char __pyx_k_pyx_type[] = "__pyx_type";
+static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_binwidth1[] = "binwidth1";
-static const char __pyx_k_binwidth2[] = "binwidth2";
-static const char __pyx_k_cos_angle[] = "cos_angle";
-static const char __pyx_k_erfarg_up[] = "erfarg_up";
 static const char __pyx_k_itertools[] = "itertools";
-static const char __pyx_k_metaclass[] = "__metaclass__";
-static const char __pyx_k_num_pairs[] = "num_pairs";
+static const char __pyx_k_pyx_state[] = "__pyx_state";
+static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_ValueError[] = "ValueError";
-static const char __pyx_k_atoms_list[] = "atoms_list";
-static const char __pyx_k_center_bin[] = "center_bin";
-static const char __pyx_k_erfarg_low[] = "erfarg_low";
-static const char __pyx_k_fc_grad_ij[] = "fc_grad_ij";
-static const char __pyx_k_fc_grad_ik[] = "fc_grad_ik";
-static const char __pyx_k_featureMat[] = "featureMat";
-static const char __pyx_k_feature_np[] = "feature_np";
 static const char __pyx_k_get_volume[] = "get_volume";
-static const char __pyx_k_grad_index[] = "grad_index";
-static const char __pyx_k_maxbin_lim[] = "maxbin_lim";
-static const char __pyx_k_minbin_lim[] = "minbin_lim";
+static const char __pyx_k_pyx_result[] = "__pyx_result";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_ImportError[] = "ImportError";
-static const char __pyx_k_feature1_np[] = "feature1_np";
-static const char __pyx_k_feature2_np[] = "feature2_np";
+static const char __pyx_k_PickleError[] = "PickleError";
 static const char __pyx_k_get_feature[] = "get_feature";
 static const char __pyx_k_use_angular[] = "use_angular";
 static const char __pyx_k_RuntimeError[] = "RuntimeError";
-static const char __pyx_k_angle_grad_i[] = "angle_grad_i";
-static const char __pyx_k_angle_grad_j[] = "angle_grad_j";
-static const char __pyx_k_angle_grad_k[] = "angle_grad_k";
-static const char __pyx_k_feature_grad1[] = "feature_grad1";
-static const char __pyx_k_feature_grad2[] = "feature_grad2";
-static const char __pyx_k_feature_grads[] = "feature_grads";
+static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
+static const char __pyx_k_stringsource[] = "stringsource";
 static const char __pyx_k_get_positions[] = "get_positions";
-static const char __pyx_k_normalization[] = "normalization";
-static const char __pyx_k_get_featureMat[] = "get_featureMat";
-static const char __pyx_k_smearing_norm1[] = "smearing_norm1";
-static const char __pyx_k_smearing_norm2[] = "smearing_norm2";
-static const char __pyx_k_Nelements_2body[] = "Nelements_2body";
-static const char __pyx_k_Nelements_3body[] = "Nelements_3body";
-static const char __pyx_k_feature_grad_np[] = "feature_grad_np";
-static const char __pyx_k_feature_grad1_np[] = "feature_grad1_np";
-static const char __pyx_k_feature_grad2_np[] = "feature_grad2_np";
+static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
+static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
+static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_Angular_Fingerprint[] = "Angular_Fingerprint";
 static const char __pyx_k_get_featureGradient[] = "get_featureGradient";
 static const char __pyx_k_get_number_of_atoms[] = "get_number_of_atoms";
 static const char __pyx_k_scipy_spatial_distance[] = "scipy.spatial.distance";
-static const char __pyx_k_get_all_featureGradients[] = "get_all_featureGradients";
-static const char __pyx_k_Angular_Fingerprint___init[] = "Angular_Fingerprint.__init__";
 static const char __pyx_k_ndarray_is_not_C_contiguous[] = "ndarray is not C contiguous";
-static const char __pyx_k_comparator_for_construction_of[] = " comparator for construction of angular fingerprints\n    ";
-static const char __pyx_k_Angular_Fingerprint_get_feature[] = "Angular_Fingerprint.get_feature";
+static const char __pyx_k_pyx_unpickle_Angular_Fingerpri[] = "__pyx_unpickle_Angular_Fingerprint";
 static const char __pyx_k_numpy_core_multiarray_failed_to[] = "numpy.core.multiarray failed to import";
 static const char __pyx_k_unknown_dtype_code_in_numpy_pxd[] = "unknown dtype code in numpy.pxd (%d)";
-static const char __pyx_k_Angular_Fingerprint_get_all_feat[] = "Angular_Fingerprint.get_all_featureGradients";
-static const char __pyx_k_Angular_Fingerprint_get_featureG[] = "Angular_Fingerprint.get_featureGradient";
-static const char __pyx_k_Angular_Fingerprint_get_featureM[] = "Angular_Fingerprint.get_featureMat";
 static const char __pyx_k_Format_string_allocated_too_shor[] = "Format string allocated too short, see comment in numpy.pxd";
+static const char __pyx_k_Incompatible_checksums_s_vs_0x85[] = "Incompatible checksums (%s vs 0x8546433 = (Natoms, Nbins1, Nbins2, Nelements, Nelements_2body, Nelements_3body, Rc1, Rc2, binwidth1, binwidth2, dim, eta, gamma, m1, m2, mem, nsigma, sigma1, sigma2, smearing_norm1, smearing_norm2, use_angular, volume))";
 static const char __pyx_k_Non_native_byte_order_not_suppor[] = "Non-native byte order not supported";
 static const char __pyx_k_featureCalculators_angular_finge[] = "featureCalculators.angular_fingerprintFeature_cy";
 static const char __pyx_k_ndarray_is_not_Fortran_contiguou[] = "ndarray is not Fortran contiguous";
 static const char __pyx_k_numpy_core_umath_failed_to_impor[] = "numpy.core.umath failed to import";
 static const char __pyx_k_Format_string_allocated_too_shor_2[] = "Format string allocated too short.";
-static const char __pyx_k_featureCalculators_angular_finge_2[] = "featureCalculators/angular_fingerprintFeature_cy.pyx";
-static PyObject *__pyx_n_s_Angular_Fingerprint;
-static PyObject *__pyx_n_s_Angular_Fingerprint___init;
-static PyObject *__pyx_n_s_Angular_Fingerprint_get_all_feat;
-static PyObject *__pyx_n_s_Angular_Fingerprint_get_feature;
-static PyObject *__pyx_n_s_Angular_Fingerprint_get_featureG;
-static PyObject *__pyx_n_s_Angular_Fingerprint_get_featureM;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor_2;
 static PyObject *__pyx_n_s_ImportError;
-static PyObject *__pyx_n_s_Natoms;
-static PyObject *__pyx_n_s_Nbins1;
+static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x85;
 static PyObject *__pyx_n_s_Nbins2;
-static PyObject *__pyx_n_s_Nelements;
-static PyObject *__pyx_n_s_Nelements_2body;
-static PyObject *__pyx_n_s_Nelements_3body;
 static PyObject *__pyx_kp_u_Non_native_byte_order_not_suppor;
+static PyObject *__pyx_n_s_PickleError;
 static PyObject *__pyx_n_s_Rc1;
 static PyObject *__pyx_n_s_Rc2;
-static PyObject *__pyx_n_s_Rij;
-static PyObject *__pyx_n_s_RijVec;
-static PyObject *__pyx_n_s_Rik;
-static PyObject *__pyx_n_s_RikVec;
 static PyObject *__pyx_n_s_RuntimeError;
 static PyObject *__pyx_n_s_ValueError;
-static PyObject *__pyx_n_s_a;
-static PyObject *__pyx_n_s_angle;
-static PyObject *__pyx_n_s_angle_grad_i;
-static PyObject *__pyx_n_s_angle_grad_j;
-static PyObject *__pyx_n_s_angle_grad_k;
-static PyObject *__pyx_n_s_arg_low;
-static PyObject *__pyx_n_s_arg_up;
 static PyObject *__pyx_n_s_argv;
 static PyObject *__pyx_n_s_array;
 static PyObject *__pyx_n_s_atoms;
-static PyObject *__pyx_n_s_atoms_list;
-static PyObject *__pyx_n_s_bin_index;
-static PyObject *__pyx_n_s_binpos;
 static PyObject *__pyx_n_s_binwidth1;
-static PyObject *__pyx_n_s_binwidth2;
-static PyObject *__pyx_n_s_c;
 static PyObject *__pyx_n_s_cdist;
 static PyObject *__pyx_n_s_ceil;
-static PyObject *__pyx_n_s_cell;
-static PyObject *__pyx_n_s_center_bin;
 static PyObject *__pyx_n_s_cline_in_traceback;
-static PyObject *__pyx_kp_s_comparator_for_construction_of;
-static PyObject *__pyx_n_s_cond_ij;
-static PyObject *__pyx_n_s_cond_ik;
-static PyObject *__pyx_n_s_cos_angle;
 static PyObject *__pyx_n_s_cwd;
-static PyObject *__pyx_n_s_dim;
-static PyObject *__pyx_n_s_doc;
+static PyObject *__pyx_n_s_dict;
 static PyObject *__pyx_n_s_erf;
-static PyObject *__pyx_n_s_erfarg_low;
-static PyObject *__pyx_n_s_erfarg_up;
 static PyObject *__pyx_n_s_eta;
-static PyObject *__pyx_n_s_fc_grad_ij;
-static PyObject *__pyx_n_s_fc_grad_ik;
-static PyObject *__pyx_n_s_fc_ij;
-static PyObject *__pyx_n_s_fc_ik;
-static PyObject *__pyx_n_s_feature1;
-static PyObject *__pyx_n_s_feature1_np;
-static PyObject *__pyx_n_s_feature2;
-static PyObject *__pyx_n_s_feature2_np;
 static PyObject *__pyx_n_s_featureCalculators_angular_finge;
-static PyObject *__pyx_kp_s_featureCalculators_angular_finge_2;
-static PyObject *__pyx_n_s_featureMat;
-static PyObject *__pyx_n_s_feature_grad1;
-static PyObject *__pyx_n_s_feature_grad1_np;
-static PyObject *__pyx_n_s_feature_grad2;
-static PyObject *__pyx_n_s_feature_grad2_np;
-static PyObject *__pyx_n_s_feature_grad_np;
-static PyObject *__pyx_n_s_feature_grads;
-static PyObject *__pyx_n_s_feature_np;
 static PyObject *__pyx_n_s_gamma;
-static PyObject *__pyx_n_s_get_all_featureGradients;
 static PyObject *__pyx_n_s_get_cell;
 static PyObject *__pyx_n_s_get_feature;
 static PyObject *__pyx_n_s_get_featureGradient;
-static PyObject *__pyx_n_s_get_featureMat;
 static PyObject *__pyx_n_s_get_number_of_atoms;
 static PyObject *__pyx_n_s_get_positions;
 static PyObject *__pyx_n_s_get_volume;
 static PyObject *__pyx_n_s_getcwd;
-static PyObject *__pyx_n_s_grad_index;
-static PyObject *__pyx_n_s_i;
+static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_n_s_import;
-static PyObject *__pyx_n_s_init;
 static PyObject *__pyx_n_s_itertools;
-static PyObject *__pyx_n_s_j;
-static PyObject *__pyx_n_s_k;
-static PyObject *__pyx_n_s_m;
-static PyObject *__pyx_n_s_m1;
-static PyObject *__pyx_n_s_m2;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_math;
-static PyObject *__pyx_n_s_maxbin_lim;
-static PyObject *__pyx_n_s_mem;
-static PyObject *__pyx_n_s_metaclass;
-static PyObject *__pyx_n_s_minbin_lim;
-static PyObject *__pyx_n_s_module;
-static PyObject *__pyx_n_s_n;
+static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_kp_u_ndarray_is_not_C_contiguous;
 static PyObject *__pyx_kp_u_ndarray_is_not_Fortran_contiguou;
-static PyObject *__pyx_n_s_newbin;
-static PyObject *__pyx_n_s_normalization;
+static PyObject *__pyx_n_s_new;
 static PyObject *__pyx_n_s_np;
 static PyObject *__pyx_n_s_nsigma;
-static PyObject *__pyx_n_s_num_pairs;
 static PyObject *__pyx_n_s_numpy;
 static PyObject *__pyx_kp_s_numpy_core_multiarray_failed_to;
 static PyObject *__pyx_kp_s_numpy_core_umath_failed_to_impor;
-static PyObject *__pyx_n_s_object;
 static PyObject *__pyx_n_s_os;
 static PyObject *__pyx_n_s_pi;
-static PyObject *__pyx_n_s_pos;
-static PyObject *__pyx_n_s_pos_np;
-static PyObject *__pyx_n_s_prepare;
+static PyObject *__pyx_n_s_pickle;
 static PyObject *__pyx_n_s_product;
+static PyObject *__pyx_n_s_pyx_PickleError;
+static PyObject *__pyx_n_s_pyx_checksum;
+static PyObject *__pyx_n_s_pyx_result;
+static PyObject *__pyx_n_s_pyx_state;
+static PyObject *__pyx_n_s_pyx_type;
+static PyObject *__pyx_n_s_pyx_unpickle_Angular_Fingerpri;
 static PyObject *__pyx_n_s_pyx_vtable;
-static PyObject *__pyx_n_s_qualname;
 static PyObject *__pyx_n_s_range;
+static PyObject *__pyx_n_s_reduce;
+static PyObject *__pyx_n_s_reduce_cython;
+static PyObject *__pyx_n_s_reduce_ex;
 static PyObject *__pyx_n_s_scipy_spatial_distance;
-static PyObject *__pyx_n_s_self;
+static PyObject *__pyx_n_s_setstate;
+static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_sigma1;
 static PyObject *__pyx_n_s_sigma2;
-static PyObject *__pyx_n_s_smearing_norm1;
-static PyObject *__pyx_n_s_smearing_norm2;
 static PyObject *__pyx_n_s_sqrt;
+static PyObject *__pyx_kp_s_stringsource;
 static PyObject *__pyx_n_s_sys;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_time;
 static PyObject *__pyx_n_s_tolist;
 static PyObject *__pyx_kp_u_unknown_dtype_code_in_numpy_pxd;
+static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_use_angular;
-static PyObject *__pyx_n_s_value;
-static PyObject *__pyx_n_s_value1;
-static PyObject *__pyx_n_s_value2;
-static PyObject *__pyx_n_s_volume;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_atoms, PyObject *__pyx_v_Rc1, PyObject *__pyx_v_Rc2, PyObject *__pyx_v_binwidth1, PyObject *__pyx_v_Nbins2, PyObject *__pyx_v_sigma1, PyObject *__pyx_v_sigma2, PyObject *__pyx_v_nsigma, PyObject *__pyx_v_eta, PyObject *__pyx_v_gamma, PyObject *__pyx_v_use_angular); /* proto */
-static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_2get_feature(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_atoms); /* proto */
-static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_4get_featureMat(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_atoms_list); /* proto */
-static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_6get_featureGradient(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_atoms); /* proto */
-static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_8get_all_featureGradients(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_atoms_list); /* proto */
+static int __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint___init__(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self, PyObject *__pyx_v_atoms, PyObject *__pyx_v_Rc1, PyObject *__pyx_v_Rc2, PyObject *__pyx_v_binwidth1, PyObject *__pyx_v_Nbins2, PyObject *__pyx_v_sigma1, PyObject *__pyx_v_sigma2, PyObject *__pyx_v_nsigma, PyObject *__pyx_v_eta, PyObject *__pyx_v_gamma, PyObject *__pyx_v_use_angular); /* proto */
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_2get_Nelements(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_4get_feature(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self, PyObject *__pyx_v_atoms); /* proto */
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_6get_featureMat(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self, PyObject *__pyx_v_atoms_list); /* proto */
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_8get_featureGradient(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self, PyObject *__pyx_v_atoms); /* proto */
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_10get_all_featureGradients(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self, PyObject *__pyx_v_atoms_list); /* proto */
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_12__reduce_cython__(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_14__setstate_cython__(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy___pyx_unpickle_Angular_Fingerprint(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
+static PyObject *__pyx_tp_new_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_float_0_1;
 static PyObject *__pyx_float_0_2;
 static PyObject *__pyx_float_4_0;
@@ -2115,6 +1969,7 @@ static PyObject *__pyx_int_2;
 static PyObject *__pyx_int_3;
 static PyObject *__pyx_int_4;
 static PyObject *__pyx_int_30;
+static PyObject *__pyx_int_139748403;
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_slice__3;
 static PyObject *__pyx_slice__4;
@@ -2129,17 +1984,7 @@ static PyObject *__pyx_tuple__11;
 static PyObject *__pyx_tuple__12;
 static PyObject *__pyx_tuple__13;
 static PyObject *__pyx_tuple__14;
-static PyObject *__pyx_tuple__15;
-static PyObject *__pyx_tuple__17;
-static PyObject *__pyx_tuple__18;
-static PyObject *__pyx_tuple__20;
-static PyObject *__pyx_tuple__22;
-static PyObject *__pyx_tuple__24;
-static PyObject *__pyx_codeobj__16;
-static PyObject *__pyx_codeobj__19;
-static PyObject *__pyx_codeobj__21;
-static PyObject *__pyx_codeobj__23;
-static PyObject *__pyx_codeobj__25;
+static PyObject *__pyx_codeobj__15;
 /* Late includes */
 
 /* "featureCalculators/angular_fingerprintFeature_cy.pyx":26
@@ -2572,7 +2417,7 @@ static double __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cut
  *     else:
  *         return 0             # <<<<<<<<<<<<<<
  * 
- * class Angular_Fingerprint(object):
+ * cdef class Angular_Fingerprint:
  */
   /*else*/ {
     __pyx_r = 0.0;
@@ -2593,20 +2438,21 @@ static double __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cut
   return __pyx_r;
 }
 
-/* "featureCalculators/angular_fingerprintFeature_cy.pyx":78
- *     """ comparator for construction of angular fingerprints
- *     """
+/* "featureCalculators/angular_fingerprintFeature_cy.pyx":106
+ *     cdef int Nelements_3body
+ *     cdef int Nelements
  *     def __init__(self, atoms, Rc1=4.0, Rc2=4.0, binwidth1=0.1, Nbins2=30, sigma1=0.2, sigma2=0.10, nsigma=4, eta=1, gamma=3, use_angular=True):             # <<<<<<<<<<<<<<
  *         """ Set a common cut of radius
  *         """
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static char __pyx_doc_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint___init__[] = " Set a common cut of radius\n        ";
-static PyMethodDef __pyx_mdef_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_1__init__ = {"__init__", (PyCFunction)__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_1__init__, METH_VARARGS|METH_KEYWORDS, __pyx_doc_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint___init__};
-static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_self = 0;
+#if CYTHON_COMPILING_IN_CPYTHON
+struct wrapperbase __pyx_wrapperbase_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint___init__;
+#endif
+static int __pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_atoms = 0;
   PyObject *__pyx_v_Rc1 = 0;
   PyObject *__pyx_v_Rc2 = 0;
@@ -2618,28 +2464,26 @@ static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_1
   PyObject *__pyx_v_eta = 0;
   PyObject *__pyx_v_gamma = 0;
   PyObject *__pyx_v_use_angular = 0;
-  PyObject *__pyx_r = 0;
+  int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_atoms,&__pyx_n_s_Rc1,&__pyx_n_s_Rc2,&__pyx_n_s_binwidth1,&__pyx_n_s_Nbins2,&__pyx_n_s_sigma1,&__pyx_n_s_sigma2,&__pyx_n_s_nsigma,&__pyx_n_s_eta,&__pyx_n_s_gamma,&__pyx_n_s_use_angular,0};
-    PyObject* values[12] = {0,0,0,0,0,0,0,0,0,0,0,0};
-    values[2] = ((PyObject *)((PyObject*)__pyx_float_4_0));
-    values[3] = ((PyObject *)((PyObject*)__pyx_float_4_0));
-    values[4] = ((PyObject *)((PyObject*)__pyx_float_0_1));
-    values[5] = ((PyObject *)((PyObject *)__pyx_int_30));
-    values[6] = ((PyObject *)((PyObject*)__pyx_float_0_2));
-    values[7] = ((PyObject *)((PyObject*)__pyx_float_0_10));
-    values[8] = ((PyObject *)((PyObject *)__pyx_int_4));
-    values[9] = ((PyObject *)((PyObject *)__pyx_int_1));
-    values[10] = ((PyObject *)((PyObject *)__pyx_int_3));
-    values[11] = ((PyObject *)((PyObject *)Py_True));
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_atoms,&__pyx_n_s_Rc1,&__pyx_n_s_Rc2,&__pyx_n_s_binwidth1,&__pyx_n_s_Nbins2,&__pyx_n_s_sigma1,&__pyx_n_s_sigma2,&__pyx_n_s_nsigma,&__pyx_n_s_eta,&__pyx_n_s_gamma,&__pyx_n_s_use_angular,0};
+    PyObject* values[11] = {0,0,0,0,0,0,0,0,0,0,0};
+    values[1] = ((PyObject *)__pyx_float_4_0);
+    values[2] = ((PyObject *)__pyx_float_4_0);
+    values[3] = ((PyObject *)__pyx_float_0_1);
+    values[4] = ((PyObject *)__pyx_int_30);
+    values[5] = ((PyObject *)__pyx_float_0_2);
+    values[6] = ((PyObject *)__pyx_float_0_10);
+    values[7] = ((PyObject *)__pyx_int_4);
+    values[8] = ((PyObject *)__pyx_int_1);
+    values[9] = ((PyObject *)__pyx_int_3);
+    values[10] = ((PyObject *)Py_True);
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
-        case 12: values[11] = PyTuple_GET_ITEM(__pyx_args, 11);
-        CYTHON_FALLTHROUGH;
         case 11: values[10] = PyTuple_GET_ITEM(__pyx_args, 10);
         CYTHON_FALLTHROUGH;
         case 10: values[9] = PyTuple_GET_ITEM(__pyx_args, 9);
@@ -2668,82 +2512,74 @@ static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_1
       kw_args = PyDict_Size(__pyx_kwds);
       switch (pos_args) {
         case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_atoms)) != 0)) kw_args--;
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_atoms)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 12, 1); __PYX_ERR(0, 78, __pyx_L3_error)
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_Rc1);
+          if (value) { values[1] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_Rc1);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_Rc2);
           if (value) { values[2] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_Rc2);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_binwidth1);
           if (value) { values[3] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_binwidth1);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_Nbins2);
           if (value) { values[4] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_Nbins2);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_sigma1);
           if (value) { values[5] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_sigma1);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_sigma2);
           if (value) { values[6] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_sigma2);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_nsigma);
           if (value) { values[7] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_nsigma);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_eta);
           if (value) { values[8] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_eta);
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_gamma);
           if (value) { values[9] = value; kw_args--; }
         }
         CYTHON_FALLTHROUGH;
         case 10:
         if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_gamma);
-          if (value) { values[10] = value; kw_args--; }
-        }
-        CYTHON_FALLTHROUGH;
-        case 11:
-        if (kw_args > 0) {
           PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_use_angular);
-          if (value) { values[11] = value; kw_args--; }
+          if (value) { values[10] = value; kw_args--; }
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 78, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 106, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
-        case 12: values[11] = PyTuple_GET_ITEM(__pyx_args, 11);
-        CYTHON_FALLTHROUGH;
         case 11: values[10] = PyTuple_GET_ITEM(__pyx_args, 10);
         CYTHON_FALLTHROUGH;
         case 10: values[9] = PyTuple_GET_ITEM(__pyx_args, 9);
@@ -2763,505 +2599,498 @@ static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_1
         case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
         CYTHON_FALLTHROUGH;
         case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_self = values[0];
-    __pyx_v_atoms = values[1];
-    __pyx_v_Rc1 = values[2];
-    __pyx_v_Rc2 = values[3];
-    __pyx_v_binwidth1 = values[4];
-    __pyx_v_Nbins2 = values[5];
-    __pyx_v_sigma1 = values[6];
-    __pyx_v_sigma2 = values[7];
-    __pyx_v_nsigma = values[8];
-    __pyx_v_eta = values[9];
-    __pyx_v_gamma = values[10];
-    __pyx_v_use_angular = values[11];
+    __pyx_v_atoms = values[0];
+    __pyx_v_Rc1 = values[1];
+    __pyx_v_Rc2 = values[2];
+    __pyx_v_binwidth1 = values[3];
+    __pyx_v_Nbins2 = values[4];
+    __pyx_v_sigma1 = values[5];
+    __pyx_v_sigma2 = values[6];
+    __pyx_v_nsigma = values[7];
+    __pyx_v_eta = values[8];
+    __pyx_v_gamma = values[9];
+    __pyx_v_use_angular = values[10];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 12, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 78, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 106, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.Angular_Fingerprint.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
-  return NULL;
+  return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint___init__(__pyx_self, __pyx_v_self, __pyx_v_atoms, __pyx_v_Rc1, __pyx_v_Rc2, __pyx_v_binwidth1, __pyx_v_Nbins2, __pyx_v_sigma1, __pyx_v_sigma2, __pyx_v_nsigma, __pyx_v_eta, __pyx_v_gamma, __pyx_v_use_angular);
+  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint___init__(((struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *)__pyx_v_self), __pyx_v_atoms, __pyx_v_Rc1, __pyx_v_Rc2, __pyx_v_binwidth1, __pyx_v_Nbins2, __pyx_v_sigma1, __pyx_v_sigma2, __pyx_v_nsigma, __pyx_v_eta, __pyx_v_gamma, __pyx_v_use_angular);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_atoms, PyObject *__pyx_v_Rc1, PyObject *__pyx_v_Rc2, PyObject *__pyx_v_binwidth1, PyObject *__pyx_v_Nbins2, PyObject *__pyx_v_sigma1, PyObject *__pyx_v_sigma2, PyObject *__pyx_v_nsigma, PyObject *__pyx_v_eta, PyObject *__pyx_v_gamma, PyObject *__pyx_v_use_angular) {
-  PyObject *__pyx_r = NULL;
+static int __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint___init__(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self, PyObject *__pyx_v_atoms, PyObject *__pyx_v_Rc1, PyObject *__pyx_v_Rc2, PyObject *__pyx_v_binwidth1, PyObject *__pyx_v_Nbins2, PyObject *__pyx_v_sigma1, PyObject *__pyx_v_sigma2, PyObject *__pyx_v_nsigma, PyObject *__pyx_v_eta, PyObject *__pyx_v_gamma, PyObject *__pyx_v_use_angular) {
+  int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  double __pyx_t_4;
+  double __pyx_t_2;
+  int __pyx_t_3;
+  PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
-  int __pyx_t_7;
+  PyObject *__pyx_t_7 = NULL;
+  int __pyx_t_8;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":82
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":109
+ *         """ Set a common cut of radius
  *         """
+ *         self.mem = Pool()             # <<<<<<<<<<<<<<
+ * 
+ *         self.Rc1 = Rc1
+ */
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_5cymem_5cymem_Pool)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->mem);
+  __Pyx_DECREF(((PyObject *)__pyx_v_self->mem));
+  __pyx_v_self->mem = ((struct __pyx_obj_5cymem_5cymem_Pool *)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":111
+ *         self.mem = Pool()
  * 
  *         self.Rc1 = Rc1             # <<<<<<<<<<<<<<
  *         self.Rc2 = Rc2
  *         self.binwidth1 = binwidth1
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Rc1, __pyx_v_Rc1) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_v_Rc1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_v_self->Rc1 = __pyx_t_2;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":83
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":112
  * 
  *         self.Rc1 = Rc1
  *         self.Rc2 = Rc2             # <<<<<<<<<<<<<<
  *         self.binwidth1 = binwidth1
  *         self.Nbins2 = Nbins2
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Rc2, __pyx_v_Rc2) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_v_Rc2); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_v_self->Rc2 = __pyx_t_2;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":84
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":113
  *         self.Rc1 = Rc1
  *         self.Rc2 = Rc2
  *         self.binwidth1 = binwidth1             # <<<<<<<<<<<<<<
  *         self.Nbins2 = Nbins2
  *         self.binwidth2 = np.pi / Nbins2
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_binwidth1, __pyx_v_binwidth1) < 0) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_v_binwidth1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_v_self->binwidth1 = __pyx_t_2;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":85
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":114
  *         self.Rc2 = Rc2
  *         self.binwidth1 = binwidth1
  *         self.Nbins2 = Nbins2             # <<<<<<<<<<<<<<
  *         self.binwidth2 = np.pi / Nbins2
  *         self.sigma1 = sigma1
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nbins2, __pyx_v_Nbins2) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_Nbins2); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_v_self->Nbins2 = __pyx_t_3;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":86
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":115
  *         self.binwidth1 = binwidth1
  *         self.Nbins2 = Nbins2
  *         self.binwidth2 = np.pi / Nbins2             # <<<<<<<<<<<<<<
  *         self.sigma1 = sigma1
  *         self.sigma2 = sigma2
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_pi); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_pi); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_v_Nbins2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_v_Nbins2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_binwidth2, __pyx_t_1) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_self->binwidth2 = __pyx_t_2;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":87
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":116
  *         self.Nbins2 = Nbins2
  *         self.binwidth2 = np.pi / Nbins2
  *         self.sigma1 = sigma1             # <<<<<<<<<<<<<<
  *         self.sigma2 = sigma2
  *         self.nsigma = nsigma
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_sigma1, __pyx_v_sigma1) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_v_sigma1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_v_self->sigma1 = __pyx_t_2;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":88
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":117
  *         self.binwidth2 = np.pi / Nbins2
  *         self.sigma1 = sigma1
  *         self.sigma2 = sigma2             # <<<<<<<<<<<<<<
  *         self.nsigma = nsigma
  *         self.eta = eta
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_sigma2, __pyx_v_sigma2) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_v_sigma2); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_v_self->sigma2 = __pyx_t_2;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":89
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":118
  *         self.sigma1 = sigma1
  *         self.sigma2 = sigma2
  *         self.nsigma = nsigma             # <<<<<<<<<<<<<<
  *         self.eta = eta
  *         self.gamma = gamma
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_nsigma, __pyx_v_nsigma) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_nsigma); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_v_self->nsigma = __pyx_t_3;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":90
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":119
  *         self.sigma2 = sigma2
  *         self.nsigma = nsigma
  *         self.eta = eta             # <<<<<<<<<<<<<<
  *         self.gamma = gamma
  *         self.use_angular = use_angular
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_eta, __pyx_v_eta) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_v_eta); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_v_self->eta = __pyx_t_2;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":91
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":120
  *         self.nsigma = nsigma
  *         self.eta = eta
  *         self.gamma = gamma             # <<<<<<<<<<<<<<
  *         self.use_angular = use_angular
  * 
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_gamma, __pyx_v_gamma) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_v_gamma); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_v_self->gamma = __pyx_t_2;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":92
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":121
  *         self.eta = eta
  *         self.gamma = gamma
  *         self.use_angular = use_angular             # <<<<<<<<<<<<<<
  * 
  *         self.volume = atoms.get_volume()
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_use_angular, __pyx_v_use_angular) < 0) __PYX_ERR(0, 92, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_v_use_angular);
+  __Pyx_GIVEREF(__pyx_v_use_angular);
+  __Pyx_GOTREF(__pyx_v_self->use_angular);
+  __Pyx_DECREF(__pyx_v_self->use_angular);
+  __pyx_v_self->use_angular = __pyx_v_use_angular;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":94
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":123
  *         self.use_angular = use_angular
  * 
  *         self.volume = atoms.get_volume()             # <<<<<<<<<<<<<<
  *         self.Natoms = atoms.get_number_of_atoms()
  *         self.dim = 3
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_volume); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_volume); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
     }
   }
-  if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__pyx_t_5) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_volume, __pyx_t_1) < 0) __PYX_ERR(0, 94, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_self->volume = __pyx_t_2;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":95
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":124
  * 
  *         self.volume = atoms.get_volume()
  *         self.Natoms = atoms.get_number_of_atoms()             # <<<<<<<<<<<<<<
  *         self.dim = 3
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_number_of_atoms); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_number_of_atoms); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
     }
   }
-  if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (__pyx_t_5) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Natoms, __pyx_t_1) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_self->Natoms = __pyx_t_3;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":96
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":125
  *         self.volume = atoms.get_volume()
  *         self.Natoms = atoms.get_number_of_atoms()
  *         self.dim = 3             # <<<<<<<<<<<<<<
  * 
  *         # parameters for the binning:
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_dim, __pyx_int_3) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_v_self->dim = 3;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":99
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":128
  * 
  *         # parameters for the binning:
  *         self.m1 = self.nsigma*self.sigma1/self.binwidth1  # number of neighbour bins included.             # <<<<<<<<<<<<<<
  *         self.smearing_norm1 = erf(1/np.sqrt(2) * self.m1 * self.binwidth1/self.sigma1)  # Integral of the included part of the gauss
  *         self.Nbins1 = int(np.ceil(self.Rc1/self.binwidth1))
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsigma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_m1, __pyx_t_1) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = (__pyx_v_self->nsigma * __pyx_v_self->sigma1);
+  if (unlikely(__pyx_v_self->binwidth1 == 0)) {
+    PyErr_SetString(PyExc_ZeroDivisionError, "float division");
+    __PYX_ERR(0, 128, __pyx_L1_error)
+  }
+  __pyx_v_self->m1 = (__pyx_t_2 / __pyx_v_self->binwidth1);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":100
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":129
  *         # parameters for the binning:
  *         self.m1 = self.nsigma*self.sigma1/self.binwidth1  # number of neighbour bins included.
  *         self.smearing_norm1 = erf(1/np.sqrt(2) * self.m1 * self.binwidth1/self.sigma1)  # Integral of the included part of the gauss             # <<<<<<<<<<<<<<
  *         self.Nbins1 = int(np.ceil(self.Rc1/self.binwidth1))
  * 
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_int_1, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_int_1, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->m1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->binwidth1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->sigma1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyFloat_FromDouble(erf(__pyx_t_4)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm1, __pyx_t_3) < 0) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_v_self->smearing_norm1 = erf(__pyx_t_2);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":101
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":130
  *         self.m1 = self.nsigma*self.sigma1/self.binwidth1  # number of neighbour bins included.
  *         self.smearing_norm1 = erf(1/np.sqrt(2) * self.m1 * self.binwidth1/self.sigma1)  # Integral of the included part of the gauss
  *         self.Nbins1 = int(np.ceil(self.Rc1/self.binwidth1))             # <<<<<<<<<<<<<<
  * 
  *         self.m2 = self.nsigma*self.sigma2/self.binwidth2  # number of neighbour bins included.
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ceil); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ceil); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+  if (unlikely(__pyx_v_self->binwidth1 == 0)) {
+    PyErr_SetString(PyExc_ZeroDivisionError, "float division");
+    __PYX_ERR(0, 130, __pyx_L1_error)
+  }
+  __pyx_t_1 = PyFloat_FromDouble((__pyx_v_self->Rc1 / __pyx_v_self->binwidth1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 101, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 101, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_5)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_5);
+  __pyx_t_6 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_6);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
     }
   }
-  if (!__pyx_t_5) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_GOTREF(__pyx_t_3);
+  if (!__pyx_t_6) {
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GOTREF(__pyx_t_5);
   } else {
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_2)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_6};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    if (PyFunction_Check(__pyx_t_4)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_1};
+      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_6};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_1};
+      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     {
-      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5); __pyx_t_5 = NULL;
-      __Pyx_GIVEREF(__pyx_t_6);
-      PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_6);
-      __pyx_t_6 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __pyx_t_6 = NULL;
+      __Pyx_GIVEREF(__pyx_t_1);
+      PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_1);
+      __pyx_t_1 = 0;
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
   }
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nbins1, __pyx_t_2) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 130, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_self->Nbins1 = __pyx_t_3;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":103
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":132
  *         self.Nbins1 = int(np.ceil(self.Rc1/self.binwidth1))
  * 
  *         self.m2 = self.nsigma*self.sigma2/self.binwidth2  # number of neighbour bins included.             # <<<<<<<<<<<<<<
  *         self.smearing_norm2 = erf(1/np.sqrt(2) * self.m2 * self.binwidth2/self.sigma2)  # Integral of the included part of the gauss
  *         self.binwidth2 = np.pi/Nbins2
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsigma); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 103, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 103, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_m2, __pyx_t_2) < 0) __PYX_ERR(0, 103, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = (__pyx_v_self->nsigma * __pyx_v_self->sigma2);
+  if (unlikely(__pyx_v_self->binwidth2 == 0)) {
+    PyErr_SetString(PyExc_ZeroDivisionError, "float division");
+    __PYX_ERR(0, 132, __pyx_L1_error)
+  }
+  __pyx_v_self->m2 = (__pyx_t_2 / __pyx_v_self->binwidth2);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":104
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":133
  * 
  *         self.m2 = self.nsigma*self.sigma2/self.binwidth2  # number of neighbour bins included.
  *         self.smearing_norm2 = erf(1/np.sqrt(2) * self.m2 * self.binwidth2/self.sigma2)  # Integral of the included part of the gauss             # <<<<<<<<<<<<<<
  *         self.binwidth2 = np.pi/Nbins2
  * 
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_int_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyFloat_FromDouble(erf(__pyx_t_4)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm2, __pyx_t_1) < 0) __PYX_ERR(0, 104, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_int_1, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->m2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_7 = PyNumber_Multiply(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->binwidth2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_7, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->sigma2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_7 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_7); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_v_self->smearing_norm2 = erf(__pyx_t_2);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":105
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":134
  *         self.m2 = self.nsigma*self.sigma2/self.binwidth2  # number of neighbour bins included.
  *         self.smearing_norm2 = erf(1/np.sqrt(2) * self.m2 * self.binwidth2/self.sigma2)  # Integral of the included part of the gauss
  *         self.binwidth2 = np.pi/Nbins2             # <<<<<<<<<<<<<<
  * 
  *         self.Nelements_2body = self.Nbins1
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_pi); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_v_Nbins2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_binwidth2, __pyx_t_1) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_pi); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_7 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_v_Nbins2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_7); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 134, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_v_self->binwidth2 = __pyx_t_2;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":107
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":136
  *         self.binwidth2 = np.pi/Nbins2
  * 
  *         self.Nelements_2body = self.Nbins1             # <<<<<<<<<<<<<<
  *         self.Nelements_3body = self.Nbins2
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body, __pyx_t_1) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = __pyx_v_self->Nbins1;
+  __pyx_v_self->Nelements_2body = __pyx_t_3;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":108
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":137
  * 
  *         self.Nelements_2body = self.Nbins1
  *         self.Nelements_3body = self.Nbins2             # <<<<<<<<<<<<<<
  * 
  *         if use_angular:
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_3body, __pyx_t_1) < 0) __PYX_ERR(0, 108, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = __pyx_v_self->Nbins2;
+  __pyx_v_self->Nelements_3body = __pyx_t_3;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":110
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":139
  *         self.Nelements_3body = self.Nbins2
  * 
  *         if use_angular:             # <<<<<<<<<<<<<<
  *             self.Nelements = self.Nelements_2body + self.Nelements_3body
  *         else:
  */
-  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_v_use_angular); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 110, __pyx_L1_error)
-  if (__pyx_t_7) {
+  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_use_angular); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 139, __pyx_L1_error)
+  if (__pyx_t_8) {
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":111
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":140
  * 
  *         if use_angular:
  *             self.Nelements = self.Nelements_2body + self.Nelements_3body             # <<<<<<<<<<<<<<
  *         else:
  *             self.Nelements = self.Nelements_2body
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_3body); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nelements, __pyx_t_3) < 0) __PYX_ERR(0, 111, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_v_self->Nelements = (__pyx_v_self->Nelements_2body + __pyx_v_self->Nelements_3body);
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":110
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":139
  *         self.Nelements_3body = self.Nbins2
  * 
  *         if use_angular:             # <<<<<<<<<<<<<<
@@ -3271,39 +3100,96 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     goto __pyx_L3;
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":113
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":142
  *             self.Nelements = self.Nelements_2body + self.Nelements_3body
  *         else:
  *             self.Nelements = self.Nelements_2body             # <<<<<<<<<<<<<<
  * 
- *     def get_feature(self, atoms):
+ *     def get_Nelements(self):
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nelements, __pyx_t_3) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __pyx_v_self->Nelements_2body;
+    __pyx_v_self->Nelements = __pyx_t_3;
   }
   __pyx_L3:;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":78
- *     """ comparator for construction of angular fingerprints
- *     """
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":106
+ *     cdef int Nelements_3body
+ *     cdef int Nelements
  *     def __init__(self, atoms, Rc1=4.0, Rc2=4.0, binwidth1=0.1, Nbins2=30, sigma1=0.2, sigma2=0.10, nsigma=4, eta=1, gamma=3, use_angular=True):             # <<<<<<<<<<<<<<
  *         """ Set a common cut of radius
  *         """
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
   __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.Angular_Fingerprint.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "featureCalculators/angular_fingerprintFeature_cy.pyx":144
+ *             self.Nelements = self.Nelements_2body
+ * 
+ *     def get_Nelements(self):             # <<<<<<<<<<<<<<
+ *         return self.Nelements
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_3get_Nelements(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_3get_Nelements(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_Nelements (wrapper)", 0);
+  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_2get_Nelements(((struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_2get_Nelements(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __Pyx_RefNannySetupContext("get_Nelements", 0);
+
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":145
+ * 
+ *     def get_Nelements(self):
+ *         return self.Nelements             # <<<<<<<<<<<<<<
+ * 
+ *     def get_feature(self, atoms):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->Nelements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":144
+ *             self.Nelements = self.Nelements_2body
+ * 
+ *     def get_Nelements(self):             # <<<<<<<<<<<<<<
+ *         return self.Nelements
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.Angular_Fingerprint.get_Nelements", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3311,8 +3197,8 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   return __pyx_r;
 }
 
-/* "featureCalculators/angular_fingerprintFeature_cy.pyx":115
- *             self.Nelements = self.Nelements_2body
+/* "featureCalculators/angular_fingerprintFeature_cy.pyx":147
+ *         return self.Nelements
  * 
  *     def get_feature(self, atoms):             # <<<<<<<<<<<<<<
  *         """
@@ -3320,91 +3206,20 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_3get_feature(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_2get_feature[] = "\n        ";
-static PyMethodDef __pyx_mdef_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_3get_feature = {"get_feature", (PyCFunction)__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_3get_feature, METH_VARARGS|METH_KEYWORDS, __pyx_doc_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_2get_feature};
-static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_3get_feature(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_self = 0;
-  PyObject *__pyx_v_atoms = 0;
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_5get_feature(PyObject *__pyx_v_self, PyObject *__pyx_v_atoms); /*proto*/
+static char __pyx_doc_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_4get_feature[] = "\n        ";
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_5get_feature(PyObject *__pyx_v_self, PyObject *__pyx_v_atoms) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_feature (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_atoms,0};
-    PyObject* values[2] = {0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_atoms)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("get_feature", 1, 2, 2, 1); __PYX_ERR(0, 115, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_feature") < 0)) __PYX_ERR(0, 115, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-    }
-    __pyx_v_self = values[0];
-    __pyx_v_atoms = values[1];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_feature", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 115, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.Angular_Fingerprint.get_feature", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_2get_feature(__pyx_self, __pyx_v_self, __pyx_v_atoms);
+  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_4get_feature(((struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *)__pyx_v_self), ((PyObject *)__pyx_v_atoms));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_2get_feature(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_atoms) {
-  double __pyx_v_Rc1;
-  double __pyx_v_Rc2;
-  double __pyx_v_binwidth1;
-  double __pyx_v_binwidth2;
-  int __pyx_v_Nbins1;
-  int __pyx_v_Nbins2;
-  double __pyx_v_sigma1;
-  double __pyx_v_sigma2;
-  int __pyx_v_nsigma;
-  double __pyx_v_eta;
-  double __pyx_v_gamma;
-  PyObject *__pyx_v_use_angular = 0;
-  double __pyx_v_volume;
-  CYTHON_UNUSED int __pyx_v_dim;
-  double __pyx_v_m1;
-  double __pyx_v_m2;
-  double __pyx_v_smearing_norm1;
-  double __pyx_v_smearing_norm2;
-  int __pyx_v_Nelements_2body;
-  int __pyx_v_Nelements_3body;
-  int __pyx_v_Nelements;
-  struct __pyx_obj_5cymem_5cymem_Pool *__pyx_v_mem = 0;
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_4get_feature(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self, PyObject *__pyx_v_atoms) {
   CYTHON_UNUSED PyObject *__pyx_v_cell = NULL;
   int __pyx_v_Natoms;
   PyObject *__pyx_v_pos_np = 0;
@@ -3440,14 +3255,14 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  double __pyx_t_2;
-  int __pyx_t_3;
-  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_4;
   PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  void *__pyx_t_7;
+  void *__pyx_t_6;
+  int __pyx_t_7;
   int __pyx_t_8;
-  int __pyx_t_9;
+  double __pyx_t_9;
   int __pyx_t_10;
   int __pyx_t_11;
   int __pyx_t_12;
@@ -3465,408 +3280,121 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   int __pyx_t_24;
   __Pyx_RefNannySetupContext("get_feature", 0);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":118
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":150
  *         """
  *         """
- *         cdef double Rc1 = self.Rc1             # <<<<<<<<<<<<<<
- *         cdef double Rc2 = self.Rc2
- *         cdef double binwidth1 = self.binwidth1
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 118, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Rc1 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":119
- *         """
- *         cdef double Rc1 = self.Rc1
- *         cdef double Rc2 = self.Rc2             # <<<<<<<<<<<<<<
- *         cdef double binwidth1 = self.binwidth1
- *         cdef double binwidth2 = self.binwidth2
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Rc2 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":120
- *         cdef double Rc1 = self.Rc1
- *         cdef double Rc2 = self.Rc2
- *         cdef double binwidth1 = self.binwidth1             # <<<<<<<<<<<<<<
- *         cdef double binwidth2 = self.binwidth2
- *         cdef int Nbins1 = self.Nbins1
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 120, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_binwidth1 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":121
- *         cdef double Rc2 = self.Rc2
- *         cdef double binwidth1 = self.binwidth1
- *         cdef double binwidth2 = self.binwidth2             # <<<<<<<<<<<<<<
- *         cdef int Nbins1 = self.Nbins1
- *         cdef int Nbins2 = self.Nbins2
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 121, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_binwidth2 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":122
- *         cdef double binwidth1 = self.binwidth1
- *         cdef double binwidth2 = self.binwidth2
- *         cdef int Nbins1 = self.Nbins1             # <<<<<<<<<<<<<<
- *         cdef int Nbins2 = self.Nbins2
- *         cdef double sigma1 = self.sigma1
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Nbins1 = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":123
- *         cdef double binwidth2 = self.binwidth2
- *         cdef int Nbins1 = self.Nbins1
- *         cdef int Nbins2 = self.Nbins2             # <<<<<<<<<<<<<<
- *         cdef double sigma1 = self.sigma1
- *         cdef double sigma2 = self.sigma2
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 123, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Nbins2 = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":124
- *         cdef int Nbins1 = self.Nbins1
- *         cdef int Nbins2 = self.Nbins2
- *         cdef double sigma1 = self.sigma1             # <<<<<<<<<<<<<<
- *         cdef double sigma2 = self.sigma2
- *         cdef int nsigma = self.nsigma
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 124, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_sigma1 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":125
- *         cdef int Nbins2 = self.Nbins2
- *         cdef double sigma1 = self.sigma1
- *         cdef double sigma2 = self.sigma2             # <<<<<<<<<<<<<<
- *         cdef int nsigma = self.nsigma
- * 
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 125, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_sigma2 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":126
- *         cdef double sigma1 = self.sigma1
- *         cdef double sigma2 = self.sigma2
- *         cdef int nsigma = self.nsigma             # <<<<<<<<<<<<<<
- * 
- *         cdef double eta = self.eta
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsigma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 126, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_nsigma = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":128
- *         cdef int nsigma = self.nsigma
- * 
- *         cdef double eta = self.eta             # <<<<<<<<<<<<<<
- *         cdef double gamma = self.gamma
- *         cdef use_angular = self.use_angular
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_eta); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 128, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_eta = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":129
- * 
- *         cdef double eta = self.eta
- *         cdef double gamma = self.gamma             # <<<<<<<<<<<<<<
- *         cdef use_angular = self.use_angular
- * 
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 129, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_gamma = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":130
- *         cdef double eta = self.eta
- *         cdef double gamma = self.gamma
- *         cdef use_angular = self.use_angular             # <<<<<<<<<<<<<<
- * 
- *         cdef double volume = self.volume
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_use_angular); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_use_angular = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":132
- *         cdef use_angular = self.use_angular
- * 
- *         cdef double volume = self.volume             # <<<<<<<<<<<<<<
- *         cdef int dim = self.dim
- * 
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_volume); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 132, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_volume = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":133
- * 
- *         cdef double volume = self.volume
- *         cdef int dim = self.dim             # <<<<<<<<<<<<<<
- * 
- *         cdef double m1 = self.m1
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_dim = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":135
- *         cdef int dim = self.dim
- * 
- *         cdef double m1 = self.m1             # <<<<<<<<<<<<<<
- *         cdef double m2 = self.m2
- *         cdef double smearing_norm1 = self.smearing_norm1
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_m1 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":136
- * 
- *         cdef double m1 = self.m1
- *         cdef double m2 = self.m2             # <<<<<<<<<<<<<<
- *         cdef double smearing_norm1 = self.smearing_norm1
- *         cdef double smearing_norm2 = self.smearing_norm2
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 136, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_m2 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":137
- *         cdef double m1 = self.m1
- *         cdef double m2 = self.m2
- *         cdef double smearing_norm1 = self.smearing_norm1             # <<<<<<<<<<<<<<
- *         cdef double smearing_norm2 = self.smearing_norm2
- * 
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 137, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_smearing_norm1 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":138
- *         cdef double m2 = self.m2
- *         cdef double smearing_norm1 = self.smearing_norm1
- *         cdef double smearing_norm2 = self.smearing_norm2             # <<<<<<<<<<<<<<
- * 
- *         cdef int Nelements_2body = self.Nelements_2body
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_smearing_norm2 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":140
- *         cdef double smearing_norm2 = self.smearing_norm2
- * 
- *         cdef int Nelements_2body = self.Nelements_2body             # <<<<<<<<<<<<<<
- *         cdef int Nelements_3body = self.Nelements_3body
- *         cdef int Nelements = self.Nelements
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Nelements_2body = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":141
- * 
- *         cdef int Nelements_2body = self.Nelements_2body
- *         cdef int Nelements_3body = self.Nelements_3body             # <<<<<<<<<<<<<<
- *         cdef int Nelements = self.Nelements
- * 
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Nelements_3body = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":142
- *         cdef int Nelements_2body = self.Nelements_2body
- *         cdef int Nelements_3body = self.Nelements_3body
- *         cdef int Nelements = self.Nelements             # <<<<<<<<<<<<<<
- * 
- *         # Memory allocation pool
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Nelements = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":146
- *         # Memory allocation pool
- *         cdef Pool mem
- *         mem = Pool()             # <<<<<<<<<<<<<<
- * 
- *         cell = atoms.get_cell()
- */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_5cymem_5cymem_Pool)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_mem = ((struct __pyx_obj_5cymem_5cymem_Pool *)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":148
- *         mem = Pool()
- * 
  *         cell = atoms.get_cell()             # <<<<<<<<<<<<<<
  *         cdef int Natoms = self.Natoms
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_cell); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_5)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_5);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_cell); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_4, function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
-  if (__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (__pyx_t_3) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_cell = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":149
- * 
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":151
+ *         """
  *         cell = atoms.get_cell()
  *         cdef int Natoms = self.Natoms             # <<<<<<<<<<<<<<
  * 
  *         # Get positions and convert to Point-struct
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Natoms); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 149, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Natoms = __pyx_t_3;
+  __pyx_t_4 = __pyx_v_self->Natoms;
+  __pyx_v_Natoms = __pyx_t_4;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":152
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":154
  * 
  *         # Get positions and convert to Point-struct
  *         cdef list pos_np = atoms.get_positions().tolist()             # <<<<<<<<<<<<<<
  *         cdef Point *pos
- *         pos = <Point*>mem.alloc(Natoms, sizeof(Point))
+ *         pos = <Point*>self.mem.alloc(Natoms, sizeof(Point))
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_positions); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 152, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
-    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_5);
-    if (likely(__pyx_t_6)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-      __Pyx_INCREF(__pyx_t_6);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_positions); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_5, function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
     }
   }
-  if (__pyx_t_6) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 152, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  if (__pyx_t_5) {
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 152, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 154, __pyx_L1_error)
   }
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_tolist); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 152, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_5);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-      __Pyx_INCREF(__pyx_t_4);
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_tolist); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_5, function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
     }
   }
-  if (__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (__pyx_t_2) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 152, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 154, __pyx_L1_error)
   __pyx_v_pos_np = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":154
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":156
  *         cdef list pos_np = atoms.get_positions().tolist()
  *         cdef Point *pos
- *         pos = <Point*>mem.alloc(Natoms, sizeof(Point))             # <<<<<<<<<<<<<<
+ *         pos = <Point*>self.mem.alloc(Natoms, sizeof(Point))             # <<<<<<<<<<<<<<
  *         cdef int m
  *         for m in range(Natoms):
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Natoms, (sizeof(__pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 154, __pyx_L1_error)
-  __pyx_v_pos = ((__pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point *)__pyx_t_7);
+  __pyx_t_6 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_self->mem->__pyx_vtab)->alloc(__pyx_v_self->mem, __pyx_v_Natoms, (sizeof(__pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point))); if (unlikely(__pyx_t_6 == ((void *)NULL))) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_v_pos = ((__pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point *)__pyx_t_6);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":156
- *         pos = <Point*>mem.alloc(Natoms, sizeof(Point))
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":158
+ *         pos = <Point*>self.mem.alloc(Natoms, sizeof(Point))
  *         cdef int m
  *         for m in range(Natoms):             # <<<<<<<<<<<<<<
  *             pos[m].coord[0] = pos_np[m][0]
  *             pos[m].coord[1] = pos_np[m][1]
  */
-  __pyx_t_3 = __pyx_v_Natoms;
-  __pyx_t_8 = __pyx_t_3;
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_m = __pyx_t_9;
+  __pyx_t_4 = __pyx_v_Natoms;
+  __pyx_t_7 = __pyx_t_4;
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_m = __pyx_t_8;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":157
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":159
  *         cdef int m
  *         for m in range(Natoms):
  *             pos[m].coord[0] = pos_np[m][0]             # <<<<<<<<<<<<<<
@@ -3875,18 +3403,18 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
     if (unlikely(__pyx_v_pos_np == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 157, __pyx_L1_error)
+      __PYX_ERR(0, 159, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 157, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 157, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    ((__pyx_v_pos[__pyx_v_m]).coord[0]) = __pyx_t_2;
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 159, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    ((__pyx_v_pos[__pyx_v_m]).coord[0]) = __pyx_t_9;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":158
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":160
  *         for m in range(Natoms):
  *             pos[m].coord[0] = pos_np[m][0]
  *             pos[m].coord[1] = pos_np[m][1]             # <<<<<<<<<<<<<<
@@ -3895,18 +3423,18 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
     if (unlikely(__pyx_v_pos_np == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 158, __pyx_L1_error)
+      __PYX_ERR(0, 160, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 158, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 158, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 160, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    ((__pyx_v_pos[__pyx_v_m]).coord[1]) = __pyx_t_2;
+    ((__pyx_v_pos[__pyx_v_m]).coord[1]) = __pyx_t_9;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":159
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":161
  *             pos[m].coord[0] = pos_np[m][0]
  *             pos[m].coord[1] = pos_np[m][1]
  *             pos[m].coord[2] = pos_np[m][2]             # <<<<<<<<<<<<<<
@@ -3915,41 +3443,41 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
     if (unlikely(__pyx_v_pos_np == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 159, __pyx_L1_error)
+      __PYX_ERR(0, 161, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 159, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 159, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    ((__pyx_v_pos[__pyx_v_m]).coord[2]) = __pyx_t_2;
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 161, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    ((__pyx_v_pos[__pyx_v_m]).coord[2]) = __pyx_t_9;
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":165
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":167
  *         # Initialize radial feature
  *         cdef double *feature1
- *         feature1 = <double*>mem.alloc(Nelements_2body, sizeof(double))             # <<<<<<<<<<<<<<
+ *         feature1 = <double*>self.mem.alloc(self.Nelements_2body, sizeof(double))             # <<<<<<<<<<<<<<
  * 
  *         cdef int num_pairs, center_bin, minbin_lim, maxbin_lim, newbin
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Nelements_2body, (sizeof(double))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 165, __pyx_L1_error)
-  __pyx_v_feature1 = ((double *)__pyx_t_7);
+  __pyx_t_6 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_self->mem->__pyx_vtab)->alloc(__pyx_v_self->mem, __pyx_v_self->Nelements_2body, (sizeof(double))); if (unlikely(__pyx_t_6 == ((void *)NULL))) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_v_feature1 = ((double *)__pyx_t_6);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":170
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":172
  *         cdef double Rij, normalization, binpos, c, erfarg_low, erfarg_up, value
  *         cdef int i, j, n
  *         for i in range(Natoms):             # <<<<<<<<<<<<<<
  *             for j in range(Natoms):
  *                 Rij = euclidean(pos[i], pos[j])
  */
-  __pyx_t_3 = __pyx_v_Natoms;
-  __pyx_t_8 = __pyx_t_3;
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
+  __pyx_t_4 = __pyx_v_Natoms;
+  __pyx_t_7 = __pyx_t_4;
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":171
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":173
  *         cdef int i, j, n
  *         for i in range(Natoms):
  *             for j in range(Natoms):             # <<<<<<<<<<<<<<
@@ -3961,7 +3489,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
       __pyx_v_j = __pyx_t_12;
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":172
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":174
  *         for i in range(Natoms):
  *             for j in range(Natoms):
  *                 Rij = euclidean(pos[i], pos[j])             # <<<<<<<<<<<<<<
@@ -3970,14 +3498,14 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
       __pyx_v_Rij = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_euclidean((__pyx_v_pos[__pyx_v_i]), (__pyx_v_pos[__pyx_v_j]));
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":175
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":177
  * 
  *                 # Stop if distance too long or atoms are the same one.
- *                 if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:             # <<<<<<<<<<<<<<
+ *                 if Rij > self.Rc1+self.nsigma*self.sigma1 or Rij < 1e-6:             # <<<<<<<<<<<<<<
  *                     continue
  * 
  */
-      __pyx_t_14 = ((__pyx_v_Rij > (__pyx_v_Rc1 + (__pyx_v_nsigma * __pyx_v_sigma1))) != 0);
+      __pyx_t_14 = ((__pyx_v_Rij > (__pyx_v_self->Rc1 + (__pyx_v_self->nsigma * __pyx_v_self->sigma1))) != 0);
       if (!__pyx_t_14) {
       } else {
         __pyx_t_13 = __pyx_t_14;
@@ -3988,134 +3516,134 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
       __pyx_L10_bool_binop_done:;
       if (__pyx_t_13) {
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":176
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":178
  *                 # Stop if distance too long or atoms are the same one.
- *                 if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:
+ *                 if Rij > self.Rc1+self.nsigma*self.sigma1 or Rij < 1e-6:
  *                     continue             # <<<<<<<<<<<<<<
  * 
  *                 # Calculate normalization
  */
         goto __pyx_L7_continue;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":175
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":177
  * 
  *                 # Stop if distance too long or atoms are the same one.
- *                 if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:             # <<<<<<<<<<<<<<
+ *                 if Rij > self.Rc1+self.nsigma*self.sigma1 or Rij < 1e-6:             # <<<<<<<<<<<<<<
  *                     continue
  * 
  */
       }
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":179
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":181
  * 
  *                 # Calculate normalization
  *                 num_pairs = Natoms*Natoms             # <<<<<<<<<<<<<<
- *                 normalization = 1./smearing_norm1
- *                 normalization /= 4*M_PI*Rij*Rij * binwidth1 * num_pairs/volume
+ *                 normalization = 1./self.smearing_norm1
+ *                 normalization /= 4*M_PI*Rij*Rij * self.binwidth1 * num_pairs/self.volume
  */
       __pyx_v_num_pairs = (__pyx_v_Natoms * __pyx_v_Natoms);
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":180
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":182
  *                 # Calculate normalization
  *                 num_pairs = Natoms*Natoms
- *                 normalization = 1./smearing_norm1             # <<<<<<<<<<<<<<
- *                 normalization /= 4*M_PI*Rij*Rij * binwidth1 * num_pairs/volume
+ *                 normalization = 1./self.smearing_norm1             # <<<<<<<<<<<<<<
+ *                 normalization /= 4*M_PI*Rij*Rij * self.binwidth1 * num_pairs/self.volume
  * 
  */
-      if (unlikely(__pyx_v_smearing_norm1 == 0)) {
+      if (unlikely(__pyx_v_self->smearing_norm1 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 180, __pyx_L1_error)
+        __PYX_ERR(0, 182, __pyx_L1_error)
       }
-      __pyx_v_normalization = (1. / __pyx_v_smearing_norm1);
+      __pyx_v_normalization = (1. / __pyx_v_self->smearing_norm1);
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":181
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":183
  *                 num_pairs = Natoms*Natoms
- *                 normalization = 1./smearing_norm1
- *                 normalization /= 4*M_PI*Rij*Rij * binwidth1 * num_pairs/volume             # <<<<<<<<<<<<<<
+ *                 normalization = 1./self.smearing_norm1
+ *                 normalization /= 4*M_PI*Rij*Rij * self.binwidth1 * num_pairs/self.volume             # <<<<<<<<<<<<<<
  * 
  *                 # Identify what bin 'Rij' belongs to + it's position in this bin
  */
-      __pyx_t_2 = (((((4.0 * M_PI) * __pyx_v_Rij) * __pyx_v_Rij) * __pyx_v_binwidth1) * __pyx_v_num_pairs);
-      if (unlikely(__pyx_v_volume == 0)) {
+      __pyx_t_9 = (((((4.0 * M_PI) * __pyx_v_Rij) * __pyx_v_Rij) * __pyx_v_self->binwidth1) * __pyx_v_num_pairs);
+      if (unlikely(__pyx_v_self->volume == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 181, __pyx_L1_error)
+        __PYX_ERR(0, 183, __pyx_L1_error)
       }
-      __pyx_t_15 = (__pyx_t_2 / __pyx_v_volume);
+      __pyx_t_15 = (__pyx_t_9 / __pyx_v_self->volume);
       if (unlikely(__pyx_t_15 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 181, __pyx_L1_error)
+        __PYX_ERR(0, 183, __pyx_L1_error)
       }
       __pyx_v_normalization = (__pyx_v_normalization / __pyx_t_15);
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":184
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":186
  * 
  *                 # Identify what bin 'Rij' belongs to + it's position in this bin
- *                 center_bin = <int> floor(Rij/binwidth1)             # <<<<<<<<<<<<<<
- *                 binpos = Rij/binwidth1 - center_bin
+ *                 center_bin = <int> floor(Rij/self.binwidth1)             # <<<<<<<<<<<<<<
+ *                 binpos = Rij/self.binwidth1 - center_bin
  * 
  */
-      if (unlikely(__pyx_v_binwidth1 == 0)) {
+      if (unlikely(__pyx_v_self->binwidth1 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 184, __pyx_L1_error)
+        __PYX_ERR(0, 186, __pyx_L1_error)
       }
-      __pyx_v_center_bin = ((int)floor((__pyx_v_Rij / __pyx_v_binwidth1)));
+      __pyx_v_center_bin = ((int)floor((__pyx_v_Rij / __pyx_v_self->binwidth1)));
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":185
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":187
  *                 # Identify what bin 'Rij' belongs to + it's position in this bin
- *                 center_bin = <int> floor(Rij/binwidth1)
- *                 binpos = Rij/binwidth1 - center_bin             # <<<<<<<<<<<<<<
+ *                 center_bin = <int> floor(Rij/self.binwidth1)
+ *                 binpos = Rij/self.binwidth1 - center_bin             # <<<<<<<<<<<<<<
  * 
  *                 # Lower and upper range of bins affected by the current atomic distance deltaR.
  */
-      if (unlikely(__pyx_v_binwidth1 == 0)) {
+      if (unlikely(__pyx_v_self->binwidth1 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 185, __pyx_L1_error)
+        __PYX_ERR(0, 187, __pyx_L1_error)
       }
-      __pyx_v_binpos = ((__pyx_v_Rij / __pyx_v_binwidth1) - __pyx_v_center_bin);
+      __pyx_v_binpos = ((__pyx_v_Rij / __pyx_v_self->binwidth1) - __pyx_v_center_bin);
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":188
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":190
  * 
  *                 # Lower and upper range of bins affected by the current atomic distance deltaR.
- *                 minbin_lim = <int> -ceil(m1 - binpos)             # <<<<<<<<<<<<<<
- *                 maxbin_lim = <int> ceil(m1 - (1-binpos))
+ *                 minbin_lim = <int> -ceil(self.m1 - binpos)             # <<<<<<<<<<<<<<
+ *                 maxbin_lim = <int> ceil(self.m1 - (1-binpos))
  * 
  */
-      __pyx_v_minbin_lim = ((int)(-ceil((__pyx_v_m1 - __pyx_v_binpos))));
+      __pyx_v_minbin_lim = ((int)(-ceil((__pyx_v_self->m1 - __pyx_v_binpos))));
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":189
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":191
  *                 # Lower and upper range of bins affected by the current atomic distance deltaR.
- *                 minbin_lim = <int> -ceil(m1 - binpos)
- *                 maxbin_lim = <int> ceil(m1 - (1-binpos))             # <<<<<<<<<<<<<<
+ *                 minbin_lim = <int> -ceil(self.m1 - binpos)
+ *                 maxbin_lim = <int> ceil(self.m1 - (1-binpos))             # <<<<<<<<<<<<<<
  * 
  *                 for n in range(minbin_lim, maxbin_lim + 1):
  */
-      __pyx_v_maxbin_lim = ((int)ceil((__pyx_v_m1 - (1.0 - __pyx_v_binpos))));
+      __pyx_v_maxbin_lim = ((int)ceil((__pyx_v_self->m1 - (1.0 - __pyx_v_binpos))));
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":191
- *                 maxbin_lim = <int> ceil(m1 - (1-binpos))
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":193
+ *                 maxbin_lim = <int> ceil(self.m1 - (1-binpos))
  * 
  *                 for n in range(minbin_lim, maxbin_lim + 1):             # <<<<<<<<<<<<<<
  *                     newbin = center_bin + n
- *                     if newbin < 0 or newbin >= Nbins1:
+ *                     if newbin < 0 or newbin >= self.Nbins1:
  */
       __pyx_t_16 = (__pyx_v_maxbin_lim + 1);
       __pyx_t_17 = __pyx_t_16;
       for (__pyx_t_18 = __pyx_v_minbin_lim; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
         __pyx_v_n = __pyx_t_18;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":192
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":194
  * 
  *                 for n in range(minbin_lim, maxbin_lim + 1):
  *                     newbin = center_bin + n             # <<<<<<<<<<<<<<
- *                     if newbin < 0 or newbin >= Nbins1:
+ *                     if newbin < 0 or newbin >= self.Nbins1:
  *                         continue
  */
         __pyx_v_newbin = (__pyx_v_center_bin + __pyx_v_n);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":193
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":195
  *                 for n in range(minbin_lim, maxbin_lim + 1):
  *                     newbin = center_bin + n
- *                     if newbin < 0 or newbin >= Nbins1:             # <<<<<<<<<<<<<<
+ *                     if newbin < 0 or newbin >= self.Nbins1:             # <<<<<<<<<<<<<<
  *                         continue
  * 
  */
@@ -4125,90 +3653,90 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
           __pyx_t_13 = __pyx_t_14;
           goto __pyx_L15_bool_binop_done;
         }
-        __pyx_t_14 = ((__pyx_v_newbin >= __pyx_v_Nbins1) != 0);
+        __pyx_t_14 = ((__pyx_v_newbin >= __pyx_v_self->Nbins1) != 0);
         __pyx_t_13 = __pyx_t_14;
         __pyx_L15_bool_binop_done:;
         if (__pyx_t_13) {
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":194
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":196
  *                     newbin = center_bin + n
- *                     if newbin < 0 or newbin >= Nbins1:
+ *                     if newbin < 0 or newbin >= self.Nbins1:
  *                         continue             # <<<<<<<<<<<<<<
  * 
  *                     # Calculate gauss contribution to current bin
  */
           goto __pyx_L12_continue;
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":193
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":195
  *                 for n in range(minbin_lim, maxbin_lim + 1):
  *                     newbin = center_bin + n
- *                     if newbin < 0 or newbin >= Nbins1:             # <<<<<<<<<<<<<<
+ *                     if newbin < 0 or newbin >= self.Nbins1:             # <<<<<<<<<<<<<<
  *                         continue
  * 
  */
         }
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":197
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":199
  * 
  *                     # Calculate gauss contribution to current bin
- *                     c = 1./sqrt(2)*binwidth1/sigma1             # <<<<<<<<<<<<<<
- *                     erfarg_low = max(-m1, n-binpos)
- *                     erfarg_up = min(m1, n+(1-binpos))
+ *                     c = 1./sqrt(2)*self.binwidth1/self.sigma1             # <<<<<<<<<<<<<<
+ *                     erfarg_low = max(-self.m1, n-binpos)
+ *                     erfarg_up = min(self.m1, n+(1-binpos))
  */
         __pyx_t_15 = sqrt(2.0);
         if (unlikely(__pyx_t_15 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 197, __pyx_L1_error)
+          __PYX_ERR(0, 199, __pyx_L1_error)
         }
-        __pyx_t_2 = ((1. / __pyx_t_15) * __pyx_v_binwidth1);
-        if (unlikely(__pyx_v_sigma1 == 0)) {
+        __pyx_t_9 = ((1. / __pyx_t_15) * __pyx_v_self->binwidth1);
+        if (unlikely(__pyx_v_self->sigma1 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 197, __pyx_L1_error)
+          __PYX_ERR(0, 199, __pyx_L1_error)
         }
-        __pyx_v_c = (__pyx_t_2 / __pyx_v_sigma1);
+        __pyx_v_c = (__pyx_t_9 / __pyx_v_self->sigma1);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":198
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":200
  *                     # Calculate gauss contribution to current bin
- *                     c = 1./sqrt(2)*binwidth1/sigma1
- *                     erfarg_low = max(-m1, n-binpos)             # <<<<<<<<<<<<<<
- *                     erfarg_up = min(m1, n+(1-binpos))
+ *                     c = 1./sqrt(2)*self.binwidth1/self.sigma1
+ *                     erfarg_low = max(-self.m1, n-binpos)             # <<<<<<<<<<<<<<
+ *                     erfarg_up = min(self.m1, n+(1-binpos))
  *                     value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)
  */
-        __pyx_t_2 = (__pyx_v_n - __pyx_v_binpos);
-        __pyx_t_15 = (-__pyx_v_m1);
-        if (((__pyx_t_2 > __pyx_t_15) != 0)) {
-          __pyx_t_19 = __pyx_t_2;
+        __pyx_t_9 = (__pyx_v_n - __pyx_v_binpos);
+        __pyx_t_15 = (-__pyx_v_self->m1);
+        if (((__pyx_t_9 > __pyx_t_15) != 0)) {
+          __pyx_t_19 = __pyx_t_9;
         } else {
           __pyx_t_19 = __pyx_t_15;
         }
         __pyx_v_erfarg_low = __pyx_t_19;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":199
- *                     c = 1./sqrt(2)*binwidth1/sigma1
- *                     erfarg_low = max(-m1, n-binpos)
- *                     erfarg_up = min(m1, n+(1-binpos))             # <<<<<<<<<<<<<<
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":201
+ *                     c = 1./sqrt(2)*self.binwidth1/self.sigma1
+ *                     erfarg_low = max(-self.m1, n-binpos)
+ *                     erfarg_up = min(self.m1, n+(1-binpos))             # <<<<<<<<<<<<<<
  *                     value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)
  * 
  */
         __pyx_t_19 = (__pyx_v_n + (1.0 - __pyx_v_binpos));
-        __pyx_t_2 = __pyx_v_m1;
-        if (((__pyx_t_19 < __pyx_t_2) != 0)) {
+        __pyx_t_9 = __pyx_v_self->m1;
+        if (((__pyx_t_19 < __pyx_t_9) != 0)) {
           __pyx_t_15 = __pyx_t_19;
         } else {
-          __pyx_t_15 = __pyx_t_2;
+          __pyx_t_15 = __pyx_t_9;
         }
         __pyx_v_erfarg_up = __pyx_t_15;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":200
- *                     erfarg_low = max(-m1, n-binpos)
- *                     erfarg_up = min(m1, n+(1-binpos))
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":202
+ *                     erfarg_low = max(-self.m1, n-binpos)
+ *                     erfarg_up = min(self.m1, n+(1-binpos))
  *                     value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)             # <<<<<<<<<<<<<<
  * 
  *                     # Apply normalization
  */
         __pyx_v_value = ((0.5 * erf((__pyx_v_c * __pyx_v_erfarg_up))) - (0.5 * erf((__pyx_v_c * __pyx_v_erfarg_low))));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":203
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":205
  * 
  *                     # Apply normalization
  *                     value *= normalization             # <<<<<<<<<<<<<<
@@ -4217,7 +3745,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
         __pyx_v_value = (__pyx_v_value * __pyx_v_normalization);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":205
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":207
  *                     value *= normalization
  * 
  *                     feature1[newbin] += value             # <<<<<<<<<<<<<<
@@ -4232,108 +3760,108 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     }
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":208
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":210
  * 
  *         # Convert radial feature to numpy array
- *         feature1_np = np.zeros(Nelements_2body)             # <<<<<<<<<<<<<<
- *         for m in range(Nelements_2body):
+ *         feature1_np = np.zeros(self.Nelements_2body)             # <<<<<<<<<<<<<<
+ *         for m in range(self.Nelements_2body):
  *             feature1_np[m] = feature1[m]
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 208, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_Nelements_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->Nelements_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_6)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_6);
+  __pyx_t_5 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_4, function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
-  if (!__pyx_t_6) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 208, __pyx_L1_error)
+  if (!__pyx_t_5) {
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_1};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 208, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_GOTREF(__pyx_t_5);
+    if (PyFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_1};
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_1};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 208, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_GOTREF(__pyx_t_5);
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_1};
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     {
-      __pyx_t_21 = PyTuple_New(1+1); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 208, __pyx_L1_error)
+      __pyx_t_21 = PyTuple_New(1+1); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 210, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_21);
-      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_21, 0, __pyx_t_6); __pyx_t_6 = NULL;
+      __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_21, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_21, 0+1, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_21, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 208, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_21, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
     }
   }
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_feature1_np = __pyx_t_5;
-  __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_feature1_np = __pyx_t_3;
+  __pyx_t_3 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":209
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":211
  *         # Convert radial feature to numpy array
- *         feature1_np = np.zeros(Nelements_2body)
- *         for m in range(Nelements_2body):             # <<<<<<<<<<<<<<
+ *         feature1_np = np.zeros(self.Nelements_2body)
+ *         for m in range(self.Nelements_2body):             # <<<<<<<<<<<<<<
  *             feature1_np[m] = feature1[m]
  * 
  */
-  __pyx_t_3 = __pyx_v_Nelements_2body;
-  __pyx_t_8 = __pyx_t_3;
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_m = __pyx_t_9;
+  __pyx_t_4 = __pyx_v_self->Nelements_2body;
+  __pyx_t_7 = __pyx_t_4;
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_m = __pyx_t_8;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":210
- *         feature1_np = np.zeros(Nelements_2body)
- *         for m in range(Nelements_2body):
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":212
+ *         feature1_np = np.zeros(self.Nelements_2body)
+ *         for m in range(self.Nelements_2body):
  *             feature1_np[m] = feature1[m]             # <<<<<<<<<<<<<<
  * 
  *         # Return feature if only radial part is desired
  */
-    __pyx_t_5 = PyFloat_FromDouble((__pyx_v_feature1[__pyx_v_m])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 210, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    if (unlikely(__Pyx_SetItemInt(__pyx_v_feature1_np, __pyx_v_m, __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 210, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_3 = PyFloat_FromDouble((__pyx_v_feature1[__pyx_v_m])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 212, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    if (unlikely(__Pyx_SetItemInt(__pyx_v_feature1_np, __pyx_v_m, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 212, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":213
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":215
  * 
  *         # Return feature if only radial part is desired
- *         if not use_angular:             # <<<<<<<<<<<<<<
+ *         if not self.use_angular:             # <<<<<<<<<<<<<<
  *             return feature1_np
  * 
  */
-  __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_v_use_angular); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_v_self->use_angular); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 215, __pyx_L1_error)
   __pyx_t_14 = ((!__pyx_t_13) != 0);
   if (__pyx_t_14) {
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":214
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":216
  *         # Return feature if only radial part is desired
- *         if not use_angular:
+ *         if not self.use_angular:
  *             return feature1_np             # <<<<<<<<<<<<<<
  * 
  *         # ANGULAR FEATURE
@@ -4343,38 +3871,38 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     __pyx_r = __pyx_v_feature1_np;
     goto __pyx_L0;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":213
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":215
  * 
  *         # Return feature if only radial part is desired
- *         if not use_angular:             # <<<<<<<<<<<<<<
+ *         if not self.use_angular:             # <<<<<<<<<<<<<<
  *             return feature1_np
  * 
  */
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":220
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":222
  *         # Initialize angular feature
  *         cdef double *feature2
- *         feature2 = <double*>mem.alloc(Nelements_3body, sizeof(double))             # <<<<<<<<<<<<<<
+ *         feature2 = <double*>self.mem.alloc(self.Nelements_3body, sizeof(double))             # <<<<<<<<<<<<<<
  * 
  *         cdef Point RijVec, RikVec
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Nelements_3body, (sizeof(double))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 220, __pyx_L1_error)
-  __pyx_v_feature2 = ((double *)__pyx_t_7);
+  __pyx_t_6 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_self->mem->__pyx_vtab)->alloc(__pyx_v_self->mem, __pyx_v_self->Nelements_3body, (sizeof(double))); if (unlikely(__pyx_t_6 == ((void *)NULL))) __PYX_ERR(0, 222, __pyx_L1_error)
+  __pyx_v_feature2 = ((double *)__pyx_t_6);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":225
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":227
  *         cdef double angle
  *         cdef int k, cond_ij, cond_ik
  *         for i in range(Natoms):             # <<<<<<<<<<<<<<
  *             for j in range(Natoms):
  *                 for k in range(j+1, Natoms):
  */
-  __pyx_t_3 = __pyx_v_Natoms;
-  __pyx_t_8 = __pyx_t_3;
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
+  __pyx_t_4 = __pyx_v_Natoms;
+  __pyx_t_7 = __pyx_t_4;
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":226
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":228
  *         cdef int k, cond_ij, cond_ik
  *         for i in range(Natoms):
  *             for j in range(Natoms):             # <<<<<<<<<<<<<<
@@ -4386,7 +3914,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
       __pyx_v_j = __pyx_t_12;
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":227
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":229
  *         for i in range(Natoms):
  *             for j in range(Natoms):
  *                 for k in range(j+1, Natoms):             # <<<<<<<<<<<<<<
@@ -4398,7 +3926,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
       for (__pyx_t_22 = (__pyx_v_j + 1); __pyx_t_22 < __pyx_t_20; __pyx_t_22+=1) {
         __pyx_v_k = __pyx_t_22;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":228
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":230
  *             for j in range(Natoms):
  *                 for k in range(j+1, Natoms):
  *                     Rij = euclidean(pos[i], pos[j])             # <<<<<<<<<<<<<<
@@ -4407,7 +3935,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
         __pyx_v_Rij = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_euclidean((__pyx_v_pos[__pyx_v_i]), (__pyx_v_pos[__pyx_v_j]));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":229
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":231
  *                 for k in range(j+1, Natoms):
  *                     Rij = euclidean(pos[i], pos[j])
  *                     Rik = euclidean(pos[i], pos[k])             # <<<<<<<<<<<<<<
@@ -4416,14 +3944,14 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
         __pyx_v_Rik = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_euclidean((__pyx_v_pos[__pyx_v_i]), (__pyx_v_pos[__pyx_v_k]));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":232
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":234
  * 
  *                     # Stop if distance too long or atoms are the same one.
- *                     cond_ij = Rij > Rc2 or Rij < 1e-6             # <<<<<<<<<<<<<<
- *                     cond_ik = Rik > Rc2 or Rik < 1e-6
+ *                     cond_ij = Rij > self.Rc2 or Rij < 1e-6             # <<<<<<<<<<<<<<
+ *                     cond_ik = Rik > self.Rc2 or Rik < 1e-6
  *                     if cond_ij or cond_ik:
  */
-        __pyx_t_14 = (__pyx_v_Rij > __pyx_v_Rc2);
+        __pyx_t_14 = (__pyx_v_Rij > __pyx_v_self->Rc2);
         if (!__pyx_t_14) {
         } else {
           __pyx_t_23 = __pyx_t_14;
@@ -4434,14 +3962,14 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
         __pyx_L26_bool_binop_done:;
         __pyx_v_cond_ij = __pyx_t_23;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":233
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":235
  *                     # Stop if distance too long or atoms are the same one.
- *                     cond_ij = Rij > Rc2 or Rij < 1e-6
- *                     cond_ik = Rik > Rc2 or Rik < 1e-6             # <<<<<<<<<<<<<<
+ *                     cond_ij = Rij > self.Rc2 or Rij < 1e-6
+ *                     cond_ik = Rik > self.Rc2 or Rik < 1e-6             # <<<<<<<<<<<<<<
  *                     if cond_ij or cond_ik:
  *                         continue
  */
-        __pyx_t_14 = (__pyx_v_Rik > __pyx_v_Rc2);
+        __pyx_t_14 = (__pyx_v_Rik > __pyx_v_self->Rc2);
         if (!__pyx_t_14) {
         } else {
           __pyx_t_23 = __pyx_t_14;
@@ -4452,9 +3980,9 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
         __pyx_L28_bool_binop_done:;
         __pyx_v_cond_ik = __pyx_t_23;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":234
- *                     cond_ij = Rij > Rc2 or Rij < 1e-6
- *                     cond_ik = Rik > Rc2 or Rik < 1e-6
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":236
+ *                     cond_ij = Rij > self.Rc2 or Rij < 1e-6
+ *                     cond_ik = Rik > self.Rc2 or Rik < 1e-6
  *                     if cond_ij or cond_ik:             # <<<<<<<<<<<<<<
  *                         continue
  * 
@@ -4470,8 +3998,8 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
         __pyx_L31_bool_binop_done:;
         if (__pyx_t_14) {
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":235
- *                     cond_ik = Rik > Rc2 or Rik < 1e-6
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":237
+ *                     cond_ik = Rik > self.Rc2 or Rik < 1e-6
  *                     if cond_ij or cond_ik:
  *                         continue             # <<<<<<<<<<<<<<
  * 
@@ -4479,16 +4007,16 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
           goto __pyx_L24_continue;
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":234
- *                     cond_ij = Rij > Rc2 or Rij < 1e-6
- *                     cond_ik = Rik > Rc2 or Rik < 1e-6
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":236
+ *                     cond_ij = Rij > self.Rc2 or Rij < 1e-6
+ *                     cond_ik = Rik > self.Rc2 or Rik < 1e-6
  *                     if cond_ij or cond_ik:             # <<<<<<<<<<<<<<
  *                         continue
  * 
  */
         }
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":238
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":240
  * 
  *                     # Calculate angle
  *                     RijVec = subtract(pos[j],pos[i])             # <<<<<<<<<<<<<<
@@ -4497,7 +4025,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
         __pyx_v_RijVec = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_subtract((__pyx_v_pos[__pyx_v_j]), (__pyx_v_pos[__pyx_v_i]));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":239
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":241
  *                     # Calculate angle
  *                     RijVec = subtract(pos[j],pos[i])
  *                     RikVec = subtract(pos[k], pos[i])             # <<<<<<<<<<<<<<
@@ -4506,7 +4034,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
         __pyx_v_RikVec = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_subtract((__pyx_v_pos[__pyx_v_k]), (__pyx_v_pos[__pyx_v_i]));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":240
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":242
  *                     RijVec = subtract(pos[j],pos[i])
  *                     RikVec = subtract(pos[k], pos[i])
  *                     angle = get_angle(RijVec, RikVec)             # <<<<<<<<<<<<<<
@@ -4515,92 +4043,92 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
         __pyx_v_angle = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_get_angle(__pyx_v_RijVec, __pyx_v_RikVec);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":243
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":245
  * 
  *                     # Calculate normalization
  *                     num_pairs = Natoms*Natoms*Natoms             # <<<<<<<<<<<<<<
- *                     normalization = 1./smearing_norm2
- *                     normalization /= num_pairs/volume
+ *                     normalization = 1./self.smearing_norm2
+ *                     normalization /= num_pairs/self.volume
  */
         __pyx_v_num_pairs = ((__pyx_v_Natoms * __pyx_v_Natoms) * __pyx_v_Natoms);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":244
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":246
  *                     # Calculate normalization
  *                     num_pairs = Natoms*Natoms*Natoms
- *                     normalization = 1./smearing_norm2             # <<<<<<<<<<<<<<
- *                     normalization /= num_pairs/volume
+ *                     normalization = 1./self.smearing_norm2             # <<<<<<<<<<<<<<
+ *                     normalization /= num_pairs/self.volume
  * 
  */
-        if (unlikely(__pyx_v_smearing_norm2 == 0)) {
+        if (unlikely(__pyx_v_self->smearing_norm2 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 244, __pyx_L1_error)
+          __PYX_ERR(0, 246, __pyx_L1_error)
         }
-        __pyx_v_normalization = (1. / __pyx_v_smearing_norm2);
+        __pyx_v_normalization = (1. / __pyx_v_self->smearing_norm2);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":245
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":247
  *                     num_pairs = Natoms*Natoms*Natoms
- *                     normalization = 1./smearing_norm2
- *                     normalization /= num_pairs/volume             # <<<<<<<<<<<<<<
+ *                     normalization = 1./self.smearing_norm2
+ *                     normalization /= num_pairs/self.volume             # <<<<<<<<<<<<<<
  * 
  *                     # Identify what bin 'Rij' belongs to + it's position in this bin
  */
-        if (unlikely(__pyx_v_volume == 0)) {
+        if (unlikely(__pyx_v_self->volume == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 245, __pyx_L1_error)
+          __PYX_ERR(0, 247, __pyx_L1_error)
         }
-        __pyx_t_15 = (__pyx_v_num_pairs / __pyx_v_volume);
+        __pyx_t_15 = (__pyx_v_num_pairs / __pyx_v_self->volume);
         if (unlikely(__pyx_t_15 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 245, __pyx_L1_error)
+          __PYX_ERR(0, 247, __pyx_L1_error)
         }
         __pyx_v_normalization = (__pyx_v_normalization / __pyx_t_15);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":248
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":250
  * 
  *                     # Identify what bin 'Rij' belongs to + it's position in this bin
- *                     center_bin = <int> floor(angle/binwidth1)             # <<<<<<<<<<<<<<
- *                     binpos = angle/binwidth2 - center_bin
+ *                     center_bin = <int> floor(angle/self.binwidth1)             # <<<<<<<<<<<<<<
+ *                     binpos = angle/self.binwidth2 - center_bin
  * 
  */
-        if (unlikely(__pyx_v_binwidth1 == 0)) {
+        if (unlikely(__pyx_v_self->binwidth1 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 248, __pyx_L1_error)
+          __PYX_ERR(0, 250, __pyx_L1_error)
         }
-        __pyx_v_center_bin = ((int)floor((__pyx_v_angle / __pyx_v_binwidth1)));
+        __pyx_v_center_bin = ((int)floor((__pyx_v_angle / __pyx_v_self->binwidth1)));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":249
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":251
  *                     # Identify what bin 'Rij' belongs to + it's position in this bin
- *                     center_bin = <int> floor(angle/binwidth1)
- *                     binpos = angle/binwidth2 - center_bin             # <<<<<<<<<<<<<<
+ *                     center_bin = <int> floor(angle/self.binwidth1)
+ *                     binpos = angle/self.binwidth2 - center_bin             # <<<<<<<<<<<<<<
  * 
  *                     # Lower and upper range of bins affected by the current atomic distance deltaR.
  */
-        if (unlikely(__pyx_v_binwidth2 == 0)) {
+        if (unlikely(__pyx_v_self->binwidth2 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 249, __pyx_L1_error)
+          __PYX_ERR(0, 251, __pyx_L1_error)
         }
-        __pyx_v_binpos = ((__pyx_v_angle / __pyx_v_binwidth2) - __pyx_v_center_bin);
+        __pyx_v_binpos = ((__pyx_v_angle / __pyx_v_self->binwidth2) - __pyx_v_center_bin);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":252
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":254
  * 
  *                     # Lower and upper range of bins affected by the current atomic distance deltaR.
- *                     minbin_lim = <int> -ceil(m2 - binpos)             # <<<<<<<<<<<<<<
- *                     maxbin_lim = <int> ceil(m2 - (1-binpos))
+ *                     minbin_lim = <int> -ceil(self.m2 - binpos)             # <<<<<<<<<<<<<<
+ *                     maxbin_lim = <int> ceil(self.m2 - (1-binpos))
  * 
  */
-        __pyx_v_minbin_lim = ((int)(-ceil((__pyx_v_m2 - __pyx_v_binpos))));
+        __pyx_v_minbin_lim = ((int)(-ceil((__pyx_v_self->m2 - __pyx_v_binpos))));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":253
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":255
  *                     # Lower and upper range of bins affected by the current atomic distance deltaR.
- *                     minbin_lim = <int> -ceil(m2 - binpos)
- *                     maxbin_lim = <int> ceil(m2 - (1-binpos))             # <<<<<<<<<<<<<<
+ *                     minbin_lim = <int> -ceil(self.m2 - binpos)
+ *                     maxbin_lim = <int> ceil(self.m2 - (1-binpos))             # <<<<<<<<<<<<<<
  * 
  *                     for n in range(minbin_lim, maxbin_lim + 1):
  */
-        __pyx_v_maxbin_lim = ((int)ceil((__pyx_v_m2 - (1.0 - __pyx_v_binpos))));
+        __pyx_v_maxbin_lim = ((int)ceil((__pyx_v_self->m2 - (1.0 - __pyx_v_binpos))));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":255
- *                     maxbin_lim = <int> ceil(m2 - (1-binpos))
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":257
+ *                     maxbin_lim = <int> ceil(self.m2 - (1-binpos))
  * 
  *                     for n in range(minbin_lim, maxbin_lim + 1):             # <<<<<<<<<<<<<<
  *                         newbin = center_bin + n
@@ -4611,7 +4139,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
         for (__pyx_t_23 = __pyx_v_minbin_lim; __pyx_t_23 < __pyx_t_17; __pyx_t_23+=1) {
           __pyx_v_n = __pyx_t_23;
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":256
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":258
  * 
  *                     for n in range(minbin_lim, maxbin_lim + 1):
  *                         newbin = center_bin + n             # <<<<<<<<<<<<<<
@@ -4620,134 +4148,134 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
           __pyx_v_newbin = (__pyx_v_center_bin + __pyx_v_n);
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":259
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":261
  * 
  *                         # Wrap current bin into correct bin-range
  *                         if newbin < 0:             # <<<<<<<<<<<<<<
  *                             newbin = abs(newbin)
- *                         if newbin > Nbins2-1:
+ *                         if newbin > self.Nbins2-1:
  */
           __pyx_t_14 = ((__pyx_v_newbin < 0) != 0);
           if (__pyx_t_14) {
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":260
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":262
  *                         # Wrap current bin into correct bin-range
  *                         if newbin < 0:
  *                             newbin = abs(newbin)             # <<<<<<<<<<<<<<
- *                         if newbin > Nbins2-1:
- *                             newbin = 2*Nbins2 - newbin - 1
+ *                         if newbin > self.Nbins2-1:
+ *                             newbin = 2*self.Nbins2 - newbin - 1
  */
-            __pyx_t_24 = abs(__pyx_v_newbin); if (unlikely(__pyx_t_24 == ((int)-1))) __PYX_ERR(0, 260, __pyx_L1_error)
+            __pyx_t_24 = abs(__pyx_v_newbin); if (unlikely(__pyx_t_24 == ((int)-1))) __PYX_ERR(0, 262, __pyx_L1_error)
             __pyx_v_newbin = __pyx_t_24;
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":259
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":261
  * 
  *                         # Wrap current bin into correct bin-range
  *                         if newbin < 0:             # <<<<<<<<<<<<<<
  *                             newbin = abs(newbin)
- *                         if newbin > Nbins2-1:
+ *                         if newbin > self.Nbins2-1:
  */
           }
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":261
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":263
  *                         if newbin < 0:
  *                             newbin = abs(newbin)
- *                         if newbin > Nbins2-1:             # <<<<<<<<<<<<<<
- *                             newbin = 2*Nbins2 - newbin - 1
+ *                         if newbin > self.Nbins2-1:             # <<<<<<<<<<<<<<
+ *                             newbin = 2*self.Nbins2 - newbin - 1
  * 
  */
-          __pyx_t_14 = ((__pyx_v_newbin > (__pyx_v_Nbins2 - 1)) != 0);
+          __pyx_t_14 = ((__pyx_v_newbin > (__pyx_v_self->Nbins2 - 1)) != 0);
           if (__pyx_t_14) {
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":262
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":264
  *                             newbin = abs(newbin)
- *                         if newbin > Nbins2-1:
- *                             newbin = 2*Nbins2 - newbin - 1             # <<<<<<<<<<<<<<
+ *                         if newbin > self.Nbins2-1:
+ *                             newbin = 2*self.Nbins2 - newbin - 1             # <<<<<<<<<<<<<<
  * 
  *                         # Calculate gauss contribution to current bin
  */
-            __pyx_v_newbin = (((2 * __pyx_v_Nbins2) - __pyx_v_newbin) - 1);
+            __pyx_v_newbin = (((2 * __pyx_v_self->Nbins2) - __pyx_v_newbin) - 1);
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":261
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":263
  *                         if newbin < 0:
  *                             newbin = abs(newbin)
- *                         if newbin > Nbins2-1:             # <<<<<<<<<<<<<<
- *                             newbin = 2*Nbins2 - newbin - 1
+ *                         if newbin > self.Nbins2-1:             # <<<<<<<<<<<<<<
+ *                             newbin = 2*self.Nbins2 - newbin - 1
  * 
  */
           }
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":265
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":267
  * 
  *                         # Calculate gauss contribution to current bin
- *                         c = 1./sqrt(2)*binwidth2/sigma2             # <<<<<<<<<<<<<<
- *                         erfarg_low = max(-m2, n-binpos)
- *                         erfarg_up = min(m2, n+(1-binpos))
+ *                         c = 1./sqrt(2)*self.binwidth2/self.sigma2             # <<<<<<<<<<<<<<
+ *                         erfarg_low = max(-self.m2, n-binpos)
+ *                         erfarg_up = min(self.m2, n+(1-binpos))
  */
           __pyx_t_15 = sqrt(2.0);
           if (unlikely(__pyx_t_15 == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 265, __pyx_L1_error)
+            __PYX_ERR(0, 267, __pyx_L1_error)
           }
-          __pyx_t_19 = ((1. / __pyx_t_15) * __pyx_v_binwidth2);
-          if (unlikely(__pyx_v_sigma2 == 0)) {
+          __pyx_t_19 = ((1. / __pyx_t_15) * __pyx_v_self->binwidth2);
+          if (unlikely(__pyx_v_self->sigma2 == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 265, __pyx_L1_error)
+            __PYX_ERR(0, 267, __pyx_L1_error)
           }
-          __pyx_v_c = (__pyx_t_19 / __pyx_v_sigma2);
+          __pyx_v_c = (__pyx_t_19 / __pyx_v_self->sigma2);
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":266
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":268
  *                         # Calculate gauss contribution to current bin
- *                         c = 1./sqrt(2)*binwidth2/sigma2
- *                         erfarg_low = max(-m2, n-binpos)             # <<<<<<<<<<<<<<
- *                         erfarg_up = min(m2, n+(1-binpos))
+ *                         c = 1./sqrt(2)*self.binwidth2/self.sigma2
+ *                         erfarg_low = max(-self.m2, n-binpos)             # <<<<<<<<<<<<<<
+ *                         erfarg_up = min(self.m2, n+(1-binpos))
  *                         value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)
  */
           __pyx_t_19 = (__pyx_v_n - __pyx_v_binpos);
-          __pyx_t_15 = (-__pyx_v_m2);
+          __pyx_t_15 = (-__pyx_v_self->m2);
           if (((__pyx_t_19 > __pyx_t_15) != 0)) {
-            __pyx_t_2 = __pyx_t_19;
+            __pyx_t_9 = __pyx_t_19;
           } else {
-            __pyx_t_2 = __pyx_t_15;
+            __pyx_t_9 = __pyx_t_15;
           }
-          __pyx_v_erfarg_low = __pyx_t_2;
+          __pyx_v_erfarg_low = __pyx_t_9;
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":267
- *                         c = 1./sqrt(2)*binwidth2/sigma2
- *                         erfarg_low = max(-m2, n-binpos)
- *                         erfarg_up = min(m2, n+(1-binpos))             # <<<<<<<<<<<<<<
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":269
+ *                         c = 1./sqrt(2)*self.binwidth2/self.sigma2
+ *                         erfarg_low = max(-self.m2, n-binpos)
+ *                         erfarg_up = min(self.m2, n+(1-binpos))             # <<<<<<<<<<<<<<
  *                         value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)
- *                         value *= f_cutoff(Rij, gamma, Rc2) * f_cutoff(Rik, gamma, Rc2)
+ *                         value *= f_cutoff(Rij, self.gamma, self.Rc2) * f_cutoff(Rik, self.gamma, self.Rc2)
  */
-          __pyx_t_2 = (__pyx_v_n + (1.0 - __pyx_v_binpos));
-          __pyx_t_19 = __pyx_v_m2;
-          if (((__pyx_t_2 < __pyx_t_19) != 0)) {
-            __pyx_t_15 = __pyx_t_2;
+          __pyx_t_9 = (__pyx_v_n + (1.0 - __pyx_v_binpos));
+          __pyx_t_19 = __pyx_v_self->m2;
+          if (((__pyx_t_9 < __pyx_t_19) != 0)) {
+            __pyx_t_15 = __pyx_t_9;
           } else {
             __pyx_t_15 = __pyx_t_19;
           }
           __pyx_v_erfarg_up = __pyx_t_15;
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":268
- *                         erfarg_low = max(-m2, n-binpos)
- *                         erfarg_up = min(m2, n+(1-binpos))
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":270
+ *                         erfarg_low = max(-self.m2, n-binpos)
+ *                         erfarg_up = min(self.m2, n+(1-binpos))
  *                         value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)             # <<<<<<<<<<<<<<
- *                         value *= f_cutoff(Rij, gamma, Rc2) * f_cutoff(Rik, gamma, Rc2)
+ *                         value *= f_cutoff(Rij, self.gamma, self.Rc2) * f_cutoff(Rik, self.gamma, self.Rc2)
  *                         # Apply normalization
  */
           __pyx_v_value = ((0.5 * erf((__pyx_v_c * __pyx_v_erfarg_up))) - (0.5 * erf((__pyx_v_c * __pyx_v_erfarg_low))));
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":269
- *                         erfarg_up = min(m2, n+(1-binpos))
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":271
+ *                         erfarg_up = min(self.m2, n+(1-binpos))
  *                         value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)
- *                         value *= f_cutoff(Rij, gamma, Rc2) * f_cutoff(Rik, gamma, Rc2)             # <<<<<<<<<<<<<<
+ *                         value *= f_cutoff(Rij, self.gamma, self.Rc2) * f_cutoff(Rik, self.gamma, self.Rc2)             # <<<<<<<<<<<<<<
  *                         # Apply normalization
  *                         value *= normalization
  */
-          __pyx_v_value = (__pyx_v_value * (__pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff(__pyx_v_Rij, __pyx_v_gamma, __pyx_v_Rc2) * __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff(__pyx_v_Rik, __pyx_v_gamma, __pyx_v_Rc2)));
+          __pyx_v_value = (__pyx_v_value * (__pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff(__pyx_v_Rij, __pyx_v_self->gamma, __pyx_v_self->Rc2) * __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff(__pyx_v_Rik, __pyx_v_self->gamma, __pyx_v_self->Rc2)));
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":271
- *                         value *= f_cutoff(Rij, gamma, Rc2) * f_cutoff(Rik, gamma, Rc2)
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":273
+ *                         value *= f_cutoff(Rij, self.gamma, self.Rc2) * f_cutoff(Rik, self.gamma, self.Rc2)
  *                         # Apply normalization
  *                         value *= normalization             # <<<<<<<<<<<<<<
  * 
@@ -4755,7 +4283,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
           __pyx_v_value = (__pyx_v_value * __pyx_v_normalization);
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":273
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":275
  *                         value *= normalization
  * 
  *                         feature2[newbin] += value             # <<<<<<<<<<<<<<
@@ -4770,20 +4298,20 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     }
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":276
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":278
  * 
  *         # Convert angular feature to numpy array
- *         feature2_np = np.zeros(Nelements_3body)             # <<<<<<<<<<<<<<
- *         for m in range(Nelements_3body):
- *             feature2_np[m] = eta * feature2[m]
+ *         feature2_np = np.zeros(self.Nelements_3body)             # <<<<<<<<<<<<<<
+ *         for m in range(self.Nelements_3body):
+ *             feature2_np[m] = self.eta * feature2[m]
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 276, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_21 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_21 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_21);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_Nelements_3body); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 276, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->Nelements_3body); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_1 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_21))) {
     __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_21);
@@ -4795,153 +4323,153 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     }
   }
   if (!__pyx_t_1) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_21, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 276, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_21, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_21)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_4};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_21, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 276, __pyx_L1_error)
+      PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_2};
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_21, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_21)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_4};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_21, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 276, __pyx_L1_error)
+      PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_2};
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_21, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 276, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1); __pyx_t_1 = NULL;
-      __Pyx_GIVEREF(__pyx_t_4);
-      PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_4);
-      __pyx_t_4 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_21, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 276, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1); __pyx_t_1 = NULL;
+      __Pyx_GIVEREF(__pyx_t_2);
+      PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
+      __pyx_t_2 = 0;
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_21, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-  __pyx_v_feature2_np = __pyx_t_5;
-  __pyx_t_5 = 0;
+  __pyx_v_feature2_np = __pyx_t_3;
+  __pyx_t_3 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":277
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":279
  *         # Convert angular feature to numpy array
- *         feature2_np = np.zeros(Nelements_3body)
- *         for m in range(Nelements_3body):             # <<<<<<<<<<<<<<
- *             feature2_np[m] = eta * feature2[m]
+ *         feature2_np = np.zeros(self.Nelements_3body)
+ *         for m in range(self.Nelements_3body):             # <<<<<<<<<<<<<<
+ *             feature2_np[m] = self.eta * feature2[m]
  * 
  */
-  __pyx_t_3 = __pyx_v_Nelements_3body;
-  __pyx_t_8 = __pyx_t_3;
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_m = __pyx_t_9;
+  __pyx_t_4 = __pyx_v_self->Nelements_3body;
+  __pyx_t_7 = __pyx_t_4;
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_m = __pyx_t_8;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":278
- *         feature2_np = np.zeros(Nelements_3body)
- *         for m in range(Nelements_3body):
- *             feature2_np[m] = eta * feature2[m]             # <<<<<<<<<<<<<<
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":280
+ *         feature2_np = np.zeros(self.Nelements_3body)
+ *         for m in range(self.Nelements_3body):
+ *             feature2_np[m] = self.eta * feature2[m]             # <<<<<<<<<<<<<<
  * 
- *         feature_np = np.zeros(Nelements)
+ *         feature_np = np.zeros(self.Nelements)
  */
-    __pyx_t_5 = PyFloat_FromDouble((__pyx_v_eta * (__pyx_v_feature2[__pyx_v_m]))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    if (unlikely(__Pyx_SetItemInt(__pyx_v_feature2_np, __pyx_v_m, __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 278, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_3 = PyFloat_FromDouble((__pyx_v_self->eta * (__pyx_v_feature2[__pyx_v_m]))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 280, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    if (unlikely(__Pyx_SetItemInt(__pyx_v_feature2_np, __pyx_v_m, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 280, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":280
- *             feature2_np[m] = eta * feature2[m]
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":282
+ *             feature2_np[m] = self.eta * feature2[m]
  * 
- *         feature_np = np.zeros(Nelements)             # <<<<<<<<<<<<<<
- *         feature_np[:Nelements_2body] = feature1_np
- *         feature_np[Nelements_2body:] = feature2_np
+ *         feature_np = np.zeros(self.Nelements)             # <<<<<<<<<<<<<<
+ *         feature_np[:self.Nelements_2body] = feature1_np
+ *         feature_np[self.Nelements_2body:] = feature2_np
  */
-  __pyx_t_21 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_t_21 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_21);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_21, __pyx_n_s_zeros); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 280, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_21, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 282, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-  __pyx_t_21 = __Pyx_PyInt_From_int(__pyx_v_Nelements); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_t_21 = __Pyx_PyInt_From_int(__pyx_v_self->Nelements); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_21);
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_6);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
-      __Pyx_INCREF(__pyx_t_4);
+  __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_5);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+      __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_6, function);
+      __Pyx_DECREF_SET(__pyx_t_5, function);
     }
   }
-  if (!__pyx_t_4) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_21); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 280, __pyx_L1_error)
+  if (!__pyx_t_2) {
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_21); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 282, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_6)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_21};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 280, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_5);
+    if (PyFunction_Check(__pyx_t_5)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_21};
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 282, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_21};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 280, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_5);
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_21};
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 282, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
     } else
     #endif
     {
-      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 280, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 282, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4); __pyx_t_4 = NULL;
+      __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_21);
       PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_21);
       __pyx_t_21 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 280, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 282, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
   }
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_v_feature_np = __pyx_t_5;
-  __pyx_t_5 = 0;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":281
- * 
- *         feature_np = np.zeros(Nelements)
- *         feature_np[:Nelements_2body] = feature1_np             # <<<<<<<<<<<<<<
- *         feature_np[Nelements_2body:] = feature2_np
- *         return feature_np
- */
-  if (__Pyx_PyObject_SetSlice(__pyx_v_feature_np, __pyx_v_feature1_np, 0, __pyx_v_Nelements_2body, NULL, NULL, NULL, 0, 1, 1) < 0) __PYX_ERR(0, 281, __pyx_L1_error)
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":282
- *         feature_np = np.zeros(Nelements)
- *         feature_np[:Nelements_2body] = feature1_np
- *         feature_np[Nelements_2body:] = feature2_np             # <<<<<<<<<<<<<<
- *         return feature_np
- * 
- */
-  if (__Pyx_PyObject_SetSlice(__pyx_v_feature_np, __pyx_v_feature2_np, __pyx_v_Nelements_2body, 0, NULL, NULL, NULL, 1, 0, 1) < 0) __PYX_ERR(0, 282, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_v_feature_np = __pyx_t_3;
+  __pyx_t_3 = 0;
 
   /* "featureCalculators/angular_fingerprintFeature_cy.pyx":283
- *         feature_np[:Nelements_2body] = feature1_np
- *         feature_np[Nelements_2body:] = feature2_np
+ * 
+ *         feature_np = np.zeros(self.Nelements)
+ *         feature_np[:self.Nelements_2body] = feature1_np             # <<<<<<<<<<<<<<
+ *         feature_np[self.Nelements_2body:] = feature2_np
+ *         return feature_np
+ */
+  if (__Pyx_PyObject_SetSlice(__pyx_v_feature_np, __pyx_v_feature1_np, 0, __pyx_v_self->Nelements_2body, NULL, NULL, NULL, 0, 1, 1) < 0) __PYX_ERR(0, 283, __pyx_L1_error)
+
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":284
+ *         feature_np = np.zeros(self.Nelements)
+ *         feature_np[:self.Nelements_2body] = feature1_np
+ *         feature_np[self.Nelements_2body:] = feature2_np             # <<<<<<<<<<<<<<
+ *         return feature_np
+ * 
+ */
+  if (__Pyx_PyObject_SetSlice(__pyx_v_feature_np, __pyx_v_feature2_np, __pyx_v_self->Nelements_2body, 0, NULL, NULL, NULL, 1, 0, 1) < 0) __PYX_ERR(0, 284, __pyx_L1_error)
+
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":285
+ *         feature_np[:self.Nelements_2body] = feature1_np
+ *         feature_np[self.Nelements_2body:] = feature2_np
  *         return feature_np             # <<<<<<<<<<<<<<
  * 
  *     def get_featureMat(self, atoms_list):
@@ -4951,8 +4479,8 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   __pyx_r = __pyx_v_feature_np;
   goto __pyx_L0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":115
- *             self.Nelements = self.Nelements_2body
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":147
+ *         return self.Nelements
  * 
  *     def get_feature(self, atoms):             # <<<<<<<<<<<<<<
  *         """
@@ -4962,15 +4490,13 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_21);
   __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.Angular_Fingerprint.get_feature", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_use_angular);
-  __Pyx_XDECREF((PyObject *)__pyx_v_mem);
   __Pyx_XDECREF(__pyx_v_cell);
   __Pyx_XDECREF(__pyx_v_pos_np);
   __Pyx_XDECREF(__pyx_v_feature1_np);
@@ -4981,7 +4507,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   return __pyx_r;
 }
 
-/* "featureCalculators/angular_fingerprintFeature_cy.pyx":285
+/* "featureCalculators/angular_fingerprintFeature_cy.pyx":287
  *         return feature_np
  * 
  *     def get_featureMat(self, atoms_list):             # <<<<<<<<<<<<<<
@@ -4990,68 +4516,19 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_5get_featureMat(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_5get_featureMat = {"get_featureMat", (PyCFunction)__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_5get_featureMat, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_5get_featureMat(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_self = 0;
-  PyObject *__pyx_v_atoms_list = 0;
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_7get_featureMat(PyObject *__pyx_v_self, PyObject *__pyx_v_atoms_list); /*proto*/
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_7get_featureMat(PyObject *__pyx_v_self, PyObject *__pyx_v_atoms_list) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_featureMat (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_atoms_list,0};
-    PyObject* values[2] = {0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_atoms_list)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("get_featureMat", 1, 2, 2, 1); __PYX_ERR(0, 285, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_featureMat") < 0)) __PYX_ERR(0, 285, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-    }
-    __pyx_v_self = values[0];
-    __pyx_v_atoms_list = values[1];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_featureMat", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 285, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.Angular_Fingerprint.get_featureMat", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_4get_featureMat(__pyx_self, __pyx_v_self, __pyx_v_atoms_list);
+  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_6get_featureMat(((struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *)__pyx_v_self), ((PyObject *)__pyx_v_atoms_list));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_4get_featureMat(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_atoms_list) {
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_6get_featureMat(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self, PyObject *__pyx_v_atoms_list) {
   PyObject *__pyx_v_featureMat = NULL;
   PyObject *__pyx_v_atoms = NULL;
   PyObject *__pyx_r = NULL;
@@ -5068,44 +4545,44 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   PyObject *__pyx_t_10 = NULL;
   __Pyx_RefNannySetupContext("get_featureMat", 0);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":286
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":288
  * 
  *     def get_featureMat(self, atoms_list):
  *         featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])             # <<<<<<<<<<<<<<
  *         featureMat = np.array(featureMat)
  *         return featureMat
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (likely(PyList_CheckExact(__pyx_v_atoms_list)) || PyTuple_CheckExact(__pyx_v_atoms_list)) {
     __pyx_t_4 = __pyx_v_atoms_list; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_atoms_list); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 286, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_atoms_list); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 288, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 286, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 288, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_6)) {
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 286, __pyx_L1_error)
+        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 288, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 286, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 288, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 286, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 288, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 286, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 288, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       }
@@ -5115,7 +4592,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 286, __pyx_L1_error)
+          else __PYX_ERR(0, 288, __pyx_L1_error)
         }
         break;
       }
@@ -5123,7 +4600,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     }
     __Pyx_XDECREF_SET(__pyx_v_atoms, __pyx_t_7);
     __pyx_t_7 = 0;
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_feature); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 286, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_feature); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 288, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_9 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -5136,13 +4613,13 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
       }
     }
     if (!__pyx_t_9) {
-      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_atoms); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 286, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_atoms); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 288, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_atoms};
-        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 286, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 288, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
@@ -5150,25 +4627,25 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_atoms};
-        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 286, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 288, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 286, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 288, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9); __pyx_t_9 = NULL;
         __Pyx_INCREF(__pyx_v_atoms);
         __Pyx_GIVEREF(__pyx_v_atoms);
         PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_v_atoms);
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 286, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 288, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 286, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 288, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -5183,14 +4660,14 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 286, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 286, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5199,20 +4676,20 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 286, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 286, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 288, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 286, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 288, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -5221,16 +4698,16 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   __pyx_v_featureMat = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":287
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":289
  *     def get_featureMat(self, atoms_list):
  *         featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])
  *         featureMat = np.array(featureMat)             # <<<<<<<<<<<<<<
  *         return featureMat
  * 
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -5244,13 +4721,13 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_featureMat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_featureMat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_featureMat};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -5258,19 +4735,19 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_featureMat};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_featureMat);
       __Pyx_GIVEREF(__pyx_v_featureMat);
       PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_v_featureMat);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
@@ -5279,7 +4756,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   __Pyx_DECREF_SET(__pyx_v_featureMat, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":288
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":290
  *         featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])
  *         featureMat = np.array(featureMat)
  *         return featureMat             # <<<<<<<<<<<<<<
@@ -5291,7 +4768,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   __pyx_r = __pyx_v_featureMat;
   goto __pyx_L0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":285
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":287
  *         return feature_np
  * 
  *     def get_featureMat(self, atoms_list):             # <<<<<<<<<<<<<<
@@ -5319,99 +4796,28 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   return __pyx_r;
 }
 
-/* "featureCalculators/angular_fingerprintFeature_cy.pyx":290
+/* "featureCalculators/angular_fingerprintFeature_cy.pyx":292
  *         return featureMat
  * 
  *     def get_featureGradient(self, atoms):             # <<<<<<<<<<<<<<
- * 
- *         cdef double Rc1 = self.Rc1
+ *         cell = atoms.get_cell()
+ *         cdef int Natoms = self.Natoms
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_7get_featureGradient(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_7get_featureGradient = {"get_featureGradient", (PyCFunction)__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_7get_featureGradient, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_7get_featureGradient(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_self = 0;
-  PyObject *__pyx_v_atoms = 0;
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_9get_featureGradient(PyObject *__pyx_v_self, PyObject *__pyx_v_atoms); /*proto*/
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_9get_featureGradient(PyObject *__pyx_v_self, PyObject *__pyx_v_atoms) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_featureGradient (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_atoms,0};
-    PyObject* values[2] = {0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_atoms)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("get_featureGradient", 1, 2, 2, 1); __PYX_ERR(0, 290, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_featureGradient") < 0)) __PYX_ERR(0, 290, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-    }
-    __pyx_v_self = values[0];
-    __pyx_v_atoms = values[1];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_featureGradient", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 290, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.Angular_Fingerprint.get_featureGradient", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_6get_featureGradient(__pyx_self, __pyx_v_self, __pyx_v_atoms);
+  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_8get_featureGradient(((struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *)__pyx_v_self), ((PyObject *)__pyx_v_atoms));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_6get_featureGradient(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_atoms) {
-  double __pyx_v_Rc1;
-  double __pyx_v_Rc2;
-  double __pyx_v_binwidth1;
-  double __pyx_v_binwidth2;
-  int __pyx_v_Nbins1;
-  int __pyx_v_Nbins2;
-  double __pyx_v_sigma1;
-  double __pyx_v_sigma2;
-  int __pyx_v_nsigma;
-  double __pyx_v_eta;
-  double __pyx_v_gamma;
-  PyObject *__pyx_v_use_angular = 0;
-  double __pyx_v_volume;
-  int __pyx_v_dim;
-  double __pyx_v_m1;
-  double __pyx_v_m2;
-  double __pyx_v_smearing_norm1;
-  double __pyx_v_smearing_norm2;
-  int __pyx_v_Nelements_2body;
-  int __pyx_v_Nelements_3body;
-  int __pyx_v_Nelements;
-  struct __pyx_obj_5cymem_5cymem_Pool *__pyx_v_mem = 0;
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_8get_featureGradient(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self, PyObject *__pyx_v_atoms) {
   CYTHON_UNUSED PyObject *__pyx_v_cell = NULL;
   int __pyx_v_Natoms;
   PyObject *__pyx_v_pos_np = 0;
@@ -5460,14 +4866,14 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  double __pyx_t_2;
-  int __pyx_t_3;
-  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_4;
   PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  void *__pyx_t_7;
+  void *__pyx_t_6;
+  int __pyx_t_7;
   int __pyx_t_8;
-  int __pyx_t_9;
+  double __pyx_t_9;
   int __pyx_t_10;
   int __pyx_t_11;
   int __pyx_t_12;
@@ -5486,408 +4892,121 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   int __pyx_t_25;
   __Pyx_RefNannySetupContext("get_featureGradient", 0);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":292
- *     def get_featureGradient(self, atoms):
- * 
- *         cdef double Rc1 = self.Rc1             # <<<<<<<<<<<<<<
- *         cdef double Rc2 = self.Rc2
- *         cdef double binwidth1 = self.binwidth1
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 292, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 292, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Rc1 = __pyx_t_2;
-
   /* "featureCalculators/angular_fingerprintFeature_cy.pyx":293
  * 
- *         cdef double Rc1 = self.Rc1
- *         cdef double Rc2 = self.Rc2             # <<<<<<<<<<<<<<
- *         cdef double binwidth1 = self.binwidth1
- *         cdef double binwidth2 = self.binwidth2
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 293, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 293, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Rc2 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":294
- *         cdef double Rc1 = self.Rc1
- *         cdef double Rc2 = self.Rc2
- *         cdef double binwidth1 = self.binwidth1             # <<<<<<<<<<<<<<
- *         cdef double binwidth2 = self.binwidth2
- *         cdef int Nbins1 = self.Nbins1
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 294, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 294, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_binwidth1 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":295
- *         cdef double Rc2 = self.Rc2
- *         cdef double binwidth1 = self.binwidth1
- *         cdef double binwidth2 = self.binwidth2             # <<<<<<<<<<<<<<
- *         cdef int Nbins1 = self.Nbins1
- *         cdef int Nbins2 = self.Nbins2
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 295, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 295, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_binwidth2 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":296
- *         cdef double binwidth1 = self.binwidth1
- *         cdef double binwidth2 = self.binwidth2
- *         cdef int Nbins1 = self.Nbins1             # <<<<<<<<<<<<<<
- *         cdef int Nbins2 = self.Nbins2
- *         cdef double sigma1 = self.sigma1
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 296, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 296, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Nbins1 = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":297
- *         cdef double binwidth2 = self.binwidth2
- *         cdef int Nbins1 = self.Nbins1
- *         cdef int Nbins2 = self.Nbins2             # <<<<<<<<<<<<<<
- *         cdef double sigma1 = self.sigma1
- *         cdef double sigma2 = self.sigma2
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 297, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Nbins2 = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":298
- *         cdef int Nbins1 = self.Nbins1
- *         cdef int Nbins2 = self.Nbins2
- *         cdef double sigma1 = self.sigma1             # <<<<<<<<<<<<<<
- *         cdef double sigma2 = self.sigma2
- *         cdef int nsigma = self.nsigma
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 298, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_sigma1 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":299
- *         cdef int Nbins2 = self.Nbins2
- *         cdef double sigma1 = self.sigma1
- *         cdef double sigma2 = self.sigma2             # <<<<<<<<<<<<<<
- *         cdef int nsigma = self.nsigma
- * 
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 299, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 299, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_sigma2 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":300
- *         cdef double sigma1 = self.sigma1
- *         cdef double sigma2 = self.sigma2
- *         cdef int nsigma = self.nsigma             # <<<<<<<<<<<<<<
- * 
- *         cdef double eta = self.eta
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsigma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 300, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 300, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_nsigma = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":302
- *         cdef int nsigma = self.nsigma
- * 
- *         cdef double eta = self.eta             # <<<<<<<<<<<<<<
- *         cdef double gamma = self.gamma
- *         cdef use_angular = self.use_angular
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_eta); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 302, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_eta = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":303
- * 
- *         cdef double eta = self.eta
- *         cdef double gamma = self.gamma             # <<<<<<<<<<<<<<
- *         cdef use_angular = self.use_angular
- * 
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 303, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 303, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_gamma = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":304
- *         cdef double eta = self.eta
- *         cdef double gamma = self.gamma
- *         cdef use_angular = self.use_angular             # <<<<<<<<<<<<<<
- * 
- *         cdef double volume = self.volume
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_use_angular); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 304, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_use_angular = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":306
- *         cdef use_angular = self.use_angular
- * 
- *         cdef double volume = self.volume             # <<<<<<<<<<<<<<
- *         cdef int dim = self.dim
- * 
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_volume); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 306, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 306, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_volume = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":307
- * 
- *         cdef double volume = self.volume
- *         cdef int dim = self.dim             # <<<<<<<<<<<<<<
- * 
- *         cdef double m1 = self.m1
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 307, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 307, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_dim = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":309
- *         cdef int dim = self.dim
- * 
- *         cdef double m1 = self.m1             # <<<<<<<<<<<<<<
- *         cdef double m2 = self.m2
- *         cdef double smearing_norm1 = self.smearing_norm1
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 309, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_m1 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":310
- * 
- *         cdef double m1 = self.m1
- *         cdef double m2 = self.m2             # <<<<<<<<<<<<<<
- *         cdef double smearing_norm1 = self.smearing_norm1
- *         cdef double smearing_norm2 = self.smearing_norm2
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 310, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_m2 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":311
- *         cdef double m1 = self.m1
- *         cdef double m2 = self.m2
- *         cdef double smearing_norm1 = self.smearing_norm1             # <<<<<<<<<<<<<<
- *         cdef double smearing_norm2 = self.smearing_norm2
- * 
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 311, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_smearing_norm1 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":312
- *         cdef double m2 = self.m2
- *         cdef double smearing_norm1 = self.smearing_norm1
- *         cdef double smearing_norm2 = self.smearing_norm2             # <<<<<<<<<<<<<<
- * 
- *         cdef int Nelements_2body = self.Nelements_2body
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 312, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_smearing_norm2 = __pyx_t_2;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":314
- *         cdef double smearing_norm2 = self.smearing_norm2
- * 
- *         cdef int Nelements_2body = self.Nelements_2body             # <<<<<<<<<<<<<<
- *         cdef int Nelements_3body = self.Nelements_3body
- *         cdef int Nelements = self.Nelements
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 314, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Nelements_2body = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":315
- * 
- *         cdef int Nelements_2body = self.Nelements_2body
- *         cdef int Nelements_3body = self.Nelements_3body             # <<<<<<<<<<<<<<
- *         cdef int Nelements = self.Nelements
- * 
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 315, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Nelements_3body = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":316
- *         cdef int Nelements_2body = self.Nelements_2body
- *         cdef int Nelements_3body = self.Nelements_3body
- *         cdef int Nelements = self.Nelements             # <<<<<<<<<<<<<<
- * 
- *         # Memory allocation pool
- */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 316, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 316, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Nelements = __pyx_t_3;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":320
- *         # Memory allocation pool
- *         cdef Pool mem
- *         mem = Pool()             # <<<<<<<<<<<<<<
- * 
- *         cell = atoms.get_cell()
- */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_5cymem_5cymem_Pool)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_mem = ((struct __pyx_obj_5cymem_5cymem_Pool *)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":322
- *         mem = Pool()
- * 
+ *     def get_featureGradient(self, atoms):
  *         cell = atoms.get_cell()             # <<<<<<<<<<<<<<
  *         cdef int Natoms = self.Natoms
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_cell); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 322, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_5)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_5);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_cell); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 293, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_4, function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
-  if (__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (__pyx_t_3) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 293, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 293, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_cell = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":323
- * 
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":294
+ *     def get_featureGradient(self, atoms):
  *         cell = atoms.get_cell()
  *         cdef int Natoms = self.Natoms             # <<<<<<<<<<<<<<
  * 
  *         # Get positions and convert to Point-struct
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Natoms); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 323, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 323, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_Natoms = __pyx_t_3;
+  __pyx_t_4 = __pyx_v_self->Natoms;
+  __pyx_v_Natoms = __pyx_t_4;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":326
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":297
  * 
  *         # Get positions and convert to Point-struct
  *         cdef list pos_np = atoms.get_positions().tolist()             # <<<<<<<<<<<<<<
  *         cdef Point *pos
- *         pos = <Point*>mem.alloc(Natoms, sizeof(Point))
+ *         pos = <Point*>self.mem.alloc(Natoms, sizeof(Point))
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_positions); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 326, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
-    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_5);
-    if (likely(__pyx_t_6)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-      __Pyx_INCREF(__pyx_t_6);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_positions); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_5, function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
     }
   }
-  if (__pyx_t_6) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 326, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  if (__pyx_t_5) {
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
   }
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_tolist); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 326, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_5);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-      __Pyx_INCREF(__pyx_t_4);
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_tolist); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_5, function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
     }
   }
-  if (__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (__pyx_t_2) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 326, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 297, __pyx_L1_error)
   __pyx_v_pos_np = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":328
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":299
  *         cdef list pos_np = atoms.get_positions().tolist()
  *         cdef Point *pos
- *         pos = <Point*>mem.alloc(Natoms, sizeof(Point))             # <<<<<<<<<<<<<<
+ *         pos = <Point*>self.mem.alloc(Natoms, sizeof(Point))             # <<<<<<<<<<<<<<
  *         cdef int m
  *         for m in range(Natoms):
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Natoms, (sizeof(__pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 328, __pyx_L1_error)
-  __pyx_v_pos = ((__pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point *)__pyx_t_7);
+  __pyx_t_6 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_self->mem->__pyx_vtab)->alloc(__pyx_v_self->mem, __pyx_v_Natoms, (sizeof(__pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point))); if (unlikely(__pyx_t_6 == ((void *)NULL))) __PYX_ERR(0, 299, __pyx_L1_error)
+  __pyx_v_pos = ((__pyx_t_18featureCalculators_29angular_fingerprintFeature_cy_Point *)__pyx_t_6);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":330
- *         pos = <Point*>mem.alloc(Natoms, sizeof(Point))
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":301
+ *         pos = <Point*>self.mem.alloc(Natoms, sizeof(Point))
  *         cdef int m
  *         for m in range(Natoms):             # <<<<<<<<<<<<<<
  *             pos[m].coord[0] = pos_np[m][0]
  *             pos[m].coord[1] = pos_np[m][1]
  */
-  __pyx_t_3 = __pyx_v_Natoms;
-  __pyx_t_8 = __pyx_t_3;
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_m = __pyx_t_9;
+  __pyx_t_4 = __pyx_v_Natoms;
+  __pyx_t_7 = __pyx_t_4;
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_m = __pyx_t_8;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":331
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":302
  *         cdef int m
  *         for m in range(Natoms):
  *             pos[m].coord[0] = pos_np[m][0]             # <<<<<<<<<<<<<<
@@ -5896,18 +5015,18 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
     if (unlikely(__pyx_v_pos_np == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 331, __pyx_L1_error)
+      __PYX_ERR(0, 302, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 331, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 331, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 302, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 331, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    ((__pyx_v_pos[__pyx_v_m]).coord[0]) = __pyx_t_2;
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 302, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    ((__pyx_v_pos[__pyx_v_m]).coord[0]) = __pyx_t_9;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":332
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":303
  *         for m in range(Natoms):
  *             pos[m].coord[0] = pos_np[m][0]
  *             pos[m].coord[1] = pos_np[m][1]             # <<<<<<<<<<<<<<
@@ -5916,18 +5035,18 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
     if (unlikely(__pyx_v_pos_np == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 332, __pyx_L1_error)
+      __PYX_ERR(0, 303, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 332, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 303, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 303, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 332, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 303, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    ((__pyx_v_pos[__pyx_v_m]).coord[1]) = __pyx_t_2;
+    ((__pyx_v_pos[__pyx_v_m]).coord[1]) = __pyx_t_9;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":333
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":304
  *             pos[m].coord[0] = pos_np[m][0]
  *             pos[m].coord[1] = pos_np[m][1]
  *             pos[m].coord[2] = pos_np[m][2]             # <<<<<<<<<<<<<<
@@ -5936,41 +5055,41 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
     if (unlikely(__pyx_v_pos_np == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 333, __pyx_L1_error)
+      __PYX_ERR(0, 304, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 304, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 333, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 333, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    ((__pyx_v_pos[__pyx_v_m]).coord[2]) = __pyx_t_2;
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 304, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    ((__pyx_v_pos[__pyx_v_m]).coord[2]) = __pyx_t_9;
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":339
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":310
  *         # Initialize radial feature-gradient
  *         cdef double *feature_grad1
- *         feature_grad1 = <double*>mem.alloc(Nelements_2body * Natoms * dim, sizeof(double))             # <<<<<<<<<<<<<<
+ *         feature_grad1 = <double*>self.mem.alloc(self.Nelements_2body * Natoms * self.dim, sizeof(double))             # <<<<<<<<<<<<<<
  * 
  *         cdef Point RijVec
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, ((__pyx_v_Nelements_2body * __pyx_v_Natoms) * __pyx_v_dim), (sizeof(double))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 339, __pyx_L1_error)
-  __pyx_v_feature_grad1 = ((double *)__pyx_t_7);
+  __pyx_t_6 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_self->mem->__pyx_vtab)->alloc(__pyx_v_self->mem, ((__pyx_v_self->Nelements_2body * __pyx_v_Natoms) * __pyx_v_self->dim), (sizeof(double))); if (unlikely(__pyx_t_6 == ((void *)NULL))) __PYX_ERR(0, 310, __pyx_L1_error)
+  __pyx_v_feature_grad1 = ((double *)__pyx_t_6);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":345
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":316
  *         cdef double Rij, normalization, binpos, c, arg_low, arg_up, value1, value2, value
  *         cdef int i, j, n
  *         for i in range(Natoms):             # <<<<<<<<<<<<<<
  *             for j in range(Natoms):
  *                 Rij = euclidean(pos[i], pos[j])
  */
-  __pyx_t_3 = __pyx_v_Natoms;
-  __pyx_t_8 = __pyx_t_3;
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
+  __pyx_t_4 = __pyx_v_Natoms;
+  __pyx_t_7 = __pyx_t_4;
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":346
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":317
  *         cdef int i, j, n
  *         for i in range(Natoms):
  *             for j in range(Natoms):             # <<<<<<<<<<<<<<
@@ -5982,7 +5101,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
       __pyx_v_j = __pyx_t_12;
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":347
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":318
  *         for i in range(Natoms):
  *             for j in range(Natoms):
  *                 Rij = euclidean(pos[i], pos[j])             # <<<<<<<<<<<<<<
@@ -5991,14 +5110,14 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
       __pyx_v_Rij = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_euclidean((__pyx_v_pos[__pyx_v_i]), (__pyx_v_pos[__pyx_v_j]));
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":350
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":321
  * 
  *                 # Stop if distance too long or atoms are the same one.
- *                 if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:             # <<<<<<<<<<<<<<
+ *                 if Rij > self.Rc1+self.nsigma*self.sigma1 or Rij < 1e-6:             # <<<<<<<<<<<<<<
  *                     continue
  *                 RijVec = subtract(pos[j],pos[i])
  */
-      __pyx_t_14 = ((__pyx_v_Rij > (__pyx_v_Rc1 + (__pyx_v_nsigma * __pyx_v_sigma1))) != 0);
+      __pyx_t_14 = ((__pyx_v_Rij > (__pyx_v_self->Rc1 + (__pyx_v_self->nsigma * __pyx_v_self->sigma1))) != 0);
       if (!__pyx_t_14) {
       } else {
         __pyx_t_13 = __pyx_t_14;
@@ -6009,26 +5128,26 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
       __pyx_L10_bool_binop_done:;
       if (__pyx_t_13) {
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":351
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":322
  *                 # Stop if distance too long or atoms are the same one.
- *                 if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:
+ *                 if Rij > self.Rc1+self.nsigma*self.sigma1 or Rij < 1e-6:
  *                     continue             # <<<<<<<<<<<<<<
  *                 RijVec = subtract(pos[j],pos[i])
  * 
  */
         goto __pyx_L7_continue;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":350
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":321
  * 
  *                 # Stop if distance too long or atoms are the same one.
- *                 if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:             # <<<<<<<<<<<<<<
+ *                 if Rij > self.Rc1+self.nsigma*self.sigma1 or Rij < 1e-6:             # <<<<<<<<<<<<<<
  *                     continue
  *                 RijVec = subtract(pos[j],pos[i])
  */
       }
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":352
- *                 if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":323
+ *                 if Rij > self.Rc1+self.nsigma*self.sigma1 or Rij < 1e-6:
  *                     continue
  *                 RijVec = subtract(pos[j],pos[i])             # <<<<<<<<<<<<<<
  * 
@@ -6036,116 +5155,116 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
       __pyx_v_RijVec = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_subtract((__pyx_v_pos[__pyx_v_j]), (__pyx_v_pos[__pyx_v_i]));
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":355
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":326
  * 
  *                 # Calculate normalization
  *                 num_pairs = Natoms*Natoms             # <<<<<<<<<<<<<<
- *                 normalization = 1./smearing_norm1
- *                 normalization /= 4*M_PI*Rij*Rij * binwidth1 * num_pairs/volume
+ *                 normalization = 1./self.smearing_norm1
+ *                 normalization /= 4*M_PI*Rij*Rij * self.binwidth1 * num_pairs/self.volume
  */
       __pyx_v_num_pairs = (__pyx_v_Natoms * __pyx_v_Natoms);
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":356
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":327
  *                 # Calculate normalization
  *                 num_pairs = Natoms*Natoms
- *                 normalization = 1./smearing_norm1             # <<<<<<<<<<<<<<
- *                 normalization /= 4*M_PI*Rij*Rij * binwidth1 * num_pairs/volume
+ *                 normalization = 1./self.smearing_norm1             # <<<<<<<<<<<<<<
+ *                 normalization /= 4*M_PI*Rij*Rij * self.binwidth1 * num_pairs/self.volume
  * 
  */
-      if (unlikely(__pyx_v_smearing_norm1 == 0)) {
+      if (unlikely(__pyx_v_self->smearing_norm1 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 356, __pyx_L1_error)
+        __PYX_ERR(0, 327, __pyx_L1_error)
       }
-      __pyx_v_normalization = (1. / __pyx_v_smearing_norm1);
+      __pyx_v_normalization = (1. / __pyx_v_self->smearing_norm1);
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":357
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":328
  *                 num_pairs = Natoms*Natoms
- *                 normalization = 1./smearing_norm1
- *                 normalization /= 4*M_PI*Rij*Rij * binwidth1 * num_pairs/volume             # <<<<<<<<<<<<<<
+ *                 normalization = 1./self.smearing_norm1
+ *                 normalization /= 4*M_PI*Rij*Rij * self.binwidth1 * num_pairs/self.volume             # <<<<<<<<<<<<<<
  * 
  *                 # Identify what bin 'Rij' belongs to + it's position in this bin
  */
-      __pyx_t_2 = (((((4.0 * M_PI) * __pyx_v_Rij) * __pyx_v_Rij) * __pyx_v_binwidth1) * __pyx_v_num_pairs);
-      if (unlikely(__pyx_v_volume == 0)) {
+      __pyx_t_9 = (((((4.0 * M_PI) * __pyx_v_Rij) * __pyx_v_Rij) * __pyx_v_self->binwidth1) * __pyx_v_num_pairs);
+      if (unlikely(__pyx_v_self->volume == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 357, __pyx_L1_error)
+        __PYX_ERR(0, 328, __pyx_L1_error)
       }
-      __pyx_t_15 = (__pyx_t_2 / __pyx_v_volume);
+      __pyx_t_15 = (__pyx_t_9 / __pyx_v_self->volume);
       if (unlikely(__pyx_t_15 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 357, __pyx_L1_error)
+        __PYX_ERR(0, 328, __pyx_L1_error)
       }
       __pyx_v_normalization = (__pyx_v_normalization / __pyx_t_15);
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":360
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":331
  * 
  *                 # Identify what bin 'Rij' belongs to + it's position in this bin
- *                 center_bin = <int> floor(Rij/binwidth1)             # <<<<<<<<<<<<<<
- *                 binpos = Rij/binwidth1 - center_bin
+ *                 center_bin = <int> floor(Rij/self.binwidth1)             # <<<<<<<<<<<<<<
+ *                 binpos = Rij/self.binwidth1 - center_bin
  * 
  */
-      if (unlikely(__pyx_v_binwidth1 == 0)) {
+      if (unlikely(__pyx_v_self->binwidth1 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 360, __pyx_L1_error)
+        __PYX_ERR(0, 331, __pyx_L1_error)
       }
-      __pyx_v_center_bin = ((int)floor((__pyx_v_Rij / __pyx_v_binwidth1)));
+      __pyx_v_center_bin = ((int)floor((__pyx_v_Rij / __pyx_v_self->binwidth1)));
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":361
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":332
  *                 # Identify what bin 'Rij' belongs to + it's position in this bin
- *                 center_bin = <int> floor(Rij/binwidth1)
- *                 binpos = Rij/binwidth1 - center_bin             # <<<<<<<<<<<<<<
+ *                 center_bin = <int> floor(Rij/self.binwidth1)
+ *                 binpos = Rij/self.binwidth1 - center_bin             # <<<<<<<<<<<<<<
  * 
  *                 # Lower and upper range of bins affected by the current atomic distance deltaR.
  */
-      if (unlikely(__pyx_v_binwidth1 == 0)) {
+      if (unlikely(__pyx_v_self->binwidth1 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 361, __pyx_L1_error)
+        __PYX_ERR(0, 332, __pyx_L1_error)
       }
-      __pyx_v_binpos = ((__pyx_v_Rij / __pyx_v_binwidth1) - __pyx_v_center_bin);
+      __pyx_v_binpos = ((__pyx_v_Rij / __pyx_v_self->binwidth1) - __pyx_v_center_bin);
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":364
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":335
  * 
  *                 # Lower and upper range of bins affected by the current atomic distance deltaR.
- *                 minbin_lim = <int> -ceil(m1 - binpos)             # <<<<<<<<<<<<<<
- *                 maxbin_lim = <int> ceil(m1 - (1-binpos))
+ *                 minbin_lim = <int> -ceil(self.m1 - binpos)             # <<<<<<<<<<<<<<
+ *                 maxbin_lim = <int> ceil(self.m1 - (1-binpos))
  * 
  */
-      __pyx_v_minbin_lim = ((int)(-ceil((__pyx_v_m1 - __pyx_v_binpos))));
+      __pyx_v_minbin_lim = ((int)(-ceil((__pyx_v_self->m1 - __pyx_v_binpos))));
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":365
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":336
  *                 # Lower and upper range of bins affected by the current atomic distance deltaR.
- *                 minbin_lim = <int> -ceil(m1 - binpos)
- *                 maxbin_lim = <int> ceil(m1 - (1-binpos))             # <<<<<<<<<<<<<<
+ *                 minbin_lim = <int> -ceil(self.m1 - binpos)
+ *                 maxbin_lim = <int> ceil(self.m1 - (1-binpos))             # <<<<<<<<<<<<<<
  * 
  *                 for n in range(minbin_lim, maxbin_lim + 1):
  */
-      __pyx_v_maxbin_lim = ((int)ceil((__pyx_v_m1 - (1.0 - __pyx_v_binpos))));
+      __pyx_v_maxbin_lim = ((int)ceil((__pyx_v_self->m1 - (1.0 - __pyx_v_binpos))));
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":367
- *                 maxbin_lim = <int> ceil(m1 - (1-binpos))
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":338
+ *                 maxbin_lim = <int> ceil(self.m1 - (1-binpos))
  * 
  *                 for n in range(minbin_lim, maxbin_lim + 1):             # <<<<<<<<<<<<<<
  *                     newbin = center_bin + n
- *                     if newbin < 0 or newbin >= Nbins1:
+ *                     if newbin < 0 or newbin >= self.Nbins1:
  */
       __pyx_t_16 = (__pyx_v_maxbin_lim + 1);
       __pyx_t_17 = __pyx_t_16;
       for (__pyx_t_18 = __pyx_v_minbin_lim; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
         __pyx_v_n = __pyx_t_18;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":368
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":339
  * 
  *                 for n in range(minbin_lim, maxbin_lim + 1):
  *                     newbin = center_bin + n             # <<<<<<<<<<<<<<
- *                     if newbin < 0 or newbin >= Nbins1:
+ *                     if newbin < 0 or newbin >= self.Nbins1:
  *                         continue
  */
         __pyx_v_newbin = (__pyx_v_center_bin + __pyx_v_n);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":369
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":340
  *                 for n in range(minbin_lim, maxbin_lim + 1):
  *                     newbin = center_bin + n
- *                     if newbin < 0 or newbin >= Nbins1:             # <<<<<<<<<<<<<<
+ *                     if newbin < 0 or newbin >= self.Nbins1:             # <<<<<<<<<<<<<<
  *                         continue
  * 
  */
@@ -6155,117 +5274,117 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
           __pyx_t_13 = __pyx_t_14;
           goto __pyx_L15_bool_binop_done;
         }
-        __pyx_t_14 = ((__pyx_v_newbin >= __pyx_v_Nbins1) != 0);
+        __pyx_t_14 = ((__pyx_v_newbin >= __pyx_v_self->Nbins1) != 0);
         __pyx_t_13 = __pyx_t_14;
         __pyx_L15_bool_binop_done:;
         if (__pyx_t_13) {
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":370
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":341
  *                     newbin = center_bin + n
- *                     if newbin < 0 or newbin >= Nbins1:
+ *                     if newbin < 0 or newbin >= self.Nbins1:
  *                         continue             # <<<<<<<<<<<<<<
  * 
  *                     # Calculate gauss contribution to current bin
  */
           goto __pyx_L12_continue;
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":369
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":340
  *                 for n in range(minbin_lim, maxbin_lim + 1):
  *                     newbin = center_bin + n
- *                     if newbin < 0 or newbin >= Nbins1:             # <<<<<<<<<<<<<<
+ *                     if newbin < 0 or newbin >= self.Nbins1:             # <<<<<<<<<<<<<<
  *                         continue
  * 
  */
         }
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":373
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":344
  * 
  *                     # Calculate gauss contribution to current bin
- *                     c = 1./sqrt(2)*binwidth1/sigma1             # <<<<<<<<<<<<<<
- *                     arg_low = max(-m1, n-binpos)
- *                     arg_up = min(m1, n+(1-binpos))
+ *                     c = 1./sqrt(2)*self.binwidth1/self.sigma1             # <<<<<<<<<<<<<<
+ *                     arg_low = max(-self.m1, n-binpos)
+ *                     arg_up = min(self.m1, n+(1-binpos))
  */
         __pyx_t_15 = sqrt(2.0);
         if (unlikely(__pyx_t_15 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 373, __pyx_L1_error)
+          __PYX_ERR(0, 344, __pyx_L1_error)
         }
-        __pyx_t_2 = ((1. / __pyx_t_15) * __pyx_v_binwidth1);
-        if (unlikely(__pyx_v_sigma1 == 0)) {
+        __pyx_t_9 = ((1. / __pyx_t_15) * __pyx_v_self->binwidth1);
+        if (unlikely(__pyx_v_self->sigma1 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 373, __pyx_L1_error)
+          __PYX_ERR(0, 344, __pyx_L1_error)
         }
-        __pyx_v_c = (__pyx_t_2 / __pyx_v_sigma1);
+        __pyx_v_c = (__pyx_t_9 / __pyx_v_self->sigma1);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":374
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":345
  *                     # Calculate gauss contribution to current bin
- *                     c = 1./sqrt(2)*binwidth1/sigma1
- *                     arg_low = max(-m1, n-binpos)             # <<<<<<<<<<<<<<
- *                     arg_up = min(m1, n+(1-binpos))
+ *                     c = 1./sqrt(2)*self.binwidth1/self.sigma1
+ *                     arg_low = max(-self.m1, n-binpos)             # <<<<<<<<<<<<<<
+ *                     arg_up = min(self.m1, n+(1-binpos))
  *                     value1 = -1./Rij * (erf(c*arg_up) - erf(c*arg_low))
  */
-        __pyx_t_2 = (__pyx_v_n - __pyx_v_binpos);
-        __pyx_t_15 = (-__pyx_v_m1);
-        if (((__pyx_t_2 > __pyx_t_15) != 0)) {
-          __pyx_t_19 = __pyx_t_2;
+        __pyx_t_9 = (__pyx_v_n - __pyx_v_binpos);
+        __pyx_t_15 = (-__pyx_v_self->m1);
+        if (((__pyx_t_9 > __pyx_t_15) != 0)) {
+          __pyx_t_19 = __pyx_t_9;
         } else {
           __pyx_t_19 = __pyx_t_15;
         }
         __pyx_v_arg_low = __pyx_t_19;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":375
- *                     c = 1./sqrt(2)*binwidth1/sigma1
- *                     arg_low = max(-m1, n-binpos)
- *                     arg_up = min(m1, n+(1-binpos))             # <<<<<<<<<<<<<<
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":346
+ *                     c = 1./sqrt(2)*self.binwidth1/self.sigma1
+ *                     arg_low = max(-self.m1, n-binpos)
+ *                     arg_up = min(self.m1, n+(1-binpos))             # <<<<<<<<<<<<<<
  *                     value1 = -1./Rij * (erf(c*arg_up) - erf(c*arg_low))
- *                     value2 = -1./(sigma1*sqrt(2*M_PI)) * (exp(-pow(c*arg_up,2)) - exp(-pow(c*arg_low,2)))
+ *                     value2 = -1./(self.sigma1*sqrt(2*M_PI)) * (exp(-pow(c*arg_up,2)) - exp(-pow(c*arg_low,2)))
  */
         __pyx_t_19 = (__pyx_v_n + (1.0 - __pyx_v_binpos));
-        __pyx_t_2 = __pyx_v_m1;
-        if (((__pyx_t_19 < __pyx_t_2) != 0)) {
+        __pyx_t_9 = __pyx_v_self->m1;
+        if (((__pyx_t_19 < __pyx_t_9) != 0)) {
           __pyx_t_15 = __pyx_t_19;
         } else {
-          __pyx_t_15 = __pyx_t_2;
+          __pyx_t_15 = __pyx_t_9;
         }
         __pyx_v_arg_up = __pyx_t_15;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":376
- *                     arg_low = max(-m1, n-binpos)
- *                     arg_up = min(m1, n+(1-binpos))
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":347
+ *                     arg_low = max(-self.m1, n-binpos)
+ *                     arg_up = min(self.m1, n+(1-binpos))
  *                     value1 = -1./Rij * (erf(c*arg_up) - erf(c*arg_low))             # <<<<<<<<<<<<<<
- *                     value2 = -1./(sigma1*sqrt(2*M_PI)) * (exp(-pow(c*arg_up,2)) - exp(-pow(c*arg_low,2)))
+ *                     value2 = -1./(self.sigma1*sqrt(2*M_PI)) * (exp(-pow(c*arg_up,2)) - exp(-pow(c*arg_low,2)))
  *                     value = value1 + value2
  */
         if (unlikely(__pyx_v_Rij == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 376, __pyx_L1_error)
+          __PYX_ERR(0, 347, __pyx_L1_error)
         }
         __pyx_v_value1 = ((-1. / __pyx_v_Rij) * (erf((__pyx_v_c * __pyx_v_arg_up)) - erf((__pyx_v_c * __pyx_v_arg_low))));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":377
- *                     arg_up = min(m1, n+(1-binpos))
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":348
+ *                     arg_up = min(self.m1, n+(1-binpos))
  *                     value1 = -1./Rij * (erf(c*arg_up) - erf(c*arg_low))
- *                     value2 = -1./(sigma1*sqrt(2*M_PI)) * (exp(-pow(c*arg_up,2)) - exp(-pow(c*arg_low,2)))             # <<<<<<<<<<<<<<
+ *                     value2 = -1./(self.sigma1*sqrt(2*M_PI)) * (exp(-pow(c*arg_up,2)) - exp(-pow(c*arg_low,2)))             # <<<<<<<<<<<<<<
  *                     value = value1 + value2
  * 
  */
-        __pyx_t_15 = (__pyx_v_sigma1 * sqrt((2.0 * M_PI)));
+        __pyx_t_15 = (__pyx_v_self->sigma1 * sqrt((2.0 * M_PI)));
         if (unlikely(__pyx_t_15 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 377, __pyx_L1_error)
+          __PYX_ERR(0, 348, __pyx_L1_error)
         }
         __pyx_v_value2 = ((-1. / __pyx_t_15) * (exp((-pow((__pyx_v_c * __pyx_v_arg_up), 2.0))) - exp((-pow((__pyx_v_c * __pyx_v_arg_low), 2.0)))));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":378
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":349
  *                     value1 = -1./Rij * (erf(c*arg_up) - erf(c*arg_low))
- *                     value2 = -1./(sigma1*sqrt(2*M_PI)) * (exp(-pow(c*arg_up,2)) - exp(-pow(c*arg_low,2)))
+ *                     value2 = -1./(self.sigma1*sqrt(2*M_PI)) * (exp(-pow(c*arg_up,2)) - exp(-pow(c*arg_low,2)))
  *                     value = value1 + value2             # <<<<<<<<<<<<<<
  * 
  *                     # Apply normalization
  */
         __pyx_v_value = (__pyx_v_value1 + __pyx_v_value2);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":381
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":352
  * 
  *                     # Apply normalization
  *                     value *= normalization             # <<<<<<<<<<<<<<
@@ -6274,42 +5393,42 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
         __pyx_v_value = (__pyx_v_value * __pyx_v_normalization);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":384
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":355
  * 
  *                     # Add to the the gradient matrix
  *                     for m in range(3):             # <<<<<<<<<<<<<<
- *                         feature_grad1[newbin * Natoms*dim + dim*i+m] += -value/Rij * RijVec.coord[m]
- *                         feature_grad1[newbin * Natoms*dim + dim*j+m] += value/Rij * RijVec.coord[m]
+ *                         feature_grad1[newbin * Natoms*self.dim + self.dim*i+m] += -value/Rij * RijVec.coord[m]
+ *                         feature_grad1[newbin * Natoms*self.dim + self.dim*j+m] += value/Rij * RijVec.coord[m]
  */
         for (__pyx_t_20 = 0; __pyx_t_20 < 3; __pyx_t_20+=1) {
           __pyx_v_m = __pyx_t_20;
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":385
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":356
  *                     # Add to the the gradient matrix
  *                     for m in range(3):
- *                         feature_grad1[newbin * Natoms*dim + dim*i+m] += -value/Rij * RijVec.coord[m]             # <<<<<<<<<<<<<<
- *                         feature_grad1[newbin * Natoms*dim + dim*j+m] += value/Rij * RijVec.coord[m]
+ *                         feature_grad1[newbin * Natoms*self.dim + self.dim*i+m] += -value/Rij * RijVec.coord[m]             # <<<<<<<<<<<<<<
+ *                         feature_grad1[newbin * Natoms*self.dim + self.dim*j+m] += value/Rij * RijVec.coord[m]
  * 
  */
-          __pyx_t_21 = ((((__pyx_v_newbin * __pyx_v_Natoms) * __pyx_v_dim) + (__pyx_v_dim * __pyx_v_i)) + __pyx_v_m);
+          __pyx_t_21 = ((((__pyx_v_newbin * __pyx_v_Natoms) * __pyx_v_self->dim) + (__pyx_v_self->dim * __pyx_v_i)) + __pyx_v_m);
           __pyx_t_15 = (-__pyx_v_value);
           if (unlikely(__pyx_v_Rij == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 385, __pyx_L1_error)
+            __PYX_ERR(0, 356, __pyx_L1_error)
           }
           (__pyx_v_feature_grad1[__pyx_t_21]) = ((__pyx_v_feature_grad1[__pyx_t_21]) + ((__pyx_t_15 / __pyx_v_Rij) * (__pyx_v_RijVec.coord[__pyx_v_m])));
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":386
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":357
  *                     for m in range(3):
- *                         feature_grad1[newbin * Natoms*dim + dim*i+m] += -value/Rij * RijVec.coord[m]
- *                         feature_grad1[newbin * Natoms*dim + dim*j+m] += value/Rij * RijVec.coord[m]             # <<<<<<<<<<<<<<
+ *                         feature_grad1[newbin * Natoms*self.dim + self.dim*i+m] += -value/Rij * RijVec.coord[m]
+ *                         feature_grad1[newbin * Natoms*self.dim + self.dim*j+m] += value/Rij * RijVec.coord[m]             # <<<<<<<<<<<<<<
  * 
  * 
  */
-          __pyx_t_21 = ((((__pyx_v_newbin * __pyx_v_Natoms) * __pyx_v_dim) + (__pyx_v_dim * __pyx_v_j)) + __pyx_v_m);
+          __pyx_t_21 = ((((__pyx_v_newbin * __pyx_v_Natoms) * __pyx_v_self->dim) + (__pyx_v_self->dim * __pyx_v_j)) + __pyx_v_m);
           if (unlikely(__pyx_v_Rij == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 386, __pyx_L1_error)
+            __PYX_ERR(0, 357, __pyx_L1_error)
           }
           (__pyx_v_feature_grad1[__pyx_t_21]) = ((__pyx_v_feature_grad1[__pyx_t_21]) + ((__pyx_v_value / __pyx_v_Rij) * (__pyx_v_RijVec.coord[__pyx_v_m])));
         }
@@ -6319,134 +5438,134 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     }
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":391
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":362
  *         # Convert radial feature to numpy array
  *         cdef int grad_index
- *         feature_grad1_np = np.zeros((Natoms*dim, Nelements_2body))             # <<<<<<<<<<<<<<
- *         for m in range(Nelements_2body):
- *             for grad_index in range(Natoms*dim):
+ *         feature_grad1_np = np.zeros((Natoms*self.dim, self.Nelements_2body))             # <<<<<<<<<<<<<<
+ *         for m in range(self.Nelements_2body):
+ *             for grad_index in range(Natoms*self.dim):
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 362, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 391, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 362, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_Natoms * __pyx_v_dim)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_Natoms * __pyx_v_self->dim)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 362, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_Nelements_2body); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 391, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_22 = PyTuple_New(2); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 391, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->Nelements_2body); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 362, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_22 = PyTuple_New(2); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 362, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_22);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_6);
-  PyTuple_SET_ITEM(__pyx_t_22, 1, __pyx_t_6);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_22, 1, __pyx_t_5);
   __pyx_t_1 = 0;
-  __pyx_t_6 = 0;
-  __pyx_t_6 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_6)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_6);
+  __pyx_t_5 = 0;
+  __pyx_t_5 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_4, function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
-  if (!__pyx_t_6) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_22); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 391, __pyx_L1_error)
+  if (!__pyx_t_5) {
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_22); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 362, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_22};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 391, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_GOTREF(__pyx_t_5);
+    if (PyFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_22};
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 362, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_22};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 391, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_GOTREF(__pyx_t_5);
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_22};
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 362, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
     } else
     #endif
     {
-      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 362, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_6); __pyx_t_6 = NULL;
+      __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_22);
       PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_22);
       __pyx_t_22 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 391, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 362, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
   }
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_feature_grad1_np = __pyx_t_5;
-  __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_feature_grad1_np = __pyx_t_3;
+  __pyx_t_3 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":392
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":363
  *         cdef int grad_index
- *         feature_grad1_np = np.zeros((Natoms*dim, Nelements_2body))
- *         for m in range(Nelements_2body):             # <<<<<<<<<<<<<<
- *             for grad_index in range(Natoms*dim):
- *                 feature_grad1_np[grad_index][m] = feature_grad1[m * Natoms*dim + grad_index]
+ *         feature_grad1_np = np.zeros((Natoms*self.dim, self.Nelements_2body))
+ *         for m in range(self.Nelements_2body):             # <<<<<<<<<<<<<<
+ *             for grad_index in range(Natoms*self.dim):
+ *                 feature_grad1_np[grad_index][m] = feature_grad1[m * Natoms*self.dim + grad_index]
  */
-  __pyx_t_3 = __pyx_v_Nelements_2body;
-  __pyx_t_8 = __pyx_t_3;
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_m = __pyx_t_9;
+  __pyx_t_4 = __pyx_v_self->Nelements_2body;
+  __pyx_t_7 = __pyx_t_4;
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_m = __pyx_t_8;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":393
- *         feature_grad1_np = np.zeros((Natoms*dim, Nelements_2body))
- *         for m in range(Nelements_2body):
- *             for grad_index in range(Natoms*dim):             # <<<<<<<<<<<<<<
- *                 feature_grad1_np[grad_index][m] = feature_grad1[m * Natoms*dim + grad_index]
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":364
+ *         feature_grad1_np = np.zeros((Natoms*self.dim, self.Nelements_2body))
+ *         for m in range(self.Nelements_2body):
+ *             for grad_index in range(Natoms*self.dim):             # <<<<<<<<<<<<<<
+ *                 feature_grad1_np[grad_index][m] = feature_grad1[m * Natoms*self.dim + grad_index]
  * 
  */
-    __pyx_t_10 = (__pyx_v_Natoms * __pyx_v_dim);
+    __pyx_t_10 = (__pyx_v_Natoms * __pyx_v_self->dim);
     __pyx_t_11 = __pyx_t_10;
     for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
       __pyx_v_grad_index = __pyx_t_12;
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":394
- *         for m in range(Nelements_2body):
- *             for grad_index in range(Natoms*dim):
- *                 feature_grad1_np[grad_index][m] = feature_grad1[m * Natoms*dim + grad_index]             # <<<<<<<<<<<<<<
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":365
+ *         for m in range(self.Nelements_2body):
+ *             for grad_index in range(Natoms*self.dim):
+ *                 feature_grad1_np[grad_index][m] = feature_grad1[m * Natoms*self.dim + grad_index]             # <<<<<<<<<<<<<<
  * 
  *         # Return feature if only radial part is desired
  */
-      __pyx_t_5 = PyFloat_FromDouble((__pyx_v_feature_grad1[(((__pyx_v_m * __pyx_v_Natoms) * __pyx_v_dim) + __pyx_v_grad_index)])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 394, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_feature_grad1_np, __pyx_v_grad_index, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 394, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_4, __pyx_v_m, __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 394, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_3 = PyFloat_FromDouble((__pyx_v_feature_grad1[(((__pyx_v_m * __pyx_v_Natoms) * __pyx_v_self->dim) + __pyx_v_grad_index)])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 365, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_feature_grad1_np, __pyx_v_grad_index, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 365, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_m, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 365, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":397
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":368
  * 
  *         # Return feature if only radial part is desired
- *         if not use_angular:             # <<<<<<<<<<<<<<
+ *         if not self.use_angular:             # <<<<<<<<<<<<<<
  *             return feature_grad1_np
  * 
  */
-  __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_v_use_angular); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 397, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_v_self->use_angular); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 368, __pyx_L1_error)
   __pyx_t_14 = ((!__pyx_t_13) != 0);
   if (__pyx_t_14) {
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":398
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":369
  *         # Return feature if only radial part is desired
- *         if not use_angular:
+ *         if not self.use_angular:
  *             return feature_grad1_np             # <<<<<<<<<<<<<<
  * 
  *         # ANGULAR FEATURE-GRADIENT
@@ -6456,38 +5575,38 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     __pyx_r = __pyx_v_feature_grad1_np;
     goto __pyx_L0;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":397
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":368
  * 
  *         # Return feature if only radial part is desired
- *         if not use_angular:             # <<<<<<<<<<<<<<
+ *         if not self.use_angular:             # <<<<<<<<<<<<<<
  *             return feature_grad1_np
  * 
  */
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":404
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":375
  *         # Initialize angular feature-gradient
  *         cdef double *feature_grad2
- *         feature_grad2 = <double*>mem.alloc(Nelements_3body * Natoms * dim, sizeof(double))             # <<<<<<<<<<<<<<
+ *         feature_grad2 = <double*>self.mem.alloc(self.Nelements_3body * Natoms * self.dim, sizeof(double))             # <<<<<<<<<<<<<<
  * 
  *         cdef Point RikVec, angle_grad_i, angle_grad_j, angle_grad_k
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, ((__pyx_v_Nelements_3body * __pyx_v_Natoms) * __pyx_v_dim), (sizeof(double))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 404, __pyx_L1_error)
-  __pyx_v_feature_grad2 = ((double *)__pyx_t_7);
+  __pyx_t_6 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_self->mem->__pyx_vtab)->alloc(__pyx_v_self->mem, ((__pyx_v_self->Nelements_3body * __pyx_v_Natoms) * __pyx_v_self->dim), (sizeof(double))); if (unlikely(__pyx_t_6 == ((void *)NULL))) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_v_feature_grad2 = ((double *)__pyx_t_6);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":409
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":380
  *         cdef double angle, cos_angle, a
  *         cdef int k, cond_ij, cond_ik, bin_index
  *         for i in range(Natoms):             # <<<<<<<<<<<<<<
  *             for j in range(Natoms):
  *                 for k in range(j+1, Natoms):
  */
-  __pyx_t_3 = __pyx_v_Natoms;
-  __pyx_t_8 = __pyx_t_3;
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
+  __pyx_t_4 = __pyx_v_Natoms;
+  __pyx_t_7 = __pyx_t_4;
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":410
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":381
  *         cdef int k, cond_ij, cond_ik, bin_index
  *         for i in range(Natoms):
  *             for j in range(Natoms):             # <<<<<<<<<<<<<<
@@ -6499,7 +5618,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
       __pyx_v_j = __pyx_t_12;
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":411
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":382
  *         for i in range(Natoms):
  *             for j in range(Natoms):
  *                 for k in range(j+1, Natoms):             # <<<<<<<<<<<<<<
@@ -6511,7 +5630,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
       for (__pyx_t_21 = (__pyx_v_j + 1); __pyx_t_21 < __pyx_t_20; __pyx_t_21+=1) {
         __pyx_v_k = __pyx_t_21;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":412
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":383
  *             for j in range(Natoms):
  *                 for k in range(j+1, Natoms):
  *                     Rij = euclidean(pos[i], pos[j])             # <<<<<<<<<<<<<<
@@ -6520,7 +5639,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
         __pyx_v_Rij = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_euclidean((__pyx_v_pos[__pyx_v_i]), (__pyx_v_pos[__pyx_v_j]));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":413
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":384
  *                 for k in range(j+1, Natoms):
  *                     Rij = euclidean(pos[i], pos[j])
  *                     Rik = euclidean(pos[i], pos[k])             # <<<<<<<<<<<<<<
@@ -6529,14 +5648,14 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
         __pyx_v_Rik = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_euclidean((__pyx_v_pos[__pyx_v_i]), (__pyx_v_pos[__pyx_v_k]));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":416
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":387
  * 
  *                     # Stop if distance too long or atoms are the same one.
- *                     cond_ij = Rij > Rc2 or Rij < 1e-6             # <<<<<<<<<<<<<<
- *                     cond_ik = Rik > Rc2 or Rik < 1e-6
+ *                     cond_ij = Rij > self.Rc2 or Rij < 1e-6             # <<<<<<<<<<<<<<
+ *                     cond_ik = Rik > self.Rc2 or Rik < 1e-6
  *                     if cond_ij or cond_ik:
  */
-        __pyx_t_14 = (__pyx_v_Rij > __pyx_v_Rc2);
+        __pyx_t_14 = (__pyx_v_Rij > __pyx_v_self->Rc2);
         if (!__pyx_t_14) {
         } else {
           __pyx_t_23 = __pyx_t_14;
@@ -6547,14 +5666,14 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
         __pyx_L30_bool_binop_done:;
         __pyx_v_cond_ij = __pyx_t_23;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":417
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":388
  *                     # Stop if distance too long or atoms are the same one.
- *                     cond_ij = Rij > Rc2 or Rij < 1e-6
- *                     cond_ik = Rik > Rc2 or Rik < 1e-6             # <<<<<<<<<<<<<<
+ *                     cond_ij = Rij > self.Rc2 or Rij < 1e-6
+ *                     cond_ik = Rik > self.Rc2 or Rik < 1e-6             # <<<<<<<<<<<<<<
  *                     if cond_ij or cond_ik:
  *                         continue
  */
-        __pyx_t_14 = (__pyx_v_Rik > __pyx_v_Rc2);
+        __pyx_t_14 = (__pyx_v_Rik > __pyx_v_self->Rc2);
         if (!__pyx_t_14) {
         } else {
           __pyx_t_23 = __pyx_t_14;
@@ -6565,9 +5684,9 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
         __pyx_L32_bool_binop_done:;
         __pyx_v_cond_ik = __pyx_t_23;
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":418
- *                     cond_ij = Rij > Rc2 or Rij < 1e-6
- *                     cond_ik = Rik > Rc2 or Rik < 1e-6
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":389
+ *                     cond_ij = Rij > self.Rc2 or Rij < 1e-6
+ *                     cond_ik = Rik > self.Rc2 or Rik < 1e-6
  *                     if cond_ij or cond_ik:             # <<<<<<<<<<<<<<
  *                         continue
  * 
@@ -6583,8 +5702,8 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
         __pyx_L35_bool_binop_done:;
         if (__pyx_t_14) {
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":419
- *                     cond_ik = Rik > Rc2 or Rik < 1e-6
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":390
+ *                     cond_ik = Rik > self.Rc2 or Rik < 1e-6
  *                     if cond_ij or cond_ik:
  *                         continue             # <<<<<<<<<<<<<<
  * 
@@ -6592,16 +5711,16 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
           goto __pyx_L28_continue;
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":418
- *                     cond_ij = Rij > Rc2 or Rij < 1e-6
- *                     cond_ik = Rik > Rc2 or Rik < 1e-6
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":389
+ *                     cond_ij = Rij > self.Rc2 or Rij < 1e-6
+ *                     cond_ik = Rik > self.Rc2 or Rik < 1e-6
  *                     if cond_ij or cond_ik:             # <<<<<<<<<<<<<<
  *                         continue
  * 
  */
         }
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":422
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":393
  * 
  *                     # Calculate angle
  *                     RijVec = subtract(pos[j],pos[i])             # <<<<<<<<<<<<<<
@@ -6610,7 +5729,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
         __pyx_v_RijVec = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_subtract((__pyx_v_pos[__pyx_v_j]), (__pyx_v_pos[__pyx_v_i]));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":423
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":394
  *                     # Calculate angle
  *                     RijVec = subtract(pos[j],pos[i])
  *                     RikVec = subtract(pos[k], pos[i])             # <<<<<<<<<<<<<<
@@ -6619,7 +5738,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
         __pyx_v_RikVec = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_subtract((__pyx_v_pos[__pyx_v_k]), (__pyx_v_pos[__pyx_v_i]));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":424
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":395
  *                     RijVec = subtract(pos[j],pos[i])
  *                     RikVec = subtract(pos[k], pos[i])
  *                     angle = get_angle(RijVec, RikVec)             # <<<<<<<<<<<<<<
@@ -6628,7 +5747,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
         __pyx_v_angle = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_get_angle(__pyx_v_RijVec, __pyx_v_RikVec);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":425
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":396
  *                     RikVec = subtract(pos[k], pos[i])
  *                     angle = get_angle(RijVec, RikVec)
  *                     cos_angle = cos(angle)             # <<<<<<<<<<<<<<
@@ -6637,7 +5756,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
         __pyx_v_cos_angle = cos(__pyx_v_angle);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":427
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":398
  *                     cos_angle = cos(angle)
  * 
  *                     for m in range(3):             # <<<<<<<<<<<<<<
@@ -6647,7 +5766,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
         for (__pyx_t_23 = 0; __pyx_t_23 < 3; __pyx_t_23+=1) {
           __pyx_v_m = __pyx_t_23;
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":428
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":399
  * 
  *                     for m in range(3):
  *                         if not (angle == 0 or angle == M_PI):             # <<<<<<<<<<<<<<
@@ -6666,7 +5785,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
           __pyx_t_13 = ((!__pyx_t_14) != 0);
           if (__pyx_t_13) {
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":429
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":400
  *                     for m in range(3):
  *                         if not (angle == 0 or angle == M_PI):
  *                             a = -1/sqrt(1 - cos_angle*cos_angle)             # <<<<<<<<<<<<<<
@@ -6676,11 +5795,11 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
             __pyx_t_15 = sqrt((1.0 - (__pyx_v_cos_angle * __pyx_v_cos_angle)));
             if (unlikely(__pyx_t_15 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 429, __pyx_L1_error)
+              __PYX_ERR(0, 400, __pyx_L1_error)
             }
             __pyx_v_a = (-1.0 / __pyx_t_15);
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":430
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":401
  *                         if not (angle == 0 or angle == M_PI):
  *                             a = -1/sqrt(1 - cos_angle*cos_angle)
  *                             angle_grad_j.coord[m] = a * (RikVec.coord[m]/(Rij*Rik) - cos_angle*RijVec.coord[m]/(Rij*Rij))             # <<<<<<<<<<<<<<
@@ -6690,37 +5809,37 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
             __pyx_t_15 = (__pyx_v_Rij * __pyx_v_Rik);
             if (unlikely(__pyx_t_15 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 430, __pyx_L1_error)
+              __PYX_ERR(0, 401, __pyx_L1_error)
             }
             __pyx_t_19 = (__pyx_v_cos_angle * (__pyx_v_RijVec.coord[__pyx_v_m]));
-            __pyx_t_2 = (__pyx_v_Rij * __pyx_v_Rij);
-            if (unlikely(__pyx_t_2 == 0)) {
+            __pyx_t_9 = (__pyx_v_Rij * __pyx_v_Rij);
+            if (unlikely(__pyx_t_9 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 430, __pyx_L1_error)
+              __PYX_ERR(0, 401, __pyx_L1_error)
             }
-            (__pyx_v_angle_grad_j.coord[__pyx_v_m]) = (__pyx_v_a * (((__pyx_v_RikVec.coord[__pyx_v_m]) / __pyx_t_15) - (__pyx_t_19 / __pyx_t_2)));
+            (__pyx_v_angle_grad_j.coord[__pyx_v_m]) = (__pyx_v_a * (((__pyx_v_RikVec.coord[__pyx_v_m]) / __pyx_t_15) - (__pyx_t_19 / __pyx_t_9)));
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":431
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":402
  *                             a = -1/sqrt(1 - cos_angle*cos_angle)
  *                             angle_grad_j.coord[m] = a * (RikVec.coord[m]/(Rij*Rik) - cos_angle*RijVec.coord[m]/(Rij*Rij))
  *                             angle_grad_k.coord[m] = a * (RijVec.coord[m]/(Rij*Rik) - cos_angle*RikVec.coord[m]/(Rik*Rik))             # <<<<<<<<<<<<<<
  *                             angle_grad_i.coord[m] = -(angle_grad_j.coord[m] + angle_grad_k.coord[m])
  *                         else:
  */
-            __pyx_t_2 = (__pyx_v_Rij * __pyx_v_Rik);
-            if (unlikely(__pyx_t_2 == 0)) {
+            __pyx_t_9 = (__pyx_v_Rij * __pyx_v_Rik);
+            if (unlikely(__pyx_t_9 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 431, __pyx_L1_error)
+              __PYX_ERR(0, 402, __pyx_L1_error)
             }
             __pyx_t_19 = (__pyx_v_cos_angle * (__pyx_v_RikVec.coord[__pyx_v_m]));
             __pyx_t_15 = (__pyx_v_Rik * __pyx_v_Rik);
             if (unlikely(__pyx_t_15 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 431, __pyx_L1_error)
+              __PYX_ERR(0, 402, __pyx_L1_error)
             }
-            (__pyx_v_angle_grad_k.coord[__pyx_v_m]) = (__pyx_v_a * (((__pyx_v_RijVec.coord[__pyx_v_m]) / __pyx_t_2) - (__pyx_t_19 / __pyx_t_15)));
+            (__pyx_v_angle_grad_k.coord[__pyx_v_m]) = (__pyx_v_a * (((__pyx_v_RijVec.coord[__pyx_v_m]) / __pyx_t_9) - (__pyx_t_19 / __pyx_t_15)));
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":432
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":403
  *                             angle_grad_j.coord[m] = a * (RikVec.coord[m]/(Rij*Rik) - cos_angle*RijVec.coord[m]/(Rij*Rij))
  *                             angle_grad_k.coord[m] = a * (RijVec.coord[m]/(Rij*Rik) - cos_angle*RikVec.coord[m]/(Rik*Rik))
  *                             angle_grad_i.coord[m] = -(angle_grad_j.coord[m] + angle_grad_k.coord[m])             # <<<<<<<<<<<<<<
@@ -6729,7 +5848,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
             (__pyx_v_angle_grad_i.coord[__pyx_v_m]) = (-((__pyx_v_angle_grad_j.coord[__pyx_v_m]) + (__pyx_v_angle_grad_k.coord[__pyx_v_m])));
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":428
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":399
  * 
  *                     for m in range(3):
  *                         if not (angle == 0 or angle == M_PI):             # <<<<<<<<<<<<<<
@@ -6739,7 +5858,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
             goto __pyx_L39;
           }
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":434
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":405
  *                             angle_grad_i.coord[m] = -(angle_grad_j.coord[m] + angle_grad_k.coord[m])
  *                         else:
  *                             angle_grad_j.coord[m] = 0             # <<<<<<<<<<<<<<
@@ -6749,7 +5868,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
           /*else*/ {
             (__pyx_v_angle_grad_j.coord[__pyx_v_m]) = 0.0;
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":435
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":406
  *                         else:
  *                             angle_grad_j.coord[m] = 0
  *                             angle_grad_k.coord[m] = 0             # <<<<<<<<<<<<<<
@@ -6758,140 +5877,140 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
             (__pyx_v_angle_grad_k.coord[__pyx_v_m]) = 0.0;
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":436
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":407
  *                             angle_grad_j.coord[m] = 0
  *                             angle_grad_k.coord[m] = 0
  *                             angle_grad_i.coord[m] = 0             # <<<<<<<<<<<<<<
  * 
- *                     fc_ij = f_cutoff(Rij, gamma, Rc2)
+ *                     fc_ij = f_cutoff(Rij, self.gamma, self.Rc2)
  */
             (__pyx_v_angle_grad_i.coord[__pyx_v_m]) = 0.0;
           }
           __pyx_L39:;
         }
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":438
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":409
  *                             angle_grad_i.coord[m] = 0
  * 
- *                     fc_ij = f_cutoff(Rij, gamma, Rc2)             # <<<<<<<<<<<<<<
- *                     fc_ik = f_cutoff(Rik, gamma, Rc2)
- *                     fc_grad_ij = f_cutoff_grad(Rij, gamma, Rc2)
+ *                     fc_ij = f_cutoff(Rij, self.gamma, self.Rc2)             # <<<<<<<<<<<<<<
+ *                     fc_ik = f_cutoff(Rik, self.gamma, self.Rc2)
+ *                     fc_grad_ij = f_cutoff_grad(Rij, self.gamma, self.Rc2)
  */
-        __pyx_v_fc_ij = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff(__pyx_v_Rij, __pyx_v_gamma, __pyx_v_Rc2);
+        __pyx_v_fc_ij = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff(__pyx_v_Rij, __pyx_v_self->gamma, __pyx_v_self->Rc2);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":439
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":410
  * 
- *                     fc_ij = f_cutoff(Rij, gamma, Rc2)
- *                     fc_ik = f_cutoff(Rik, gamma, Rc2)             # <<<<<<<<<<<<<<
- *                     fc_grad_ij = f_cutoff_grad(Rij, gamma, Rc2)
- *                     fc_grad_ik = f_cutoff_grad(Rik, gamma, Rc2)
+ *                     fc_ij = f_cutoff(Rij, self.gamma, self.Rc2)
+ *                     fc_ik = f_cutoff(Rik, self.gamma, self.Rc2)             # <<<<<<<<<<<<<<
+ *                     fc_grad_ij = f_cutoff_grad(Rij, self.gamma, self.Rc2)
+ *                     fc_grad_ik = f_cutoff_grad(Rik, self.gamma, self.Rc2)
  */
-        __pyx_v_fc_ik = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff(__pyx_v_Rik, __pyx_v_gamma, __pyx_v_Rc2);
+        __pyx_v_fc_ik = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff(__pyx_v_Rik, __pyx_v_self->gamma, __pyx_v_self->Rc2);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":440
- *                     fc_ij = f_cutoff(Rij, gamma, Rc2)
- *                     fc_ik = f_cutoff(Rik, gamma, Rc2)
- *                     fc_grad_ij = f_cutoff_grad(Rij, gamma, Rc2)             # <<<<<<<<<<<<<<
- *                     fc_grad_ik = f_cutoff_grad(Rik, gamma, Rc2)
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":411
+ *                     fc_ij = f_cutoff(Rij, self.gamma, self.Rc2)
+ *                     fc_ik = f_cutoff(Rik, self.gamma, self.Rc2)
+ *                     fc_grad_ij = f_cutoff_grad(Rij, self.gamma, self.Rc2)             # <<<<<<<<<<<<<<
+ *                     fc_grad_ik = f_cutoff_grad(Rik, self.gamma, self.Rc2)
  * 
  */
-        __pyx_v_fc_grad_ij = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff_grad(__pyx_v_Rij, __pyx_v_gamma, __pyx_v_Rc2);
+        __pyx_v_fc_grad_ij = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff_grad(__pyx_v_Rij, __pyx_v_self->gamma, __pyx_v_self->Rc2);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":441
- *                     fc_ik = f_cutoff(Rik, gamma, Rc2)
- *                     fc_grad_ij = f_cutoff_grad(Rij, gamma, Rc2)
- *                     fc_grad_ik = f_cutoff_grad(Rik, gamma, Rc2)             # <<<<<<<<<<<<<<
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":412
+ *                     fc_ik = f_cutoff(Rik, self.gamma, self.Rc2)
+ *                     fc_grad_ij = f_cutoff_grad(Rij, self.gamma, self.Rc2)
+ *                     fc_grad_ik = f_cutoff_grad(Rik, self.gamma, self.Rc2)             # <<<<<<<<<<<<<<
  * 
  *                     # Calculate normalization
  */
-        __pyx_v_fc_grad_ik = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff_grad(__pyx_v_Rik, __pyx_v_gamma, __pyx_v_Rc2);
+        __pyx_v_fc_grad_ik = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy_f_cutoff_grad(__pyx_v_Rik, __pyx_v_self->gamma, __pyx_v_self->Rc2);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":444
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":415
  * 
  *                     # Calculate normalization
  *                     num_pairs = Natoms*Natoms*Natoms             # <<<<<<<<<<<<<<
- *                     normalization = 1./smearing_norm2
- *                     normalization /= num_pairs/volume
+ *                     normalization = 1./self.smearing_norm2
+ *                     normalization /= num_pairs/self.volume
  */
         __pyx_v_num_pairs = ((__pyx_v_Natoms * __pyx_v_Natoms) * __pyx_v_Natoms);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":445
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":416
  *                     # Calculate normalization
  *                     num_pairs = Natoms*Natoms*Natoms
- *                     normalization = 1./smearing_norm2             # <<<<<<<<<<<<<<
- *                     normalization /= num_pairs/volume
+ *                     normalization = 1./self.smearing_norm2             # <<<<<<<<<<<<<<
+ *                     normalization /= num_pairs/self.volume
  * 
  */
-        if (unlikely(__pyx_v_smearing_norm2 == 0)) {
+        if (unlikely(__pyx_v_self->smearing_norm2 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 445, __pyx_L1_error)
+          __PYX_ERR(0, 416, __pyx_L1_error)
         }
-        __pyx_v_normalization = (1. / __pyx_v_smearing_norm2);
+        __pyx_v_normalization = (1. / __pyx_v_self->smearing_norm2);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":446
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":417
  *                     num_pairs = Natoms*Natoms*Natoms
- *                     normalization = 1./smearing_norm2
- *                     normalization /= num_pairs/volume             # <<<<<<<<<<<<<<
+ *                     normalization = 1./self.smearing_norm2
+ *                     normalization /= num_pairs/self.volume             # <<<<<<<<<<<<<<
  * 
  *                     # Identify what bin 'Rij' belongs to + it's position in this bin
  */
-        if (unlikely(__pyx_v_volume == 0)) {
+        if (unlikely(__pyx_v_self->volume == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 446, __pyx_L1_error)
+          __PYX_ERR(0, 417, __pyx_L1_error)
         }
-        __pyx_t_15 = (__pyx_v_num_pairs / __pyx_v_volume);
+        __pyx_t_15 = (__pyx_v_num_pairs / __pyx_v_self->volume);
         if (unlikely(__pyx_t_15 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 446, __pyx_L1_error)
+          __PYX_ERR(0, 417, __pyx_L1_error)
         }
         __pyx_v_normalization = (__pyx_v_normalization / __pyx_t_15);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":449
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":420
  * 
  *                     # Identify what bin 'Rij' belongs to + it's position in this bin
- *                     center_bin = <int> floor(angle/binwidth1)             # <<<<<<<<<<<<<<
- *                     binpos = angle/binwidth2 - center_bin
+ *                     center_bin = <int> floor(angle/self.binwidth1)             # <<<<<<<<<<<<<<
+ *                     binpos = angle/self.binwidth2 - center_bin
  * 
  */
-        if (unlikely(__pyx_v_binwidth1 == 0)) {
+        if (unlikely(__pyx_v_self->binwidth1 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 449, __pyx_L1_error)
+          __PYX_ERR(0, 420, __pyx_L1_error)
         }
-        __pyx_v_center_bin = ((int)floor((__pyx_v_angle / __pyx_v_binwidth1)));
+        __pyx_v_center_bin = ((int)floor((__pyx_v_angle / __pyx_v_self->binwidth1)));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":450
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":421
  *                     # Identify what bin 'Rij' belongs to + it's position in this bin
- *                     center_bin = <int> floor(angle/binwidth1)
- *                     binpos = angle/binwidth2 - center_bin             # <<<<<<<<<<<<<<
+ *                     center_bin = <int> floor(angle/self.binwidth1)
+ *                     binpos = angle/self.binwidth2 - center_bin             # <<<<<<<<<<<<<<
  * 
  *                     # Lower and upper range of bins affected by the current atomic distance deltaR.
  */
-        if (unlikely(__pyx_v_binwidth2 == 0)) {
+        if (unlikely(__pyx_v_self->binwidth2 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 450, __pyx_L1_error)
+          __PYX_ERR(0, 421, __pyx_L1_error)
         }
-        __pyx_v_binpos = ((__pyx_v_angle / __pyx_v_binwidth2) - __pyx_v_center_bin);
+        __pyx_v_binpos = ((__pyx_v_angle / __pyx_v_self->binwidth2) - __pyx_v_center_bin);
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":453
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":424
  * 
  *                     # Lower and upper range of bins affected by the current atomic distance deltaR.
- *                     minbin_lim = <int> -ceil(m2 - binpos)             # <<<<<<<<<<<<<<
- *                     maxbin_lim = <int> ceil(m2 - (1-binpos))
+ *                     minbin_lim = <int> -ceil(self.m2 - binpos)             # <<<<<<<<<<<<<<
+ *                     maxbin_lim = <int> ceil(self.m2 - (1-binpos))
  * 
  */
-        __pyx_v_minbin_lim = ((int)(-ceil((__pyx_v_m2 - __pyx_v_binpos))));
+        __pyx_v_minbin_lim = ((int)(-ceil((__pyx_v_self->m2 - __pyx_v_binpos))));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":454
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":425
  *                     # Lower and upper range of bins affected by the current atomic distance deltaR.
- *                     minbin_lim = <int> -ceil(m2 - binpos)
- *                     maxbin_lim = <int> ceil(m2 - (1-binpos))             # <<<<<<<<<<<<<<
+ *                     minbin_lim = <int> -ceil(self.m2 - binpos)
+ *                     maxbin_lim = <int> ceil(self.m2 - (1-binpos))             # <<<<<<<<<<<<<<
  * 
  *                     for n in range(minbin_lim, maxbin_lim + 1):
  */
-        __pyx_v_maxbin_lim = ((int)ceil((__pyx_v_m2 - (1.0 - __pyx_v_binpos))));
+        __pyx_v_maxbin_lim = ((int)ceil((__pyx_v_self->m2 - (1.0 - __pyx_v_binpos))));
 
-        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":456
- *                     maxbin_lim = <int> ceil(m2 - (1-binpos))
+        /* "featureCalculators/angular_fingerprintFeature_cy.pyx":427
+ *                     maxbin_lim = <int> ceil(self.m2 - (1-binpos))
  * 
  *                     for n in range(minbin_lim, maxbin_lim + 1):             # <<<<<<<<<<<<<<
  *                         newbin = center_bin + n
@@ -6902,7 +6021,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
         for (__pyx_t_23 = __pyx_v_minbin_lim; __pyx_t_23 < __pyx_t_17; __pyx_t_23+=1) {
           __pyx_v_n = __pyx_t_23;
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":457
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":428
  * 
  *                     for n in range(minbin_lim, maxbin_lim + 1):
  *                         newbin = center_bin + n             # <<<<<<<<<<<<<<
@@ -6911,138 +6030,138 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
           __pyx_v_newbin = (__pyx_v_center_bin + __pyx_v_n);
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":460
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":431
  * 
  *                         # Wrap current bin into correct bin-range
  *                         if newbin < 0:             # <<<<<<<<<<<<<<
  *                             newbin = abs(newbin)
- *                         if newbin > Nbins2-1:
+ *                         if newbin > self.Nbins2-1:
  */
           __pyx_t_13 = ((__pyx_v_newbin < 0) != 0);
           if (__pyx_t_13) {
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":461
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":432
  *                         # Wrap current bin into correct bin-range
  *                         if newbin < 0:
  *                             newbin = abs(newbin)             # <<<<<<<<<<<<<<
- *                         if newbin > Nbins2-1:
- *                             newbin = 2*Nbins2 - newbin - 1
+ *                         if newbin > self.Nbins2-1:
+ *                             newbin = 2*self.Nbins2 - newbin - 1
  */
-            __pyx_t_24 = abs(__pyx_v_newbin); if (unlikely(__pyx_t_24 == ((int)-1))) __PYX_ERR(0, 461, __pyx_L1_error)
+            __pyx_t_24 = abs(__pyx_v_newbin); if (unlikely(__pyx_t_24 == ((int)-1))) __PYX_ERR(0, 432, __pyx_L1_error)
             __pyx_v_newbin = __pyx_t_24;
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":460
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":431
  * 
  *                         # Wrap current bin into correct bin-range
  *                         if newbin < 0:             # <<<<<<<<<<<<<<
  *                             newbin = abs(newbin)
- *                         if newbin > Nbins2-1:
+ *                         if newbin > self.Nbins2-1:
  */
           }
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":462
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":433
  *                         if newbin < 0:
  *                             newbin = abs(newbin)
- *                         if newbin > Nbins2-1:             # <<<<<<<<<<<<<<
- *                             newbin = 2*Nbins2 - newbin - 1
+ *                         if newbin > self.Nbins2-1:             # <<<<<<<<<<<<<<
+ *                             newbin = 2*self.Nbins2 - newbin - 1
  * 
  */
-          __pyx_t_13 = ((__pyx_v_newbin > (__pyx_v_Nbins2 - 1)) != 0);
+          __pyx_t_13 = ((__pyx_v_newbin > (__pyx_v_self->Nbins2 - 1)) != 0);
           if (__pyx_t_13) {
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":463
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":434
  *                             newbin = abs(newbin)
- *                         if newbin > Nbins2-1:
- *                             newbin = 2*Nbins2 - newbin - 1             # <<<<<<<<<<<<<<
+ *                         if newbin > self.Nbins2-1:
+ *                             newbin = 2*self.Nbins2 - newbin - 1             # <<<<<<<<<<<<<<
  * 
  *                         # Calculate gauss contribution to current bin
  */
-            __pyx_v_newbin = (((2 * __pyx_v_Nbins2) - __pyx_v_newbin) - 1);
+            __pyx_v_newbin = (((2 * __pyx_v_self->Nbins2) - __pyx_v_newbin) - 1);
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":462
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":433
  *                         if newbin < 0:
  *                             newbin = abs(newbin)
- *                         if newbin > Nbins2-1:             # <<<<<<<<<<<<<<
- *                             newbin = 2*Nbins2 - newbin - 1
+ *                         if newbin > self.Nbins2-1:             # <<<<<<<<<<<<<<
+ *                             newbin = 2*self.Nbins2 - newbin - 1
  * 
  */
           }
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":466
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":437
  * 
  *                         # Calculate gauss contribution to current bin
- *                         c = 1./sqrt(2)*binwidth2/sigma2             # <<<<<<<<<<<<<<
- *                         arg_low = max(-m2, n-binpos)
- *                         arg_up = min(m2, n+(1-binpos))
+ *                         c = 1./sqrt(2)*self.binwidth2/self.sigma2             # <<<<<<<<<<<<<<
+ *                         arg_low = max(-self.m2, n-binpos)
+ *                         arg_up = min(self.m2, n+(1-binpos))
  */
           __pyx_t_15 = sqrt(2.0);
           if (unlikely(__pyx_t_15 == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 466, __pyx_L1_error)
+            __PYX_ERR(0, 437, __pyx_L1_error)
           }
-          __pyx_t_19 = ((1. / __pyx_t_15) * __pyx_v_binwidth2);
-          if (unlikely(__pyx_v_sigma2 == 0)) {
+          __pyx_t_19 = ((1. / __pyx_t_15) * __pyx_v_self->binwidth2);
+          if (unlikely(__pyx_v_self->sigma2 == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 466, __pyx_L1_error)
+            __PYX_ERR(0, 437, __pyx_L1_error)
           }
-          __pyx_v_c = (__pyx_t_19 / __pyx_v_sigma2);
+          __pyx_v_c = (__pyx_t_19 / __pyx_v_self->sigma2);
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":467
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":438
  *                         # Calculate gauss contribution to current bin
- *                         c = 1./sqrt(2)*binwidth2/sigma2
- *                         arg_low = max(-m2, n-binpos)             # <<<<<<<<<<<<<<
- *                         arg_up = min(m2, n+(1-binpos))
+ *                         c = 1./sqrt(2)*self.binwidth2/self.sigma2
+ *                         arg_low = max(-self.m2, n-binpos)             # <<<<<<<<<<<<<<
+ *                         arg_up = min(self.m2, n+(1-binpos))
  *                         value1 = 0.5*erf(c*arg_up)-0.5*erf(c*arg_low)
  */
           __pyx_t_19 = (__pyx_v_n - __pyx_v_binpos);
-          __pyx_t_15 = (-__pyx_v_m2);
+          __pyx_t_15 = (-__pyx_v_self->m2);
           if (((__pyx_t_19 > __pyx_t_15) != 0)) {
-            __pyx_t_2 = __pyx_t_19;
+            __pyx_t_9 = __pyx_t_19;
           } else {
-            __pyx_t_2 = __pyx_t_15;
+            __pyx_t_9 = __pyx_t_15;
           }
-          __pyx_v_arg_low = __pyx_t_2;
+          __pyx_v_arg_low = __pyx_t_9;
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":468
- *                         c = 1./sqrt(2)*binwidth2/sigma2
- *                         arg_low = max(-m2, n-binpos)
- *                         arg_up = min(m2, n+(1-binpos))             # <<<<<<<<<<<<<<
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":439
+ *                         c = 1./sqrt(2)*self.binwidth2/self.sigma2
+ *                         arg_low = max(-self.m2, n-binpos)
+ *                         arg_up = min(self.m2, n+(1-binpos))             # <<<<<<<<<<<<<<
  *                         value1 = 0.5*erf(c*arg_up)-0.5*erf(c*arg_low)
- *                         value2 = -1./(sigma2*sqrt(2*M_PI)) * (exp(-pow(c*arg_up, 2)) - exp(-pow(c*arg_low, 2)))
+ *                         value2 = -1./(self.sigma2*sqrt(2*M_PI)) * (exp(-pow(c*arg_up, 2)) - exp(-pow(c*arg_low, 2)))
  */
-          __pyx_t_2 = (__pyx_v_n + (1.0 - __pyx_v_binpos));
-          __pyx_t_19 = __pyx_v_m2;
-          if (((__pyx_t_2 < __pyx_t_19) != 0)) {
-            __pyx_t_15 = __pyx_t_2;
+          __pyx_t_9 = (__pyx_v_n + (1.0 - __pyx_v_binpos));
+          __pyx_t_19 = __pyx_v_self->m2;
+          if (((__pyx_t_9 < __pyx_t_19) != 0)) {
+            __pyx_t_15 = __pyx_t_9;
           } else {
             __pyx_t_15 = __pyx_t_19;
           }
           __pyx_v_arg_up = __pyx_t_15;
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":469
- *                         arg_low = max(-m2, n-binpos)
- *                         arg_up = min(m2, n+(1-binpos))
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":440
+ *                         arg_low = max(-self.m2, n-binpos)
+ *                         arg_up = min(self.m2, n+(1-binpos))
  *                         value1 = 0.5*erf(c*arg_up)-0.5*erf(c*arg_low)             # <<<<<<<<<<<<<<
- *                         value2 = -1./(sigma2*sqrt(2*M_PI)) * (exp(-pow(c*arg_up, 2)) - exp(-pow(c*arg_low, 2)))
+ *                         value2 = -1./(self.sigma2*sqrt(2*M_PI)) * (exp(-pow(c*arg_up, 2)) - exp(-pow(c*arg_low, 2)))
  * 
  */
           __pyx_v_value1 = ((0.5 * erf((__pyx_v_c * __pyx_v_arg_up))) - (0.5 * erf((__pyx_v_c * __pyx_v_arg_low))));
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":470
- *                         arg_up = min(m2, n+(1-binpos))
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":441
+ *                         arg_up = min(self.m2, n+(1-binpos))
  *                         value1 = 0.5*erf(c*arg_up)-0.5*erf(c*arg_low)
- *                         value2 = -1./(sigma2*sqrt(2*M_PI)) * (exp(-pow(c*arg_up, 2)) - exp(-pow(c*arg_low, 2)))             # <<<<<<<<<<<<<<
+ *                         value2 = -1./(self.sigma2*sqrt(2*M_PI)) * (exp(-pow(c*arg_up, 2)) - exp(-pow(c*arg_low, 2)))             # <<<<<<<<<<<<<<
  * 
  *                         # Apply normalization
  */
-          __pyx_t_15 = (__pyx_v_sigma2 * sqrt((2.0 * M_PI)));
+          __pyx_t_15 = (__pyx_v_self->sigma2 * sqrt((2.0 * M_PI)));
           if (unlikely(__pyx_t_15 == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 470, __pyx_L1_error)
+            __PYX_ERR(0, 441, __pyx_L1_error)
           }
           __pyx_v_value2 = ((-1. / __pyx_t_15) * (exp((-pow((__pyx_v_c * __pyx_v_arg_up), 2.0))) - exp((-pow((__pyx_v_c * __pyx_v_arg_low), 2.0)))));
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":473
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":444
  * 
  *                         # Apply normalization
  *                         value1 *= normalization             # <<<<<<<<<<<<<<
@@ -7051,122 +6170,122 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
           __pyx_v_value1 = (__pyx_v_value1 * __pyx_v_normalization);
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":474
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":445
  *                         # Apply normalization
  *                         value1 *= normalization
  *                         value2 *= normalization             # <<<<<<<<<<<<<<
  * 
- *                         bin_index = newbin * Natoms*dim
+ *                         bin_index = newbin * Natoms*self.dim
  */
           __pyx_v_value2 = (__pyx_v_value2 * __pyx_v_normalization);
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":476
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":447
  *                         value2 *= normalization
  * 
- *                         bin_index = newbin * Natoms*dim             # <<<<<<<<<<<<<<
+ *                         bin_index = newbin * Natoms*self.dim             # <<<<<<<<<<<<<<
  *                         for m in range(3):
- *                             feature_grad2[bin_index + dim*i+m] += -value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
+ *                             feature_grad2[bin_index + self.dim*i+m] += -value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
  */
-          __pyx_v_bin_index = ((__pyx_v_newbin * __pyx_v_Natoms) * __pyx_v_dim);
+          __pyx_v_bin_index = ((__pyx_v_newbin * __pyx_v_Natoms) * __pyx_v_self->dim);
 
-          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":477
+          /* "featureCalculators/angular_fingerprintFeature_cy.pyx":448
  * 
- *                         bin_index = newbin * Natoms*dim
+ *                         bin_index = newbin * Natoms*self.dim
  *                         for m in range(3):             # <<<<<<<<<<<<<<
- *                             feature_grad2[bin_index + dim*i+m] += -value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
- *                             feature_grad2[bin_index + dim*j+m] += value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
+ *                             feature_grad2[bin_index + self.dim*i+m] += -value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
+ *                             feature_grad2[bin_index + self.dim*j+m] += value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
  */
           for (__pyx_t_24 = 0; __pyx_t_24 < 3; __pyx_t_24+=1) {
             __pyx_v_m = __pyx_t_24;
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":478
- *                         bin_index = newbin * Natoms*dim
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":449
+ *                         bin_index = newbin * Natoms*self.dim
  *                         for m in range(3):
- *                             feature_grad2[bin_index + dim*i+m] += -value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij             # <<<<<<<<<<<<<<
- *                             feature_grad2[bin_index + dim*j+m] += value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
+ *                             feature_grad2[bin_index + self.dim*i+m] += -value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij             # <<<<<<<<<<<<<<
+ *                             feature_grad2[bin_index + self.dim*j+m] += value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
  * 
  */
-            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_dim * __pyx_v_i)) + __pyx_v_m);
+            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_self->dim * __pyx_v_i)) + __pyx_v_m);
             __pyx_t_15 = ((((-__pyx_v_value1) * __pyx_v_fc_ik) * __pyx_v_fc_grad_ij) * (__pyx_v_RijVec.coord[__pyx_v_m]));
             if (unlikely(__pyx_v_Rij == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 478, __pyx_L1_error)
+              __PYX_ERR(0, 449, __pyx_L1_error)
             }
             (__pyx_v_feature_grad2[__pyx_t_25]) = ((__pyx_v_feature_grad2[__pyx_t_25]) + (__pyx_t_15 / __pyx_v_Rij));
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":479
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":450
  *                         for m in range(3):
- *                             feature_grad2[bin_index + dim*i+m] += -value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
- *                             feature_grad2[bin_index + dim*j+m] += value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij             # <<<<<<<<<<<<<<
+ *                             feature_grad2[bin_index + self.dim*i+m] += -value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
+ *                             feature_grad2[bin_index + self.dim*j+m] += value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij             # <<<<<<<<<<<<<<
  * 
- *                             feature_grad2[bin_index + dim*i+m] += -value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
+ *                             feature_grad2[bin_index + self.dim*i+m] += -value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
  */
-            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_dim * __pyx_v_j)) + __pyx_v_m);
+            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_self->dim * __pyx_v_j)) + __pyx_v_m);
             __pyx_t_15 = (((__pyx_v_value1 * __pyx_v_fc_ik) * __pyx_v_fc_grad_ij) * (__pyx_v_RijVec.coord[__pyx_v_m]));
             if (unlikely(__pyx_v_Rij == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 479, __pyx_L1_error)
+              __PYX_ERR(0, 450, __pyx_L1_error)
             }
             (__pyx_v_feature_grad2[__pyx_t_25]) = ((__pyx_v_feature_grad2[__pyx_t_25]) + (__pyx_t_15 / __pyx_v_Rij));
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":481
- *                             feature_grad2[bin_index + dim*j+m] += value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":452
+ *                             feature_grad2[bin_index + self.dim*j+m] += value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
  * 
- *                             feature_grad2[bin_index + dim*i+m] += -value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik             # <<<<<<<<<<<<<<
- *                             feature_grad2[bin_index + dim*k+m] += value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
+ *                             feature_grad2[bin_index + self.dim*i+m] += -value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik             # <<<<<<<<<<<<<<
+ *                             feature_grad2[bin_index + self.dim*k+m] += value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
  * 
  */
-            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_dim * __pyx_v_i)) + __pyx_v_m);
+            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_self->dim * __pyx_v_i)) + __pyx_v_m);
             __pyx_t_15 = ((((-__pyx_v_value1) * __pyx_v_fc_ij) * __pyx_v_fc_grad_ik) * (__pyx_v_RikVec.coord[__pyx_v_m]));
             if (unlikely(__pyx_v_Rik == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 481, __pyx_L1_error)
+              __PYX_ERR(0, 452, __pyx_L1_error)
             }
             (__pyx_v_feature_grad2[__pyx_t_25]) = ((__pyx_v_feature_grad2[__pyx_t_25]) + (__pyx_t_15 / __pyx_v_Rik));
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":482
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":453
  * 
- *                             feature_grad2[bin_index + dim*i+m] += -value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
- *                             feature_grad2[bin_index + dim*k+m] += value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik             # <<<<<<<<<<<<<<
+ *                             feature_grad2[bin_index + self.dim*i+m] += -value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
+ *                             feature_grad2[bin_index + self.dim*k+m] += value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik             # <<<<<<<<<<<<<<
  * 
- *                             feature_grad2[bin_index + dim*i+m] += value2 * fc_ij * fc_ik * angle_grad_i.coord[m]
+ *                             feature_grad2[bin_index + self.dim*i+m] += value2 * fc_ij * fc_ik * angle_grad_i.coord[m]
  */
-            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_dim * __pyx_v_k)) + __pyx_v_m);
+            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_self->dim * __pyx_v_k)) + __pyx_v_m);
             __pyx_t_15 = (((__pyx_v_value1 * __pyx_v_fc_ij) * __pyx_v_fc_grad_ik) * (__pyx_v_RikVec.coord[__pyx_v_m]));
             if (unlikely(__pyx_v_Rik == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 482, __pyx_L1_error)
+              __PYX_ERR(0, 453, __pyx_L1_error)
             }
             (__pyx_v_feature_grad2[__pyx_t_25]) = ((__pyx_v_feature_grad2[__pyx_t_25]) + (__pyx_t_15 / __pyx_v_Rik));
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":484
- *                             feature_grad2[bin_index + dim*k+m] += value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":455
+ *                             feature_grad2[bin_index + self.dim*k+m] += value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
  * 
- *                             feature_grad2[bin_index + dim*i+m] += value2 * fc_ij * fc_ik * angle_grad_i.coord[m]             # <<<<<<<<<<<<<<
- *                             feature_grad2[bin_index + dim*j+m] += value2 * fc_ij * fc_ik * angle_grad_j.coord[m]
- *                             feature_grad2[bin_index + dim*k+m] += value2 * fc_ij * fc_ik * angle_grad_k.coord[m]
+ *                             feature_grad2[bin_index + self.dim*i+m] += value2 * fc_ij * fc_ik * angle_grad_i.coord[m]             # <<<<<<<<<<<<<<
+ *                             feature_grad2[bin_index + self.dim*j+m] += value2 * fc_ij * fc_ik * angle_grad_j.coord[m]
+ *                             feature_grad2[bin_index + self.dim*k+m] += value2 * fc_ij * fc_ik * angle_grad_k.coord[m]
  */
-            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_dim * __pyx_v_i)) + __pyx_v_m);
+            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_self->dim * __pyx_v_i)) + __pyx_v_m);
             (__pyx_v_feature_grad2[__pyx_t_25]) = ((__pyx_v_feature_grad2[__pyx_t_25]) + (((__pyx_v_value2 * __pyx_v_fc_ij) * __pyx_v_fc_ik) * (__pyx_v_angle_grad_i.coord[__pyx_v_m])));
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":485
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":456
  * 
- *                             feature_grad2[bin_index + dim*i+m] += value2 * fc_ij * fc_ik * angle_grad_i.coord[m]
- *                             feature_grad2[bin_index + dim*j+m] += value2 * fc_ij * fc_ik * angle_grad_j.coord[m]             # <<<<<<<<<<<<<<
- *                             feature_grad2[bin_index + dim*k+m] += value2 * fc_ij * fc_ik * angle_grad_k.coord[m]
+ *                             feature_grad2[bin_index + self.dim*i+m] += value2 * fc_ij * fc_ik * angle_grad_i.coord[m]
+ *                             feature_grad2[bin_index + self.dim*j+m] += value2 * fc_ij * fc_ik * angle_grad_j.coord[m]             # <<<<<<<<<<<<<<
+ *                             feature_grad2[bin_index + self.dim*k+m] += value2 * fc_ij * fc_ik * angle_grad_k.coord[m]
  * 
  */
-            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_dim * __pyx_v_j)) + __pyx_v_m);
+            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_self->dim * __pyx_v_j)) + __pyx_v_m);
             (__pyx_v_feature_grad2[__pyx_t_25]) = ((__pyx_v_feature_grad2[__pyx_t_25]) + (((__pyx_v_value2 * __pyx_v_fc_ij) * __pyx_v_fc_ik) * (__pyx_v_angle_grad_j.coord[__pyx_v_m])));
 
-            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":486
- *                             feature_grad2[bin_index + dim*i+m] += value2 * fc_ij * fc_ik * angle_grad_i.coord[m]
- *                             feature_grad2[bin_index + dim*j+m] += value2 * fc_ij * fc_ik * angle_grad_j.coord[m]
- *                             feature_grad2[bin_index + dim*k+m] += value2 * fc_ij * fc_ik * angle_grad_k.coord[m]             # <<<<<<<<<<<<<<
+            /* "featureCalculators/angular_fingerprintFeature_cy.pyx":457
+ *                             feature_grad2[bin_index + self.dim*i+m] += value2 * fc_ij * fc_ik * angle_grad_i.coord[m]
+ *                             feature_grad2[bin_index + self.dim*j+m] += value2 * fc_ij * fc_ik * angle_grad_j.coord[m]
+ *                             feature_grad2[bin_index + self.dim*k+m] += value2 * fc_ij * fc_ik * angle_grad_k.coord[m]             # <<<<<<<<<<<<<<
  * 
  * 
  */
-            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_dim * __pyx_v_k)) + __pyx_v_m);
+            __pyx_t_25 = ((__pyx_v_bin_index + (__pyx_v_self->dim * __pyx_v_k)) + __pyx_v_m);
             (__pyx_v_feature_grad2[__pyx_t_25]) = ((__pyx_v_feature_grad2[__pyx_t_25]) + (((__pyx_v_value2 * __pyx_v_fc_ij) * __pyx_v_fc_ik) * (__pyx_v_angle_grad_k.coord[__pyx_v_m])));
           }
         }
@@ -7175,29 +6294,29 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     }
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":489
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":460
  * 
  * 
- *         feature_grad2_np = np.zeros((Natoms*dim, Nelements_3body))             # <<<<<<<<<<<<<<
- *         for m in range(Nelements_3body):
- *             for grad_index in range(Natoms*dim):
+ *         feature_grad2_np = np.zeros((Natoms*self.dim, self.Nelements_3body))             # <<<<<<<<<<<<<<
+ *         for m in range(self.Nelements_3body):
+ *             for grad_index in range(Natoms*self.dim):
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 489, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 489, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 460, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 460, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_From_int((__pyx_v_Natoms * __pyx_v_dim)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 489, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_22 = __Pyx_PyInt_From_int(__pyx_v_Nelements_3body); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 489, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyInt_From_int((__pyx_v_Natoms * __pyx_v_self->dim)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 460, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_22 = __Pyx_PyInt_From_int(__pyx_v_self->Nelements_3body); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 460, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_22);
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 489, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4);
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 460, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_22);
-  PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_22);
-  __pyx_t_4 = 0;
+  PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_22);
+  __pyx_t_2 = 0;
   __pyx_t_22 = 0;
   __pyx_t_22 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -7210,207 +6329,207 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     }
   }
   if (!__pyx_t_22) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 489, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 460, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_t_6};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 489, __pyx_L1_error)
+      PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_t_5};
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 460, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_t_6};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 489, __pyx_L1_error)
+      PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_t_5};
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 460, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 489, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_GIVEREF(__pyx_t_22); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_22); __pyx_t_22 = NULL;
-      __Pyx_GIVEREF(__pyx_t_6);
-      PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_6);
-      __pyx_t_6 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 489, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 460, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __Pyx_GIVEREF(__pyx_t_22); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_22); __pyx_t_22 = NULL;
+      __Pyx_GIVEREF(__pyx_t_5);
+      PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_t_5);
+      __pyx_t_5 = 0;
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 460, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_feature_grad2_np = __pyx_t_5;
-  __pyx_t_5 = 0;
+  __pyx_v_feature_grad2_np = __pyx_t_3;
+  __pyx_t_3 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":490
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":461
  * 
- *         feature_grad2_np = np.zeros((Natoms*dim, Nelements_3body))
- *         for m in range(Nelements_3body):             # <<<<<<<<<<<<<<
- *             for grad_index in range(Natoms*dim):
- *                 feature_grad2_np[grad_index][m] = eta * feature_grad2[m * Natoms*dim + grad_index]
+ *         feature_grad2_np = np.zeros((Natoms*self.dim, self.Nelements_3body))
+ *         for m in range(self.Nelements_3body):             # <<<<<<<<<<<<<<
+ *             for grad_index in range(Natoms*self.dim):
+ *                 feature_grad2_np[grad_index][m] = self.eta * feature_grad2[m * Natoms*self.dim + grad_index]
  */
-  __pyx_t_3 = __pyx_v_Nelements_3body;
-  __pyx_t_8 = __pyx_t_3;
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_m = __pyx_t_9;
+  __pyx_t_4 = __pyx_v_self->Nelements_3body;
+  __pyx_t_7 = __pyx_t_4;
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_m = __pyx_t_8;
 
-    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":491
- *         feature_grad2_np = np.zeros((Natoms*dim, Nelements_3body))
- *         for m in range(Nelements_3body):
- *             for grad_index in range(Natoms*dim):             # <<<<<<<<<<<<<<
- *                 feature_grad2_np[grad_index][m] = eta * feature_grad2[m * Natoms*dim + grad_index]
+    /* "featureCalculators/angular_fingerprintFeature_cy.pyx":462
+ *         feature_grad2_np = np.zeros((Natoms*self.dim, self.Nelements_3body))
+ *         for m in range(self.Nelements_3body):
+ *             for grad_index in range(Natoms*self.dim):             # <<<<<<<<<<<<<<
+ *                 feature_grad2_np[grad_index][m] = self.eta * feature_grad2[m * Natoms*self.dim + grad_index]
  * 
  */
-    __pyx_t_10 = (__pyx_v_Natoms * __pyx_v_dim);
+    __pyx_t_10 = (__pyx_v_Natoms * __pyx_v_self->dim);
     __pyx_t_11 = __pyx_t_10;
     for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
       __pyx_v_grad_index = __pyx_t_12;
 
-      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":492
- *         for m in range(Nelements_3body):
- *             for grad_index in range(Natoms*dim):
- *                 feature_grad2_np[grad_index][m] = eta * feature_grad2[m * Natoms*dim + grad_index]             # <<<<<<<<<<<<<<
+      /* "featureCalculators/angular_fingerprintFeature_cy.pyx":463
+ *         for m in range(self.Nelements_3body):
+ *             for grad_index in range(Natoms*self.dim):
+ *                 feature_grad2_np[grad_index][m] = self.eta * feature_grad2[m * Natoms*self.dim + grad_index]             # <<<<<<<<<<<<<<
  * 
- *         feature_grad_np = np.zeros((Natoms*dim, Nelements))
+ *         feature_grad_np = np.zeros((Natoms*self.dim, self.Nelements))
  */
-      __pyx_t_5 = PyFloat_FromDouble((__pyx_v_eta * (__pyx_v_feature_grad2[(((__pyx_v_m * __pyx_v_Natoms) * __pyx_v_dim) + __pyx_v_grad_index)]))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 492, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_feature_grad2_np, __pyx_v_grad_index, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 492, __pyx_L1_error)
+      __pyx_t_3 = PyFloat_FromDouble((__pyx_v_self->eta * (__pyx_v_feature_grad2[(((__pyx_v_m * __pyx_v_Natoms) * __pyx_v_self->dim) + __pyx_v_grad_index)]))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 463, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_feature_grad2_np, __pyx_v_grad_index, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 463, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_1, __pyx_v_m, __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 492, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_1, __pyx_v_m, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 463, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":494
- *                 feature_grad2_np[grad_index][m] = eta * feature_grad2[m * Natoms*dim + grad_index]
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":465
+ *                 feature_grad2_np[grad_index][m] = self.eta * feature_grad2[m * Natoms*self.dim + grad_index]
  * 
- *         feature_grad_np = np.zeros((Natoms*dim, Nelements))             # <<<<<<<<<<<<<<
- *         feature_grad_np[:, :Nelements_2body] = feature_grad1_np
- *         feature_grad_np[:, Nelements_2body:] = feature_grad2_np
+ *         feature_grad_np = np.zeros((Natoms*self.dim, self.Nelements))             # <<<<<<<<<<<<<<
+ *         feature_grad_np[:, :self.Nelements_2body] = feature_grad1_np
+ *         feature_grad_np[:, self.Nelements_2body:] = feature_grad2_np
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 494, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 465, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 494, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 465, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_Natoms * __pyx_v_dim)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 494, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_Natoms * __pyx_v_self->dim)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 465, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_Nelements); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 494, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_22 = PyTuple_New(2); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 494, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->Nelements); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 465, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_22 = PyTuple_New(2); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 465, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_22);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_6);
-  PyTuple_SET_ITEM(__pyx_t_22, 1, __pyx_t_6);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_22, 1, __pyx_t_5);
   __pyx_t_1 = 0;
-  __pyx_t_6 = 0;
-  __pyx_t_6 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_6)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_6);
+  __pyx_t_5 = 0;
+  __pyx_t_5 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_4, function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
-  if (!__pyx_t_6) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_22); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 494, __pyx_L1_error)
+  if (!__pyx_t_5) {
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_22); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_22};
-      __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 494, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_GOTREF(__pyx_t_5);
+    if (PyFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_22};
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_22};
-      __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 494, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_GOTREF(__pyx_t_5);
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_22};
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
     } else
     #endif
     {
-      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 494, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 465, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_6); __pyx_t_6 = NULL;
+      __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_22);
       PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_22);
       __pyx_t_22 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 494, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
   }
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_feature_grad_np = __pyx_t_5;
-  __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_feature_grad_np = __pyx_t_3;
+  __pyx_t_3 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":495
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":466
  * 
- *         feature_grad_np = np.zeros((Natoms*dim, Nelements))
- *         feature_grad_np[:, :Nelements_2body] = feature_grad1_np             # <<<<<<<<<<<<<<
- *         feature_grad_np[:, Nelements_2body:] = feature_grad2_np
+ *         feature_grad_np = np.zeros((Natoms*self.dim, self.Nelements))
+ *         feature_grad_np[:, :self.Nelements_2body] = feature_grad1_np             # <<<<<<<<<<<<<<
+ *         feature_grad_np[:, self.Nelements_2body:] = feature_grad2_np
  *         return feature_grad_np
  */
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_Nelements_2body); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 495, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = PySlice_New(Py_None, __pyx_t_5, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 495, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 495, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->Nelements_2body); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = PySlice_New(Py_None, __pyx_t_3, Py_None); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 466, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_slice__3);
   __Pyx_GIVEREF(__pyx_slice__3);
-  PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_slice__3);
-  __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
-  __pyx_t_4 = 0;
-  if (unlikely(PyObject_SetItem(__pyx_v_feature_grad_np, __pyx_t_5, __pyx_v_feature_grad1_np) < 0)) __PYX_ERR(0, 495, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_slice__3);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
+  __pyx_t_2 = 0;
+  if (unlikely(PyObject_SetItem(__pyx_v_feature_grad_np, __pyx_t_3, __pyx_v_feature_grad1_np) < 0)) __PYX_ERR(0, 466, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":496
- *         feature_grad_np = np.zeros((Natoms*dim, Nelements))
- *         feature_grad_np[:, :Nelements_2body] = feature_grad1_np
- *         feature_grad_np[:, Nelements_2body:] = feature_grad2_np             # <<<<<<<<<<<<<<
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":467
+ *         feature_grad_np = np.zeros((Natoms*self.dim, self.Nelements))
+ *         feature_grad_np[:, :self.Nelements_2body] = feature_grad1_np
+ *         feature_grad_np[:, self.Nelements_2body:] = feature_grad2_np             # <<<<<<<<<<<<<<
  *         return feature_grad_np
  * 
  */
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_Nelements_2body); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 496, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = PySlice_New(__pyx_t_5, Py_None, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 496, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 496, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->Nelements_2body); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = PySlice_New(__pyx_t_3, Py_None, Py_None); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_slice__4);
   __Pyx_GIVEREF(__pyx_slice__4);
-  PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_slice__4);
-  __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
-  __pyx_t_4 = 0;
-  if (unlikely(PyObject_SetItem(__pyx_v_feature_grad_np, __pyx_t_5, __pyx_v_feature_grad2_np) < 0)) __PYX_ERR(0, 496, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_slice__4);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
+  __pyx_t_2 = 0;
+  if (unlikely(PyObject_SetItem(__pyx_v_feature_grad_np, __pyx_t_3, __pyx_v_feature_grad2_np) < 0)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":497
- *         feature_grad_np[:, :Nelements_2body] = feature_grad1_np
- *         feature_grad_np[:, Nelements_2body:] = feature_grad2_np
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":468
+ *         feature_grad_np[:, :self.Nelements_2body] = feature_grad1_np
+ *         feature_grad_np[:, self.Nelements_2body:] = feature_grad2_np
  *         return feature_grad_np             # <<<<<<<<<<<<<<
  * 
  *     def get_all_featureGradients(self, atoms_list):
@@ -7420,26 +6539,24 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   __pyx_r = __pyx_v_feature_grad_np;
   goto __pyx_L0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":290
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":292
  *         return featureMat
  * 
  *     def get_featureGradient(self, atoms):             # <<<<<<<<<<<<<<
- * 
- *         cdef double Rc1 = self.Rc1
+ *         cell = atoms.get_cell()
+ *         cdef int Natoms = self.Natoms
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_22);
   __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.Angular_Fingerprint.get_featureGradient", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_use_angular);
-  __Pyx_XDECREF((PyObject *)__pyx_v_mem);
   __Pyx_XDECREF(__pyx_v_cell);
   __Pyx_XDECREF(__pyx_v_pos_np);
   __Pyx_XDECREF(__pyx_v_feature_grad1_np);
@@ -7450,7 +6567,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   return __pyx_r;
 }
 
-/* "featureCalculators/angular_fingerprintFeature_cy.pyx":499
+/* "featureCalculators/angular_fingerprintFeature_cy.pyx":470
  *         return feature_grad_np
  * 
  *     def get_all_featureGradients(self, atoms_list):             # <<<<<<<<<<<<<<
@@ -7459,68 +6576,19 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_9get_all_featureGradients(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_9get_all_featureGradients = {"get_all_featureGradients", (PyCFunction)__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_9get_all_featureGradients, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_9get_all_featureGradients(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_self = 0;
-  PyObject *__pyx_v_atoms_list = 0;
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_11get_all_featureGradients(PyObject *__pyx_v_self, PyObject *__pyx_v_atoms_list); /*proto*/
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_11get_all_featureGradients(PyObject *__pyx_v_self, PyObject *__pyx_v_atoms_list) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_all_featureGradients (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_atoms_list,0};
-    PyObject* values[2] = {0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_atoms_list)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("get_all_featureGradients", 1, 2, 2, 1); __PYX_ERR(0, 499, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_all_featureGradients") < 0)) __PYX_ERR(0, 499, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-    }
-    __pyx_v_self = values[0];
-    __pyx_v_atoms_list = values[1];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_all_featureGradients", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 499, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.Angular_Fingerprint.get_all_featureGradients", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_8get_all_featureGradients(__pyx_self, __pyx_v_self, __pyx_v_atoms_list);
+  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_10get_all_featureGradients(((struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *)__pyx_v_self), ((PyObject *)__pyx_v_atoms_list));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_8get_all_featureGradients(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_atoms_list) {
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_10get_all_featureGradients(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self, PyObject *__pyx_v_atoms_list) {
   PyObject *__pyx_v_feature_grads = NULL;
   PyObject *__pyx_v_atoms = NULL;
   PyObject *__pyx_r = NULL;
@@ -7537,44 +6605,44 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   PyObject *__pyx_t_10 = NULL;
   __Pyx_RefNannySetupContext("get_all_featureGradients", 0);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":500
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":471
  * 
  *     def get_all_featureGradients(self, atoms_list):
  *         feature_grads = np.array([self.get_featureGradient(atoms) for atoms in atoms_list])             # <<<<<<<<<<<<<<
  *         feature_grads = np.array(feature_grads)
  *         return feature_grads
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 500, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 471, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 500, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 471, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 500, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 471, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (likely(PyList_CheckExact(__pyx_v_atoms_list)) || PyTuple_CheckExact(__pyx_v_atoms_list)) {
     __pyx_t_4 = __pyx_v_atoms_list; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_atoms_list); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 500, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_atoms_list); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 471, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 500, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 471, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_6)) {
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 500, __pyx_L1_error)
+        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 471, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 500, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 471, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 500, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 471, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 500, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 471, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       }
@@ -7584,7 +6652,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 500, __pyx_L1_error)
+          else __PYX_ERR(0, 471, __pyx_L1_error)
         }
         break;
       }
@@ -7592,7 +6660,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     }
     __Pyx_XDECREF_SET(__pyx_v_atoms, __pyx_t_7);
     __pyx_t_7 = 0;
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_featureGradient); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 500, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_featureGradient); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 471, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_9 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -7605,13 +6673,13 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
       }
     }
     if (!__pyx_t_9) {
-      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_atoms); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 500, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_atoms); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 471, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_atoms};
-        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 500, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 471, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
@@ -7619,25 +6687,25 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_atoms};
-        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 500, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 471, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 500, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 471, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9); __pyx_t_9 = NULL;
         __Pyx_INCREF(__pyx_v_atoms);
         __Pyx_GIVEREF(__pyx_v_atoms);
         PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_v_atoms);
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 500, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 471, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 500, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 471, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -7652,14 +6720,14 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 500, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 471, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 500, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 471, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7668,20 +6736,20 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 500, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 471, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 500, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 471, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 500, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 471, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -7690,15 +6758,15 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   __pyx_v_feature_grads = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":501
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":472
  *     def get_all_featureGradients(self, atoms_list):
  *         feature_grads = np.array([self.get_featureGradient(atoms) for atoms in atoms_list])
  *         feature_grads = np.array(feature_grads)             # <<<<<<<<<<<<<<
  *         return feature_grads
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 501, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 501, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -7712,13 +6780,13 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_feature_grads); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 501, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_feature_grads); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 472, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_feature_grads};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 501, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 472, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -7726,19 +6794,19 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_feature_grads};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 501, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 472, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 501, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 472, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_feature_grads);
       __Pyx_GIVEREF(__pyx_v_feature_grads);
       PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_v_feature_grads);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 501, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 472, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
@@ -7747,7 +6815,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   __Pyx_DECREF_SET(__pyx_v_feature_grads, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":502
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":473
  *         feature_grads = np.array([self.get_featureGradient(atoms) for atoms in atoms_list])
  *         feature_grads = np.array(feature_grads)
  *         return feature_grads             # <<<<<<<<<<<<<<
@@ -7757,7 +6825,7 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   __pyx_r = __pyx_v_feature_grads;
   goto __pyx_L0;
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":499
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":470
  *         return feature_grad_np
  * 
  *     def get_all_featureGradients(self, atoms_list):             # <<<<<<<<<<<<<<
@@ -7785,11 +6853,1136 @@ static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_1
   return __pyx_r;
 }
 
+/* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     cdef bint use_setstate
+ *     state = (self.Natoms, self.Nbins1, self.Nbins2, self.Nelements, self.Nelements_2body, self.Nelements_3body, self.Rc1, self.Rc2, self.binwidth1, self.binwidth2, self.dim, self.eta, self.gamma, self.m1, self.m2, self.mem, self.nsigma, self.sigma1, self.sigma2, self.smearing_norm1, self.smearing_norm2, self.use_angular, self.volume)
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_13__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_13__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_12__reduce_cython__(((struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_12__reduce_cython__(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self) {
+  int __pyx_v_use_setstate;
+  PyObject *__pyx_v_state = NULL;
+  PyObject *__pyx_v__dict = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  PyObject *__pyx_t_9 = NULL;
+  PyObject *__pyx_t_10 = NULL;
+  PyObject *__pyx_t_11 = NULL;
+  PyObject *__pyx_t_12 = NULL;
+  PyObject *__pyx_t_13 = NULL;
+  PyObject *__pyx_t_14 = NULL;
+  PyObject *__pyx_t_15 = NULL;
+  PyObject *__pyx_t_16 = NULL;
+  PyObject *__pyx_t_17 = NULL;
+  PyObject *__pyx_t_18 = NULL;
+  PyObject *__pyx_t_19 = NULL;
+  PyObject *__pyx_t_20 = NULL;
+  PyObject *__pyx_t_21 = NULL;
+  PyObject *__pyx_t_22 = NULL;
+  int __pyx_t_23;
+  int __pyx_t_24;
+  int __pyx_t_25;
+  __Pyx_RefNannySetupContext("__reduce_cython__", 0);
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     cdef bint use_setstate
+ *     state = (self.Natoms, self.Nbins1, self.Nbins2, self.Nelements, self.Nelements_2body, self.Nelements_3body, self.Rc1, self.Rc2, self.binwidth1, self.binwidth2, self.dim, self.eta, self.gamma, self.m1, self.m2, self.mem, self.nsigma, self.sigma1, self.sigma2, self.smearing_norm1, self.smearing_norm2, self.use_angular, self.volume)             # <<<<<<<<<<<<<<
+ *     _dict = getattr(self, '__dict__', None)
+ *     if _dict is not None:
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->Natoms); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->Nbins1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->Nbins2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->Nelements); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->Nelements_2body); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_self->Nelements_3body); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_self->Rc1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_self->Rc2); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  __pyx_t_9 = PyFloat_FromDouble(__pyx_v_self->binwidth1); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __pyx_t_10 = PyFloat_FromDouble(__pyx_v_self->binwidth2); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_self->dim); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_11);
+  __pyx_t_12 = PyFloat_FromDouble(__pyx_v_self->eta); if (unlikely(!__pyx_t_12)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_13 = PyFloat_FromDouble(__pyx_v_self->gamma); if (unlikely(!__pyx_t_13)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_13);
+  __pyx_t_14 = PyFloat_FromDouble(__pyx_v_self->m1); if (unlikely(!__pyx_t_14)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __pyx_t_15 = PyFloat_FromDouble(__pyx_v_self->m2); if (unlikely(!__pyx_t_15)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __pyx_t_16 = __Pyx_PyInt_From_int(__pyx_v_self->nsigma); if (unlikely(!__pyx_t_16)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_16);
+  __pyx_t_17 = PyFloat_FromDouble(__pyx_v_self->sigma1); if (unlikely(!__pyx_t_17)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_17);
+  __pyx_t_18 = PyFloat_FromDouble(__pyx_v_self->sigma2); if (unlikely(!__pyx_t_18)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_18);
+  __pyx_t_19 = PyFloat_FromDouble(__pyx_v_self->smearing_norm1); if (unlikely(!__pyx_t_19)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_19);
+  __pyx_t_20 = PyFloat_FromDouble(__pyx_v_self->smearing_norm2); if (unlikely(!__pyx_t_20)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_20);
+  __pyx_t_21 = PyFloat_FromDouble(__pyx_v_self->volume); if (unlikely(!__pyx_t_21)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_21);
+  __pyx_t_22 = PyTuple_New(23); if (unlikely(!__pyx_t_22)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_22);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_22, 1, __pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_22, 2, __pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_22, 3, __pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_22, 4, __pyx_t_5);
+  __Pyx_GIVEREF(__pyx_t_6);
+  PyTuple_SET_ITEM(__pyx_t_22, 5, __pyx_t_6);
+  __Pyx_GIVEREF(__pyx_t_7);
+  PyTuple_SET_ITEM(__pyx_t_22, 6, __pyx_t_7);
+  __Pyx_GIVEREF(__pyx_t_8);
+  PyTuple_SET_ITEM(__pyx_t_22, 7, __pyx_t_8);
+  __Pyx_GIVEREF(__pyx_t_9);
+  PyTuple_SET_ITEM(__pyx_t_22, 8, __pyx_t_9);
+  __Pyx_GIVEREF(__pyx_t_10);
+  PyTuple_SET_ITEM(__pyx_t_22, 9, __pyx_t_10);
+  __Pyx_GIVEREF(__pyx_t_11);
+  PyTuple_SET_ITEM(__pyx_t_22, 10, __pyx_t_11);
+  __Pyx_GIVEREF(__pyx_t_12);
+  PyTuple_SET_ITEM(__pyx_t_22, 11, __pyx_t_12);
+  __Pyx_GIVEREF(__pyx_t_13);
+  PyTuple_SET_ITEM(__pyx_t_22, 12, __pyx_t_13);
+  __Pyx_GIVEREF(__pyx_t_14);
+  PyTuple_SET_ITEM(__pyx_t_22, 13, __pyx_t_14);
+  __Pyx_GIVEREF(__pyx_t_15);
+  PyTuple_SET_ITEM(__pyx_t_22, 14, __pyx_t_15);
+  __Pyx_INCREF(((PyObject *)__pyx_v_self->mem));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_self->mem));
+  PyTuple_SET_ITEM(__pyx_t_22, 15, ((PyObject *)__pyx_v_self->mem));
+  __Pyx_GIVEREF(__pyx_t_16);
+  PyTuple_SET_ITEM(__pyx_t_22, 16, __pyx_t_16);
+  __Pyx_GIVEREF(__pyx_t_17);
+  PyTuple_SET_ITEM(__pyx_t_22, 17, __pyx_t_17);
+  __Pyx_GIVEREF(__pyx_t_18);
+  PyTuple_SET_ITEM(__pyx_t_22, 18, __pyx_t_18);
+  __Pyx_GIVEREF(__pyx_t_19);
+  PyTuple_SET_ITEM(__pyx_t_22, 19, __pyx_t_19);
+  __Pyx_GIVEREF(__pyx_t_20);
+  PyTuple_SET_ITEM(__pyx_t_22, 20, __pyx_t_20);
+  __Pyx_INCREF(__pyx_v_self->use_angular);
+  __Pyx_GIVEREF(__pyx_v_self->use_angular);
+  PyTuple_SET_ITEM(__pyx_t_22, 21, __pyx_v_self->use_angular);
+  __Pyx_GIVEREF(__pyx_t_21);
+  PyTuple_SET_ITEM(__pyx_t_22, 22, __pyx_t_21);
+  __pyx_t_1 = 0;
+  __pyx_t_2 = 0;
+  __pyx_t_3 = 0;
+  __pyx_t_4 = 0;
+  __pyx_t_5 = 0;
+  __pyx_t_6 = 0;
+  __pyx_t_7 = 0;
+  __pyx_t_8 = 0;
+  __pyx_t_9 = 0;
+  __pyx_t_10 = 0;
+  __pyx_t_11 = 0;
+  __pyx_t_12 = 0;
+  __pyx_t_13 = 0;
+  __pyx_t_14 = 0;
+  __pyx_t_15 = 0;
+  __pyx_t_16 = 0;
+  __pyx_t_17 = 0;
+  __pyx_t_18 = 0;
+  __pyx_t_19 = 0;
+  __pyx_t_20 = 0;
+  __pyx_t_21 = 0;
+  __pyx_v_state = ((PyObject*)__pyx_t_22);
+  __pyx_t_22 = 0;
+
+  /* "(tree fragment)":4
+ *     cdef bint use_setstate
+ *     state = (self.Natoms, self.Nbins1, self.Nbins2, self.Nelements, self.Nelements_2body, self.Nelements_3body, self.Rc1, self.Rc2, self.binwidth1, self.binwidth2, self.dim, self.eta, self.gamma, self.m1, self.m2, self.mem, self.nsigma, self.sigma1, self.sigma2, self.smearing_norm1, self.smearing_norm2, self.use_angular, self.volume)
+ *     _dict = getattr(self, '__dict__', None)             # <<<<<<<<<<<<<<
+ *     if _dict is not None:
+ *         state += (_dict,)
+ */
+  __pyx_t_22 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_22)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_22);
+  __pyx_v__dict = __pyx_t_22;
+  __pyx_t_22 = 0;
+
+  /* "(tree fragment)":5
+ *     state = (self.Natoms, self.Nbins1, self.Nbins2, self.Nelements, self.Nelements_2body, self.Nelements_3body, self.Rc1, self.Rc2, self.binwidth1, self.binwidth2, self.dim, self.eta, self.gamma, self.m1, self.m2, self.mem, self.nsigma, self.sigma1, self.sigma2, self.smearing_norm1, self.smearing_norm2, self.use_angular, self.volume)
+ *     _dict = getattr(self, '__dict__', None)
+ *     if _dict is not None:             # <<<<<<<<<<<<<<
+ *         state += (_dict,)
+ *         use_setstate = True
+ */
+  __pyx_t_23 = (__pyx_v__dict != Py_None);
+  __pyx_t_24 = (__pyx_t_23 != 0);
+  if (__pyx_t_24) {
+
+    /* "(tree fragment)":6
+ *     _dict = getattr(self, '__dict__', None)
+ *     if _dict is not None:
+ *         state += (_dict,)             # <<<<<<<<<<<<<<
+ *         use_setstate = True
+ *     else:
+ */
+    __pyx_t_22 = PyTuple_New(1); if (unlikely(!__pyx_t_22)) __PYX_ERR(1, 6, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_22);
+    __Pyx_INCREF(__pyx_v__dict);
+    __Pyx_GIVEREF(__pyx_v__dict);
+    PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_v__dict);
+    __pyx_t_21 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_22); if (unlikely(!__pyx_t_21)) __PYX_ERR(1, 6, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_21);
+    __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
+    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_21));
+    __pyx_t_21 = 0;
+
+    /* "(tree fragment)":7
+ *     if _dict is not None:
+ *         state += (_dict,)
+ *         use_setstate = True             # <<<<<<<<<<<<<<
+ *     else:
+ *         use_setstate = self.mem is not None or self.use_angular is not None
+ */
+    __pyx_v_use_setstate = 1;
+
+    /* "(tree fragment)":5
+ *     state = (self.Natoms, self.Nbins1, self.Nbins2, self.Nelements, self.Nelements_2body, self.Nelements_3body, self.Rc1, self.Rc2, self.binwidth1, self.binwidth2, self.dim, self.eta, self.gamma, self.m1, self.m2, self.mem, self.nsigma, self.sigma1, self.sigma2, self.smearing_norm1, self.smearing_norm2, self.use_angular, self.volume)
+ *     _dict = getattr(self, '__dict__', None)
+ *     if _dict is not None:             # <<<<<<<<<<<<<<
+ *         state += (_dict,)
+ *         use_setstate = True
+ */
+    goto __pyx_L3;
+  }
+
+  /* "(tree fragment)":9
+ *         use_setstate = True
+ *     else:
+ *         use_setstate = self.mem is not None or self.use_angular is not None             # <<<<<<<<<<<<<<
+ *     if use_setstate:
+ *         return __pyx_unpickle_Angular_Fingerprint, (type(self), 0x8546433, None), state
+ */
+  /*else*/ {
+    __pyx_t_23 = (((PyObject *)__pyx_v_self->mem) != Py_None);
+    __pyx_t_25 = (__pyx_t_23 != 0);
+    if (!__pyx_t_25) {
+    } else {
+      __pyx_t_24 = __pyx_t_25;
+      goto __pyx_L4_bool_binop_done;
+    }
+    __pyx_t_25 = (__pyx_v_self->use_angular != Py_None);
+    __pyx_t_23 = (__pyx_t_25 != 0);
+    __pyx_t_24 = __pyx_t_23;
+    __pyx_L4_bool_binop_done:;
+    __pyx_v_use_setstate = __pyx_t_24;
+  }
+  __pyx_L3:;
+
+  /* "(tree fragment)":10
+ *     else:
+ *         use_setstate = self.mem is not None or self.use_angular is not None
+ *     if use_setstate:             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_Angular_Fingerprint, (type(self), 0x8546433, None), state
+ *     else:
+ */
+  __pyx_t_24 = (__pyx_v_use_setstate != 0);
+  if (__pyx_t_24) {
+
+    /* "(tree fragment)":11
+ *         use_setstate = self.mem is not None or self.use_angular is not None
+ *     if use_setstate:
+ *         return __pyx_unpickle_Angular_Fingerprint, (type(self), 0x8546433, None), state             # <<<<<<<<<<<<<<
+ *     else:
+ *         return __pyx_unpickle_Angular_Fingerprint, (type(self), 0x8546433, state)
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_21 = __Pyx_GetModuleGlobalName(__pyx_n_s_pyx_unpickle_Angular_Fingerpri); if (unlikely(!__pyx_t_21)) __PYX_ERR(1, 11, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_21);
+    __pyx_t_22 = PyTuple_New(3); if (unlikely(!__pyx_t_22)) __PYX_ERR(1, 11, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_22);
+    __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    PyTuple_SET_ITEM(__pyx_t_22, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    __Pyx_INCREF(__pyx_int_139748403);
+    __Pyx_GIVEREF(__pyx_int_139748403);
+    PyTuple_SET_ITEM(__pyx_t_22, 1, __pyx_int_139748403);
+    __Pyx_INCREF(Py_None);
+    __Pyx_GIVEREF(Py_None);
+    PyTuple_SET_ITEM(__pyx_t_22, 2, Py_None);
+    __pyx_t_20 = PyTuple_New(3); if (unlikely(!__pyx_t_20)) __PYX_ERR(1, 11, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_20);
+    __Pyx_GIVEREF(__pyx_t_21);
+    PyTuple_SET_ITEM(__pyx_t_20, 0, __pyx_t_21);
+    __Pyx_GIVEREF(__pyx_t_22);
+    PyTuple_SET_ITEM(__pyx_t_20, 1, __pyx_t_22);
+    __Pyx_INCREF(__pyx_v_state);
+    __Pyx_GIVEREF(__pyx_v_state);
+    PyTuple_SET_ITEM(__pyx_t_20, 2, __pyx_v_state);
+    __pyx_t_21 = 0;
+    __pyx_t_22 = 0;
+    __pyx_r = __pyx_t_20;
+    __pyx_t_20 = 0;
+    goto __pyx_L0;
+
+    /* "(tree fragment)":10
+ *     else:
+ *         use_setstate = self.mem is not None or self.use_angular is not None
+ *     if use_setstate:             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_Angular_Fingerprint, (type(self), 0x8546433, None), state
+ *     else:
+ */
+  }
+
+  /* "(tree fragment)":13
+ *         return __pyx_unpickle_Angular_Fingerprint, (type(self), 0x8546433, None), state
+ *     else:
+ *         return __pyx_unpickle_Angular_Fingerprint, (type(self), 0x8546433, state)             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     __pyx_unpickle_Angular_Fingerprint__set_state(self, __pyx_state)
+ */
+  /*else*/ {
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_20 = __Pyx_GetModuleGlobalName(__pyx_n_s_pyx_unpickle_Angular_Fingerpri); if (unlikely(!__pyx_t_20)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_20);
+    __pyx_t_22 = PyTuple_New(3); if (unlikely(!__pyx_t_22)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_22);
+    __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    PyTuple_SET_ITEM(__pyx_t_22, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    __Pyx_INCREF(__pyx_int_139748403);
+    __Pyx_GIVEREF(__pyx_int_139748403);
+    PyTuple_SET_ITEM(__pyx_t_22, 1, __pyx_int_139748403);
+    __Pyx_INCREF(__pyx_v_state);
+    __Pyx_GIVEREF(__pyx_v_state);
+    PyTuple_SET_ITEM(__pyx_t_22, 2, __pyx_v_state);
+    __pyx_t_21 = PyTuple_New(2); if (unlikely(!__pyx_t_21)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_21);
+    __Pyx_GIVEREF(__pyx_t_20);
+    PyTuple_SET_ITEM(__pyx_t_21, 0, __pyx_t_20);
+    __Pyx_GIVEREF(__pyx_t_22);
+    PyTuple_SET_ITEM(__pyx_t_21, 1, __pyx_t_22);
+    __pyx_t_20 = 0;
+    __pyx_t_22 = 0;
+    __pyx_r = __pyx_t_21;
+    __pyx_t_21 = 0;
+    goto __pyx_L0;
+  }
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     cdef bint use_setstate
+ *     state = (self.Natoms, self.Nbins1, self.Nbins2, self.Nelements, self.Nelements_2body, self.Nelements_3body, self.Rc1, self.Rc2, self.binwidth1, self.binwidth2, self.dim, self.eta, self.gamma, self.m1, self.m2, self.mem, self.nsigma, self.sigma1, self.sigma2, self.smearing_norm1, self.smearing_norm2, self.use_angular, self.volume)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_11);
+  __Pyx_XDECREF(__pyx_t_12);
+  __Pyx_XDECREF(__pyx_t_13);
+  __Pyx_XDECREF(__pyx_t_14);
+  __Pyx_XDECREF(__pyx_t_15);
+  __Pyx_XDECREF(__pyx_t_16);
+  __Pyx_XDECREF(__pyx_t_17);
+  __Pyx_XDECREF(__pyx_t_18);
+  __Pyx_XDECREF(__pyx_t_19);
+  __Pyx_XDECREF(__pyx_t_20);
+  __Pyx_XDECREF(__pyx_t_21);
+  __Pyx_XDECREF(__pyx_t_22);
+  __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.Angular_Fingerprint.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_state);
+  __Pyx_XDECREF(__pyx_v__dict);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":14
+ *     else:
+ *         return __pyx_unpickle_Angular_Fingerprint, (type(self), 0x8546433, state)
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     __pyx_unpickle_Angular_Fingerprint__set_state(self, __pyx_state)
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_15__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_15__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_14__setstate_cython__(((struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_14__setstate_cython__(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __Pyx_RefNannySetupContext("__setstate_cython__", 0);
+
+  /* "(tree fragment)":15
+ *         return __pyx_unpickle_Angular_Fingerprint, (type(self), 0x8546433, state)
+ * def __setstate_cython__(self, __pyx_state):
+ *     __pyx_unpickle_Angular_Fingerprint__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
+ */
+  if (!(likely(PyTuple_CheckExact(__pyx_v___pyx_state))||((__pyx_v___pyx_state) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v___pyx_state)->tp_name), 0))) __PYX_ERR(1, 15, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy___pyx_unpickle_Angular_Fingerprint__set_state(__pyx_v_self, ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 15, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "(tree fragment)":14
+ *     else:
+ *         return __pyx_unpickle_Angular_Fingerprint, (type(self), 0x8546433, state)
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     __pyx_unpickle_Angular_Fingerprint__set_state(self, __pyx_state)
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.Angular_Fingerprint.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":1
+ * def __pyx_unpickle_Angular_Fingerprint(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum != 0x8546433:
+ *         from pickle import PickleError as __pyx_PickleError
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_1__pyx_unpickle_Angular_Fingerprint(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_18featureCalculators_29angular_fingerprintFeature_cy_1__pyx_unpickle_Angular_Fingerprint = {"__pyx_unpickle_Angular_Fingerprint", (PyCFunction)__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_1__pyx_unpickle_Angular_Fingerprint, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_1__pyx_unpickle_Angular_Fingerprint(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v___pyx_type = 0;
+  long __pyx_v___pyx_checksum;
+  PyObject *__pyx_v___pyx_state = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__pyx_unpickle_Angular_Fingerprint (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_pyx_type,&__pyx_n_s_pyx_checksum,&__pyx_n_s_pyx_state,0};
+    PyObject* values[3] = {0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pyx_type)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pyx_checksum)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_Angular_Fingerprint", 1, 3, 3, 1); __PYX_ERR(1, 1, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pyx_state)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_Angular_Fingerprint", 1, 3, 3, 2); __PYX_ERR(1, 1, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__pyx_unpickle_Angular_Fingerprint") < 0)) __PYX_ERR(1, 1, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+    }
+    __pyx_v___pyx_type = values[0];
+    __pyx_v___pyx_checksum = __Pyx_PyInt_As_long(values[1]); if (unlikely((__pyx_v___pyx_checksum == (long)-1) && PyErr_Occurred())) __PYX_ERR(1, 1, __pyx_L3_error)
+    __pyx_v___pyx_state = values[2];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__pyx_unpickle_Angular_Fingerprint", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.__pyx_unpickle_Angular_Fingerprint", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy___pyx_unpickle_Angular_Fingerprint(__pyx_self, __pyx_v___pyx_type, __pyx_v___pyx_checksum, __pyx_v___pyx_state);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_18featureCalculators_29angular_fingerprintFeature_cy___pyx_unpickle_Angular_Fingerprint(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_v___pyx_PickleError = NULL;
+  PyObject *__pyx_v___pyx_result = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  int __pyx_t_7;
+  __Pyx_RefNannySetupContext("__pyx_unpickle_Angular_Fingerprint", 0);
+
+  /* "(tree fragment)":2
+ * def __pyx_unpickle_Angular_Fingerprint(__pyx_type, long __pyx_checksum, __pyx_state):
+ *     if __pyx_checksum != 0x8546433:             # <<<<<<<<<<<<<<
+ *         from pickle import PickleError as __pyx_PickleError
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8546433 = (Natoms, Nbins1, Nbins2, Nelements, Nelements_2body, Nelements_3body, Rc1, Rc2, binwidth1, binwidth2, dim, eta, gamma, m1, m2, mem, nsigma, sigma1, sigma2, smearing_norm1, smearing_norm2, use_angular, volume))" % __pyx_checksum)
+ */
+  __pyx_t_1 = ((__pyx_v___pyx_checksum != 0x8546433) != 0);
+  if (__pyx_t_1) {
+
+    /* "(tree fragment)":3
+ * def __pyx_unpickle_Angular_Fingerprint(__pyx_type, long __pyx_checksum, __pyx_state):
+ *     if __pyx_checksum != 0x8546433:
+ *         from pickle import PickleError as __pyx_PickleError             # <<<<<<<<<<<<<<
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8546433 = (Natoms, Nbins1, Nbins2, Nelements, Nelements_2body, Nelements_3body, Rc1, Rc2, binwidth1, binwidth2, dim, eta, gamma, m1, m2, mem, nsigma, sigma1, sigma2, smearing_norm1, smearing_norm2, use_angular, volume))" % __pyx_checksum)
+ *     __pyx_result = Angular_Fingerprint.__new__(__pyx_type)
+ */
+    __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 3, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx_n_s_PickleError);
+    __Pyx_GIVEREF(__pyx_n_s_PickleError);
+    PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_PickleError);
+    __pyx_t_3 = __Pyx_Import(__pyx_n_s_pickle, __pyx_t_2, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 3, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_PickleError); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 3, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx_t_2);
+    __pyx_v___pyx_PickleError = __pyx_t_2;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "(tree fragment)":4
+ *     if __pyx_checksum != 0x8546433:
+ *         from pickle import PickleError as __pyx_PickleError
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8546433 = (Natoms, Nbins1, Nbins2, Nelements, Nelements_2body, Nelements_3body, Rc1, Rc2, binwidth1, binwidth2, dim, eta, gamma, m1, m2, mem, nsigma, sigma1, sigma2, smearing_norm1, smearing_norm2, use_angular, volume))" % __pyx_checksum)             # <<<<<<<<<<<<<<
+ *     __pyx_result = Angular_Fingerprint.__new__(__pyx_type)
+ *     if __pyx_state is not None:
+ */
+    __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 4, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Incompatible_checksums_s_vs_0x85, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 4, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_INCREF(__pyx_v___pyx_PickleError);
+    __pyx_t_2 = __pyx_v___pyx_PickleError; __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_2);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
+      }
+    }
+    if (!__pyx_t_5) {
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 4, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
+    } else {
+      #if CYTHON_FAST_PYCALL
+      if (PyFunction_Check(__pyx_t_2)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_4};
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 4, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      } else
+      #endif
+      #if CYTHON_FAST_PYCCALL
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_4};
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 4, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      } else
+      #endif
+      {
+        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 4, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
+        __Pyx_GIVEREF(__pyx_t_4);
+        PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_4);
+        __pyx_t_4 = 0;
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 4, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      }
+    }
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(1, 4, __pyx_L1_error)
+
+    /* "(tree fragment)":2
+ * def __pyx_unpickle_Angular_Fingerprint(__pyx_type, long __pyx_checksum, __pyx_state):
+ *     if __pyx_checksum != 0x8546433:             # <<<<<<<<<<<<<<
+ *         from pickle import PickleError as __pyx_PickleError
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8546433 = (Natoms, Nbins1, Nbins2, Nelements, Nelements_2body, Nelements_3body, Rc1, Rc2, binwidth1, binwidth2, dim, eta, gamma, m1, m2, mem, nsigma, sigma1, sigma2, smearing_norm1, smearing_norm2, use_angular, volume))" % __pyx_checksum)
+ */
+  }
+
+  /* "(tree fragment)":5
+ *         from pickle import PickleError as __pyx_PickleError
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8546433 = (Natoms, Nbins1, Nbins2, Nelements, Nelements_2body, Nelements_3body, Rc1, Rc2, binwidth1, binwidth2, dim, eta, gamma, m1, m2, mem, nsigma, sigma1, sigma2, smearing_norm1, smearing_norm2, use_angular, volume))" % __pyx_checksum)
+ *     __pyx_result = Angular_Fingerprint.__new__(__pyx_type)             # <<<<<<<<<<<<<<
+ *     if __pyx_state is not None:
+ *         __pyx_unpickle_Angular_Fingerprint__set_state(<Angular_Fingerprint> __pyx_result, __pyx_state)
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint), __pyx_n_s_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_6 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_6);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  if (!__pyx_t_6) {
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v___pyx_type); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 5, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+  } else {
+    #if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_v___pyx_type};
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 5, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
+    } else
+    #endif
+    #if CYTHON_FAST_PYCCALL
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_v___pyx_type};
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 5, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_GOTREF(__pyx_t_3);
+    } else
+    #endif
+    {
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 5, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_6); __pyx_t_6 = NULL;
+      __Pyx_INCREF(__pyx_v___pyx_type);
+      __Pyx_GIVEREF(__pyx_v___pyx_type);
+      PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v___pyx_type);
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 5, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    }
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v___pyx_result = __pyx_t_3;
+  __pyx_t_3 = 0;
+
+  /* "(tree fragment)":6
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8546433 = (Natoms, Nbins1, Nbins2, Nelements, Nelements_2body, Nelements_3body, Rc1, Rc2, binwidth1, binwidth2, dim, eta, gamma, m1, m2, mem, nsigma, sigma1, sigma2, smearing_norm1, smearing_norm2, use_angular, volume))" % __pyx_checksum)
+ *     __pyx_result = Angular_Fingerprint.__new__(__pyx_type)
+ *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
+ *         __pyx_unpickle_Angular_Fingerprint__set_state(<Angular_Fingerprint> __pyx_result, __pyx_state)
+ *     return __pyx_result
+ */
+  __pyx_t_1 = (__pyx_v___pyx_state != Py_None);
+  __pyx_t_7 = (__pyx_t_1 != 0);
+  if (__pyx_t_7) {
+
+    /* "(tree fragment)":7
+ *     __pyx_result = Angular_Fingerprint.__new__(__pyx_type)
+ *     if __pyx_state is not None:
+ *         __pyx_unpickle_Angular_Fingerprint__set_state(<Angular_Fingerprint> __pyx_result, __pyx_state)             # <<<<<<<<<<<<<<
+ *     return __pyx_result
+ * cdef __pyx_unpickle_Angular_Fingerprint__set_state(Angular_Fingerprint __pyx_result, tuple __pyx_state):
+ */
+    if (!(likely(PyTuple_CheckExact(__pyx_v___pyx_state))||((__pyx_v___pyx_state) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v___pyx_state)->tp_name), 0))) __PYX_ERR(1, 7, __pyx_L1_error)
+    __pyx_t_3 = __pyx_f_18featureCalculators_29angular_fingerprintFeature_cy___pyx_unpickle_Angular_Fingerprint__set_state(((struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *)__pyx_v___pyx_result), ((PyObject*)__pyx_v___pyx_state)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 7, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "(tree fragment)":6
+ *         raise __pyx_PickleError("Incompatible checksums (%s vs 0x8546433 = (Natoms, Nbins1, Nbins2, Nelements, Nelements_2body, Nelements_3body, Rc1, Rc2, binwidth1, binwidth2, dim, eta, gamma, m1, m2, mem, nsigma, sigma1, sigma2, smearing_norm1, smearing_norm2, use_angular, volume))" % __pyx_checksum)
+ *     __pyx_result = Angular_Fingerprint.__new__(__pyx_type)
+ *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
+ *         __pyx_unpickle_Angular_Fingerprint__set_state(<Angular_Fingerprint> __pyx_result, __pyx_state)
+ *     return __pyx_result
+ */
+  }
+
+  /* "(tree fragment)":8
+ *     if __pyx_state is not None:
+ *         __pyx_unpickle_Angular_Fingerprint__set_state(<Angular_Fingerprint> __pyx_result, __pyx_state)
+ *     return __pyx_result             # <<<<<<<<<<<<<<
+ * cdef __pyx_unpickle_Angular_Fingerprint__set_state(Angular_Fingerprint __pyx_result, tuple __pyx_state):
+ *     __pyx_result.Natoms = __pyx_state[0]; __pyx_result.Nbins1 = __pyx_state[1]; __pyx_result.Nbins2 = __pyx_state[2]; __pyx_result.Nelements = __pyx_state[3]; __pyx_result.Nelements_2body = __pyx_state[4]; __pyx_result.Nelements_3body = __pyx_state[5]; __pyx_result.Rc1 = __pyx_state[6]; __pyx_result.Rc2 = __pyx_state[7]; __pyx_result.binwidth1 = __pyx_state[8]; __pyx_result.binwidth2 = __pyx_state[9]; __pyx_result.dim = __pyx_state[10]; __pyx_result.eta = __pyx_state[11]; __pyx_result.gamma = __pyx_state[12]; __pyx_result.m1 = __pyx_state[13]; __pyx_result.m2 = __pyx_state[14]; __pyx_result.mem = __pyx_state[15]; __pyx_result.nsigma = __pyx_state[16]; __pyx_result.sigma1 = __pyx_state[17]; __pyx_result.sigma2 = __pyx_state[18]; __pyx_result.smearing_norm1 = __pyx_state[19]; __pyx_result.smearing_norm2 = __pyx_state[20]; __pyx_result.use_angular = __pyx_state[21]; __pyx_result.volume = __pyx_state[22]
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v___pyx_result);
+  __pyx_r = __pyx_v___pyx_result;
+  goto __pyx_L0;
+
+  /* "(tree fragment)":1
+ * def __pyx_unpickle_Angular_Fingerprint(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum != 0x8546433:
+ *         from pickle import PickleError as __pyx_PickleError
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.__pyx_unpickle_Angular_Fingerprint", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v___pyx_PickleError);
+  __Pyx_XDECREF(__pyx_v___pyx_result);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":9
+ *         __pyx_unpickle_Angular_Fingerprint__set_state(<Angular_Fingerprint> __pyx_result, __pyx_state)
+ *     return __pyx_result
+ * cdef __pyx_unpickle_Angular_Fingerprint__set_state(Angular_Fingerprint __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
+ *     __pyx_result.Natoms = __pyx_state[0]; __pyx_result.Nbins1 = __pyx_state[1]; __pyx_result.Nbins2 = __pyx_state[2]; __pyx_result.Nelements = __pyx_state[3]; __pyx_result.Nelements_2body = __pyx_state[4]; __pyx_result.Nelements_3body = __pyx_state[5]; __pyx_result.Rc1 = __pyx_state[6]; __pyx_result.Rc2 = __pyx_state[7]; __pyx_result.binwidth1 = __pyx_state[8]; __pyx_result.binwidth2 = __pyx_state[9]; __pyx_result.dim = __pyx_state[10]; __pyx_result.eta = __pyx_state[11]; __pyx_result.gamma = __pyx_state[12]; __pyx_result.m1 = __pyx_state[13]; __pyx_result.m2 = __pyx_state[14]; __pyx_result.mem = __pyx_state[15]; __pyx_result.nsigma = __pyx_state[16]; __pyx_result.sigma1 = __pyx_state[17]; __pyx_result.sigma2 = __pyx_state[18]; __pyx_result.smearing_norm1 = __pyx_state[19]; __pyx_result.smearing_norm2 = __pyx_state[20]; __pyx_result.use_angular = __pyx_state[21]; __pyx_result.volume = __pyx_state[22]
+ *     if len(__pyx_state) > 23 and hasattr(__pyx_result, '__dict__'):
+ */
+
+static PyObject *__pyx_f_18featureCalculators_29angular_fingerprintFeature_cy___pyx_unpickle_Angular_Fingerprint__set_state(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *__pyx_v___pyx_result, PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_2;
+  double __pyx_t_3;
+  int __pyx_t_4;
+  Py_ssize_t __pyx_t_5;
+  int __pyx_t_6;
+  int __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  PyObject *__pyx_t_9 = NULL;
+  PyObject *__pyx_t_10 = NULL;
+  PyObject *__pyx_t_11 = NULL;
+  __Pyx_RefNannySetupContext("__pyx_unpickle_Angular_Fingerprint__set_state", 0);
+
+  /* "(tree fragment)":10
+ *     return __pyx_result
+ * cdef __pyx_unpickle_Angular_Fingerprint__set_state(Angular_Fingerprint __pyx_result, tuple __pyx_state):
+ *     __pyx_result.Natoms = __pyx_state[0]; __pyx_result.Nbins1 = __pyx_state[1]; __pyx_result.Nbins2 = __pyx_state[2]; __pyx_result.Nelements = __pyx_state[3]; __pyx_result.Nelements_2body = __pyx_state[4]; __pyx_result.Nelements_3body = __pyx_state[5]; __pyx_result.Rc1 = __pyx_state[6]; __pyx_result.Rc2 = __pyx_state[7]; __pyx_result.binwidth1 = __pyx_state[8]; __pyx_result.binwidth2 = __pyx_state[9]; __pyx_result.dim = __pyx_state[10]; __pyx_result.eta = __pyx_state[11]; __pyx_result.gamma = __pyx_state[12]; __pyx_result.m1 = __pyx_state[13]; __pyx_result.m2 = __pyx_state[14]; __pyx_result.mem = __pyx_state[15]; __pyx_result.nsigma = __pyx_state[16]; __pyx_result.sigma1 = __pyx_state[17]; __pyx_result.sigma2 = __pyx_state[18]; __pyx_result.smearing_norm1 = __pyx_state[19]; __pyx_result.smearing_norm2 = __pyx_state[20]; __pyx_result.use_angular = __pyx_state[21]; __pyx_result.volume = __pyx_state[22]             # <<<<<<<<<<<<<<
+ *     if len(__pyx_state) > 23 and hasattr(__pyx_result, '__dict__'):
+ *         __pyx_result.__dict__.update(__pyx_state[23])
+ */
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->Natoms = __pyx_t_2;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->Nbins1 = __pyx_t_2;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->Nbins2 = __pyx_t_2;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->Nelements = __pyx_t_2;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->Nelements_2body = __pyx_t_2;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->Nelements_3body = __pyx_t_2;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->Rc1 = __pyx_t_3;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->Rc2 = __pyx_t_3;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->binwidth1 = __pyx_t_3;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 9, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->binwidth2 = __pyx_t_3;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 10, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->dim = __pyx_t_2;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 11, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->eta = __pyx_t_3;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 12, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->gamma = __pyx_t_3;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 13, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->m1 = __pyx_t_3;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 14, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->m2 = __pyx_t_3;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 15, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5cymem_5cymem_Pool))))) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v___pyx_result->mem);
+  __Pyx_DECREF(((PyObject *)__pyx_v___pyx_result->mem));
+  __pyx_v___pyx_result->mem = ((struct __pyx_obj_5cymem_5cymem_Pool *)__pyx_t_1);
+  __pyx_t_1 = 0;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 16, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->nsigma = __pyx_t_2;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 17, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->sigma1 = __pyx_t_3;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 18, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->sigma2 = __pyx_t_3;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 19, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->smearing_norm1 = __pyx_t_3;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 20, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->smearing_norm2 = __pyx_t_3;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 21, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v___pyx_result->use_angular);
+  __Pyx_DECREF(__pyx_v___pyx_result->use_angular);
+  __pyx_v___pyx_result->use_angular = __pyx_t_1;
+  __pyx_t_1 = 0;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 10, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 22, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->volume = __pyx_t_3;
+
+  /* "(tree fragment)":11
+ * cdef __pyx_unpickle_Angular_Fingerprint__set_state(Angular_Fingerprint __pyx_result, tuple __pyx_state):
+ *     __pyx_result.Natoms = __pyx_state[0]; __pyx_result.Nbins1 = __pyx_state[1]; __pyx_result.Nbins2 = __pyx_state[2]; __pyx_result.Nelements = __pyx_state[3]; __pyx_result.Nelements_2body = __pyx_state[4]; __pyx_result.Nelements_3body = __pyx_state[5]; __pyx_result.Rc1 = __pyx_state[6]; __pyx_result.Rc2 = __pyx_state[7]; __pyx_result.binwidth1 = __pyx_state[8]; __pyx_result.binwidth2 = __pyx_state[9]; __pyx_result.dim = __pyx_state[10]; __pyx_result.eta = __pyx_state[11]; __pyx_result.gamma = __pyx_state[12]; __pyx_result.m1 = __pyx_state[13]; __pyx_result.m2 = __pyx_state[14]; __pyx_result.mem = __pyx_state[15]; __pyx_result.nsigma = __pyx_state[16]; __pyx_result.sigma1 = __pyx_state[17]; __pyx_result.sigma2 = __pyx_state[18]; __pyx_result.smearing_norm1 = __pyx_state[19]; __pyx_result.smearing_norm2 = __pyx_state[20]; __pyx_result.use_angular = __pyx_state[21]; __pyx_result.volume = __pyx_state[22]
+ *     if len(__pyx_state) > 23 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
+ *         __pyx_result.__dict__.update(__pyx_state[23])
+ */
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
+    __PYX_ERR(1, 11, __pyx_L1_error)
+  }
+  __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v___pyx_state); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(1, 11, __pyx_L1_error)
+  __pyx_t_6 = ((__pyx_t_5 > 23) != 0);
+  if (__pyx_t_6) {
+  } else {
+    __pyx_t_4 = __pyx_t_6;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_6 = __Pyx_HasAttr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(1, 11, __pyx_L1_error)
+  __pyx_t_7 = (__pyx_t_6 != 0);
+  __pyx_t_4 = __pyx_t_7;
+  __pyx_L4_bool_binop_done:;
+  if (__pyx_t_4) {
+
+    /* "(tree fragment)":12
+ *     __pyx_result.Natoms = __pyx_state[0]; __pyx_result.Nbins1 = __pyx_state[1]; __pyx_result.Nbins2 = __pyx_state[2]; __pyx_result.Nelements = __pyx_state[3]; __pyx_result.Nelements_2body = __pyx_state[4]; __pyx_result.Nelements_3body = __pyx_state[5]; __pyx_result.Rc1 = __pyx_state[6]; __pyx_result.Rc2 = __pyx_state[7]; __pyx_result.binwidth1 = __pyx_state[8]; __pyx_result.binwidth2 = __pyx_state[9]; __pyx_result.dim = __pyx_state[10]; __pyx_result.eta = __pyx_state[11]; __pyx_result.gamma = __pyx_state[12]; __pyx_result.m1 = __pyx_state[13]; __pyx_result.m2 = __pyx_state[14]; __pyx_result.mem = __pyx_state[15]; __pyx_result.nsigma = __pyx_state[16]; __pyx_result.sigma1 = __pyx_state[17]; __pyx_result.sigma2 = __pyx_state[18]; __pyx_result.smearing_norm1 = __pyx_state[19]; __pyx_result.smearing_norm2 = __pyx_state[20]; __pyx_result.use_angular = __pyx_state[21]; __pyx_result.volume = __pyx_state[22]
+ *     if len(__pyx_state) > 23 and hasattr(__pyx_result, '__dict__'):
+ *         __pyx_result.__dict__.update(__pyx_state[23])             # <<<<<<<<<<<<<<
+ */
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 12, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_update); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 12, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    if (unlikely(__pyx_v___pyx_state == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+      __PYX_ERR(1, 12, __pyx_L1_error)
+    }
+    __pyx_t_8 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 23, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 12, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __pyx_t_10 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
+      __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_9);
+      if (likely(__pyx_t_10)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_9);
+        __Pyx_INCREF(__pyx_t_10);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_9, function);
+      }
+    }
+    if (!__pyx_t_10) {
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
+    } else {
+      #if CYTHON_FAST_PYCALL
+      if (PyFunction_Check(__pyx_t_9)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_8};
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      } else
+      #endif
+      #if CYTHON_FAST_PYCCALL
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_8};
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      } else
+      #endif
+      {
+        __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 12, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_11);
+        __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_10); __pyx_t_10 = NULL;
+        __Pyx_GIVEREF(__pyx_t_8);
+        PyTuple_SET_ITEM(__pyx_t_11, 0+1, __pyx_t_8);
+        __pyx_t_8 = 0;
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+      }
+    }
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+    /* "(tree fragment)":11
+ * cdef __pyx_unpickle_Angular_Fingerprint__set_state(Angular_Fingerprint __pyx_result, tuple __pyx_state):
+ *     __pyx_result.Natoms = __pyx_state[0]; __pyx_result.Nbins1 = __pyx_state[1]; __pyx_result.Nbins2 = __pyx_state[2]; __pyx_result.Nelements = __pyx_state[3]; __pyx_result.Nelements_2body = __pyx_state[4]; __pyx_result.Nelements_3body = __pyx_state[5]; __pyx_result.Rc1 = __pyx_state[6]; __pyx_result.Rc2 = __pyx_state[7]; __pyx_result.binwidth1 = __pyx_state[8]; __pyx_result.binwidth2 = __pyx_state[9]; __pyx_result.dim = __pyx_state[10]; __pyx_result.eta = __pyx_state[11]; __pyx_result.gamma = __pyx_state[12]; __pyx_result.m1 = __pyx_state[13]; __pyx_result.m2 = __pyx_state[14]; __pyx_result.mem = __pyx_state[15]; __pyx_result.nsigma = __pyx_state[16]; __pyx_result.sigma1 = __pyx_state[17]; __pyx_result.sigma2 = __pyx_state[18]; __pyx_result.smearing_norm1 = __pyx_state[19]; __pyx_result.smearing_norm2 = __pyx_state[20]; __pyx_result.use_angular = __pyx_state[21]; __pyx_result.volume = __pyx_state[22]
+ *     if len(__pyx_state) > 23 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
+ *         __pyx_result.__dict__.update(__pyx_state[23])
+ */
+  }
+
+  /* "(tree fragment)":9
+ *         __pyx_unpickle_Angular_Fingerprint__set_state(<Angular_Fingerprint> __pyx_result, __pyx_state)
+ *     return __pyx_result
+ * cdef __pyx_unpickle_Angular_Fingerprint__set_state(Angular_Fingerprint __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
+ *     __pyx_result.Natoms = __pyx_state[0]; __pyx_result.Nbins1 = __pyx_state[1]; __pyx_result.Nbins2 = __pyx_state[2]; __pyx_result.Nelements = __pyx_state[3]; __pyx_result.Nelements_2body = __pyx_state[4]; __pyx_result.Nelements_3body = __pyx_state[5]; __pyx_result.Rc1 = __pyx_state[6]; __pyx_result.Rc2 = __pyx_state[7]; __pyx_result.binwidth1 = __pyx_state[8]; __pyx_result.binwidth2 = __pyx_state[9]; __pyx_result.dim = __pyx_state[10]; __pyx_result.eta = __pyx_state[11]; __pyx_result.gamma = __pyx_state[12]; __pyx_result.m1 = __pyx_state[13]; __pyx_result.m2 = __pyx_state[14]; __pyx_result.mem = __pyx_state[15]; __pyx_result.nsigma = __pyx_state[16]; __pyx_result.sigma1 = __pyx_state[17]; __pyx_result.sigma2 = __pyx_state[18]; __pyx_result.smearing_norm1 = __pyx_state[19]; __pyx_result.smearing_norm2 = __pyx_state[20]; __pyx_result.use_angular = __pyx_state[21]; __pyx_result.volume = __pyx_state[22]
+ *     if len(__pyx_state) > 23 and hasattr(__pyx_result, '__dict__'):
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_11);
+  __Pyx_AddTraceback("featureCalculators.angular_fingerprintFeature_cy.__pyx_unpickle_Angular_Fingerprint__set_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
 <<<<<<< HEAD
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":215
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":215
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         # experimental exception made for __getbuffer__ and __releasebuffer__
  *         # -- the details of this may change.
  *         def __getbuffer__(ndarray self, Py_buffer* info, int flags):             # <<<<<<<<<<<<<<
@@ -7841,7 +8034,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":222
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":222
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *             cdef int i, ndim
  *             cdef int endian_detector = 1             # <<<<<<<<<<<<<<
@@ -7854,7 +8047,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":223
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":223
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             cdef int i, ndim
  *             cdef int endian_detector = 1
  *             cdef bint little_endian = ((<char*>&endian_detector)[0] != 0)             # <<<<<<<<<<<<<<
@@ -7867,7 +8060,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":225
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":225
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             cdef bint little_endian = ((<char*>&endian_detector)[0] != 0)
  * 
  *             ndim = PyArray_NDIM(self)             # <<<<<<<<<<<<<<
@@ -7880,7 +8073,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":227
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":227
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             ndim = PyArray_NDIM(self)
  * 
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -7898,7 +8091,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":228
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":228
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)
  *                 and not PyArray_CHKFLAGS(self, NPY_C_CONTIGUOUS)):             # <<<<<<<<<<<<<<
@@ -7913,7 +8106,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":227
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":227
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             ndim = PyArray_NDIM(self)
  * 
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -7926,24 +8119,24 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":229
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":229
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)
  *                 and not PyArray_CHKFLAGS(self, NPY_C_CONTIGUOUS)):
  *                 raise ValueError(u"ndarray is not C contiguous")             # <<<<<<<<<<<<<<
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 229, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 229, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(1, 229, __pyx_L1_error)
+    __PYX_ERR(2, 229, __pyx_L1_error)
 
 <<<<<<< HEAD
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":227
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":227
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             ndim = PyArray_NDIM(self)
  * 
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -7956,7 +8149,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":231
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":231
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 raise ValueError(u"ndarray is not C contiguous")
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -7974,7 +8167,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":232
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":232
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  *                 and not PyArray_CHKFLAGS(self, NPY_F_CONTIGUOUS)):             # <<<<<<<<<<<<<<
@@ -7989,7 +8182,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":231
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":231
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 raise ValueError(u"ndarray is not C contiguous")
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -8002,24 +8195,24 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":233
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":233
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  *                 and not PyArray_CHKFLAGS(self, NPY_F_CONTIGUOUS)):
  *                 raise ValueError(u"ndarray is not Fortran contiguous")             # <<<<<<<<<<<<<<
  * 
  *             info.buf = PyArray_DATA(self)
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 233, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 233, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(1, 233, __pyx_L1_error)
+    __PYX_ERR(2, 233, __pyx_L1_error)
 
 <<<<<<< HEAD
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":231
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":231
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 raise ValueError(u"ndarray is not C contiguous")
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -8032,7 +8225,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":235
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":235
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 raise ValueError(u"ndarray is not Fortran contiguous")
  * 
  *             info.buf = PyArray_DATA(self)             # <<<<<<<<<<<<<<
@@ -8045,7 +8238,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":236
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":236
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *             info.buf = PyArray_DATA(self)
  *             info.ndim = ndim             # <<<<<<<<<<<<<<
@@ -8058,7 +8251,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":237
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":237
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             info.buf = PyArray_DATA(self)
  *             info.ndim = ndim
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):             # <<<<<<<<<<<<<<
@@ -8072,7 +8265,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":240
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":240
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 # Allocate new buffer for strides and shape info.
  *                 # This is allocated as one block, strides first.
  *                 info.strides = <Py_ssize_t*>PyObject_Malloc(sizeof(Py_ssize_t) * 2 * <size_t>ndim)             # <<<<<<<<<<<<<<
@@ -8085,7 +8278,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":241
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":241
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 # This is allocated as one block, strides first.
  *                 info.strides = <Py_ssize_t*>PyObject_Malloc(sizeof(Py_ssize_t) * 2 * <size_t>ndim)
  *                 info.shape = info.strides + ndim             # <<<<<<<<<<<<<<
@@ -8098,7 +8291,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":242
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":242
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 info.strides = <Py_ssize_t*>PyObject_Malloc(sizeof(Py_ssize_t) * 2 * <size_t>ndim)
  *                 info.shape = info.strides + ndim
  *                 for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -8114,7 +8307,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":243
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":243
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 info.shape = info.strides + ndim
  *                 for i in range(ndim):
  *                     info.strides[i] = PyArray_STRIDES(self)[i]             # <<<<<<<<<<<<<<
@@ -8127,7 +8320,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":244
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":244
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 for i in range(ndim):
  *                     info.strides[i] = PyArray_STRIDES(self)[i]
  *                     info.shape[i] = PyArray_DIMS(self)[i]             # <<<<<<<<<<<<<<
@@ -8141,7 +8334,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":237
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":237
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             info.buf = PyArray_DATA(self)
  *             info.ndim = ndim
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):             # <<<<<<<<<<<<<<
@@ -8155,7 +8348,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":246
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":246
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                     info.shape[i] = PyArray_DIMS(self)[i]
  *             else:
  *                 info.strides = <Py_ssize_t*>PyArray_STRIDES(self)             # <<<<<<<<<<<<<<
@@ -8169,7 +8362,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":247
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":247
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             else:
  *                 info.strides = <Py_ssize_t*>PyArray_STRIDES(self)
  *                 info.shape = <Py_ssize_t*>PyArray_DIMS(self)             # <<<<<<<<<<<<<<
@@ -8184,7 +8377,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":248
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":248
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 info.strides = <Py_ssize_t*>PyArray_STRIDES(self)
  *                 info.shape = <Py_ssize_t*>PyArray_DIMS(self)
  *             info.suboffsets = NULL             # <<<<<<<<<<<<<<
@@ -8197,7 +8390,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":249
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":249
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 info.shape = <Py_ssize_t*>PyArray_DIMS(self)
  *             info.suboffsets = NULL
  *             info.itemsize = PyArray_ITEMSIZE(self)             # <<<<<<<<<<<<<<
@@ -8210,7 +8403,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":250
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":250
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             info.suboffsets = NULL
  *             info.itemsize = PyArray_ITEMSIZE(self)
  *             info.readonly = not PyArray_ISWRITEABLE(self)             # <<<<<<<<<<<<<<
@@ -8223,7 +8416,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":253
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":253
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *             cdef int t
  *             cdef char* f = NULL             # <<<<<<<<<<<<<<
@@ -8236,7 +8429,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":254
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":254
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             cdef int t
  *             cdef char* f = NULL
  *             cdef dtype descr = self.descr             # <<<<<<<<<<<<<<
@@ -8252,7 +8445,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":257
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":257
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             cdef int offset
  * 
  *             info.obj = self             # <<<<<<<<<<<<<<
@@ -8269,7 +8462,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":259
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":259
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             info.obj = self
  * 
  *             if not PyDataType_HASFIELDS(descr):             # <<<<<<<<<<<<<<
@@ -8283,7 +8476,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":260
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":260
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *             if not PyDataType_HASFIELDS(descr):
  *                 t = descr.type_num             # <<<<<<<<<<<<<<
@@ -8297,7 +8490,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":261
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":261
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             if not PyDataType_HASFIELDS(descr):
  *                 t = descr.type_num
  *                 if ((descr.byteorder == c'>' and little_endian) or             # <<<<<<<<<<<<<<
@@ -8321,7 +8514,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":262
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":262
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 t = descr.type_num
  *                 if ((descr.byteorder == c'>' and little_endian) or
  *                     (descr.byteorder == c'<' and not little_endian)):             # <<<<<<<<<<<<<<
@@ -8342,7 +8535,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":261
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":261
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             if not PyDataType_HASFIELDS(descr):
  *                 t = descr.type_num
  *                 if ((descr.byteorder == c'>' and little_endian) or             # <<<<<<<<<<<<<<
@@ -8355,24 +8548,24 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":263
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":263
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 if ((descr.byteorder == c'>' and little_endian) or
  *                     (descr.byteorder == c'<' and not little_endian)):
  *                     raise ValueError(u"Non-native byte order not supported")             # <<<<<<<<<<<<<<
  *                 if   t == NPY_BYTE:        f = "b"
  *                 elif t == NPY_UBYTE:       f = "B"
  */
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 263, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 263, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __PYX_ERR(1, 263, __pyx_L1_error)
+      __PYX_ERR(2, 263, __pyx_L1_error)
 
 <<<<<<< HEAD
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":261
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":261
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             if not PyDataType_HASFIELDS(descr):
  *                 t = descr.type_num
  *                 if ((descr.byteorder == c'>' and little_endian) or             # <<<<<<<<<<<<<<
@@ -8385,7 +8578,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":264
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":264
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                     (descr.byteorder == c'<' and not little_endian)):
  *                     raise ValueError(u"Non-native byte order not supported")
  *                 if   t == NPY_BYTE:        f = "b"             # <<<<<<<<<<<<<<
@@ -8401,7 +8594,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":265
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":265
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                     raise ValueError(u"Non-native byte order not supported")
  *                 if   t == NPY_BYTE:        f = "b"
  *                 elif t == NPY_UBYTE:       f = "B"             # <<<<<<<<<<<<<<
@@ -8416,7 +8609,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":266
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":266
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 if   t == NPY_BYTE:        f = "b"
  *                 elif t == NPY_UBYTE:       f = "B"
  *                 elif t == NPY_SHORT:       f = "h"             # <<<<<<<<<<<<<<
@@ -8431,7 +8624,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":267
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":267
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_UBYTE:       f = "B"
  *                 elif t == NPY_SHORT:       f = "h"
  *                 elif t == NPY_USHORT:      f = "H"             # <<<<<<<<<<<<<<
@@ -8446,7 +8639,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":268
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":268
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_SHORT:       f = "h"
  *                 elif t == NPY_USHORT:      f = "H"
  *                 elif t == NPY_INT:         f = "i"             # <<<<<<<<<<<<<<
@@ -8461,7 +8654,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":269
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":269
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_USHORT:      f = "H"
  *                 elif t == NPY_INT:         f = "i"
  *                 elif t == NPY_UINT:        f = "I"             # <<<<<<<<<<<<<<
@@ -8476,7 +8669,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":270
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":270
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_INT:         f = "i"
  *                 elif t == NPY_UINT:        f = "I"
  *                 elif t == NPY_LONG:        f = "l"             # <<<<<<<<<<<<<<
@@ -8491,7 +8684,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":271
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":271
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_UINT:        f = "I"
  *                 elif t == NPY_LONG:        f = "l"
  *                 elif t == NPY_ULONG:       f = "L"             # <<<<<<<<<<<<<<
@@ -8506,7 +8699,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":272
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":272
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_LONG:        f = "l"
  *                 elif t == NPY_ULONG:       f = "L"
  *                 elif t == NPY_LONGLONG:    f = "q"             # <<<<<<<<<<<<<<
@@ -8521,7 +8714,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":273
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":273
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_ULONG:       f = "L"
  *                 elif t == NPY_LONGLONG:    f = "q"
  *                 elif t == NPY_ULONGLONG:   f = "Q"             # <<<<<<<<<<<<<<
@@ -8536,7 +8729,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":274
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":274
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_LONGLONG:    f = "q"
  *                 elif t == NPY_ULONGLONG:   f = "Q"
  *                 elif t == NPY_FLOAT:       f = "f"             # <<<<<<<<<<<<<<
@@ -8551,7 +8744,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":275
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":275
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_ULONGLONG:   f = "Q"
  *                 elif t == NPY_FLOAT:       f = "f"
  *                 elif t == NPY_DOUBLE:      f = "d"             # <<<<<<<<<<<<<<
@@ -8566,7 +8759,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":276
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":276
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_FLOAT:       f = "f"
  *                 elif t == NPY_DOUBLE:      f = "d"
  *                 elif t == NPY_LONGDOUBLE:  f = "g"             # <<<<<<<<<<<<<<
@@ -8581,7 +8774,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":277
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":277
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_DOUBLE:      f = "d"
  *                 elif t == NPY_LONGDOUBLE:  f = "g"
  *                 elif t == NPY_CFLOAT:      f = "Zf"             # <<<<<<<<<<<<<<
@@ -8596,7 +8789,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":278
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":278
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_LONGDOUBLE:  f = "g"
  *                 elif t == NPY_CFLOAT:      f = "Zf"
  *                 elif t == NPY_CDOUBLE:     f = "Zd"             # <<<<<<<<<<<<<<
@@ -8611,7 +8804,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":279
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":279
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_CFLOAT:      f = "Zf"
  *                 elif t == NPY_CDOUBLE:     f = "Zd"
  *                 elif t == NPY_CLONGDOUBLE: f = "Zg"             # <<<<<<<<<<<<<<
@@ -8626,7 +8819,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":280
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":280
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_CDOUBLE:     f = "Zd"
  *                 elif t == NPY_CLONGDOUBLE: f = "Zg"
  *                 elif t == NPY_OBJECT:      f = "O"             # <<<<<<<<<<<<<<
@@ -8642,24 +8835,24 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":282
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":282
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 elif t == NPY_OBJECT:      f = "O"
  *                 else:
  *                     raise ValueError(u"unknown dtype code in numpy.pxd (%d)" % t)             # <<<<<<<<<<<<<<
  *                 info.format = f
  *                 return
  */
-      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_t); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 282, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_t); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 282, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = PyUnicode_Format(__pyx_kp_u_unknown_dtype_code_in_numpy_pxd, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 282, __pyx_L1_error)
+      __pyx_t_7 = PyUnicode_Format(__pyx_kp_u_unknown_dtype_code_in_numpy_pxd, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(2, 282, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 282, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 282, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __PYX_ERR(1, 282, __pyx_L1_error)
+      __PYX_ERR(2, 282, __pyx_L1_error)
       break;
     }
 
@@ -8667,7 +8860,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":283
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":283
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 else:
  *                     raise ValueError(u"unknown dtype code in numpy.pxd (%d)" % t)
  *                 info.format = f             # <<<<<<<<<<<<<<
@@ -8680,7 +8873,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":284
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":284
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                     raise ValueError(u"unknown dtype code in numpy.pxd (%d)" % t)
  *                 info.format = f
  *                 return             # <<<<<<<<<<<<<<
@@ -8694,7 +8887,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":259
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":259
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             info.obj = self
  * 
  *             if not PyDataType_HASFIELDS(descr):             # <<<<<<<<<<<<<<
@@ -8707,7 +8900,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":286
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":286
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 return
  *             else:
  *                 info.format = <char*>PyObject_Malloc(_buffer_format_string_len)             # <<<<<<<<<<<<<<
@@ -8721,7 +8914,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":287
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":287
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             else:
  *                 info.format = <char*>PyObject_Malloc(_buffer_format_string_len)
  *                 info.format[0] = c'^' # Native data types, manual alignment             # <<<<<<<<<<<<<<
@@ -8734,7 +8927,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":288
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":288
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 info.format = <char*>PyObject_Malloc(_buffer_format_string_len)
  *                 info.format[0] = c'^' # Native data types, manual alignment
  *                 offset = 0             # <<<<<<<<<<<<<<
@@ -8747,21 +8940,21 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":289
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":289
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 info.format[0] = c'^' # Native data types, manual alignment
  *                 offset = 0
  *                 f = _util_dtypestring(descr, info.format + 1,             # <<<<<<<<<<<<<<
  *                                       info.format + _buffer_format_string_len,
  *                                       &offset)
  */
-    __pyx_t_8 = __pyx_f_5numpy__util_dtypestring(__pyx_v_descr, (__pyx_v_info->format + 1), (__pyx_v_info->format + 0xFF), (&__pyx_v_offset)); if (unlikely(__pyx_t_8 == ((char *)NULL))) __PYX_ERR(1, 289, __pyx_L1_error)
+    __pyx_t_8 = __pyx_f_5numpy__util_dtypestring(__pyx_v_descr, (__pyx_v_info->format + 1), (__pyx_v_info->format + 0xFF), (&__pyx_v_offset)); if (unlikely(__pyx_t_8 == ((char *)NULL))) __PYX_ERR(2, 289, __pyx_L1_error)
     __pyx_v_f = __pyx_t_8;
 
 <<<<<<< HEAD
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":292
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":292
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                                       info.format + _buffer_format_string_len,
  *                                       &offset)
  *                 f[0] = c'\0' # Terminate format string             # <<<<<<<<<<<<<<
@@ -8775,7 +8968,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":215
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":215
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         # experimental exception made for __getbuffer__ and __releasebuffer__
  *         # -- the details of this may change.
  *         def __getbuffer__(ndarray self, Py_buffer* info, int flags):             # <<<<<<<<<<<<<<
@@ -8811,7 +9004,7 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":294
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":294
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 f[0] = c'\0' # Terminate format string
  * 
  *         def __releasebuffer__(ndarray self, Py_buffer* info):             # <<<<<<<<<<<<<<
@@ -8839,7 +9032,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":295
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":295
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *         def __releasebuffer__(ndarray self, Py_buffer* info):
  *             if PyArray_HASFIELDS(self):             # <<<<<<<<<<<<<<
@@ -8853,7 +9046,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":296
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":296
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         def __releasebuffer__(ndarray self, Py_buffer* info):
  *             if PyArray_HASFIELDS(self):
  *                 PyObject_Free(info.format)             # <<<<<<<<<<<<<<
@@ -8866,7 +9059,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":295
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":295
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *         def __releasebuffer__(ndarray self, Py_buffer* info):
  *             if PyArray_HASFIELDS(self):             # <<<<<<<<<<<<<<
@@ -8879,7 +9072,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":297
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":297
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             if PyArray_HASFIELDS(self):
  *                 PyObject_Free(info.format)
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):             # <<<<<<<<<<<<<<
@@ -8893,7 +9086,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":298
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":298
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 PyObject_Free(info.format)
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):
  *                 PyObject_Free(info.strides)             # <<<<<<<<<<<<<<
@@ -8906,7 +9099,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":297
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":297
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             if PyArray_HASFIELDS(self):
  *                 PyObject_Free(info.format)
  *             if sizeof(npy_intp) != sizeof(Py_ssize_t):             # <<<<<<<<<<<<<<
@@ -8919,7 +9112,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":294
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":294
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 f[0] = c'\0' # Terminate format string
  * 
  *         def __releasebuffer__(ndarray self, Py_buffer* info):             # <<<<<<<<<<<<<<
@@ -8935,7 +9128,7 @@ static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_s
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":775
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":775
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_cdouble     complex_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -8953,7 +9146,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":776
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":776
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline object PyArray_MultiIterNew1(a):
  *     return PyArray_MultiIterNew(1, <void*>a)             # <<<<<<<<<<<<<<
@@ -8961,7 +9154,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
  * cdef inline object PyArray_MultiIterNew2(a, b):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyArray_MultiIterNew(1, ((void *)__pyx_v_a)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 776, __pyx_L1_error)
+  __pyx_t_1 = PyArray_MultiIterNew(1, ((void *)__pyx_v_a)); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 776, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -8971,7 +9164,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":775
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":775
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * ctypedef npy_cdouble     complex_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -8994,7 +9187,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":778
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":778
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -9012,7 +9205,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":779
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":779
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)             # <<<<<<<<<<<<<<
@@ -9020,7 +9213,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
  * cdef inline object PyArray_MultiIterNew3(a, b, c):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyArray_MultiIterNew(2, ((void *)__pyx_v_a), ((void *)__pyx_v_b)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 779, __pyx_L1_error)
+  __pyx_t_1 = PyArray_MultiIterNew(2, ((void *)__pyx_v_a), ((void *)__pyx_v_b)); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 779, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9030,7 +9223,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":778
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":778
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -9053,7 +9246,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":781
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":781
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -9071,7 +9264,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":782
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":782
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)             # <<<<<<<<<<<<<<
@@ -9079,7 +9272,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyArray_MultiIterNew(3, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 782, __pyx_L1_error)
+  __pyx_t_1 = PyArray_MultiIterNew(3, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c)); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 782, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9089,7 +9282,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":781
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":781
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -9112,7 +9305,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":784
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":784
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -9130,7 +9323,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":785
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":785
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)             # <<<<<<<<<<<<<<
@@ -9138,7 +9331,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyArray_MultiIterNew(4, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c), ((void *)__pyx_v_d)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 785, __pyx_L1_error)
+  __pyx_t_1 = PyArray_MultiIterNew(4, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c), ((void *)__pyx_v_d)); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 785, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9148,7 +9341,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":784
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":784
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -9171,7 +9364,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":787
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":787
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -9189,7 +9382,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":788
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":788
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)             # <<<<<<<<<<<<<<
@@ -9197,7 +9390,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyArray_MultiIterNew(5, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c), ((void *)__pyx_v_d), ((void *)__pyx_v_e)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 788, __pyx_L1_error)
+  __pyx_t_1 = PyArray_MultiIterNew(5, ((void *)__pyx_v_a), ((void *)__pyx_v_b), ((void *)__pyx_v_c), ((void *)__pyx_v_d), ((void *)__pyx_v_e)); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 788, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9207,7 +9400,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":787
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":787
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -9230,7 +9423,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":790
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":790
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -9248,7 +9441,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":791
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":791
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -9262,7 +9455,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":792
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":792
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):
  *         return <tuple>d.subarray.shape             # <<<<<<<<<<<<<<
@@ -9278,7 +9471,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":791
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":791
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -9291,7 +9484,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":794
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":794
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         return <tuple>d.subarray.shape
  *     else:
  *         return ()             # <<<<<<<<<<<<<<
@@ -9309,7 +9502,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":790
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":790
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -9328,7 +9521,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":796
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":796
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         return ()
  * 
  * cdef inline char* _util_dtypestring(dtype descr, char* f, char* end, int* offset) except NULL:             # <<<<<<<<<<<<<<
@@ -9361,7 +9554,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":801
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":801
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *     cdef dtype child
  *     cdef int endian_detector = 1             # <<<<<<<<<<<<<<
@@ -9374,7 +9567,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":802
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":802
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     cdef dtype child
  *     cdef int endian_detector = 1
  *     cdef bint little_endian = ((<char*>&endian_detector)[0] != 0)             # <<<<<<<<<<<<<<
@@ -9387,7 +9580,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":805
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":805
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     cdef tuple fields
  * 
  *     for childname in descr.names:             # <<<<<<<<<<<<<<
@@ -9396,15 +9589,15 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  */
   if (unlikely(__pyx_v_descr->names == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(1, 805, __pyx_L1_error)
+    __PYX_ERR(2, 805, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_descr->names; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(1, 805, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(2, 805, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 805, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 805, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_childname, __pyx_t_3);
@@ -9414,7 +9607,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":806
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":806
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *     for childname in descr.names:
  *         fields = descr.fields[childname]             # <<<<<<<<<<<<<<
@@ -9423,11 +9616,11 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  */
     if (unlikely(__pyx_v_descr->fields == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(1, 806, __pyx_L1_error)
+      __PYX_ERR(2, 806, __pyx_L1_error)
     }
-    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_descr->fields, __pyx_v_childname); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 806, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_descr->fields, __pyx_v_childname); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 806, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (!(likely(PyTuple_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(1, 806, __pyx_L1_error)
+    if (!(likely(PyTuple_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(2, 806, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_fields, ((PyObject*)__pyx_t_3));
     __pyx_t_3 = 0;
 
@@ -9435,7 +9628,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":807
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":807
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     for childname in descr.names:
  *         fields = descr.fields[childname]
  *         child, new_offset = fields             # <<<<<<<<<<<<<<
@@ -9448,7 +9641,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(1, 807, __pyx_L1_error)
+        __PYX_ERR(2, 807, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       __pyx_t_3 = PyTuple_GET_ITEM(sequence, 0); 
@@ -9456,15 +9649,15 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(__pyx_t_4);
       #else
-      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 807, __pyx_L1_error)
+      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 807, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 807, __pyx_L1_error)
+      __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 807, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       #endif
     } else {
-      __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(1, 807, __pyx_L1_error)
+      __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(2, 807, __pyx_L1_error)
     }
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_dtype))))) __PYX_ERR(1, 807, __pyx_L1_error)
+    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_dtype))))) __PYX_ERR(2, 807, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_child, ((PyArray_Descr *)__pyx_t_3));
     __pyx_t_3 = 0;
     __Pyx_XDECREF_SET(__pyx_v_new_offset, __pyx_t_4);
@@ -9474,19 +9667,19 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":809
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":809
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         child, new_offset = fields
  * 
  *         if (end - f) - <int>(new_offset - offset[0]) < 15:             # <<<<<<<<<<<<<<
  *             raise RuntimeError(u"Format string allocated too short, see comment in numpy.pxd")
  * 
  */
-    __pyx_t_4 = __Pyx_PyInt_From_int((__pyx_v_offset[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 809, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int((__pyx_v_offset[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 809, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyNumber_Subtract(__pyx_v_new_offset, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 809, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Subtract(__pyx_v_new_offset, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 809, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 809, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(2, 809, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_6 = ((((__pyx_v_end - __pyx_v_f) - ((int)__pyx_t_5)) < 15) != 0);
     if (unlikely(__pyx_t_6)) {
@@ -9495,24 +9688,24 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":810
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":810
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *         if (end - f) - <int>(new_offset - offset[0]) < 15:
  *             raise RuntimeError(u"Format string allocated too short, see comment in numpy.pxd")             # <<<<<<<<<<<<<<
  * 
  *         if ((child.byteorder == c'>' and little_endian) or
  */
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 810, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 810, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __PYX_ERR(1, 810, __pyx_L1_error)
+      __PYX_ERR(2, 810, __pyx_L1_error)
 
 <<<<<<< HEAD
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":809
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":809
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         child, new_offset = fields
  * 
  *         if (end - f) - <int>(new_offset - offset[0]) < 15:             # <<<<<<<<<<<<<<
@@ -9525,7 +9718,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":812
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":812
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             raise RuntimeError(u"Format string allocated too short, see comment in numpy.pxd")
  * 
  *         if ((child.byteorder == c'>' and little_endian) or             # <<<<<<<<<<<<<<
@@ -9549,7 +9742,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":813
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":813
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *         if ((child.byteorder == c'>' and little_endian) or
  *             (child.byteorder == c'<' and not little_endian)):             # <<<<<<<<<<<<<<
@@ -9570,7 +9763,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":812
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":812
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             raise RuntimeError(u"Format string allocated too short, see comment in numpy.pxd")
  * 
  *         if ((child.byteorder == c'>' and little_endian) or             # <<<<<<<<<<<<<<
@@ -9583,24 +9776,24 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":814
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":814
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         if ((child.byteorder == c'>' and little_endian) or
  *             (child.byteorder == c'<' and not little_endian)):
  *             raise ValueError(u"Non-native byte order not supported")             # <<<<<<<<<<<<<<
  *             # One could encode it in the format string and have Cython
  *             # complain instead, BUT: < and > in format strings also imply
  */
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 814, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 814, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __PYX_ERR(1, 814, __pyx_L1_error)
+      __PYX_ERR(2, 814, __pyx_L1_error)
 
 <<<<<<< HEAD
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":812
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":812
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             raise RuntimeError(u"Format string allocated too short, see comment in numpy.pxd")
  * 
  *         if ((child.byteorder == c'>' and little_endian) or             # <<<<<<<<<<<<<<
@@ -9613,7 +9806,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":824
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":824
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *         # Output padding bytes
  *         while offset[0] < new_offset:             # <<<<<<<<<<<<<<
@@ -9621,11 +9814,11 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             f += 1
  */
     while (1) {
-      __pyx_t_3 = __Pyx_PyInt_From_int((__pyx_v_offset[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 824, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_int((__pyx_v_offset[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 824, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_v_new_offset, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 824, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_v_new_offset, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 824, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 824, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 824, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (!__pyx_t_6) break;
 
@@ -9633,7 +9826,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":825
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":825
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         # Output padding bytes
  *         while offset[0] < new_offset:
  *             f[0] = 120 # "x"; pad byte             # <<<<<<<<<<<<<<
@@ -9646,7 +9839,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":826
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":826
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         while offset[0] < new_offset:
  *             f[0] = 120 # "x"; pad byte
  *             f += 1             # <<<<<<<<<<<<<<
@@ -9659,7 +9852,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":827
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":827
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             f[0] = 120 # "x"; pad byte
  *             f += 1
  *             offset[0] += 1             # <<<<<<<<<<<<<<
@@ -9674,7 +9867,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":829
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":829
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             offset[0] += 1
  * 
  *         offset[0] += child.itemsize             # <<<<<<<<<<<<<<
@@ -9688,7 +9881,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":831
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":831
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         offset[0] += child.itemsize
  * 
  *         if not PyDataType_HASFIELDS(child):             # <<<<<<<<<<<<<<
@@ -9702,14 +9895,14 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":832
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":832
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *         if not PyDataType_HASFIELDS(child):
  *             t = child.type_num             # <<<<<<<<<<<<<<
  *             if end - f < 5:
  *                 raise RuntimeError(u"Format string allocated too short.")
  */
-      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_child->type_num); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 832, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_child->type_num); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 832, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_XDECREF_SET(__pyx_v_t, __pyx_t_4);
       __pyx_t_4 = 0;
@@ -9718,7 +9911,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":833
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":833
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         if not PyDataType_HASFIELDS(child):
  *             t = child.type_num
  *             if end - f < 5:             # <<<<<<<<<<<<<<
@@ -9732,24 +9925,24 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
         /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":834
 =======
         /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":834
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             t = child.type_num
  *             if end - f < 5:
  *                 raise RuntimeError(u"Format string allocated too short.")             # <<<<<<<<<<<<<<
  * 
  *             # Until ticket #99 is fixed, use integers to avoid warnings
  */
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 834, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 834, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_Raise(__pyx_t_4, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __PYX_ERR(1, 834, __pyx_L1_error)
+        __PYX_ERR(2, 834, __pyx_L1_error)
 
 <<<<<<< HEAD
         /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":833
 =======
         /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":833
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         if not PyDataType_HASFIELDS(child):
  *             t = child.type_num
  *             if end - f < 5:             # <<<<<<<<<<<<<<
@@ -9762,18 +9955,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":837
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":837
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *             # Until ticket #99 is fixed, use integers to avoid warnings
  *             if   t == NPY_BYTE:        f[0] =  98 #"b"             # <<<<<<<<<<<<<<
  *             elif t == NPY_UBYTE:       f[0] =  66 #"B"
  *             elif t == NPY_SHORT:       f[0] = 104 #"h"
  */
-      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_BYTE); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 837, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_BYTE); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 837, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 837, __pyx_L1_error)
+      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 837, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 837, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 837, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 98;
@@ -9784,18 +9977,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":838
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":838
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             # Until ticket #99 is fixed, use integers to avoid warnings
  *             if   t == NPY_BYTE:        f[0] =  98 #"b"
  *             elif t == NPY_UBYTE:       f[0] =  66 #"B"             # <<<<<<<<<<<<<<
  *             elif t == NPY_SHORT:       f[0] = 104 #"h"
  *             elif t == NPY_USHORT:      f[0] =  72 #"H"
  */
-      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_UBYTE); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 838, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_UBYTE); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 838, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 838, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 838, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 838, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 838, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 66;
@@ -9806,18 +9999,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":839
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":839
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             if   t == NPY_BYTE:        f[0] =  98 #"b"
  *             elif t == NPY_UBYTE:       f[0] =  66 #"B"
  *             elif t == NPY_SHORT:       f[0] = 104 #"h"             # <<<<<<<<<<<<<<
  *             elif t == NPY_USHORT:      f[0] =  72 #"H"
  *             elif t == NPY_INT:         f[0] = 105 #"i"
  */
-      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_SHORT); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 839, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_SHORT); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 839, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 839, __pyx_L1_error)
+      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 839, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 839, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 839, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 0x68;
@@ -9828,18 +10021,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":840
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":840
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_UBYTE:       f[0] =  66 #"B"
  *             elif t == NPY_SHORT:       f[0] = 104 #"h"
  *             elif t == NPY_USHORT:      f[0] =  72 #"H"             # <<<<<<<<<<<<<<
  *             elif t == NPY_INT:         f[0] = 105 #"i"
  *             elif t == NPY_UINT:        f[0] =  73 #"I"
  */
-      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_USHORT); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 840, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_USHORT); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 840, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 840, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 840, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 840, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 840, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 72;
@@ -9850,18 +10043,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":841
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":841
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_SHORT:       f[0] = 104 #"h"
  *             elif t == NPY_USHORT:      f[0] =  72 #"H"
  *             elif t == NPY_INT:         f[0] = 105 #"i"             # <<<<<<<<<<<<<<
  *             elif t == NPY_UINT:        f[0] =  73 #"I"
  *             elif t == NPY_LONG:        f[0] = 108 #"l"
  */
-      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_INT); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 841, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_INT); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 841, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 841, __pyx_L1_error)
+      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 841, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 841, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 841, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 0x69;
@@ -9872,18 +10065,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":842
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":842
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_USHORT:      f[0] =  72 #"H"
  *             elif t == NPY_INT:         f[0] = 105 #"i"
  *             elif t == NPY_UINT:        f[0] =  73 #"I"             # <<<<<<<<<<<<<<
  *             elif t == NPY_LONG:        f[0] = 108 #"l"
  *             elif t == NPY_ULONG:       f[0] = 76  #"L"
  */
-      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_UINT); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 842, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_UINT); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 842, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 842, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 842, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 842, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 842, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 73;
@@ -9894,18 +10087,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":843
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":843
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_INT:         f[0] = 105 #"i"
  *             elif t == NPY_UINT:        f[0] =  73 #"I"
  *             elif t == NPY_LONG:        f[0] = 108 #"l"             # <<<<<<<<<<<<<<
  *             elif t == NPY_ULONG:       f[0] = 76  #"L"
  *             elif t == NPY_LONGLONG:    f[0] = 113 #"q"
  */
-      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_LONG); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 843, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_LONG); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 843, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 843, __pyx_L1_error)
+      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 843, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 843, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 843, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 0x6C;
@@ -9916,18 +10109,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":844
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":844
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_UINT:        f[0] =  73 #"I"
  *             elif t == NPY_LONG:        f[0] = 108 #"l"
  *             elif t == NPY_ULONG:       f[0] = 76  #"L"             # <<<<<<<<<<<<<<
  *             elif t == NPY_LONGLONG:    f[0] = 113 #"q"
  *             elif t == NPY_ULONGLONG:   f[0] = 81  #"Q"
  */
-      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_ULONG); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 844, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_ULONG); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 844, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 844, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 844, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 844, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 844, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 76;
@@ -9938,18 +10131,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":845
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":845
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_LONG:        f[0] = 108 #"l"
  *             elif t == NPY_ULONG:       f[0] = 76  #"L"
  *             elif t == NPY_LONGLONG:    f[0] = 113 #"q"             # <<<<<<<<<<<<<<
  *             elif t == NPY_ULONGLONG:   f[0] = 81  #"Q"
  *             elif t == NPY_FLOAT:       f[0] = 102 #"f"
  */
-      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_LONGLONG); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 845, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_LONGLONG); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 845, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 845, __pyx_L1_error)
+      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 845, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 845, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 845, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 0x71;
@@ -9960,18 +10153,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":846
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":846
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_ULONG:       f[0] = 76  #"L"
  *             elif t == NPY_LONGLONG:    f[0] = 113 #"q"
  *             elif t == NPY_ULONGLONG:   f[0] = 81  #"Q"             # <<<<<<<<<<<<<<
  *             elif t == NPY_FLOAT:       f[0] = 102 #"f"
  *             elif t == NPY_DOUBLE:      f[0] = 100 #"d"
  */
-      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_ULONGLONG); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 846, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_ULONGLONG); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 846, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 846, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 846, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 846, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 846, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 81;
@@ -9982,18 +10175,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":847
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":847
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_LONGLONG:    f[0] = 113 #"q"
  *             elif t == NPY_ULONGLONG:   f[0] = 81  #"Q"
  *             elif t == NPY_FLOAT:       f[0] = 102 #"f"             # <<<<<<<<<<<<<<
  *             elif t == NPY_DOUBLE:      f[0] = 100 #"d"
  *             elif t == NPY_LONGDOUBLE:  f[0] = 103 #"g"
  */
-      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_FLOAT); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 847, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_FLOAT); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 847, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 847, __pyx_L1_error)
+      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 847, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 847, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 847, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 0x66;
@@ -10004,18 +10197,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":848
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":848
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_ULONGLONG:   f[0] = 81  #"Q"
  *             elif t == NPY_FLOAT:       f[0] = 102 #"f"
  *             elif t == NPY_DOUBLE:      f[0] = 100 #"d"             # <<<<<<<<<<<<<<
  *             elif t == NPY_LONGDOUBLE:  f[0] = 103 #"g"
  *             elif t == NPY_CFLOAT:      f[0] = 90; f[1] = 102; f += 1 # Zf
  */
-      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_DOUBLE); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 848, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_DOUBLE); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 848, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 848, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 848, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 848, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 848, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 0x64;
@@ -10026,18 +10219,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":849
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":849
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_FLOAT:       f[0] = 102 #"f"
  *             elif t == NPY_DOUBLE:      f[0] = 100 #"d"
  *             elif t == NPY_LONGDOUBLE:  f[0] = 103 #"g"             # <<<<<<<<<<<<<<
  *             elif t == NPY_CFLOAT:      f[0] = 90; f[1] = 102; f += 1 # Zf
  *             elif t == NPY_CDOUBLE:     f[0] = 90; f[1] = 100; f += 1 # Zd
  */
-      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_LONGDOUBLE); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 849, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_LONGDOUBLE); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 849, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 849, __pyx_L1_error)
+      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 849, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 849, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 849, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 0x67;
@@ -10048,18 +10241,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":850
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":850
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_DOUBLE:      f[0] = 100 #"d"
  *             elif t == NPY_LONGDOUBLE:  f[0] = 103 #"g"
  *             elif t == NPY_CFLOAT:      f[0] = 90; f[1] = 102; f += 1 # Zf             # <<<<<<<<<<<<<<
  *             elif t == NPY_CDOUBLE:     f[0] = 90; f[1] = 100; f += 1 # Zd
  *             elif t == NPY_CLONGDOUBLE: f[0] = 90; f[1] = 103; f += 1 # Zg
  */
-      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_CFLOAT); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 850, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_CFLOAT); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 850, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 850, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 850, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 850, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 850, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 90;
@@ -10072,18 +10265,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":851
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":851
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_LONGDOUBLE:  f[0] = 103 #"g"
  *             elif t == NPY_CFLOAT:      f[0] = 90; f[1] = 102; f += 1 # Zf
  *             elif t == NPY_CDOUBLE:     f[0] = 90; f[1] = 100; f += 1 # Zd             # <<<<<<<<<<<<<<
  *             elif t == NPY_CLONGDOUBLE: f[0] = 90; f[1] = 103; f += 1 # Zg
  *             elif t == NPY_OBJECT:      f[0] = 79 #"O"
  */
-      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_CDOUBLE); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 851, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_CDOUBLE); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 851, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 851, __pyx_L1_error)
+      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 851, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 851, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 851, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 90;
@@ -10096,18 +10289,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":852
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":852
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_CFLOAT:      f[0] = 90; f[1] = 102; f += 1 # Zf
  *             elif t == NPY_CDOUBLE:     f[0] = 90; f[1] = 100; f += 1 # Zd
  *             elif t == NPY_CLONGDOUBLE: f[0] = 90; f[1] = 103; f += 1 # Zg             # <<<<<<<<<<<<<<
  *             elif t == NPY_OBJECT:      f[0] = 79 #"O"
  *             else:
  */
-      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_CLONGDOUBLE); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 852, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_CLONGDOUBLE); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 852, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 852, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_t, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 852, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 852, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 852, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (__pyx_t_6) {
         (__pyx_v_f[0]) = 90;
@@ -10120,18 +10313,18 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":853
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":853
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_CDOUBLE:     f[0] = 90; f[1] = 100; f += 1 # Zd
  *             elif t == NPY_CLONGDOUBLE: f[0] = 90; f[1] = 103; f += 1 # Zg
  *             elif t == NPY_OBJECT:      f[0] = 79 #"O"             # <<<<<<<<<<<<<<
  *             else:
  *                 raise ValueError(u"unknown dtype code in numpy.pxd (%d)" % t)
  */
-      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_OBJECT); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 853, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_enum__NPY_TYPES(NPY_OBJECT); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 853, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 853, __pyx_L1_error)
+      __pyx_t_3 = PyObject_RichCompare(__pyx_v_t, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 853, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(1, 853, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(2, 853, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (likely(__pyx_t_6)) {
         (__pyx_v_f[0]) = 79;
@@ -10142,7 +10335,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":855
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":855
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             elif t == NPY_OBJECT:      f[0] = 79 #"O"
  *             else:
  *                 raise ValueError(u"unknown dtype code in numpy.pxd (%d)" % t)             # <<<<<<<<<<<<<<
@@ -10150,14 +10343,14 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *         else:
  */
       /*else*/ {
-        __pyx_t_3 = PyUnicode_Format(__pyx_kp_u_unknown_dtype_code_in_numpy_pxd, __pyx_v_t); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 855, __pyx_L1_error)
+        __pyx_t_3 = PyUnicode_Format(__pyx_kp_u_unknown_dtype_code_in_numpy_pxd, __pyx_v_t); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 855, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 855, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 855, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_Raise(__pyx_t_4, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __PYX_ERR(1, 855, __pyx_L1_error)
+        __PYX_ERR(2, 855, __pyx_L1_error)
       }
       __pyx_L15:;
 
@@ -10165,7 +10358,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":856
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":856
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             else:
  *                 raise ValueError(u"unknown dtype code in numpy.pxd (%d)" % t)
  *             f += 1             # <<<<<<<<<<<<<<
@@ -10178,7 +10371,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":831
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":831
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         offset[0] += child.itemsize
  * 
  *         if not PyDataType_HASFIELDS(child):             # <<<<<<<<<<<<<<
@@ -10192,7 +10385,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":860
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":860
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             # Cython ignores struct boundary information ("T{...}"),
  *             # so don't output it
  *             f = _util_dtypestring(child, f, end, offset)             # <<<<<<<<<<<<<<
@@ -10200,7 +10393,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  * 
  */
     /*else*/ {
-      __pyx_t_9 = __pyx_f_5numpy__util_dtypestring(__pyx_v_child, __pyx_v_f, __pyx_v_end, __pyx_v_offset); if (unlikely(__pyx_t_9 == ((char *)NULL))) __PYX_ERR(1, 860, __pyx_L1_error)
+      __pyx_t_9 = __pyx_f_5numpy__util_dtypestring(__pyx_v_child, __pyx_v_f, __pyx_v_end, __pyx_v_offset); if (unlikely(__pyx_t_9 == ((char *)NULL))) __PYX_ERR(2, 860, __pyx_L1_error)
       __pyx_v_f = __pyx_t_9;
     }
     __pyx_L13:;
@@ -10209,7 +10402,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":805
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":805
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     cdef tuple fields
  * 
  *     for childname in descr.names:             # <<<<<<<<<<<<<<
@@ -10223,7 +10416,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":861
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":861
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             # so don't output it
  *             f = _util_dtypestring(child, f, end, offset)
  *     return f             # <<<<<<<<<<<<<<
@@ -10237,7 +10430,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":796
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":796
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         return ()
  * 
  * cdef inline char* _util_dtypestring(dtype descr, char* f, char* end, int* offset) except NULL:             # <<<<<<<<<<<<<<
@@ -10266,7 +10459,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":977
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":977
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -10285,7 +10478,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":979
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":979
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * cdef inline void set_array_base(ndarray arr, object base):
  *      cdef PyObject* baseptr
  *      if base is None:             # <<<<<<<<<<<<<<
@@ -10300,7 +10493,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":980
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":980
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *      cdef PyObject* baseptr
  *      if base is None:
  *          baseptr = NULL             # <<<<<<<<<<<<<<
@@ -10313,7 +10506,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":979
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":979
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * cdef inline void set_array_base(ndarray arr, object base):
  *      cdef PyObject* baseptr
  *      if base is None:             # <<<<<<<<<<<<<<
@@ -10327,7 +10520,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":982
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":982
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *          baseptr = NULL
  *      else:
  *          Py_INCREF(base) # important to do this before decref below!             # <<<<<<<<<<<<<<
@@ -10341,7 +10534,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":983
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":983
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *      else:
  *          Py_INCREF(base) # important to do this before decref below!
  *          baseptr = <PyObject*>base             # <<<<<<<<<<<<<<
@@ -10356,7 +10549,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":984
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":984
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *          Py_INCREF(base) # important to do this before decref below!
  *          baseptr = <PyObject*>base
  *      Py_XDECREF(arr.base)             # <<<<<<<<<<<<<<
@@ -10369,7 +10562,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":985
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":985
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *          baseptr = <PyObject*>base
  *      Py_XDECREF(arr.base)
  *      arr.base = baseptr             # <<<<<<<<<<<<<<
@@ -10382,7 +10575,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":977
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":977
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -10398,7 +10591,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":987
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":987
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *      arr.base = baseptr
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -10416,7 +10609,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":988
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":988
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     if arr.base is NULL:             # <<<<<<<<<<<<<<
@@ -10430,7 +10623,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":989
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":989
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * cdef inline object get_array_base(ndarray arr):
  *     if arr.base is NULL:
  *         return None             # <<<<<<<<<<<<<<
@@ -10445,7 +10638,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":988
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":988
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     if arr.base is NULL:             # <<<<<<<<<<<<<<
@@ -10458,7 +10651,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":991
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":991
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         return None
  *     else:
  *         return <object>arr.base             # <<<<<<<<<<<<<<
@@ -10476,7 +10669,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":987
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":987
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *      arr.base = baseptr
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -10495,7 +10688,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":996
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":996
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -10520,7 +10713,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":997
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":997
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -10540,20 +10733,20 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":998
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":998
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * cdef inline int import_array() except -1:
  *     try:
  *         _import_array()             # <<<<<<<<<<<<<<
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")
  */
-      __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 998, __pyx_L3_error)
+      __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 998, __pyx_L3_error)
 
 <<<<<<< HEAD
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":997
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":997
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -10571,7 +10764,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":999
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":999
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     try:
  *         _import_array()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -10581,7 +10774,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 999, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(2, 999, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
@@ -10590,18 +10783,18 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1000
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1000
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         _import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_umath() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1000, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 1000, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(1, 1000, __pyx_L5_except_error)
+      __PYX_ERR(2, 1000, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
@@ -10610,7 +10803,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":997
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":997
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -10629,7 +10822,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":996
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":996
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -10656,7 +10849,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1002
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1002
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -10681,7 +10874,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1003
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1003
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -10701,20 +10894,20 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1004
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1004
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * cdef inline int import_umath() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")
  */
-      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 1004, __pyx_L3_error)
+      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 1004, __pyx_L3_error)
 
 <<<<<<< HEAD
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1003
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1003
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -10732,7 +10925,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1005
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1005
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -10742,7 +10935,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_umath", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 1005, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(2, 1005, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
@@ -10751,18 +10944,18 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1006
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1006
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_ufunc() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1006, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 1006, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(1, 1006, __pyx_L5_except_error)
+      __PYX_ERR(2, 1006, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
@@ -10771,7 +10964,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1003
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1003
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -10790,7 +10983,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1002
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1002
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -10817,7 +11010,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
 /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1008
 =======
 /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1008
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -10842,7 +11035,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1009
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1009
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -10862,20 +11055,20 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1010
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1010
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * cdef inline int import_ufunc() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")
  */
-      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 1010, __pyx_L3_error)
+      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 1010, __pyx_L3_error)
 
 <<<<<<< HEAD
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1009
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1009
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -10893,7 +11086,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1011
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1011
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -10902,7 +11095,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_ufunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 1011, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(2, 1011, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
@@ -10911,16 +11104,16 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
       /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1012
 =======
       /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1012
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1012, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 1012, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(1, 1012, __pyx_L5_except_error)
+      __PYX_ERR(2, 1012, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
@@ -10929,7 +11122,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1009
 =======
     /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1009
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -10948,7 +11141,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1008
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1008
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -10970,6 +11163,127 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
+
+static PyObject *__pyx_tp_new_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *p;
+  PyObject *o;
+  if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
+    o = (*t->tp_alloc)(t, 0);
+  } else {
+    o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
+  }
+  if (unlikely(!o)) return 0;
+  p = ((struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *)o);
+  p->mem = ((struct __pyx_obj_5cymem_5cymem_Pool *)Py_None); Py_INCREF(Py_None);
+  p->use_angular = Py_None; Py_INCREF(Py_None);
+  return o;
+}
+
+static void __pyx_tp_dealloc_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint(PyObject *o) {
+  struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *p = (struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *)o;
+  #if CYTHON_USE_TP_FINALIZE
+  if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && !_PyGC_FINALIZED(o)) {
+    if (PyObject_CallFinalizerFromDealloc(o)) return;
+  }
+  #endif
+  PyObject_GC_UnTrack(o);
+  Py_CLEAR(p->mem);
+  Py_CLEAR(p->use_angular);
+  (*Py_TYPE(o)->tp_free)(o);
+}
+
+static int __pyx_tp_traverse_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint(PyObject *o, visitproc v, void *a) {
+  int e;
+  struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *p = (struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *)o;
+  if (p->mem) {
+    e = (*v)(((PyObject *)p->mem), a); if (e) return e;
+  }
+  if (p->use_angular) {
+    e = (*v)(p->use_angular, a); if (e) return e;
+  }
+  return 0;
+}
+
+static int __pyx_tp_clear_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint(PyObject *o) {
+  PyObject* tmp;
+  struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *p = (struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint *)o;
+  tmp = ((PyObject*)p->mem);
+  p->mem = ((struct __pyx_obj_5cymem_5cymem_Pool *)Py_None); Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  tmp = ((PyObject*)p->use_angular);
+  p->use_angular = Py_None; Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  return 0;
+}
+
+static PyMethodDef __pyx_methods_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint[] = {
+  {"get_Nelements", (PyCFunction)__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_3get_Nelements, METH_NOARGS, 0},
+  {"get_feature", (PyCFunction)__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_5get_feature, METH_O, __pyx_doc_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_4get_feature},
+  {"get_featureMat", (PyCFunction)__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_7get_featureMat, METH_O, 0},
+  {"get_featureGradient", (PyCFunction)__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_9get_featureGradient, METH_O, 0},
+  {"get_all_featureGradients", (PyCFunction)__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_11get_all_featureGradients, METH_O, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_13__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_15__setstate_cython__, METH_O, 0},
+  {0, 0, 0, 0}
+};
+
+static PyTypeObject __pyx_type_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "featureCalculators.angular_fingerprintFeature_cy.Angular_Fingerprint", /*tp_name*/
+  sizeof(struct __pyx_obj_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint, /*tp_dealloc*/
+  0, /*tp_print*/
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #endif
+  #if PY_MAJOR_VERSION >= 3
+  0, /*tp_as_async*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
+  " comparator for construction of angular fingerprints\n    ", /*tp_doc*/
+  __pyx_tp_traverse_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint, /*tp_traverse*/
+  __pyx_tp_clear_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  __pyx_methods_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint, /*tp_methods*/
+  0, /*tp_members*/
+  0, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  __pyx_pw_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_1__init__, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+};
 
 static PyMethodDef __pyx_methods[] = {
   {0, 0, 0, 0}
@@ -11008,154 +11322,88 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
-  {&__pyx_n_s_Angular_Fingerprint, __pyx_k_Angular_Fingerprint, sizeof(__pyx_k_Angular_Fingerprint), 0, 0, 1, 1},
-  {&__pyx_n_s_Angular_Fingerprint___init, __pyx_k_Angular_Fingerprint___init, sizeof(__pyx_k_Angular_Fingerprint___init), 0, 0, 1, 1},
-  {&__pyx_n_s_Angular_Fingerprint_get_all_feat, __pyx_k_Angular_Fingerprint_get_all_feat, sizeof(__pyx_k_Angular_Fingerprint_get_all_feat), 0, 0, 1, 1},
-  {&__pyx_n_s_Angular_Fingerprint_get_feature, __pyx_k_Angular_Fingerprint_get_feature, sizeof(__pyx_k_Angular_Fingerprint_get_feature), 0, 0, 1, 1},
-  {&__pyx_n_s_Angular_Fingerprint_get_featureG, __pyx_k_Angular_Fingerprint_get_featureG, sizeof(__pyx_k_Angular_Fingerprint_get_featureG), 0, 0, 1, 1},
-  {&__pyx_n_s_Angular_Fingerprint_get_featureM, __pyx_k_Angular_Fingerprint_get_featureM, sizeof(__pyx_k_Angular_Fingerprint_get_featureM), 0, 0, 1, 1},
   {&__pyx_kp_u_Format_string_allocated_too_shor, __pyx_k_Format_string_allocated_too_shor, sizeof(__pyx_k_Format_string_allocated_too_shor), 0, 1, 0, 0},
   {&__pyx_kp_u_Format_string_allocated_too_shor_2, __pyx_k_Format_string_allocated_too_shor_2, sizeof(__pyx_k_Format_string_allocated_too_shor_2), 0, 1, 0, 0},
   {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
-  {&__pyx_n_s_Natoms, __pyx_k_Natoms, sizeof(__pyx_k_Natoms), 0, 0, 1, 1},
-  {&__pyx_n_s_Nbins1, __pyx_k_Nbins1, sizeof(__pyx_k_Nbins1), 0, 0, 1, 1},
+  {&__pyx_kp_s_Incompatible_checksums_s_vs_0x85, __pyx_k_Incompatible_checksums_s_vs_0x85, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x85), 0, 0, 1, 0},
   {&__pyx_n_s_Nbins2, __pyx_k_Nbins2, sizeof(__pyx_k_Nbins2), 0, 0, 1, 1},
-  {&__pyx_n_s_Nelements, __pyx_k_Nelements, sizeof(__pyx_k_Nelements), 0, 0, 1, 1},
-  {&__pyx_n_s_Nelements_2body, __pyx_k_Nelements_2body, sizeof(__pyx_k_Nelements_2body), 0, 0, 1, 1},
-  {&__pyx_n_s_Nelements_3body, __pyx_k_Nelements_3body, sizeof(__pyx_k_Nelements_3body), 0, 0, 1, 1},
   {&__pyx_kp_u_Non_native_byte_order_not_suppor, __pyx_k_Non_native_byte_order_not_suppor, sizeof(__pyx_k_Non_native_byte_order_not_suppor), 0, 1, 0, 0},
+  {&__pyx_n_s_PickleError, __pyx_k_PickleError, sizeof(__pyx_k_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_Rc1, __pyx_k_Rc1, sizeof(__pyx_k_Rc1), 0, 0, 1, 1},
   {&__pyx_n_s_Rc2, __pyx_k_Rc2, sizeof(__pyx_k_Rc2), 0, 0, 1, 1},
-  {&__pyx_n_s_Rij, __pyx_k_Rij, sizeof(__pyx_k_Rij), 0, 0, 1, 1},
-  {&__pyx_n_s_RijVec, __pyx_k_RijVec, sizeof(__pyx_k_RijVec), 0, 0, 1, 1},
-  {&__pyx_n_s_Rik, __pyx_k_Rik, sizeof(__pyx_k_Rik), 0, 0, 1, 1},
-  {&__pyx_n_s_RikVec, __pyx_k_RikVec, sizeof(__pyx_k_RikVec), 0, 0, 1, 1},
   {&__pyx_n_s_RuntimeError, __pyx_k_RuntimeError, sizeof(__pyx_k_RuntimeError), 0, 0, 1, 1},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
-  {&__pyx_n_s_a, __pyx_k_a, sizeof(__pyx_k_a), 0, 0, 1, 1},
-  {&__pyx_n_s_angle, __pyx_k_angle, sizeof(__pyx_k_angle), 0, 0, 1, 1},
-  {&__pyx_n_s_angle_grad_i, __pyx_k_angle_grad_i, sizeof(__pyx_k_angle_grad_i), 0, 0, 1, 1},
-  {&__pyx_n_s_angle_grad_j, __pyx_k_angle_grad_j, sizeof(__pyx_k_angle_grad_j), 0, 0, 1, 1},
-  {&__pyx_n_s_angle_grad_k, __pyx_k_angle_grad_k, sizeof(__pyx_k_angle_grad_k), 0, 0, 1, 1},
-  {&__pyx_n_s_arg_low, __pyx_k_arg_low, sizeof(__pyx_k_arg_low), 0, 0, 1, 1},
-  {&__pyx_n_s_arg_up, __pyx_k_arg_up, sizeof(__pyx_k_arg_up), 0, 0, 1, 1},
   {&__pyx_n_s_argv, __pyx_k_argv, sizeof(__pyx_k_argv), 0, 0, 1, 1},
   {&__pyx_n_s_array, __pyx_k_array, sizeof(__pyx_k_array), 0, 0, 1, 1},
   {&__pyx_n_s_atoms, __pyx_k_atoms, sizeof(__pyx_k_atoms), 0, 0, 1, 1},
-  {&__pyx_n_s_atoms_list, __pyx_k_atoms_list, sizeof(__pyx_k_atoms_list), 0, 0, 1, 1},
-  {&__pyx_n_s_bin_index, __pyx_k_bin_index, sizeof(__pyx_k_bin_index), 0, 0, 1, 1},
-  {&__pyx_n_s_binpos, __pyx_k_binpos, sizeof(__pyx_k_binpos), 0, 0, 1, 1},
   {&__pyx_n_s_binwidth1, __pyx_k_binwidth1, sizeof(__pyx_k_binwidth1), 0, 0, 1, 1},
-  {&__pyx_n_s_binwidth2, __pyx_k_binwidth2, sizeof(__pyx_k_binwidth2), 0, 0, 1, 1},
-  {&__pyx_n_s_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 0, 1, 1},
   {&__pyx_n_s_cdist, __pyx_k_cdist, sizeof(__pyx_k_cdist), 0, 0, 1, 1},
   {&__pyx_n_s_ceil, __pyx_k_ceil, sizeof(__pyx_k_ceil), 0, 0, 1, 1},
-  {&__pyx_n_s_cell, __pyx_k_cell, sizeof(__pyx_k_cell), 0, 0, 1, 1},
-  {&__pyx_n_s_center_bin, __pyx_k_center_bin, sizeof(__pyx_k_center_bin), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
-  {&__pyx_kp_s_comparator_for_construction_of, __pyx_k_comparator_for_construction_of, sizeof(__pyx_k_comparator_for_construction_of), 0, 0, 1, 0},
-  {&__pyx_n_s_cond_ij, __pyx_k_cond_ij, sizeof(__pyx_k_cond_ij), 0, 0, 1, 1},
-  {&__pyx_n_s_cond_ik, __pyx_k_cond_ik, sizeof(__pyx_k_cond_ik), 0, 0, 1, 1},
-  {&__pyx_n_s_cos_angle, __pyx_k_cos_angle, sizeof(__pyx_k_cos_angle), 0, 0, 1, 1},
   {&__pyx_n_s_cwd, __pyx_k_cwd, sizeof(__pyx_k_cwd), 0, 0, 1, 1},
-  {&__pyx_n_s_dim, __pyx_k_dim, sizeof(__pyx_k_dim), 0, 0, 1, 1},
-  {&__pyx_n_s_doc, __pyx_k_doc, sizeof(__pyx_k_doc), 0, 0, 1, 1},
+  {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
   {&__pyx_n_s_erf, __pyx_k_erf, sizeof(__pyx_k_erf), 0, 0, 1, 1},
-  {&__pyx_n_s_erfarg_low, __pyx_k_erfarg_low, sizeof(__pyx_k_erfarg_low), 0, 0, 1, 1},
-  {&__pyx_n_s_erfarg_up, __pyx_k_erfarg_up, sizeof(__pyx_k_erfarg_up), 0, 0, 1, 1},
   {&__pyx_n_s_eta, __pyx_k_eta, sizeof(__pyx_k_eta), 0, 0, 1, 1},
-  {&__pyx_n_s_fc_grad_ij, __pyx_k_fc_grad_ij, sizeof(__pyx_k_fc_grad_ij), 0, 0, 1, 1},
-  {&__pyx_n_s_fc_grad_ik, __pyx_k_fc_grad_ik, sizeof(__pyx_k_fc_grad_ik), 0, 0, 1, 1},
-  {&__pyx_n_s_fc_ij, __pyx_k_fc_ij, sizeof(__pyx_k_fc_ij), 0, 0, 1, 1},
-  {&__pyx_n_s_fc_ik, __pyx_k_fc_ik, sizeof(__pyx_k_fc_ik), 0, 0, 1, 1},
-  {&__pyx_n_s_feature1, __pyx_k_feature1, sizeof(__pyx_k_feature1), 0, 0, 1, 1},
-  {&__pyx_n_s_feature1_np, __pyx_k_feature1_np, sizeof(__pyx_k_feature1_np), 0, 0, 1, 1},
-  {&__pyx_n_s_feature2, __pyx_k_feature2, sizeof(__pyx_k_feature2), 0, 0, 1, 1},
-  {&__pyx_n_s_feature2_np, __pyx_k_feature2_np, sizeof(__pyx_k_feature2_np), 0, 0, 1, 1},
   {&__pyx_n_s_featureCalculators_angular_finge, __pyx_k_featureCalculators_angular_finge, sizeof(__pyx_k_featureCalculators_angular_finge), 0, 0, 1, 1},
-  {&__pyx_kp_s_featureCalculators_angular_finge_2, __pyx_k_featureCalculators_angular_finge_2, sizeof(__pyx_k_featureCalculators_angular_finge_2), 0, 0, 1, 0},
-  {&__pyx_n_s_featureMat, __pyx_k_featureMat, sizeof(__pyx_k_featureMat), 0, 0, 1, 1},
-  {&__pyx_n_s_feature_grad1, __pyx_k_feature_grad1, sizeof(__pyx_k_feature_grad1), 0, 0, 1, 1},
-  {&__pyx_n_s_feature_grad1_np, __pyx_k_feature_grad1_np, sizeof(__pyx_k_feature_grad1_np), 0, 0, 1, 1},
-  {&__pyx_n_s_feature_grad2, __pyx_k_feature_grad2, sizeof(__pyx_k_feature_grad2), 0, 0, 1, 1},
-  {&__pyx_n_s_feature_grad2_np, __pyx_k_feature_grad2_np, sizeof(__pyx_k_feature_grad2_np), 0, 0, 1, 1},
-  {&__pyx_n_s_feature_grad_np, __pyx_k_feature_grad_np, sizeof(__pyx_k_feature_grad_np), 0, 0, 1, 1},
-  {&__pyx_n_s_feature_grads, __pyx_k_feature_grads, sizeof(__pyx_k_feature_grads), 0, 0, 1, 1},
-  {&__pyx_n_s_feature_np, __pyx_k_feature_np, sizeof(__pyx_k_feature_np), 0, 0, 1, 1},
   {&__pyx_n_s_gamma, __pyx_k_gamma, sizeof(__pyx_k_gamma), 0, 0, 1, 1},
-  {&__pyx_n_s_get_all_featureGradients, __pyx_k_get_all_featureGradients, sizeof(__pyx_k_get_all_featureGradients), 0, 0, 1, 1},
   {&__pyx_n_s_get_cell, __pyx_k_get_cell, sizeof(__pyx_k_get_cell), 0, 0, 1, 1},
   {&__pyx_n_s_get_feature, __pyx_k_get_feature, sizeof(__pyx_k_get_feature), 0, 0, 1, 1},
   {&__pyx_n_s_get_featureGradient, __pyx_k_get_featureGradient, sizeof(__pyx_k_get_featureGradient), 0, 0, 1, 1},
-  {&__pyx_n_s_get_featureMat, __pyx_k_get_featureMat, sizeof(__pyx_k_get_featureMat), 0, 0, 1, 1},
   {&__pyx_n_s_get_number_of_atoms, __pyx_k_get_number_of_atoms, sizeof(__pyx_k_get_number_of_atoms), 0, 0, 1, 1},
   {&__pyx_n_s_get_positions, __pyx_k_get_positions, sizeof(__pyx_k_get_positions), 0, 0, 1, 1},
   {&__pyx_n_s_get_volume, __pyx_k_get_volume, sizeof(__pyx_k_get_volume), 0, 0, 1, 1},
   {&__pyx_n_s_getcwd, __pyx_k_getcwd, sizeof(__pyx_k_getcwd), 0, 0, 1, 1},
-  {&__pyx_n_s_grad_index, __pyx_k_grad_index, sizeof(__pyx_k_grad_index), 0, 0, 1, 1},
-  {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
+  {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
-  {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
   {&__pyx_n_s_itertools, __pyx_k_itertools, sizeof(__pyx_k_itertools), 0, 0, 1, 1},
-  {&__pyx_n_s_j, __pyx_k_j, sizeof(__pyx_k_j), 0, 0, 1, 1},
-  {&__pyx_n_s_k, __pyx_k_k, sizeof(__pyx_k_k), 0, 0, 1, 1},
-  {&__pyx_n_s_m, __pyx_k_m, sizeof(__pyx_k_m), 0, 0, 1, 1},
-  {&__pyx_n_s_m1, __pyx_k_m1, sizeof(__pyx_k_m1), 0, 0, 1, 1},
-  {&__pyx_n_s_m2, __pyx_k_m2, sizeof(__pyx_k_m2), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_math, __pyx_k_math, sizeof(__pyx_k_math), 0, 0, 1, 1},
-  {&__pyx_n_s_maxbin_lim, __pyx_k_maxbin_lim, sizeof(__pyx_k_maxbin_lim), 0, 0, 1, 1},
-  {&__pyx_n_s_mem, __pyx_k_mem, sizeof(__pyx_k_mem), 0, 0, 1, 1},
-  {&__pyx_n_s_metaclass, __pyx_k_metaclass, sizeof(__pyx_k_metaclass), 0, 0, 1, 1},
-  {&__pyx_n_s_minbin_lim, __pyx_k_minbin_lim, sizeof(__pyx_k_minbin_lim), 0, 0, 1, 1},
-  {&__pyx_n_s_module, __pyx_k_module, sizeof(__pyx_k_module), 0, 0, 1, 1},
-  {&__pyx_n_s_n, __pyx_k_n, sizeof(__pyx_k_n), 0, 0, 1, 1},
+  {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_kp_u_ndarray_is_not_C_contiguous, __pyx_k_ndarray_is_not_C_contiguous, sizeof(__pyx_k_ndarray_is_not_C_contiguous), 0, 1, 0, 0},
   {&__pyx_kp_u_ndarray_is_not_Fortran_contiguou, __pyx_k_ndarray_is_not_Fortran_contiguou, sizeof(__pyx_k_ndarray_is_not_Fortran_contiguou), 0, 1, 0, 0},
-  {&__pyx_n_s_newbin, __pyx_k_newbin, sizeof(__pyx_k_newbin), 0, 0, 1, 1},
-  {&__pyx_n_s_normalization, __pyx_k_normalization, sizeof(__pyx_k_normalization), 0, 0, 1, 1},
+  {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
   {&__pyx_n_s_np, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
   {&__pyx_n_s_nsigma, __pyx_k_nsigma, sizeof(__pyx_k_nsigma), 0, 0, 1, 1},
-  {&__pyx_n_s_num_pairs, __pyx_k_num_pairs, sizeof(__pyx_k_num_pairs), 0, 0, 1, 1},
   {&__pyx_n_s_numpy, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
   {&__pyx_kp_s_numpy_core_multiarray_failed_to, __pyx_k_numpy_core_multiarray_failed_to, sizeof(__pyx_k_numpy_core_multiarray_failed_to), 0, 0, 1, 0},
   {&__pyx_kp_s_numpy_core_umath_failed_to_impor, __pyx_k_numpy_core_umath_failed_to_impor, sizeof(__pyx_k_numpy_core_umath_failed_to_impor), 0, 0, 1, 0},
-  {&__pyx_n_s_object, __pyx_k_object, sizeof(__pyx_k_object), 0, 0, 1, 1},
   {&__pyx_n_s_os, __pyx_k_os, sizeof(__pyx_k_os), 0, 0, 1, 1},
   {&__pyx_n_s_pi, __pyx_k_pi, sizeof(__pyx_k_pi), 0, 0, 1, 1},
-  {&__pyx_n_s_pos, __pyx_k_pos, sizeof(__pyx_k_pos), 0, 0, 1, 1},
-  {&__pyx_n_s_pos_np, __pyx_k_pos_np, sizeof(__pyx_k_pos_np), 0, 0, 1, 1},
-  {&__pyx_n_s_prepare, __pyx_k_prepare, sizeof(__pyx_k_prepare), 0, 0, 1, 1},
+  {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
   {&__pyx_n_s_product, __pyx_k_product, sizeof(__pyx_k_product), 0, 0, 1, 1},
+  {&__pyx_n_s_pyx_PickleError, __pyx_k_pyx_PickleError, sizeof(__pyx_k_pyx_PickleError), 0, 0, 1, 1},
+  {&__pyx_n_s_pyx_checksum, __pyx_k_pyx_checksum, sizeof(__pyx_k_pyx_checksum), 0, 0, 1, 1},
+  {&__pyx_n_s_pyx_result, __pyx_k_pyx_result, sizeof(__pyx_k_pyx_result), 0, 0, 1, 1},
+  {&__pyx_n_s_pyx_state, __pyx_k_pyx_state, sizeof(__pyx_k_pyx_state), 0, 0, 1, 1},
+  {&__pyx_n_s_pyx_type, __pyx_k_pyx_type, sizeof(__pyx_k_pyx_type), 0, 0, 1, 1},
+  {&__pyx_n_s_pyx_unpickle_Angular_Fingerpri, __pyx_k_pyx_unpickle_Angular_Fingerpri, sizeof(__pyx_k_pyx_unpickle_Angular_Fingerpri), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
-  {&__pyx_n_s_qualname, __pyx_k_qualname, sizeof(__pyx_k_qualname), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
+  {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
+  {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
+  {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
   {&__pyx_n_s_scipy_spatial_distance, __pyx_k_scipy_spatial_distance, sizeof(__pyx_k_scipy_spatial_distance), 0, 0, 1, 1},
-  {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
+  {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
+  {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_sigma1, __pyx_k_sigma1, sizeof(__pyx_k_sigma1), 0, 0, 1, 1},
   {&__pyx_n_s_sigma2, __pyx_k_sigma2, sizeof(__pyx_k_sigma2), 0, 0, 1, 1},
-  {&__pyx_n_s_smearing_norm1, __pyx_k_smearing_norm1, sizeof(__pyx_k_smearing_norm1), 0, 0, 1, 1},
-  {&__pyx_n_s_smearing_norm2, __pyx_k_smearing_norm2, sizeof(__pyx_k_smearing_norm2), 0, 0, 1, 1},
   {&__pyx_n_s_sqrt, __pyx_k_sqrt, sizeof(__pyx_k_sqrt), 0, 0, 1, 1},
+  {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
   {&__pyx_n_s_sys, __pyx_k_sys, sizeof(__pyx_k_sys), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_time, __pyx_k_time, sizeof(__pyx_k_time), 0, 0, 1, 1},
   {&__pyx_n_s_tolist, __pyx_k_tolist, sizeof(__pyx_k_tolist), 0, 0, 1, 1},
   {&__pyx_kp_u_unknown_dtype_code_in_numpy_pxd, __pyx_k_unknown_dtype_code_in_numpy_pxd, sizeof(__pyx_k_unknown_dtype_code_in_numpy_pxd), 0, 1, 0, 0},
+  {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
   {&__pyx_n_s_use_angular, __pyx_k_use_angular, sizeof(__pyx_k_use_angular), 0, 0, 1, 1},
-  {&__pyx_n_s_value, __pyx_k_value, sizeof(__pyx_k_value), 0, 0, 1, 1},
-  {&__pyx_n_s_value1, __pyx_k_value1, sizeof(__pyx_k_value1), 0, 0, 1, 1},
-  {&__pyx_n_s_value2, __pyx_k_value2, sizeof(__pyx_k_value2), 0, 0, 1, 1},
-  {&__pyx_n_s_volume, __pyx_k_volume, sizeof(__pyx_k_volume), 0, 0, 1, 1},
   {&__pyx_n_s_zeros, __pyx_k_zeros, sizeof(__pyx_k_zeros), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_object = __Pyx_GetBuiltinName(__pyx_n_s_object); if (!__pyx_builtin_object) __PYX_ERR(0, 75, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 156, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 229, __pyx_L1_error)
-  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 810, __pyx_L1_error)
-  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 1000, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(2, 229, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(2, 810, __pyx_L1_error)
+  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(2, 1000, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -11165,47 +11413,47 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":100
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":129
  *         # parameters for the binning:
  *         self.m1 = self.nsigma*self.sigma1/self.binwidth1  # number of neighbour bins included.
  *         self.smearing_norm1 = erf(1/np.sqrt(2) * self.m1 * self.binwidth1/self.sigma1)  # Integral of the included part of the gauss             # <<<<<<<<<<<<<<
  *         self.Nbins1 = int(np.ceil(self.Rc1/self.binwidth1))
  * 
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_int_2); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_int_2); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":104
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":133
  * 
  *         self.m2 = self.nsigma*self.sigma2/self.binwidth2  # number of neighbour bins included.
  *         self.smearing_norm2 = erf(1/np.sqrt(2) * self.m2 * self.binwidth2/self.sigma2)  # Integral of the included part of the gauss             # <<<<<<<<<<<<<<
  *         self.binwidth2 = np.pi/Nbins2
  * 
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_int_2); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_int_2); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":495
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":466
  * 
- *         feature_grad_np = np.zeros((Natoms*dim, Nelements))
- *         feature_grad_np[:, :Nelements_2body] = feature_grad1_np             # <<<<<<<<<<<<<<
- *         feature_grad_np[:, Nelements_2body:] = feature_grad2_np
+ *         feature_grad_np = np.zeros((Natoms*self.dim, self.Nelements))
+ *         feature_grad_np[:, :self.Nelements_2body] = feature_grad1_np             # <<<<<<<<<<<<<<
+ *         feature_grad_np[:, self.Nelements_2body:] = feature_grad2_np
  *         return feature_grad_np
  */
-  __pyx_slice__3 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 495, __pyx_L1_error)
+  __pyx_slice__3 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 466, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__3);
   __Pyx_GIVEREF(__pyx_slice__3);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":496
- *         feature_grad_np = np.zeros((Natoms*dim, Nelements))
- *         feature_grad_np[:, :Nelements_2body] = feature_grad1_np
- *         feature_grad_np[:, Nelements_2body:] = feature_grad2_np             # <<<<<<<<<<<<<<
+  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":467
+ *         feature_grad_np = np.zeros((Natoms*self.dim, self.Nelements))
+ *         feature_grad_np[:, :self.Nelements_2body] = feature_grad1_np
+ *         feature_grad_np[:, self.Nelements_2body:] = feature_grad2_np             # <<<<<<<<<<<<<<
  *         return feature_grad_np
  * 
  */
-  __pyx_slice__4 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 496, __pyx_L1_error)
+  __pyx_slice__4 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 467, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__4);
   __Pyx_GIVEREF(__pyx_slice__4);
 
@@ -11213,14 +11461,14 @@ static int __Pyx_InitCachedConstants(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":229
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":229
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)
  *                 and not PyArray_CHKFLAGS(self, NPY_C_CONTIGUOUS)):
  *                 raise ValueError(u"ndarray is not C contiguous")             # <<<<<<<<<<<<<<
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_C_contiguous); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(1, 229, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_C_contiguous); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(2, 229, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
@@ -11228,14 +11476,14 @@ static int __Pyx_InitCachedConstants(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":233
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":233
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  *                 and not PyArray_CHKFLAGS(self, NPY_F_CONTIGUOUS)):
  *                 raise ValueError(u"ndarray is not Fortran contiguous")             # <<<<<<<<<<<<<<
  * 
  *             info.buf = PyArray_DATA(self)
  */
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_Fortran_contiguou); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(1, 233, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_Fortran_contiguou); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(2, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
@@ -11243,14 +11491,14 @@ static int __Pyx_InitCachedConstants(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":263
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":263
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *                 if ((descr.byteorder == c'>' and little_endian) or
  *                     (descr.byteorder == c'<' and not little_endian)):
  *                     raise ValueError(u"Non-native byte order not supported")             # <<<<<<<<<<<<<<
  *                 if   t == NPY_BYTE:        f = "b"
  *                 elif t == NPY_UBYTE:       f = "B"
  */
-  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_u_Non_native_byte_order_not_suppor); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(1, 263, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_u_Non_native_byte_order_not_suppor); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(2, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
@@ -11258,14 +11506,14 @@ static int __Pyx_InitCachedConstants(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":810
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":810
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  * 
  *         if (end - f) - <int>(new_offset - offset[0]) < 15:
  *             raise RuntimeError(u"Format string allocated too short, see comment in numpy.pxd")             # <<<<<<<<<<<<<<
  * 
  *         if ((child.byteorder == c'>' and little_endian) or
  */
-  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 810, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(2, 810, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
@@ -11273,14 +11521,14 @@ static int __Pyx_InitCachedConstants(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":814
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":814
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         if ((child.byteorder == c'>' and little_endian) or
  *             (child.byteorder == c'<' and not little_endian)):
  *             raise ValueError(u"Non-native byte order not supported")             # <<<<<<<<<<<<<<
  *             # One could encode it in the format string and have Cython
  *             # complain instead, BUT: < and > in format strings also imply
  */
-  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_u_Non_native_byte_order_not_suppor); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 814, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_u_Non_native_byte_order_not_suppor); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(2, 814, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
@@ -11288,14 +11536,14 @@ static int __Pyx_InitCachedConstants(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":834
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":834
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *             t = child.type_num
  *             if end - f < 5:
  *                 raise RuntimeError(u"Format string allocated too short.")             # <<<<<<<<<<<<<<
  * 
  *             # Until ticket #99 is fixed, use integers to avoid warnings
  */
-  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor_2); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(1, 834, __pyx_L1_error)
+  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor_2); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(2, 834, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
@@ -11303,14 +11551,14 @@ static int __Pyx_InitCachedConstants(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1000
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1000
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         _import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_umath() except -1:
  */
-  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(1, 1000, __pyx_L1_error)
+  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(2, 1000, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
@@ -11318,14 +11566,14 @@ static int __Pyx_InitCachedConstants(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1006
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1006
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_ufunc() except -1:
  */
-  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(1, 1006, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(2, 1006, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
 
@@ -11333,88 +11581,24 @@ static int __Pyx_InitCachedConstants(void) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1012
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1012
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(1, 1012, __pyx_L1_error)
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_s_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(2, 1012, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":75
- *         return 0
- * 
- * class Angular_Fingerprint(object):             # <<<<<<<<<<<<<<
- *     """ comparator for construction of angular fingerprints
- *     """
+  /* "(tree fragment)":1
+ * def __pyx_unpickle_Angular_Fingerprint(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum != 0x8546433:
+ *         from pickle import PickleError as __pyx_PickleError
  */
-  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_builtin_object); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_tuple__14 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":78
- *     """ comparator for construction of angular fingerprints
- *     """
- *     def __init__(self, atoms, Rc1=4.0, Rc2=4.0, binwidth1=0.1, Nbins2=30, sigma1=0.2, sigma2=0.10, nsigma=4, eta=1, gamma=3, use_angular=True):             # <<<<<<<<<<<<<<
- *         """ Set a common cut of radius
- *         """
- */
-  __pyx_tuple__15 = PyTuple_Pack(12, __pyx_n_s_self, __pyx_n_s_atoms, __pyx_n_s_Rc1, __pyx_n_s_Rc2, __pyx_n_s_binwidth1, __pyx_n_s_Nbins2, __pyx_n_s_sigma1, __pyx_n_s_sigma2, __pyx_n_s_nsigma, __pyx_n_s_eta, __pyx_n_s_gamma, __pyx_n_s_use_angular); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 78, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__15);
-  __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(12, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_featureCalculators_angular_finge_2, __pyx_n_s_init, 78, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 78, __pyx_L1_error)
-  __pyx_tuple__17 = PyTuple_Pack(10, ((PyObject*)__pyx_float_4_0), ((PyObject*)__pyx_float_4_0), ((PyObject*)__pyx_float_0_1), ((PyObject *)__pyx_int_30), ((PyObject*)__pyx_float_0_2), ((PyObject*)__pyx_float_0_10), ((PyObject *)__pyx_int_4), ((PyObject *)__pyx_int_1), ((PyObject *)__pyx_int_3), ((PyObject *)Py_True)); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 78, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__17);
-  __Pyx_GIVEREF(__pyx_tuple__17);
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":115
- *             self.Nelements = self.Nelements_2body
- * 
- *     def get_feature(self, atoms):             # <<<<<<<<<<<<<<
- *         """
- *         """
- */
-  __pyx_tuple__18 = PyTuple_Pack(56, __pyx_n_s_self, __pyx_n_s_atoms, __pyx_n_s_Rc1, __pyx_n_s_Rc2, __pyx_n_s_binwidth1, __pyx_n_s_binwidth2, __pyx_n_s_Nbins1, __pyx_n_s_Nbins2, __pyx_n_s_sigma1, __pyx_n_s_sigma2, __pyx_n_s_nsigma, __pyx_n_s_eta, __pyx_n_s_gamma, __pyx_n_s_use_angular, __pyx_n_s_volume, __pyx_n_s_dim, __pyx_n_s_m1, __pyx_n_s_m2, __pyx_n_s_smearing_norm1, __pyx_n_s_smearing_norm2, __pyx_n_s_Nelements_2body, __pyx_n_s_Nelements_3body, __pyx_n_s_Nelements, __pyx_n_s_mem, __pyx_n_s_cell, __pyx_n_s_Natoms, __pyx_n_s_pos_np, __pyx_n_s_pos, __pyx_n_s_m, __pyx_n_s_feature1, __pyx_n_s_num_pairs, __pyx_n_s_center_bin, __pyx_n_s_minbin_lim, __pyx_n_s_maxbin_lim, __pyx_n_s_newbin, __pyx_n_s_Rij, __pyx_n_s_normalization, __pyx_n_s_binpos, __pyx_n_s_c, __pyx_n_s_erfarg_low, __pyx_n_s_erfarg_up, __pyx_n_s_value, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_n, __pyx_n_s_feature1_np, __pyx_n_s_feature2, __pyx_n_s_RijVec, __pyx_n_s_RikVec, __pyx_n_s_angle, __pyx_n_s_k, __pyx_n_s_cond_ij, __pyx_n_s_cond_ik, __pyx_n_s_Rik, __pyx_n_s_feature2_np, __pyx_n_s_feature_np); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 115, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__18);
-  __Pyx_GIVEREF(__pyx_tuple__18);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(2, 0, 56, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_featureCalculators_angular_finge_2, __pyx_n_s_get_feature, 115, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 115, __pyx_L1_error)
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":285
- *         return feature_np
- * 
- *     def get_featureMat(self, atoms_list):             # <<<<<<<<<<<<<<
- *         featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])
- *         featureMat = np.array(featureMat)
- */
-  __pyx_tuple__20 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_atoms_list, __pyx_n_s_featureMat, __pyx_n_s_atoms); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 285, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__20);
-  __Pyx_GIVEREF(__pyx_tuple__20);
-  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_featureCalculators_angular_finge_2, __pyx_n_s_get_featureMat, 285, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 285, __pyx_L1_error)
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":290
- *         return featureMat
- * 
- *     def get_featureGradient(self, atoms):             # <<<<<<<<<<<<<<
- * 
- *         cdef double Rc1 = self.Rc1
- */
-  __pyx_tuple__22 = PyTuple_Pack(69, __pyx_n_s_self, __pyx_n_s_atoms, __pyx_n_s_Rc1, __pyx_n_s_Rc2, __pyx_n_s_binwidth1, __pyx_n_s_binwidth2, __pyx_n_s_Nbins1, __pyx_n_s_Nbins2, __pyx_n_s_sigma1, __pyx_n_s_sigma2, __pyx_n_s_nsigma, __pyx_n_s_eta, __pyx_n_s_gamma, __pyx_n_s_use_angular, __pyx_n_s_volume, __pyx_n_s_dim, __pyx_n_s_m1, __pyx_n_s_m2, __pyx_n_s_smearing_norm1, __pyx_n_s_smearing_norm2, __pyx_n_s_Nelements_2body, __pyx_n_s_Nelements_3body, __pyx_n_s_Nelements, __pyx_n_s_mem, __pyx_n_s_cell, __pyx_n_s_Natoms, __pyx_n_s_pos_np, __pyx_n_s_pos, __pyx_n_s_m, __pyx_n_s_feature_grad1, __pyx_n_s_RijVec, __pyx_n_s_num_pairs, __pyx_n_s_center_bin, __pyx_n_s_minbin_lim, __pyx_n_s_maxbin_lim, __pyx_n_s_newbin, __pyx_n_s_Rij, __pyx_n_s_normalization, __pyx_n_s_binpos, __pyx_n_s_c, __pyx_n_s_arg_low, __pyx_n_s_arg_up, __pyx_n_s_value1, __pyx_n_s_value2, __pyx_n_s_value, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_n, __pyx_n_s_grad_index, __pyx_n_s_feature_grad1_np, __pyx_n_s_feature_grad2, __pyx_n_s_RikVec, __pyx_n_s_angle_grad_i, __pyx_n_s_angle_grad_j, __pyx_n_s_angle_grad_k, __pyx_n_s_angle, __pyx_n_s_cos_angle, __pyx_n_s_a, __pyx_n_s_k, __pyx_n_s_cond_ij, __pyx_n_s_cond_ik, __pyx_n_s_bin_index, __pyx_n_s_Rik, __pyx_n_s_fc_ij, __pyx_n_s_fc_ik, __pyx_n_s_fc_grad_ij, __pyx_n_s_fc_grad_ik, __pyx_n_s_feature_grad2_np, __pyx_n_s_feature_grad_np); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 290, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__22);
-  __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(2, 0, 69, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_featureCalculators_angular_finge_2, __pyx_n_s_get_featureGradient, 290, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 290, __pyx_L1_error)
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":499
- *         return feature_grad_np
- * 
- *     def get_all_featureGradients(self, atoms_list):             # <<<<<<<<<<<<<<
- *         feature_grads = np.array([self.get_featureGradient(atoms) for atoms in atoms_list])
- *         feature_grads = np.array(feature_grads)
- */
-  __pyx_tuple__24 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_atoms_list, __pyx_n_s_feature_grads, __pyx_n_s_atoms); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 499, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__24);
-  __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_featureCalculators_angular_finge_2, __pyx_n_s_get_all_featureGradients, 499, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 499, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Angular_Fingerpri, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -11433,6 +11617,7 @@ static int __Pyx_InitGlobals(void) {
   __pyx_int_3 = PyInt_FromLong(3); if (unlikely(!__pyx_int_3)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_4 = PyInt_FromLong(4); if (unlikely(!__pyx_int_4)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_30 = PyInt_FromLong(30); if (unlikely(!__pyx_int_30)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_139748403 = PyInt_FromLong(139748403L); if (unlikely(!__pyx_int_139748403)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -11474,8 +11659,29 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
+  if (PyType_Ready(&__pyx_type_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_type_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint.tp_print = 0;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint.tp_dictoffset && __pyx_type_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  }
+  #if CYTHON_COMPILING_IN_CPYTHON
+  {
+    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint, "__init__"); if (unlikely(!wrapper)) __PYX_ERR(0, 75, __pyx_L1_error)
+    if (Py_TYPE(wrapper) == &PyWrapperDescr_Type) {
+      __pyx_wrapperbase_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint___init__ = *((PyWrapperDescrObject *)wrapper)->d_base;
+      __pyx_wrapperbase_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint___init__.doc = __pyx_doc_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint___init__;
+      ((PyWrapperDescrObject *)wrapper)->d_base = &__pyx_wrapperbase_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint___init__;
+    }
+  }
+  #endif
+  if (PyObject_SetAttrString(__pyx_m, "Angular_Fingerprint", (PyObject *)&__pyx_type_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_ptype_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint = &__pyx_type_18featureCalculators_29angular_fingerprintFeature_cy_Angular_Fingerprint;
   __Pyx_RefNannyFinishContext();
   return 0;
+  __pyx_L1_error:;
+  __Pyx_RefNannyFinishContext();
+  return -1;
 }
 
 static int __Pyx_modinit_type_import_code(void) {
@@ -11488,15 +11694,15 @@ static int __Pyx_modinit_type_import_code(void) {
   #else
   sizeof(PyHeapTypeObject),
   #endif
-  0); if (unlikely(!__pyx_ptype_7cpython_4type_type)) __PYX_ERR(2, 9, __pyx_L1_error)
-  __pyx_ptype_5numpy_dtype = __Pyx_ImportType("numpy", "dtype", sizeof(PyArray_Descr), 0); if (unlikely(!__pyx_ptype_5numpy_dtype)) __PYX_ERR(1, 164, __pyx_L1_error)
-  __pyx_ptype_5numpy_flatiter = __Pyx_ImportType("numpy", "flatiter", sizeof(PyArrayIterObject), 0); if (unlikely(!__pyx_ptype_5numpy_flatiter)) __PYX_ERR(1, 186, __pyx_L1_error)
-  __pyx_ptype_5numpy_broadcast = __Pyx_ImportType("numpy", "broadcast", sizeof(PyArrayMultiIterObject), 0); if (unlikely(!__pyx_ptype_5numpy_broadcast)) __PYX_ERR(1, 190, __pyx_L1_error)
-  __pyx_ptype_5numpy_ndarray = __Pyx_ImportType("numpy", "ndarray", sizeof(PyArrayObject), 0); if (unlikely(!__pyx_ptype_5numpy_ndarray)) __PYX_ERR(1, 199, __pyx_L1_error)
-  __pyx_ptype_5numpy_ufunc = __Pyx_ImportType("numpy", "ufunc", sizeof(PyUFuncObject), 0); if (unlikely(!__pyx_ptype_5numpy_ufunc)) __PYX_ERR(1, 872, __pyx_L1_error)
-  __pyx_ptype_5cymem_5cymem_Pool = __Pyx_ImportType("cymem.cymem", "Pool", sizeof(struct __pyx_obj_5cymem_5cymem_Pool), 1); if (unlikely(!__pyx_ptype_5cymem_5cymem_Pool)) __PYX_ERR(3, 1, __pyx_L1_error)
-  __pyx_vtabptr_5cymem_5cymem_Pool = (struct __pyx_vtabstruct_5cymem_5cymem_Pool*)__Pyx_GetVtable(__pyx_ptype_5cymem_5cymem_Pool->tp_dict); if (unlikely(!__pyx_vtabptr_5cymem_5cymem_Pool)) __PYX_ERR(3, 1, __pyx_L1_error)
-  __pyx_ptype_5cymem_5cymem_Address = __Pyx_ImportType("cymem.cymem", "Address", sizeof(struct __pyx_obj_5cymem_5cymem_Address), 1); if (unlikely(!__pyx_ptype_5cymem_5cymem_Address)) __PYX_ERR(3, 11, __pyx_L1_error)
+  0); if (unlikely(!__pyx_ptype_7cpython_4type_type)) __PYX_ERR(3, 9, __pyx_L1_error)
+  __pyx_ptype_5numpy_dtype = __Pyx_ImportType("numpy", "dtype", sizeof(PyArray_Descr), 0); if (unlikely(!__pyx_ptype_5numpy_dtype)) __PYX_ERR(2, 164, __pyx_L1_error)
+  __pyx_ptype_5numpy_flatiter = __Pyx_ImportType("numpy", "flatiter", sizeof(PyArrayIterObject), 0); if (unlikely(!__pyx_ptype_5numpy_flatiter)) __PYX_ERR(2, 186, __pyx_L1_error)
+  __pyx_ptype_5numpy_broadcast = __Pyx_ImportType("numpy", "broadcast", sizeof(PyArrayMultiIterObject), 0); if (unlikely(!__pyx_ptype_5numpy_broadcast)) __PYX_ERR(2, 190, __pyx_L1_error)
+  __pyx_ptype_5numpy_ndarray = __Pyx_ImportType("numpy", "ndarray", sizeof(PyArrayObject), 0); if (unlikely(!__pyx_ptype_5numpy_ndarray)) __PYX_ERR(2, 199, __pyx_L1_error)
+  __pyx_ptype_5numpy_ufunc = __Pyx_ImportType("numpy", "ufunc", sizeof(PyUFuncObject), 0); if (unlikely(!__pyx_ptype_5numpy_ufunc)) __PYX_ERR(2, 872, __pyx_L1_error)
+  __pyx_ptype_5cymem_5cymem_Pool = __Pyx_ImportType("cymem.cymem", "Pool", sizeof(struct __pyx_obj_5cymem_5cymem_Pool), 1); if (unlikely(!__pyx_ptype_5cymem_5cymem_Pool)) __PYX_ERR(4, 1, __pyx_L1_error)
+  __pyx_vtabptr_5cymem_5cymem_Pool = (struct __pyx_vtabstruct_5cymem_5cymem_Pool*)__Pyx_GetVtable(__pyx_ptype_5cymem_5cymem_Pool->tp_dict); if (unlikely(!__pyx_vtabptr_5cymem_5cymem_Pool)) __PYX_ERR(4, 1, __pyx_L1_error)
+  __pyx_ptype_5cymem_5cymem_Address = __Pyx_ImportType("cymem.cymem", "Address", sizeof(struct __pyx_obj_5cymem_5cymem_Address), 1); if (unlikely(!__pyx_ptype_5cymem_5cymem_Address)) __PYX_ERR(4, 11, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -11691,7 +11897,7 @@ if (!__Pyx_RefNanny) {
   (void)__Pyx_modinit_global_init_code();
   (void)__Pyx_modinit_variable_export_code();
   (void)__Pyx_modinit_function_export_code();
-  (void)__Pyx_modinit_type_init_code();
+  if (unlikely(__Pyx_modinit_type_init_code() != 0)) goto __pyx_L1_error;
   if (unlikely(__Pyx_modinit_type_import_code() != 0)) goto __pyx_L1_error;
   (void)__Pyx_modinit_variable_import_code();
   (void)__Pyx_modinit_function_import_code();
@@ -11916,91 +12122,14 @@ if (!__Pyx_RefNanny) {
     __pyx_L7_try_end:;
   }
 
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":75
- *         return 0
- * 
- * class Angular_Fingerprint(object):             # <<<<<<<<<<<<<<
- *     """ comparator for construction of angular fingerprints
- *     """
+  /* "(tree fragment)":1
+ * def __pyx_unpickle_Angular_Fingerprint(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum != 0x8546433:
+ *         from pickle import PickleError as __pyx_PickleError
  */
-  __pyx_t_6 = __Pyx_CalculateMetaclass(NULL, __pyx_tuple__14); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_6 = PyCFunction_NewEx(&__pyx_mdef_18featureCalculators_29angular_fingerprintFeature_cy_1__pyx_unpickle_Angular_Fingerprint, NULL, __pyx_n_s_featureCalculators_angular_finge); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_1 = __Pyx_Py3MetaclassPrepare(__pyx_t_6, __pyx_tuple__14, __pyx_n_s_Angular_Fingerprint, __pyx_n_s_Angular_Fingerprint, (PyObject *) NULL, __pyx_n_s_featureCalculators_angular_finge, __pyx_kp_s_comparator_for_construction_of); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":78
- *     """ comparator for construction of angular fingerprints
- *     """
- *     def __init__(self, atoms, Rc1=4.0, Rc2=4.0, binwidth1=0.1, Nbins2=30, sigma1=0.2, sigma2=0.10, nsigma=4, eta=1, gamma=3, use_angular=True):             # <<<<<<<<<<<<<<
- *         """ Set a common cut of radius
- *         """
- */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_1__init__, 0, __pyx_n_s_Angular_Fingerprint___init, NULL, __pyx_n_s_featureCalculators_angular_finge, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__17);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_init, __pyx_t_2) < 0) __PYX_ERR(0, 78, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":115
- *             self.Nelements = self.Nelements_2body
- * 
- *     def get_feature(self, atoms):             # <<<<<<<<<<<<<<
- *         """
- *         """
- */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_3get_feature, 0, __pyx_n_s_Angular_Fingerprint_get_feature, NULL, __pyx_n_s_featureCalculators_angular_finge, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_feature, __pyx_t_2) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":285
- *         return feature_np
- * 
- *     def get_featureMat(self, atoms_list):             # <<<<<<<<<<<<<<
- *         featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])
- *         featureMat = np.array(featureMat)
- */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_5get_featureMat, 0, __pyx_n_s_Angular_Fingerprint_get_featureM, NULL, __pyx_n_s_featureCalculators_angular_finge, __pyx_d, ((PyObject *)__pyx_codeobj__21)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 285, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_featureMat, __pyx_t_2) < 0) __PYX_ERR(0, 285, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":290
- *         return featureMat
- * 
- *     def get_featureGradient(self, atoms):             # <<<<<<<<<<<<<<
- * 
- *         cdef double Rc1 = self.Rc1
- */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_7get_featureGradient, 0, __pyx_n_s_Angular_Fingerprint_get_featureG, NULL, __pyx_n_s_featureCalculators_angular_finge, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 290, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_featureGradient, __pyx_t_2) < 0) __PYX_ERR(0, 290, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":499
- *         return feature_grad_np
- * 
- *     def get_all_featureGradients(self, atoms_list):             # <<<<<<<<<<<<<<
- *         feature_grads = np.array([self.get_featureGradient(atoms) for atoms in atoms_list])
- *         feature_grads = np.array(feature_grads)
- */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_18featureCalculators_29angular_fingerprintFeature_cy_19Angular_Fingerprint_9get_all_featureGradients, 0, __pyx_n_s_Angular_Fingerprint_get_all_feat, NULL, __pyx_n_s_featureCalculators_angular_finge, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 499, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_all_featureGradients, __pyx_t_2) < 0) __PYX_ERR(0, 499, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "featureCalculators/angular_fingerprintFeature_cy.pyx":75
- *         return 0
- * 
- * class Angular_Fingerprint(object):             # <<<<<<<<<<<<<<
- *     """ comparator for construction of angular fingerprints
- *     """
- */
-  __pyx_t_2 = __Pyx_Py3ClassCreate(__pyx_t_6, __pyx_n_s_Angular_Fingerprint, __pyx_tuple__14, __pyx_t_1, NULL, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Angular_Fingerprint, __pyx_t_2) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_Angular_Fingerpri, __pyx_t_6) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
   /* "featureCalculators/angular_fingerprintFeature_cy.pyx":1
@@ -12017,7 +12146,7 @@ if (!__Pyx_RefNanny) {
   /* "../../../virtualEnvs/python-3.6.3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1008
 =======
   /* "../../../../project_folder/project_py3/lib/python3.6/site-packages/Cython/Includes/numpy/__init__.pxd":1008
->>>>>>> 6de1b9941e349c420c5a0154b5a55cf88e9908d6
+>>>>>>> 2d3af62f5925f029d57cbb7a6ef825ee0ea98b29
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -12165,32 +12294,6 @@ static void __Pyx_WriteUnraisable(const char *name, CYTHON_UNUSED int clineno,
 #endif
 }
 
-/* RaiseArgTupleInvalid */
-static void __Pyx_RaiseArgtupleInvalid(
-    const char* func_name,
-    int exact,
-    Py_ssize_t num_min,
-    Py_ssize_t num_max,
-    Py_ssize_t num_found)
-{
-    Py_ssize_t num_expected;
-    const char *more_or_less;
-    if (num_found < num_min) {
-        num_expected = num_min;
-        more_or_less = "at least";
-    } else {
-        num_expected = num_max;
-        more_or_less = "at most";
-    }
-    if (exact) {
-        more_or_less = "exactly";
-    }
-    PyErr_Format(PyExc_TypeError,
-                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
-                 func_name, more_or_less, num_expected,
-                 (num_expected == 1) ? "" : "s", num_found);
-}
-
 /* RaiseDoubleKeywords */
 static void __Pyx_RaiseDoubleKeywordsError(
     const char* func_name,
@@ -12307,72 +12410,34 @@ bad:
     return -1;
 }
 
-/* PyObjectSetAttrStr */
-#if CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value) {
-    PyTypeObject* tp = Py_TYPE(obj);
-    if (likely(tp->tp_setattro))
-        return tp->tp_setattro(obj, attr_name, value);
-#if PY_MAJOR_VERSION < 3
-    if (likely(tp->tp_setattr))
-        return tp->tp_setattr(obj, PyString_AS_STRING(attr_name), value);
-#endif
-    return PyObject_SetAttr(obj, attr_name, value);
-}
-#endif
-
-/* GetModuleGlobalName */
-static CYTHON_INLINE PyObject *__Pyx_GetModuleGlobalName(PyObject *name) {
-    PyObject *result;
-#if !CYTHON_AVOID_BORROWED_REFS
-#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030500A1
-    result = _PyDict_GetItem_KnownHash(__pyx_d, name, ((PyASCIIObject *) name)->hash);
-    if (likely(result)) {
-        Py_INCREF(result);
-    } else if (unlikely(PyErr_Occurred())) {
-        result = NULL;
+/* RaiseArgTupleInvalid */
+static void __Pyx_RaiseArgtupleInvalid(
+    const char* func_name,
+    int exact,
+    Py_ssize_t num_min,
+    Py_ssize_t num_max,
+    Py_ssize_t num_found)
+{
+    Py_ssize_t num_expected;
+    const char *more_or_less;
+    if (num_found < num_min) {
+        num_expected = num_min;
+        more_or_less = "at least";
     } else {
-#else
-    result = PyDict_GetItem(__pyx_d, name);
-    if (likely(result)) {
-        Py_INCREF(result);
-    } else {
-#endif
-#else
-    result = PyObject_GetItem(__pyx_d, name);
-    if (!result) {
-        PyErr_Clear();
-#endif
-        result = __Pyx_GetBuiltinName(name);
+        num_expected = num_max;
+        more_or_less = "at most";
     }
-    return result;
-}
-
-/* PyCFunctionFastCall */
-    #if CYTHON_FAST_PYCCALL
-static CYTHON_INLINE PyObject * __Pyx_PyCFunction_FastCall(PyObject *func_obj, PyObject **args, Py_ssize_t nargs) {
-    PyCFunctionObject *func = (PyCFunctionObject*)func_obj;
-    PyCFunction meth = PyCFunction_GET_FUNCTION(func);
-    PyObject *self = PyCFunction_GET_SELF(func);
-    int flags = PyCFunction_GET_FLAGS(func);
-    assert(PyCFunction_Check(func));
-    assert(METH_FASTCALL == (flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_KEYWORDS)));
-    assert(nargs >= 0);
-    assert(nargs == 0 || args != NULL);
-    /* _PyCFunction_FastCallDict() must not be called with an exception set,
-       because it may clear it (directly or indirectly) and so the
-       caller loses its exception */
-    assert(!PyErr_Occurred());
-    if ((PY_VERSION_HEX < 0x030700A0) || unlikely(flags & METH_KEYWORDS)) {
-        return (*((__Pyx_PyCFunctionFastWithKeywords)meth)) (self, args, nargs, NULL);
-    } else {
-        return (*((__Pyx_PyCFunctionFast)meth)) (self, args, nargs);
+    if (exact) {
+        more_or_less = "exactly";
     }
+    PyErr_Format(PyExc_TypeError,
+                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
+                 func_name, more_or_less, num_expected,
+                 (num_expected == 1) ? "" : "s", num_found);
 }
-#endif
 
 /* PyFunctionFastCall */
-    #if CYTHON_FAST_PYCALL
+#if CYTHON_FAST_PYCALL
 #include "frameobject.h"
 static PyObject* __Pyx_PyFunction_FastCallNoKw(PyCodeObject *co, PyObject **args, Py_ssize_t na,
                                                PyObject *globals) {
@@ -12492,7 +12557,7 @@ done:
 #endif
 
 /* PyObjectCall */
-    #if CYTHON_COMPILING_IN_CPYTHON
+#if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw) {
     PyObject *result;
     ternaryfunc call = func->ob_type->tp_call;
@@ -12512,7 +12577,7 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
 #endif
 
 /* PyObjectCallMethO */
-    #if CYTHON_COMPILING_IN_CPYTHON
+#if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg) {
     PyObject *self, *result;
     PyCFunction cfunc;
@@ -12531,8 +12596,79 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject
 }
 #endif
 
+/* PyObjectCallNoArg */
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
+#if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(func)) {
+        return __Pyx_PyFunction_FastCall(func, NULL, 0);
+    }
+#endif
+#ifdef __Pyx_CyFunction_USED
+    if (likely(PyCFunction_Check(func) || __Pyx_TypeCheck(func, __pyx_CyFunctionType))) {
+#else
+    if (likely(PyCFunction_Check(func))) {
+#endif
+        if (likely(PyCFunction_GET_FLAGS(func) & METH_NOARGS)) {
+            return __Pyx_PyObject_CallMethO(func, NULL);
+        }
+    }
+    return __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL);
+}
+#endif
+
+/* GetModuleGlobalName */
+  static CYTHON_INLINE PyObject *__Pyx_GetModuleGlobalName(PyObject *name) {
+    PyObject *result;
+#if !CYTHON_AVOID_BORROWED_REFS
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030500A1
+    result = _PyDict_GetItem_KnownHash(__pyx_d, name, ((PyASCIIObject *) name)->hash);
+    if (likely(result)) {
+        Py_INCREF(result);
+    } else if (unlikely(PyErr_Occurred())) {
+        result = NULL;
+    } else {
+#else
+    result = PyDict_GetItem(__pyx_d, name);
+    if (likely(result)) {
+        Py_INCREF(result);
+    } else {
+#endif
+#else
+    result = PyObject_GetItem(__pyx_d, name);
+    if (!result) {
+        PyErr_Clear();
+#endif
+        result = __Pyx_GetBuiltinName(name);
+    }
+    return result;
+}
+
+/* PyCFunctionFastCall */
+      #if CYTHON_FAST_PYCCALL
+static CYTHON_INLINE PyObject * __Pyx_PyCFunction_FastCall(PyObject *func_obj, PyObject **args, Py_ssize_t nargs) {
+    PyCFunctionObject *func = (PyCFunctionObject*)func_obj;
+    PyCFunction meth = PyCFunction_GET_FUNCTION(func);
+    PyObject *self = PyCFunction_GET_SELF(func);
+    int flags = PyCFunction_GET_FLAGS(func);
+    assert(PyCFunction_Check(func));
+    assert(METH_FASTCALL == (flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_KEYWORDS)));
+    assert(nargs >= 0);
+    assert(nargs == 0 || args != NULL);
+    /* _PyCFunction_FastCallDict() must not be called with an exception set,
+       because it may clear it (directly or indirectly) and so the
+       caller loses its exception */
+    assert(!PyErr_Occurred());
+    if ((PY_VERSION_HEX < 0x030700A0) || unlikely(flags & METH_KEYWORDS)) {
+        return (*((__Pyx_PyCFunctionFastWithKeywords)meth)) (self, args, nargs, NULL);
+    } else {
+        return (*((__Pyx_PyCFunctionFast)meth)) (self, args, nargs);
+    }
+}
+#endif
+
 /* PyObjectCallOneArg */
-    #if CYTHON_COMPILING_IN_CPYTHON
+      #if CYTHON_COMPILING_IN_CPYTHON
 static PyObject* __Pyx__PyObject_CallOneArg(PyObject *func, PyObject *arg) {
     PyObject *result;
     PyObject *args = PyTuple_New(1);
@@ -12568,27 +12704,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObjec
     result = __Pyx_PyObject_Call(func, args, NULL);
     Py_DECREF(args);
     return result;
-}
-#endif
-
-/* PyObjectCallNoArg */
-    #if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
-#if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(func)) {
-        return __Pyx_PyFunction_FastCall(func, NULL, 0);
-    }
-#endif
-#ifdef __Pyx_CyFunction_USED
-    if (likely(PyCFunction_Check(func) || __Pyx_TypeCheck(func, __pyx_CyFunctionType))) {
-#else
-    if (likely(PyCFunction_Check(func))) {
-#endif
-        if (likely(PyCFunction_GET_FLAGS(func) & METH_NOARGS)) {
-            return __Pyx_PyObject_CallMethO(func, NULL);
-        }
-    }
-    return __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL);
 }
 #endif
 
@@ -12825,6 +12940,138 @@ bad:
     return -1;
 }
 
+/* PyErrExceptionMatches */
+        #if CYTHON_FAST_THREAD_STATE
+static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
+    Py_ssize_t i, n;
+    n = PyTuple_GET_SIZE(tuple);
+#if PY_MAJOR_VERSION >= 3
+    for (i=0; i<n; i++) {
+        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
+    }
+#endif
+    for (i=0; i<n; i++) {
+        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
+    }
+    return 0;
+}
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
+    PyObject *exc_type = tstate->curexc_type;
+    if (exc_type == err) return 1;
+    if (unlikely(!exc_type)) return 0;
+    if (unlikely(PyTuple_Check(err)))
+        return __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
+    return __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
+}
+#endif
+
+/* GetAttr */
+        static CYTHON_INLINE PyObject *__Pyx_GetAttr(PyObject *o, PyObject *n) {
+#if CYTHON_USE_TYPE_SLOTS
+#if PY_MAJOR_VERSION >= 3
+    if (likely(PyUnicode_Check(n)))
+#else
+    if (likely(PyString_Check(n)))
+#endif
+        return __Pyx_PyObject_GetAttrStr(o, n);
+#endif
+    return PyObject_GetAttr(o, n);
+}
+
+/* GetAttr3 */
+        static PyObject *__Pyx_GetAttr3Default(PyObject *d) {
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    if (unlikely(!__Pyx_PyErr_ExceptionMatches(PyExc_AttributeError)))
+        return NULL;
+    __Pyx_PyErr_Clear();
+    Py_INCREF(d);
+    return d;
+}
+static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *o, PyObject *n, PyObject *d) {
+    PyObject *r = __Pyx_GetAttr(o, n);
+    return (likely(r)) ? r : __Pyx_GetAttr3Default(d);
+}
+
+/* Import */
+        static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level) {
+    PyObject *empty_list = 0;
+    PyObject *module = 0;
+    PyObject *global_dict = 0;
+    PyObject *empty_dict = 0;
+    PyObject *list;
+    #if PY_MAJOR_VERSION < 3
+    PyObject *py_import;
+    py_import = __Pyx_PyObject_GetAttrStr(__pyx_b, __pyx_n_s_import);
+    if (!py_import)
+        goto bad;
+    #endif
+    if (from_list)
+        list = from_list;
+    else {
+        empty_list = PyList_New(0);
+        if (!empty_list)
+            goto bad;
+        list = empty_list;
+    }
+    global_dict = PyModule_GetDict(__pyx_m);
+    if (!global_dict)
+        goto bad;
+    empty_dict = PyDict_New();
+    if (!empty_dict)
+        goto bad;
+    {
+        #if PY_MAJOR_VERSION >= 3
+        if (level == -1) {
+            if (strchr(__Pyx_MODULE_NAME, '.')) {
+                module = PyImport_ImportModuleLevelObject(
+                    name, global_dict, empty_dict, list, 1);
+                if (!module) {
+                    if (!PyErr_ExceptionMatches(PyExc_ImportError))
+                        goto bad;
+                    PyErr_Clear();
+                }
+            }
+            level = 0;
+        }
+        #endif
+        if (!module) {
+            #if PY_MAJOR_VERSION < 3
+            PyObject *py_level = PyInt_FromLong(level);
+            if (!py_level)
+                goto bad;
+            module = PyObject_CallFunctionObjArgs(py_import,
+                name, global_dict, empty_dict, list, py_level, NULL);
+            Py_DECREF(py_level);
+            #else
+            module = PyImport_ImportModuleLevelObject(
+                name, global_dict, empty_dict, list, level);
+            #endif
+        }
+    }
+bad:
+    #if PY_MAJOR_VERSION < 3
+    Py_XDECREF(py_import);
+    #endif
+    Py_XDECREF(empty_list);
+    Py_XDECREF(empty_dict);
+    return module;
+}
+
+/* ImportFrom */
+        static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
+    PyObject* value = __Pyx_PyObject_GetAttrStr(module, name);
+    if (unlikely(!value) && PyErr_ExceptionMatches(PyExc_AttributeError)) {
+        PyErr_Format(PyExc_ImportError,
+        #if PY_MAJOR_VERSION < 3
+            "cannot import name %.230s", PyString_AS_STRING(name));
+        #else
+            "cannot import name %S", name);
+        #endif
+    }
+    return value;
+}
+
 /* RaiseException */
         #if PY_MAJOR_VERSION < 3
 static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb,
@@ -12984,6 +13231,37 @@ bad:
 }
 #endif
 
+/* ExtTypeTest */
+        static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type) {
+    if (unlikely(!type)) {
+        PyErr_SetString(PyExc_SystemError, "Missing type object");
+        return 0;
+    }
+    if (likely(__Pyx_TypeCheck(obj, type)))
+        return 1;
+    PyErr_Format(PyExc_TypeError, "Cannot convert %.200s to %.200s",
+                 Py_TYPE(obj)->tp_name, type->tp_name);
+    return 0;
+}
+
+/* HasAttr */
+        static CYTHON_INLINE int __Pyx_HasAttr(PyObject *o, PyObject *n) {
+    PyObject *r;
+    if (unlikely(!__Pyx_PyBaseString_Check(n))) {
+        PyErr_SetString(PyExc_TypeError,
+                        "hasattr(): attribute name must be string");
+        return -1;
+    }
+    r = __Pyx_GetAttr(o, n);
+    if (unlikely(!r)) {
+        PyErr_Clear();
+        return 0;
+    } else {
+        Py_DECREF(r);
+        return 1;
+    }
+}
+
 /* DictGetItem */
         #if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
 static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key) {
@@ -13019,19 +13297,6 @@ static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key) {
 /* RaiseNoneIterError */
         static CYTHON_INLINE void __Pyx_RaiseNoneNotIterableError(void) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-}
-
-/* ExtTypeTest */
-        static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type) {
-    if (unlikely(!type)) {
-        PyErr_SetString(PyExc_SystemError, "Missing type object");
-        return 0;
-    }
-    if (likely(__Pyx_TypeCheck(obj, type)))
-        return 1;
-    PyErr_Format(PyExc_TypeError, "Cannot convert %.200s to %.200s",
-                 Py_TYPE(obj)->tp_name, type->tp_name);
-    return 0;
 }
 
 /* SaveResetException */
@@ -13070,31 +13335,6 @@ static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject 
     Py_XDECREF(tmp_type);
     Py_XDECREF(tmp_value);
     Py_XDECREF(tmp_tb);
-}
-#endif
-
-/* PyErrExceptionMatches */
-        #if CYTHON_FAST_THREAD_STATE
-static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
-    Py_ssize_t i, n;
-    n = PyTuple_GET_SIZE(tuple);
-#if PY_MAJOR_VERSION >= 3
-    for (i=0; i<n; i++) {
-        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
-    }
-#endif
-    for (i=0; i<n; i++) {
-        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
-    }
-    return 0;
-}
-static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
-    PyObject *exc_type = tstate->curexc_type;
-    if (exc_type == err) return 1;
-    if (unlikely(!exc_type)) return 0;
-    if (unlikely(PyTuple_Check(err)))
-        return __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
-    return __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
 }
 #endif
 
@@ -13168,6 +13408,132 @@ bad:
     return -1;
 }
 
+/* PyObject_GenericGetAttrNoDict */
+          #if CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP && PY_VERSION_HEX < 0x03070000
+static PyObject *__Pyx_RaiseGenericGetAttributeError(PyTypeObject *tp, PyObject *attr_name) {
+    PyErr_Format(PyExc_AttributeError,
+#if PY_MAJOR_VERSION >= 3
+                 "'%.50s' object has no attribute '%U'",
+                 tp->tp_name, attr_name);
+#else
+                 "'%.50s' object has no attribute '%.400s'",
+                 tp->tp_name, PyString_AS_STRING(attr_name));
+#endif
+    return NULL;
+}
+static CYTHON_INLINE PyObject* __Pyx_PyObject_GenericGetAttrNoDict(PyObject* obj, PyObject* attr_name) {
+    PyObject *descr;
+    PyTypeObject *tp = Py_TYPE(obj);
+    if (unlikely(!PyString_Check(attr_name))) {
+        return PyObject_GenericGetAttr(obj, attr_name);
+    }
+    assert(!tp->tp_dictoffset);
+    descr = _PyType_Lookup(tp, attr_name);
+    if (unlikely(!descr)) {
+        return __Pyx_RaiseGenericGetAttributeError(tp, attr_name);
+    }
+    Py_INCREF(descr);
+    #if PY_MAJOR_VERSION < 3
+    if (likely(PyType_HasFeature(Py_TYPE(descr), Py_TPFLAGS_HAVE_CLASS)))
+    #endif
+    {
+        descrgetfunc f = Py_TYPE(descr)->tp_descr_get;
+        if (unlikely(f)) {
+            PyObject *res = f(descr, obj, (PyObject *)tp);
+            Py_DECREF(descr);
+            return res;
+        }
+    }
+    return descr;
+}
+#endif
+
+/* PyObject_GenericGetAttr */
+          #if CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP && PY_VERSION_HEX < 0x03070000
+static PyObject* __Pyx_PyObject_GenericGetAttr(PyObject* obj, PyObject* attr_name) {
+    if (unlikely(Py_TYPE(obj)->tp_dictoffset)) {
+        return PyObject_GenericGetAttr(obj, attr_name);
+    }
+    return __Pyx_PyObject_GenericGetAttrNoDict(obj, attr_name);
+}
+#endif
+
+/* SetupReduce */
+          static int __Pyx_setup_reduce_is_named(PyObject* meth, PyObject* name) {
+  int ret;
+  PyObject *name_attr;
+  name_attr = __Pyx_PyObject_GetAttrStr(meth, __pyx_n_s_name);
+  if (likely(name_attr)) {
+      ret = PyObject_RichCompareBool(name_attr, name, Py_EQ);
+  } else {
+      ret = -1;
+  }
+  if (unlikely(ret < 0)) {
+      PyErr_Clear();
+      ret = 0;
+  }
+  Py_XDECREF(name_attr);
+  return ret;
+}
+static int __Pyx_setup_reduce(PyObject* type_obj) {
+    int ret = 0;
+    PyObject *object_reduce = NULL;
+    PyObject *object_reduce_ex = NULL;
+    PyObject *reduce = NULL;
+    PyObject *reduce_ex = NULL;
+    PyObject *reduce_cython = NULL;
+    PyObject *setstate = NULL;
+    PyObject *setstate_cython = NULL;
+#if CYTHON_USE_PYTYPE_LOOKUP
+    if (_PyType_Lookup((PyTypeObject*)type_obj, __pyx_n_s_getstate)) goto GOOD;
+#else
+    if (PyObject_HasAttr(type_obj, __pyx_n_s_getstate)) goto GOOD;
+#endif
+#if CYTHON_USE_PYTYPE_LOOKUP
+    object_reduce_ex = _PyType_Lookup(&PyBaseObject_Type, __pyx_n_s_reduce_ex); if (!object_reduce_ex) goto BAD;
+#else
+    object_reduce_ex = __Pyx_PyObject_GetAttrStr((PyObject*)&PyBaseObject_Type, __pyx_n_s_reduce_ex); if (!object_reduce_ex) goto BAD;
+#endif
+    reduce_ex = __Pyx_PyObject_GetAttrStr(type_obj, __pyx_n_s_reduce_ex); if (unlikely(!reduce_ex)) goto BAD;
+    if (reduce_ex == object_reduce_ex) {
+#if CYTHON_USE_PYTYPE_LOOKUP
+        object_reduce = _PyType_Lookup(&PyBaseObject_Type, __pyx_n_s_reduce); if (!object_reduce) goto BAD;
+#else
+        object_reduce = __Pyx_PyObject_GetAttrStr((PyObject*)&PyBaseObject_Type, __pyx_n_s_reduce); if (!object_reduce) goto BAD;
+#endif
+        reduce = __Pyx_PyObject_GetAttrStr(type_obj, __pyx_n_s_reduce); if (unlikely(!reduce)) goto BAD;
+        if (reduce == object_reduce || __Pyx_setup_reduce_is_named(reduce, __pyx_n_s_reduce_cython)) {
+            reduce_cython = __Pyx_PyObject_GetAttrStr(type_obj, __pyx_n_s_reduce_cython); if (unlikely(!reduce_cython)) goto BAD;
+            ret = PyDict_SetItem(((PyTypeObject*)type_obj)->tp_dict, __pyx_n_s_reduce, reduce_cython); if (unlikely(ret < 0)) goto BAD;
+            ret = PyDict_DelItem(((PyTypeObject*)type_obj)->tp_dict, __pyx_n_s_reduce_cython); if (unlikely(ret < 0)) goto BAD;
+            setstate = __Pyx_PyObject_GetAttrStr(type_obj, __pyx_n_s_setstate);
+            if (!setstate) PyErr_Clear();
+            if (!setstate || __Pyx_setup_reduce_is_named(setstate, __pyx_n_s_setstate_cython)) {
+                setstate_cython = __Pyx_PyObject_GetAttrStr(type_obj, __pyx_n_s_setstate_cython); if (unlikely(!setstate_cython)) goto BAD;
+                ret = PyDict_SetItem(((PyTypeObject*)type_obj)->tp_dict, __pyx_n_s_setstate, setstate_cython); if (unlikely(ret < 0)) goto BAD;
+                ret = PyDict_DelItem(((PyTypeObject*)type_obj)->tp_dict, __pyx_n_s_setstate_cython); if (unlikely(ret < 0)) goto BAD;
+            }
+            PyType_Modified((PyTypeObject*)type_obj);
+        }
+    }
+    goto GOOD;
+BAD:
+    if (!PyErr_Occurred())
+        PyErr_Format(PyExc_RuntimeError, "Unable to initialize pickling for %s", ((PyTypeObject*)type_obj)->tp_name);
+    ret = -1;
+GOOD:
+#if !CYTHON_USE_PYTYPE_LOOKUP
+    Py_XDECREF(object_reduce);
+    Py_XDECREF(object_reduce_ex);
+#endif
+    Py_XDECREF(reduce);
+    Py_XDECREF(reduce_ex);
+    Py_XDECREF(reduce_cython);
+    Py_XDECREF(setstate);
+    Py_XDECREF(setstate_cython);
+    return ret;
+}
+
 /* GetVTable */
           static void* __Pyx_GetVtable(PyObject *dict) {
     void* ptr;
@@ -13188,826 +13554,8 @@ bad:
     return NULL;
 }
 
-/* Import */
-          static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level) {
-    PyObject *empty_list = 0;
-    PyObject *module = 0;
-    PyObject *global_dict = 0;
-    PyObject *empty_dict = 0;
-    PyObject *list;
-    #if PY_MAJOR_VERSION < 3
-    PyObject *py_import;
-    py_import = __Pyx_PyObject_GetAttrStr(__pyx_b, __pyx_n_s_import);
-    if (!py_import)
-        goto bad;
-    #endif
-    if (from_list)
-        list = from_list;
-    else {
-        empty_list = PyList_New(0);
-        if (!empty_list)
-            goto bad;
-        list = empty_list;
-    }
-    global_dict = PyModule_GetDict(__pyx_m);
-    if (!global_dict)
-        goto bad;
-    empty_dict = PyDict_New();
-    if (!empty_dict)
-        goto bad;
-    {
-        #if PY_MAJOR_VERSION >= 3
-        if (level == -1) {
-            if (strchr(__Pyx_MODULE_NAME, '.')) {
-                module = PyImport_ImportModuleLevelObject(
-                    name, global_dict, empty_dict, list, 1);
-                if (!module) {
-                    if (!PyErr_ExceptionMatches(PyExc_ImportError))
-                        goto bad;
-                    PyErr_Clear();
-                }
-            }
-            level = 0;
-        }
-        #endif
-        if (!module) {
-            #if PY_MAJOR_VERSION < 3
-            PyObject *py_level = PyInt_FromLong(level);
-            if (!py_level)
-                goto bad;
-            module = PyObject_CallFunctionObjArgs(py_import,
-                name, global_dict, empty_dict, list, py_level, NULL);
-            Py_DECREF(py_level);
-            #else
-            module = PyImport_ImportModuleLevelObject(
-                name, global_dict, empty_dict, list, level);
-            #endif
-        }
-    }
-bad:
-    #if PY_MAJOR_VERSION < 3
-    Py_XDECREF(py_import);
-    #endif
-    Py_XDECREF(empty_list);
-    Py_XDECREF(empty_dict);
-    return module;
-}
-
-/* ImportFrom */
-          static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
-    PyObject* value = __Pyx_PyObject_GetAttrStr(module, name);
-    if (unlikely(!value) && PyErr_ExceptionMatches(PyExc_AttributeError)) {
-        PyErr_Format(PyExc_ImportError,
-        #if PY_MAJOR_VERSION < 3
-            "cannot import name %.230s", PyString_AS_STRING(name));
-        #else
-            "cannot import name %S", name);
-        #endif
-    }
-    return value;
-}
-
-/* CalculateMetaclass */
-          static PyObject *__Pyx_CalculateMetaclass(PyTypeObject *metaclass, PyObject *bases) {
-    Py_ssize_t i, nbases = PyTuple_GET_SIZE(bases);
-    for (i=0; i < nbases; i++) {
-        PyTypeObject *tmptype;
-        PyObject *tmp = PyTuple_GET_ITEM(bases, i);
-        tmptype = Py_TYPE(tmp);
-#if PY_MAJOR_VERSION < 3
-        if (tmptype == &PyClass_Type)
-            continue;
-#endif
-        if (!metaclass) {
-            metaclass = tmptype;
-            continue;
-        }
-        if (PyType_IsSubtype(metaclass, tmptype))
-            continue;
-        if (PyType_IsSubtype(tmptype, metaclass)) {
-            metaclass = tmptype;
-            continue;
-        }
-        PyErr_SetString(PyExc_TypeError,
-                        "metaclass conflict: "
-                        "the metaclass of a derived class "
-                        "must be a (non-strict) subclass "
-                        "of the metaclasses of all its bases");
-        return NULL;
-    }
-    if (!metaclass) {
-#if PY_MAJOR_VERSION < 3
-        metaclass = &PyClass_Type;
-#else
-        metaclass = &PyType_Type;
-#endif
-    }
-    Py_INCREF((PyObject*) metaclass);
-    return (PyObject*) metaclass;
-}
-
-/* FetchCommonType */
-          static PyTypeObject* __Pyx_FetchCommonType(PyTypeObject* type) {
-    PyObject* fake_module;
-    PyTypeObject* cached_type = NULL;
-    fake_module = PyImport_AddModule((char*) "_cython_" CYTHON_ABI);
-    if (!fake_module) return NULL;
-    Py_INCREF(fake_module);
-    cached_type = (PyTypeObject*) PyObject_GetAttrString(fake_module, type->tp_name);
-    if (cached_type) {
-        if (!PyType_Check((PyObject*)cached_type)) {
-            PyErr_Format(PyExc_TypeError,
-                "Shared Cython type %.200s is not a type object",
-                type->tp_name);
-            goto bad;
-        }
-        if (cached_type->tp_basicsize != type->tp_basicsize) {
-            PyErr_Format(PyExc_TypeError,
-                "Shared Cython type %.200s has the wrong size, try recompiling",
-                type->tp_name);
-            goto bad;
-        }
-    } else {
-        if (!PyErr_ExceptionMatches(PyExc_AttributeError)) goto bad;
-        PyErr_Clear();
-        if (PyType_Ready(type) < 0) goto bad;
-        if (PyObject_SetAttrString(fake_module, type->tp_name, (PyObject*) type) < 0)
-            goto bad;
-        Py_INCREF(type);
-        cached_type = type;
-    }
-done:
-    Py_DECREF(fake_module);
-    return cached_type;
-bad:
-    Py_XDECREF(cached_type);
-    cached_type = NULL;
-    goto done;
-}
-
-/* CythonFunction */
-          #include <structmember.h>
-static PyObject *
-__Pyx_CyFunction_get_doc(__pyx_CyFunctionObject *op, CYTHON_UNUSED void *closure)
-{
-    if (unlikely(op->func_doc == NULL)) {
-        if (op->func.m_ml->ml_doc) {
-#if PY_MAJOR_VERSION >= 3
-            op->func_doc = PyUnicode_FromString(op->func.m_ml->ml_doc);
-#else
-            op->func_doc = PyString_FromString(op->func.m_ml->ml_doc);
-#endif
-            if (unlikely(op->func_doc == NULL))
-                return NULL;
-        } else {
-            Py_INCREF(Py_None);
-            return Py_None;
-        }
-    }
-    Py_INCREF(op->func_doc);
-    return op->func_doc;
-}
-static int
-__Pyx_CyFunction_set_doc(__pyx_CyFunctionObject *op, PyObject *value)
-{
-    PyObject *tmp = op->func_doc;
-    if (value == NULL) {
-        value = Py_None;
-    }
-    Py_INCREF(value);
-    op->func_doc = value;
-    Py_XDECREF(tmp);
-    return 0;
-}
-static PyObject *
-__Pyx_CyFunction_get_name(__pyx_CyFunctionObject *op)
-{
-    if (unlikely(op->func_name == NULL)) {
-#if PY_MAJOR_VERSION >= 3
-        op->func_name = PyUnicode_InternFromString(op->func.m_ml->ml_name);
-#else
-        op->func_name = PyString_InternFromString(op->func.m_ml->ml_name);
-#endif
-        if (unlikely(op->func_name == NULL))
-            return NULL;
-    }
-    Py_INCREF(op->func_name);
-    return op->func_name;
-}
-static int
-__Pyx_CyFunction_set_name(__pyx_CyFunctionObject *op, PyObject *value)
-{
-    PyObject *tmp;
-#if PY_MAJOR_VERSION >= 3
-    if (unlikely(value == NULL || !PyUnicode_Check(value))) {
-#else
-    if (unlikely(value == NULL || !PyString_Check(value))) {
-#endif
-        PyErr_SetString(PyExc_TypeError,
-                        "__name__ must be set to a string object");
-        return -1;
-    }
-    tmp = op->func_name;
-    Py_INCREF(value);
-    op->func_name = value;
-    Py_XDECREF(tmp);
-    return 0;
-}
-static PyObject *
-__Pyx_CyFunction_get_qualname(__pyx_CyFunctionObject *op)
-{
-    Py_INCREF(op->func_qualname);
-    return op->func_qualname;
-}
-static int
-__Pyx_CyFunction_set_qualname(__pyx_CyFunctionObject *op, PyObject *value)
-{
-    PyObject *tmp;
-#if PY_MAJOR_VERSION >= 3
-    if (unlikely(value == NULL || !PyUnicode_Check(value))) {
-#else
-    if (unlikely(value == NULL || !PyString_Check(value))) {
-#endif
-        PyErr_SetString(PyExc_TypeError,
-                        "__qualname__ must be set to a string object");
-        return -1;
-    }
-    tmp = op->func_qualname;
-    Py_INCREF(value);
-    op->func_qualname = value;
-    Py_XDECREF(tmp);
-    return 0;
-}
-static PyObject *
-__Pyx_CyFunction_get_self(__pyx_CyFunctionObject *m, CYTHON_UNUSED void *closure)
-{
-    PyObject *self;
-    self = m->func_closure;
-    if (self == NULL)
-        self = Py_None;
-    Py_INCREF(self);
-    return self;
-}
-static PyObject *
-__Pyx_CyFunction_get_dict(__pyx_CyFunctionObject *op)
-{
-    if (unlikely(op->func_dict == NULL)) {
-        op->func_dict = PyDict_New();
-        if (unlikely(op->func_dict == NULL))
-            return NULL;
-    }
-    Py_INCREF(op->func_dict);
-    return op->func_dict;
-}
-static int
-__Pyx_CyFunction_set_dict(__pyx_CyFunctionObject *op, PyObject *value)
-{
-    PyObject *tmp;
-    if (unlikely(value == NULL)) {
-        PyErr_SetString(PyExc_TypeError,
-               "function's dictionary may not be deleted");
-        return -1;
-    }
-    if (unlikely(!PyDict_Check(value))) {
-        PyErr_SetString(PyExc_TypeError,
-               "setting function's dictionary to a non-dict");
-        return -1;
-    }
-    tmp = op->func_dict;
-    Py_INCREF(value);
-    op->func_dict = value;
-    Py_XDECREF(tmp);
-    return 0;
-}
-static PyObject *
-__Pyx_CyFunction_get_globals(__pyx_CyFunctionObject *op)
-{
-    Py_INCREF(op->func_globals);
-    return op->func_globals;
-}
-static PyObject *
-__Pyx_CyFunction_get_closure(CYTHON_UNUSED __pyx_CyFunctionObject *op)
-{
-    Py_INCREF(Py_None);
-    return Py_None;
-}
-static PyObject *
-__Pyx_CyFunction_get_code(__pyx_CyFunctionObject *op)
-{
-    PyObject* result = (op->func_code) ? op->func_code : Py_None;
-    Py_INCREF(result);
-    return result;
-}
-static int
-__Pyx_CyFunction_init_defaults(__pyx_CyFunctionObject *op) {
-    int result = 0;
-    PyObject *res = op->defaults_getter((PyObject *) op);
-    if (unlikely(!res))
-        return -1;
-    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    op->defaults_tuple = PyTuple_GET_ITEM(res, 0);
-    Py_INCREF(op->defaults_tuple);
-    op->defaults_kwdict = PyTuple_GET_ITEM(res, 1);
-    Py_INCREF(op->defaults_kwdict);
-    #else
-    op->defaults_tuple = PySequence_ITEM(res, 0);
-    if (unlikely(!op->defaults_tuple)) result = -1;
-    else {
-        op->defaults_kwdict = PySequence_ITEM(res, 1);
-        if (unlikely(!op->defaults_kwdict)) result = -1;
-    }
-    #endif
-    Py_DECREF(res);
-    return result;
-}
-static int
-__Pyx_CyFunction_set_defaults(__pyx_CyFunctionObject *op, PyObject* value) {
-    PyObject* tmp;
-    if (!value) {
-        value = Py_None;
-    } else if (value != Py_None && !PyTuple_Check(value)) {
-        PyErr_SetString(PyExc_TypeError,
-                        "__defaults__ must be set to a tuple object");
-        return -1;
-    }
-    Py_INCREF(value);
-    tmp = op->defaults_tuple;
-    op->defaults_tuple = value;
-    Py_XDECREF(tmp);
-    return 0;
-}
-static PyObject *
-__Pyx_CyFunction_get_defaults(__pyx_CyFunctionObject *op) {
-    PyObject* result = op->defaults_tuple;
-    if (unlikely(!result)) {
-        if (op->defaults_getter) {
-            if (__Pyx_CyFunction_init_defaults(op) < 0) return NULL;
-            result = op->defaults_tuple;
-        } else {
-            result = Py_None;
-        }
-    }
-    Py_INCREF(result);
-    return result;
-}
-static int
-__Pyx_CyFunction_set_kwdefaults(__pyx_CyFunctionObject *op, PyObject* value) {
-    PyObject* tmp;
-    if (!value) {
-        value = Py_None;
-    } else if (value != Py_None && !PyDict_Check(value)) {
-        PyErr_SetString(PyExc_TypeError,
-                        "__kwdefaults__ must be set to a dict object");
-        return -1;
-    }
-    Py_INCREF(value);
-    tmp = op->defaults_kwdict;
-    op->defaults_kwdict = value;
-    Py_XDECREF(tmp);
-    return 0;
-}
-static PyObject *
-__Pyx_CyFunction_get_kwdefaults(__pyx_CyFunctionObject *op) {
-    PyObject* result = op->defaults_kwdict;
-    if (unlikely(!result)) {
-        if (op->defaults_getter) {
-            if (__Pyx_CyFunction_init_defaults(op) < 0) return NULL;
-            result = op->defaults_kwdict;
-        } else {
-            result = Py_None;
-        }
-    }
-    Py_INCREF(result);
-    return result;
-}
-static int
-__Pyx_CyFunction_set_annotations(__pyx_CyFunctionObject *op, PyObject* value) {
-    PyObject* tmp;
-    if (!value || value == Py_None) {
-        value = NULL;
-    } else if (!PyDict_Check(value)) {
-        PyErr_SetString(PyExc_TypeError,
-                        "__annotations__ must be set to a dict object");
-        return -1;
-    }
-    Py_XINCREF(value);
-    tmp = op->func_annotations;
-    op->func_annotations = value;
-    Py_XDECREF(tmp);
-    return 0;
-}
-static PyObject *
-__Pyx_CyFunction_get_annotations(__pyx_CyFunctionObject *op) {
-    PyObject* result = op->func_annotations;
-    if (unlikely(!result)) {
-        result = PyDict_New();
-        if (unlikely(!result)) return NULL;
-        op->func_annotations = result;
-    }
-    Py_INCREF(result);
-    return result;
-}
-static PyGetSetDef __pyx_CyFunction_getsets[] = {
-    {(char *) "func_doc", (getter)__Pyx_CyFunction_get_doc, (setter)__Pyx_CyFunction_set_doc, 0, 0},
-    {(char *) "__doc__",  (getter)__Pyx_CyFunction_get_doc, (setter)__Pyx_CyFunction_set_doc, 0, 0},
-    {(char *) "func_name", (getter)__Pyx_CyFunction_get_name, (setter)__Pyx_CyFunction_set_name, 0, 0},
-    {(char *) "__name__", (getter)__Pyx_CyFunction_get_name, (setter)__Pyx_CyFunction_set_name, 0, 0},
-    {(char *) "__qualname__", (getter)__Pyx_CyFunction_get_qualname, (setter)__Pyx_CyFunction_set_qualname, 0, 0},
-    {(char *) "__self__", (getter)__Pyx_CyFunction_get_self, 0, 0, 0},
-    {(char *) "func_dict", (getter)__Pyx_CyFunction_get_dict, (setter)__Pyx_CyFunction_set_dict, 0, 0},
-    {(char *) "__dict__", (getter)__Pyx_CyFunction_get_dict, (setter)__Pyx_CyFunction_set_dict, 0, 0},
-    {(char *) "func_globals", (getter)__Pyx_CyFunction_get_globals, 0, 0, 0},
-    {(char *) "__globals__", (getter)__Pyx_CyFunction_get_globals, 0, 0, 0},
-    {(char *) "func_closure", (getter)__Pyx_CyFunction_get_closure, 0, 0, 0},
-    {(char *) "__closure__", (getter)__Pyx_CyFunction_get_closure, 0, 0, 0},
-    {(char *) "func_code", (getter)__Pyx_CyFunction_get_code, 0, 0, 0},
-    {(char *) "__code__", (getter)__Pyx_CyFunction_get_code, 0, 0, 0},
-    {(char *) "func_defaults", (getter)__Pyx_CyFunction_get_defaults, (setter)__Pyx_CyFunction_set_defaults, 0, 0},
-    {(char *) "__defaults__", (getter)__Pyx_CyFunction_get_defaults, (setter)__Pyx_CyFunction_set_defaults, 0, 0},
-    {(char *) "__kwdefaults__", (getter)__Pyx_CyFunction_get_kwdefaults, (setter)__Pyx_CyFunction_set_kwdefaults, 0, 0},
-    {(char *) "__annotations__", (getter)__Pyx_CyFunction_get_annotations, (setter)__Pyx_CyFunction_set_annotations, 0, 0},
-    {0, 0, 0, 0, 0}
-};
-static PyMemberDef __pyx_CyFunction_members[] = {
-    {(char *) "__module__", T_OBJECT, offsetof(PyCFunctionObject, m_module), PY_WRITE_RESTRICTED, 0},
-    {0, 0, 0,  0, 0}
-};
-static PyObject *
-__Pyx_CyFunction_reduce(__pyx_CyFunctionObject *m, CYTHON_UNUSED PyObject *args)
-{
-#if PY_MAJOR_VERSION >= 3
-    return PyUnicode_FromString(m->func.m_ml->ml_name);
-#else
-    return PyString_FromString(m->func.m_ml->ml_name);
-#endif
-}
-static PyMethodDef __pyx_CyFunction_methods[] = {
-    {"__reduce__", (PyCFunction)__Pyx_CyFunction_reduce, METH_VARARGS, 0},
-    {0, 0, 0, 0}
-};
-#if PY_VERSION_HEX < 0x030500A0
-#define __Pyx_CyFunction_weakreflist(cyfunc) ((cyfunc)->func_weakreflist)
-#else
-#define __Pyx_CyFunction_weakreflist(cyfunc) ((cyfunc)->func.m_weakreflist)
-#endif
-static PyObject *__Pyx_CyFunction_New(PyTypeObject *type, PyMethodDef *ml, int flags, PyObject* qualname,
-                                      PyObject *closure, PyObject *module, PyObject* globals, PyObject* code) {
-    __pyx_CyFunctionObject *op = PyObject_GC_New(__pyx_CyFunctionObject, type);
-    if (op == NULL)
-        return NULL;
-    op->flags = flags;
-    __Pyx_CyFunction_weakreflist(op) = NULL;
-    op->func.m_ml = ml;
-    op->func.m_self = (PyObject *) op;
-    Py_XINCREF(closure);
-    op->func_closure = closure;
-    Py_XINCREF(module);
-    op->func.m_module = module;
-    op->func_dict = NULL;
-    op->func_name = NULL;
-    Py_INCREF(qualname);
-    op->func_qualname = qualname;
-    op->func_doc = NULL;
-    op->func_classobj = NULL;
-    op->func_globals = globals;
-    Py_INCREF(op->func_globals);
-    Py_XINCREF(code);
-    op->func_code = code;
-    op->defaults_pyobjects = 0;
-    op->defaults = NULL;
-    op->defaults_tuple = NULL;
-    op->defaults_kwdict = NULL;
-    op->defaults_getter = NULL;
-    op->func_annotations = NULL;
-    PyObject_GC_Track(op);
-    return (PyObject *) op;
-}
-static int
-__Pyx_CyFunction_clear(__pyx_CyFunctionObject *m)
-{
-    Py_CLEAR(m->func_closure);
-    Py_CLEAR(m->func.m_module);
-    Py_CLEAR(m->func_dict);
-    Py_CLEAR(m->func_name);
-    Py_CLEAR(m->func_qualname);
-    Py_CLEAR(m->func_doc);
-    Py_CLEAR(m->func_globals);
-    Py_CLEAR(m->func_code);
-    Py_CLEAR(m->func_classobj);
-    Py_CLEAR(m->defaults_tuple);
-    Py_CLEAR(m->defaults_kwdict);
-    Py_CLEAR(m->func_annotations);
-    if (m->defaults) {
-        PyObject **pydefaults = __Pyx_CyFunction_Defaults(PyObject *, m);
-        int i;
-        for (i = 0; i < m->defaults_pyobjects; i++)
-            Py_XDECREF(pydefaults[i]);
-        PyObject_Free(m->defaults);
-        m->defaults = NULL;
-    }
-    return 0;
-}
-static void __Pyx__CyFunction_dealloc(__pyx_CyFunctionObject *m)
-{
-    if (__Pyx_CyFunction_weakreflist(m) != NULL)
-        PyObject_ClearWeakRefs((PyObject *) m);
-    __Pyx_CyFunction_clear(m);
-    PyObject_GC_Del(m);
-}
-static void __Pyx_CyFunction_dealloc(__pyx_CyFunctionObject *m)
-{
-    PyObject_GC_UnTrack(m);
-    __Pyx__CyFunction_dealloc(m);
-}
-static int __Pyx_CyFunction_traverse(__pyx_CyFunctionObject *m, visitproc visit, void *arg)
-{
-    Py_VISIT(m->func_closure);
-    Py_VISIT(m->func.m_module);
-    Py_VISIT(m->func_dict);
-    Py_VISIT(m->func_name);
-    Py_VISIT(m->func_qualname);
-    Py_VISIT(m->func_doc);
-    Py_VISIT(m->func_globals);
-    Py_VISIT(m->func_code);
-    Py_VISIT(m->func_classobj);
-    Py_VISIT(m->defaults_tuple);
-    Py_VISIT(m->defaults_kwdict);
-    if (m->defaults) {
-        PyObject **pydefaults = __Pyx_CyFunction_Defaults(PyObject *, m);
-        int i;
-        for (i = 0; i < m->defaults_pyobjects; i++)
-            Py_VISIT(pydefaults[i]);
-    }
-    return 0;
-}
-static PyObject *__Pyx_CyFunction_descr_get(PyObject *func, PyObject *obj, PyObject *type)
-{
-    __pyx_CyFunctionObject *m = (__pyx_CyFunctionObject *) func;
-    if (m->flags & __Pyx_CYFUNCTION_STATICMETHOD) {
-        Py_INCREF(func);
-        return func;
-    }
-    if (m->flags & __Pyx_CYFUNCTION_CLASSMETHOD) {
-        if (type == NULL)
-            type = (PyObject *)(Py_TYPE(obj));
-        return __Pyx_PyMethod_New(func, type, (PyObject *)(Py_TYPE(type)));
-    }
-    if (obj == Py_None)
-        obj = NULL;
-    return __Pyx_PyMethod_New(func, obj, type);
-}
-static PyObject*
-__Pyx_CyFunction_repr(__pyx_CyFunctionObject *op)
-{
-#if PY_MAJOR_VERSION >= 3
-    return PyUnicode_FromFormat("<cyfunction %U at %p>",
-                                op->func_qualname, (void *)op);
-#else
-    return PyString_FromFormat("<cyfunction %s at %p>",
-                               PyString_AsString(op->func_qualname), (void *)op);
-#endif
-}
-static PyObject * __Pyx_CyFunction_CallMethod(PyObject *func, PyObject *self, PyObject *arg, PyObject *kw) {
-    PyCFunctionObject* f = (PyCFunctionObject*)func;
-    PyCFunction meth = f->m_ml->ml_meth;
-    Py_ssize_t size;
-    switch (f->m_ml->ml_flags & (METH_VARARGS | METH_KEYWORDS | METH_NOARGS | METH_O)) {
-    case METH_VARARGS:
-        if (likely(kw == NULL || PyDict_Size(kw) == 0))
-            return (*meth)(self, arg);
-        break;
-    case METH_VARARGS | METH_KEYWORDS:
-        return (*(PyCFunctionWithKeywords)meth)(self, arg, kw);
-    case METH_NOARGS:
-        if (likely(kw == NULL || PyDict_Size(kw) == 0)) {
-            size = PyTuple_GET_SIZE(arg);
-            if (likely(size == 0))
-                return (*meth)(self, NULL);
-            PyErr_Format(PyExc_TypeError,
-                "%.200s() takes no arguments (%" CYTHON_FORMAT_SSIZE_T "d given)",
-                f->m_ml->ml_name, size);
-            return NULL;
-        }
-        break;
-    case METH_O:
-        if (likely(kw == NULL || PyDict_Size(kw) == 0)) {
-            size = PyTuple_GET_SIZE(arg);
-            if (likely(size == 1)) {
-                PyObject *result, *arg0;
-                #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                arg0 = PyTuple_GET_ITEM(arg, 0);
-                #else
-                arg0 = PySequence_ITEM(arg, 0); if (unlikely(!arg0)) return NULL;
-                #endif
-                result = (*meth)(self, arg0);
-                #if !(CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS)
-                Py_DECREF(arg0);
-                #endif
-                return result;
-            }
-            PyErr_Format(PyExc_TypeError,
-                "%.200s() takes exactly one argument (%" CYTHON_FORMAT_SSIZE_T "d given)",
-                f->m_ml->ml_name, size);
-            return NULL;
-        }
-        break;
-    default:
-        PyErr_SetString(PyExc_SystemError, "Bad call flags in "
-                        "__Pyx_CyFunction_Call. METH_OLDARGS is no "
-                        "longer supported!");
-        return NULL;
-    }
-    PyErr_Format(PyExc_TypeError, "%.200s() takes no keyword arguments",
-                 f->m_ml->ml_name);
-    return NULL;
-}
-static CYTHON_INLINE PyObject *__Pyx_CyFunction_Call(PyObject *func, PyObject *arg, PyObject *kw) {
-    return __Pyx_CyFunction_CallMethod(func, ((PyCFunctionObject*)func)->m_self, arg, kw);
-}
-static PyObject *__Pyx_CyFunction_CallAsMethod(PyObject *func, PyObject *args, PyObject *kw) {
-    PyObject *result;
-    __pyx_CyFunctionObject *cyfunc = (__pyx_CyFunctionObject *) func;
-    if ((cyfunc->flags & __Pyx_CYFUNCTION_CCLASS) && !(cyfunc->flags & __Pyx_CYFUNCTION_STATICMETHOD)) {
-        Py_ssize_t argc;
-        PyObject *new_args;
-        PyObject *self;
-        argc = PyTuple_GET_SIZE(args);
-        new_args = PyTuple_GetSlice(args, 1, argc);
-        if (unlikely(!new_args))
-            return NULL;
-        self = PyTuple_GetItem(args, 0);
-        if (unlikely(!self)) {
-            Py_DECREF(new_args);
-            return NULL;
-        }
-        result = __Pyx_CyFunction_CallMethod(func, self, new_args, kw);
-        Py_DECREF(new_args);
-    } else {
-        result = __Pyx_CyFunction_Call(func, args, kw);
-    }
-    return result;
-}
-static PyTypeObject __pyx_CyFunctionType_type = {
-    PyVarObject_HEAD_INIT(0, 0)
-    "cython_function_or_method",
-    sizeof(__pyx_CyFunctionObject),
-    0,
-    (destructor) __Pyx_CyFunction_dealloc,
-    0,
-    0,
-    0,
-#if PY_MAJOR_VERSION < 3
-    0,
-#else
-    0,
-#endif
-    (reprfunc) __Pyx_CyFunction_repr,
-    0,
-    0,
-    0,
-    0,
-    __Pyx_CyFunction_CallAsMethod,
-    0,
-    0,
-    0,
-    0,
-    Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC,
-    0,
-    (traverseproc) __Pyx_CyFunction_traverse,
-    (inquiry) __Pyx_CyFunction_clear,
-    0,
-#if PY_VERSION_HEX < 0x030500A0
-    offsetof(__pyx_CyFunctionObject, func_weakreflist),
-#else
-    offsetof(PyCFunctionObject, m_weakreflist),
-#endif
-    0,
-    0,
-    __pyx_CyFunction_methods,
-    __pyx_CyFunction_members,
-    __pyx_CyFunction_getsets,
-    0,
-    0,
-    __Pyx_CyFunction_descr_get,
-    0,
-    offsetof(__pyx_CyFunctionObject, func_dict),
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-#if PY_VERSION_HEX >= 0x030400a1
-    0,
-#endif
-};
-static int __pyx_CyFunction_init(void) {
-    __pyx_CyFunctionType = __Pyx_FetchCommonType(&__pyx_CyFunctionType_type);
-    if (unlikely(__pyx_CyFunctionType == NULL)) {
-        return -1;
-    }
-    return 0;
-}
-static CYTHON_INLINE void *__Pyx_CyFunction_InitDefaults(PyObject *func, size_t size, int pyobjects) {
-    __pyx_CyFunctionObject *m = (__pyx_CyFunctionObject *) func;
-    m->defaults = PyObject_Malloc(size);
-    if (unlikely(!m->defaults))
-        return PyErr_NoMemory();
-    memset(m->defaults, 0, size);
-    m->defaults_pyobjects = pyobjects;
-    return m->defaults;
-}
-static CYTHON_INLINE void __Pyx_CyFunction_SetDefaultsTuple(PyObject *func, PyObject *tuple) {
-    __pyx_CyFunctionObject *m = (__pyx_CyFunctionObject *) func;
-    m->defaults_tuple = tuple;
-    Py_INCREF(tuple);
-}
-static CYTHON_INLINE void __Pyx_CyFunction_SetDefaultsKwDict(PyObject *func, PyObject *dict) {
-    __pyx_CyFunctionObject *m = (__pyx_CyFunctionObject *) func;
-    m->defaults_kwdict = dict;
-    Py_INCREF(dict);
-}
-static CYTHON_INLINE void __Pyx_CyFunction_SetAnnotationsDict(PyObject *func, PyObject *dict) {
-    __pyx_CyFunctionObject *m = (__pyx_CyFunctionObject *) func;
-    m->func_annotations = dict;
-    Py_INCREF(dict);
-}
-
-/* Py3ClassCreate */
-              static PyObject *__Pyx_Py3MetaclassPrepare(PyObject *metaclass, PyObject *bases, PyObject *name,
-                                           PyObject *qualname, PyObject *mkw, PyObject *modname, PyObject *doc) {
-    PyObject *ns;
-    if (metaclass) {
-        PyObject *prep = __Pyx_PyObject_GetAttrStr(metaclass, __pyx_n_s_prepare);
-        if (prep) {
-            PyObject *pargs = PyTuple_Pack(2, name, bases);
-            if (unlikely(!pargs)) {
-                Py_DECREF(prep);
-                return NULL;
-            }
-            ns = PyObject_Call(prep, pargs, mkw);
-            Py_DECREF(prep);
-            Py_DECREF(pargs);
-        } else {
-            if (unlikely(!PyErr_ExceptionMatches(PyExc_AttributeError)))
-                return NULL;
-            PyErr_Clear();
-            ns = PyDict_New();
-        }
-    } else {
-        ns = PyDict_New();
-    }
-    if (unlikely(!ns))
-        return NULL;
-    if (unlikely(PyObject_SetItem(ns, __pyx_n_s_module, modname) < 0)) goto bad;
-    if (unlikely(PyObject_SetItem(ns, __pyx_n_s_qualname, qualname) < 0)) goto bad;
-    if (unlikely(doc && PyObject_SetItem(ns, __pyx_n_s_doc, doc) < 0)) goto bad;
-    return ns;
-bad:
-    Py_DECREF(ns);
-    return NULL;
-}
-static PyObject *__Pyx_Py3ClassCreate(PyObject *metaclass, PyObject *name, PyObject *bases,
-                                      PyObject *dict, PyObject *mkw,
-                                      int calculate_metaclass, int allow_py2_metaclass) {
-    PyObject *result, *margs;
-    PyObject *owned_metaclass = NULL;
-    if (allow_py2_metaclass) {
-        owned_metaclass = PyObject_GetItem(dict, __pyx_n_s_metaclass);
-        if (owned_metaclass) {
-            metaclass = owned_metaclass;
-        } else if (likely(PyErr_ExceptionMatches(PyExc_KeyError))) {
-            PyErr_Clear();
-        } else {
-            return NULL;
-        }
-    }
-    if (calculate_metaclass && (!metaclass || PyType_Check(metaclass))) {
-        metaclass = __Pyx_CalculateMetaclass((PyTypeObject*) metaclass, bases);
-        Py_XDECREF(owned_metaclass);
-        if (unlikely(!metaclass))
-            return NULL;
-        owned_metaclass = metaclass;
-    }
-    margs = PyTuple_Pack(3, name, bases, dict);
-    if (unlikely(!margs)) {
-        result = NULL;
-    } else {
-        result = PyObject_Call(metaclass, margs, mkw);
-        Py_DECREF(margs);
-    }
-    Py_XDECREF(owned_metaclass);
-    return result;
-}
-
 /* CLineInTraceback */
-              #ifndef CYTHON_CLINE_IN_TRACEBACK
+          #ifndef CYTHON_CLINE_IN_TRACEBACK
 static int __Pyx_CLineForTraceback(CYTHON_UNUSED PyThreadState *tstate, int c_line) {
     PyObject *use_cline;
     PyObject *ptype, *pvalue, *ptraceback;
@@ -14044,7 +13592,7 @@ static int __Pyx_CLineForTraceback(CYTHON_UNUSED PyThreadState *tstate, int c_li
 #endif
 
 /* CodeObjectCache */
-              static int __pyx_bisect_code_objects(__Pyx_CodeObjectCacheEntry* entries, int count, int code_line) {
+          static int __pyx_bisect_code_objects(__Pyx_CodeObjectCacheEntry* entries, int count, int code_line) {
     int start = 0, mid = 0, end = count - 1;
     if (end >= 0 && code_line > entries[end].code_line) {
         return count;
@@ -14124,7 +13672,7 @@ static void __pyx_insert_code_object(int code_line, PyCodeObject* code_object) {
 }
 
 /* AddTraceback */
-              #include "compile.h"
+          #include "compile.h"
 #include "frameobject.h"
 #include "traceback.h"
 static PyCodeObject* __Pyx_CreateCodeObjectForTraceback(
@@ -14209,60 +13757,7 @@ bad:
 }
 
 /* CIntToPy */
-              static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
-    const long neg_one = (long) -1, const_zero = (long) 0;
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(long) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(long) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(long) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
-    }
-    {
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        unsigned char *bytes = (unsigned char *)&value;
-        return _PyLong_FromByteArray(bytes, sizeof(long),
-                                     little, !is_unsigned);
-    }
-}
-
-/* CIntFromPyVerify */
-              #define __PYX_VERIFY_RETURN_INT(target_type, func_type, func_value)\
-    __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 0)
-#define __PYX_VERIFY_RETURN_INT_EXC(target_type, func_type, func_value)\
-    __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 1)
-#define __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, exc)\
-    {\
-        func_type value = func_value;\
-        if (sizeof(target_type) < sizeof(func_type)) {\
-            if (unlikely(value != (func_type) (target_type) value)) {\
-                func_type zero = 0;\
-                if (exc && unlikely(value == (func_type)-1 && PyErr_Occurred()))\
-                    return (target_type) -1;\
-                if (is_unsigned && unlikely(value < zero))\
-                    goto raise_neg_overflow;\
-                else\
-                    goto raise_overflow;\
-            }\
-        }\
-        return (target_type) value;\
-    }
-
-/* CIntToPy */
-              static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
+          static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
     const int neg_one = (int) -1, const_zero = (int) 0;
     const int is_unsigned = neg_one > const_zero;
     if (is_unsigned) {
@@ -14292,8 +13787,61 @@ bad:
     }
 }
 
+/* CIntFromPyVerify */
+          #define __PYX_VERIFY_RETURN_INT(target_type, func_type, func_value)\
+    __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 0)
+#define __PYX_VERIFY_RETURN_INT_EXC(target_type, func_type, func_value)\
+    __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 1)
+#define __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, exc)\
+    {\
+        func_type value = func_value;\
+        if (sizeof(target_type) < sizeof(func_type)) {\
+            if (unlikely(value != (func_type) (target_type) value)) {\
+                func_type zero = 0;\
+                if (exc && unlikely(value == (func_type)-1 && PyErr_Occurred()))\
+                    return (target_type) -1;\
+                if (is_unsigned && unlikely(value < zero))\
+                    goto raise_neg_overflow;\
+                else\
+                    goto raise_overflow;\
+            }\
+        }\
+        return (target_type) value;\
+    }
+
+/* CIntToPy */
+          static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
+    const long neg_one = (long) -1, const_zero = (long) 0;
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(long) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(long) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(long) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(long),
+                                     little, !is_unsigned);
+    }
+}
+
 /* Declarations */
-              #if CYTHON_CCOMPLEX
+          #if CYTHON_CCOMPLEX
   #ifdef __cplusplus
     static CYTHON_INLINE __pyx_t_float_complex __pyx_t_float_complex_from_parts(float x, float y) {
       return ::std::complex< float >(x, y);
@@ -14313,7 +13861,7 @@ bad:
 #endif
 
 /* Arithmetic */
-              #if CYTHON_CCOMPLEX
+          #if CYTHON_CCOMPLEX
 #else
     static CYTHON_INLINE int __Pyx_c_eq_float(__pyx_t_float_complex a, __pyx_t_float_complex b) {
        return (a.real == b.real) && (a.imag == b.imag);
@@ -14448,7 +13996,7 @@ bad:
 #endif
 
 /* Declarations */
-              #if CYTHON_CCOMPLEX
+          #if CYTHON_CCOMPLEX
   #ifdef __cplusplus
     static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(double x, double y) {
       return ::std::complex< double >(x, y);
@@ -14468,7 +14016,7 @@ bad:
 #endif
 
 /* Arithmetic */
-              #if CYTHON_CCOMPLEX
+          #if CYTHON_CCOMPLEX
 #else
     static CYTHON_INLINE int __Pyx_c_eq_double(__pyx_t_double_complex a, __pyx_t_double_complex b) {
        return (a.real == b.real) && (a.imag == b.imag);
@@ -14603,7 +14151,7 @@ bad:
 #endif
 
 /* CIntToPy */
-              static CYTHON_INLINE PyObject* __Pyx_PyInt_From_enum__NPY_TYPES(enum NPY_TYPES value) {
+          static CYTHON_INLINE PyObject* __Pyx_PyInt_From_enum__NPY_TYPES(enum NPY_TYPES value) {
     const enum NPY_TYPES neg_one = (enum NPY_TYPES) -1, const_zero = (enum NPY_TYPES) 0;
     const int is_unsigned = neg_one > const_zero;
     if (is_unsigned) {
@@ -14634,7 +14182,7 @@ bad:
 }
 
 /* CIntFromPy */
-              static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *x) {
+          static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *x) {
     const int neg_one = (int) -1, const_zero = (int) 0;
     const int is_unsigned = neg_one > const_zero;
 #if PY_MAJOR_VERSION < 3
@@ -14823,7 +14371,7 @@ raise_neg_overflow:
 }
 
 /* CIntFromPy */
-              static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *x) {
+          static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *x) {
     const long neg_one = (long) -1, const_zero = (long) 0;
     const int is_unsigned = neg_one > const_zero;
 #if PY_MAJOR_VERSION < 3
@@ -15012,7 +14560,7 @@ raise_neg_overflow:
 }
 
 /* FastTypeChecks */
-              #if CYTHON_COMPILING_IN_CPYTHON
+          #if CYTHON_COMPILING_IN_CPYTHON
 static int __Pyx_InBases(PyTypeObject *a, PyTypeObject *b) {
     while (a) {
         a = a->tp_base;
@@ -15084,7 +14632,7 @@ static CYTHON_INLINE int __Pyx_PyErr_GivenExceptionMatches2(PyObject *err, PyObj
 #endif
 
 /* CheckBinaryVersion */
-              static int __Pyx_check_binary_version(void) {
+          static int __Pyx_check_binary_version(void) {
     char ctversion[4], rtversion[4];
     PyOS_snprintf(ctversion, 4, "%d.%d", PY_MAJOR_VERSION, PY_MINOR_VERSION);
     PyOS_snprintf(rtversion, 4, "%s", Py_GetVersion());
@@ -15100,7 +14648,7 @@ static CYTHON_INLINE int __Pyx_PyErr_GivenExceptionMatches2(PyObject *err, PyObj
 }
 
 /* ModuleImport */
-              #ifndef __PYX_HAVE_RT_ImportModule
+          #ifndef __PYX_HAVE_RT_ImportModule
 #define __PYX_HAVE_RT_ImportModule
 static PyObject *__Pyx_ImportModule(const char *name) {
     PyObject *py_name = 0;
@@ -15118,7 +14666,7 @@ bad:
 #endif
 
 /* TypeImport */
-              #ifndef __PYX_HAVE_RT_ImportType
+          #ifndef __PYX_HAVE_RT_ImportType
 #define __PYX_HAVE_RT_ImportType
 static PyTypeObject *__Pyx_ImportType(const char *module_name, const char *class_name,
     size_t size, int strict)
@@ -15183,7 +14731,7 @@ bad:
 #endif
 
 /* InitStrings */
-              static int __Pyx_InitStrings(__Pyx_StringTabEntry *t) {
+          static int __Pyx_InitStrings(__Pyx_StringTabEntry *t) {
     while (t->p) {
         #if PY_MAJOR_VERSION < 3
         if (t->is_unicode) {
