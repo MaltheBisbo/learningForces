@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "globalOptim_ase3d.py", line 549, in <module>
+    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
+  File "/home/mkb/GitHub/learningForces/krrThomas/krr_ase.py", line 28, in __init__
+    length_feature = featureCalculator.get_Nelements()  # featureCalculator.Nelements  # featureCalculator.Nbins
+AttributeError: 'Angular_Fingerprint' object has no attribute 'get_Nelements'
