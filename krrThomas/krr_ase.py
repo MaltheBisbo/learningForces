@@ -25,7 +25,7 @@ class krr_class():
 
         # Initialize data arrays
         max_data = 15000
-        length_feature = featureCalculator.get_Nelements()  # featureCalculator.Nelements  # featureCalculator.Nbins
+        length_feature = featureCalculator.Nelements  # featureCalculator.Nbins
         self.data_values = np.zeros(max_data)
         self.featureMat = np.zeros((max_data, length_feature))
         
