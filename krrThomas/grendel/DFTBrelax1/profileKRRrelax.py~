@@ -1,0 +1,23 @@
+import numpy as np
+from ase.io import read, write
+
+atoms_train = read('global_spTrain.traj', index=':')
+a0 = atoms_train[0]
+
+Rc1 = 5
+binwidth1 = 0.2
+sigma1 = 0.2
+
+Rc2 = 4
+Nbins2 = 30
+sigma2 = 0.2
+
+gamma = 1
+eta = 30
+use_angular = True
+
+featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
+
+# Set up KRR-model
+comparator = gaussComparator()
+krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
