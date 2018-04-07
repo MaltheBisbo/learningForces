@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "globalOptim_ase3d.py", line 582, in <module>
-    optimizer.runOptimizer()
-  File "globalOptim_ase3d.py", line 398, in runOptimizer
-    a_new, EnewML = self.relax(a_new_unrelaxed, ML=True)
-  File "globalOptim_ase3d.py", line 487, in relax
-    label = self.traj_namebase + 'ML{}'.format(traj_counter)
-UnboundLocalError: local variable 'traj_counter' referenced before assignment

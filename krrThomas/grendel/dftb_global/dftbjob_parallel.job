@@ -1,0 +1,39 @@
+#!/bin/bash
+#SBATCH --job-name=C24
+#SBATCH --partition=q28
+#SBATCH --mem=5G
+#SBATCH --nodes=1
+#SBATCH --time=50:00:00
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+#SBATCH --no-requeue
+
+#SBATCH --export=NONE
+#SBATCH --array=0-99%100
+
+
+echo "========= Job started  at `date` =========="
+# Go to the directory where this job was submitted
+cd $SLURM_SUBMIT_DIR
+
+# Source
+source /home/mkb/.dftb
+source /home/mkb/virtualEnvs/python-3.6.3/bin/activate
+
+# Make folder at scratch directory - necesarry for dftb runs
+#mkdir /scratch/$SLURM_JOB_ID
+
+# copy files to the scratch-directory
+cp ~/GitHub/learningForces/krrThomas/globalOptim_ase3d.py /scratch/$SLURM_JOB_ID
+
+# change directory to the local scratch-directory, and run:
+cd /scratch/$SLURM_JOB_ID
+export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}
+python globalOptim_ase3d.py ./ $SLURM_ARRAY_TASK_ID
+
+# copy home the outputdata:
+mkdir $SLURM_SUBMIT_DIR/runs_parallel/run$SLURM_ARRAY_TASK_ID
+cp global* $SLURM_SUBMIT_DIR/runs_parallel/run$SLURM_ARRAY_TASK_ID/
+
+echo "========= Job finished at `date` =========="
+

@@ -1,3 +1,4 @@
+
 import numpy as np
 
 from startgenerator import StartGenerator
@@ -13,7 +14,7 @@ from ase.calculators.singlepoint import SinglePointCalculator
 from ase.constraints import FixedPlane
 from ase.ga.relax_attaches import VariansBreak
 
-def relax_VarianceBreak(structure, calc, label):
+def relax_VarianceBreak(structure, calc, label, niter_max=10):
     '''
     Relax a structure and saves the trajectory based in the index i
 
@@ -37,7 +38,7 @@ def relax_VarianceBreak(structure, calc, label):
     if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
         return structure
     traj = Trajectory(label+'.traj','a', structure)
-    while (structure.get_forces()**2).sum(axis = 1).max()**0.5 > forcemax and niter < 5:
+    while (structure.get_forces()**2).sum(axis = 1).max()**0.5 > forcemax and niter < niter_max:
         dyn = BFGS(structure,
                    logfile=label+'.log')
         vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
@@ -358,7 +359,9 @@ class globalOptim():
         # Trajectory names
         self.writer_initTrain = TrajectoryWriter(filename=traj_namebase+'initTrain.traj', mode='a')
         self.writer_spTrain = TrajectoryWriter(filename=traj_namebase+'spTrain.traj', mode='a')
-
+        self.writer_current = TrajectoryWriter(filename=traj_namebase+'current.traj', mode='a')
+        
+        
     def runOptimizer(self):
 
         # Initial structures
@@ -428,6 +431,9 @@ class globalOptim():
                 else:  # Reject structure
                     stagnation_counter += 1
 
+            # Save current structure
+            self.writer_current.write(self.a, energy=self.E)
+                    
             if stagnation_counter >= self.Nstag:  # The search has converged or stagnated.
                 print('The convergence/stagnation criteria was reached')
                 break
@@ -486,13 +492,13 @@ class globalOptim():
         if ML:
             label = self.traj_namebase + 'ML{}'.format(traj_counter)
             krr_calc = krr_calculator(self.MLmodel)
-            relax_VarianceBreak(a, krr_calc, label)
+            relax_VarianceBreak(a, krr_calc, label, niter_max=1)
             #a.set_calculator(krr_calc)
             #dyn = BFGS(a, trajectory=label+'.traj')
             #dyn.run(fmax=0.1)            
         else:
             label = self.traj_namebase + '{}'.format(traj_counter)
-            relax_VarianceBreak(a, self.calculator, label)
+            relax_VarianceBreak(a, self.calculator, label, niter_max=10)
             #a.set_calculator(self.calculator)
             #dyn = BFGS(a, trajectory=label+'.traj')
             #dyn.run(fmax=0.1)
@@ -525,7 +531,7 @@ if __name__ == '__main__':
     from ase.calculators.dftb import Dftb
     import sys
 
-    Natoms = 19
+    Natoms = 24
     
     # Set up featureCalculator
     a = createInitalStructure(Natoms)
@@ -572,8 +578,8 @@ if __name__ == '__main__':
                             traj_namebase=savefiles_namebase,
                             MLmodel=krr,
                             Natoms=Natoms,
-                            Niter=500,
-                            Nstag=500,
+                            Niter=10,
+                            Nstag=10,
                             Nstart_pop=5,
                             fracPerturb=0.4,
                             rattle_maxDist=3,
