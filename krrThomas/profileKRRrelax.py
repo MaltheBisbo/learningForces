@@ -72,7 +72,7 @@ featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth
 
 # Set up KRR-model
 comparator = gaussComparator()
-krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
+krr = krr_class(comparator=comparator, featureCalculator=featureCalculator, bias_fraction=0.7, bias_std_add=1)
 
 GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0,2,10)}
 MAE, params = krr.train(atoms_train, add_new_data=False, k=10, **GSkwargs)

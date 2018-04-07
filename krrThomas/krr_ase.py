@@ -17,11 +17,12 @@ class krr_class():
     comparator_kwargs:
     Parameters for the compator. This could be the width for the gaussian kernel.
     """
-    def __init__(self, comparator, featureCalculator, reg=1e-5, bias_fraction=0.95, **comparator_kwargs):
+    def __init__(self, comparator, featureCalculator, reg=1e-5, bias_fraction=0.8, bias_std_add=0.5, **comparator_kwargs):
         self.featureCalculator = featureCalculator
         self.comparator = comparator
         self.comparator.set_args(**comparator_kwargs)
         self.bias_fraction = bias_fraction
+        self.bias_std_add = bias_std_add
         self.reg = reg
 
         # Initialize data arrays
@@ -100,9 +101,11 @@ class krr_class():
         N_beta = int(self.bias_fraction*len(data_values))
         sorted_data_values = np.sort(data_values)
         sorted_filtered_data_values = sorted_data_values[:N_beta]
+
+        filtered_mean = np.mean(sorted_filtered_data_values)
+        filtered_std = np.std(sorted_filtered_data_values)
         
-        self.beta = np.mean(sorted_filtered_data_values)  # + np.var(sorted_filtered_data_values)
-        #self.beta = np.mean(data_values)
+        self.beta = filtered_mean + self.bias_std_add * filtered_std
         
         A = similarityMat + reg*np.identity(len(data_values))
         self.Ainv = np.linalg.inv(A)
