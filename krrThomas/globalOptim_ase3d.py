@@ -479,10 +479,17 @@ class globalOptim():
         self.writer_initTrain.write(atoms[-1], energy=E[-1])
                 
     def relax(self, a, ML=False):
+        len_count_max = len(str(self.niter-1))
+        len_count = len(str(self.traj_counter))
+        traj_counter = '0'*(len_count_max - len_count) + str(self.traj_counter)
+        """
         if len(str(self.traj_counter)) == 1:
             traj_counter = '00' + str(self.traj_counter)
-        if len(str(self.traj_counter)) == 2:
+        elif len(str(self.traj_counter)) == 2:
             traj_counter = '0' + str(self.traj_counter)
+        else:
+            traj_counter = str(self.traj_counter)
+        """
         
         if self.noZ:
             plane = [FixedPlane(x, (0, 0, 1)) for x in range(len(a))]
