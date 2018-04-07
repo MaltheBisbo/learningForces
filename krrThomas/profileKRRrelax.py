@@ -6,9 +6,46 @@ from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
 from krr_ase import krr_class
 from custom_calculators import krr_calculator
 
-from ase.io import read, write
+from ase.io import read, write, Trajectory
 from ase.constraints import FixedPlane
 from ase.optimize import BFGS
+from ase.ga.relax_attaches import VariansBreak
+
+
+def relax_VarianceBreak(structure, calc, label):
+    '''
+    Relax a structure and saves the trajectory based in the index i
+
+    Parameters
+    ----------
+    structure : ase Atoms object to be relaxed
+
+    Returns
+    -------
+    '''
+
+    # Set calculator 
+    structure.set_calculator(calc)
+
+    # loop a number of times to capture if minimization stops with high force
+    # due to the VariansBreak calls
+    forcemax = 0.1
+    niter = 0
+
+    # If the structure is already fully relaxed just return it
+    if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
+        return structure
+    traj = Trajectory(label+'.traj','a', structure)
+    while (structure.get_forces()**2).sum(axis = 1).max()**0.5 > forcemax and niter < 5:
+        dyn = BFGS(structure, logfile=label+'.log')
+        vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
+        dyn.attach(traj)
+        dyn.attach(vb)
+        dyn.run(fmax = forcemax, steps = 500)
+        niter += 1
+
+
+
 
 atoms_relax = read('grendel/DFTBrelax1/global_ML005.traj', index='0')
 atoms_train1 = read('grendel/DFTBrelax1/global_initTrain.traj', index=':')
@@ -45,6 +82,9 @@ calc = krr_calculator(krr)
 plane = [FixedPlane(x, (0, 0, 1)) for x in range(len(atoms_relax))]
 atoms_relax.set_constraint(plane)
 
-atoms_relax.set_calculator(calc)
-dyn = BFGS(atoms_relax, trajectory='profile.traj')
+label = 'profile'
+relax_VarianceBreak(atoms_relax, calc, label)
+
+#atoms_relax.set_calculator(calc)
+#dyn = BFGS(atoms_relax, trajectory='profile.traj')
 #dyn.run(fmax=0.1)

@@ -31,10 +31,6 @@ class krr_calculator(Calculator):
         if 'forces' in properties:
             self.results['forces'] = F
 
-        if E_error > 2:
-            print("Error too great")
-
-
 class doubleLJ_calculator(Calculator):
 
     implemented_properties = ['energy', 'forces']

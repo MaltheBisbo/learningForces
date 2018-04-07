@@ -1,0 +1,52 @@
+================================================================================
+==
+==   Density Functional based Tight Binding with a lot of extensions (DFTB+)    
+==
+==                              Release: 1.2 (p1)
+==
+==                            (ParserVersion = 4)
+==
+================================================================================
+
+
+********************************************************************************
+** Parsing and initializing
+********************************************************************************
+
+Interpreting input file 'dftb_in.hsd'
+--------------------------------------------------------------------------------
+Reading SK-files:
+  /home/groves/DFT/dftb_parameters/probAlreadyhave/C-C.skf
+Done.
+
+
+Processed input in HSD format written to 'dftb_pin.hsd'
+
+Starting initialization...
+--------------------------------------------------------------------------------
+Mode:                        Conjugate gradient relaxation
+Self consistent charges:     No
+Spin polarisation:           No
+Nr. of up electrons:            38.000000
+Nr. of down electrons:          38.000000
+Periodic boundaries:         No
+Diagonalizer:                Standard
+Nr. of moved atoms:                      19
+Max. nr. of geometry steps:               0
+Force tolerance:               0.100000E-03
+Electronic temperature:        0.100000E-07
+Included shells:              C:  s, p
+Extra options:
+--------------------------------------------------------------------------------
+ 
+
+********************************************************************************
+** Geometry step: 0
+********************************************************************************
+
+ 
+ Total Energy:                     -31.2386897653 H
+ Total Mermin free energy:         -31.2386897653 H
+ Maximal force component:            0.303356E+00
+ 
+ Geometry converged
