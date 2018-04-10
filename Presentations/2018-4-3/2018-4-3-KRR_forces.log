@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.8.30)  3 APR 2018 23:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.10)  10 APR 2018 13:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1123,23 +1123,70 @@ Package caption Info: Hyperref support is turned off
 \c@subfigure=\count291
 \c@subtable=\count292
 )
+(/usr/local/texlive/2017/texmf-dist/tex/latex/animate/animate.sty
+Package: animate 2017/05/18 PDF animations from files and inline graphics
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks50
+\XKV@tempa@toks=\toks51
+)
+\XKV@depth=\count293
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/ifdraft.sty
+Package: ifdraft 2016/05/16 v1.4 Detect class options draft and final (HO)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/media9/pdfbase.sty
+Package: pdfbase 2017/03/23 v0.14 driver independent access to low-level PDF fe
+atures
+\g_pbs_page_int=\count294
+\g_pbs_oc_int=\count295
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/ocgx2/ocgbase.sty
+Package: ocgbase 2017/03/30 v0.10 support package for ocgx2.sty
+)
+\@anim@box=\box76
+\@anim@measbox=\box77
+\@anim@tmpdima=\dimen320
+\@anim@tmpdimb=\dimen321
+\@anim@num=\count296
+\@anim@curframe=\count297
+\@anim@curframe@zb=\count298
+\@anim@resizeflags=\count299
+\@anim@skipfram=\count300
+\@anim@mulframecnt=\count301
+\@anim@@tmlnfile=\read3
+\@anim@tmpcnt=\count302
+\c@@anim@ltxcnt=\count303
+\@anim@curlayer=\count304
+\@anim@lineno=\count305
+\@anim@curfield=\count306
+\@anim@@resizeflags=\count307
+)
 (./2018-4-3-KRR_forces.aux)
 \openout1 = `2018-4-3-KRR_forces.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1177,17 +1224,17 @@ LaTeX Font Info:    ... okay on input line 34.
 
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count293
-\scratchdimen=\dimen320
-\scratchbox=\box76
-\nofMPsegments=\count294
-\nofMParguments=\count295
-\everyMPshowfont=\toks50
-\MPscratchCnt=\count296
-\MPscratchDim=\dimen321
-\MPnumerator=\count297
-\makeMPintoPDFobject=\count298
-\everyMPtoPDFconversion=\toks51
+\scratchcounter=\count308
+\scratchdimen=\dimen322
+\scratchbox=\box78
+\nofMPsegments=\count309
+\nofMParguments=\count310
+\everyMPshowfont=\toks52
+\MPscratchCnt=\count311
+\MPscratchDim=\dimen323
+\MPnumerator=\count312
+\makeMPintoPDFobject=\count313
+\everyMPtoPDFconversion=\toks53
 ) (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1206,8 +1253,8 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box77
-Package hyperref Info: Link coloring OFF on input line 34.
+\AtBeginShipoutBox=\box79
+Package hyperref Info: Link coloring OFF on input line 36.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1215,68 +1262,68 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count299
+\c@section@level=\count314
 )
-LaTeX Info: Redefining \ref on input line 34.
-LaTeX Info: Redefining \pageref on input line 34.
-LaTeX Info: Redefining \nameref on input line 34.
+LaTeX Info: Redefining \ref on input line 36.
+LaTeX Info: Redefining \pageref on input line 36.
+LaTeX Info: Redefining \nameref on input line 36.
 
 (./2018-4-3-KRR_forces.out) (./2018-4-3-KRR_forces.out)
 \@outlinefile=\write5
 \openout5 = `2018-4-3-KRR_forces.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 34.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 36.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 34.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 36.
 \symnumbers=\mathgroup7
 \sympureletters=\mathgroup8
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 34.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 34.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 34.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 34.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 36.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 34.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 34.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 34.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 36.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 34.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 34.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 34.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 36.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 34.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 34.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 36.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 34.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 36.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 34.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 34.
+(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 34.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 34.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 34.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 34.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 34.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 36.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 36.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 3
-4.
+6.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/cmss/bx/it --> OT1/mathkerncmss/m/sl on input line 
-34.
+36.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 34.
+ut line 36.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/beamer/translator/dicts/translato
 r-basic-dictionary/translator-basic-dictionary-English.dict
@@ -1302,12 +1349,12 @@ Dictionary: translator-numbers-dictionary, Language: English
 r-theorem-dictionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 34.
+LaTeX Info: Redefining \includegraphics on input line 36.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
-LaTeX Info: Redefining \microtypecontext on input line 34.
+LaTeX Info: Redefining \microtypecontext on input line 36.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1328,8 +1375,8 @@ File: siunitx-abbreviations.cfg 2017/05/19 v2.7g siunitx: Abbreviated units
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (./2018-4-3-KRR_forces.nav)
-\c__siunitx_mathsf_int=\count300
-LaTeX Font Info:    Try loading font information for U+msa on input line 34.
+\c__siunitx_mathsf_int=\count315
+LaTeX Font Info:    Try loading font information for U+msa on input line 36.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1337,7 +1384,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2017/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 34.
+LaTeX Font Info:    Try loading font information for U+msb on input line 36.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1345,13 +1392,13 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/local/texlive/2017/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 34.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 36.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 34.
+line 36.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
@@ -1361,7 +1408,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `mathkerncmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-\c__siunitx_mathtt_int=\count301
+\c__siunitx_mathtt_int=\count316
 Package microtype Info: Loading generic settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1369,7 +1416,7 @@ Package microtype Info: Loading generic settings for font family
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 37.
+(Font)              size <5> substituted on input line 39.
 
 [1
 
@@ -1378,13 +1425,13 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 File: GlobalSearchModel.pdf Graphic file (type pdf)
 
 <use GlobalSearchModel.pdf>
-Package pdftex.def Info: GlobalSearchModel.pdf used on input line 52.
+Package pdftex.def Info: GlobalSearchModel.pdf used on input line 54.
 (pdftex.def)             Requested size: 153.64493pt x 145.08705pt.
  <MLrelaxFigure.pdf, id=46, 361.35pt x 433.62pt>
 File: MLrelaxFigure.pdf Graphic file (type pdf)
 
 <use MLrelaxFigure.pdf>
-Package pdftex.def Info: MLrelaxFigure.pdf used on input line 52.
+Package pdftex.def Info: MLrelaxFigure.pdf used on input line 54.
 (pdftex.def)             Requested size: 153.64493pt x 184.37538pt.
  [2
 
@@ -1397,14 +1444,14 @@ Package pdftex.def Info: MLrelaxFigure.pdf used on input line 52.
 File: doubleLJplot.png Graphic file (type png)
 
 <use doubleLJplot.png>
-Package pdftex.def Info: doubleLJplot.png used on input line 103.
+Package pdftex.def Info: doubleLJplot.png used on input line 105.
 (pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
 
 <groundstateStructureN19.png, id=169, 462.528pt x 346.896pt>
 File: groundstateStructureN19.png Graphic file (type png)
 
 <use groundstateStructureN19.png>
-Package pdftex.def Info: groundstateStructureN19.png used on input line 103.
+Package pdftex.def Info: groundstateStructureN19.png used on input line 105.
 (pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
  [5
 
@@ -1413,35 +1460,184 @@ er.png, id=197, 462.528pt x 346.896pt>
 File: searchPerform_search_iter.png Graphic file (type png)
 
 <use searchPerform_search_iter.png>
-Package pdftex.def Info: searchPerform_search_iter.png used on input line 120.
+Package pdftex.def Info: searchPerform_search_iter.png used on input line 122.
 (pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
 
 <searchPerform_function_eval.png, id=198, 462.528pt x 346.896pt>
 File: searchPerform_function_eval.png Graphic file (type png)
 
 <use searchPerform_function_eval.png>
-Package pdftex.def Info: searchPerform_function_eval.png used on input line 120
+Package pdftex.def Info: searchPerform_function_eval.png used on input line 122
 .
 (pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
  [6
 
  <./searchPerform_search_iter.png> <./searchPerform_function_eval.png>]
-<error_correlation.png, id=225, 462.528pt x 346.896pt>
+<error_correlation.png, id=226, 462.528pt x 346.896pt>
 File: error_correlation.png Graphic file (type png)
 
 <use error_correlation.png>
-Package pdftex.def Info: error_correlation.png used on input line 150.
+Package pdftex.def Info: error_correlation.png used on input line 152.
 (pdftex.def)             Requested size: 153.64493pt x 101.05568pt.
 
-<error_correlation_theta.png, id=226, 462.528pt x 346.896pt>
+<error_correlation_theta.png, id=227, 462.528pt x 346.896pt>
 File: error_correlation_theta.png Graphic file (type png)
 
 <use error_correlation_theta.png>
-Package pdftex.def Info: error_correlation_theta.png used on input line 150.
+Package pdftex.def Info: error_correlation_theta.png used on input line 152.
 (pdftex.def)             Requested size: 153.64493pt x 94.43964pt.
  [7
 
- <./error_correlation.png> <./error_correlation_theta.png>]
+ <./error_correlation.png> <./error_correlation_theta.png>] <train_png/train0.p
+ng, id=266, 138.5175pt x 134.5025pt>
+File: train_png/train0.png Graphic file (type png)
+
+<use train_png/train0.png>
+Package pdftex.def Info: train_png/train0.png used on input line 156.
+(pdftex.def)             Requested size: 138.51715pt x 134.50215pt.
+ <./train_png/train0.png> <a0,fr0>
+<train_png/train1.png, id=275, 138.5175pt x 135.50626pt>
+File: train_png/train1.png Graphic file (type png)
+
+<use train_png/train1.png>
+Package pdftex.def Info: train_png/train1.png used on input line 156.
+(pdftex.def)             Requested size: 138.51715pt x 135.5059pt.
+ <./train_png/train1.png> <a0,fr1>
+<train_png/train2.png, id=286, 139.52126pt x 134.5025pt>
+File: train_png/train2.png Graphic file (type png)
+
+<use train_png/train2.png>
+Package pdftex.def Info: train_png/train2.png used on input line 156.
+(pdftex.def)             Requested size: 139.5209pt x 134.50215pt.
+ <./train_png/train2.png> <a0,fr2>
+<train_png/train3.png, id=297, 139.52126pt x 134.5025pt>
+File: train_png/train3.png Graphic file (type png)
+
+<use train_png/train3.png>
+Package pdftex.def Info: train_png/train3.png used on input line 156.
+(pdftex.def)             Requested size: 139.5209pt x 134.50215pt.
+ <./train_png/train3.png> <a0,fr3>
+<train_png/train4.png, id=308, 139.52126pt x 134.5025pt>
+File: train_png/train4.png Graphic file (type png)
+
+<use train_png/train4.png>
+Package pdftex.def Info: train_png/train4.png used on input line 156.
+(pdftex.def)             Requested size: 139.5209pt x 134.50215pt.
+ <./train_png/train4.png> <a0,fr4>
+<train_png/train5.png, id=319, 139.52126pt x 134.5025pt>
+File: train_png/train5.png Graphic file (type png)
+
+<use train_png/train5.png>
+Package pdftex.def Info: train_png/train5.png used on input line 156.
+(pdftex.def)             Requested size: 139.5209pt x 134.50215pt.
+ <./train_png/train5.png> <a0,fr5>
+<train_png/train6.png, id=331, 138.5175pt x 134.5025pt>
+File: train_png/train6.png Graphic file (type png)
+
+<use train_png/train6.png>
+Package pdftex.def Info: train_png/train6.png used on input line 156.
+(pdftex.def)             Requested size: 138.51715pt x 134.50215pt.
+ <./train_png/train6.png> <a0,fr6>
+<train_png/train7.png, id=340, 138.5175pt x 134.5025pt>
+File: train_png/train7.png Graphic file (type png)
+
+<use train_png/train7.png>
+Package pdftex.def Info: train_png/train7.png used on input line 156.
+(pdftex.def)             Requested size: 138.51715pt x 134.50215pt.
+ <./train_png/train7.png> <a0,fr7>
+<train_png/train8.png, id=349, 138.5175pt x 134.5025pt>
+File: train_png/train8.png Graphic file (type png)
+
+<use train_png/train8.png>
+Package pdftex.def Info: train_png/train8.png used on input line 156.
+(pdftex.def)             Requested size: 138.51715pt x 134.50215pt.
+ <./train_png/train8.png> <a0,fr8>
+<train_png/train9.png, id=358, 138.5175pt x 134.5025pt>
+File: train_png/train9.png Graphic file (type png)
+
+<use train_png/train9.png>
+Package pdftex.def Info: train_png/train9.png used on input line 156.
+(pdftex.def)             Requested size: 138.51715pt x 134.50215pt.
+ <./train_png/train9.png> <a0,fr9>
+<train_png/train10.png, id=367, 137.51375pt x 134.5025pt>
+File: train_png/train10.png Graphic file (type png)
+
+<use train_png/train10.png>
+Package pdftex.def Info: train_png/train10.png used on input line 156.
+(pdftex.def)             Requested size: 137.51341pt x 134.50215pt.
+ <./train_png/train10.png> <a0,fr10>
+<train_png/train11.png, id=378, 137.51375pt x 134.5025pt>
+File: train_png/train11.png Graphic file (type png)
+
+<use train_png/train11.png>
+Package pdftex.def Info: train_png/train11.png used on input line 156.
+(pdftex.def)             Requested size: 137.51341pt x 134.50215pt.
+ <./train_png/train11.png> <a0,fr11>
+<train_png/train12.png, id=389, 136.51pt x 133.49875pt>
+File: train_png/train12.png Graphic file (type png)
+
+<use train_png/train12.png>
+Package pdftex.def Info: train_png/train12.png used on input line 156.
+(pdftex.def)             Requested size: 136.50966pt x 133.4984pt.
+ <./train_png/train12.png> <a0,fr12>
+<train_png/train13.png, id=400, 135.50626pt x 133.49875pt>
+File: train_png/train13.png Graphic file (type png)
+
+<use train_png/train13.png>
+Package pdftex.def Info: train_png/train13.png used on input line 156.
+(pdftex.def)             Requested size: 135.5059pt x 133.4984pt.
+ <./train_png/train13.png> <a0,fr13>
+<train_png/train14.png, id=411, 135.50626pt x 133.49875pt>
+File: train_png/train14.png Graphic file (type png)
+
+<use train_png/train14.png>
+Package pdftex.def Info: train_png/train14.png used on input line 156.
+(pdftex.def)             Requested size: 135.5059pt x 133.4984pt.
+ <./train_png/train14.png> <a0,fr14>
+<train_png/train15.png, id=422, 135.50626pt x 133.49875pt>
+File: train_png/train15.png Graphic file (type png)
+
+<use train_png/train15.png>
+Package pdftex.def Info: train_png/train15.png used on input line 156.
+(pdftex.def)             Requested size: 135.5059pt x 133.4984pt.
+ <./train_png/train15.png> <a0,fr15>
+<train_png/train16.png, id=433, 134.5025pt x 133.49875pt>
+File: train_png/train16.png Graphic file (type png)
+
+<use train_png/train16.png>
+Package pdftex.def Info: train_png/train16.png used on input line 156.
+(pdftex.def)             Requested size: 134.50215pt x 133.4984pt.
+ <./train_png/train16.png> <a0,fr16>
+<train_png/train17.png, id=444, 134.5025pt x 132.495pt>
+File: train_png/train17.png Graphic file (type png)
+
+<use train_png/train17.png>
+Package pdftex.def Info: train_png/train17.png used on input line 156.
+(pdftex.def)             Requested size: 134.50215pt x 132.49466pt.
+ <./train_png/train17.png> <a0,fr17>
+<train_png/train18.png, id=455, 134.5025pt x 132.495pt>
+File: train_png/train18.png Graphic file (type png)
+
+<use train_png/train18.png>
+Package pdftex.def Info: train_png/train18.png used on input line 156.
+(pdftex.def)             Requested size: 134.50215pt x 132.49466pt.
+ <./train_png/train18.png> <a0,fr18>
+<train_png/train19.png, id=466, 134.5025pt x 132.495pt>
+File: train_png/train19.png Graphic file (type png)
+
+<use train_png/train19.png>
+Package pdftex.def Info: train_png/train19.png used on input line 156.
+(pdftex.def)             Requested size: 134.50215pt x 132.49466pt.
+ <./train_png/train19.png> <a0,fr19>
+<train_png/train20.png, id=477, 133.49875pt x 132.495pt>
+File: train_png/train20.png Graphic file (type png)
+
+<use train_png/train20.png>
+Package pdftex.def Info: train_png/train20.png used on input line 156.
+(pdftex.def)             Requested size: 133.4984pt x 132.49466pt.
+ <./train_png/train20.png> <a0,fr20> [8
+
+]
 \tf@nav=\write6
 \openout6 = `2018-4-3-KRR_forces.nav'.
 
@@ -1451,11 +1647,12 @@ Package pdftex.def Info: error_correlation_theta.png used on input line 150.
 \tf@snm=\write8
 \openout8 = `2018-4-3-KRR_forces.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 154.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 154.
- (./2018-4-3-KRR_forces.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 154.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 154.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 159.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 159.
+
+(./2018-4-3-KRR_forces.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 159.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 159.
 Package rerunfilecheck Info: File `2018-4-3-KRR_forces.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1465,13 +1662,13 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 32500 strings out of 492995
- 653827 string characters out of 6132704
- 772391 words of memory out of 5000000
- 35480 multiletter control sequences out of 15000+600000
+ 33674 strings out of 492995
+ 675094 string characters out of 6132703
+ 809542 words of memory out of 5000000
+ 36599 multiletter control sequences out of 15000+600000
  13341 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,15n,58p,10389b,733s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,15n,79p,10389b,737s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
@@ -1484,10 +1681,10 @@ local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr
 local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/loc
 al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on 2018-4-3-KRR_forces.pdf (7 pages, 359523 bytes).
+Output written on 2018-4-3-KRR_forces.pdf (8 pages, 524636 bytes).
 PDF statistics:
- 299 PDF objects out of 1000 (max. 8388607)
- 229 compressed objects within 3 object streams
- 15 named destinations out of 1000 (max. 500000)
- 12889 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 576 PDF objects out of 1000 (max. 8388607)
+ 369 compressed objects within 4 object streams
+ 17 named destinations out of 1000 (max. 500000)
+ 13530 words of extra memory for PDF output out of 14400 (max. 10000000)
 
