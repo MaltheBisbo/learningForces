@@ -35,17 +35,21 @@ def relax_VarianceBreak(structure, calc, label, niter_max=10):
     niter = 0
 
     # If the structure is already fully relaxed just return it
-    if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
-        return structure
+    #if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
+    #    return structure
     traj = Trajectory(label+'.traj','a', structure)
-    while (structure.get_forces()**2).sum(axis = 1).max()**0.5 > forcemax and niter < niter_max:
+    for niter in range(niter_max):
+        if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
+            return structure
         dyn = BFGS(structure,
                    logfile=label+'.log')
         vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
         dyn.attach(traj)
         dyn.attach(vb)
-        dyn.run(fmax = forcemax, steps = 500)
+        dyn.run(fmax = forcemax, steps = 5000)
         niter += 1
+
+    return structure
 
 def rattle_atom2d(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
     Natoms = struct.get_number_of_atoms()
@@ -359,6 +363,7 @@ class globalOptim():
         # Trajectory names
         self.writer_initTrain = TrajectoryWriter(filename=traj_namebase+'initTrain.traj', mode='a')
         self.writer_spTrain = TrajectoryWriter(filename=traj_namebase+'spTrain.traj', mode='a')
+        self.writer_spPredict = TrajectoryWriter(filename=traj_namebase+'spPredict.traj', mode='a')
         self.writer_current = TrajectoryWriter(filename=traj_namebase+'current.traj', mode='a')
         
         
@@ -372,6 +377,8 @@ class globalOptim():
             if E < self.E:
                 self.a = a.copy()
                 self.E = E
+        # Reset traj_counter for ML-relaxations
+        self.traj_counter = 0
 
         # Initial structure
         #a_init = createInitalStructure2d(self.Natoms)
@@ -391,18 +398,15 @@ class globalOptim():
             
             # Use MLmodel - if it excists
             if self.MLmodel is not None:
-                print("Begin training")
                 # Train ML model if new data is available
                 if len(self.a_add) > 0:
                     self.trainModel()
-                print("training ended")
 
                 # Relax with MLmodel
                 a_new, EnewML = self.relax(a_new_unrelaxed, ML=True)
                 
                 # Singlepoint with objective potential
                 Enew = self.singlePoint(a_new)
-                print('True energy of relaxed structure:', Enew)
                 
                 """
                 # Accept ML-relaxed structure based on precision criteria
@@ -435,7 +439,7 @@ class globalOptim():
             self.writer_current.write(self.a, energy=self.E)
                     
             if stagnation_counter >= self.Nstag:  # The search has converged or stagnated.
-                print('The convergence/stagnation criteria was reached')
+                #print('Stagnation criteria was reached')
                 break
             
     def trainModel(self):
@@ -479,9 +483,9 @@ class globalOptim():
         self.writer_initTrain.write(atoms[-1], energy=E[-1])
                 
     def relax(self, a, ML=False):
-        len_count_max = len(str(self.niter-1))
-        len_count = len(str(self.traj_counter))
-        traj_counter = '0'*(len_count_max - len_count) + str(self.traj_counter)
+        #len_count_max = len(str(self.Niter-1))
+        #len_count = len(str(self.traj_counter))
+        #traj_counter = '0'*(len_count_max - len_count) + str(self.traj_counter)
         """
         if len(str(self.traj_counter)) == 1:
             traj_counter = '00' + str(self.traj_counter)
@@ -497,15 +501,15 @@ class globalOptim():
         
         # Relax
         if ML:
-            label = self.traj_namebase + 'ML{}'.format(traj_counter)
+            label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
             krr_calc = krr_calculator(self.MLmodel)
             relax_VarianceBreak(a, krr_calc, label, niter_max=1)
             #a.set_calculator(krr_calc)
             #dyn = BFGS(a, trajectory=label+'.traj')
             #dyn.run(fmax=0.1)            
         else:
-            label = self.traj_namebase + '{}'.format(traj_counter)
-            relax_VarianceBreak(a, self.calculator, label, niter_max=10)
+            label = self.traj_namebase + '{}'.format(self.traj_counter)
+            a_relaxed = relax_VarianceBreak(a, self.calculator, label, niter_max=10)
             #a.set_calculator(self.calculator)
             #dyn = BFGS(a, trajectory=label+'.traj')
             #dyn.run(fmax=0.1)
@@ -513,10 +517,14 @@ class globalOptim():
             self.add_trajectory_to_training(label+'.traj')
 
         self.traj_counter += 1
-        Erelaxed = a.get_potential_energy()
-        return a, Erelaxed
+        Erelaxed = a_relaxed.get_potential_energy()
+        return a_relaxed, Erelaxed
             
     def singlePoint(self, a):
+        # Save structure with ML-energy
+        self.writer_spPredict.write(a)
+
+        #Calculate a and save structure with target energy
         a.set_calculator(self.calculator)
         E = a.get_potential_energy()
         a.energy = E
@@ -559,7 +567,10 @@ if __name__ == '__main__':
     
     # Set up KRR-model
     comparator = gaussComparator()
-    krr = krr_class(comparator=comparator, featureCalculator=featureCalculator)
+    krr = krr_class(comparator=comparator,
+                    featureCalculator=featureCalculator,
+                    bias_fraction=0.7,
+                    bias_std_add=1)
 
     # Savefile setup
     savefiles_path = sys.argv[1]
