@@ -1,9 +1,7 @@
 import numpy as np
 import pdb
 
-from doubleLJ import doubleLJ_energy, doubleLJ_gradient
 from doubleLJ import doubleLJ
-from angular_fingerprintFeature_test3 import Angular_Fingerprint
 from fingerprintFeature import fingerprintFeature
 from gaussComparator import gaussComparator
 from scipy.spatial.distance import cdist
@@ -32,7 +30,7 @@ class vector_krr_class():
         # Initialize data arrays
         max_data = 15000
         length_feature = featureCalculator.Nelements  # featureCalculator.Nbins
-        self.Natoms = featureCalculator.n_atoms
+        self.Natoms = featureCalculator.Natoms
         self.dim = featureCalculator.dim
         self.Ncoord = self.Natoms*self.dim
 

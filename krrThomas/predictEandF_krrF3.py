@@ -1,8 +1,8 @@
 import numpy as np
 from scipy.spatial.distance import cosine
 
-from angular_fingerprintFeature_test3 import Angular_Fingerprint
-from gaussComparator import gaussComparator
+from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
+from gaussComparator2 import gaussComparator
 from maternComparator import maternComparator
 from vector_krr_ase2 import vector_krr_class
 
@@ -24,14 +24,15 @@ def predictEandF(atoms_train, atoms_test, featureCalculator, Nsplit=5):
     E_test = np.array([a.get_potential_energy() for a in atoms_test])
     F_test = np.array([a.get_forces() for a in atoms_test])
     
-    features_train = featureCalculator.get_featureMat(atoms_train, show_progress=True)
-    feature_gradients_train = featureCalculator.get_all_featureGradients(atoms_train, show_progress=True)
+    features_train = featureCalculator.get_featureMat(atoms_train)
+    feature_gradients_train = featureCalculator.get_all_featureGradients(atoms_train)
 
-    features_test = featureCalculator.get_featureMat(atoms_test, show_progress=True)
-    feature_gradients_test = featureCalculator.get_all_featureGradients(atoms_test, show_progress=True)
+    features_test = featureCalculator.get_featureMat(atoms_test)
+    feature_gradients_test = featureCalculator.get_all_featureGradients(atoms_test)
 
     # Set up KRR-model
     comparator = maternComparator()
+    #comparator = gaussComparator()
     krr = vector_krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
     # Train
@@ -87,9 +88,12 @@ def distributionPlot(x, title='', xlabel=''):
     
 if __name__ == '__main__':
     atoms = read('graphene_data/graphene_all2.traj', index=':')
+    Ndata = len(atoms)
+    permutation = np.random.permutation(Ndata)
+    atoms = [atoms[i] for i in permutation]
     #atoms = atoms[0::2]
-    atoms_train = atoms[:80]
-    atoms_test = atoms[80:]
+    atoms_train = atoms[:40]
+    atoms_test = atoms[40:]
     a0 = atoms[0]
     Ntest = len(atoms_test)
     

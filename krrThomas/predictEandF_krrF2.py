@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.spatial.distance import cosine
 
-from angular_fingerprintFeature_test3 import Angular_Fingerprint
+from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
 from gaussComparator import gaussComparator
 from maternComparator import maternComparator
 from vector_krr_ase2 import vector_krr_class
