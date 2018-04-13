@@ -106,8 +106,10 @@ class vector_krr_class():
         """
         Ndata_fit = len(forces)
         forces = forces.reshape(-1)
-        A = kernel_Hess_mat - self.reg*np.identity(Ndata_fit*self.Ncoord)
+        A = kernel_Hess_mat + reg*np.identity(Ndata_fit*self.Ncoord)
         self.alpha = np.linalg.solve(A, forces)
+
+        print('MAE_train:', self.__get_MAE_force(forces, kernel_Hess_mat))
         
     def train(self, atoms_list=None, forces=None, featureMat=None, featureGradMat=None, add_new_data=True, k=3, **GSkwargs):
         """

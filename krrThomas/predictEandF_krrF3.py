@@ -36,7 +36,7 @@ def predictEandF(atoms_train, atoms_test, featureCalculator, Nsplit=5):
     krr = vector_krr_class(comparator=comparator, featureCalculator=featureCalculator)
 
     # Train
-    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1,3,10)}
+    GSkwargs = {'reg': [1e-9], 'sigma': np.logspace(1,3,10)}
     MAE, params = krr.train(forces=F_train,
                             featureMat=features_train,
                             featureGradMat=feature_gradients_train,
@@ -87,6 +87,7 @@ def distributionPlot(x, title='', xlabel=''):
     plt.ylabel('counts')
     
 if __name__ == '__main__':
+    np.random.seed(42)
     atoms = read('graphene_data/graphene_all2.traj', index=':')
     Ndata = len(atoms)
     permutation = np.random.permutation(Ndata)
