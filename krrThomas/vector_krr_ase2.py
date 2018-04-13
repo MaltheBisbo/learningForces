@@ -1,11 +1,6 @@
 import numpy as np
 import pdb
 
-from doubleLJ import doubleLJ
-from fingerprintFeature import fingerprintFeature
-from gaussComparator import gaussComparator
-from scipy.spatial.distance import cdist
-
 class vector_krr_class():
     """
     comparator:
@@ -107,6 +102,8 @@ class vector_krr_class():
         Ndata_fit = len(forces)
         forces = forces.reshape(-1)
         A = kernel_Hess_mat + reg*np.identity(Ndata_fit*self.Ncoord)
+        #Ainv = np.linalg.inv(A)
+        #self.alpha = Ainv @ forces
         self.alpha = np.linalg.solve(A, forces)
 
         print('MAE_train:', self.__get_MAE_force(forces, kernel_Hess_mat))
