@@ -141,31 +141,24 @@ class doubleLJ_ase():
 
 class delta_ase():
 
-    def __init__(self, eps=1.8, r0=1.1, sigma=np.sqrt(0.02), cov_dist=1.0):
-        self.eps = eps
-        self.r0 = r0
-        self.sigma = sigma
+    def __init__(self, cov_dist=1.0):
         self.cov_dist = cov_dist
 
     def energy(self, a):
         rmin = 0.7 * self.cov_dist
         radd = 1 - rmin
-        eps, r0, sigma = self.eps, self.r0, self.sigma
         x = a.get_positions()
         E = 0
         for i, xi in enumerate(x):
             for j, xj in enumerate(x):
                 if j > i:
                     r = euclidean(xi, xj) + radd
-                    E1 = 1/r**12 #- 2/r**6                                                                              
-                    #E2 = -eps * np.exp(-(r - r0)**2 / (2*sigma**2))
-                    E += E1 #+ E2
+                    E += 1/r**12
         return E
 
     def forces(self, a):
         rmin = 0.7 * self.cov_dist
         radd = 1 - rmin
-        eps, r0, sigma = self.eps, self.r0, self.sigma
         x = a.get_positions()
         Natoms, dim = x.shape
         dE = np.zeros((Natoms, dim))
@@ -176,10 +169,8 @@ class delta_ase():
                 if j != i:
                     rijVec = xi-xj
                     
-                    dE1 = 12*rijVec*(-1 / (r_scaled**13*r))# + 1 / r**8)
-                    #dE2 = eps*(r-r0)*rijVec / (r*sigma**2) * np.exp(-(r - r0)**2 / (2*sigma**2))
-                 
-                    dE[i] += dE1 #+ dE2
+                    dE[i] = 12*rijVec*(-1 / (r_scaled**13*r))
+
         return - dE.reshape(-1)
 
 
@@ -222,7 +213,7 @@ if __name__ == '__main__':
     # Plot potential
 
     eps, r0, sigma, cov_dist = 1.0, 1.8, np.sqrt(0.3), 1
-    delta = delta_ase(eps, r0, sigma)
+    delta = delta_ase(cov_dist)
 
     x0 = np.array([0, 0, 0])
 

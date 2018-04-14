@@ -1,0 +1,6 @@
+import numpy as np
+
+f_target = 
+
+x_target = np.arange(0,3*np.pi,1000)
+Y = np.sin(x_target)

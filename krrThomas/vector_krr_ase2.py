@@ -1,13 +1,6 @@
 import numpy as np
 import pdb
 
-from doubleLJ import doubleLJ_energy, doubleLJ_gradient
-from doubleLJ import doubleLJ
-from angular_fingerprintFeature_test3 import Angular_Fingerprint
-from fingerprintFeature import fingerprintFeature
-from gaussComparator import gaussComparator
-from scipy.spatial.distance import cdist
-
 class vector_krr_class():
     """
     comparator:
@@ -32,7 +25,7 @@ class vector_krr_class():
         # Initialize data arrays
         max_data = 15000
         length_feature = featureCalculator.Nelements  # featureCalculator.Nbins
-        self.Natoms = featureCalculator.n_atoms
+        self.Natoms = featureCalculator.Natoms
         self.dim = featureCalculator.dim
         self.Ncoord = self.Natoms*self.dim
 
@@ -108,8 +101,12 @@ class vector_krr_class():
         """
         Ndata_fit = len(forces)
         forces = forces.reshape(-1)
-        A = kernel_Hess_mat - self.reg*np.identity(Ndata_fit*self.Ncoord)
+        A = kernel_Hess_mat + reg*np.identity(Ndata_fit*self.Ncoord)
+        #Ainv = np.linalg.inv(A)
+        #self.alpha = Ainv @ forces
         self.alpha = np.linalg.solve(A, forces)
+
+        print('MAE_train:', self.__get_MAE_force(forces, kernel_Hess_mat))
         
     def train(self, atoms_list=None, forces=None, featureMat=None, featureGradMat=None, add_new_data=True, k=3, **GSkwargs):
         """
