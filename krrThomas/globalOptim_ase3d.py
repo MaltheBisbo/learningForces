@@ -503,7 +503,7 @@ class globalOptim():
         if ML:
             label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
             krr_calc = krr_calculator(self.MLmodel)
-            relax_VarianceBreak(a, krr_calc, label, niter_max=1)
+            a_relaxed = relax_VarianceBreak(a, krr_calc, label, niter_max=1)
             #a.set_calculator(krr_calc)
             #dyn = BFGS(a, trajectory=label+'.traj')
             #dyn.run(fmax=0.1)            
@@ -543,9 +543,12 @@ if __name__ == '__main__':
     #from angular_fingerprintFeature import Angular_Fingerprint
     from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
     from krr_ase import krr_class
+    from doubleLJ import delta_ase as deltaFunc
     from ase.calculators.dftb import Dftb
     import sys
 
+    from ase.data import covalent_radii
+    
     Natoms = 24
     
     # Set up featureCalculator
@@ -564,11 +567,15 @@ if __name__ == '__main__':
     use_angular = True
     
     featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
+
+    
     
     # Set up KRR-model
     comparator = gaussComparator()
+    delta_function = deltaFunc(cov_dist=2*covalent_radii[6])
     krr = krr_class(comparator=comparator,
                     featureCalculator=featureCalculator,
+                    delta_function=delta_function,
                     bias_fraction=0.7,
                     bias_std_add=1)
 
