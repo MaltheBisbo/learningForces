@@ -163,6 +163,7 @@ class krr_class():
         
         if featureMat is None:
             featureMat = self.featureCalculator.get_featureMat(atoms_list)
+        if data_values is None:
             data_values = np.array([atoms.get_potential_energy() for atoms in atoms_list])
 
         if self.delta_function is not None:
