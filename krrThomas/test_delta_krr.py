@@ -8,8 +8,41 @@ from delta_functions.delta import delta as deltaFunc
 
 from ase.data import covalent_radii
 from ase import Atoms
+from ase.io import read
+from ase.visualize import view
 
 from doubleLJ import doubleLJ_energy_ase as doubleLJ_energy
+
+
+def num_gradient2(a, delta):
+    Natoms = a.get_number_of_atoms()
+    dim = 3
+    pos0 = a.get_positions()
+    dx = 1e-5
+
+    a_down = a.copy()
+    a_up = a.copy()
+ 
+    perturb0 = np.zeros((Natoms,dim))
+    F_num = np.zeros((Natoms, dim))
+    for i in range(Natoms):
+        for d in range(dim):
+            perturb = perturb0.copy()
+            perturb[i,d] = dx/2
+
+            pos_down = pos0 - perturb
+            pos_up = pos0 + perturb
+
+            a_down.set_positions(pos_down)
+            a_up.set_positions(pos_up)
+
+            E_down = delta.energy(a_down)
+            E_up = delta.energy(a_up)
+
+            F_num[i,d] = -(E_up - E_down) / dx
+            
+    return F_num
+
 
 r_list = [1.064, 1.4, 1.7, 2.0, 2.2]
 X = np.array([[r,0,0,0,0,0] for r in r_list])
@@ -70,3 +103,15 @@ print('positions:\n', atoms_test.get_positions())
 
 print(0.7*2*covalent_radii[6])
 print(krr.beta)
+
+
+a0 = read('graphene_data/cand10.traj', index='0')
+
+
+F0_delta = delta_function.forces(a0).reshape((-1,3))
+F0_delta_num = num_gradient2(a0, delta_function)
+#print('F0:\n',F0_delta)
+#print('F0_num:\n',F0_delta_num)
+print('F0_diff:\n',F0_delta - F0_delta_num)
+
+

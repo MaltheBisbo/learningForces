@@ -48,7 +48,7 @@ class delta():
         cdef double rmin = 0.7 * self.cov_dist
         cdef double radd = 1 - rmin
 
-        E = 0
+        cdef double E=0
         cdef int i, j
         for i in range(Natoms):
             xi = x[i]
@@ -82,6 +82,7 @@ class delta():
         # Initialize Force object
         cdef double *dE
         dE = <double*>mem.alloc(Natoms * dim, sizeof(double))
+
         cdef int i, j, k
         for i in range(Natoms):
             xi = x[i]
@@ -90,11 +91,12 @@ class delta():
 
                 r = euclidean(xi,xj)
                 r_scaled = r + radd
-                if j != i:
+                if j > i:
                     rijVec = subtract(xi,xj)
 
                     for k in range(dim):
-                        dE[dim*i + k] = -12*rijVec.coord[k] / (r_scaled**13*r)
+                        dE[dim*i + k] += -12*rijVec.coord[k] / (pow(r_scaled,13)*r)
+                        dE[dim*j + k] += 12*rijVec.coord[k] / (pow(r_scaled,13)*r)
 
         dE_np = np.zeros((Natoms, dim))
         for i in range(Natoms):

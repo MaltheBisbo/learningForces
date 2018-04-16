@@ -26,11 +26,13 @@ class delta():
         dE = np.zeros((Natoms, dim))
         for i, xi in enumerate(x):
             for j, xj in enumerate(x):
-                r = euclidean(xi,xj)
-                r_scaled = r + radd
-                if j != i:
+                if j > i:
+                    r = euclidean(xi,xj)
+                    r_scaled = r + radd
                     rijVec = xi-xj
 
-                    dE[i] = 12*rijVec*(-1 / (r_scaled**13*r))
+                    dE[i] += 12*rijVec*(-1 / (r_scaled**13*r))
+                    dE[j] += -12*rijVec*(-1 / (r_scaled**13*r))
+
 
         return - dE.reshape(-1)
