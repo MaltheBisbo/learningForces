@@ -9,7 +9,7 @@ from ase import Atoms
 from ase.io import read, write, Trajectory
 from ase.io.trajectory import TrajectoryWriter
 from ase.ga.utilities import closest_distances_generator
-from ase.optimize import BFGS
+from ase.optimize import BFGS, BFGSLineSearch
 from ase.calculators.singlepoint import SinglePointCalculator
 from ase.constraints import FixedPlane
 from ase.ga.relax_attaches import VariansBreak
@@ -41,12 +41,12 @@ def relax_VarianceBreak(structure, calc, label, niter_max=10):
     for niter in range(niter_max):
         if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
             return structure
-        dyn = BFGS(structure,
-                   logfile=label+'.log')
+        dyn = BFGSLineSearch(structure,
+                             logfile=label+'.log')
         vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
         dyn.attach(traj)
         dyn.attach(vb)
-        dyn.run(fmax = forcemax, steps = 5000)
+        dyn.run(fmax = forcemax, steps = 500)
         niter += 1
 
     return structure
@@ -182,8 +182,8 @@ def rattle_Natoms2d_center(struct, Nrattle, rmax_rattle=3.0, Ntries=10):
                                      ratio_of_covalent_radii=0.7)
     
     cov_radii = cd[(6,6)]  # hard coded
-    rmin = 0.7*cov_radii
-    rmax = 1.4*cov_radii
+    rmin = 0.7*2*cov_radii
+    rmax = 1.4*2*cov_radii
 
     rattle_counter = 0
     for index in i_permuted:
@@ -503,7 +503,7 @@ class globalOptim():
         if ML:
             label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
             krr_calc = krr_calculator(self.MLmodel)
-            a_relaxed = relax_VarianceBreak(a, krr_calc, label, niter_max=1)
+            a_relaxed = relax_VarianceBreak(a, krr_calc, label, niter_max=2)
             #a.set_calculator(krr_calc)
             #dyn = BFGS(a, trajectory=label+'.traj')
             #dyn.run(fmax=0.1)            
@@ -543,7 +543,7 @@ if __name__ == '__main__':
     #from angular_fingerprintFeature import Angular_Fingerprint
     from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
     from krr_ase import krr_class
-    from doubleLJ import delta_ase as deltaFunc
+    from delta_functions.delta import delta as deltaFunc
     from ase.calculators.dftb import Dftb
     import sys
 
@@ -603,8 +603,8 @@ if __name__ == '__main__':
                             traj_namebase=savefiles_namebase,
                             MLmodel=krr,
                             Natoms=Natoms,
-                            Niter=1000,
-                            Nstag=1000,
+                            Niter=200,
+                            Nstag=200,
                             Nstart_pop=5,
                             fracPerturb=0.4,
                             rattle_maxDist=3,

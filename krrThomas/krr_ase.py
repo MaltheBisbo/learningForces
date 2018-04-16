@@ -128,6 +128,8 @@ class krr_class():
         #self.beta = filtered_mean + self.bias_std_add * filtered_std
 
         self.beta = np.mean(data_values)
+        if delta_values is None:
+            delta_values = 0
         
         A = similarityMat + reg*np.identity(len(data_values))
         self.Ainv = np.linalg.inv(A)
@@ -164,10 +166,12 @@ class krr_class():
             data_values = np.array([atoms.get_potential_energy() for atoms in atoms_list])
 
         if self.delta_function is not None:
-            delta_values = np.array([self.delta_function.energy(a) for a in atoms_list])
+            delta_values_add = np.array([self.delta_function.energy(a) for a in atoms_list])
+        else:
+            delta_values_add = None
             
         if add_new_data:
-            self.add_data(data_values, featureMat, delta_values)
+            self.add_data(data_values, featureMat, delta_values_add)
         else:
             self.Ndata = len(data_values)
             self.data_values[:self.Ndata] = data_values
@@ -237,7 +241,8 @@ class krr_class():
         # Permute data for cross-validation
         permutation = np.random.permutation(Ndata)
         data_values = data_values[permutation]
-        delta_values = delta_values[permutation]
+        if delta_values is not None:
+            delta_values = delta_values[permutation]
         similarityMat = similarityMat[:,permutation][permutation,:]
         
         Ntest = int(np.floor(Ndata/k))
@@ -245,16 +250,23 @@ class krr_class():
         for ik in range(k):
             [i_train1, i_test, i_train2] = np.split(np.arange(Ndata), [ik*Ntest, (ik+1)*Ntest])
             i_train = np.r_[i_train1, i_train2]
+            if delta_values is not None:
+                delta_values_train = delta_values[i_train]
+                delta_values_test = delta_values[i_test]
+            else:
+                delta_values_train = None
+                delta_values_test = None
+
             self.__fit(data_values[i_train],
                        similarityMat[i_train,:][:,i_train],
                        reg=reg,
-                       delta_values=delta_values[i_train])
+                       delta_values=delta_values_train)
 
             # Validation
             test_similarities = similarityMat[i_test,:][:,i_train]
             FVU[ik] = self.__get_FVU_energy(data_values[i_test],
                                             test_similarities,
-                                            delta_values[i_test])
+                                            delta_values_test)
         return np.mean(FVU)
 
     def __get_FVU_energy(self, data_values, test_similarities, delta_values=None):
