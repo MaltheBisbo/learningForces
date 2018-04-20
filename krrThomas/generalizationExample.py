@@ -65,30 +65,50 @@ featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth
 
 # Set up KRR-model
 comparator = gaussComparator()
-delta_function = deltaFunc(cov_dist=2*covalent_radii[6])
+#delta_function = deltaFunc(cov_dist=2*covalent_radii[6])
 krr = krr_class(comparator=comparator,
                 featureCalculator=featureCalculator,
                 #delta_function=delta_function,
                 bias_fraction=0.7,
                 bias_std_add=1)
 
+delta_function = doubleLJ_delta(0.1)
+krr_delta01 = krr_class(comparator=comparator,
+                        featureCalculator=featureCalculator,
+                        delta_function=delta_function,
+                        bias_fraction=0.7,
+                        bias_std_add=1)
+
+delta_function = doubleLJ_delta(0.2)
+krr_delta02 = krr_class(comparator=comparator,
+                        featureCalculator=featureCalculator,
+                        delta_function=delta_function,
+                        bias_fraction=0.7,
+                        bias_std_add=1)
+
 
 # Generate training data
 train_coord = np.linspace(-0.2,0.2,3)
-x1_train = np.r_[train_coord]  # , train_coord+2]
-x2_train = np.r_[train_coord+2]  # , train_coord]
+x1_train = np.r_[train_coord-0.2]  # , train_coord+2]
+x2_train = np.r_[-train_coord+2.2]  # , train_coord]
 #x1_train = np.r_[train_coord, train_coord+2]
-#x2_train = np.r_[-train_coord+2, -train_coord]
+#x2_train = np.r_[train_coord+2, -train_coord]
 
 a_train = structure_list(x1_train, x2_train)
 E_train = [E_doubleLJ(a) for a in a_train]
 
 
 # Train model
-GSkwargs = {'reg': [1e-7], 'sigma': [20]}
+sigma = 10
+GSkwargs = {'reg': [1e-7], 'sigma': [sigma]}
 #GSkwargs = {'reg': [1e-7], 'sigma': np.logspace(0,2,10)}
-MAE, params = krr.train(atoms_list=a_train, data_values=E_train, k=5, **GSkwargs)
+MAE, params = krr.train(atoms_list=a_train, data_values=E_train, k=3, **GSkwargs)
 print(MAE, params)
+MAE, params = krr_delta01.train(atoms_list=a_train, data_values=E_train, k=3, **GSkwargs)
+print(MAE, params)
+MAE, params = krr_delta02.train(atoms_list=a_train, data_values=E_train, k=3, **GSkwargs)
+print(MAE, params)
+
 
 
 # Generate test data
@@ -113,18 +133,33 @@ a_path = structure_list(x1_path, x2_path)
 Epred_path = np.array([krr.predict_energy(a) for a in a_path])
 Etrue_path = np.array([E_doubleLJ(a) for a in a_path])
 
+Epred_path_delta01 = np.array([krr_delta01.predict_energy(a) for a in a_path])
+Epred_path_delta02 = np.array([krr_delta02.predict_energy(a) for a in a_path])
+
 plt.figure()
+plt.title('Predicted energy landscape \nsigma={}, no delta'.format(sigma))
+plt.xlabel('x1')
+plt.ylabel('x2')
 plt.contourf(X1, X2, E_grid)
 plt.plot([-0.5,2.5], [2.5,-0.5], 'r:')
 plt.plot(x1_train, x2_train, 'kx')
 plt.colorbar()
 
 plt.figure()
+plt.title('Target energy landscape')
+plt.xlabel('x1')
+plt.ylabel('x2')
 plt.contourf(X1, X2, E_grid_true)
 plt.colorbar()
 
 plt.figure()
-plt.plot(np.arange(Npoints), Etrue_path)
-plt.plot(np.arange(Npoints), Epred_path, 'k:')
+plt.title('Energy of linear path \nsigma={} for ML models'.format(sigma))
+plt.xlabel('x1')
+plt.ylabel('Energy')
+plt.plot(test_coord, Etrue_path, label='Target')
+plt.plot(test_coord, Epred_path, 'k:', label='ML no delta')
+plt.plot(test_coord, Epred_path_delta01, 'r:', label='ML delta=0.1*dLJ')
+plt.plot(test_coord, Epred_path_delta02, 'g:', label='ML delta=0.2*dLJ')
+plt.legend()
 plt.show()
 
