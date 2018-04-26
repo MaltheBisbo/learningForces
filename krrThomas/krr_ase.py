@@ -127,7 +127,7 @@ class krr_class():
         #filtered_std = np.std(sorted_filtered_data_values)
         #self.beta = filtered_mean + self.bias_std_add * filtered_std
 
-        self.beta = np.mean(data_values)
+        self.beta = 0  # np.mean(data_values)
         if delta_values is None:
             delta_values = 0
         

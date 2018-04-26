@@ -12,12 +12,26 @@ from ase import Atoms
 from ase.visualize import view
 from ase.data import covalent_radii
 
+def cartesian_coord(x1,x2):
+    """
+    Calculates the 2D cartesian coordinates from the transformed coordiantes.
+    """
+    d0 = 1.07
+    theta1 = -np.pi/3
+    theta2 = -2/3*np.pi
+    pos0 = np.array([0,0])
+    pos1 = np.array([-d0 + x1*np.cos(theta1), x1*np.sin(theta1)])
+    pos2 = np.array([d0 + x2*np.cos(theta2), x2*np.sin(theta2)])
+
+    pos = np.array([pos1, pos0, pos2])
+    return pos
+
 def structure(x1,x2):
     '''
     x1, x2 is the two new coordiantes
-    d0 is the 
+    d0 is the equilibrium two body distance
     '''
-    d0 = 1
+    d0 = 1.07
     theta1 = -np.pi/3
     theta2 = -2/3*np.pi
     pos0 = np.array([0,0,0])
@@ -89,8 +103,8 @@ krr_delta02 = krr_class(comparator=comparator,
 
 # Generate training data
 train_coord = np.linspace(-0.2,0.2,3)
-x1_train = np.r_[train_coord-0.2]  # , train_coord+2]
-x2_train = np.r_[-train_coord+2.2]  # , train_coord]
+x1_train = np.r_[train_coord-0.0]
+x2_train = np.r_[-train_coord+2.0]  # -train_coord + 2.2 for training on path
 #x1_train = np.r_[train_coord, train_coord+2]
 #x2_train = np.r_[train_coord+2, -train_coord]
 
@@ -99,11 +113,12 @@ E_train = [E_doubleLJ(a) for a in a_train]
 
 
 # Train model
-sigma = 10
+sigma = 50
 GSkwargs = {'reg': [1e-7], 'sigma': [sigma]}
 #GSkwargs = {'reg': [1e-7], 'sigma': np.logspace(0,2,10)}
 MAE, params = krr.train(atoms_list=a_train, data_values=E_train, k=3, **GSkwargs)
 print(MAE, params)
+print(krr.alpha)
 MAE, params = krr_delta01.train(atoms_list=a_train, data_values=E_train, k=3, **GSkwargs)
 print(MAE, params)
 MAE, params = krr_delta02.train(atoms_list=a_train, data_values=E_train, k=3, **GSkwargs)
@@ -127,22 +142,52 @@ E_grid = np.array([krr.predict_energy(a) for a in a_grid]).reshape((Npoints,Npoi
 E_grid_true = np.array([E_doubleLJ(a) for a in a_grid]).reshape((Npoints,Npoints))
 E_grid_true[E_grid_true > 1] = 0
 
-x1_path = test_coord
-x2_path = test_coord[::-1]
+# // PATH //
+
+# Corner path
+path_coord1 = np.linspace(-0.5, 1, Npoints)
+path_coord2 = np.linspace(1, 2.5, Npoints)
+x1_path = np.r_[path_coord1, path_coord1[::-1]]
+x2_path = np.r_[path_coord2[::-1], path_coord1[::-1]]
+
+# Straight path
+#x1_path = test_coord
+#x2_path = test_coord[::-1]
+
 a_path = structure_list(x1_path, x2_path)
+
+# // PATH ENERGIES //
+
 Epred_path = np.array([krr.predict_energy(a) for a in a_path])
 Etrue_path = np.array([E_doubleLJ(a) for a in a_path])
 
 Epred_path_delta01 = np.array([krr_delta01.predict_energy(a) for a in a_path])
 Epred_path_delta02 = np.array([krr_delta02.predict_energy(a) for a in a_path])
 
+# // PROBE STRUCTURE COORDINATES //
+
+# d = 1
+#c1_probe = np.array([1, 0.97, 0.67])
+#c2_probe = np.array([1, 1.6, 0.67])
+
+# d = 1.07
+c1_probe = np.array([1, 1.06, 0.74])
+c2_probe = np.array([1, 1.68, 0.74])
+
+# // PLOT //
+
 plt.figure()
 plt.title('Predicted energy landscape \nsigma={}, no delta'.format(sigma))
 plt.xlabel('x1')
 plt.ylabel('x2')
 plt.contourf(X1, X2, E_grid)
-plt.plot([-0.5,2.5], [2.5,-0.5], 'r:')
+#plt.plot([-0.5,2.5], [2.5,-0.5], 'r:')
+plt.plot(x1_path, x2_path, 'r:')
 plt.plot(x1_train, x2_train, 'kx')
+
+plt.plot(c1_probe[0], c2_probe[0], 'rx')
+plt.plot(c1_probe[1], c2_probe[1], 'rx')
+plt.plot(c1_probe[2], c2_probe[2], 'rx')
 plt.colorbar()
 
 plt.figure()
@@ -153,13 +198,99 @@ plt.contourf(X1, X2, E_grid_true)
 plt.colorbar()
 
 plt.figure()
-plt.title('Energy of linear path \nsigma={} for ML models'.format(sigma))
+plt.title('Energy landscape prediction error \nsigma={}, no delta'.format(sigma))
 plt.xlabel('x1')
-plt.ylabel('Energy')
-plt.plot(test_coord, Etrue_path, label='Target')
-plt.plot(test_coord, Epred_path, 'k:', label='ML no delta')
-plt.plot(test_coord, Epred_path_delta01, 'r:', label='ML delta=0.1*dLJ')
-plt.plot(test_coord, Epred_path_delta02, 'g:', label='ML delta=0.2*dLJ')
-plt.legend()
-plt.show()
+plt.ylabel('x2')
+plt.contourf(X1, X2, E_grid_true-E_grid)
+plt.colorbar()
 
+plt.figure()
+plt.title('Energy of linear path \nsigma={} for ML models'.format(sigma))
+plt.xlabel('x2')
+plt.ylabel('Energy')
+plt.plot(x2_path, Etrue_path, 'k-.', label='Target')
+plt.plot(x2_path, Epred_path, label='ML no delta')
+plt.plot(x2_path, Epred_path_delta01, label='ML delta=0.1*dLJ')
+plt.plot(x2_path, Epred_path_delta02, label='ML delta=0.2*dLJ')
+
+# Plot bias
+xlim_min, xlim_max = plt.xlim()
+plt.plot([xlim_min, xlim_max], [0,0], 'k:', label='bias')
+plt.xlim([xlim_min, xlim_max])
+
+# Plot seperating line
+ylim_min, ylim_max = plt.ylim()
+plt.plot([1,1], [ylim_min, ylim_max], 'k')
+plt.ylim([ylim_min, ylim_max])
+plt.legend()
+
+struct_train = [cartesian_coord(x1,x2) for x1,x2 in zip(x1_train, x2_train)]
+struct0 = struct_train[0]
+
+
+def plot_structure(c1,c2):
+    pos = cartesian_coord(c1,c2)
+    x,y = pos[:,0], pos[:,1]
+    plt.title('c1={}, c2={}'.format(c1,c2))
+    plt.axis([-1.5,1.5, -2.5,0.5])
+    plt.gca().set_aspect('equal', adjustable='box')
+    plt.plot(x,y,'r.', ms=15)
+    plt.plot([-1,1],[0,0],'k.', ms=4)
+
+
+plt.figure()
+plt.suptitle('Training data')
+ax1 = plt.subplot(231)
+plot_structure(x1_train[0], x2_train[0])
+
+ax2 = plt.subplot(232)
+plot_structure(x1_train[1], x2_train[1])
+
+ax3 = plt.subplot(233)
+plot_structure(x1_train[2], x2_train[2])
+
+
+plt.figure()
+plt.suptitle('Probe points')
+ax1 = plt.subplot(231)
+plot_structure(c1_probe[0], c2_probe[0])
+
+ax2 = plt.subplot(232)
+plot_structure(c1_probe[1], c2_probe[1])
+
+ax3 = plt.subplot(233)
+plot_structure(c1_probe[2], c2_probe[2])
+
+
+x1_train_new = np.r_[x1_train, 0.745, 0.85]
+x2_train_new = np.r_[x2_train, 0.745, 0.85]
+
+a_train_new = structure_list(x1_train_new, x2_train_new)
+E_train_new = [E_doubleLJ(a) for a in a_train_new]
+
+
+# Train model                                                                                                                                               
+sigma = 50
+GSkwargs = {'reg': [1e-7], 'sigma': [sigma]}
+#GSkwargs = {'reg': [1e-7], 'sigma': np.logspace(0,2,10)}                                                                                                   
+MAE, params = krr.train(atoms_list=a_train_new, data_values=E_train_new, k=3, **GSkwargs)
+print(MAE, params)
+
+E_grid = np.array([krr.predict_energy(a) for a in a_grid]).reshape((Npoints,Npoints))
+
+plt.figure()
+plt.title('Predicted energy landscape \nsigma={}, no delta'.format(sigma))
+plt.xlabel('x1')
+plt.ylabel('x2')
+plt.contourf(X1, X2, E_grid)
+#plt.plot([-0.5,2.5], [2.5,-0.5], 'r:')
+plt.plot(x1_path, x2_path, 'r:')
+plt.plot(x1_train_new, x2_train_new, color='orange', marker='x', linestyle='None')
+
+#plt.plot(c1_probe[0], c2_probe[0], 'rx')
+#plt.plot(c1_probe[1], c2_probe[1], 'rx')
+#plt.plot(c1_probe[2], c2_probe[2], 'rx')
+plt.colorbar()
+
+
+plt.show()
