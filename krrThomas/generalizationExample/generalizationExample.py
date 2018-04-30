@@ -60,7 +60,6 @@ class doubleLJ_delta():
 
 a0 = structure(0,2)
 
-
 # Set up featureCalculator
 Rc1 = 5
 binwidth1 = 0.2
