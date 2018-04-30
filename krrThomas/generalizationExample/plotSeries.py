@@ -14,8 +14,6 @@ from ase.data import covalent_radii
 
 from helpFunctions import cartesian_coord, structure, structure_list
 
-print('hello')
-
 a0 = structure(0,2)
 
 # Set up featureCalculator
@@ -89,7 +87,7 @@ a_path = structure_list(x1_path, x2_path)
 
 
 Ntrain = len(a_train)
-sigma = 50
+sigma = 10
 GSkwargs = {'reg': [1e-7], 'sigma': [sigma]}
 for i in range(1,Ntrain+1):
     x1_train_sub = x1_train[:i]
@@ -103,33 +101,14 @@ for i in range(1,Ntrain+1):
 
     E_grid = np.array([krr.predict_energy(a) for a in a_grid]).reshape((Npoints,Npoints))
 
-    """
-    fig, (ax1, ax2) = plt.subplot(1,2)
+    # path energies
+    Epred_path = np.array([krr.predict_energy(a) for a in a_path])
+    Etrue_path = np.array([E_doubleLJ(a) for a in a_path])
     
-    ax1.subtitle('Target energy landscape')
-    ax1.xlabel('x1')
-    ax1.ylabel('x2')
-    ax1.contourf(X1, X2, E_grid_true)
-    ax1.colorbar()
-    
-    
-    ax2.title('Predicted energy landscape \nsigma={}, no delta'.format(sigma))
-    ax2.xlabel('x1')
-    ax2.ylabel('x2')
-    ax2.contourf(X1, X2, E_grid)
-    ax2.plot(x1_path, x2_path, 'r:')
-    ax2.plot(x1_train_sub, x2_train_sub, color='orange', marker='x', linestyle='None')
-    ax2.colorbar()
-    
-    fig.savefig('results/Ntrain{}.pdf'.format(i))
-    """
-
-
-    
-    
-    plt.figure(figsize=(21,5))
-    plt.subplots_adjust(left=1/21, right=1-1/21, wspace=2/21)
-    plt.subplot(1,3,1)
+    plt.figure(figsize=(15,13))
+    plt.subplots_adjust(left=1/14, right=1-1/14, wspace=2/14,
+                        bottom=1/14, top=1-1/14, hspace=4/14)
+    plt.subplot(2,2,1)
     
     plt.title('Target energy landscape')
     plt.xlabel('x1')
@@ -138,7 +117,7 @@ for i in range(1,Ntrain+1):
     plt.colorbar()
     
     
-    plt.subplot(1,3,2)
+    plt.subplot(2,2,2)
     plt.title('Predicted energy landscape \nsigma={}, no delta'.format(sigma))
     plt.xlabel('x1')
     plt.ylabel('x2')
@@ -147,5 +126,28 @@ for i in range(1,Ntrain+1):
     plt.plot(x1_train_sub, x2_train_sub, color='orange', marker='x', linestyle='None')
     plt.colorbar()
 
+    plt.subplot(2,2,3)
+    plt.title('Energy of linear path \nsigma={} for ML models'.format(sigma))
+    plt.xlabel('x2')
+    plt.ylabel('Energy')
+    plt.plot(x2_path, Etrue_path, 'k-.', label='Target')
+    plt.plot(x2_path, Epred_path, label='ML no delta')
+
+    # plot training points
+    plt.plot(x2_train_sub, E_train_sub, color='r', marker='o', linestyle='None')
+    
+    # Plot bias
+    xlim_min, xlim_max = plt.xlim()
+    plt.plot([xlim_min, xlim_max], [0,0], 'k:', label='bias')
+    plt.xlim([xlim_min, xlim_max])
+
+    # Plot seperating line
+    ylim_min, ylim_max = plt.ylim()
+    plt.plot([1,1], [ylim_min, ylim_max], 'k')
+    plt.ylim([ylim_min, ylim_max])
+    plt.legend()
+
+    
+    
     plt.savefig('results/Ntrain{}.pdf'.format(i))
     
