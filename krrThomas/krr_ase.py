@@ -127,10 +127,9 @@ class krr_class():
         #filtered_std = np.std(sorted_filtered_data_values)
         #self.beta = filtered_mean + self.bias_std_add * filtered_std
 
-        self.beta = 0  # np.mean(data_values)
+        self.beta = np.mean(data_values)
         if delta_values is None:
             delta_values = 0
-        
         A = similarityMat + reg*np.identity(len(data_values))
         self.Ainv = np.linalg.inv(A)
         self.alpha = np.dot(self.Ainv, data_values - delta_values - self.beta)

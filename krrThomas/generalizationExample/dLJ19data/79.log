@@ -1,0 +1,65 @@
+                Step[ FC]     Time          Energy          fmax
+BFGSLineSearch:    0[  0] 11:59:24      -24.331192       21.0137
+BFGSLineSearch:    1[  2] 11:59:24      -29.455104       14.1295
+BFGSLineSearch:    2[  4] 11:59:24      -33.944890       12.1491
+BFGSLineSearch:    3[  6] 11:59:24      -37.485802       14.0541
+BFGSLineSearch:    4[  9] 11:59:24      -42.156341       24.0295
+BFGSLineSearch:    5[ 11] 11:59:24      -44.661277       30.6313
+BFGSLineSearch:    6[ 13] 11:59:25      -46.857665       34.5574
+BFGSLineSearch:    7[ 15] 11:59:25      -48.254846       32.1990
+BFGSLineSearch:    8[ 17] 11:59:25      -49.200612       26.5995
+BFGSLineSearch:    9[ 19] 11:59:25      -52.533168       33.3410
+BFGSLineSearch:   10[ 21] 11:59:25      -55.677282       42.5797
+BFGSLineSearch:   11[ 23] 11:59:25      -59.208565       32.8465
+BFGSLineSearch:   12[ 25] 11:59:25      -60.927735       40.7686
+BFGSLineSearch:   13[ 27] 11:59:25      -63.027422       21.8750
+BFGSLineSearch:   14[ 29] 11:59:25      -65.261016       15.0994
+BFGSLineSearch:   15[ 31] 11:59:25      -67.889061       10.1640
+BFGSLineSearch:   16[ 34] 11:59:25      -68.561649       10.6675
+BFGSLineSearch:   17[ 36] 11:59:25      -69.122655        8.8154
+BFGSLineSearch:   18[ 38] 11:59:25      -70.147562       11.1794
+BFGSLineSearch:   19[ 40] 11:59:25      -71.116831       13.9870
+BFGSLineSearch:   20[ 42] 11:59:25      -72.047175       18.5004
+BFGSLineSearch:   21[ 44] 11:59:26      -72.901736       21.6235
+BFGSLineSearch:   22[ 46] 11:59:26      -73.492050       19.2103
+BFGSLineSearch:   23[ 48] 11:59:26      -74.033355       16.4165
+BFGSLineSearch:   24[ 50] 11:59:26      -74.919657       17.4393
+BFGSLineSearch:   25[ 51] 11:59:26      -77.084818       13.9081
+BFGSLineSearch:   26[ 53] 11:59:26      -78.348923       11.3495
+BFGSLineSearch:   27[ 55] 11:59:26      -78.976720       11.1777
+BFGSLineSearch:   28[ 57] 11:59:26      -79.504010        9.2039
+BFGSLineSearch:   29[ 59] 11:59:26      -80.541669       11.9915
+BFGSLineSearch:   30[ 62] 11:59:26      -81.935551       15.5955
+BFGSLineSearch:   31[ 65] 11:59:26      -83.391934       15.6640
+BFGSLineSearch:   32[ 67] 11:59:26      -83.842454       13.9666
+BFGSLineSearch:   33[ 69] 11:59:26      -85.214983       13.6937
+BFGSLineSearch:   34[ 71] 11:59:26      -86.441135       11.2258
+BFGSLineSearch:   35[ 73] 11:59:26      -87.192190        7.4313
+BFGSLineSearch:   36[ 75] 11:59:27      -87.617860        6.9751
+BFGSLineSearch:   37[ 77] 11:59:27      -88.062637        5.2254
+BFGSLineSearch:   38[ 79] 11:59:27      -88.348374        5.2299
+BFGSLineSearch:   39[ 81] 11:59:27      -88.668744        3.7664
+BFGSLineSearch:   40[ 83] 11:59:27      -88.762199        2.6286
+BFGSLineSearch:   41[ 85] 11:59:27      -88.851877        2.0531
+BFGSLineSearch:   42[ 86] 11:59:27      -88.905730        1.6699
+BFGSLineSearch:   43[ 87] 11:59:27      -88.943770        0.7760
+BFGSLineSearch:   44[ 93] 11:59:27      -95.581804       11.2556
+BFGSLineSearch:   45[ 96] 11:59:27      -95.583737       11.2931
+BFGSLineSearch:   46[ 98] 11:59:27      -96.557225        7.8960
+BFGSLineSearch:   47[100] 11:59:27      -97.611786        6.4896
+BFGSLineSearch:   48[102] 11:59:27      -98.194875        7.1048
+BFGSLineSearch:   49[103] 11:59:27      -98.928992        3.8472
+BFGSLineSearch:   50[106] 11:59:27      -99.762633       11.3883
+BFGSLineSearch:   51[108] 11:59:28      -99.983016       13.5722
+BFGSLineSearch:   52[109] 11:59:28     -100.860963        8.2349
+BFGSLineSearch:   53[110] 11:59:28     -101.599162        4.0683
+BFGSLineSearch:   54[111] 11:59:28     -101.886496        3.5663
+BFGSLineSearch:   55[115] 11:59:28     -102.528995        9.0240
+BFGSLineSearch:   56[118] 11:59:28     -102.566736        9.1962
+BFGSLineSearch:   57[119] 11:59:28     -102.930294        3.8376
+BFGSLineSearch:   58[120] 11:59:28     -103.106624        1.3420
+BFGSLineSearch:   59[121] 11:59:28     -103.136189        0.8154
+BFGSLineSearch:   60[122] 11:59:28     -103.147766        0.6146
+BFGSLineSearch:   61[123] 11:59:28     -103.152188        0.3637
+BFGSLineSearch:   62[124] 11:59:28     -103.153120        0.2406
+BFGSLineSearch:   63[125] 11:59:28     -103.153464        0.0705

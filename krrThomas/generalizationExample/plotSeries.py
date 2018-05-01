@@ -102,7 +102,15 @@ for i in range(1,Ntrain+1):
     E_grid = np.array([krr.predict_energy(a) for a in a_grid]).reshape((Npoints,Npoints))
 
     # path energies
-    Epred_path = np.array([krr.predict_energy(a) for a in a_path])
+    Epred_path = []
+    Epred_path_error = []
+    for a in a_path:
+        E, error, _ = krr.predict_energy(a, return_error=True)
+        Epred_path.append(E)
+        Epred_path_error.append(error)
+    Epred_path = np.array(Epred_path)
+    Epred_path_error = np.array(Epred_path_error)
+    #Epred_path = np.array([krr.predict_energy(a) for a in a_path])
     Etrue_path = np.array([E_doubleLJ(a) for a in a_path])
     
     plt.figure(figsize=(15,13))
@@ -123,7 +131,7 @@ for i in range(1,Ntrain+1):
     plt.ylabel('x2')
     plt.contourf(X1, X2, E_grid)
     plt.plot(x1_path, x2_path, 'r:')
-    plt.plot(x1_train_sub, x2_train_sub, color='orange', marker='x', linestyle='None')
+    plt.plot(x1_train_sub, x2_train_sub, color='r', marker='o', linestyle='None')
     plt.colorbar()
 
     plt.subplot(2,2,3)
@@ -132,7 +140,8 @@ for i in range(1,Ntrain+1):
     plt.ylabel('Energy')
     plt.plot(x2_path, Etrue_path, 'k-.', label='Target')
     plt.plot(x2_path, Epred_path, label='ML no delta')
-
+    plt.fill_between(x2_path, Epred_path+Epred_path_error, Epred_path-Epred_path_error, facecolor='blue', alpha=0.3)
+    
     # plot training points
     plt.plot(x2_train_sub, E_train_sub, color='r', marker='o', linestyle='None')
     
@@ -146,8 +155,6 @@ for i in range(1,Ntrain+1):
     plt.plot([1,1], [ylim_min, ylim_max], 'k')
     plt.ylim([ylim_min, ylim_max])
     plt.legend()
-
     
-    
-    plt.savefig('results/Ntrain{}.pdf'.format(i))
+    plt.savefig('results/3body/Ntrain{}.pdf'.format(i))
     

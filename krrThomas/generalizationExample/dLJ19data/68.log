@@ -1,0 +1,62 @@
+                Step[ FC]     Time          Energy          fmax
+BFGSLineSearch:    0[  0] 11:58:41      -34.094387       33.1780
+BFGSLineSearch:    1[  2] 11:58:41      -44.504873       22.7601
+BFGSLineSearch:    2[  4] 11:58:41      -48.241675       11.8628
+BFGSLineSearch:    3[  7] 11:58:41      -49.269060        9.4392
+BFGSLineSearch:    4[  9] 11:58:41      -50.160711       12.4059
+BFGSLineSearch:    5[ 12] 11:58:41      -52.873186       14.0479
+BFGSLineSearch:    6[ 16] 11:58:41      -55.338891       23.1624
+BFGSLineSearch:    7[ 19] 11:58:41      -55.987457       28.1131
+BFGSLineSearch:    8[ 22] 11:58:41      -58.199431       36.6598
+BFGSLineSearch:    9[ 24] 11:58:41      -59.654488       29.7237
+BFGSLineSearch:   10[ 26] 11:58:41      -62.077551       17.8216
+BFGSLineSearch:   11[ 29] 11:58:41      -64.783618       23.9301
+BFGSLineSearch:   12[ 31] 11:58:42      -67.268961       25.1563
+BFGSLineSearch:   13[ 33] 11:58:42      -69.685332       25.0502
+BFGSLineSearch:   14[ 35] 11:58:42      -71.576429       19.8868
+BFGSLineSearch:   15[ 37] 11:58:42      -72.811091       22.7860
+BFGSLineSearch:   16[ 39] 11:58:42      -74.330181       18.3430
+BFGSLineSearch:   17[ 41] 11:58:42      -75.164334       18.9010
+BFGSLineSearch:   18[ 43] 11:58:42      -75.977109       12.6100
+BFGSLineSearch:   19[ 45] 11:58:42      -76.830872       12.4037
+BFGSLineSearch:   20[ 47] 11:58:42      -77.470583        9.1741
+BFGSLineSearch:   21[ 49] 11:58:42      -77.656329       10.0253
+BFGSLineSearch:   22[ 51] 11:58:42      -77.795112        6.9530
+BFGSLineSearch:   23[ 53] 11:58:42      -77.916261        3.6794
+BFGSLineSearch:   24[ 55] 11:58:42      -77.960784        2.8341
+BFGSLineSearch:   25[ 57] 11:58:42      -77.991630        2.0255
+BFGSLineSearch:   26[ 59] 11:58:42      -78.004754        2.0018
+BFGSLineSearch:   27[ 61] 11:58:43      -78.018232        1.1991
+BFGSLineSearch:   28[ 63] 11:58:43      -78.050934        0.8757
+BFGSLineSearch:   29[ 65] 11:58:43      -78.060677        0.9466
+BFGSLineSearch:   30[ 67] 11:58:43      -78.073215        1.2922
+BFGSLineSearch:   31[ 69] 11:58:43      -78.082910        1.3446
+BFGSLineSearch:   32[ 74] 11:58:43      -79.565608       12.9079
+BFGSLineSearch:   33[ 77] 11:58:43      -79.569038       12.5547
+BFGSLineSearch:   34[ 81] 11:58:43      -81.922501       18.1832
+BFGSLineSearch:   35[ 83] 11:58:43      -82.567536       18.1564
+BFGSLineSearch:   36[ 85] 11:58:43      -84.172623       19.8698
+BFGSLineSearch:   37[ 87] 11:58:43      -86.460322       10.3968
+BFGSLineSearch:   38[ 90] 11:58:43      -88.059521       11.1264
+BFGSLineSearch:   39[ 92] 11:58:44      -88.688552       10.4954
+BFGSLineSearch:   40[ 94] 11:58:44      -90.463725        8.4629
+BFGSLineSearch:   41[ 98] 11:58:44      -95.260801        8.9092
+BFGSLineSearch:   42[101] 11:58:44      -95.466138       12.7415
+BFGSLineSearch:   43[103] 11:58:44      -96.271746        7.9226
+BFGSLineSearch:   44[104] 11:58:44      -96.835162        7.2461
+BFGSLineSearch:   45[105] 11:58:44      -98.066205        9.9608
+BFGSLineSearch:   46[108] 11:58:44      -98.248712        9.7180
+BFGSLineSearch:   47[109] 11:58:44      -99.337270        8.1675
+BFGSLineSearch:   48[110] 11:58:44     -100.499766       11.7194
+BFGSLineSearch:   49[112] 11:58:44     -101.406937        7.7761
+BFGSLineSearch:   50[113] 11:58:44     -102.033601        3.1008
+BFGSLineSearch:   51[114] 11:58:44     -102.242684        5.9698
+BFGSLineSearch:   52[115] 11:58:44     -102.376096        2.1081
+BFGSLineSearch:   53[116] 11:58:44     -102.440937        1.2033
+BFGSLineSearch:   54[117] 11:58:44     -102.464515        1.0440
+BFGSLineSearch:   55[118] 11:58:44     -102.478574        0.4603
+BFGSLineSearch:   56[119] 11:58:44     -102.482142        0.5737
+BFGSLineSearch:   57[120] 11:58:44     -102.484877        0.3759
+BFGSLineSearch:   58[121] 11:58:44     -102.487624        0.2935
+BFGSLineSearch:   59[122] 11:58:45     -102.489248        0.1103
+BFGSLineSearch:   60[123] 11:58:45     -102.489464        0.0375
