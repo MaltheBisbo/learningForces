@@ -213,12 +213,13 @@ if __name__ == '__main__':
     # Plot potential
 
     eps, r0, sigma, cov_dist = 1.0, 1.8, np.sqrt(0.3), 1
-    delta = delta_ase(cov_dist)
-
+    #delta = delta_ase(cov_dist)
+    delta = doubleLJ_ase()
+    
     x0 = np.array([0, 0, 0])
 
     Npoints = 100
-    r = np.linspace(0.55, 3.5, Npoints)
+    r = np.linspace(0.85, 2.5, Npoints)
     X = np.c_[np.zeros((Npoints,5)), r]
 
     atoms_list = []

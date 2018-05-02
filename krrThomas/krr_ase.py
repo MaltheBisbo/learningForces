@@ -130,7 +130,6 @@ class krr_class():
         self.beta = np.mean(data_values)
         if delta_values is None:
             delta_values = 0
-        
         A = similarityMat + reg*np.identity(len(data_values))
         self.Ainv = np.linalg.inv(A)
         self.alpha = np.dot(self.Ainv, data_values - delta_values - self.beta)
