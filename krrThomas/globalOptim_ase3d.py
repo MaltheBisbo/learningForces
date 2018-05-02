@@ -10,6 +10,7 @@ from ase.io import read, write, Trajectory
 from ase.io.trajectory import TrajectoryWriter
 from ase.ga.utilities import closest_distances_generator
 from ase.optimize import BFGS, BFGSLineSearch
+from ase.optimize.sciopt import SciPyFminBFGS, SciPyFminCG
 from ase.calculators.singlepoint import SinglePointCalculator
 from ase.constraints import FixedPlane
 from ase.ga.relax_attaches import VariansBreak
@@ -41,8 +42,8 @@ def relax_VarianceBreak(structure, calc, label, niter_max=10):
     for niter in range(niter_max):
         if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
             return structure
-        dyn = BFGSLineSearch(structure,
-                             logfile=label+'.log')
+        dyn = BFGS(structure,
+                   logfile=label+'.log')
         vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
         dyn.attach(traj)
         dyn.attach(vb)
@@ -170,7 +171,7 @@ def rattle_atom2d_center(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1
     # Return None if no acceptable rattle was found
     return None
 
-def rattle_Natoms2d_center(struct, Nrattle, rmax_rattle=3.0, Ntries=10):
+def rattle_Natoms2d_center(struct, Nrattle, rmax_rattle=5.0, Ntries=20):
     structRattle = struct.copy()
     
     Natoms = struct.get_number_of_atoms()
@@ -450,7 +451,7 @@ class globalOptim():
             self.ksaved = self.maxNtrain
             self.MLmodel.remove_data(Nremove)
         """
-        GSkwargs = {'reg': np.logspace(-7, -7, 1), 'sigma': np.logspace(0, 2, 5)}
+        GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0, 2, 5)}
         FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
                                          **GSkwargs)
@@ -603,11 +604,11 @@ if __name__ == '__main__':
                             traj_namebase=savefiles_namebase,
                             MLmodel=krr,
                             Natoms=Natoms,
-                            Niter=200,
-                            Nstag=200,
+                            Niter=500,
+                            Nstag=500,
                             Nstart_pop=5,
-                            fracPerturb=0.4,
-                            rattle_maxDist=3,
+                            fracPerturb=0.3,
+                            rattle_maxDist=5,
                             noZ=True)
 
     optimizer.runOptimizer()
