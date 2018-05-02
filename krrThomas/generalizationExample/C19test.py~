@@ -1,0 +1,7 @@
+import numpy as np
+
+d0 = 1.06
+dy = d0*np.sin(np.pi/3)
+dx = d0*np.cos(np.pi/3)
+
+row1 = np.c_[d0*np.arange(3).T, np.zeros(3,2)]

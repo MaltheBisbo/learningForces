@@ -1,0 +1,5 @@
+import numpy as np
+from ase import Atoms
+from ase.visualize import view
+
+def create2Dstructure(rmin=0.85, rmax=1.6)
