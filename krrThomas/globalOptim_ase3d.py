@@ -14,6 +14,7 @@ from ase.optimize.sciopt import SciPyFminBFGS, SciPyFminCG
 from ase.calculators.singlepoint import SinglePointCalculator
 from ase.constraints import FixedPlane
 from ase.ga.relax_attaches import VariansBreak
+from ase.data import covalent_radii
 
 def relax_VarianceBreak(structure, calc, label, niter_max=10):
     '''
@@ -35,10 +36,12 @@ def relax_VarianceBreak(structure, calc, label, niter_max=10):
     forcemax = 0.1
     niter = 0
 
-    # If the structure is already fully relaxed just return it
-    #if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
-    #    return structure
     traj = Trajectory(label+'.traj','a', structure)
+    # If the structure is already fully relaxed just return it
+    if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
+        traj.write(structure)
+        return structure
+    
     for niter in range(niter_max):
         if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
             return structure
@@ -182,9 +185,9 @@ def rattle_Natoms2d_center(struct, Nrattle, rmax_rattle=5.0, Ntries=20):
     cd = closest_distances_generator(atom_numbers=atom_numbers,
                                      ratio_of_covalent_radii=0.7)
     
-    cov_radii = cd[(6,6)]  # hard coded
+    cov_radii = covalent_radii[6] # cd[(6,6)]  # hard coded
     rmin = 0.7*2*cov_radii
-    rmax = 1.4*2*cov_radii
+    rmax = 1.3*2*cov_radii
 
     rattle_counter = 0
     for index in i_permuted:
@@ -451,7 +454,7 @@ class globalOptim():
             self.ksaved = self.maxNtrain
             self.MLmodel.remove_data(Nremove)
         """
-        GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0, 2, 5)}
+        GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1, 3, 5)}
         FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
                                          **GSkwargs)
@@ -522,6 +525,11 @@ class globalOptim():
         return a_relaxed, Erelaxed
             
     def singlePoint(self, a):
+        # Check if datapoint is new based on KRR prediction error
+        #E, error, _ = self.MLmodel.predict_energy(atoms=a, return_error=True)
+        #if error < 0.05:
+        #    return E
+        
         # Save structure with ML-energy
         self.writer_spPredict.write(a)
 
@@ -604,11 +612,12 @@ if __name__ == '__main__':
                             traj_namebase=savefiles_namebase,
                             MLmodel=krr,
                             Natoms=Natoms,
-                            Niter=500,
-                            Nstag=500,
+                            Niter=1500,
+                            Nstag=1500,
                             Nstart_pop=5,
-                            fracPerturb=0.3,
-                            rattle_maxDist=5,
+                            fracPerturb=0.2,
+                            rattle_maxDist=4,
+                            kbT=0.5,
                             noZ=True)
 
     optimizer.runOptimizer()

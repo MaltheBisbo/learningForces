@@ -135,7 +135,7 @@ class krr_class():
         self.alpha = np.dot(self.Ainv, data_values - delta_values - self.beta)
         #self.alpha = np.linalg.solve(A, data_values - self.beta)
         
-    def train(self, atoms_list=None, data_values=None, featureMat=None, add_new_data=True, k=3, **GSkwargs):
+    def train(self, atoms_list=None, data_values=None, features=None, add_new_data=True, k=3, **GSkwargs):
         """
         Train the model using gridsearch and cross-validation
             
@@ -161,7 +161,7 @@ class krr_class():
         """
         
         if featureMat is None:
-            featureMat = self.featureCalculator.get_featureMat(atoms_list)
+            features = self.featureCalculator.get_featureMat(atoms_list)
         if data_values is None:
             data_values = np.array([atoms.get_potential_energy() for atoms in atoms_list])
 
@@ -169,13 +169,13 @@ class krr_class():
             delta_values_add = np.array([self.delta_function.energy(a) for a in atoms_list])
         else:
             delta_values_add = None
-            
+        
         if add_new_data:
-            self.add_data(data_values, featureMat, delta_values_add)
+            self.add_data(data_values, features, delta_values_add)
         else:
             self.Ndata = len(data_values)
             self.data_values[:self.Ndata] = data_values
-            self.featureMat[:self.Ndata] = featureMat
+            self.featureMat[:self.Ndata] = features
             if self.delta_function is not None:
                 self.delta_values[:self.Ndata] = delta_values_add
 
