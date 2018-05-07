@@ -160,7 +160,7 @@ class krr_class():
         used in grissearch. The labels are 'sigma' and 'reg' respectively.
         """
         
-        if featureMat is None:
+        if features is None:
             features = self.featureCalculator.get_featureMat(atoms_list)
         if data_values is None:
             data_values = np.array([atoms.get_potential_energy() for atoms in atoms_list])

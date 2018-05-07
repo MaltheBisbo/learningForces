@@ -454,7 +454,7 @@ class globalOptim():
             self.ksaved = self.maxNtrain
             self.MLmodel.remove_data(Nremove)
         """
-        GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1, 3, 5)}
+        GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0, 3, 8)}
         FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
                                          **GSkwargs)
