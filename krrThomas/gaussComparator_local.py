@@ -16,8 +16,8 @@ class gaussComparator_local():
     def get_kernelMat(self, featureMat):
         N_localFeatures = len(featureMat)
         Ndata = int(N_localFeatures/self.Natoms)
-        I = np.identity(Ndata)
-        L = np.repeat(I, [self.Natoms]*Ndata, axis=0)
+        II = np.identity(Ndata)
+        L = np.repeat(II, [self.Natoms]*Ndata, axis=0)
         d = cdist(featureMat, featureMat, metric='sqeuclidean')
         K_local = np.exp(-1/(2*self.sigma**2)*d)
         K = L.T @ K_local @ L
@@ -30,13 +30,13 @@ class gaussComparator_local():
         """
         N_localFeatures = len(featureMat)
         Ndata = int(N_localFeatures/self.Natoms)
-        I = np.identity(Ndata)
-        l = np.ones((1, self.Natoms))
-        L = np.repeat(I, [self.Natoms]*Ndata, axis=0)
+        II = np.identity(Ndata)
+        ll = np.ones((1, self.Natoms))
+        L = np.repeat(II, [self.Natoms]*Ndata, axis=0)
         
         d = cdist(fnew, self.featureMat, metric='sqeuclidean')
         kappa_local = np.exp(-1/(2*self.sigma**2)*d).reshape(-1)
-        kappa = l @ kappa_local @ L
+        kappa = ll @ kappa_local @ L
         return kappa
 
     def get_kernel(self, feature1, feature2, sigma=None):

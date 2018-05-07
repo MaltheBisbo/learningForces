@@ -284,7 +284,7 @@ if __name__ == '__main__':
     a_train = read('graphene_data/all_every10th.traj', index='0::10')
     E_train = np.array([a.get_potential_energy() for a in a_train])
     Natoms = a_train[0].get_number_of_atoms()
-    view(a_train)
+    #view(a_train)
     
     Rc1 = 5
     binwidth1 = 0.2
@@ -307,6 +307,6 @@ if __name__ == '__main__':
     krr = krr_class(comparator=comparator,
                     featureCalculator=featureCalculator)
 
-    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0,2,5)}
+    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(-1,3,20)}
     MAE, params = krr.train(atoms_list=a_train, data_values=E_train, k=3, add_new_data=False, **GSkwargs)
     print(MAE, params)
