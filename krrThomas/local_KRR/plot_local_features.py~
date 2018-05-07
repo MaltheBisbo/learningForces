@@ -1,0 +1,8 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from featureCalculators_local.angular_fingerprintFeature_local_cy import featureCalculators_local as featureCalculator
+
+from ase.io import read
+from ase import Atoms
+
+def 
