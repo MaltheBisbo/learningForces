@@ -26,7 +26,7 @@ Nbins2 = 30
 sigma2 = 0.2
 
 gamma = 1
-eta = 30
+eta = 5
 use_angular = True
 
 featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
@@ -38,6 +38,8 @@ krr = krr_class(comparator=comparator,
                 featureCalculator=featureCalculator,
                 bias_fraction=0.7,
                 bias_std_add=1)
+sigma = 10
+GSkwargs = {'reg': [1e-7], 'sigma': [sigma]}
 
 # // TRAINING DATA //
 
@@ -87,8 +89,7 @@ a_path = structure_list(x1_path, x2_path)
 
 
 Ntrain = len(a_train)
-sigma = 10
-GSkwargs = {'reg': [1e-7], 'sigma': [sigma]}
+
 for i in range(1,Ntrain+1):
     x1_train_sub = x1_train[:i]
     x2_train_sub = x2_train[:i]
@@ -112,7 +113,8 @@ for i in range(1,Ntrain+1):
     Epred_path_error = np.array(Epred_path_error)
     #Epred_path = np.array([krr.predict_energy(a) for a in a_path])
     Etrue_path = np.array([E_doubleLJ(a) for a in a_path])
-    
+
+    v = np.linspace(-9.0, 2.0, 12, endpoint=True)
     plt.figure(figsize=(15,13))
     plt.subplots_adjust(left=1/14, right=1-1/14, wspace=2/14,
                         bottom=1/14, top=1-1/14, hspace=4/14)
@@ -121,7 +123,7 @@ for i in range(1,Ntrain+1):
     plt.title('Target energy landscape')
     plt.xlabel('x1')
     plt.ylabel('x2')
-    plt.contourf(X1, X2, E_grid_true)
+    plt.contourf(X1, X2, E_grid_true, v)
     plt.colorbar()
     
     
@@ -129,7 +131,7 @@ for i in range(1,Ntrain+1):
     plt.title('Predicted energy landscape \nsigma={}, no delta'.format(sigma))
     plt.xlabel('x1')
     plt.ylabel('x2')
-    plt.contourf(X1, X2, E_grid)
+    plt.contourf(X1, X2, E_grid, v)
     plt.plot(x1_path, x2_path, 'r:')
     plt.plot(x1_train_sub, x2_train_sub, color='r', marker='o', linestyle='None')
     plt.colorbar()
@@ -156,5 +158,5 @@ for i in range(1,Ntrain+1):
     plt.ylim([ylim_min, ylim_max])
     plt.legend()
     
-    plt.savefig('results/3body/Ntrain{}.pdf'.format(i))
+    plt.savefig('results/3body/Ntrain{0:d}_sig{1:d}_eta{2:d}.pdf'.format(i, sigma, eta))
     
