@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from gaussComparator import gaussComparator
 from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
 from krr_ase import krr_class
-from delta_functions.delta import delta as deltaFunc
+#from delta_functions.delta import delta as deltaFunc
 from custom_calculators import krr_calculator
 
 from doubleLJ import doubleLJ_energy_ase as E_doubleLJ
@@ -17,8 +17,8 @@ from helpFunctions import cartesian_coord, structure, structure_list
 a0 = structure(0,2)
 
 # Set up featureCalculator
-Rc1 = 5
-binwidth1 = 0.2
+Rc1 = 3
+binwidth1 = 0.05
 sigma1 = 0.2
 
 Rc2 = 4
@@ -27,7 +27,7 @@ sigma2 = 0.2
 
 gamma = 1
 eta = 5
-use_angular = True
+use_angular = False
 
 featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
 
@@ -157,6 +157,34 @@ for i in range(1,Ntrain+1):
     plt.plot([1,1], [ylim_min, ylim_max], 'k')
     plt.ylim([ylim_min, ylim_max])
     plt.legend()
+
+    features = np.array([featureCalculator.get_feature(a) for a in a_train_sub])
+    plt.subplot(2,2,4)
+    plt.title('Features')
+    plt.xlabel('Interatomic distance')
+    plt.ylabel('Feature magnitude')
+    for n, a in enumerate(a_train_sub):
+        feature = featureCalculator.get_feature(a)
+        plt.plot(binwidth1*np.arange(len(feature)), feature, label='struktur {}'.format(n))
+    plt.legend()
     
-    plt.savefig('results/3body/Ntrain{0:d}_sig{1:d}_eta{2:d}.pdf'.format(i, sigma, eta))
     
+    #plt.savefig('results/3body/Ntrain{0:d}_sig{1:d}_eta{2:d}.pdf'.format(i, sigma, eta))
+    plt.savefig('results/3body/NtrainNoAng{0:d}_sig{1:d}_eta{2:d}.pdf'.format(i, sigma, eta))
+
+
+def plotStruct(a, x0, y0):
+    pos = a.get_positions()[:,:2]
+    pos += np.array([x0,y0])
+    plt.plot(pos[:,0], pos[:,1], 'ro', ms=20)
+    
+    
+        
+        
+plt.figure()
+for i, a in enumerate(a_train):
+    plotStruct(a_train[0], 0,-3*i)
+
+plt.gca().set_aspect('equal', adjustable='box')
+plt.axis('off')
+plt.show()
