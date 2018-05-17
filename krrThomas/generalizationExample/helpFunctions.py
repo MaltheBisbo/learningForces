@@ -50,10 +50,10 @@ class doubleLJ_delta():
     def energy(self, a):
         return self.frac * E_doubleLJ(a)
 
-def plotStruct(a, x0, y0):
+def plotStruct(a, x0, y0, color='r'):
     pos = a.get_positions()[:,:2]
     pos += np.array([x0,y0])
-    plt.scatter(pos[:,0], pos[:,1], c='r', marker='o', s=140, edgecolors='k')
+    plt.scatter(pos[:,0], pos[:,1], c=color, marker='o', s=140, edgecolors='k')
     
 def rot2D(v, angle):
     angle = angle*np.pi/180

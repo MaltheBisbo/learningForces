@@ -18,7 +18,7 @@ a0 = structure(0,2)
 
 # Set up featureCalculator
 Rc1 = 3
-binwidth1 = 0.05
+binwidth1 = 0.025
 sigma1 = 0.2
 
 Rc2 = 4
@@ -55,11 +55,12 @@ x2_train = np.r_[x2_train, 0.745, 0.85]
 a_train = structure_list(x1_train, x2_train)
 E_train = [E_doubleLJ(a) for a in a_train]
 """ 
-coord_train = np.array([[-0.2, 2.2],
+coord_train = np.array([[0.0, 2.0],
+                        [-0.2, 2.2],
                         [0.2, 1.8],
-                        [0.0, 2.0],
-                        [0.25,0.25],
-                        [-0.1,-0.1]])
+                        [0.25, 0.25],
+                        [-0.1, -0.1],
+                        [1,1]])  # Last one is the global minimum
 x1_train = coord_train[:,0]
 x2_train = coord_train[:,1]
 
@@ -148,9 +149,15 @@ for i in range(1,Ntrain+1):
     plt.ylabel('x2')
     plt.contourf(X1, X2, E_grid, v)
     plt.plot(x1_path, x2_path, 'r:')
-    plt.plot(x1_train_sub, x2_train_sub, color='r', marker='o', linestyle='None')
-    for n,[x1,x2] in enumerate(zip(x1_train_sub, x2_train_sub)):
-        plt.text(x1-0.05, x2+0.1, '{}'.format(n+1), fontsize=13)
+    if i == 6:
+        plt.plot(x1_train_sub[:-1], x2_train_sub[:-1], color='r', marker='o', linestyle='None')
+        plt.plot(x1_train_sub[-1], x2_train_sub[-1], color='g', marker='o', linestyle='None')
+    else:
+        plt.plot(x1_train_sub, x2_train_sub, color='r', marker='o', linestyle='None')
+    #plt.plot(x1_train_sub, x2_train_sub, color='r', marker='o', linestyle='None')
+    for n,[x1,x2] in enumerate(zip(x1_train_sub[:], x2_train_sub[:])):
+        if n < 5:
+            plt.text(x1-0.05, x2+0.1, '{}'.format(n+1), fontsize=13)
     plt.colorbar()
 
     plt.subplot(2,2,3)
@@ -161,12 +168,26 @@ for i in range(1,Ntrain+1):
     plt.plot(x2_path, Etrue_path, 'k-.', label='Target')
     plt.plot(x2_path, Epred_path, label='ML no delta')
     plt.fill_between(x2_path, Epred_path+2*Epred_path_error, Epred_path-2*Epred_path_error, facecolor='blue', alpha=0.3)
+
+    # Plot seperating line
+    ylim_min, ylim_max = plt.ylim()
+    plt.plot([1,1], [ylim_min, ylim_max], 'k')
+    plt.ylim([ylim_min, ylim_max])
+    plt.legend(loc=4)
     
     # plot training points
-    plt.plot(x2_train_sub, E_train_sub, color='r', marker='o', linestyle='None')
-
+    if i == 6:
+        plt.plot(x2_train_sub[:-1], E_train_sub[:-1], color='r', marker='o', linestyle='None')
+        plt.plot(x2_train_sub[-1], E_train_sub[-1], color='g', marker='o', linestyle='None')
+        for n,[x2,E] in enumerate(zip(x2_train_sub[:-1], E_train_sub[:-1])):
+            plt.text(x2-0.03, E-0.5, '{}'.format(n+1), fontsize=13)
+    else:
+        plt.plot(x2_train_sub, E_train_sub, color='r', marker='o', linestyle='None')
+        for n,[x2,E] in enumerate(zip(x2_train_sub, E_train_sub)):
+            plt.text(x2-0.03, E-0.5, '{}'.format(n+1), fontsize=13)
+        
     plt.xlim([-0.5, 2.5])
-    plt.ylim([-8,0.2])
+    plt.ylim([-8.2,0.2])
     """
     # Plot bias
     xlim_min, xlim_max = plt.xlim()
@@ -174,21 +195,20 @@ for i in range(1,Ntrain+1):
     plt.xlim([xlim_min, xlim_max])
     """
 
-    # Plot seperating line
-    ylim_min, ylim_max = plt.ylim()
-    plt.plot([1,1], [ylim_min, ylim_max], 'k')
-    plt.ylim([ylim_min, ylim_max])
-    plt.legend(loc=4)
 
     features = np.array([featureCalculator.get_feature(a) for a in a_train_sub])
     plt.subplot(2,2,4)
     plt.title('Features')
-    plt.ylim([0,2.2])
+    plt.ylim([0,2.5])
     plt.xlabel('Interatomic distance')
     plt.ylabel('Feature magnitude')
     for n, a in enumerate(a_train_sub):
         feature = featureCalculator.get_feature(a)
-        plt.plot(binwidth1*np.arange(len(feature)), feature, label='Structure {}'.format(n+1))
+        if n == 5:
+            plt.plot(binwidth1*np.arange(len(feature)), feature, label='Global minimum', color='g', lw=2.5)
+        else:
+            plt.plot(binwidth1*np.arange(len(feature)), feature, label='Structure {}'.format(n+1))
+        
     plt.legend()
     
     
@@ -199,11 +219,11 @@ for i in range(1,Ntrain+1):
     
     dx = 4
     dy = 3
-    Nstruct = len(a_train_sub)
-    plt.figure(figsize=(4.5,11))
+    Nstruct = min(5, len(a_train_sub))
+    plt.figure(figsize=(8,11))
     plt.subplots_adjust(left=1/12, right=1-1/12,
                         bottom=1/11, top=1-1/11)
-    #plt.xlim([-(dx+1.1)/2, (dx+1.1)/2])
+    plt.xlim([-dx, 3*dx])
     plt.ylim([-(5+0.1)*dy, 1.9*dy])
     # Plot coordinate example
     plt.text(-0.72*dx, 1.93*dy, 'Coordinate definition', fontsize=15)
@@ -211,18 +231,41 @@ for i in range(1,Ntrain+1):
     plt.plot([-0.7*dx, -0.7*dx, dx/2, dx/2, -0.7*dx], [1.8*dy, 0.8*dy, 0.8*dy, 1.8*dy, 1.8*dy], 'k', lw=3)
     
     
+    
     # Plot training data
     boxcolor = 'steelblue'
     plt.text(-0.70*dx, 0.38*dy, 'Training structures', fontsize=15)
     plt.plot([-0.7*dx, dx/2], [1/4*dy, 1/4*dy], boxcolor, lw=2)
-    for i, a in enumerate(a_train_sub):
-        plt.text(-0.6*dx, -dy*i, '{})'.format(i+1), fontsize=15)
-        plotStruct(a_train[i], 0,-dy*i)
-        plt.plot([-0.7*dx, dx/2], [-(3/4+i)*dy, -(3/4+i)*dy], boxcolor, lw=2)
+    for k, a in enumerate(a_train_sub[:Nstruct]):
+        plt.text(-0.6*dx, -dy*k, '{})'.format(k+1), fontsize=15)
+        plotStruct(a_train[k], 0,-dy*k)
+        plt.plot([-0.7*dx, dx/2], [-(3/4+k)*dy, -(3/4+k)*dy], boxcolor, lw=2)
     plt.plot([-0.7*dx, -0.7*dx], [1/4*dy, (1/4-Nstruct)*dy], boxcolor, lw=2)
     plt.plot([dx/2, dx/2], [1/4*dy, (1/4-Nstruct)*dy], boxcolor, lw=2)
+
+    if len(a_train_sub) > 5:
+        a_globMin = a_train_sub[-1]
+        make_arrow([0.7*dx, 0.5*dy - (3/4+2)*dy], [1.3*dx, 0.5*dy - (3/4+2)*dy], width=0.1, head_width=0.4, head_length=0.6, stop_before=0.00)
+        plt.text(1.5*dx, 1.08*dy - (3/4+2)*dy, 'Global minimum', fontsize=15)
+        plt.plot(np.array([0, 0, 1.2*dx, 1.2*dx, 0])+1.5*dx,
+                 np.array([1*dy, 0, 0, 1*dy, 1*dy])-(3/4+2)*dy,
+                 boxcolor,
+                 lw=2)
+        plotStruct(a_globMin, 0.6*dx + 1.5*dx, 0.75*dy - (3/4+2)*dy, color='g')
     plt.gca().set_aspect('equal', adjustable='box')
     plt.axis('off')
     plt.savefig('results/3body/TrainingStructures{}.pdf'.format(i))
+
+
+dx = 4
+dy = 3
+boxcolor = 'steelblue'
+a_globMin = structure(1,1)
+plt.figure()
+plt.plot([0, 0, 1.2*dx, 1.2*dx, 0], [1*dy, 0, 0, 1*dy, 1*dy], boxcolor, lw=2)
+plotStruct(a_globMin, 0.6*dx, 0.75*dy, color='g')
+plt.gca().set_aspect('equal', adjustable='box')
+plt.axis('off')
+plt.savefig('results/3body/GlobalMinStructure.pdf')
 
 
