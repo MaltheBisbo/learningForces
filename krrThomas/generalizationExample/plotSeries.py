@@ -165,29 +165,31 @@ for i in range(1,Ntrain+1):
     plt.title('Energy of linear path')
     plt.xlabel('x2')
     plt.ylabel('Energy')
-    plt.plot(x2_path, Etrue_path, 'k-.', label='Target')
-    plt.plot(x2_path, Epred_path, label='ML no delta')
+    plt.xlim([-0.5, 2.5])
+    plt.ylim([-8.2,0.2])
+    
+    plt.plot(x2_path, Etrue_path, 'k-.', label='True')
+    plt.plot(x2_path, Epred_path, label='Model')
     plt.fill_between(x2_path, Epred_path+2*Epred_path_error, Epred_path-2*Epred_path_error, facecolor='blue', alpha=0.3)
 
     # Plot seperating line
     ylim_min, ylim_max = plt.ylim()
     plt.plot([1,1], [ylim_min, ylim_max], 'k')
-    plt.ylim([ylim_min, ylim_max])
-    plt.legend(loc=4)
+    #plt.ylim([ylim_min, ylim_max])
+
+    
     
     # plot training points
     if i == 6:
-        plt.plot(x2_train_sub[:-1], E_train_sub[:-1], color='r', marker='o', linestyle='None')
-        plt.plot(x2_train_sub[-1], E_train_sub[-1], color='g', marker='o', linestyle='None')
+        plt.plot(x2_train_sub[:-1], E_train_sub[:-1], color='r', marker='o', linestyle='None', label='Training structures')
+        plt.plot(x2_train_sub[-1], E_train_sub[-1], color='g', marker='o', linestyle='None', label='Global minimum')
         for n,[x2,E] in enumerate(zip(x2_train_sub[:-1], E_train_sub[:-1])):
             plt.text(x2-0.03, E-0.5, '{}'.format(n+1), fontsize=13)
     else:
-        plt.plot(x2_train_sub, E_train_sub, color='r', marker='o', linestyle='None')
+        plt.plot(x2_train_sub, E_train_sub, color='r', marker='o', linestyle='None', label='training structures')
         for n,[x2,E] in enumerate(zip(x2_train_sub, E_train_sub)):
             plt.text(x2-0.03, E-0.5, '{}'.format(n+1), fontsize=13)
-        
-    plt.xlim([-0.5, 2.5])
-    plt.ylim([-8.2,0.2])
+    plt.legend(loc=4)
     """
     # Plot bias
     xlim_min, xlim_max = plt.xlim()
@@ -256,16 +258,5 @@ for i in range(1,Ntrain+1):
     plt.axis('off')
     plt.savefig('results/3body/TrainingStructures{}.pdf'.format(i))
 
-
-dx = 4
-dy = 3
-boxcolor = 'steelblue'
-a_globMin = structure(1,1)
-plt.figure()
-plt.plot([0, 0, 1.2*dx, 1.2*dx, 0], [1*dy, 0, 0, 1*dy, 1*dy], boxcolor, lw=2)
-plotStruct(a_globMin, 0.6*dx, 0.75*dy, color='g')
-plt.gca().set_aspect('equal', adjustable='box')
-plt.axis('off')
-plt.savefig('results/3body/GlobalMinStructure.pdf')
 
 
