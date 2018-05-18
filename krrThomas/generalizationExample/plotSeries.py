@@ -98,7 +98,8 @@ x2_path = np.r_[path_coord2[::-1], path_coord1[::-1]]
 a_path = structure_list(x1_path, x2_path)
 
 
-
+fontsize1 = 15
+fontsize2 = 13
 Ntrain = len(a_train)
 
 for i in range(1,Ntrain+1):
@@ -128,25 +129,27 @@ for i in range(1,Ntrain+1):
     v = np.linspace(-9.0, 2.0, 12, endpoint=True)
 
     plt.figure(figsize=(12,11))
-    plt.subplots_adjust(left=1/12, right=1-1/12, wspace=2/12,
+    plt.subplots_adjust(left=1/12, right=1-0.3/12, wspace=3/12,
                         bottom=1/11, top=1-1/11, hspace=4/11)
     #plt.figure(figsize=(15,13))
     #plt.subplots_adjust(left=1/14, right=1-1/14, wspace=2/14,
     #                    bottom=1/14, top=1-1/14, hspace=4/14)
-    plt.subplot(2,2,1)
+    ax1 = plt.subplot(2,2,1)
+    ax1.tick_params(labelsize=fontsize2)
     
-    plt.title('True energy landscape')
-    plt.xlabel('x1')
-    plt.ylabel('x2')
+    plt.title('True energy landscape', fontsize=fontsize1)
+    plt.xlabel('x1', fontsize=fontsize1)
+    plt.ylabel('x2', fontsize=fontsize1)
     plt.contourf(X1, X2, E_grid_true, v)
-    plt.colorbar()
+    cb1 = plt.colorbar()
+    cb1.ax.tick_params(labelsize=fontsize2)
     
-    
-    plt.subplot(2,2,2)
+    ax2 = plt.subplot(2,2,2)
+    ax2.tick_params(labelsize=fontsize2)
     #plt.title('Model energy landscape \nsigma={}, no delta'.format(sigma))
-    plt.title('Model energy landscape')
-    plt.xlabel('x1')
-    plt.ylabel('x2')
+    plt.title('Model energy landscape', fontsize=fontsize1)
+    plt.xlabel('x1', fontsize=fontsize1)
+    plt.ylabel('x2', fontsize=fontsize1)
     plt.contourf(X1, X2, E_grid, v)
     plt.plot(x1_path, x2_path, 'r:')
     if i == 6:
@@ -158,13 +161,15 @@ for i in range(1,Ntrain+1):
     for n,[x1,x2] in enumerate(zip(x1_train_sub[:], x2_train_sub[:])):
         if n < 5:
             plt.text(x1-0.05, x2+0.1, '{}'.format(n+1), fontsize=13)
-    plt.colorbar()
+    cb2 = plt.colorbar()
+    cb2.ax.tick_params(labelsize=fontsize2)
 
-    plt.subplot(2,2,3)
+    ax3 = plt.subplot(2,2,3)
+    ax3.tick_params(labelsize=fontsize2)
     #plt.title('Energy of linear path \nsigma={} for ML models'.format(sigma))
-    plt.title('Energy of linear path')
-    plt.xlabel('x2')
-    plt.ylabel('Energy')
+    plt.title('Energy of linear path', fontsize=fontsize1)
+    plt.xlabel('x2', fontsize=fontsize1)
+    plt.ylabel('Energy', fontsize=fontsize1)
     plt.xlim([-0.5, 2.5])
     plt.ylim([-8.2,0.2])
     
@@ -181,15 +186,15 @@ for i in range(1,Ntrain+1):
     
     # plot training points
     if i == 6:
-        plt.plot(x2_train_sub[:-1], E_train_sub[:-1], color='r', marker='o', linestyle='None', label='Training structures')
-        plt.plot(x2_train_sub[-1], E_train_sub[-1], color='g', marker='o', linestyle='None', label='Global minimum')
+        plt.plot(x2_train_sub[:-1], E_train_sub[:-1], color='r', marker='o', linestyle='None', label='Training data')
+        plt.plot(x2_train_sub[-1], E_train_sub[-1], color='g', marker='o', linestyle='None', label='Global min.')
         for n,[x2,E] in enumerate(zip(x2_train_sub[:-1], E_train_sub[:-1])):
             plt.text(x2-0.03, E-0.5, '{}'.format(n+1), fontsize=13)
     else:
-        plt.plot(x2_train_sub, E_train_sub, color='r', marker='o', linestyle='None', label='training structures')
+        plt.plot(x2_train_sub, E_train_sub, color='r', marker='o', linestyle='None', label='Training data')
         for n,[x2,E] in enumerate(zip(x2_train_sub, E_train_sub)):
             plt.text(x2-0.03, E-0.5, '{}'.format(n+1), fontsize=13)
-    plt.legend(loc=4)
+    plt.legend(loc=4, fontsize=11)
     """
     # Plot bias
     xlim_min, xlim_max = plt.xlim()
@@ -199,11 +204,12 @@ for i in range(1,Ntrain+1):
 
 
     features = np.array([featureCalculator.get_feature(a) for a in a_train_sub])
-    plt.subplot(2,2,4)
-    plt.title('Features')
+    ax4 = plt.subplot(2,2,4)
+    ax4.tick_params(labelsize=fontsize2)
+    plt.title('Features', fontsize=fontsize1)
     plt.ylim([0,2.5])
-    plt.xlabel('Interatomic distance')
-    plt.ylabel('Feature magnitude')
+    plt.xlabel('Interatomic distance', fontsize=fontsize1)
+    plt.ylabel('Feature magnitude', fontsize=fontsize1)
     for n, a in enumerate(a_train_sub):
         feature = featureCalculator.get_feature(a)
         if n == 5:
@@ -211,7 +217,7 @@ for i in range(1,Ntrain+1):
         else:
             plt.plot(binwidth1*np.arange(len(feature)), feature, label='Structure {}'.format(n+1))
         
-    plt.legend()
+    plt.legend(fontsize=11)
     
     
     #plt.savefig('results/3body/Ntrain{0:d}_sig{1:d}_eta{2:d}.pdf'.format(i, sigma, eta))
@@ -223,10 +229,11 @@ for i in range(1,Ntrain+1):
     dy = 3
     Nstruct = min(5, len(a_train_sub))
     plt.figure(figsize=(8,11))
-    plt.subplots_adjust(left=1/12, right=1-1/12,
+
+    plt.subplots_adjust(left=0.1/12, right=1-1/12,
                         bottom=1/11, top=1-1/11)
     plt.xlim([-dx, 3*dx])
-    plt.ylim([-(5+0.1)*dy, 1.9*dy])
+    plt.ylim([-(4.85)*dy, 1.8*dy])
     # Plot coordinate example
     plt.text(-0.72*dx, 1.93*dy, 'Coordinate definition', fontsize=15)
     plotCoordinateExample(0,1.5*dy, scale=1)
