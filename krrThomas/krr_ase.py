@@ -284,3 +284,38 @@ class krr_class():
         FVU = MSE / var
         return MAE
 
+if __name__ == '__main__':
+    from ase.io import read
+    from gaussComparator import gaussComparator
+    from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
+    from ase.visualize import view
+    
+    a_train = read('graphene_data/all_every10th.traj', index='0::10')
+    E_train = np.array([a.get_potential_energy() for a in a_train])
+    Natoms = a_train[0].get_number_of_atoms()
+    #view(a_train)
+    
+    Rc1 = 5
+    binwidth1 = 0.2
+    sigma1 = 0.2
+    
+    Rc2 = 4
+    Nbins2 = 30
+    sigma2 = 0.2
+    
+    gamma = 1
+    eta = 30
+    use_angular = False
+    
+    featureCalculator = Angular_Fingerprint(a_train[0], Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
+
+    
+    
+    # Set up KRR-model
+    comparator = gaussComparator()
+    krr = krr_class(comparator=comparator,
+                    featureCalculator=featureCalculator)
+
+    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(-1,3,20)}
+    MAE, params = krr.train(atoms_list=a_train, data_values=E_train, k=3, add_new_data=False, **GSkwargs)
+    print(MAE, params)
