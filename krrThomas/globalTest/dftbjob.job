@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name=profileGO
+#SBATCH --partition=q36
+#SBATCH --mem=10G
+#SBATCH --nodes=1
+#SBATCH --time=10:00:00
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+#SBATCH --no-requeue
+
+source /home/mkb/.dftb
+source /home/mkb/virtualEnvs/python-3.6.3/bin/activate
+
+# Go to the directory where this job was submitted
+cd $SLURM_SUBMIT_DIR/
+python -m cProfile -s cumtime ../globalOptim_ase3d.py ./ > profileGO.txt

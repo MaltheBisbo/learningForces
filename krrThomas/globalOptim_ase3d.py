@@ -1,4 +1,3 @@
-
 import numpy as np
 
 from startgenerator import StartGenerator
@@ -369,7 +368,9 @@ class globalOptim():
         self.writer_spTrain = TrajectoryWriter(filename=traj_namebase+'spTrain.traj', mode='a')
         self.writer_spPredict = TrajectoryWriter(filename=traj_namebase+'spPredict.traj', mode='a')
         self.writer_current = TrajectoryWriter(filename=traj_namebase+'current.traj', mode='a')
-        
+
+        # make txt file
+        open(traj_namebase + 'sigma.txt', 'a').close()
         
     def runOptimizer(self):
 
@@ -454,11 +455,15 @@ class globalOptim():
             self.ksaved = self.maxNtrain
             self.MLmodel.remove_data(Nremove)
         """
-        GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0, 3, 8)}
+        GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0, np.log10(50), 5)}
+        #GSkwargs = {'reg': [1e-5], 'sigma': [10]}
         FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
+                                         k=5,
                                          **GSkwargs)
         self.a_add = []
+        with open(self.traj_namebase + 'sigma.txt', 'a') as f:
+            f.write('{0:.2f}\n'.format(params['sigma']))
 
     def add_trajectory_to_training(self, trajectory_file):
         atoms = read(filename=trajectory_file, index=':')
@@ -551,7 +556,8 @@ if __name__ == '__main__':
     from gaussComparator import gaussComparator
     #from angular_fingerprintFeature import Angular_Fingerprint
     from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
-    from krr_ase import krr_class
+    #from krr_ase import krr_class
+    from krr_fracTrain import krr_class
     from delta_functions.delta import delta as deltaFunc
     from ase.calculators.dftb import Dftb
     import sys
@@ -572,7 +578,7 @@ if __name__ == '__main__':
     sigma2 = 0.2
     
     gamma = 1
-    eta = 30
+    eta = 5
     use_angular = True
     
     featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
@@ -582,11 +588,15 @@ if __name__ == '__main__':
     # Set up KRR-model
     comparator = gaussComparator()
     delta_function = deltaFunc(cov_dist=2*covalent_radii[6])
+    #krr = krr_class(comparator=comparator,
+    #                featureCalculator=featureCalculator,
+    #                delta_function=delta_function)
+
     krr = krr_class(comparator=comparator,
                     featureCalculator=featureCalculator,
                     delta_function=delta_function,
-                    bias_fraction=0.7,
-                    bias_std_add=1)
+                    fracTrain=0.8)
+    
 
     # Savefile setup
     savefiles_path = sys.argv[1]
@@ -612,8 +622,8 @@ if __name__ == '__main__':
                             traj_namebase=savefiles_namebase,
                             MLmodel=krr,
                             Natoms=Natoms,
-                            Niter=1500,
-                            Nstag=1500,
+                            Niter=1000,
+                            Nstag=1000,
                             Nstart_pop=5,
                             fracPerturb=0.2,
                             rattle_maxDist=4,

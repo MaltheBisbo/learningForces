@@ -17,13 +17,12 @@ class krr_class():
     comparator_kwargs:
     Parameters for the compator. This could be the width for the gaussian kernel.
     """
-    def __init__(self, comparator, featureCalculator, delta_function=None, reg=1e-5, bias_fraction=0.8, bias_std_add=0.5, **comparator_kwargs):
+    def __init__(self, comparator, featureCalculator, delta_function=None, reg=1e-5, fracTrain=0.8, **comparator_kwargs):
         self.featureCalculator = featureCalculator
         self.comparator = comparator
         self.comparator.set_args(**comparator_kwargs)
-        self.bias_fraction = bias_fraction
-        self.bias_std_add = bias_std_add
         self.reg = reg
+        self.fracTrain = fracTrain
         self.delta_function = delta_function
         
         # Initialize data arrays
@@ -51,7 +50,7 @@ class krr_class():
         if similarityVec is None:
             if fnew is None:
                 fnew = self.featureCalculator.get_feature(atoms)
-            similarityVec = self.comparator.get_similarity_vector(fnew, self.featureMat[:self.Ndata])
+            similarityVec = self.comparator.get_similarity_vector(fnew, self.featureMat_train)
 
         predicted_value = similarityVec.dot(self.alpha) + self.beta + delta
 
@@ -59,7 +58,7 @@ class krr_class():
             alpha_err = np.dot(self.Ainv, similarityVec)
             #A = self.similarityMat + self.reg*np.identity(self.Ndata)
             #alpha_err = np.linalg.solve(A, similarityVec)
-            theta0 = np.dot(self.data_values[:self.Ndata], self.alpha) / self.Ndata
+            theta0 = np.dot(self.data_values_train, self.alpha) / self.Ndata
             prediction_error = np.sqrt(np.abs(theta0*(1 - np.dot(similarityVec, alpha_err))))
             return predicted_value, prediction_error, theta0
         else:
@@ -75,7 +74,7 @@ class krr_class():
             fnew = self.featureCalculator.get_feature(atoms)
         if fgrad is None:
             fgrad = self.featureCalculator.get_featureGradient(atoms)
-        dk_df = self.comparator.get_jac(fnew, featureMat=self.featureMat[:self.Ndata])
+        dk_df = self.comparator.get_jac(fnew, featureMat=self.featureMat_train)
 
         # Calculate contribution from delta-function
         if self.delta_function is not None:
@@ -130,10 +129,6 @@ class krr_class():
         #self.beta = np.mean(data_values)
         self.beta = np.max(data_values)
 
-        #Ndata = len(data_values)
-        #sorted_data_values = np.sort(data_values)
-        #self.beta = sorted_data_values[int(0.8*Ndata)]
-        
         if delta_values is None:
             delta_values = 0
         A = similarityMat + reg*np.identity(len(data_values))
@@ -185,15 +180,22 @@ class krr_class():
             if self.delta_function is not None:
                 self.delta_values[:self.Ndata] = delta_values_add
 
-        if self.delta_function is not None:
-            delta_values_all = self.delta_values[:self.Ndata]
-        else:
-            delta_values_all = None
         
-        FVU, params = self.__gridSearch(self.data_values[:self.Ndata],
-                                        self.featureMat[:self.Ndata],
+
+        Ninclude = int(self.fracTrain*self.Ndata)
+        sort_indices = np.argsort(self.data_values[:self.Ndata])
+        self.data_values_train = self.data_values[sort_indices[:Ninclude]]
+        self.featureMat_train = self.featureMat[sort_indices[:Ninclude]]
+
+        if self.delta_function is not None:
+            delta_values_train = self.delta_values[sort_indices[:Ninclude]]
+        else:
+            delta_values_train = None
+        
+        FVU, params = self.__gridSearch(self.data_values_train,
+                                        self.featureMat_train,
                                         k=k,
-                                        delta_values=delta_values_all,
+                                        delta_values=delta_values_train,
                                         **GSkwargs)
 
         return FVU, params
@@ -202,7 +204,7 @@ class krr_class():
         """
         Performs grid search in the set of hyperparameters specified in **GSkwargs.
 
-        Used k-fold cross-validation for error estimates.
+        Uses k-fold cross-validation for error estimates.
         """
         sigma_array = GSkwargs['sigma']
         reg_array = GSkwargs['reg']
@@ -284,38 +286,3 @@ class krr_class():
         FVU = MSE / var
         return MAE
 
-if __name__ == '__main__':
-    from ase.io import read
-    from gaussComparator import gaussComparator
-    from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
-    from ase.visualize import view
-    
-    a_train = read('graphene_data/all_every10th.traj', index='0::10')
-    E_train = np.array([a.get_potential_energy() for a in a_train])
-    Natoms = a_train[0].get_number_of_atoms()
-    #view(a_train)
-    
-    Rc1 = 5
-    binwidth1 = 0.2
-    sigma1 = 0.2
-    
-    Rc2 = 4
-    Nbins2 = 30
-    sigma2 = 0.2
-    
-    gamma = 1
-    eta = 30
-    use_angular = False
-    
-    featureCalculator = Angular_Fingerprint(a_train[0], Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
-
-    
-    
-    # Set up KRR-model
-    comparator = gaussComparator()
-    krr = krr_class(comparator=comparator,
-                    featureCalculator=featureCalculator)
-
-    GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(-1,3,20)}
-    MAE, params = krr.train(atoms_list=a_train, data_values=E_train, k=3, add_new_data=False, **GSkwargs)
-    print(MAE, params)
