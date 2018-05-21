@@ -8,9 +8,26 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --no-requeue
 
+
+echo "========= Job started  at `date` =========="
+# Go to the directory where this job was submitted
+cd $SLURM_SUBMIT_DIR
+
 source /home/mkb/.dftb
 source /home/mkb/virtualEnvs/python-3.6.3/bin/activate
 
-# Go to the directory where this job was submitted
-cd $SLURM_SUBMIT_DIR/
-python -m cProfile -s cumtime ../globalOptim_ase3d.py ./ > profileGO.txt
+# copy files to the scratch-directory
+cp ~/GitHub/learningForces/krrThomas/globalOptim_ase3d.py /scratch/$SLURM_JOB_ID
+
+# change directory to the local scratch-directory, and run:
+cd /scratch/$SLURM_JOB_ID
+export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}
+python -m cProfile -s cumtime globalOptim_ase3d.py ./ > profileGO.txt
+
+# copy home the outputdata:
+mkdir $SLURM_SUBMIT_DIR/profileC24
+cp global* $SLURM_SUBMIT_DIR/profileC24
+cp profileGO.txt $SLURM_SUBMIT_DIR/profileC24
+
+echo "========= Job finished at `date` =========="
+

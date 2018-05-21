@@ -20,7 +20,7 @@ class krr_calculator(Calculator):
 
         Calculator.calculate(self, atoms, properties, system_changes)
 
-        E, E_error, _ = self.MLmodel.predict_energy(atoms, return_error=True)
+        E = self.MLmodel.predict_energy(atoms, return_error=False)
         F = self.MLmodel.predict_force(atoms).reshape((-1,3))
 
         if self.noZ:

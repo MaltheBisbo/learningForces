@@ -378,7 +378,7 @@ class globalOptim():
         self.E = np.inf
         for i in range(self.Nstart_pop):
             a_init = createInitalStructure2d(self.Natoms)
-            a, E = self.relax(a_init, ML=False)
+            a, E = self.relaxTrue(a_init)
             if E < self.E:
                 self.a = a.copy()
                 self.E = E
@@ -408,7 +408,7 @@ class globalOptim():
                     self.trainModel()
 
                 # Relax with MLmodel
-                a_new, EnewML = self.relax(a_new_unrelaxed, ML=True)
+                a_new, EnewML = self.relaxML(a_new_unrelaxed)
                 
                 # Singlepoint with objective potential
                 Enew = self.singlePoint(a_new)
@@ -421,7 +421,7 @@ class globalOptim():
                 """
             else:
                 # Relax with true potential
-                a_new, Enew = self.relax(a_new_unrelaxed, ML=False)
+                a_new, Enew = self.relaxTrue(a_new_unrelaxed)
 
             dE = Enew - self.E
             if dE <= 0:  # Accept better structure
@@ -455,7 +455,7 @@ class globalOptim():
             self.ksaved = self.maxNtrain
             self.MLmodel.remove_data(Nremove)
         """
-        GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0, np.log10(50), 5)}
+        GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1, 3, 5)}
         #GSkwargs = {'reg': [1e-5], 'sigma': [10]}
         FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
@@ -491,39 +491,31 @@ class globalOptim():
         self.a_add.append(atoms[-1])
         self.writer_initTrain.write(atoms[-1], energy=E[-1])
                 
-    def relax(self, a, ML=False):
-        #len_count_max = len(str(self.Niter-1))
-        #len_count = len(str(self.traj_counter))
-        #traj_counter = '0'*(len_count_max - len_count) + str(self.traj_counter)
-        """
-        if len(str(self.traj_counter)) == 1:
-            traj_counter = '00' + str(self.traj_counter)
-        elif len(str(self.traj_counter)) == 2:
-            traj_counter = '0' + str(self.traj_counter)
-        else:
-            traj_counter = str(self.traj_counter)
-        """
-        
+    def relaxML(self, a):
+        # fix atons in xy-plane if noZ=True
+        if self.noZ:
+            plane = [FixedPlane(x, (0, 0, 1)) for x in range(len(a))]
+            a.set_constraint(plane)
+
+        # Relax
+        label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
+        krr_calc = krr_calculator(self.MLmodel)
+        a_relaxed = relax_VarianceBreak(a, krr_calc, label, niter_max=2)
+
+        self.traj_counter += 1
+        Erelaxed = a_relaxed.get_potential_energy()
+        return a_relaxed, Erelaxed
+
+    def relaxTrue(self, a):
+        # fix atons in xy-plane if noZ=True
         if self.noZ:
             plane = [FixedPlane(x, (0, 0, 1)) for x in range(len(a))]
             a.set_constraint(plane)
         
         # Relax
-        if ML:
-            label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
-            krr_calc = krr_calculator(self.MLmodel)
-            a_relaxed = relax_VarianceBreak(a, krr_calc, label, niter_max=2)
-            #a.set_calculator(krr_calc)
-            #dyn = BFGS(a, trajectory=label+'.traj')
-            #dyn.run(fmax=0.1)            
-        else:
-            label = self.traj_namebase + '{}'.format(self.traj_counter)
-            a_relaxed = relax_VarianceBreak(a, self.calculator, label, niter_max=10)
-            #a.set_calculator(self.calculator)
-            #dyn = BFGS(a, trajectory=label+'.traj')
-            #dyn.run(fmax=0.1)
-            
-            self.add_trajectory_to_training(label+'.traj')
+        label = self.traj_namebase + '{}'.format(self.traj_counter)
+        a_relaxed = relax_VarianceBreak(a, self.calculator, label, niter_max=10)
+        self.add_trajectory_to_training(label+'.traj')
 
         self.traj_counter += 1
         Erelaxed = a_relaxed.get_potential_energy()
@@ -556,8 +548,8 @@ if __name__ == '__main__':
     from gaussComparator import gaussComparator
     #from angular_fingerprintFeature import Angular_Fingerprint
     from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
-    #from krr_ase import krr_class
-    from krr_fracTrain import krr_class
+    from krr_ase import krr_class
+    #from krr_fracTrain import krr_class
     from delta_functions.delta import delta as deltaFunc
     from ase.calculators.dftb import Dftb
     import sys
@@ -588,14 +580,14 @@ if __name__ == '__main__':
     # Set up KRR-model
     comparator = gaussComparator()
     delta_function = deltaFunc(cov_dist=2*covalent_radii[6])
-    #krr = krr_class(comparator=comparator,
-    #                featureCalculator=featureCalculator,
-    #                delta_function=delta_function)
-
     krr = krr_class(comparator=comparator,
                     featureCalculator=featureCalculator,
-                    delta_function=delta_function,
-                    fracTrain=0.8)
+                    delta_function=delta_function)
+
+    #krr = krr_class(comparator=comparator,
+    #                featureCalculator=featureCalculator,
+    #                delta_function=delta_function,
+    #                fracTrain=0.8)
     
 
     # Savefile setup
