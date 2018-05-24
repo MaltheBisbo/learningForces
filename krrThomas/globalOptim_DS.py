@@ -15,7 +15,7 @@ from ase.constraints import FixedPlane
 from ase.ga.relax_attaches import VariansBreak
 from ase.data import covalent_radii
 
-def relax_VarianceBreak(structure, calc, label, niter_max=10):
+def relax_VarianceBreak(structure, calc, label, niter_max=10, steps=500):
     '''
     Relax a structure and saves the trajectory based in the index i
 
@@ -49,7 +49,7 @@ def relax_VarianceBreak(structure, calc, label, niter_max=10):
         vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
         dyn.attach(traj)
         dyn.attach(vb)
-        dyn.run(fmax = forcemax, steps = 500)
+        dyn.run(fmax=forcemax, steps=steps)
         niter += 1
 
     return structure
@@ -185,8 +185,8 @@ def rattle_Natoms2d_center(struct, Nrattle, rmax_rattle=5.0, Ntries=20):
                                      ratio_of_covalent_radii=0.7)
     
     cov_radii = covalent_radii[6] # cd[(6,6)]  # hard coded
-    rmin = 0.7*2*cov_radii
-    rmax = 1.3*2*cov_radii
+    rmin = 0.9  # 0.7*2*cov_radii
+    rmax = 1.5  # 1.3*2*cov_radii
 
     rattle_counter = 0
     for index in i_permuted:
@@ -201,6 +201,43 @@ def rattle_Natoms2d_center(struct, Nrattle, rmax_rattle=5.0, Ntries=20):
 
     # The desired number of succesfull rattles was not reached
     return structRattle
+
+def createInitalStructure2d_LJ(Natoms):
+    dim = 3
+    boxsize = 2 * np.sqrt(Natoms)
+    rmin = 0.9
+    rmax = 1.5
+
+    def validPosition(X, xnew):
+        Natoms = int(len(X)/dim)  # Current number of atoms
+        if Natoms == 0:
+            return True
+        connected = False
+        for i in range(Natoms):
+            r = np.linalg.norm(xnew - X[dim*i:dim*(i+1)])
+            if r < rmin:
+                return False
+            if r < rmax:
+                connected = True
+        return connected
+
+    X = np.zeros(dim*Natoms)
+    for i in range(Natoms):
+        while True:
+            xnew = np.r_[np.random.rand(dim-1) * boxsize, boxsize/2]
+            if validPosition(X[:dim*i], xnew):
+                X[dim*i:dim*(i+1)] = xnew
+                break
+    X = X.reshape((-1, 3))
+
+    atomtypes = str(Natoms) + 'He'
+    pbc = [0,0,0]
+    cell = [boxsize]*3
+    a = Atoms(atomtypes,
+              positions=X,
+              pbc=pbc,
+              cell=cell)
+    return a
 
 def createInitalStructure(Natoms):
     '''
@@ -262,7 +299,7 @@ def createInitalStructure2d(Natoms):
     # define the volume in which the adsorbed cluster is optimized
     # the volume is defined by a a center position (p0)
     # and three spanning vectors
-    
+
     a = np.array((6, 0., 0.))
     b = np.array((0, 6, 0))
     center = np.array((11.5, 11.5, 9))
@@ -379,17 +416,13 @@ class globalOptim():
         # Initial structures
         self.E = np.inf
         for i in range(self.Nstart_pop):
-            a_init = createInitalStructure2d(self.Natoms)
+            a_init = createInitalStructure2d_LJ(self.Natoms)
             a, E = self.relaxTrue(a_init)
             if E < self.E:
                 self.a = a.copy()
                 self.E = E
         # Reset traj_counter for ML-relaxations
         self.traj_counter = 0
-
-        # Initial structure
-        #a_init = createInitalStructure2d(self.Natoms)
-        #self.a, self.E = self.relax(a_init, ML=False)
 
         # Initialize the best structure
         self.a_best = self.a.copy()
@@ -399,16 +432,18 @@ class globalOptim():
         stagnation_counter = 0
         for i in range(self.Niter):
             # Perturb current structure
-            a_new_unrelaxed = rattle_Natoms2d_center(struct=self.a,
-                                                     Nrattle=self.Nperturb,
-                                                     rmax_rattle=self.rattle_maxDist)
-            
+            a_new = self.newUnexploredStructure(self.a)
+
+            # Singlepoint with objective potential
+            Enew = self.singlePoint(a_new)
+            """
             # Use MLmodel - if it excists
             if self.MLmodel is not None:
-                a_new, Enew = self.doubleShot(a_new_unrelaxed)
+                a_new, Enew = self.doubleShot(a_new_unrelaxed, Nshot=1)
             else:
                 # Relax with true potential
                 a_new, Enew = self.relaxTrue(a_new_unrelaxed)
+            """
 
             dE = Enew - self.E
             if dE <= 0:  # Accept better structure
@@ -434,9 +469,9 @@ class globalOptim():
                 #print('Stagnation criteria was reached')
                 break
 
-    def doubleShot(self, a_unrelaxed):
+    def doubleShot(self, a_unrelaxed, Nshot):
         a = a_unrelaxed.copy()
-        for i_shot in range(2):
+        for i_shot in range(Nshot):
             # Train ML model if new data is available
             if len(self.a_add) > 0:
                 self.trainModel()
@@ -446,14 +481,18 @@ class globalOptim():
             
             # Singlepoint with objective potential
             Enew = self.singlePoint(a_new)
-            a_new.set_calculator(self.calculator)
-            Fnew = a_new.get_forces()
-            fmax = (Fnew**2).sum(axis = 1).max()**0.5
-            print('{}: E={}, fmax={}'.format(i_shot, Enew, fmax))
-            if fmax < 1:
-                break
-            else:
-                a_unrelaxed.set_positions(a_new.get_positions() + 0.005*Fnew)
+            
+            if i_shot < Nshot-1:
+                a_new.set_calculator(self.calculator)
+                Fnew = a_new.get_forces()
+                fmax = (Fnew**2).sum(axis = 1).max()**0.5
+                print('{}: E={}, fmax={}'.format(i_shot, Enew, fmax))
+                if fmax < 1:
+                    break
+                else:
+                    a_unrelaxed.set_positions(a_new.get_positions() + 0.005*Fnew)
+                    self.singlePoint(a_unrelaxed)
+                
         return a_new, Enew   
 
     def trainModel(self):
@@ -464,7 +503,7 @@ class globalOptim():
             self.ksaved = self.maxNtrain
             self.MLmodel.remove_data(Nremove)
         """
-        GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1, 3, 5)}
+        GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(0, 2, 5)}
         #GSkwargs = {'reg': [1e-5], 'sigma': [10]}
         FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
@@ -474,6 +513,26 @@ class globalOptim():
         with open(self.traj_namebase + 'sigma.txt', 'a') as f:
             f.write('{0:.2f}\n'.format(params['sigma']))
 
+    def newUnexploredStructure(self, a_current):
+        a = a_current.copy()
+        # Train ML model if new data is available
+        if len(self.a_add) > 0:
+            self.trainModel()
+                
+        for n_trial in range(10):
+            a = rattle_Natoms2d_center(struct=a,
+                                       Nrattle=self.Nperturb,
+                                       rmax_rattle=self.rattle_maxDist)
+
+            # Relax with MLmodel
+            label = self.traj_namebase + 'ML{}_{}'.format(self.traj_counter, n_trial)
+            a_new, EnewML = self.relaxML(a, label=label)
+            _, error, theta0 = self.MLmodel.predict_energy(a_new, return_error=True)
+            print('{0:d}_{1:d}-error: {2:.3f}'.format(self.traj_counter, n_trial, error))
+            if error > 0.1:
+                self.traj_counter += 1
+                return a_new
+            
     def add_trajectory_to_training(self, trajectory_file):
         atoms = read(filename=trajectory_file, index=':')
         E = [a.get_potential_energy() for a in atoms]
@@ -500,14 +559,15 @@ class globalOptim():
         self.a_add.append(atoms[-1])
         self.writer_initTrain.write(atoms[-1], energy=E[-1])
 
-    def relaxML(self, a):
+    def relaxML(self, a, label=None):
         # fix atons in xy-plane if noZ=True
         if self.noZ:
             plane = [FixedPlane(x, (0, 0, 1)) for x in range(len(a))]
             a.set_constraint(plane)
 
         # Relax
-        label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
+        if label is None:
+            label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
         krr_calc = krr_calculator(self.MLmodel)
         a_relaxed = relax_VarianceBreak(a, krr_calc, label, niter_max=2)
 
@@ -516,7 +576,6 @@ class globalOptim():
         with open(self.traj_namebase + 'MLerror.txt', 'a') as f:
             f.write('{0:.2f}\t{1:.2f}\t{2:.2f}\n'.format(Epred, error, theta0))
 
-        self.traj_counter += 1
         Erelaxed = a_relaxed.get_potential_energy()
         return a_relaxed, Erelaxed
 
@@ -528,7 +587,7 @@ class globalOptim():
         
         # Relax
         label = self.traj_namebase + '{}'.format(self.traj_counter)
-        a_relaxed = relax_VarianceBreak(a, self.calculator, label, niter_max=10)
+        a_relaxed = relax_VarianceBreak(a, self.calculator, label, niter_max=1)
         self.add_trajectory_to_training(label+'.traj')
 
         self.traj_counter += 1
@@ -612,10 +671,10 @@ if __name__ == '__main__':
 
     from ase.data import covalent_radii
     
-    Natoms = 24
+    Natoms = 3
     
     # Set up featureCalculator
-    a = createInitalStructure(Natoms)
+    a = createInitalStructure2d_LJ(Natoms)
 
     Rc1 = 5
     binwidth1 = 0.2
@@ -627,7 +686,7 @@ if __name__ == '__main__':
     
     gamma = 1
     eta = 5
-    use_angular = True
+    use_angular = False
     
     featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
 
@@ -637,8 +696,8 @@ if __name__ == '__main__':
     comparator = gaussComparator()
     delta_function = deltaFunc(cov_dist=2*covalent_radii[6])
     krr = krr_class(comparator=comparator,
-                    featureCalculator=featureCalculator,
-                    delta_function=delta_function)
+                    featureCalculator=featureCalculator)#,
+                    #delta_function=delta_function)
 
     #krr = krr_class(comparator=comparator,
     #                featureCalculator=featureCalculator,
@@ -655,26 +714,26 @@ if __name__ == '__main__':
     savefiles_namebase = savefiles_path + 'global' + run_num + '_' 
 
     # Calculator
-    #calc = doubleLJ_calculator(noZ=True)
-    calc = Dftb(label='C',
-                Hamiltonian_SCC='No',
-                #            kpts=(1,1,1),   # Hvis man paa et tidspunkt skal bruge periodiske graensebetingelser
-                Hamiltonian_Eigensolver='Standard {}',
-                Hamiltonian_MaxAngularMomentum_='',
-                Hamiltonian_MaxAngularMomentum_C='"p"',
-                Hamiltonian_Charge='0.000000',
-                Hamiltonian_Filling ='Fermi {',
-                Hamiltonian_Filling_empty= 'Temperature [Kelvin] = 0.000000')
+    calc = doubleLJ_calculator(noZ=True)
+    #calc = Dftb(label='C',
+    #            Hamiltonian_SCC='No',
+    #            #            kpts=(1,1,1),   # Hvis man paa et tidspunkt skal bruge periodiske graensebetingelser
+    #            Hamiltonian_Eigensolver='Standard {}',
+    #            Hamiltonian_MaxAngularMomentum_='',
+    #            Hamiltonian_MaxAngularMomentum_C='"p"',
+    #            Hamiltonian_Charge='0.000000',
+    #            Hamiltonian_Filling ='Fermi {',
+    #            Hamiltonian_Filling_empty= 'Temperature [Kelvin] = 0.000000')
 
     optimizer = globalOptim(calculator=calc,
                             traj_namebase=savefiles_namebase,
                             MLmodel=krr,
                             Natoms=Natoms,
-                            Niter=500,
-                            Nstag=500,
-                            Nstart_pop=5,
+                            Niter=10,
+                            Nstag=10,
+                            Nstart_pop=1,
                             fracPerturb=0.2,
-                            rattle_maxDist=4,
+                            rattle_maxDist=2,
                             kbT=0.5,
                             noZ=True)
 
