@@ -446,6 +446,7 @@ class globalOptim():
             
             # Singlepoint with objective potential
             Enew = self.singlePoint(a_new)
+            a_new.set_calculator(self.calculator)
             Fnew = a_new.get_forces()
             fmax = (Fnew**2).sum(axis = 1).max()**0.5
             print('{}: E={}, fmax={}'.format(i_shot, Enew, fmax))
