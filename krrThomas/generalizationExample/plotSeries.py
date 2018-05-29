@@ -98,8 +98,8 @@ x2_path = np.r_[path_coord2[::-1], path_coord1[::-1]]
 a_path = structure_list(x1_path, x2_path)
 
 
-fontsize1 = 15
-fontsize2 = 13
+fontsize1 = 21
+fontsize2 = 19
 Ntrain = len(a_train)
 
 for i in range(1,Ntrain+1):
@@ -136,6 +136,8 @@ for i in range(1,Ntrain+1):
     #                    bottom=1/14, top=1-1/14, hspace=4/14)
     ax1 = plt.subplot(2,2,1)
     ax1.tick_params(labelsize=fontsize2)
+    plt.xticks(np.arange(0, 3, step=1))
+    plt.yticks(np.arange(0, 3, step=1))
     
     plt.title('True energy landscape', fontsize=fontsize1)
     plt.xlabel('x1', fontsize=fontsize1)
@@ -146,6 +148,9 @@ for i in range(1,Ntrain+1):
     
     ax2 = plt.subplot(2,2,2)
     ax2.tick_params(labelsize=fontsize2)
+    plt.xticks(np.arange(0, 3, step=1))
+    plt.yticks(np.arange(0, 3, step=1))
+
     #plt.title('Model energy landscape \nsigma={}, no delta'.format(sigma))
     plt.title('Model energy landscape', fontsize=fontsize1)
     plt.xlabel('x1', fontsize=fontsize1)
@@ -160,21 +165,21 @@ for i in range(1,Ntrain+1):
     #plt.plot(x1_train_sub, x2_train_sub, color='r', marker='o', linestyle='None')
     for n,[x1,x2] in enumerate(zip(x1_train_sub[:], x2_train_sub[:])):
         if n < 5:
-            plt.text(x1-0.05, x2+0.1, '{}'.format(n+1), fontsize=13)
+            plt.text(x1-0.05, x2+0.1, '{}'.format(n+1), fontsize=fontsize2)
     cb2 = plt.colorbar()
     cb2.ax.tick_params(labelsize=fontsize2)
 
     ax3 = plt.subplot(2,2,3)
     ax3.tick_params(labelsize=fontsize2)
     #plt.title('Energy of linear path \nsigma={} for ML models'.format(sigma))
-    plt.title('Energy of linear path', fontsize=fontsize1)
+    plt.title('Energy of path', fontsize=fontsize1)
     plt.xlabel('x2', fontsize=fontsize1)
     plt.ylabel('Energy', fontsize=fontsize1)
     plt.xlim([-0.5, 2.5])
     plt.ylim([-8.2,0.2])
     
-    plt.plot(x2_path, Etrue_path, 'k-.', label='True')
-    plt.plot(x2_path, Epred_path, label='Model')
+    plt.plot(x2_path, Etrue_path, 'k', label='True', lw=2.5)
+    plt.plot(x2_path, Epred_path, label='Model', lw=2)
     plt.fill_between(x2_path, Epred_path+2*Epred_path_error, Epred_path-2*Epred_path_error, facecolor='blue', alpha=0.3)
 
     # Plot seperating line
@@ -186,15 +191,15 @@ for i in range(1,Ntrain+1):
     
     # plot training points
     if i == 6:
-        plt.plot(x2_train_sub[:-1], E_train_sub[:-1], color='r', marker='o', linestyle='None', label='Training data')
-        plt.plot(x2_train_sub[-1], E_train_sub[-1], color='g', marker='o', linestyle='None', label='Global min.')
+        plt.plot(x2_train_sub[:-1], E_train_sub[:-1], color='r', marker='o', linestyle='None', label='Data')
+        plt.plot(x2_train_sub[-1], E_train_sub[-1], color='g', marker='o', linestyle='None', label='GM')
         for n,[x2,E] in enumerate(zip(x2_train_sub[:-1], E_train_sub[:-1])):
-            plt.text(x2-0.03, E-0.5, '{}'.format(n+1), fontsize=13)
+            plt.text(x2-0.03, E-0.7, '{}'.format(n+1), fontsize=fontsize2)
     else:
-        plt.plot(x2_train_sub, E_train_sub, color='r', marker='o', linestyle='None', label='Training data')
+        plt.plot(x2_train_sub, E_train_sub, color='r', marker='o', linestyle='None', label='Data')
         for n,[x2,E] in enumerate(zip(x2_train_sub, E_train_sub)):
-            plt.text(x2-0.03, E-0.5, '{}'.format(n+1), fontsize=13)
-    plt.legend(loc=4, fontsize=11)
+            plt.text(x2-0.03, E-0.7, '{}'.format(n+1), fontsize=fontsize2)
+    plt.legend(loc=4, fontsize=fontsize2 - 2)
     """
     # Plot bias
     xlim_min, xlim_max = plt.xlim()
@@ -206,18 +211,19 @@ for i in range(1,Ntrain+1):
     features = np.array([featureCalculator.get_feature(a) for a in a_train_sub])
     ax4 = plt.subplot(2,2,4)
     ax4.tick_params(labelsize=fontsize2)
+    plt.yticks(np.arange(0,3,step=1))
     plt.title('Features', fontsize=fontsize1)
     plt.ylim([0,2.5])
-    plt.xlabel('Interatomic distance', fontsize=fontsize1)
-    plt.ylabel('Feature magnitude', fontsize=fontsize1)
+    plt.xlabel('r', fontsize=fontsize1)
+    plt.ylabel('F', fontsize=fontsize1)
     for n, a in enumerate(a_train_sub):
         feature = featureCalculator.get_feature(a)
         if n == 5:
-            plt.plot(binwidth1*np.arange(len(feature)), feature, label='Global minimum', color='g', lw=2.5)
+            plt.plot(binwidth1*np.arange(len(feature)), feature, label='GM', color='g', lw=2.5)
         else:
-            plt.plot(binwidth1*np.arange(len(feature)), feature, label='Structure {}'.format(n+1))
+            plt.plot(binwidth1*np.arange(len(feature)), feature, label='Data {}'.format(n+1))
         
-    plt.legend(fontsize=11)
+    plt.legend(fontsize=fontsize2 - 2)
     
     
     #plt.savefig('results/3body/Ntrain{0:d}_sig{1:d}_eta{2:d}.pdf'.format(i, sigma, eta))
@@ -235,18 +241,18 @@ for i in range(1,Ntrain+1):
     plt.xlim([-dx, 3*dx])
     plt.ylim([-(4.85)*dy, 1.8*dy])
     # Plot coordinate example
-    plt.text(-0.72*dx, 1.93*dy, 'Coordinate definition', fontsize=15)
-    plotCoordinateExample(0,1.5*dy, scale=1)
+    plt.text(-0.72*dx, 1.93*dy, 'Coordinate definition', fontsize=fontsize1)
+    plotCoordinateExample(0,1.5*dy, scale=1, fontsize=fontsize1)
     plt.plot([-0.7*dx, -0.7*dx, dx/2, dx/2, -0.7*dx], [1.8*dy, 0.8*dy, 0.8*dy, 1.8*dy, 1.8*dy], 'k', lw=3)
     
     
     
     # Plot training data
     boxcolor = 'steelblue'
-    plt.text(-0.70*dx, 0.38*dy, 'Training structures', fontsize=15)
+    plt.text(-0.70*dx, 0.38*dy, 'Training structures', fontsize=fontsize1)
     plt.plot([-0.7*dx, dx/2], [1/4*dy, 1/4*dy], boxcolor, lw=2)
     for k, a in enumerate(a_train_sub[:Nstruct]):
-        plt.text(-0.6*dx, -dy*k, '{})'.format(k+1), fontsize=15)
+        plt.text(-0.6*dx, -dy*k, '{})'.format(k+1), fontsize=fontsize1)
         plotStruct(a_train[k], 0,-dy*k)
         plt.plot([-0.7*dx, dx/2], [-(3/4+k)*dy, -(3/4+k)*dy], boxcolor, lw=2)
     plt.plot([-0.7*dx, -0.7*dx], [1/4*dy, (1/4-Nstruct)*dy], boxcolor, lw=2)
@@ -255,7 +261,7 @@ for i in range(1,Ntrain+1):
     if len(a_train_sub) > 5:
         a_globMin = a_train_sub[-1]
         make_arrow([0.7*dx, 0.5*dy - (3/4+2)*dy], [1.3*dx, 0.5*dy - (3/4+2)*dy], width=0.1, head_width=0.4, head_length=0.6, stop_before=0.00)
-        plt.text(1.5*dx, 1.08*dy - (3/4+2)*dy, 'Global minimum', fontsize=15)
+        plt.text(1.5*dx, 1.08*dy - (3/4+2)*dy, 'Global minimum', fontsize=fontsize1)
         plt.plot(np.array([0, 0, 1.2*dx, 1.2*dx, 0])+1.5*dx,
                  np.array([1*dy, 0, 0, 1*dy, 1*dy])-(3/4+2)*dy,
                  boxcolor,

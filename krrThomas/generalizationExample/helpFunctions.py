@@ -67,7 +67,7 @@ def make_arrow(p1,p2, width, head_width, head_length, stop_before):
     diff = vec - (head_length + stop_before) * vec/np.linalg.norm(vec)
     plt.arrow(p1[0], p1[1], diff[0], diff[1], width=width, head_width=head_width, head_length=head_length, fc='k', ec='k')
 
-def plotCoordinateExample(x0,y0, scale=1):
+def plotCoordinateExample(x0,y0, scale=1, fontsize=15):
     pos = scale*cartesian_coord(0,0) + np.array([x0,y0])
 
     L_arrow = 1.5*scale
@@ -79,5 +79,5 @@ def plotCoordinateExample(x0,y0, scale=1):
     p2 = pos[2,:]
     make_arrow(p1,p1+arrow1, width=0.05, head_width=0.2, head_length=0.4, stop_before=0.00)
     make_arrow(p2,p2+arrow2, width=0.05, head_width=0.2, head_length=0.4, stop_before=0.00)
-    plt.text((p1+arrow1)[0]-0.9, (p1+arrow1)[1]-0.2, 'x1', fontsize=15)
-    plt.text((p2+arrow2)[0]+0.3, (p2+arrow2)[1]-0.2, 'x2', fontsize=15)
+    plt.text((p1+arrow1)[0]-1.1, (p1+arrow1)[1]-0.2, 'x1', fontsize=fontsize)
+    plt.text((p2+arrow2)[0]+0.3, (p2+arrow2)[1]-0.2, 'x2', fontsize=fontsize)

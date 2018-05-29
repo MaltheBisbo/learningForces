@@ -45,8 +45,13 @@ def get_structure(c1, c2, a0, d0=1.06):
 
 def plotStruct(a):
     pos = a.get_positions()
-    plt.figure()
-    plt.plot(pos[:,0], pos[:,1], 'ro')
+    x = pos[:,0]
+    y = pos[:,1]
+    dx = x.max() - x.min()
+    dy = y.max() - y.min()
+    k = 0.4
+    plt.figure(figsize=(k*dx,k*(dy+1)))
+    plt.scatter(x, y, c='r', marker='o', edgecolors='k', s=60)
     plt.gca().set_aspect('equal', adjustable='box')
 
 def get_distance(a1, a2, featureCalculator):
@@ -72,10 +77,10 @@ a2 = get_structure(0,1,a_base)
 a3 = get_structure(1,1,a_base)
 a_main_list = [a0,a1,a2,a3]
 
-#plotStruct(a0)
-#plotStruct(a1)
-#plotStruct(a2)
-#plotStruct(a3)
+plotStruct(a0)
+plotStruct(a1)
+plotStruct(a2)
+plotStruct(a3)
 
 
 # // TRAINING DATA //
@@ -114,7 +119,7 @@ print(d_list)
 
 print(get_distance(a1,a2,featureCalculator))
 
-
+"""
 a_train = []
 for i_relax in range(200):
     label = '../doubleLJproject/LJdata/LJ19/relax{}'.format(i_relax)
@@ -126,13 +131,21 @@ for i_relax in range(200):
         index_sample = index_random[n]
         a_new = traj[index_sample]
         d_array = np.array([get_distance(a_new, a, featureCalculator) for a in a_main_list])
-        if np.max(d_array) > 10:
+        if np.max(d_array) > 5:
             a_train.append(a_new)
             break
-write('data_N200_d10.traj', a_train)
+write('data_N200_d5.traj', a_train)
+"""
 
-#a_train = read('data_N200_d1.traj', index=':')
+d = 5
+a_train = read('data_N200_d5.traj', index=':')
 E_train = np.array([E_doubleLJ(a) for a in a_train])
+plotStruct(a_train[0])
+plotStruct(a_train[1])
+plotStruct(a_train[2])
+plotStruct(a_train[3])
+plotStruct(a_train[4])
+#plt.show()
 
 # Set up KRR-model
 comparator = gaussComparator()
@@ -145,7 +158,7 @@ GSkwargs = {'reg': [1e-7], 'sigma': np.logspace(0,3,10)}
 
 # // TEST DATA //
 
-Npoints = 10
+Npoints = 30
 x1_test = np.linspace(-0.1, 1.1, Npoints)
 x2_test = np.linspace(-0.1, 1.1, Npoints)
 
@@ -179,6 +192,8 @@ Nseries = 5
 Ntrain_list = np.logspace(np.log10(5), np.log10(Ntrain_max), Nseries).astype(int)
 #Ntrain_list = [20, 100]
 #Nseries = len(Ntrain_list)
+
+v = np.linspace(-115, -92.5, 10, endpoint=True)
 
 for i in range(Nseries):
     Ntrain = Ntrain_list[i]
@@ -216,15 +231,15 @@ for i in range(Nseries):
     plt.title('Target energy landscape')
     plt.xlabel('x1')
     plt.ylabel('x2')
-    plt.contourf(X1, X2, E_grid_true)
+    plt.contourf(X1, X2, E_grid_true, v)
     plt.colorbar()
     
     
     plt.subplot(2,2,2)
-    plt.title('Predicted energy landscape \nsigma={}, Ntrain={}'.format(sigma, Ntrain))
+    plt.title('Predicted energy landscape \nNtrain={}'.format(sigma, Ntrain))
     plt.xlabel('x1')
     plt.ylabel('x2')
-    plt.contourf(X1, X2, E_grid)
+    plt.contourf(X1, X2, E_grid, v)
     #plt.plot(x1_path, x2_path, 'r:')
     plt.colorbar()
 
@@ -246,6 +261,5 @@ for i in range(Nseries):
     plt.xlim([xlim_min, xlim_max])
     """
     
-    #plt.savefig('results/19body/Ntrain{}_unrel.pdf'.format(Ntrain))
-plt.show()    
+    plt.savefig('results/19body/Ntrain{}_d{}.pdf'.format(Ntrain, d))
 
