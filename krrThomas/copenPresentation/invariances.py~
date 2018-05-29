@@ -1,0 +1,26 @@
+import numpy as np
+from doubleLJ import doubleLJ_energy_ase as E_doubleLJ
+import matplotlib.pyplot as plt
+
+from ase import Atoms
+
+
+def structure(x1,x2):
+    '''
+    x1, x2 is the two new coordiantes
+    d0 is the equilibrium two body distance
+    '''
+    d0 = 1.07
+    theta1 = -np.pi/3
+    theta2 = -2/3*np.pi
+    pos0 = np.array([0,0,0])
+    pos1 = np.array([-d0 + x1*np.cos(theta1), x1*np.sin(theta1), 0])
+    pos2 = np.array([d0 + x2*np.cos(theta2), x2*np.sin(theta2), 0])
+
+    pos = np.array([pos1, pos0, pos2])
+
+    a = Atoms('3He',
+              positions=pos,
+              pbc=[0,0,0],
+              cell=[3,3,3])
+    return a
