@@ -51,7 +51,10 @@ def plotStruct(a):
     dy = y.max() - y.min()
     k = 0.4
     plt.figure(figsize=(k*dx,k*(dy+1)))
+    plt.subplots_adjust(left=0.01, right=0.99,
+                        bottom=0.01, top=0.99)
     plt.scatter(x, y, c='r', marker='o', edgecolors='k', s=60)
+    plt.axis('off')
     plt.gca().set_aspect('equal', adjustable='box')
 
 def get_distance(a1, a2, featureCalculator):
@@ -78,9 +81,13 @@ a3 = get_structure(1,1,a_base)
 a_main_list = [a0,a1,a2,a3]
 
 plotStruct(a0)
+plt.savefig('results/structures/min1.pdf')
 plotStruct(a1)
+plt.savefig('results/structures/min2.pdf')
 plotStruct(a2)
+plt.savefig('results/structures/min3.pdf')
 plotStruct(a3)
+plt.savefig('results/structures/min4.pdf')
 
 
 # // TRAINING DATA //
@@ -117,7 +124,8 @@ f_center = get_center_feature([a0,a1,a2,a3], featureCalculator)
 d_list = [get_distance_center(f_center, a, featureCalculator) for a in [a0,a1,a2,a3]]
 print(d_list)
 
-print(get_distance(a1,a2,featureCalculator))
+print(get_distance(a1,a3,featureCalculator))
+
 
 """
 a_train = []
@@ -141,10 +149,15 @@ d = 5
 a_train = read('data_N200_d5.traj', index=':')
 E_train = np.array([E_doubleLJ(a) for a in a_train])
 plotStruct(a_train[0])
+plt.savefig('results/structures/train1.pdf')
 plotStruct(a_train[1])
+plt.savefig('results/structures/train2.pdf')
 plotStruct(a_train[2])
+plt.savefig('results/structures/train3.pdf')
 plotStruct(a_train[3])
+plt.savefig('results/structures/train4.pdf')
 plotStruct(a_train[4])
+plt.savefig('results/structures/train5.pdf')
 #plt.show()
 
 # Set up KRR-model
@@ -158,7 +171,7 @@ GSkwargs = {'reg': [1e-7], 'sigma': np.logspace(0,3,10)}
 
 # // TEST DATA //
 
-Npoints = 30
+Npoints = 40
 x1_test = np.linspace(-0.1, 1.1, Npoints)
 x2_test = np.linspace(-0.1, 1.1, Npoints)
 
@@ -188,12 +201,15 @@ a_path = get_structure_list(x1_path, x2_path, a0)
 """
 
 Ntrain_max = 100
-Nseries = 5
+Nseries = 3
 Ntrain_list = np.logspace(np.log10(5), np.log10(Ntrain_max), Nseries).astype(int)
 #Ntrain_list = [20, 100]
 #Nseries = len(Ntrain_list)
 
-v = np.linspace(-115, -92.5, 10, endpoint=True)
+v = np.linspace(-115, -90, 11, endpoint=True)
+fs1 = 21
+fs2 = 19
+
 
 for i in range(Nseries):
     Ntrain = Ntrain_list[i]
@@ -223,25 +239,42 @@ for i in range(Nseries):
     Etrue_path = np.array([E_doubleLJ(a) for a in a_path])
     """
 
-    plt.figure(figsize=(15,13))
-    plt.subplots_adjust(left=1/14, right=1-1/14, wspace=2/14,
-                        bottom=1/14, top=1-1/14, hspace=4/14)
-    plt.subplot(2,2,1)
+    plt.figure(figsize=(15,5.5))
+    plt.subplots_adjust(left=1/14, right=1-1/14, wspace=4/14,
+                        bottom=1/9, top=1-1/14)
+    plt.subplot(1,2,1)
     
-    plt.title('Target energy landscape')
-    plt.xlabel('x1')
-    plt.ylabel('x2')
+    plt.title('Target energy landscape', fontsize=fs1)
+    plt.xticks(np.arange(0, 1.5, step=0.5), fontsize=fs2)
+    plt.yticks(np.arange(0, 1.5, step=0.5), fontsize=fs2)
+    plt.xlabel('x1', fontsize=fs2)
+    plt.ylabel('x2', fontsize=fs2)
     plt.contourf(X1, X2, E_grid_true, v)
-    plt.colorbar()
+    cb1 = plt.colorbar(ticks=np.arange(-115, -85, step=5))
+    cb1.ax.tick_params(labelsize=fs2)
+
+    dx = -0.02
+    dy = 0.03
+    plt.plot(0,0,'go')
+    plt.text(dx, dy, '1', fontsize=fs2, color='lightgrey')
+    plt.plot(1,0,'ro')
+    plt.text(1+dx, dy, '2', fontsize=fs2, color='lightgrey')
+    plt.plot(1,1,'ro')
+    plt.text(1+dx, 1+dy, '3', fontsize=fs2, color='lightgrey')
+    plt.plot(0,1,'ro')
+    plt.text(dx, 1+dy, '4', fontsize=fs2, color='lightgrey')
     
     
-    plt.subplot(2,2,2)
-    plt.title('Predicted energy landscape \nNtrain={}'.format(sigma, Ntrain))
-    plt.xlabel('x1')
-    plt.ylabel('x2')
+    plt.subplot(1,2,2)
+    plt.title('Predicted energy landscape', fontsize=fs1)
+    plt.xticks(np.arange(0, 1.5, step=0.5), fontsize=fs2)
+    plt.yticks(np.arange(0, 1.5, step=0.5), fontsize=fs2)
+    plt.xlabel('x1', fontsize=fs2)
+    plt.ylabel('x2', fontsize=fs2)
     plt.contourf(X1, X2, E_grid, v)
     #plt.plot(x1_path, x2_path, 'r:')
-    plt.colorbar()
+    cb2 = plt.colorbar(ticks=np.arange(-115, -85, step=5))
+    cb2.ax.tick_params(labelsize=fs2)
 
     """
     plt.subplot(2,2,3)
