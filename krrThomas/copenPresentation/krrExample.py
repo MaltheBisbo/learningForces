@@ -40,8 +40,8 @@ class krr():
             x_plot = np.linspace(x0-3.5*self.sigma, x0+3.5*self.sigma, 100)
             d = np.abs(x_plot - x0)
             y = alpha*np.exp(-d**2/(2*self.sigma**2))
-            plt.plot(x_plot,y, 'k:', lw=1.5)
-        
+            #plt.plot(x_plot,y, 'k:', lw=1.5)
+            plt.fill_between(x_plot, np.zeros(len(x_plot)), y, facecolor='blue', alpha=0.2)
     
 """
 def f_target(x):

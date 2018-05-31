@@ -88,12 +88,17 @@ plt.ylabel('y', fontsize=fs)
 
 plt.xlim([-1, 1.5])
 plt.ylim([-1.3, 1.3])
+plt.plot([pos_x[2], pos_x[0], pos_x[1]], [pos_y[2], pos_y[0], pos_y[1]], 'k-', alpha=0.2)
 plt.plot(pos_x, pos_y, 'ro', alpha=0.2)
 
 angle = -np.pi/4
-pos_x_rot = pos_x*np.cos(angle) - pos_y*np.sin(angle)
-pos_y_rot = pos_x*np.sin(angle) + pos_y*np.cos(angle)
+
+pos_x_rot = (pos_x-pos_x[0])*np.cos(angle) - (pos_y-pos_y[0])*np.sin(angle) + pos_x[0]
+pos_y_rot = (pos_x-pos_x[0])*np.sin(angle) + (pos_y-pos_y[0])*np.cos(angle) + pos_y[0]
+#pos_y_rot = pos_x*np.sin(angle) + pos_y*np.cos(angle)
+plt.plot([pos_x_rot[2], pos_x_rot[0], pos_x_rot[1]], [pos_y_rot[2], pos_y_rot[0], pos_y_rot[1]], 'k-')
 plt.plot(pos_x_rot, pos_y_rot, 'ro')
+
 
 plt.gca().set_aspect('equal', adjustable='box')
 plt.savefig('figures/invariance_rot.pdf')

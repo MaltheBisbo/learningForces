@@ -61,6 +61,12 @@ coord_train = np.array([[0.0, 2.0],
                         [0.25, 0.25],
                         [-0.1, -0.1],
                         [1,1]])  # Last one is the global minimum
+coord_train = np.array([[2.0, 0.0],
+                        [2.2, -0.2],
+                        [1.8, 0.2],
+                        [0.25, 0.25],
+                        [-0.1, -0.1],
+                        [1,1]])  # Last one is the global minimum
 x1_train = coord_train[:,0]
 x2_train = coord_train[:,1]
 
@@ -86,10 +92,16 @@ E_grid_true[E_grid_true > 2] = 2
 # // PATH //
 
 # Corner path
+#path_coord1 = np.linspace(-0.5, 1, Npoints)
+#path_coord2 = np.linspace(1, 2.5, Npoints)
+#x1_path = np.r_[path_coord1, path_coord1[::-1]]
+#x2_path = np.r_[path_coord2[::-1], path_coord1[::-1]]
+
 path_coord1 = np.linspace(-0.5, 1, Npoints)
 path_coord2 = np.linspace(1, 2.5, Npoints)
-x1_path = np.r_[path_coord1, path_coord1[::-1]]
-x2_path = np.r_[path_coord2[::-1], path_coord1[::-1]]
+x1_path = np.r_[path_coord1, path_coord2]
+x2_path = np.r_[path_coord1, path_coord1[::-1]]
+
 
 # Straight path
 #x1_path = test_coord
@@ -145,6 +157,8 @@ for i in range(1,Ntrain+1):
     plt.contourf(X1, X2, E_grid_true, v)
     cb1 = plt.colorbar()
     cb1.ax.tick_params(labelsize=fontsize2)
+
+
     
     ax2 = plt.subplot(2,2,2)
     ax2.tick_params(labelsize=fontsize2)
@@ -169,36 +183,36 @@ for i in range(1,Ntrain+1):
     cb2 = plt.colorbar()
     cb2.ax.tick_params(labelsize=fontsize2)
 
-    ax3 = plt.subplot(2,2,3)
+
+    
+    ax3 = plt.subplot(2,2,4)
     ax3.tick_params(labelsize=fontsize2)
     #plt.title('Energy of linear path \nsigma={} for ML models'.format(sigma))
     plt.title('Energy of path', fontsize=fontsize1)
-    plt.xlabel('x2', fontsize=fontsize1)
+    plt.xlabel('x1', fontsize=fontsize1)
     plt.ylabel('Energy', fontsize=fontsize1)
     plt.xlim([-0.5, 2.5])
     plt.ylim([-8.2,0.2])
     
-    plt.plot(x2_path, Etrue_path, 'k', label='True', lw=2.5)
-    plt.plot(x2_path, Epred_path, label='Model', lw=2)
-    plt.fill_between(x2_path, Epred_path+2*Epred_path_error, Epred_path-2*Epred_path_error, facecolor='blue', alpha=0.3)
+    plt.plot(x1_path, Etrue_path, 'k', label='True', lw=2.5)
+    plt.plot(x1_path, Epred_path, label='Model', lw=2)
+    plt.fill_between(x1_path, Epred_path+2*Epred_path_error, Epred_path-2*Epred_path_error, facecolor='blue', alpha=0.3)
 
     # Plot seperating line
     ylim_min, ylim_max = plt.ylim()
     plt.plot([1,1], [ylim_min, ylim_max], 'k')
     #plt.ylim([ylim_min, ylim_max])
 
-    
-    
     # plot training points
     if i == 6:
-        plt.plot(x2_train_sub[:-1], E_train_sub[:-1], color='r', marker='o', linestyle='None', label='Data')
-        plt.plot(x2_train_sub[-1], E_train_sub[-1], color='g', marker='o', linestyle='None', label='GM')
-        for n,[x2,E] in enumerate(zip(x2_train_sub[:-1], E_train_sub[:-1])):
-            plt.text(x2-0.03, E-0.7, '{}'.format(n+1), fontsize=fontsize2)
+        plt.plot(x1_train_sub[:-1], E_train_sub[:-1], color='r', marker='o', linestyle='None', label='Data')
+        plt.plot(x1_train_sub[-1], E_train_sub[-1], color='g', marker='o', linestyle='None', label='GM')
+        for n,[x1,E] in enumerate(zip(x1_train_sub[:-1], E_train_sub[:-1])):
+            plt.text(x1-0.03, E-0.7, '{}'.format(n+1), fontsize=fontsize2)
     else:
-        plt.plot(x2_train_sub, E_train_sub, color='r', marker='o', linestyle='None', label='Data')
-        for n,[x2,E] in enumerate(zip(x2_train_sub, E_train_sub)):
-            plt.text(x2-0.03, E-0.7, '{}'.format(n+1), fontsize=fontsize2)
+        plt.plot(x1_train_sub, E_train_sub, color='r', marker='o', linestyle='None', label='Data')
+        for n,[x1,E] in enumerate(zip(x1_train_sub, E_train_sub)):
+            plt.text(x1-0.03, E-0.7, '{}'.format(n+1), fontsize=fontsize2)
     plt.legend(loc=4, fontsize=fontsize2 - 2)
     """
     # Plot bias
@@ -208,8 +222,10 @@ for i in range(1,Ntrain+1):
     """
 
 
+    
     features = np.array([featureCalculator.get_feature(a) for a in a_train_sub])
-    ax4 = plt.subplot(2,2,4)
+
+    ax4 = plt.subplot(2,2,3)
     ax4.tick_params(labelsize=fontsize2)
     plt.yticks(np.arange(0,3,step=1))
     plt.title('Features', fontsize=fontsize1)
