@@ -1,4 +1,5 @@
 import numpy as np
+from time import time
 
 from startgenerator import StartGenerator
 from startgenerator2d import StartGenerator as StartGenerator2d
@@ -76,7 +77,7 @@ def relaxGPAW(structure, label):
         vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
         dyn.attach(traj)
         dyn.attach(vb)
-        dyn.run(fmax = forcemax, steps = 50)
+        dyn.run(fmax = forcemax, steps = 10)
         niter += 1
 
     return structure
@@ -98,9 +99,9 @@ def singleGPAW(structure, label):
     # Set calculator 
     structure.set_calculator(calc)
 
-    return structure.get_potential_energy() 
+    return structure.get_potential_energy(), structure.get_forces()
 
-def relax_VarianceBreak(structure, calc, label, niter_max=10):
+def relax_VarianceBreak(structure, calc, label='', niter_max=10):
     '''
     Relax a structure and saves the trajectory based in the index i
 
@@ -120,7 +121,7 @@ def relax_VarianceBreak(structure, calc, label, niter_max=10):
     forcemax = 0.1
     niter = 0
 
-    traj = Trajectory(label+'.traj','a', structure)
+    # traj = Trajectory(label+'.traj','a', structure)
     # If the structure is already fully relaxed just return it
     if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
         traj.write(structure)
@@ -130,7 +131,7 @@ def relax_VarianceBreak(structure, calc, label, niter_max=10):
         dyn = BFGS(structure,
                    logfile=label+'.log')
         vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
-        dyn.attach(traj)
+        #dyn.attach(traj)
         dyn.attach(vb)
         dyn.run(fmax = forcemax, steps = 300)
         niter += 1
@@ -138,7 +139,7 @@ def relax_VarianceBreak(structure, calc, label, niter_max=10):
     return structure
 
 
-def rattle_atom2d(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
+def rattle_atom2d(struct, index_rattle, rmax_rattle=1.0, rmin=1.0, rmax=1.7, Ntries=10):
     Natoms = struct.get_number_of_atoms()
     
     structRattle = struct.copy()
@@ -184,15 +185,19 @@ def rattle_atom2d(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntr
     # Return None if no acceptable rattle was found
     return None
 
-def rattle_Natoms2d(struct, Nrattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
+def rattle_Natoms2d(struct, Nrattle, rmax_rattle=1.0, Ntries=10):
     structRattle = struct.copy()
     
     Natoms = struct.get_number_of_atoms()
     i_rattle = np.random.permutation(Natoms)
     i_rattle = i_rattle[:Nrattle]
+
+    cov_radii = covalent_radii[6] # cd[(6,6)]  # hard coded
+    rmin = 0.7*2*cov_radii
+    rmax = 1.1*2*cov_radii
     
     rattle_counter = 0
-    for index in i_permuted:
+    for index in i_rattle:
         newStruct = rattle_atom2d(structRattle, index, rmax_rattle, rmin, rmax, Ntries)
         if newStruct is not None:
             structRattle = newStruct.copy()
@@ -205,7 +210,9 @@ def rattle_Natoms2d(struct, Nrattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries
     # The desired number of succesfull rattles was not reached
     return structRattle
 
-def rattle_atom2d_center(struct, index_rattle, rmax_rattle=1.0, rmin=0.9, rmax=1.7, Ntries=10):
+
+
+def rattle_atom2d_center(struct, index_rattle, rmax_rattle=1.0, rmin=1.0, rmax=1.6, Ntries=10):
     Natoms = struct.get_number_of_atoms()
     
     structRattle = struct.copy()
@@ -270,7 +277,7 @@ def rattle_Natoms2d_center(struct, Nrattle, rmax_rattle=5.0, Ntries=20):
     
     cov_radii = covalent_radii[6] # cd[(6,6)]  # hard coded
     rmin = 0.7*2*cov_radii
-    rmax = 1.3*2*cov_radii
+    rmax = 1.1*2*cov_radii
 
     rattle_counter = 0
     for index in i_permuted:
@@ -421,7 +428,7 @@ class globalOptim():
     noZ:
     Atoms are not mooved in the z-direction during relaxation.
     """
-    def __init__(self, calculator, traj_namebase, MLmodel=None, Natoms=6, Niter=50, rattle_maxDist=0.5, kbT=1, Nstag=10, min_saveDifference=0.3, minSampleStep=10, MLerrorMargin=0.1, Nstart_pop=5, maxNtrain=1.5e3, Nperturb=2, noZ=False):
+    def __init__(self, calculator, traj_namebase, MLmodel=None, Natoms=6, Niter=50, rattle_maxDist=0.5, kbT=1, Nstag=10, min_saveDifference=0.3, minSampleStep=10, MLerrorMargin=0.1, Nstart_pop=5, maxNtrain=1.5e3, Nperturb=2, noZ=False, dualPoint=False):
 
         self.calculator = calculator
         self.traj_namebase = traj_namebase
@@ -440,6 +447,7 @@ class globalOptim():
         self.maxNtrain = int(maxNtrain)
         self.Nperturb = Nperturb
         self.noZ = noZ
+        self.dualPoint = dualPoint
 
         # List of structures to be added in next training
         self.a_add = []
@@ -461,15 +469,24 @@ class globalOptim():
         open(traj_namebase + 'sigma.txt', 'a').close()
         open(traj_namebase + 'MLerror_Ntries.txt', 'a').close()
         open(traj_namebase + 'E_MLerror.txt', 'a').close()
+        open(traj_namebase + 'time.txt', 'a').close()
 
 
+
+        
     def runOptimizer(self):
 
         # Initial structures
         self.E = np.inf
         for i in range(self.Nstart_pop):
+            if self.master:
+                print('creating initial {}'.format(i))
             a_init = createInitalStructure2d(self.Natoms)
+            if self.master:
+                print('relaxing initial {}'.format(i))
             a, E = self.relaxTrue(a_init)
+            if self.master:
+                print('relaxing initial {} done'.format(i))
             if E < self.E:
                 self.a = a.copy()
                 self.E = E
@@ -492,22 +509,34 @@ class globalOptim():
         for i in range(self.Niter):
             # Use MLmodel - if it exists
             if self.MLmodel is not None:
+                # Train ML model if new data is available
                 if self.master:
-                    # Train ML model if new data is available
-                    if len(self.a_add) > 0:
-                        self.trainModel()
-
-                    # Generate new rattled + MLrelaxed candidate
-                    a_new = self.newCandidate_unexplored(self.a)
-                    
-                    pos_new = a_new.positions
-                self.comm.broadcast(pos_new, 0)
-                a_new.positions = pos_new
-                self.comm.barrier()
-
+                    print('begin training')
+                if len(self.a_add) > 0:
+                    self.trainModel()
+                if self.master:
+                    print('training ended')
+                
+                # Generate new rattled + MLrelaxed candidate
+                t_newCand_start = time()
+                a_new = self.newCandidate_beyes(self.a)
+                t_newCand_end = time()
+                if self.master:
+                    print('new candidate made')
+                
                 # Singlepoint with objective potential
+                t_sp_start = time()
+                Enew, Fnew = self.singlePoint(a_new)
+                t_sp_end = time()
+                if self.master:
+                    with open(self.traj_namebase + 'time.txt', 'a') as f:
+                        f.write('{}\t{}\n'.format(t_newCand_end-t_newCand_start, t_sp_end-t_sp_start))
 
-                Enew = self.singlePoint(a_new)
+                if self.dualPoint and i > 50:
+                    a_dp, E_dp = self.get_dualPoint(a_new, Fnew)
+                    if E_dp < Enew:
+                        anew = a_dp.copy
+                        Enew = E_dp
                 
             else:
                 # Perturb current structure
@@ -549,64 +578,193 @@ class globalOptim():
                     #print('Stagnation criteria was reached')
                     break
 
-    def newCandidate(self, a):
-        a = rattle_Natoms2d_center(struct=a,
-                                   Nrattle=self.Nperturb,
-                                   rmax_rattle=self.rattle_maxDist)
+    def get_dualPoint(self, a, F):
+        max_atom_displacement = 0.08  # The atom with the largest force will be displaced this ammount
+
+        a_dp = a.copy()
+        Fmax = np.sqrt((F**2).sum(axis=1).max())
+        pos_dp = a.positions + max_atom_displacement * F/Fmax
+        
+        a_dp.set_positions(pos_dp)
+        
+        E_dp, F_dp = self.singlePoint(a_dp)
+        
+        return a_dp, E_dp
+        
+    def mutate(self, a, Ntasks_each):
+        N_newCandidates = self.comm.size * Ntasks_each
+        
+        N_exploit_rattle = int(0.3 * N_newCandidates)  
+        N_exploit_disk = int(0.3 * N_newCandidates)  
+        N_explore = self.comm.size - N_exploit_rattle - N_exploit_disk
+
+        mutation_tasks = [0]*3
+        i_rattle = []  # save which number the core is to make the rattle mutation.
+        for i in range(N_newCandidates):
+            rank = i % self.comm.size
+            if self.comm.rank == rank:
+                if i < N_explore:
+                    mutation_tasks[0] += 1
+                elif i < N_explore + N_exploit_disk:
+                    mutation_tasks[1] += 1
+                else:
+                    i_rattle.append(i - (N_explore + N_exploit_disk))
+                    mutation_tasks[2] += 1
+
+        a_mutated_list = []
+        rmax_rattle_list = np.linspace(0.2, 0.8, N_exploit_rattle)
+        for i_mut, n_mut in enumerate(mutation_tasks):
+            for k in range(n_mut):
+                a_mutated = a.copy()
+                if i_mut == 0:
+                    a_mutated = createInitalStructure2d(self.Natoms)
+                elif i_mut == 1:
+                    a_mutated = rattle_Natoms2d_center(struct=a_mutated,
+                                                       Nrattle=self.Nperturb,
+                                                       rmax_rattle=self.rattle_maxDist)
+                else:
+                    rmax_rattle = rmax_rattle_list[i_rattle[k]]
+                    a_mutated = rattle_Natoms2d(struct=a_mutated,
+                                                Nrattle=self.Natoms,
+                                                rmax_rattle=rmax_rattle)
+                a_mutated_list.append(a_mutated)
+                
+        return a_mutated_list
+
+    
+    def newCandidate_beyes(self, a):
+        N_newCandidates = 50
+        # the maximum number of candidates a core need to make to make N_newCandidates on a single node.
+        N_tasks = int(np.ceil(N_newCandidates / self.comm.size))
+        # Why not use all cores.
+        N_newCandidates = N_tasks * N_newCandidates
+        
+        anew = a.copy()
+        anew_mutated_list = self.mutate(anew,
+                                        N_tasks)
+        
         
         # Relax with MLmodel
-        a = self.relaxML(a)
-            
-        self.traj_counter += 1
-        return a
-                
-    def newCandidate_unexplored(self, a):
-        anew = a.copy()
-        for n_trial in range(10):
-            anew = rattle_Natoms2d_center(struct=anew,
-                                       Nrattle=self.Nperturb,
-                                       rmax_rattle=self.rattle_maxDist)
-
-            # Relax with MLmodel
-            anew = self.relaxML(anew)
-            _, error, theta0 = self.MLmodel.predict_energy(anew, return_error=True)
-            print('{0:d}_{1:d}-error: {2:.3f}'.format(self.traj_counter, n_trial, error))
-
-            if error > 0.05:
-                with open(self.traj_namebase + 'MLerror_Ntries.txt', 'a') as f:
-                    f.write('{0:.4f}\t{1:d}\n'.format(error, n_trial))
-                print('Tries to find structure in unexplored region:', n_trial)
-                break
-            
-        self.traj_counter += 1
-        return anew
-
-    def newCandidate_beyes(self, a):
-        a_list = []
+        anew_list = []
         E_list = []
         error_list = []
-        for n_trial in range(5):
-            a_trial = a.copy()
-            a_trial = rattle_Natoms2d_center(struct=a_trial,
-                                       Nrattle=self.Nperturb,
-                                       rmax_rattle=self.rattle_maxDist)
-
-            # Relax with MLmodel
-            a_trial = self.relaxML(a_trial)
-            E, error, theta0 = self.MLmodel.predict_energy(a, return_error=True)
-            a_list.append(a_trial)
+        for anew_mutated in anew_mutated_list:
+            anew = self.relaxML(anew_mutated)
+            anew_list.append(anew)
+            
+            E, error, theta0 = self.MLmodel.predict_energy(anew, return_error=True)
             E_list.append(E)
             error_list.append(error)
+        E_list = np.array(E_list)
+        error_list = np.array(error_list)
         
-        EwithError = np.array(E_list) - 1 * np.array(error_list)
-        index_best = EwithError.argmin()
-        
-        with open(self.traj_namebase + 'E_MLerror.txt', 'a') as f:
-                    f.write('{0:.4f}\t{1:.4f}\n'.format(E_list[index_best], error_list[index_best]))
+        # Gather data from slaves to master
+        pos_new = np.array([anew.positions for anew in anew_list])  # .reshape(-1)
+        pos_new_mutated = np.array([anew_mutated.positions for anew_mutated in anew_mutated_list])  # .reshape(-1)
+        if self.comm.rank == 0:
+            E_all = np.empty(N_tasks * world.size, dtype=float)
+            error_all = np.empty(N_tasks * world.size, dtype=float)
+            pos_all = np.empty(N_tasks * 3*self.Natoms*world.size, dtype=float)
+            pos_all_mutated = np.empty(N_tasks * 3*self.Natoms*world.size, dtype=float)
+        else:
+            E_all = None
+            error_all = None
+            pos_all = None
+            pos_all_mutated = None
+        self.comm.gather(E, 0, E_all)
+        self.comm.gather(error, 0, error_all)
+        self.comm.gather(pos_new.reshape(-1), 0, pos_all)
+        self.comm.gather(pos_new_mutated.reshape(-1), 0, pos_all_mutated)
+
+        # Pick best candidate on master
+        if self.master:
+            EwithError_all = E_all - 2 * error_all
+            index_best = EwithError_all.argmin()
+            
+            print('{}:\n'.format(self.traj_counter), np.c_[E_all, error_all])
+            print('{} best:\n'.format(self.traj_counter), E_all[index_best], error_all[index_best])
+            
+            with open(self.traj_namebase + 'E_MLerror.txt', 'a') as f:
+                f.write('{0:.4f}\t{1:.4f}\n'.format(E_all[index_best], error_all[index_best]))
+            
+            pos_all = pos_all.reshape((N_tasks * self.comm.size, self.Natoms, 3))
+            pos_new = pos_all[index_best]
+            pos_all_mutated = pos_all_mutated.reshape((N_tasks * self.comm.size, self.Natoms, 3))
+            pos_new_mutated = pos_all_mutated[index_best]
+        self.comm.broadcast(pos_new, 0)
+        anew.positions = pos_new
+        self.comm.broadcast(pos_new_mutated, 0)
+        anew_mutated = a.copy()
+        anew_mutated.positions = pos_new_mutated
+        self.comm.barrier()
+
+        # Write unrelaxed + relaxed versions of new candidate to file
+        label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
+        write(label+'.traj', [anew_mutated, anew])
 
         self.traj_counter += 1
-        return a_list[index_best]
+        return anew
+    
+    """
+    def newCandidate_beyes(self, a):
+        anew = a.copy()
+        anew_unrelaxed = rattle_Natoms2d_center(struct=anew,
+                                                Nrattle=self.Nperturb,
+                                                rmax_rattle=self.rattle_maxDist)
         
+        # Relax with MLmodel
+        anew = self.relaxML(anew_unrelaxed)
+        E, error, theta0 = self.MLmodel.predict_energy(anew, return_error=True)
+        E = np.array(E)
+        error = np.array(error)
+        
+        # Gather data from slaves to master
+        pos_new = anew.positions  # .reshape(-1)
+        pos_new_unrelaxed = anew_unrelaxed.positions  # .reshape(-1)
+        if self.comm.rank == 0:
+            E_all = np.empty(world.size, dtype=float)
+            error_all = np.empty(world.size, dtype=float)
+            pos_all = np.empty(3*self.Natoms*world.size, dtype=float)
+            pos_all_unrelaxed = np.empty(3*self.Natoms*world.size, dtype=float)
+        else:
+            E_all = None
+            error_all = None
+            pos_all = None
+            pos_all_unrelaxed = None
+        self.comm.gather(E, 0, E_all)
+        self.comm.gather(error, 0, error_all)
+        self.comm.gather(pos_new.reshape(-1), 0, pos_all)
+        self.comm.gather(pos_new_unrelaxed.reshape(-1), 0, pos_all_unrelaxed)
+
+        # Pick best candidate on master
+        if self.master:
+            EwithError_all = E_all - 2 * error_all
+            index_best = EwithError_all.argmin()
+            
+            print('{}:\n'.format(self.traj_counter), np.c_[E_all, error_all])
+            print('{} best:\n'.format(self.traj_counter), E_all[index_best], error_all[index_best])
+            
+            with open(self.traj_namebase + 'E_MLerror.txt', 'a') as f:
+                f.write('{0:.4f}\t{1:.4f}\n'.format(E_all[index_best], error_all[index_best]))
+            
+            pos_all = pos_all.reshape((self.comm.size, self.Natoms, 3))
+            pos_new = pos_all[index_best]
+            pos_all_unrelaxed = pos_all_unrelaxed.reshape((self.comm.size, self.Natoms, 3))
+            pos_new_unrelaxed = pos_all_unrelaxed[index_best]
+        self.comm.broadcast(pos_new, 0)
+        anew.positions = pos_new
+        self.comm.broadcast(pos_new_unrelaxed, 0)
+        anew_unrelaxed.positions = pos_new_unrelaxed
+        self.comm.barrier()
+
+        # Write unrelaxed + relaxed versions of new candidate to file
+        label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
+        write(label+'.traj', [anew_unrelaxed, anew])
+
+        self.traj_counter += 1
+        return anew
+    """
+    
     def trainModel(self):
         """
         # Reduce training data - If there is too much
@@ -622,8 +780,9 @@ class globalOptim():
                                          k=5,
                                          **GSkwargs)
         self.a_add = []
-        with open(self.traj_namebase + 'sigma.txt', 'a') as f:
-            f.write('{0:.2f}\n'.format(params['sigma']))
+        if self.master:
+            with open(self.traj_namebase + 'sigma.txt', 'a') as f:
+                f.write('{0:.2f}\n'.format(params['sigma']))
 
     def add_trajectory_to_training(self, trajectory_file):
         atoms = read(filename=trajectory_file, index=':')
@@ -660,8 +819,7 @@ class globalOptim():
         # Relax
         label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
         krr_calc = krr_calculator(self.MLmodel)
-        if self.master:
-            a_relaxed = relax_VarianceBreak(a, krr_calc, label, niter_max=2)
+        a_relaxed = relax_VarianceBreak(a, krr_calc, label, niter_max=2)
 
         #self.traj_counter += 1
         return a_relaxed
@@ -706,23 +864,18 @@ class globalOptim():
         self.comm.broadcast(pos, 0)
         a.positions = pos
         self.comm.barrier()
-
         
         label =  self.traj_namebase + '{}'.format(self.traj_counter)
-        E = singleGPAW(a, label)
+        E, F = singleGPAW(a, label)
         self.comm.barrier()
         
-        #Calculate a and save structure with target energy
         a.energy = E
-        #results = {'energy': E}
-        #calc = SinglePointCalculator(a, **results)
-        #a.set_calculator(calc)
-        if self.master:
-            self.a_add.append(a)
+        self.a_add.append(a)
+
         # Save to spTrain-trajectory
-        self.writer_spTrain.write(a, energy=E)
+        self.writer_spTrain.write(a, energy=E, forces=F)
         self.ksaved += 1
-        return E
+        return E, F
 
 if __name__ == '__main__':
     from custom_calculators import doubleLJ_calculator
@@ -786,12 +939,13 @@ if __name__ == '__main__':
                             traj_namebase=savefiles_namebase,
                             MLmodel=krr,
                             Natoms=Natoms,
-                            Niter=1000,
-                            Nstag=1000,
+                            Niter=100,
+                            Nstag=100,
                             Nstart_pop=2,
                             Nperturb=2,
                             rattle_maxDist=5,
                             kbT=0.5,
-                            noZ=True)
+                            noZ=True,
+                            dualPoint=True)
 
     optimizer.runOptimizer()
