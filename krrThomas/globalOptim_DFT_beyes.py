@@ -2,7 +2,7 @@ import numpy as np
 from time import time
 
 from startgenerator import StartGenerator
-from startgenerator2d import StartGenerator as StartGenerator2d
+from startgenerator2d_new import StartGenerator as StartGenerator2d
 from custom_calculators import krr_calculator
 
 from ase import Atoms
@@ -15,6 +15,8 @@ from ase.calculators.singlepoint import SinglePointCalculator
 from ase.constraints import FixedPlane
 from ase.ga.relax_attaches import VariansBreak
 from ase.data import covalent_radii
+
+from mutations import rattle_Natoms, rattle_Natoms_center, createInitalStructure
 
 from gpaw import GPAW, FermiDirac, PoissonSolver, Mixer
 from gpaw import extra_parameters
@@ -124,7 +126,7 @@ def relax_VarianceBreak(structure, calc, label='', niter_max=10):
     # traj = Trajectory(label+'.traj','a', structure)
     # If the structure is already fully relaxed just return it
     if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
-        traj.write(structure)
+        #traj.write(structure)
         return structure
     
     while (structure.get_forces()**2).sum(axis = 1).max()**0.5 > forcemax and niter < niter_max:
@@ -293,47 +295,6 @@ def rattle_Natoms2d_center(struct, Nrattle, rmax_rattle=5.0, Ntries=20):
     # The desired number of succesfull rattles was not reached
     return structRattle
 
-def createInitalStructure(Natoms):
-    '''
-    Creates an initial structure of 24 Carbon atoms
-    '''    
-    number_type1 = 6  # Carbon
-    number_opt1 = Natoms  # number of atoms
-    atom_numbers = number_opt1 * [number_type1]
-
-    cell = np.array([[24, 0, 0],
-                     [0, 24, 0],
-                     [0, 0, 18]])
-    pbc = [False, False, False]
-
-    template = Atoms('')
-    template.set_cell(cell)
-    template.set_pbc(pbc)
-    # define the volume in which the adsorbed cluster is optimized
-    # the volume is defined by a a center position (p0)
-    # and three spanning vectors
-    
-    a = np.array((4.5, 0., 0.))
-    b = np.array((0, 4.5, 0))
-    z = np.array((0, 0, 1.5))
-    p0 = np.array((0., 0., 9-0.75))
-    center = np.array((11.5, 11.5))
-    
-    # define the closest distance two atoms of a given species can be to each other
-    cd = closest_distances_generator(atom_numbers=atom_numbers,
-                                     ratio_of_covalent_radii=0.7)
-
-    # create the start structure
-    sg = StartGenerator(slab=template,
-                        atom_numbers=atom_numbers,
-                        closest_allowed_distances=cd,
-                        box_to_place_in=[p0, [a, b, z], center],
-                        elliptic=True,
-                        cluster=False)
-
-    structure = sg.get_new_candidate()
-    return structure
-
 def createInitalStructure2d(Natoms):
     '''
     Creates an initial structure of 24 Carbon atoms
@@ -354,8 +315,8 @@ def createInitalStructure2d(Natoms):
     # the volume is defined by a a center position (p0)
     # and three spanning vectors
 
-    a = np.array((6, 0., 0.))  # 4.5 for N=10, 6 for N=24
-    b = np.array((0, 6, 0))
+    a = np.array((7, 0., 0.))  # 4.5 for N=10, 6 for N=24
+    b = np.array((0, 7, 0))
     center = np.array((11.5, 11.5, 9))
     
     # define the closest distance two atoms of a given species can be to each other
@@ -368,9 +329,9 @@ def createInitalStructure2d(Natoms):
                           closest_allowed_distances=cd,
                           plane_to_place_in=[[a, b], center],
                           elliptic=False,
-                          cluster=False)
+                          cluster=True)
 
-    structure = sg.get_new_candidate()
+    structure = sg.get_new_candidate(maxlength=1.6)
     return structure
 
 class globalOptim():
@@ -471,22 +432,16 @@ class globalOptim():
         open(traj_namebase + 'E_MLerror.txt', 'a').close()
         open(traj_namebase + 'time.txt', 'a').close()
 
-
-
-        
     def runOptimizer(self):
 
         # Initial structures
         self.E = np.inf
         for i in range(self.Nstart_pop):
-            if self.master:
-                print('creating initial {}'.format(i))
-            a_init = createInitalStructure2d(self.Natoms)
-            if self.master:
-                print('relaxing initial {}'.format(i))
+            if self.noZ:
+                a_init = createInitalStructure2d(self.Natoms)
+            else:
+                a_init = createInitalStructure(self.Natoms)
             a, E = self.relaxTrue(a_init)
-            if self.master:
-                print('relaxing initial {} done'.format(i))
             if E < self.E:
                 self.a = a.copy()
                 self.E = E
@@ -510,19 +465,13 @@ class globalOptim():
             # Use MLmodel - if it exists
             if self.MLmodel is not None:
                 # Train ML model if new data is available
-                if self.master:
-                    print('begin training')
                 if len(self.a_add) > 0:
                     self.trainModel()
-                if self.master:
-                    print('training ended')
                 
                 # Generate new rattled + MLrelaxed candidate
                 t_newCand_start = time()
                 a_new = self.newCandidate_beyes(self.a)
                 t_newCand_end = time()
-                if self.master:
-                    print('new candidate made')
                 
                 # Singlepoint with objective potential
                 t_sp_start = time()
@@ -596,7 +545,7 @@ class globalOptim():
         
         N_exploit_rattle = int(0.3 * N_newCandidates)  
         N_exploit_disk = int(0.3 * N_newCandidates)  
-        N_explore = self.comm.size - N_exploit_rattle - N_exploit_disk
+        N_explore = N_newCandidates - N_exploit_rattle - N_exploit_disk
 
         mutation_tasks = [0]*3
         i_rattle = []  # save which number the core is to make the rattle mutation.
@@ -610,24 +559,40 @@ class globalOptim():
                 else:
                     i_rattle.append(i - (N_explore + N_exploit_disk))
                     mutation_tasks[2] += 1
-
+        self.comm.barrier()
+        
         a_mutated_list = []
         rmax_rattle_list = np.linspace(0.2, 0.8, N_exploit_rattle)
         for i_mut, n_mut in enumerate(mutation_tasks):
             for k in range(n_mut):
                 a_mutated = a.copy()
-                if i_mut == 0:
-                    a_mutated = createInitalStructure2d(self.Natoms)
-                elif i_mut == 1:
-                    a_mutated = rattle_Natoms2d_center(struct=a_mutated,
-                                                       Nrattle=self.Nperturb,
-                                                       rmax_rattle=self.rattle_maxDist)
+                # make 2d or 3d mutations
+                if self.noZ:
+                    if i_mut == 0:
+                        a_mutated = createInitalStructure2d(self.Natoms)
+                    elif i_mut == 1:
+                        a_mutated = rattle_Natoms2d_center(struct=a_mutated,
+                                                           Nrattle=self.Nperturb,
+                                                           rmax_rattle=self.rattle_maxDist)
+                    else:
+                        rmax_rattle = rmax_rattle_list[i_rattle[k]]
+                        a_mutated = rattle_Natoms2d(struct=a_mutated,
+                                                    Nrattle=self.Natoms,
+                                                    rmax_rattle=rmax_rattle)
                 else:
-                    rmax_rattle = rmax_rattle_list[i_rattle[k]]
-                    a_mutated = rattle_Natoms2d(struct=a_mutated,
-                                                Nrattle=self.Natoms,
-                                                rmax_rattle=rmax_rattle)
+                    if i_mut == 0:
+                        a_mutated = createInitalStructure(self.Natoms)
+                    elif i_mut == 1:
+                        a_mutated = rattle_Natoms_center(struct=a_mutated,
+                                                           Nrattle=self.Nperturb,
+                                                           rmax_rattle=self.rattle_maxDist)
+                    else:
+                        rmax_rattle = rmax_rattle_list[i_rattle[k]]
+                        a_mutated = rattle_Natoms(struct=a_mutated,
+                                                    Nrattle=self.Natoms,
+                                                    rmax_rattle=rmax_rattle)
                 a_mutated_list.append(a_mutated)
+        self.comm.barrier()
                 
         return a_mutated_list
 
@@ -640,9 +605,14 @@ class globalOptim():
         N_newCandidates = N_tasks * N_newCandidates
         
         anew = a.copy()
+        pos_new = a.positions  # for later
+        pos_new_mutated = a.positions  # for later
+        if self.master:
+            print('Begin mutation')
         anew_mutated_list = self.mutate(anew,
                                         N_tasks)
-        
+        if self.master:
+            print('mutations ended')
         
         # Relax with MLmodel
         anew_list = []
@@ -659,25 +629,26 @@ class globalOptim():
         error_list = np.array(error_list)
         
         # Gather data from slaves to master
-        pos_new = np.array([anew.positions for anew in anew_list])  # .reshape(-1)
-        pos_new_mutated = np.array([anew_mutated.positions for anew_mutated in anew_mutated_list])  # .reshape(-1)
+        pos_new_list = np.array([anew.positions for anew in anew_list])
+        pos_new_mutated_list = np.array([anew_mutated.positions for anew_mutated in anew_mutated_list])
         if self.comm.rank == 0:
-            E_all = np.empty(N_tasks * world.size, dtype=float)
-            error_all = np.empty(N_tasks * world.size, dtype=float)
-            pos_all = np.empty(N_tasks * 3*self.Natoms*world.size, dtype=float)
-            pos_all_mutated = np.empty(N_tasks * 3*self.Natoms*world.size, dtype=float)
+            E_all = np.empty(N_tasks * self.comm.size, dtype=float)
+            error_all = np.empty(N_tasks * self.comm.size, dtype=float)
+            pos_all = np.empty(N_tasks * 3*self.Natoms*self.comm.size, dtype=float)
+            pos_all_mutated = np.empty(N_tasks * 3*self.Natoms*self.comm.size, dtype=float)
         else:
             E_all = None
             error_all = None
             pos_all = None
             pos_all_mutated = None
-        self.comm.gather(E, 0, E_all)
-        self.comm.gather(error, 0, error_all)
-        self.comm.gather(pos_new.reshape(-1), 0, pos_all)
-        self.comm.gather(pos_new_mutated.reshape(-1), 0, pos_all_mutated)
+        self.comm.gather(E_list, 0, E_all)
+        self.comm.gather(error_list, 0, error_all)
+        self.comm.gather(pos_new_list.reshape(-1), 0, pos_all)
+        self.comm.gather(pos_new_mutated_list.reshape(-1), 0, pos_all_mutated)
 
         # Pick best candidate on master
         if self.master:
+            
             EwithError_all = E_all - 2 * error_all
             index_best = EwithError_all.argmin()
             
@@ -691,6 +662,7 @@ class globalOptim():
             pos_new = pos_all[index_best]
             pos_all_mutated = pos_all_mutated.reshape((N_tasks * self.comm.size, self.Natoms, 3))
             pos_new_mutated = pos_all_mutated[index_best]
+        
         self.comm.broadcast(pos_new, 0)
         anew.positions = pos_new
         self.comm.broadcast(pos_new_mutated, 0)
@@ -932,20 +904,17 @@ if __name__ == '__main__':
         run_num = ''
     savefiles_namebase = savefiles_path + 'global' + run_num + '_' 
 
-    # Calculator
-    calc = doubleLJ_calculator(noZ=True)
-
-    optimizer = globalOptim(calculator=calc,
+    optimizer = globalOptim(calculator=None,
                             traj_namebase=savefiles_namebase,
                             MLmodel=krr,
                             Natoms=Natoms,
-                            Niter=100,
-                            Nstag=100,
+                            Niter=600,
+                            Nstag=600,
                             Nstart_pop=2,
                             Nperturb=2,
                             rattle_maxDist=5,
                             kbT=0.5,
-                            noZ=True,
+                            noZ=False,
                             dualPoint=True)
 
     optimizer.runOptimizer()
