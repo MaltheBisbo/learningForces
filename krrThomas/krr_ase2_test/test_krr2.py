@@ -4,8 +4,10 @@ import matplotlib.pyplot as plt
 from gaussComparator import gaussComparator
 from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
 from krr_ase2 import krr_class
+from gpr import gpr_model
 from delta_functions.delta import delta as deltaFunc
 from custom_calculators import krr_calculator
+
 
 from doubleLJ import doubleLJ_energy_ase as E_doubleLJ
 from delta_functions.delta import delta as deltaFunc
@@ -33,7 +35,7 @@ sigma2 = 0.2
 
 gamma = 1
 eta = 30
-use_angular = True
+use_angular = False
 
 featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
 
@@ -41,22 +43,49 @@ featureCalculator = Angular_Fingerprint(a0, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth
 comparator = gaussComparator()
 krr = krr_class(comparator=comparator,
                 featureCalculator=featureCalculator)
+gpr = gpr_model(comparator=comparator,
+                featureCalculator=featureCalculator)
 sigma = 10
 #GSkwargs = {'reg': [1e-7], 'sigma': [sigma]}
 GSkwargs = {'reg': [1e-7], 'sigma': np.logspace(0,3,10)}
 
 
+
+
 # Training data
 a_train1 = a_data[:50]
 a_train2 = a_data[50:100]
+a_train_all = a_data[:100]
 E_train1 = E_data[:50]
 E_train2 = E_data[50:100]
+E_train_all = E_data[:100]
 
 # Test data
 a_test = a_data[100:]
 E_test = E_data[100:]
 
+MAE_krr, params_krr = krr.train(atoms_list=a_train_all,
+                                add_new_data=False,
+                                k=2,
+                                **GSkwargs)
+print(MAE_krr, params_krr)
 
+Epred_krr = np.array([krr.predict_energy(a) for a in a_test])
+
+MAE_gpr, params_gpr = gpr.train(atoms_list=a_train_all,
+                                add_new_data=False,
+                                k=2,
+                                **GSkwargs)
+print(MAE_gpr, params_gpr)
+
+Epred_gpr = np.array([gpr.predict_energy(a) for a in a_test])
+
+test_error_krr = np.mean(np.abs(E_test - Epred_krr))
+test_error_gpr = np.mean(np.abs(E_test - Epred_gpr))
+print(test_error_krr)
+print(test_error_gpr)
+
+"""
 MAE1, params1 = krr.train(atoms_list=a_train1,
                           add_new_data=False,
                           k=2,
@@ -79,3 +108,4 @@ test_error2 = np.mean(np.abs(E_test - Epred2))
 
 print(test_error1)
 print(test_error2)
+"""

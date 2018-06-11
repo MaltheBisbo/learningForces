@@ -179,7 +179,7 @@ if __name__ == '__main__':
         Jac_num = (kernel_u - kernel_d)/dx
         return Jac_num
         
-    kwargs = {'sigma': 3}
+    kwargs = {'sigma': 3, 'amplitude': 1}
     matern.set_args(**kwargs)
     f0 = np.array([0, 10, 20])
     f1 = np.array([0.001, 0, 0])

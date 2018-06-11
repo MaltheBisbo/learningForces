@@ -6,10 +6,14 @@ from scipy.spatial.distance import cdist
 class gaussComparator():
     def __init__(self, featureMat=None, **kwargs):
         self.featureMat = featureMat
+        if 'amplitude' in kwargs:
+            self.amplitude = kwargs['amplitude']
         if 'sigma' in kwargs:
             self.sigma = kwargs['sigma']
 
     def set_args(self, **kwargs):
+        if 'amplitude' in kwargs:
+            self.amplitude = kwargs['amplitude']
         if 'sigma' in kwargs:
             self.sigma = kwargs['sigma']
 
@@ -20,14 +24,14 @@ class gaussComparator():
             print("You need to supply a feature matrix")
         
         d = cdist(self.featureMat, self.featureMat, metric='sqeuclidean')
-        self.similarityMat = np.exp(-1/(2*self.sigma**2)*d)
+        self.similarityMat = self.amplitude*np.exp(-1/(2*self.sigma**2)*d)
         return self.similarityMat
 
     def get_kernelVec(self, fnew, featureMat=None):
         if featureMat is not None:
             self.featureMat = featureMat
         d = cdist(fnew.reshape((1,len(fnew))), self.featureMat, metric='sqeuclidean')
-        self.similarityVec = np.exp(-1/(2*self.sigma**2)*d).reshape(-1)
+        self.similarityVec = self.amplitude*np.exp(-1/(2*self.sigma**2)*d).reshape(-1)
         
         return self.similarityVec
 
@@ -35,7 +39,7 @@ class gaussComparator():
         if sigma is None:
             sigma = self.sigma
         d = sqeuclidean(feature1, feature2)
-        return np.exp(-1/(2*sigma**2)*d)
+        return self.amplitude*np.exp(-1/(2*sigma**2)*d)
 
     def get_kernelVec_Jac(self, fnew, featureMat):
         kappa = self.get_kernelVec(fnew, featureMat)

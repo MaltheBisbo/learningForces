@@ -1,8 +1,9 @@
 import numpy as np
+from scipy.optimize import minimize
 import pdb
 
 
-class krr_class():
+class gpr_model():
     """
     comparator:
     Class to calculate similarities between structures based on their feature vectors.
@@ -49,6 +50,8 @@ class krr_class():
         predicted_value = similarityVec.dot(self.alpha) + self.beta + delta
 
         if return_error:
+            #self.comparator.amplitude + self.reg*np.identity(self.Ndata) - similarityVec.T @ self.Ainv @ similarityVec
+            
             alpha_err = np.dot(self.Ainv, similarityVec)
             theta0 = np.dot(self.data_values, self.alpha) / self.Ndata
             prediction_error = np.sqrt(np.abs(theta0*(1 - np.dot(similarityVec, alpha_err))))
@@ -90,7 +93,7 @@ class krr_class():
             self.featureMat = np.r_[self.featureMat, featureMat_add]
             if self.delta_function is not None:
                 self.delta_values = np.r_[self.delta_values, delta_values_add]
-
+            
             # Iterate data counter
             self.Ndata += Nadd
 
@@ -127,8 +130,8 @@ class krr_class():
         
         if delta_values is None:
             delta_values = 0
-        A = similarityMat + reg*np.identity(len(data_values))
-        self.Ainv = np.linalg.inv(A)
+        self.A = similarityMat + reg*np.identity(len(data_values))
+        self.Ainv = np.linalg.inv(self.A)
         self.alpha = np.dot(self.Ainv, data_values - delta_values - self.beta)
         #self.alpha = np.linalg.solve(A, data_values - self.beta)
         
@@ -173,31 +176,54 @@ class krr_class():
             self.Ndata = len(data_values)
             self.data_values = data_values
             self.featureMat = features
-            if self.delta_function is not None:
-                self.delta_values = delta_values_add
+            #if self.delta_function is not None:
+            self.delta_values = delta_values_add
 
         if self.delta_function is not None:
             delta_values_all = self.delta_values
         else:
             delta_values_all = None
-        
+
+        """
         FVU, params = self.__gridSearch(self.data_values,
                                         self.featureMat,
                                         k=k,
                                         delta_values=delta_values_all,
                                         **GSkwargs)
-
+        """
+        FVU, params = self.likelihood_optimization()
+        
         return FVU, params
 
-    def neg_log_likelihood(self, E):
-        #Ndata = len(E)
-        #NNL = 0.5*np.dot(E, self.alpha) + np.log(np.det(self.A)) + Ndata/2*np.log(2*pi)
-        #NNL_grad = 0.5*np.trace((np.outer(self.alpha, self.alpha) - self.Ainv) @ )
-        pass
-        
-    def likelihood_optimization(self, data_values, featureMat, delta_values, hyper0):
-        pass
+    def get_NNL(self):
+        E = self.data_values
+        NNL = 0.5*np.dot(E, self.alpha) + np.log(np.linalg.det(self.A)) + self.Ndata/2*np.log(2*np.pi)
+        print('NNL', NNL)
+        dA_dhyper = self.comparator.hyper_grad(self.featureMat)
+        NNL_grad = -0.5*((np.outer(self.alpha, self.alpha) - self.Ainv) @ dA_dhyper).trace(axis1=1, axis2=2)
+        print('NNL_grad', NNL_grad)
+        return NNL, NNL_grad
+
+    def cost_function(self, hyperparameters):
+        covariance_amplitude = hyperparameters[0]
+        lengthscale = hyperparameters[1]
+        self.comparator.set_args(amplitude=covariance_amplitude, sigma=lengthscale)
+        similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
+        self.__fit(self.data_values, similarityMat, reg=self.reg, delta_values=self.delta_values)
+        return self.get_NNL()
     
+    def likelihood_optimization(self, hyper0=[10,10]):
+        solver_options = {'gtol': 1e-6}
+        results = minimize(self.cost_function, hyper0, jac=True, method='BFGS', options=solver_options)
+        hyper = results.x
+        likelihood = np.exp(-results.fun)
+        
+        self.comparator.set_args(amplitude=hyper[0], sigma=hyper[1])
+        similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
+        self.__fit(self.data_values, similarityMat, reg=self.reg, delta_values=self.delta_values)
+        
+        return likelihood, hyper
+        
     def __gridSearch(self, data_values, featureMat, k, delta_values=None, **GSkwargs):
         """
         Performs grid search in the set of hyperparameters specified in **GSkwargs.
