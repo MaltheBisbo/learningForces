@@ -110,27 +110,14 @@ class krr_class():
         Fit the model based on training data.
         - i.e. find the alpha coeficients.
         """
-        #N_beta = int(self.bias_fraction*len(data_values))
-        #sorted_data_values = np.sort(data_values)
-        #sorted_filtered_data_values = sorted_data_values[:N_beta]
-
-        #filtered_mean = np.mean(sorted_filtered_data_values)
-        #filtered_std = np.std(sorted_filtered_data_values)
-        #self.beta = filtered_mean + self.bias_std_add * filtered_std
-
         self.beta = np.mean(data_values)
         #self.beta = np.max(data_values)
-
-        #Ndata = len(data_values)
-        #sorted_data_values = np.sort(data_values)
-        #self.beta = sorted_data_values[int(0.8*Ndata)]
         
         if delta_values is None:
             delta_values = 0
         A = similarityMat + reg*np.identity(len(data_values))
         self.Ainv = np.linalg.inv(A)
         self.alpha = np.dot(self.Ainv, data_values - delta_values - self.beta)
-        #self.alpha = np.linalg.solve(A, data_values - self.beta)
         
     def train(self, atoms_list=None, data_values=None, features=None, add_new_data=True, k=3, **GSkwargs):
         """

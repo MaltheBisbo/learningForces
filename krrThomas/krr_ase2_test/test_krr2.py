@@ -45,9 +45,9 @@ krr = krr_class(comparator=comparator,
                 featureCalculator=featureCalculator)
 gpr = gpr_model(comparator=comparator,
                 featureCalculator=featureCalculator)
-sigma = 10
-#GSkwargs = {'reg': [1e-7], 'sigma': [sigma]}
-GSkwargs = {'reg': [1e-7], 'sigma': np.logspace(0,3,10)}
+sigma = 100
+GSkwargs = {'reg': [1e-7], 'sigma': [sigma]}
+#GSkwargs = {'reg': [1e-7], 'sigma': np.logspace(0,3,10)}
 
 
 
@@ -70,8 +70,27 @@ MAE_krr, params_krr = krr.train(atoms_list=a_train_all,
                                 **GSkwargs)
 print(MAE_krr, params_krr)
 
-Epred_krr = np.array([krr.predict_energy(a) for a in a_test])
+Epred = []
+pred_error = []
+for a in a_test:
+    E, error, _ = krr.predict_energy(a, return_error=True)
+    Epred.append(E)
+    pred_error.append(error)
 
+
+test_error = np.abs(E_test - Epred)
+mean_test_error = np.mean(np.abs(E_test - Epred))
+
+error_difference = test_error - pred_error
+print(np.mean(error_difference))
+print(np.std(error_difference))
+
+plt.figure()
+plt.plot(np.arange(100), test_error, 'r')
+plt.plot(np.arange(100), pred_error, 'k')
+plt.show()
+
+"""
 MAE_gpr, params_gpr = gpr.train(atoms_list=a_train_all,
                                 add_new_data=False,
                                 k=2,
@@ -85,7 +104,7 @@ test_error_gpr = np.mean(np.abs(E_test - Epred_gpr))
 print(test_error_krr)
 print(test_error_gpr)
 
-"""
+
 MAE1, params1 = krr.train(atoms_list=a_train1,
                           add_new_data=False,
                           k=2,

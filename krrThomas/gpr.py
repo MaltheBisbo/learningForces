@@ -1,4 +1,5 @@
 import numpy as np
+import scipy as sp
 from scipy.optimize import minimize
 import pdb
 
@@ -127,10 +128,18 @@ class gpr_model():
         #Ndata = len(data_values)
         #sorted_data_values = np.sort(data_values)
         #self.beta = sorted_data_values[int(0.8*Ndata)]
-        
+
+        #self.L = np.linalg.cholesky(self.A)
+        #Linv = np.linalg.inv(self.L)
+        #self.Ainv = Linv @ Linv.T
+        #y = sp.linalg.solve_triangular(L, data_values - delta_values - self.beta)
+        #self.alpha = sp.linalg.solve_triangular(L, y, trans='T')
+
+        print(self.reg)
         if delta_values is None:
             delta_values = 0
         self.A = similarityMat + reg*np.identity(len(data_values))
+        self.L = np.linalg.cholesky(self.A)
         self.Ainv = np.linalg.inv(self.A)
         self.alpha = np.dot(self.Ainv, data_values - delta_values - self.beta)
         #self.alpha = np.linalg.solve(A, data_values - self.beta)
@@ -197,7 +206,9 @@ class gpr_model():
 
     def get_NNL(self):
         E = self.data_values
-        NNL = 0.5*np.dot(E, self.alpha) + np.log(np.linalg.det(self.A)) + self.Ndata/2*np.log(2*np.pi)
+        print('determinant', np.linalg.det(self.A))
+        NNL = 0.5*np.dot(E, self.alpha) + np.sum(np.log(np.diag(self.L))) + self.Ndata/2*np.log(2*np.pi)
+        #NNL = 0.5*np.dot(E, self.alpha) + np.log(np.linalg.det(self.A)) + self.Ndata/2*np.log(2*np.pi)
         print('NNL', NNL)
         dA_dhyper = self.comparator.hyper_grad(self.featureMat)
         NNL_grad = -0.5*((np.outer(self.alpha, self.alpha) - self.Ainv) @ dA_dhyper).trace(axis1=1, axis2=2)
@@ -209,10 +220,12 @@ class gpr_model():
         lengthscale = hyperparameters[1]
         self.comparator.set_args(amplitude=covariance_amplitude, sigma=lengthscale)
         similarityMat = self.comparator.get_similarity_matrix(self.featureMat)
+        print('amplitude', self.data_values.T @ )
         self.__fit(self.data_values, similarityMat, reg=self.reg, delta_values=self.delta_values)
+        print('amplitude', self.data_values.T @ self.Ainv @ self.data_values)
         return self.get_NNL()
     
-    def likelihood_optimization(self, hyper0=[10,10]):
+    def likelihood_optimization(self, hyper0=[1,10]):
         solver_options = {'gtol': 1e-6}
         results = minimize(self.cost_function, hyper0, jac=True, method='BFGS', options=solver_options)
         hyper = results.x
