@@ -13,9 +13,8 @@ def random_pos(box):
          described by the input box. """
     p0 = box[0]
     vspan = box[1]
-    r = np.random.random((1, len(vspan))) - 0.5
+    r = np.random.random((1, len(vspan)))
     pos = p0.copy()
-    pos[0:2] += box[2]
     for i in range(len(vspan)):
         pos += vspan[i] * r[0, i]
     return pos

@@ -343,8 +343,7 @@ def createInitalStructure(Natoms):
     a = np.array((4.0, 0., 0.))
     b = np.array((0, 4.0, 0))
     z = np.array((0, 0, 4.0))
-    p0 = np.array((0., 0., 12))
-    center = np.array((12, 12))
+    p0 = np.array((10., 10., 10.))
     
     # define the closest distance two atoms of a given species can be to each other
     cd = closest_distances_generator(atom_numbers=atom_numbers,
@@ -354,7 +353,7 @@ def createInitalStructure(Natoms):
     sg = StartGenerator(slab=template,
                         atom_numbers=atom_numbers,
                         closest_allowed_distances=cd,
-                        box_to_place_in=[p0, [a, b, z], center],
+                        box_to_place_in=[p0, [a, b, z]],
                         elliptic=False,
                         cluster=True)
 
