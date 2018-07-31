@@ -1,3 +1,8 @@
+
+from test_cy import test_bondtypes as test
+test()
+
+"""
 from test import test as test_py
 from test_cy import test as test_cy
 import timeit
@@ -11,3 +16,4 @@ print('test_cy(1000)=', test_cy(20))
 print('py runtime:', py)
 print('cy runtime:', cy)
 print('times faster:', py/cy)
+"""
