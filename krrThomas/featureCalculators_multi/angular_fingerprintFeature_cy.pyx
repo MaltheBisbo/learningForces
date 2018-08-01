@@ -289,28 +289,6 @@ class Angular_Fingerprint(object):
         # Initialize angular feature
         cdef double *feature2
         feature2 = <double*>mem.alloc(Nelements_3body, sizeof(double))
-        """
-        for i in range(Natoms):
-            for cell_index1 in range(Ncells):
-                displacement1 = cell_displacements[cell_index1]
-                for j in range(Natoms):
-                    Rij = euclidean(pos[i], add(pos[j], displacement1))
-                    if Rij > Rc2 or Rij < 1e-6:
-                        continue
-                    for cell_index2 in range(cell_index1, Ncells):
-                        displacement2 = cell_displacements[cell_index2]
-                        if cell_index1 == cell_index2:
-                            k_start = j+1
-                        else:
-                            k_start = 0
-                        for k in range(k_start, Natoms):
-                            Rik = euclidean(pos[i], add(pos[k], displacement2))
-
-                            if Rik > Rc2 or Rik < 1e-6:
-                                continue
-
-                            print(Rij, Rik)
-        """
 
         cdef Point RijVec, RikVec
         cdef double angle
@@ -333,7 +311,6 @@ class Angular_Fingerprint(object):
                         for k in range(k_start, Natoms):
                             pos_k = add(pos[k], displacement2)
                             Rik = euclidean(pos_i, pos_k)
-
                             if Rik > Rc2 or Rik < 1e-6:
                                 continue
 
@@ -435,6 +412,16 @@ class Angular_Fingerprint(object):
             pos[m].coord[1] = pos_np[m][1]
             pos[m].coord[2] = pos_np[m][2]
 
+        # Get neighbourcells and convert to Point-struct
+        cdef int Ncells = len(self.neighbourcells_disp)
+        cdef list cell_displacements_old = self.neighbourcells_disp
+        cdef Point *cell_displacements
+        cell_displacements = <Point*>mem.alloc(Ncells, sizeof(Point))
+        for m in range(Ncells):
+            cell_displacements[m].coord[0] = cell_displacements_old[m][0]
+            cell_displacements[m].coord[1] = cell_displacements_old[m][1]
+            cell_displacements[m].coord[2] = cell_displacements_old[m][2]
+
         # RADIAL FEATURE GRADIENT
 
         # Initialize radial feature-gradient
@@ -446,47 +433,51 @@ class Angular_Fingerprint(object):
         cdef double Rij, normalization, binpos, c, arg_low, arg_up, value1, value2, value
         cdef int i, j, n
         for i in range(Natoms):
-            for j in range(Natoms):
-                Rij = euclidean(pos[i], pos[j])
+            pos_i = pos[i]
+            for cell_index in range(Ncells):
+                displacement = cell_displacements[cell_index]
+                for j in range(Natoms):
+                    pos_j = add(pos[j], displacement)
+                    Rij = euclidean(pos_i, pos_j)
 
-                # Stop if distance too long or atoms are the same one.
-                if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:
-                    continue
-                RijVec = subtract(pos[j],pos[i])
-
-                # Calculate normalization
-                num_pairs = Natoms*Natoms
-                normalization = 1./smearing_norm1
-                normalization /= 4*M_PI*Rij*Rij * binwidth1 * num_pairs/volume
-
-                # Identify what bin 'Rij' belongs to + it's position in this bin
-                center_bin = <int> floor(Rij/binwidth1)
-                binpos = Rij/binwidth1 - center_bin
-
-                # Lower and upper range of bins affected by the current atomic distance deltaR.
-                minbin_lim = <int> -ceil(m1 - binpos)
-                maxbin_lim = <int> ceil(m1 - (1-binpos))
-
-                for n in range(minbin_lim, maxbin_lim + 1):
-                    newbin = center_bin + n
-                    if newbin < 0 or newbin >= Nbins1:
+                    # Stop if distance too long or atoms are the same one.
+                    if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:
                         continue
+                    RijVec = subtract(pos_j,pos_i)
 
-                    # Calculate gauss contribution to current bin
-                    c = 1./sqrt(2)*binwidth1/sigma1
-                    arg_low = max(-m1, n-binpos)
-                    arg_up = min(m1, n+(1-binpos))
-                    value1 = -1./Rij * (erf(c*arg_up) - erf(c*arg_low))
-                    value2 = -1./(sigma1*sqrt(2*M_PI)) * (exp(-pow(c*arg_up,2)) - exp(-pow(c*arg_low,2)))
-                    value = value1 + value2
+                    # Calculate normalization
+                    num_pairs = Natoms*Natoms
+                    normalization = 1./smearing_norm1
+                    normalization /= 4*M_PI*Rij*Rij * binwidth1 * num_pairs/volume
 
-                    # Apply normalization
-                    value *= normalization
+                    # Identify what bin 'Rij' belongs to + it's position in this bin
+                    center_bin = <int> floor(Rij/binwidth1)
+                    binpos = Rij/binwidth1 - center_bin
 
-                    # Add to the the gradient matrix
-                    for m in range(3):
-                        feature_grad1[newbin * Natoms*dim + dim*i+m] += -value/Rij * RijVec.coord[m]
-                        feature_grad1[newbin * Natoms*dim + dim*j+m] += value/Rij * RijVec.coord[m]
+                    # Lower and upper range of bins affected by the current atomic distance deltaR.
+                    minbin_lim = <int> -ceil(m1 - binpos)
+                    maxbin_lim = <int> ceil(m1 - (1-binpos))
+
+                    for n in range(minbin_lim, maxbin_lim + 1):
+                        newbin = center_bin + n
+                        if newbin < 0 or newbin >= Nbins1:
+                            continue
+
+                        # Calculate gauss contribution to current bin
+                        c = 1./sqrt(2)*binwidth1/sigma1
+                        arg_low = max(-m1, n-binpos)
+                        arg_up = min(m1, n+(1-binpos))
+                        value1 = -1./Rij * (erf(c*arg_up) - erf(c*arg_low))
+                        value2 = -1./(sigma1*sqrt(2*M_PI)) * (exp(-pow(c*arg_up,2)) - exp(-pow(c*arg_low,2)))
+                        value = value1 + value2
+
+                        # Apply normalization
+                        value *= normalization
+
+                        # Add to the the gradient matrix
+                        for m in range(3):
+                            feature_grad1[newbin * Natoms*dim + dim*i+m] += -value/Rij * RijVec.coord[m]
+                            feature_grad1[newbin * Natoms*dim + dim*j+m] += value/Rij * RijVec.coord[m]
 
 
         # Convert radial feature to numpy array
@@ -510,83 +501,94 @@ class Angular_Fingerprint(object):
         cdef double angle, cos_angle, a
         cdef int k, cond_ij, cond_ik, bin_index
         for i in range(Natoms):
-            for j in range(Natoms):
-                for k in range(j+1, Natoms):
-                    Rij = euclidean(pos[i], pos[j])
-                    Rik = euclidean(pos[i], pos[k])
-
-                    # Stop if distance too long or atoms are the same one.
-                    cond_ij = Rij > Rc2 or Rij < 1e-6
-                    cond_ik = Rik > Rc2 or Rik < 1e-6
-                    if cond_ij or cond_ik:
+            pos_i = pos[i]
+            for cell_index1 in range(Ncells):
+                displacement1 = cell_displacements[cell_index1]
+                for j in range(Natoms):
+                    pos_j = add(pos[j], displacement1)
+                    Rij = euclidean(pos[i], pos_j)
+                    if Rij > Rc2 or Rij < 1e-6:
                         continue
-
-                    # Calculate angle
-                    RijVec = subtract(pos[j],pos[i])
-                    RikVec = subtract(pos[k], pos[i])
-                    angle = get_angle(RijVec, RikVec)
-                    cos_angle = cos(angle)
-
-                    for m in range(3):
-                        if not (angle == 0 or angle == M_PI):
-                            a = -1/sqrt(1 - cos_angle*cos_angle)
-                            angle_grad_j.coord[m] = a * (RikVec.coord[m]/(Rij*Rik) - cos_angle*RijVec.coord[m]/(Rij*Rij))
-                            angle_grad_k.coord[m] = a * (RijVec.coord[m]/(Rij*Rik) - cos_angle*RikVec.coord[m]/(Rik*Rik))
-                            angle_grad_i.coord[m] = -(angle_grad_j.coord[m] + angle_grad_k.coord[m])
+                    for cell_index2 in range(cell_index1, Ncells):
+                        displacement2 = cell_displacements[cell_index2]
+                        if cell_index1 == cell_index2:
+                            k_start = j+1
                         else:
-                            angle_grad_j.coord[m] = 0
-                            angle_grad_k.coord[m] = 0
-                            angle_grad_i.coord[m] = 0
+                            k_start = 0
+                        for k in range(k_start, Natoms):
+                            pos_k = add(pos[k], displacement2)
+                            Rik = euclidean(pos_i, pos_k)
+                            if Rik > Rc2 or Rik < 1e-6:
+                                continue
 
-                    fc_ij = f_cutoff(Rij, gamma, Rc2)
-                    fc_ik = f_cutoff(Rik, gamma, Rc2)
-                    fc_grad_ij = f_cutoff_grad(Rij, gamma, Rc2)
-                    fc_grad_ik = f_cutoff_grad(Rik, gamma, Rc2)
+                            # Calculate angle
+                            RijVec = subtract(pos_j,pos_i)
+                            RikVec = subtract(pos_k, pos_i)
 
-                    # Calculate normalization
-                    num_pairs = Natoms*Natoms*Natoms
-                    normalization = 1./smearing_norm2
-                    normalization /= num_pairs/volume
 
-                    # Identify what bin 'Rij' belongs to + it's position in this bin
-                    center_bin = <int> floor(angle/binwidth1)
-                    binpos = angle/binwidth2 - center_bin
+                            angle = get_angle(RijVec, RikVec)
+                            cos_angle = cos(angle)
 
-                    # Lower and upper range of bins affected by the current atomic distance deltaR.
-                    minbin_lim = <int> -ceil(m2 - binpos)
-                    maxbin_lim = <int> ceil(m2 - (1-binpos))
+                            for m in range(3):
+                                if not (angle == 0 or angle == M_PI):
+                                    a = -1/sqrt(1 - cos_angle*cos_angle)
+                                    angle_grad_j.coord[m] = a * (RikVec.coord[m]/(Rij*Rik) - cos_angle*RijVec.coord[m]/(Rij*Rij))
+                                    angle_grad_k.coord[m] = a * (RijVec.coord[m]/(Rij*Rik) - cos_angle*RikVec.coord[m]/(Rik*Rik))
+                                    angle_grad_i.coord[m] = -(angle_grad_j.coord[m] + angle_grad_k.coord[m])
+                                else:
+                                    angle_grad_j.coord[m] = 0
+                                    angle_grad_k.coord[m] = 0
+                                    angle_grad_i.coord[m] = 0
 
-                    for n in range(minbin_lim, maxbin_lim + 1):
-                        newbin = center_bin + n
+                            fc_ij = f_cutoff(Rij, gamma, Rc2)
+                            fc_ik = f_cutoff(Rik, gamma, Rc2)
+                            fc_grad_ij = f_cutoff_grad(Rij, gamma, Rc2)
+                            fc_grad_ik = f_cutoff_grad(Rik, gamma, Rc2)
 
-                        # Wrap current bin into correct bin-range
-                        if newbin < 0:
-                            newbin = abs(newbin)
-                        if newbin > Nbins2-1:
-                            newbin = 2*Nbins2 - newbin - 1
+                            # Calculate normalization
+                            num_pairs = Natoms*Natoms*Natoms
+                            normalization = 1./smearing_norm2
+                            normalization /= num_pairs/volume
 
-                        # Calculate gauss contribution to current bin
-                        c = 1./sqrt(2)*binwidth2/sigma2
-                        arg_low = max(-m2, n-binpos)
-                        arg_up = min(m2, n+(1-binpos))
-                        value1 = 0.5*erf(c*arg_up)-0.5*erf(c*arg_low)
-                        value2 = -1./(sigma2*sqrt(2*M_PI)) * (exp(-pow(c*arg_up, 2)) - exp(-pow(c*arg_low, 2)))
+                            # Identify what bin 'Rij' belongs to + it's position in this bin
+                            center_bin = <int> floor(angle/binwidth1)
+                            binpos = angle/binwidth2 - center_bin
 
-                        # Apply normalization
-                        value1 *= normalization
-                        value2 *= normalization
+                            # Lower and upper range of bins affected by the current atomic distance deltaR.
+                            minbin_lim = <int> -ceil(m2 - binpos)
+                            maxbin_lim = <int> ceil(m2 - (1-binpos))
 
-                        bin_index = newbin * Natoms*dim
-                        for m in range(3):
-                            feature_grad2[bin_index + dim*i+m] += -value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
-                            feature_grad2[bin_index + dim*j+m] += value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
+                            for n in range(minbin_lim, maxbin_lim + 1):
+                                newbin = center_bin + n
 
-                            feature_grad2[bin_index + dim*i+m] += -value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
-                            feature_grad2[bin_index + dim*k+m] += value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
+                                # Wrap current bin into correct bin-range
+                                if newbin < 0:
+                                    newbin = abs(newbin)
+                                if newbin > Nbins2-1:
+                                    newbin = 2*Nbins2 - newbin - 1
 
-                            feature_grad2[bin_index + dim*i+m] += value2 * fc_ij * fc_ik * angle_grad_i.coord[m]
-                            feature_grad2[bin_index + dim*j+m] += value2 * fc_ij * fc_ik * angle_grad_j.coord[m]
-                            feature_grad2[bin_index + dim*k+m] += value2 * fc_ij * fc_ik * angle_grad_k.coord[m]
+                                # Calculate gauss contribution to current bin
+                                c = 1./sqrt(2)*binwidth2/sigma2
+                                arg_low = max(-m2, n-binpos)
+                                arg_up = min(m2, n+(1-binpos))
+                                value1 = 0.5*erf(c*arg_up)-0.5*erf(c*arg_low)
+                                value2 = -1./(sigma2*sqrt(2*M_PI)) * (exp(-pow(c*arg_up, 2)) - exp(-pow(c*arg_low, 2)))
+
+                                # Apply normalization
+                                value1 *= normalization
+                                value2 *= normalization
+
+                                bin_index = newbin * Natoms*dim
+                                for m in range(3):
+                                    feature_grad2[bin_index + dim*i+m] += -value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
+                                    feature_grad2[bin_index + dim*j+m] += value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
+
+                                    feature_grad2[bin_index + dim*i+m] += -value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
+                                    feature_grad2[bin_index + dim*k+m] += value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
+
+                                    feature_grad2[bin_index + dim*i+m] += value2 * fc_ij * fc_ik * angle_grad_i.coord[m]
+                                    feature_grad2[bin_index + dim*j+m] += value2 * fc_ij * fc_ik * angle_grad_j.coord[m]
+                                    feature_grad2[bin_index + dim*k+m] += value2 * fc_ij * fc_ik * angle_grad_k.coord[m]
 
 
         feature_grad2_np = np.zeros((Natoms*dim, Nelements_3body))

@@ -14,7 +14,7 @@ dim = 3
 
 L = 2
 d = 1
-pbc = [1,0,0]
+pbc = [1,1,0]
 
 """
 N = 2
@@ -26,18 +26,18 @@ a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
           pbc=pbc)
-
+"""
 N = 3
-x = np.array([0.5*L, 0.2*L, d/2,
+x = np.array([1.5*L, 0.2*L, d/2,
               0.5*L, 0.9*L, d/2,
-              0.5*L, 0.5*L, d/2,])
+              -0.5*L, 0.5*L, d/2,])
 positions = x.reshape((-1,dim))
 atomtypes = ['H', 'H', 'H']
 a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
           pbc=pbc)
-
+"""
 x = np.array([1, 0, 0, 2, 0, 0, 3, 0, 0, 1.5, 1, 0])
 positions = x.reshape((-1,dim))
 a = Atoms('H4',
@@ -56,7 +56,7 @@ a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
           pbc=pbc)
-"""
+
 N = 5
 x = np.array([0.2*L, 0.7*L, d/2,
               0.3*L, 0.2*L, d/2,
@@ -69,7 +69,7 @@ a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
           pbc=pbc)
-"""
+
 atoms = read('graphene_data/graphene_all2.traj', index=':')
 a = atoms[100]
 atomtypes = a.get_atomic_numbers()
@@ -77,7 +77,7 @@ N = len(a.get_atomic_numbers())
 x = a.get_positions().reshape(-1)
 """
 
-#view(a)
+view(a)
 
 Rc1 = 4
 binwidth1 = 0.1
@@ -125,8 +125,8 @@ plt.figure(1)
 plt.plot(r, fingerprint)
 plt.plot(r, fingerprint_cy, linestyle=':', color='k')
 
-#plt.figure(2)
-#plt.plot(r, fingerprint_grad.T)
-#plt.plot(r, fingerprint_grad_cy.T, linestyle=':', color='k')
+plt.figure(2)
+plt.plot(r, fingerprint_grad.T)
+plt.plot(r, fingerprint_grad_cy.T, linestyle=':', color='k')
 
 plt.show()
