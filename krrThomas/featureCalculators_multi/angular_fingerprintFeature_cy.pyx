@@ -112,6 +112,7 @@ class Angular_Fingerprint(object):
 
 
         self.volume = atoms.get_volume()
+        self.pbc = atoms.get_pbc()
         self.Natoms = atoms.get_number_of_atoms()
         self.dim = 3
 
@@ -123,14 +124,6 @@ class Angular_Fingerprint(object):
         self.m2 = self.nsigma*self.sigma2/self.binwidth2  # number of neighbour bins included.
         self.smearing_norm2 = erf(1/np.sqrt(2) * self.m2 * self.binwidth2/self.sigma2)  # Integral of the included part of the gauss
         self.binwidth2 = np.pi/Nbins2
-
-        self.Nelements_2body = self.Nbins1
-        self.Nelements_3body = self.Nbins2
-
-        if use_angular:
-            self.Nelements = self.Nelements_2body + self.Nelements_3body
-        else:
-            self.Nelements = self.Nelements_2body
 
         # Prepare stuff to handle multiple species
         self.num = atoms.get_atomic_numbers()
@@ -155,15 +148,48 @@ class Angular_Fingerprint(object):
                         self.bondtypes_2body[t1,t2] = count
                         self.Nbondtypes_2body += 1
                         count += 1
-                elif type1 == type2 and (self.atomic_count[type1] > 1):  # or sum(self.pbc) > 0):
+                elif type1 == type2 and (self.atomic_count[type1] > 1 or sum(self.pbc) > 0):
                     if self.bondtypes_2body[t1,t2] == -1:
                         self.bondtypes_2body[t1,t2] = count
                         self.Nbondtypes_2body += 1
                         count += 1
+        self.bondtypes_2body = self.bondtypes_2body.reshape(-1).tolist()
+
 
         # Bondtypes - 3body
+        self.bondtypes_3body = -np.ones((self.Ntypes, self.Ntypes, self.Ntypes)).astype(int)
+        bondtypes_3body_keys = []
+        for type1 in self.atomic_types:
+            for type2 in self.atomic_types:
+                if type1 == type2 and not (self.atomic_count[type1] > 1 or sum(self.pbc) > 0):
+                    continue
+                for type3 in self.atomic_types:
+                    if type1 == type3 and not (self.atomic_count[type1] > 1 or sum(self.pbc) > 0):
+                        continue
+                    key = tuple([type1] + sorted([type2, type3]))
+                    if type2 < type3:
+                        bondtypes_3body_keys.append(key)
+                    elif type2 == type3:
+                        if type2 == type1 and (self.atomic_count[type1] > 2 or sum(self.pbc) > 0):
+                            bondtypes_3body_keys.append(key)
+                        elif type2 != type1 and (self.atomic_count[type2] > 1 or sum(self.pbc) > 0):
+                            bondtypes_3body_keys.append(key)
+        self.Nbondtypes_3body = len(bondtypes_3body_keys)
+        for i, key in enumerate(bondtypes_3body_keys):
+            k1, k2, k3 = key
+            self.bondtypes_3body[type_converter[k1],type_converter[k2],type_converter[k3]] = i
+        self.bondtypes_3body = self.bondtypes_3body.reshape(-1).tolist()
+        print('cy', bondtypes_3body_keys)
 
+        self.Nelements_2body = self.Nbondtypes_2body * self.Nbins1
+        self.Nelements_3body = self.Nbondtypes_3body * self.Nbins2
 
+        if use_angular:
+            self.Nelements = self.Nelements_2body + self.Nelements_3body
+        else:
+            self.Nelements = self.Nelements_2body
+
+        print('Nelements:', self.Nelements)
         # Get relevant neighbour unit-cells
         self.pbc = atoms.get_pbc()
         self.cell = atoms.get_cell()
@@ -225,14 +251,29 @@ class Angular_Fingerprint(object):
             cell_displacements[m].coord[1] = cell_displacements_old[m][1]
             cell_displacements[m].coord[2] = cell_displacements_old[m][2]
 
+        # Convert 2body bondtype list into c-array
+        cdef int Ntypes = self.Ntypes
+        cdef int Nbondtypes_2body = self.Nbondtypes_2body
+        cdef list bondtypes_2body_old = self.bondtypes_2body
+        cdef int *bondtypes_2body
+        bondtypes_2body = <int*>mem.alloc(Ntypes*Ntypes, sizeof(int))
+        for m in range(Ntypes*Ntypes):
+            bondtypes_2body[m] = bondtypes_2body_old[m]
+
+        # Get converted atom Ntypes
+        cdef list num_converted_old = convert_atom_types(atoms.get_atomic_numbers())
+        cdef int *num_converted
+        num_converted = <int*>mem.alloc(Natoms, sizeof(int))
+        for m in range(Natoms):
+            num_converted[m] = num_converted_old[m]
+
         # RADIAL FEATURE
-        print('python\n')
 
         # Initialize radial feature
         cdef double *feature1
         feature1 = <double*>mem.alloc(Nelements_2body, sizeof(double))
 
-        cdef int num_pairs, center_bin, minbin_lim, maxbin_lim, newbin
+        cdef int num_pairs, center_bin, minbin_lim, maxbin_lim, newbin, bondtype_index, type1, type2
         cdef double Rij, normalization, binpos, c, erfarg_low, erfarg_up, value
         cdef int i, j, n
         for i in range(Natoms):
@@ -244,7 +285,15 @@ class Angular_Fingerprint(object):
                     # Stop if distance too long or atoms are the same one.
                     if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:
                         continue
-                    #print(Rij)
+
+                    # determine bondtype
+                    if num_converted[i] <= num_converted[j]:
+                        type1 = num_converted[i]
+                        type2 = num_converted[j]
+                    else:
+                        type1 = num_converted[j]
+                        type2 = num_converted[i]
+                    bondtype_index = Nbins1*bondtypes_2body[Ntypes*type1+type2]
 
                     # Calculate normalization
                     num_pairs = Natoms*Natoms
@@ -273,7 +322,8 @@ class Angular_Fingerprint(object):
                         # Apply normalization
                         value *= normalization
 
-                        feature1[newbin] += value
+                        feature1[bondtype_index + newbin] += value
+                        #feature1[newbin] += value
 
         # Convert radial feature to numpy array
         feature1_np = np.zeros(Nelements_2body)
@@ -285,6 +335,14 @@ class Angular_Fingerprint(object):
             return feature1_np
 
         # ANGULAR FEATURE
+
+        # Convert 3body bondtype list into c-array
+        cdef int Nbondtypes_3body = self.Nbondtypes_3body
+        cdef list bondtypes_3body_old = self.bondtypes_3body
+        cdef int *bondtypes_3body
+        bondtypes_3body = <int*>mem.alloc(Ntypes*Ntypes*Ntypes, sizeof(int))
+        for m in range(Ntypes*Ntypes*Ntypes):
+            bondtypes_3body[m] = bondtypes_3body_old[m]
 
         # Initialize angular feature
         cdef double *feature2
@@ -313,6 +371,16 @@ class Angular_Fingerprint(object):
                             Rik = euclidean(pos_i, pos_k)
                             if Rik > Rc2 or Rik < 1e-6:
                                 continue
+
+                            # determine bondtype
+                            type1 = num_converted[i]
+                            if num_converted[j] <= num_converted[k]:
+                                type2 = num_converted[j]
+                                type3 = num_converted[k]
+                            else:
+                                type2 = num_converted[k]
+                                type3 = num_converted[j]
+                            bondtype_index = Nbins2*bondtypes_3body[Ntypes*Ntypes*type1 + Ntypes*type2 + type3]
 
                             # Calculate angle
                             RijVec = subtract(pos_j,pos_i)
@@ -350,7 +418,8 @@ class Angular_Fingerprint(object):
                                 # Apply normalization
                                 value *= normalization
 
-                                feature2[newbin] += value
+                                feature2[bondtype_index + newbin] += value
+                                #feature2[newbin] += value
 
         # Convert angular feature to numpy array
         feature2_np = np.zeros(Nelements_3body)
@@ -422,6 +491,22 @@ class Angular_Fingerprint(object):
             cell_displacements[m].coord[1] = cell_displacements_old[m][1]
             cell_displacements[m].coord[2] = cell_displacements_old[m][2]
 
+        # Convert bondtype list into c-array
+        cdef int Ntypes = self.Ntypes
+        cdef int Nbondtypes_2body = self.Nbondtypes_2body
+        cdef list bondtypes_2body_old = self.bondtypes_2body
+        cdef int *bondtypes_2body
+        bondtypes_2body = <int*>mem.alloc(Ntypes*Ntypes, sizeof(int))
+        for m in range(Ntypes*Ntypes):
+            bondtypes_2body[m] = bondtypes_2body_old[m]
+
+        # Get converted atom Ntypes
+        cdef list num_converted_old = convert_atom_types(atoms.get_atomic_numbers())
+        cdef int *num_converted
+        num_converted = <int*>mem.alloc(Natoms, sizeof(int))
+        for m in range(Natoms):
+            num_converted[m] = num_converted_old[m]
+
         # RADIAL FEATURE GRADIENT
 
         # Initialize radial feature-gradient
@@ -429,7 +514,7 @@ class Angular_Fingerprint(object):
         feature_grad1 = <double*>mem.alloc(Nelements_2body * Natoms * dim, sizeof(double))
 
         cdef Point RijVec
-        cdef int num_pairs, center_bin, minbin_lim, maxbin_lim, newbin
+        cdef int num_pairs, center_bin, minbin_lim, maxbin_lim, newbin, bondtype_index, type1, type2
         cdef double Rij, normalization, binpos, c, arg_low, arg_up, value1, value2, value
         cdef int i, j, n
         for i in range(Natoms):
@@ -444,6 +529,15 @@ class Angular_Fingerprint(object):
                     if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:
                         continue
                     RijVec = subtract(pos_j,pos_i)
+
+                    # determine bondtype
+                    if num_converted[i] <= num_converted[j]:
+                        type1 = num_converted[i]
+                        type2 = num_converted[j]
+                    else:
+                        type1 = num_converted[j]
+                        type2 = num_converted[i]
+                    bondtype_index = Nbins1*bondtypes_2body[Ntypes*type1+type2]
 
                     # Calculate normalization
                     num_pairs = Natoms*Natoms
@@ -476,8 +570,8 @@ class Angular_Fingerprint(object):
 
                         # Add to the the gradient matrix
                         for m in range(3):
-                            feature_grad1[newbin * Natoms*dim + dim*i+m] += -value/Rij * RijVec.coord[m]
-                            feature_grad1[newbin * Natoms*dim + dim*j+m] += value/Rij * RijVec.coord[m]
+                            feature_grad1[(bondtype_index + newbin) * Natoms*dim + dim*i+m] += -value/Rij * RijVec.coord[m]
+                            feature_grad1[(bondtype_index + newbin) * Natoms*dim + dim*j+m] += value/Rij * RijVec.coord[m]
 
 
         # Convert radial feature to numpy array
@@ -492,6 +586,14 @@ class Angular_Fingerprint(object):
             return feature_grad1_np
 
         # ANGULAR FEATURE-GRADIENT
+
+        # Convert 3body bondtype list into c-array
+        cdef int Nbondtypes_3body = self.Nbondtypes_3body
+        cdef list bondtypes_3body_old = self.bondtypes_3body
+        cdef int *bondtypes_3body
+        bondtypes_3body = <int*>mem.alloc(Ntypes*Ntypes*Ntypes, sizeof(int))
+        for m in range(Ntypes*Ntypes*Ntypes):
+            bondtypes_3body[m] = bondtypes_3body_old[m]
 
         # Initialize angular feature-gradient
         cdef double *feature_grad2
@@ -520,6 +622,16 @@ class Angular_Fingerprint(object):
                             Rik = euclidean(pos_i, pos_k)
                             if Rik > Rc2 or Rik < 1e-6:
                                 continue
+
+                            # determine bondtype
+                            type1 = num_converted[i]
+                            if num_converted[j] <= num_converted[k]:
+                                type2 = num_converted[j]
+                                type3 = num_converted[k]
+                            else:
+                                type2 = num_converted[k]
+                                type3 = num_converted[j]
+                            bondtype_index = Nbins2*bondtypes_3body[Ntypes*Ntypes*type1 + Ntypes*type2 + type3]
 
                             # Calculate angle
                             RijVec = subtract(pos_j,pos_i)
@@ -578,7 +690,7 @@ class Angular_Fingerprint(object):
                                 value1 *= normalization
                                 value2 *= normalization
 
-                                bin_index = newbin * Natoms*dim
+                                bin_index = (bondtype_index + newbin) * Natoms*dim
                                 for m in range(3):
                                     feature_grad2[bin_index + dim*i+m] += -value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
                                     feature_grad2[bin_index + dim*j+m] += value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij

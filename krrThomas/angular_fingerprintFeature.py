@@ -80,7 +80,7 @@ class Angular_Fingerprint(object):
                         elif type2 != type1 and (self.atomic_count[type2] > 1 or sum(self.pbc) > 0):
                             self.bondtypes_3body.append(key)
         Nelements_3body = self.Nbins2 * len(self.bondtypes_3body)
-
+        print('py', self.bondtypes_3body)
         if use_angular:
             self.Nelements = Nelements_2body + Nelements_3body
         else:
@@ -130,7 +130,8 @@ class Angular_Fingerprint(object):
 
                 # Calculate normalization
                 type1, type2 = nb_bondtype[j][n]
-                num_pairs = atomic_count[type1] * atomic_count[type2]
+                #num_pairs = atomic_count[type1] * atomic_count[type2]
+                num_pairs = n_atoms*n_atoms
                 normalization = 1./self.smearing_norm1
                 normalization /= 4*np.pi*deltaR**2 * self.binwidth1 * num_pairs/self.volume
                 #value *= self.__f_cutoff(deltaR, self.gamma, self.Rc1)
@@ -203,7 +204,8 @@ class Angular_Fingerprint(object):
                     angle, _ = self.__angle(nb_distVec_ang[j][n], nb_distVec_ang[j][m])
 
                     # Calculate normalization
-                    num_pairs = atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
+                    #num_pairs = atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
+                    num_pairs = n_atoms*n_atoms*n_atoms
                     normalization = 1./self.smearing_norm2
                     normalization /= num_pairs/self.volume
 
@@ -312,7 +314,8 @@ class Angular_Fingerprint(object):
 
                 # Calculate normalization
                 type1, type2 = nb_bondtype[j][n]
-                num_pairs = atomic_count[type1] * atomic_count[type2]
+                num_pairs = n_atoms*n_atoms
+                #num_pairs = atomic_count[type1] * atomic_count[type2]
                 normalization = 1/self.smearing_norm1
                 normalization /= 4*np.pi*deltaR**2 * self.binwidth1 * num_pairs/self.volume
 
@@ -389,7 +392,8 @@ class Angular_Fingerprint(object):
                     angle, cos_angle = self.__angle(nb_distVec_ang[j][n], nb_distVec_ang[j][m])
 
                     # Calculate normalization
-                    num_pairs = atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
+                    #num_pairs = atomic_count[type_j] * atomic_count[type_n] * atomic_count[type_m]
+                    num_pairs = n_atoms*n_atoms*n_atoms
                     normalization = 1./self.smearing_norm2
                     normalization /= num_pairs/self.volume
 

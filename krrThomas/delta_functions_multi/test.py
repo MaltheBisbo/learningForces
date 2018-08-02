@@ -15,7 +15,7 @@ dim = 3
 
 L = 2
 d = 1
-pbc = [1,1,0]
+pbc = [0,0,0]
 
 """
 N = 2
@@ -80,58 +80,25 @@ x = a.get_positions().reshape(-1)
 
 #view(a)
 
-Rc1 = 4
-binwidth1 = 0.1
-sigma1 = 0.2
+from delta import delta as delta_cy
+from delta_py import delta as delta_py
+from ase.data import covalent_radii
+from ase.ga.utilities import closest_distances_generator
 
-Rc2 = 3
-Nbins2 = 50
-sigma2 = 0.2
+num = a.get_atomic_numbers()
+atomic_types = sorted(list(set(num)))
+print(atomic_types)
+blmin = closest_distances_generator(atomic_types,                                                                                          
+                                    ratio_of_covalent_radii=0.7)
+print(blmin)
 
-eta = 30
-gamma = 2
-use_angular = True
+cov_dist = 1
+deltaFunc_cy = delta_cy(cov_dist=cov_dist)
+deltaFunc_py = delta_py(cov_dist=cov_dist)
 
+print('E_py=', deltaFunc_py.energy(a))
+print('E_cy=', deltaFunc_cy.energy(a))
 
-featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2,
-                                        eta=eta, gamma=gamma, use_angular=use_angular)
-t0 = time()
-fingerprint = featureCalculator.get_feature(a)
-fingerprint_grad = featureCalculator.get_featureGradient(a)
-runtime = time() - t0
+print('F_py=', deltaFunc_py.forces(a))
+print('F_cy=', deltaFunc_cy.forces(a))
 
-
-featureCalculator_cy = Angular_Fingerprint_cy(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2,
-                                              eta=eta, gamma=gamma, use_angular=use_angular)
-t0_cy = time()
-fingerprint_cy = featureCalculator_cy.get_feature(a)
-fingerprint_grad_cy = featureCalculator_cy.get_featureGradient(a)
-runtime_cy = time() - t0_cy
-
-print(featureCalculator_cy.Nelements)
-
-
-print('runtime python:', runtime)
-print('runtime cython:', runtime_cy)
-print('times faster:', runtime/runtime_cy)
-Nelements = featureCalculator.Nelements
-Nbins1 = int(np.ceil(Rc1/binwidth1))
-
-if use_angular:
-    Nbins = Nbins1 + Nbins2
-else:
-    Nbins = Nbins1
-Nbondtypes = int(Nelements/Nbins)
-r = np.linspace(0,Rc1*Nbondtypes, Nelements)
-
-print('py:', fingerprint.shape)
-print('cy:', fingerprint_cy.shape)
-plt.figure(1)
-plt.plot(r, fingerprint)
-plt.plot(r, fingerprint_cy, linestyle=':', color='k')
-
-plt.figure(2)
-plt.plot(r, fingerprint_grad.T)
-plt.plot(r, fingerprint_grad_cy.T, linestyle=':', color='k')
-
-plt.show()
