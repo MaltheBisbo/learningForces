@@ -2,6 +2,8 @@ import numpy as np
 from scipy.spatial.distance import euclidean
 
 from ase.calculators.calculator import Calculator
+from time import time
+from ase.calculators.singlepoint import SinglePointCalculator
 
 
 
@@ -20,17 +22,13 @@ class krr_calculator(Calculator):
 
         Calculator.calculate(self, atoms, properties, system_changes)
 
-        E = self.MLmodel.predict_energy(atoms, return_error=False)
-        F = self.MLmodel.predict_force(atoms).reshape((-1,3))
-
-        if self.noZ:
-            F[:,-1] = 0
-        
         if 'energy' in properties:
+            E = self.MLmodel.predict_energy(atoms, return_error=False)
             self.results['energy'] = E
         if 'forces' in properties:
+            F = self.MLmodel.predict_force(atoms).reshape((-1,3))
             self.results['forces'] = F
-
+            
 class doubleLJ_calculator(Calculator):
 
     implemented_properties = ['energy', 'forces']

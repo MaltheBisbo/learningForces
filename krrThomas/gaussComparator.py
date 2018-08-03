@@ -1,12 +1,18 @@
 import numpy as np
 from scipy.spatial.distance import sqeuclidean
+from scipy.spatial.distance import euclidean
 from scipy.spatial.distance import cdist
 
 
 class gaussComparator():
+<<<<<<< HEAD
     def __init__(self, featureMat=None, amplitude=1, **kwargs):
         self.featureMat = featureMat
         self.amplitude = amplitude
+=======
+    def __init__(self, featureCalculator=None, **kwargs):
+        self.featureCalculator = featureCalculator
+>>>>>>> master
         if 'sigma' in kwargs:
             self.sigma = kwargs['sigma']
 
@@ -93,3 +99,15 @@ class gaussComparator():
 
         Hess = -u*kernel * (u*np.outer(dd_df1, dd_df2.T) - d2d_df1df2)
         return Hess
+
+    def looks_like(self, a1, a2, featureCalculator=None):
+        if featureCalculator is None:
+            featureCalculator = self.featureCalculator
+        
+        f1 = featureCalculator.get_feature(a1)
+        f2 = featureCalculator.get_feature(a2)
+        distance = euclidean(f1, f2)
+        if distance < 0.5:  # Hard coded value
+            return True
+        else:
+            return False

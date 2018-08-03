@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name=fuRelax
+#SBATCH --partition=q16
+#SBATCH --mem=10G
+#SBATCH --nodes=1
+#SBATCH --time=1:00:00
+#SBATCH --ntasks-per-node=16
+#SBATCH --cpus-per-task=1
+#SBATCH --no-requeue
+
+source /home/mkb/.gpaw_py3
+
+cd $SLURM_SUBMIT_DIR
+mpiexec --mca mpi_warn_on_fork 0 gpaw-python test.py ./
+#mpiexec --mca mpi_warn_on_fork 0 gpaw-python calc_gpaw.py DFT/C24/Fullerene/full_sym.traj
+#mpiexec --mca mpi_warn_on_fork 0 gpaw-python single_gpaw.py cand0.traj

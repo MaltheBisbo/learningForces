@@ -1,6 +1,7 @@
 import numpy as np
 import pdb
 
+from time import time
 
 class krr_class():
     """
@@ -17,12 +18,10 @@ class krr_class():
     comparator_kwargs:
     Parameters for the compator. This could be the width for the gaussian kernel.
     """
-    def __init__(self, comparator, featureCalculator, delta_function=None, reg=1e-5, bias_fraction=0.8, bias_std_add=0.5, **comparator_kwargs):
+    def __init__(self, comparator, featureCalculator, delta_function=None, reg=1e-5, **comparator_kwargs):
         self.featureCalculator = featureCalculator
         self.comparator = comparator
         self.comparator.set_args(**comparator_kwargs)
-        self.bias_fraction = bias_fraction
-        self.bias_std_add = bias_std_add
         self.reg = reg
         self.delta_function = delta_function
         
@@ -57,8 +56,6 @@ class krr_class():
 
         if return_error:
             alpha_err = np.dot(self.Ainv, similarityVec)
-            #A = self.similarityMat + self.reg*np.identity(self.Ndata)
-            #alpha_err = np.linalg.solve(A, similarityVec)
             theta0 = np.dot(self.data_values[:self.Ndata], self.alpha) / self.Ndata
             prediction_error = np.sqrt(np.abs(theta0*(1 - np.dot(similarityVec, alpha_err))))
             return predicted_value, prediction_error, theta0
@@ -243,7 +240,12 @@ class krr_class():
     
     def __cross_validation(self, data_values, similarityMat, k, reg, delta_values=None):
         Ndata = len(data_values)
-
+        
+        # adapt if little data is avaliable
+        if Ndata < 4:
+            return np.nan
+        k = min(Ndata // 2, k)
+        
         # Permute data for cross-validation
         permutation = np.random.permutation(Ndata)
         data_values = data_values[permutation]
@@ -278,10 +280,11 @@ class krr_class():
     def __get_FVU_energy(self, data_values, test_similarities, delta_values=None):
         Epred = self.predict_energy(similarityVec=test_similarities,
                                     delta_values=delta_values)
+        
         MAE = np.mean(np.abs(Epred - data_values))
-        MSE = np.mean((Epred - data_values)**2)
-        var = np.var(data_values)
-        FVU = MSE / var
+        #MSE = np.mean((Epred - data_values)**2)
+        #var = np.var(data_values)
+        #FVU = MSE / var
         return MAE
 
 if __name__ == '__main__':

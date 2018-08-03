@@ -29,7 +29,6 @@ world = mpi.world
 
 import sys
 
-
 def relaxGPAW(structure, label):
     '''
     Relax a structure and saves the trajectory based in the index i
@@ -481,10 +480,11 @@ class globalOptim():
                     with open(self.traj_namebase + 'time.txt', 'a') as f:
                         f.write('{}\t{}\n'.format(t_newCand_end-t_newCand_start, t_sp_end-t_sp_start))
 
-                if self.dualPoint and i > 50:
+                Fnew_max = (Fnew**2).sum(axis=1).max()**0.5
+                if self.dualPoint and i > 50 and Fnew_max > 0.5:
                     a_dp, E_dp = self.get_dualPoint(a_new, Fnew)
                     if E_dp < Enew:
-                        anew = a_dp.copy
+                        a_new = a_dp.copy()
                         Enew = E_dp
                 
             else:
@@ -529,10 +529,12 @@ class globalOptim():
 
     def get_dualPoint(self, a, F):
         max_atom_displacement = 0.08  # The atom with the largest force will be displaced this ammount
-
+        Fmax_flat = 5
+        
         a_dp = a.copy()
         Fmax = np.sqrt((F**2).sum(axis=1).max())
-        pos_dp = a.positions + max_atom_displacement * F/Fmax
+        pos_displace = max_atom_displacement * F/max(Fmax_flat, Fmax)
+        pos_dp = a.positions + pos_displace
         
         a_dp.set_positions(pos_dp)
         
@@ -595,10 +597,9 @@ class globalOptim():
         self.comm.barrier()
                 
         return a_mutated_list
-
     
     def newCandidate_beyes(self, a):
-        N_newCandidates = 50
+        N_newCandidates = 30
         # the maximum number of candidates a core need to make to make N_newCandidates on a single node.
         N_tasks = int(np.ceil(N_newCandidates / self.comm.size))
         # Why not use all cores.
@@ -745,8 +746,8 @@ class globalOptim():
             self.ksaved = self.maxNtrain
             self.MLmodel.remove_data(Nremove)
         """
-        GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1, 3, 5)}
-        #GSkwargs = {'reg': [1e-5], 'sigma': [10]}
+        #GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1, 3, 5)}
+        GSkwargs = {'reg': [1e-5], 'sigma': [30]}
         FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
                                          k=5,
@@ -791,7 +792,7 @@ class globalOptim():
         # Relax
         label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
         krr_calc = krr_calculator(self.MLmodel)
-        a_relaxed = relax_VarianceBreak(a, krr_calc, label, niter_max=2)
+        a_relaxed = relax_VarianceBreak(a, krr_calc, label, niter_max=1)
 
         #self.traj_counter += 1
         return a_relaxed

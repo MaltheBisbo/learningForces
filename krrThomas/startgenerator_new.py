@@ -13,9 +13,8 @@ def random_pos(box):
          described by the input box. """
     p0 = box[0]
     vspan = box[1]
-    r = np.random.random((1, len(vspan))) - 0.5
+    r = np.random.random((1, len(vspan)))
     pos = p0.copy()
-    pos[0:2] += box[2]
     for i in range(len(vspan)):
         pos += vspan[i] * r[0, i]
     return pos
@@ -86,6 +85,10 @@ class StartGenerator(object):
         self.elliptic = elliptic
         self.cluster = cluster
 
+    def get_new_individual(self, parents):
+        a = self.get_new_candidate()
+        return a, 'mutation: startGenerator'
+        
     def get_new_candidate(self,maxlength=2.):
         """ Returns a new candidate. """
         N = len(self.atom_numbers)
