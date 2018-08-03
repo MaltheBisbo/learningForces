@@ -179,7 +179,6 @@ class Angular_Fingerprint(object):
             k1, k2, k3 = key
             self.bondtypes_3body[type_converter[k1],type_converter[k2],type_converter[k3]] = i
         self.bondtypes_3body = self.bondtypes_3body.reshape(-1).tolist()
-        print('cy', bondtypes_3body_keys)
 
         self.Nelements_2body = self.Nbondtypes_2body * self.Nbins1
         self.Nelements_3body = self.Nbondtypes_3body * self.Nbins2
@@ -189,7 +188,6 @@ class Angular_Fingerprint(object):
         else:
             self.Nelements = self.Nelements_2body
 
-        print('Nelements:', self.Nelements)
         # Get relevant neighbour unit-cells
         self.pbc = atoms.get_pbc()
         self.cell = atoms.get_cell()
@@ -350,7 +348,7 @@ class Angular_Fingerprint(object):
 
         cdef Point RijVec, RikVec
         cdef double angle
-        cdef int k, cond_ij, cond_ik
+        cdef int k, cond_ij, cond_ik, type3
         for i in range(Natoms):
             pos_i = pos[i]
             for cell_index1 in range(Ncells):
@@ -601,7 +599,7 @@ class Angular_Fingerprint(object):
 
         cdef Point RikVec, angle_grad_i, angle_grad_j, angle_grad_k
         cdef double angle, cos_angle, a
-        cdef int k, cond_ij, cond_ik, bin_index
+        cdef int k, cond_ij, cond_ik, bin_index, type3
         for i in range(Natoms):
             pos_i = pos[i]
             for cell_index1 in range(Ncells):

@@ -80,7 +80,6 @@ class Angular_Fingerprint(object):
                         elif type2 != type1 and (self.atomic_count[type2] > 1 or sum(self.pbc) > 0):
                             self.bondtypes_3body.append(key)
         Nelements_3body = self.Nbins2 * len(self.bondtypes_3body)
-        print('py', self.bondtypes_3body)
         if use_angular:
             self.Nelements = Nelements_2body + Nelements_3body
         else:

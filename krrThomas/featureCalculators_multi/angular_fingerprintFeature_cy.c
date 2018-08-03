@@ -1568,13 +1568,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
 
-/* Print.proto */
-static int __Pyx_Print(PyObject*, PyObject *, int);
-#if CYTHON_COMPILING_IN_PYPY || PY_MAJOR_VERSION >= 3
-static PyObject* __pyx_print = 0;
-static PyObject* __pyx_print_kwargs = 0;
-#endif
-
 /* RealImag.proto */
 #if CYTHON_CCOMPLEX
   #ifdef __cplusplus
@@ -1678,9 +1671,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_enum__NPY_TYPES(enum NPY_TYPES v
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
-
-/* PrintOne.proto */
-static int __Pyx_PrintOne(PyObject* stream, PyObject *o);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
@@ -1788,7 +1778,6 @@ static const char __pyx_k_n[] = "n";
 static const char __pyx_k_x[] = "x";
 static const char __pyx_k_y[] = "y";
 static const char __pyx_k_z[] = "z";
-static const char __pyx_k_cy[] = "cy";
 static const char __pyx_k_k1[] = "k1";
 static const char __pyx_k_k2[] = "k2";
 static const char __pyx_k_k3[] = "k3";
@@ -1807,7 +1796,6 @@ static const char __pyx_k_cwd[] = "cwd";
 static const char __pyx_k_dim[] = "dim";
 static const char __pyx_k_doc[] = "__doc__";
 static const char __pyx_k_dot[] = "dot";
-static const char __pyx_k_end[] = "end";
 static const char __pyx_k_erf[] = "erf";
 static const char __pyx_k_eta[] = "eta";
 static const char __pyx_k_key[] = "key";
@@ -1824,7 +1812,6 @@ static const char __pyx_k_argv[] = "argv";
 static const char __pyx_k_axis[] = "axis";
 static const char __pyx_k_ceil[] = "ceil";
 static const char __pyx_k_cell[] = "cell";
-static const char __pyx_k_file[] = "file";
 static const char __pyx_k_init[] = "__init__";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_math[] = "math";
@@ -1847,7 +1834,6 @@ static const char __pyx_k_numpy[] = "numpy";
 static const char __pyx_k_pos_i[] = "pos_i";
 static const char __pyx_k_pos_j[] = "pos_j";
 static const char __pyx_k_pos_k[] = "pos_k";
-static const char __pyx_k_print[] = "print";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_type1[] = "type1";
 static const char __pyx_k_type2[] = "type2";
@@ -1918,7 +1904,6 @@ static const char __pyx_k_minbin_lim[] = "minbin_lim";
 static const char __pyx_k_neighbours[] = "neighbours";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_ImportError[] = "ImportError";
-static const char __pyx_k_Nelements_2[] = "Nelements:";
 static const char __pyx_k_cell_index1[] = "cell_index1";
 static const char __pyx_k_cell_index2[] = "cell_index2";
 static const char __pyx_k_feature1_np[] = "feature1_np";
@@ -2007,7 +1992,6 @@ static PyObject *__pyx_n_s_Nbondtypes_2body;
 static PyObject *__pyx_n_s_Nbondtypes_3body;
 static PyObject *__pyx_n_s_Ncells;
 static PyObject *__pyx_n_s_Nelements;
-static PyObject *__pyx_kp_s_Nelements_2;
 static PyObject *__pyx_n_s_Nelements_2body;
 static PyObject *__pyx_n_s_Nelements_3body;
 static PyObject *__pyx_kp_u_Non_native_byte_order_not_suppor;
@@ -2067,14 +2051,12 @@ static PyObject *__pyx_n_s_convert_atom_types;
 static PyObject *__pyx_n_s_cos_angle;
 static PyObject *__pyx_n_s_count;
 static PyObject *__pyx_n_s_cwd;
-static PyObject *__pyx_n_s_cy;
 static PyObject *__pyx_n_s_dim;
 static PyObject *__pyx_n_s_displacement;
 static PyObject *__pyx_n_s_displacement1;
 static PyObject *__pyx_n_s_displacement2;
 static PyObject *__pyx_n_s_doc;
 static PyObject *__pyx_n_s_dot;
-static PyObject *__pyx_n_s_end;
 static PyObject *__pyx_n_s_enumerate;
 static PyObject *__pyx_n_s_erf;
 static PyObject *__pyx_n_s_erfarg_low;
@@ -2096,7 +2078,6 @@ static PyObject *__pyx_n_s_feature_grad2_np;
 static PyObject *__pyx_n_s_feature_grad_np;
 static PyObject *__pyx_n_s_feature_grads;
 static PyObject *__pyx_n_s_feature_np;
-static PyObject *__pyx_n_s_file;
 static PyObject *__pyx_n_s_gamma;
 static PyObject *__pyx_n_s_get_all_featureGradients;
 static PyObject *__pyx_n_s_get_atomic_numbers;
@@ -2162,7 +2143,6 @@ static PyObject *__pyx_n_s_pos_j;
 static PyObject *__pyx_n_s_pos_k;
 static PyObject *__pyx_n_s_pos_np;
 static PyObject *__pyx_n_s_prepare;
-static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_product;
 static PyObject *__pyx_n_s_pyx_vtable;
 static PyObject *__pyx_n_s_qualname;
@@ -5335,7 +5315,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  *             k1, k2, k3 = key
  *             self.bondtypes_3body[type_converter[k1],type_converter[k2],type_converter[k3]] = i             # <<<<<<<<<<<<<<
  *         self.bondtypes_3body = self.bondtypes_3body.reshape(-1).tolist()
- *         print('cy', bondtypes_3body_keys)
+ * 
  */
     __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bondtypes_3body); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 180, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
@@ -5375,8 +5355,8 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  *             k1, k2, k3 = key
  *             self.bondtypes_3body[type_converter[k1],type_converter[k2],type_converter[k3]] = i
  *         self.bondtypes_3body = self.bondtypes_3body.reshape(-1).tolist()             # <<<<<<<<<<<<<<
- *         print('cy', bondtypes_3body_keys)
  * 
+ *         self.Nelements_2body = self.Nbondtypes_2body * self.Nbins1
  */
   __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bondtypes_3body); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
@@ -5410,89 +5390,71 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_bondtypes_3body, __pyx_t_1) < 0) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":182
- *             self.bondtypes_3body[type_converter[k1],type_converter[k2],type_converter[k3]] = i
+  /* "angular_fingerprintFeature_cy.pyx":183
  *         self.bondtypes_3body = self.bondtypes_3body.reshape(-1).tolist()
- *         print('cy', bondtypes_3body_keys)             # <<<<<<<<<<<<<<
- * 
- *         self.Nelements_2body = self.Nbondtypes_2body * self.Nbins1
- */
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_n_s_cy);
-  __Pyx_GIVEREF(__pyx_n_s_cy);
-  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_cy);
-  __Pyx_INCREF(__pyx_v_bondtypes_3body_keys);
-  __Pyx_GIVEREF(__pyx_v_bondtypes_3body_keys);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_bondtypes_3body_keys);
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "angular_fingerprintFeature_cy.pyx":184
- *         print('cy', bondtypes_3body_keys)
  * 
  *         self.Nelements_2body = self.Nbondtypes_2body * self.Nbins1             # <<<<<<<<<<<<<<
  *         self.Nelements_3body = self.Nbondtypes_3body * self.Nbins2
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbondtypes_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbondtypes_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body, __pyx_t_5) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body, __pyx_t_5) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":185
+  /* "angular_fingerprintFeature_cy.pyx":184
  * 
  *         self.Nelements_2body = self.Nbondtypes_2body * self.Nbins1
  *         self.Nelements_3body = self.Nbondtypes_3body * self.Nbins2             # <<<<<<<<<<<<<<
  * 
  *         if use_angular:
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbondtypes_3body); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbondtypes_3body); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_t_5, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_t_5, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_3body, __pyx_t_1) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_3body, __pyx_t_1) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":187
+  /* "angular_fingerprintFeature_cy.pyx":186
  *         self.Nelements_3body = self.Nbondtypes_3body * self.Nbins2
  * 
  *         if use_angular:             # <<<<<<<<<<<<<<
  *             self.Nelements = self.Nelements_2body + self.Nelements_3body
  *         else:
  */
-  __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_v_use_angular); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_v_use_angular); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
   if (__pyx_t_13) {
 
-    /* "angular_fingerprintFeature_cy.pyx":188
+    /* "angular_fingerprintFeature_cy.pyx":187
  * 
  *         if use_angular:
  *             self.Nelements = self.Nelements_2body + self.Nelements_3body             # <<<<<<<<<<<<<<
  *         else:
  *             self.Nelements = self.Nelements_2body
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_3body); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_3body); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 188, __pyx_L1_error)
+    __pyx_t_5 = PyNumber_Add(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 187, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nelements, __pyx_t_5) < 0) __PYX_ERR(0, 188, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nelements, __pyx_t_5) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "angular_fingerprintFeature_cy.pyx":187
+    /* "angular_fingerprintFeature_cy.pyx":186
  *         self.Nelements_3body = self.Nbondtypes_3body * self.Nbins2
  * 
  *         if use_angular:             # <<<<<<<<<<<<<<
@@ -5502,148 +5464,128 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     goto __pyx_L49;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":190
+  /* "angular_fingerprintFeature_cy.pyx":189
  *             self.Nelements = self.Nelements_2body + self.Nelements_3body
  *         else:
  *             self.Nelements = self.Nelements_2body             # <<<<<<<<<<<<<<
  * 
- *         print('Nelements:', self.Nelements)
+ *         # Get relevant neighbour unit-cells
  */
   /*else*/ {
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 190, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 189, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nelements, __pyx_t_5) < 0) __PYX_ERR(0, 190, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_Nelements, __pyx_t_5) < 0) __PYX_ERR(0, 189, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __pyx_L49:;
 
   /* "angular_fingerprintFeature_cy.pyx":192
- *             self.Nelements = self.Nelements_2body
  * 
- *         print('Nelements:', self.Nelements)             # <<<<<<<<<<<<<<
- *         # Get relevant neighbour unit-cells
- *         self.pbc = atoms.get_pbc()
- */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 192, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 192, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_kp_s_Nelements_2);
-  __Pyx_GIVEREF(__pyx_kp_s_Nelements_2);
-  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_kp_s_Nelements_2);
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_5);
-  __pyx_t_5 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "angular_fingerprintFeature_cy.pyx":194
- *         print('Nelements:', self.Nelements)
  *         # Get relevant neighbour unit-cells
  *         self.pbc = atoms.get_pbc()             # <<<<<<<<<<<<<<
  *         self.cell = atoms.get_cell()
  *         self.neighbourcells_disp = self.__get_neighbour_cells_displacement(self.pbc, self.cell)
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_pbc); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 194, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_pbc); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_1 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_5);
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
     if (likely(__pyx_t_1)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
       __Pyx_INCREF(__pyx_t_1);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_5, function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
   if (__pyx_t_1) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 192, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 192, __pyx_L1_error)
   }
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_pbc, __pyx_t_2) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_pbc, __pyx_t_5) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":195
+  /* "angular_fingerprintFeature_cy.pyx":193
  *         # Get relevant neighbour unit-cells
  *         self.pbc = atoms.get_pbc()
  *         self.cell = atoms.get_cell()             # <<<<<<<<<<<<<<
  *         self.neighbourcells_disp = self.__get_neighbour_cells_displacement(self.pbc, self.cell)
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_cell); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 195, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_cell); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 193, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_1 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_5);
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
     if (likely(__pyx_t_1)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
       __Pyx_INCREF(__pyx_t_1);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_5, function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
   if (__pyx_t_1) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 193, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 193, __pyx_L1_error)
   }
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_cell, __pyx_t_2) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_cell, __pyx_t_5) < 0) __PYX_ERR(0, 193, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":196
+  /* "angular_fingerprintFeature_cy.pyx":194
  *         self.pbc = atoms.get_pbc()
  *         self.cell = atoms.get_cell()
  *         self.neighbourcells_disp = self.__get_neighbour_cells_displacement(self.pbc, self.cell)             # <<<<<<<<<<<<<<
  * 
  *     def get_feature(self, atoms):
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Angular_Fingerprint__get_neighb); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 196, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pbc); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Angular_Fingerprint__get_neighb); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pbc); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cell); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cell); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __pyx_t_3 = NULL;
   __pyx_t_20 = 0;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_5);
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
     if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
       __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_5, function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
       __pyx_t_20 = 1;
     }
   }
   #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_5)) {
+  if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_1, __pyx_t_10};
-    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   } else
   #endif
   #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_1, __pyx_t_10};
-    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_20); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 196, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_20); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -5654,13 +5596,13 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_20, __pyx_t_10);
     __pyx_t_1 = 0;
     __pyx_t_10 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 194, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_neighbourcells_disp, __pyx_t_2) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_neighbourcells_disp, __pyx_t_5) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
   /* "angular_fingerprintFeature_cy.pyx":97
  *     """ comparator for construction of angular fingerprints
@@ -5706,7 +5648,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   return __pyx_r;
 }
 
-/* "angular_fingerprintFeature_cy.pyx":198
+/* "angular_fingerprintFeature_cy.pyx":196
  *         self.neighbourcells_disp = self.__get_neighbour_cells_displacement(self.pbc, self.cell)
  * 
  *     def get_feature(self, atoms):             # <<<<<<<<<<<<<<
@@ -5747,11 +5689,11 @@ static PyObject *__pyx_pw_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_atoms)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_feature", 1, 2, 2, 1); __PYX_ERR(0, 198, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_feature", 1, 2, 2, 1); __PYX_ERR(0, 196, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_feature") < 0)) __PYX_ERR(0, 198, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_feature") < 0)) __PYX_ERR(0, 196, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -5764,7 +5706,7 @@ static PyObject *__pyx_pw_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_feature", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 198, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_feature", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 196, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("angular_fingerprintFeature_cy.Angular_Fingerprint.get_feature", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5844,6 +5786,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __pyx_t_29angular_fingerprintFeature_cy_Point __pyx_v_RikVec;
   double __pyx_v_angle;
   int __pyx_v_k;
+  int __pyx_v_type3;
   __pyx_t_29angular_fingerprintFeature_cy_Point __pyx_v_pos_i;
   int __pyx_v_cell_index1;
   __pyx_t_29angular_fingerprintFeature_cy_Point __pyx_v_displacement1;
@@ -5853,7 +5796,6 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   long __pyx_v_k_start;
   __pyx_t_29angular_fingerprintFeature_cy_Point __pyx_v_pos_k;
   double __pyx_v_Rik;
-  PyObject *__pyx_v_type3 = NULL;
   PyObject *__pyx_v_feature2_np = NULL;
   PyObject *__pyx_v_feature_np = NULL;
   PyObject *__pyx_r = NULL;
@@ -5891,298 +5833,298 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   int __pyx_t_31;
   __Pyx_RefNannySetupContext("get_feature", 0);
 
-  /* "angular_fingerprintFeature_cy.pyx":201
+  /* "angular_fingerprintFeature_cy.pyx":199
  *         """
  *         """
  *         cdef double Rc1 = self.Rc1             # <<<<<<<<<<<<<<
  *         cdef double Rc2 = self.Rc2
  *         cdef double binwidth1 = self.binwidth1
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Rc1 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":202
+  /* "angular_fingerprintFeature_cy.pyx":200
  *         """
  *         cdef double Rc1 = self.Rc1
  *         cdef double Rc2 = self.Rc2             # <<<<<<<<<<<<<<
  *         cdef double binwidth1 = self.binwidth1
  *         cdef double binwidth2 = self.binwidth2
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Rc2 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":203
+  /* "angular_fingerprintFeature_cy.pyx":201
  *         cdef double Rc1 = self.Rc1
  *         cdef double Rc2 = self.Rc2
  *         cdef double binwidth1 = self.binwidth1             # <<<<<<<<<<<<<<
  *         cdef double binwidth2 = self.binwidth2
  *         cdef int Nbins1 = self.Nbins1
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 203, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_binwidth1 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":204
+  /* "angular_fingerprintFeature_cy.pyx":202
  *         cdef double Rc2 = self.Rc2
  *         cdef double binwidth1 = self.binwidth1
  *         cdef double binwidth2 = self.binwidth2             # <<<<<<<<<<<<<<
  *         cdef int Nbins1 = self.Nbins1
  *         cdef int Nbins2 = self.Nbins2
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 202, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_binwidth2 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":205
+  /* "angular_fingerprintFeature_cy.pyx":203
  *         cdef double binwidth1 = self.binwidth1
  *         cdef double binwidth2 = self.binwidth2
  *         cdef int Nbins1 = self.Nbins1             # <<<<<<<<<<<<<<
  *         cdef int Nbins2 = self.Nbins2
  *         cdef double sigma1 = self.sigma1
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 203, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nbins1 = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":206
+  /* "angular_fingerprintFeature_cy.pyx":204
  *         cdef double binwidth2 = self.binwidth2
  *         cdef int Nbins1 = self.Nbins1
  *         cdef int Nbins2 = self.Nbins2             # <<<<<<<<<<<<<<
  *         cdef double sigma1 = self.sigma1
  *         cdef double sigma2 = self.sigma2
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nbins2 = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":207
+  /* "angular_fingerprintFeature_cy.pyx":205
  *         cdef int Nbins1 = self.Nbins1
  *         cdef int Nbins2 = self.Nbins2
  *         cdef double sigma1 = self.sigma1             # <<<<<<<<<<<<<<
  *         cdef double sigma2 = self.sigma2
  *         cdef int nsigma = self.nsigma
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_sigma1 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":208
+  /* "angular_fingerprintFeature_cy.pyx":206
  *         cdef int Nbins2 = self.Nbins2
  *         cdef double sigma1 = self.sigma1
  *         cdef double sigma2 = self.sigma2             # <<<<<<<<<<<<<<
  *         cdef int nsigma = self.nsigma
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_sigma2 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":209
+  /* "angular_fingerprintFeature_cy.pyx":207
  *         cdef double sigma1 = self.sigma1
  *         cdef double sigma2 = self.sigma2
  *         cdef int nsigma = self.nsigma             # <<<<<<<<<<<<<<
  * 
  *         cdef double eta = self.eta
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsigma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsigma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_nsigma = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":211
+  /* "angular_fingerprintFeature_cy.pyx":209
  *         cdef int nsigma = self.nsigma
  * 
  *         cdef double eta = self.eta             # <<<<<<<<<<<<<<
  *         cdef double gamma = self.gamma
  *         cdef use_angular = self.use_angular
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_eta); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_eta); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_eta = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":212
+  /* "angular_fingerprintFeature_cy.pyx":210
  * 
  *         cdef double eta = self.eta
  *         cdef double gamma = self.gamma             # <<<<<<<<<<<<<<
  *         cdef use_angular = self.use_angular
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_gamma = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":213
+  /* "angular_fingerprintFeature_cy.pyx":211
  *         cdef double eta = self.eta
  *         cdef double gamma = self.gamma
  *         cdef use_angular = self.use_angular             # <<<<<<<<<<<<<<
  * 
  *         cdef double volume = self.volume
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_use_angular); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_use_angular); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_use_angular = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":215
+  /* "angular_fingerprintFeature_cy.pyx":213
  *         cdef use_angular = self.use_angular
  * 
  *         cdef double volume = self.volume             # <<<<<<<<<<<<<<
  *         cdef int dim = self.dim
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_volume); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_volume); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_volume = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":216
+  /* "angular_fingerprintFeature_cy.pyx":214
  * 
  *         cdef double volume = self.volume
  *         cdef int dim = self.dim             # <<<<<<<<<<<<<<
  * 
  *         cdef double m1 = self.m1
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_dim = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":218
+  /* "angular_fingerprintFeature_cy.pyx":216
  *         cdef int dim = self.dim
  * 
  *         cdef double m1 = self.m1             # <<<<<<<<<<<<<<
  *         cdef double m2 = self.m2
  *         cdef double smearing_norm1 = self.smearing_norm1
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_m1 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":219
+  /* "angular_fingerprintFeature_cy.pyx":217
  * 
  *         cdef double m1 = self.m1
  *         cdef double m2 = self.m2             # <<<<<<<<<<<<<<
  *         cdef double smearing_norm1 = self.smearing_norm1
  *         cdef double smearing_norm2 = self.smearing_norm2
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 219, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_m2 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":220
+  /* "angular_fingerprintFeature_cy.pyx":218
  *         cdef double m1 = self.m1
  *         cdef double m2 = self.m2
  *         cdef double smearing_norm1 = self.smearing_norm1             # <<<<<<<<<<<<<<
  *         cdef double smearing_norm2 = self.smearing_norm2
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_smearing_norm1 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":221
+  /* "angular_fingerprintFeature_cy.pyx":219
  *         cdef double m2 = self.m2
  *         cdef double smearing_norm1 = self.smearing_norm1
  *         cdef double smearing_norm2 = self.smearing_norm2             # <<<<<<<<<<<<<<
  * 
  *         cdef int Nelements_2body = self.Nelements_2body
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 219, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_smearing_norm2 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":223
+  /* "angular_fingerprintFeature_cy.pyx":221
  *         cdef double smearing_norm2 = self.smearing_norm2
  * 
  *         cdef int Nelements_2body = self.Nelements_2body             # <<<<<<<<<<<<<<
  *         cdef int Nelements_3body = self.Nelements_3body
  *         cdef int Nelements = self.Nelements
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 223, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nelements_2body = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":224
+  /* "angular_fingerprintFeature_cy.pyx":222
  * 
  *         cdef int Nelements_2body = self.Nelements_2body
  *         cdef int Nelements_3body = self.Nelements_3body             # <<<<<<<<<<<<<<
  *         cdef int Nelements = self.Nelements
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nelements_3body = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":225
+  /* "angular_fingerprintFeature_cy.pyx":223
  *         cdef int Nelements_2body = self.Nelements_2body
  *         cdef int Nelements_3body = self.Nelements_3body
  *         cdef int Nelements = self.Nelements             # <<<<<<<<<<<<<<
  * 
  *         # Memory allocation pool
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nelements = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":229
+  /* "angular_fingerprintFeature_cy.pyx":227
  *         # Memory allocation pool
  *         cdef Pool mem
  *         mem = Pool()             # <<<<<<<<<<<<<<
  * 
  *         cell = atoms.get_cell()
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_5cymem_5cymem_Pool)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_5cymem_5cymem_Pool)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_mem = ((struct __pyx_obj_5cymem_5cymem_Pool *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":231
+  /* "angular_fingerprintFeature_cy.pyx":229
  *         mem = Pool()
  * 
  *         cell = atoms.get_cell()             # <<<<<<<<<<<<<<
  *         cdef int Natoms = self.Natoms
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_cell); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 231, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_cell); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 229, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -6195,37 +6137,37 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_cell = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":232
+  /* "angular_fingerprintFeature_cy.pyx":230
  * 
  *         cell = atoms.get_cell()
  *         cdef int Natoms = self.Natoms             # <<<<<<<<<<<<<<
  * 
  *         # Get positions and convert to Point-struct
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Natoms); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Natoms); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Natoms = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":235
+  /* "angular_fingerprintFeature_cy.pyx":233
  * 
  *         # Get positions and convert to Point-struct
  *         cdef list pos_np = atoms.get_positions().tolist()             # <<<<<<<<<<<<<<
  *         cdef Point *pos
  *         pos = <Point*>mem.alloc(Natoms, sizeof(Point))
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_positions); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_positions); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -6238,14 +6180,14 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (__pyx_t_6) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 235, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   } else {
-    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 235, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 233, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_tolist); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_tolist); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -6259,28 +6201,28 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 235, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 233, __pyx_L1_error)
   __pyx_v_pos_np = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":237
+  /* "angular_fingerprintFeature_cy.pyx":235
  *         cdef list pos_np = atoms.get_positions().tolist()
  *         cdef Point *pos
  *         pos = <Point*>mem.alloc(Natoms, sizeof(Point))             # <<<<<<<<<<<<<<
  *         cdef int m
  *         for m in range(Natoms):
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Natoms, (sizeof(__pyx_t_29angular_fingerprintFeature_cy_Point))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Natoms, (sizeof(__pyx_t_29angular_fingerprintFeature_cy_Point))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 235, __pyx_L1_error)
   __pyx_v_pos = ((__pyx_t_29angular_fingerprintFeature_cy_Point *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":239
+  /* "angular_fingerprintFeature_cy.pyx":237
  *         pos = <Point*>mem.alloc(Natoms, sizeof(Point))
  *         cdef int m
  *         for m in range(Natoms):             # <<<<<<<<<<<<<<
@@ -6292,7 +6234,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":240
+    /* "angular_fingerprintFeature_cy.pyx":238
  *         cdef int m
  *         for m in range(Natoms):
  *             pos[m].coord[0] = pos_np[m][0]             # <<<<<<<<<<<<<<
@@ -6301,18 +6243,18 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_pos_np == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 240, __pyx_L1_error)
+      __PYX_ERR(0, 238, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 240, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L1_error)
+    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     ((__pyx_v_pos[__pyx_v_m]).coord[0]) = __pyx_t_2;
 
-    /* "angular_fingerprintFeature_cy.pyx":241
+    /* "angular_fingerprintFeature_cy.pyx":239
  *         for m in range(Natoms):
  *             pos[m].coord[0] = pos_np[m][0]
  *             pos[m].coord[1] = pos_np[m][1]             # <<<<<<<<<<<<<<
@@ -6321,18 +6263,18 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_pos_np == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 241, __pyx_L1_error)
+      __PYX_ERR(0, 239, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 241, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 239, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 241, __pyx_L1_error)
+    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 239, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     ((__pyx_v_pos[__pyx_v_m]).coord[1]) = __pyx_t_2;
 
-    /* "angular_fingerprintFeature_cy.pyx":242
+    /* "angular_fingerprintFeature_cy.pyx":240
  *             pos[m].coord[0] = pos_np[m][0]
  *             pos[m].coord[1] = pos_np[m][1]
  *             pos[m].coord[2] = pos_np[m][2]             # <<<<<<<<<<<<<<
@@ -6341,55 +6283,55 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_pos_np == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 242, __pyx_L1_error)
+      __PYX_ERR(0, 240, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 242, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 242, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 240, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 242, __pyx_L1_error)
+    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     ((__pyx_v_pos[__pyx_v_m]).coord[2]) = __pyx_t_2;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":245
+  /* "angular_fingerprintFeature_cy.pyx":243
  * 
  *         # Get neighbourcells and convert to Point-struct
  *         cdef int Ncells = len(self.neighbourcells_disp)             # <<<<<<<<<<<<<<
  *         cdef list cell_displacements_old = self.neighbourcells_disp
  *         cdef Point *cell_displacements
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_neighbourcells_disp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_neighbourcells_disp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_10 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 245, __pyx_L1_error)
+  __pyx_t_10 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_Ncells = __pyx_t_10;
 
-  /* "angular_fingerprintFeature_cy.pyx":246
+  /* "angular_fingerprintFeature_cy.pyx":244
  *         # Get neighbourcells and convert to Point-struct
  *         cdef int Ncells = len(self.neighbourcells_disp)
  *         cdef list cell_displacements_old = self.neighbourcells_disp             # <<<<<<<<<<<<<<
  *         cdef Point *cell_displacements
  *         cell_displacements = <Point*>mem.alloc(Ncells, sizeof(Point))
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_neighbourcells_disp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 246, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_neighbourcells_disp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (!(likely(PyList_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 246, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 244, __pyx_L1_error)
   __pyx_v_cell_displacements_old = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":248
+  /* "angular_fingerprintFeature_cy.pyx":246
  *         cdef list cell_displacements_old = self.neighbourcells_disp
  *         cdef Point *cell_displacements
  *         cell_displacements = <Point*>mem.alloc(Ncells, sizeof(Point))             # <<<<<<<<<<<<<<
  *         for m in range(Ncells):
  *             cell_displacements[m].coord[0] = cell_displacements_old[m][0]
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Ncells, (sizeof(__pyx_t_29angular_fingerprintFeature_cy_Point))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Ncells, (sizeof(__pyx_t_29angular_fingerprintFeature_cy_Point))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 246, __pyx_L1_error)
   __pyx_v_cell_displacements = ((__pyx_t_29angular_fingerprintFeature_cy_Point *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":249
+  /* "angular_fingerprintFeature_cy.pyx":247
  *         cdef Point *cell_displacements
  *         cell_displacements = <Point*>mem.alloc(Ncells, sizeof(Point))
  *         for m in range(Ncells):             # <<<<<<<<<<<<<<
@@ -6401,7 +6343,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":250
+    /* "angular_fingerprintFeature_cy.pyx":248
  *         cell_displacements = <Point*>mem.alloc(Ncells, sizeof(Point))
  *         for m in range(Ncells):
  *             cell_displacements[m].coord[0] = cell_displacements_old[m][0]             # <<<<<<<<<<<<<<
@@ -6410,18 +6352,18 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_cell_displacements_old == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 250, __pyx_L1_error)
+      __PYX_ERR(0, 248, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_cell_displacements_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_cell_displacements_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 248, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 248, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     ((__pyx_v_cell_displacements[__pyx_v_m]).coord[0]) = __pyx_t_2;
 
-    /* "angular_fingerprintFeature_cy.pyx":251
+    /* "angular_fingerprintFeature_cy.pyx":249
  *         for m in range(Ncells):
  *             cell_displacements[m].coord[0] = cell_displacements_old[m][0]
  *             cell_displacements[m].coord[1] = cell_displacements_old[m][1]             # <<<<<<<<<<<<<<
@@ -6430,18 +6372,18 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_cell_displacements_old == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 251, __pyx_L1_error)
+      __PYX_ERR(0, 249, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_cell_displacements_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_cell_displacements_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 251, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 249, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 251, __pyx_L1_error)
+    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     ((__pyx_v_cell_displacements[__pyx_v_m]).coord[1]) = __pyx_t_2;
 
-    /* "angular_fingerprintFeature_cy.pyx":252
+    /* "angular_fingerprintFeature_cy.pyx":250
  *             cell_displacements[m].coord[0] = cell_displacements_old[m][0]
  *             cell_displacements[m].coord[1] = cell_displacements_old[m][1]
  *             cell_displacements[m].coord[2] = cell_displacements_old[m][2]             # <<<<<<<<<<<<<<
@@ -6450,68 +6392,68 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_cell_displacements_old == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 252, __pyx_L1_error)
+      __PYX_ERR(0, 250, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_cell_displacements_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_cell_displacements_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 250, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     ((__pyx_v_cell_displacements[__pyx_v_m]).coord[2]) = __pyx_t_2;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":255
+  /* "angular_fingerprintFeature_cy.pyx":253
  * 
  *         # Convert 2body bondtype list into c-array
  *         cdef int Ntypes = self.Ntypes             # <<<<<<<<<<<<<<
  *         cdef int Nbondtypes_2body = self.Nbondtypes_2body
  *         cdef list bondtypes_2body_old = self.bondtypes_2body
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Ntypes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Ntypes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Ntypes = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":256
+  /* "angular_fingerprintFeature_cy.pyx":254
  *         # Convert 2body bondtype list into c-array
  *         cdef int Ntypes = self.Ntypes
  *         cdef int Nbondtypes_2body = self.Nbondtypes_2body             # <<<<<<<<<<<<<<
  *         cdef list bondtypes_2body_old = self.bondtypes_2body
  *         cdef int *bondtypes_2body
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbondtypes_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbondtypes_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nbondtypes_2body = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":257
+  /* "angular_fingerprintFeature_cy.pyx":255
  *         cdef int Ntypes = self.Ntypes
  *         cdef int Nbondtypes_2body = self.Nbondtypes_2body
  *         cdef list bondtypes_2body_old = self.bondtypes_2body             # <<<<<<<<<<<<<<
  *         cdef int *bondtypes_2body
  *         bondtypes_2body = <int*>mem.alloc(Ntypes*Ntypes, sizeof(int))
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bondtypes_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bondtypes_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 257, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 255, __pyx_L1_error)
   __pyx_v_bondtypes_2body_old = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":259
+  /* "angular_fingerprintFeature_cy.pyx":257
  *         cdef list bondtypes_2body_old = self.bondtypes_2body
  *         cdef int *bondtypes_2body
  *         bondtypes_2body = <int*>mem.alloc(Ntypes*Ntypes, sizeof(int))             # <<<<<<<<<<<<<<
  *         for m in range(Ntypes*Ntypes):
  *             bondtypes_2body[m] = bondtypes_2body_old[m]
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, (__pyx_v_Ntypes * __pyx_v_Ntypes), (sizeof(int))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 259, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, (__pyx_v_Ntypes * __pyx_v_Ntypes), (sizeof(int))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 257, __pyx_L1_error)
   __pyx_v_bondtypes_2body = ((int *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":260
+  /* "angular_fingerprintFeature_cy.pyx":258
  *         cdef int *bondtypes_2body
  *         bondtypes_2body = <int*>mem.alloc(Ntypes*Ntypes, sizeof(int))
  *         for m in range(Ntypes*Ntypes):             # <<<<<<<<<<<<<<
@@ -6523,7 +6465,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":261
+    /* "angular_fingerprintFeature_cy.pyx":259
  *         bondtypes_2body = <int*>mem.alloc(Ntypes*Ntypes, sizeof(int))
  *         for m in range(Ntypes*Ntypes):
  *             bondtypes_2body[m] = bondtypes_2body_old[m]             # <<<<<<<<<<<<<<
@@ -6532,25 +6474,25 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_bondtypes_2body_old == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 261, __pyx_L1_error)
+      __PYX_ERR(0, 259, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_bondtypes_2body_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_bondtypes_2body_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 259, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 259, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     (__pyx_v_bondtypes_2body[__pyx_v_m]) = __pyx_t_11;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":264
+  /* "angular_fingerprintFeature_cy.pyx":262
  * 
  *         # Get converted atom Ntypes
  *         cdef list num_converted_old = convert_atom_types(atoms.get_atomic_numbers())             # <<<<<<<<<<<<<<
  *         cdef int *num_converted
  *         num_converted = <int*>mem.alloc(Natoms, sizeof(int))
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_convert_atom_types); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_convert_atom_types); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 262, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_atomic_numbers); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_atomic_numbers); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 262, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_12 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -6563,10 +6505,10 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (__pyx_t_12) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 264, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 262, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   } else {
-    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 264, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 262, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -6581,14 +6523,14 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (!__pyx_t_6) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_4};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -6597,40 +6539,40 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_4};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_12 = PyTuple_New(1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_12 = PyTuple_New(1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_6); __pyx_t_6 = NULL;
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_12, 0+1, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_12, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_12, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 264, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 262, __pyx_L1_error)
   __pyx_v_num_converted_old = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":266
+  /* "angular_fingerprintFeature_cy.pyx":264
  *         cdef list num_converted_old = convert_atom_types(atoms.get_atomic_numbers())
  *         cdef int *num_converted
  *         num_converted = <int*>mem.alloc(Natoms, sizeof(int))             # <<<<<<<<<<<<<<
  *         for m in range(Natoms):
  *             num_converted[m] = num_converted_old[m]
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Natoms, (sizeof(int))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Natoms, (sizeof(int))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 264, __pyx_L1_error)
   __pyx_v_num_converted = ((int *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":267
+  /* "angular_fingerprintFeature_cy.pyx":265
  *         cdef int *num_converted
  *         num_converted = <int*>mem.alloc(Natoms, sizeof(int))
  *         for m in range(Natoms):             # <<<<<<<<<<<<<<
@@ -6642,7 +6584,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":268
+    /* "angular_fingerprintFeature_cy.pyx":266
  *         num_converted = <int*>mem.alloc(Natoms, sizeof(int))
  *         for m in range(Natoms):
  *             num_converted[m] = num_converted_old[m]             # <<<<<<<<<<<<<<
@@ -6651,26 +6593,26 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_num_converted_old == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 268, __pyx_L1_error)
+      __PYX_ERR(0, 266, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_num_converted_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_num_converted_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 268, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     (__pyx_v_num_converted[__pyx_v_m]) = __pyx_t_11;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":274
+  /* "angular_fingerprintFeature_cy.pyx":272
  *         # Initialize radial feature
  *         cdef double *feature1
  *         feature1 = <double*>mem.alloc(Nelements_2body, sizeof(double))             # <<<<<<<<<<<<<<
  * 
  *         cdef int num_pairs, center_bin, minbin_lim, maxbin_lim, newbin, bondtype_index, type1, type2
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Nelements_2body, (sizeof(double))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 274, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Nelements_2body, (sizeof(double))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 272, __pyx_L1_error)
   __pyx_v_feature1 = ((double *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":279
+  /* "angular_fingerprintFeature_cy.pyx":277
  *         cdef double Rij, normalization, binpos, c, erfarg_low, erfarg_up, value
  *         cdef int i, j, n
  *         for i in range(Natoms):             # <<<<<<<<<<<<<<
@@ -6682,7 +6624,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":280
+    /* "angular_fingerprintFeature_cy.pyx":278
  *         cdef int i, j, n
  *         for i in range(Natoms):
  *             for cell_index in range(Ncells):             # <<<<<<<<<<<<<<
@@ -6694,7 +6636,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
       __pyx_v_cell_index = __pyx_t_14;
 
-      /* "angular_fingerprintFeature_cy.pyx":281
+      /* "angular_fingerprintFeature_cy.pyx":279
  *         for i in range(Natoms):
  *             for cell_index in range(Ncells):
  *                 displacement = cell_displacements[cell_index]             # <<<<<<<<<<<<<<
@@ -6703,7 +6645,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
       __pyx_v_displacement = (__pyx_v_cell_displacements[__pyx_v_cell_index]);
 
-      /* "angular_fingerprintFeature_cy.pyx":282
+      /* "angular_fingerprintFeature_cy.pyx":280
  *             for cell_index in range(Ncells):
  *                 displacement = cell_displacements[cell_index]
  *                 for j in range(Natoms):             # <<<<<<<<<<<<<<
@@ -6715,7 +6657,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
         __pyx_v_j = __pyx_t_17;
 
-        /* "angular_fingerprintFeature_cy.pyx":283
+        /* "angular_fingerprintFeature_cy.pyx":281
  *                 displacement = cell_displacements[cell_index]
  *                 for j in range(Natoms):
  *                     Rij = euclidean(pos[i], add(pos[j], displacement))             # <<<<<<<<<<<<<<
@@ -6724,7 +6666,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_Rij = __pyx_f_29angular_fingerprintFeature_cy_euclidean((__pyx_v_pos[__pyx_v_i]), __pyx_f_29angular_fingerprintFeature_cy_add((__pyx_v_pos[__pyx_v_j]), __pyx_v_displacement));
 
-        /* "angular_fingerprintFeature_cy.pyx":286
+        /* "angular_fingerprintFeature_cy.pyx":284
  * 
  *                     # Stop if distance too long or atoms are the same one.
  *                     if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:             # <<<<<<<<<<<<<<
@@ -6742,7 +6684,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         __pyx_L18_bool_binop_done:;
         if (__pyx_t_18) {
 
-          /* "angular_fingerprintFeature_cy.pyx":287
+          /* "angular_fingerprintFeature_cy.pyx":285
  *                     # Stop if distance too long or atoms are the same one.
  *                     if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:
  *                         continue             # <<<<<<<<<<<<<<
@@ -6751,7 +6693,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           goto __pyx_L15_continue;
 
-          /* "angular_fingerprintFeature_cy.pyx":286
+          /* "angular_fingerprintFeature_cy.pyx":284
  * 
  *                     # Stop if distance too long or atoms are the same one.
  *                     if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:             # <<<<<<<<<<<<<<
@@ -6760,7 +6702,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         }
 
-        /* "angular_fingerprintFeature_cy.pyx":290
+        /* "angular_fingerprintFeature_cy.pyx":288
  * 
  *                     # determine bondtype
  *                     if num_converted[i] <= num_converted[j]:             # <<<<<<<<<<<<<<
@@ -6770,7 +6712,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         __pyx_t_18 = (((__pyx_v_num_converted[__pyx_v_i]) <= (__pyx_v_num_converted[__pyx_v_j])) != 0);
         if (__pyx_t_18) {
 
-          /* "angular_fingerprintFeature_cy.pyx":291
+          /* "angular_fingerprintFeature_cy.pyx":289
  *                     # determine bondtype
  *                     if num_converted[i] <= num_converted[j]:
  *                         type1 = num_converted[i]             # <<<<<<<<<<<<<<
@@ -6779,7 +6721,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           __pyx_v_type1 = (__pyx_v_num_converted[__pyx_v_i]);
 
-          /* "angular_fingerprintFeature_cy.pyx":292
+          /* "angular_fingerprintFeature_cy.pyx":290
  *                     if num_converted[i] <= num_converted[j]:
  *                         type1 = num_converted[i]
  *                         type2 = num_converted[j]             # <<<<<<<<<<<<<<
@@ -6788,7 +6730,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           __pyx_v_type2 = (__pyx_v_num_converted[__pyx_v_j]);
 
-          /* "angular_fingerprintFeature_cy.pyx":290
+          /* "angular_fingerprintFeature_cy.pyx":288
  * 
  *                     # determine bondtype
  *                     if num_converted[i] <= num_converted[j]:             # <<<<<<<<<<<<<<
@@ -6798,7 +6740,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           goto __pyx_L20;
         }
 
-        /* "angular_fingerprintFeature_cy.pyx":294
+        /* "angular_fingerprintFeature_cy.pyx":292
  *                         type2 = num_converted[j]
  *                     else:
  *                         type1 = num_converted[j]             # <<<<<<<<<<<<<<
@@ -6808,7 +6750,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         /*else*/ {
           __pyx_v_type1 = (__pyx_v_num_converted[__pyx_v_j]);
 
-          /* "angular_fingerprintFeature_cy.pyx":295
+          /* "angular_fingerprintFeature_cy.pyx":293
  *                     else:
  *                         type1 = num_converted[j]
  *                         type2 = num_converted[i]             # <<<<<<<<<<<<<<
@@ -6819,7 +6761,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         }
         __pyx_L20:;
 
-        /* "angular_fingerprintFeature_cy.pyx":296
+        /* "angular_fingerprintFeature_cy.pyx":294
  *                         type1 = num_converted[j]
  *                         type2 = num_converted[i]
  *                     bondtype_index = Nbins1*bondtypes_2body[Ntypes*type1+type2]             # <<<<<<<<<<<<<<
@@ -6828,7 +6770,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_bondtype_index = (__pyx_v_Nbins1 * (__pyx_v_bondtypes_2body[((__pyx_v_Ntypes * __pyx_v_type1) + __pyx_v_type2)]));
 
-        /* "angular_fingerprintFeature_cy.pyx":299
+        /* "angular_fingerprintFeature_cy.pyx":297
  * 
  *                     # Calculate normalization
  *                     num_pairs = Natoms*Natoms             # <<<<<<<<<<<<<<
@@ -6837,7 +6779,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_num_pairs = (__pyx_v_Natoms * __pyx_v_Natoms);
 
-        /* "angular_fingerprintFeature_cy.pyx":300
+        /* "angular_fingerprintFeature_cy.pyx":298
  *                     # Calculate normalization
  *                     num_pairs = Natoms*Natoms
  *                     normalization = 1./smearing_norm1             # <<<<<<<<<<<<<<
@@ -6846,11 +6788,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         if (unlikely(__pyx_v_smearing_norm1 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 300, __pyx_L1_error)
+          __PYX_ERR(0, 298, __pyx_L1_error)
         }
         __pyx_v_normalization = (1. / __pyx_v_smearing_norm1);
 
-        /* "angular_fingerprintFeature_cy.pyx":301
+        /* "angular_fingerprintFeature_cy.pyx":299
  *                     num_pairs = Natoms*Natoms
  *                     normalization = 1./smearing_norm1
  *                     normalization /= 4*M_PI*Rij*Rij * binwidth1 * num_pairs/volume             # <<<<<<<<<<<<<<
@@ -6860,16 +6802,16 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         __pyx_t_2 = (((((4.0 * M_PI) * __pyx_v_Rij) * __pyx_v_Rij) * __pyx_v_binwidth1) * __pyx_v_num_pairs);
         if (unlikely(__pyx_v_volume == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 301, __pyx_L1_error)
+          __PYX_ERR(0, 299, __pyx_L1_error)
         }
         __pyx_t_20 = (__pyx_t_2 / __pyx_v_volume);
         if (unlikely(__pyx_t_20 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 301, __pyx_L1_error)
+          __PYX_ERR(0, 299, __pyx_L1_error)
         }
         __pyx_v_normalization = (__pyx_v_normalization / __pyx_t_20);
 
-        /* "angular_fingerprintFeature_cy.pyx":304
+        /* "angular_fingerprintFeature_cy.pyx":302
  * 
  *                     # Identify what bin 'Rij' belongs to + it's position in this bin
  *                     center_bin = <int> floor(Rij/binwidth1)             # <<<<<<<<<<<<<<
@@ -6878,11 +6820,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         if (unlikely(__pyx_v_binwidth1 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 304, __pyx_L1_error)
+          __PYX_ERR(0, 302, __pyx_L1_error)
         }
         __pyx_v_center_bin = ((int)floor((__pyx_v_Rij / __pyx_v_binwidth1)));
 
-        /* "angular_fingerprintFeature_cy.pyx":305
+        /* "angular_fingerprintFeature_cy.pyx":303
  *                     # Identify what bin 'Rij' belongs to + it's position in this bin
  *                     center_bin = <int> floor(Rij/binwidth1)
  *                     binpos = Rij/binwidth1 - center_bin             # <<<<<<<<<<<<<<
@@ -6891,11 +6833,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         if (unlikely(__pyx_v_binwidth1 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 305, __pyx_L1_error)
+          __PYX_ERR(0, 303, __pyx_L1_error)
         }
         __pyx_v_binpos = ((__pyx_v_Rij / __pyx_v_binwidth1) - __pyx_v_center_bin);
 
-        /* "angular_fingerprintFeature_cy.pyx":308
+        /* "angular_fingerprintFeature_cy.pyx":306
  * 
  *                     # Lower and upper range of bins affected by the current atomic distance deltaR.
  *                     minbin_lim = <int> -ceil(m1 - binpos)             # <<<<<<<<<<<<<<
@@ -6904,7 +6846,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_minbin_lim = ((int)(-ceil((__pyx_v_m1 - __pyx_v_binpos))));
 
-        /* "angular_fingerprintFeature_cy.pyx":309
+        /* "angular_fingerprintFeature_cy.pyx":307
  *                     # Lower and upper range of bins affected by the current atomic distance deltaR.
  *                     minbin_lim = <int> -ceil(m1 - binpos)
  *                     maxbin_lim = <int> ceil(m1 - (1-binpos))             # <<<<<<<<<<<<<<
@@ -6913,7 +6855,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_maxbin_lim = ((int)ceil((__pyx_v_m1 - (1.0 - __pyx_v_binpos))));
 
-        /* "angular_fingerprintFeature_cy.pyx":311
+        /* "angular_fingerprintFeature_cy.pyx":309
  *                     maxbin_lim = <int> ceil(m1 - (1-binpos))
  * 
  *                     for n in range(minbin_lim, maxbin_lim + 1):             # <<<<<<<<<<<<<<
@@ -6925,7 +6867,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         for (__pyx_t_23 = __pyx_v_minbin_lim; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
           __pyx_v_n = __pyx_t_23;
 
-          /* "angular_fingerprintFeature_cy.pyx":312
+          /* "angular_fingerprintFeature_cy.pyx":310
  * 
  *                     for n in range(minbin_lim, maxbin_lim + 1):
  *                         newbin = center_bin + n             # <<<<<<<<<<<<<<
@@ -6934,7 +6876,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           __pyx_v_newbin = (__pyx_v_center_bin + __pyx_v_n);
 
-          /* "angular_fingerprintFeature_cy.pyx":313
+          /* "angular_fingerprintFeature_cy.pyx":311
  *                     for n in range(minbin_lim, maxbin_lim + 1):
  *                         newbin = center_bin + n
  *                         if newbin < 0 or newbin >= Nbins1:             # <<<<<<<<<<<<<<
@@ -6952,7 +6894,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           __pyx_L24_bool_binop_done:;
           if (__pyx_t_18) {
 
-            /* "angular_fingerprintFeature_cy.pyx":314
+            /* "angular_fingerprintFeature_cy.pyx":312
  *                         newbin = center_bin + n
  *                         if newbin < 0 or newbin >= Nbins1:
  *                             continue             # <<<<<<<<<<<<<<
@@ -6961,7 +6903,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             goto __pyx_L21_continue;
 
-            /* "angular_fingerprintFeature_cy.pyx":313
+            /* "angular_fingerprintFeature_cy.pyx":311
  *                     for n in range(minbin_lim, maxbin_lim + 1):
  *                         newbin = center_bin + n
  *                         if newbin < 0 or newbin >= Nbins1:             # <<<<<<<<<<<<<<
@@ -6970,7 +6912,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           }
 
-          /* "angular_fingerprintFeature_cy.pyx":317
+          /* "angular_fingerprintFeature_cy.pyx":315
  * 
  *                         # Calculate gauss contribution to current bin
  *                         c = 1./sqrt(2)*binwidth1/sigma1             # <<<<<<<<<<<<<<
@@ -6980,16 +6922,16 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           __pyx_t_20 = sqrt(2.0);
           if (unlikely(__pyx_t_20 == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 317, __pyx_L1_error)
+            __PYX_ERR(0, 315, __pyx_L1_error)
           }
           __pyx_t_2 = ((1. / __pyx_t_20) * __pyx_v_binwidth1);
           if (unlikely(__pyx_v_sigma1 == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 317, __pyx_L1_error)
+            __PYX_ERR(0, 315, __pyx_L1_error)
           }
           __pyx_v_c = (__pyx_t_2 / __pyx_v_sigma1);
 
-          /* "angular_fingerprintFeature_cy.pyx":318
+          /* "angular_fingerprintFeature_cy.pyx":316
  *                         # Calculate gauss contribution to current bin
  *                         c = 1./sqrt(2)*binwidth1/sigma1
  *                         erfarg_low = max(-m1, n-binpos)             # <<<<<<<<<<<<<<
@@ -7005,7 +6947,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           }
           __pyx_v_erfarg_low = __pyx_t_24;
 
-          /* "angular_fingerprintFeature_cy.pyx":319
+          /* "angular_fingerprintFeature_cy.pyx":317
  *                         c = 1./sqrt(2)*binwidth1/sigma1
  *                         erfarg_low = max(-m1, n-binpos)
  *                         erfarg_up = min(m1, n+(1-binpos))             # <<<<<<<<<<<<<<
@@ -7021,7 +6963,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           }
           __pyx_v_erfarg_up = __pyx_t_20;
 
-          /* "angular_fingerprintFeature_cy.pyx":320
+          /* "angular_fingerprintFeature_cy.pyx":318
  *                         erfarg_low = max(-m1, n-binpos)
  *                         erfarg_up = min(m1, n+(1-binpos))
  *                         value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)             # <<<<<<<<<<<<<<
@@ -7030,7 +6972,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           __pyx_v_value = ((0.5 * erf((__pyx_v_c * __pyx_v_erfarg_up))) - (0.5 * erf((__pyx_v_c * __pyx_v_erfarg_low))));
 
-          /* "angular_fingerprintFeature_cy.pyx":323
+          /* "angular_fingerprintFeature_cy.pyx":321
  * 
  *                         # Apply normalization
  *                         value *= normalization             # <<<<<<<<<<<<<<
@@ -7039,7 +6981,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           __pyx_v_value = (__pyx_v_value * __pyx_v_normalization);
 
-          /* "angular_fingerprintFeature_cy.pyx":325
+          /* "angular_fingerprintFeature_cy.pyx":323
  *                         value *= normalization
  * 
  *                         feature1[bondtype_index + newbin] += value             # <<<<<<<<<<<<<<
@@ -7055,19 +6997,19 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":329
+  /* "angular_fingerprintFeature_cy.pyx":327
  * 
  *         # Convert radial feature to numpy array
  *         feature1_np = np.zeros(Nelements_2body)             # <<<<<<<<<<<<<<
  *         for m in range(Nelements_2body):
  *             feature1_np[m] = feature1[m]
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_Nelements_2body); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 329, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_Nelements_2body); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_12))) {
@@ -7080,14 +7022,14 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 329, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_12)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 329, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -7096,20 +7038,20 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_12)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 329, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else
     #endif
     {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 329, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 329, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
@@ -7118,7 +7060,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __pyx_v_feature1_np = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":330
+  /* "angular_fingerprintFeature_cy.pyx":328
  *         # Convert radial feature to numpy array
  *         feature1_np = np.zeros(Nelements_2body)
  *         for m in range(Nelements_2body):             # <<<<<<<<<<<<<<
@@ -7130,31 +7072,31 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":331
+    /* "angular_fingerprintFeature_cy.pyx":329
  *         feature1_np = np.zeros(Nelements_2body)
  *         for m in range(Nelements_2body):
  *             feature1_np[m] = feature1[m]             # <<<<<<<<<<<<<<
  * 
  *         # Return feature if only radial part is desired
  */
-    __pyx_t_1 = PyFloat_FromDouble((__pyx_v_feature1[__pyx_v_m])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 331, __pyx_L1_error)
+    __pyx_t_1 = PyFloat_FromDouble((__pyx_v_feature1[__pyx_v_m])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 329, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (unlikely(__Pyx_SetItemInt(__pyx_v_feature1_np, __pyx_v_m, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 331, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(__pyx_v_feature1_np, __pyx_v_m, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 329, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":334
+  /* "angular_fingerprintFeature_cy.pyx":332
  * 
  *         # Return feature if only radial part is desired
  *         if not use_angular:             # <<<<<<<<<<<<<<
  *             return feature1_np
  * 
  */
-  __pyx_t_18 = __Pyx_PyObject_IsTrue(__pyx_v_use_angular); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 334, __pyx_L1_error)
+  __pyx_t_18 = __Pyx_PyObject_IsTrue(__pyx_v_use_angular); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 332, __pyx_L1_error)
   __pyx_t_19 = ((!__pyx_t_18) != 0);
   if (__pyx_t_19) {
 
-    /* "angular_fingerprintFeature_cy.pyx":335
+    /* "angular_fingerprintFeature_cy.pyx":333
  *         # Return feature if only radial part is desired
  *         if not use_angular:
  *             return feature1_np             # <<<<<<<<<<<<<<
@@ -7166,7 +7108,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     __pyx_r = __pyx_v_feature1_np;
     goto __pyx_L0;
 
-    /* "angular_fingerprintFeature_cy.pyx":334
+    /* "angular_fingerprintFeature_cy.pyx":332
  * 
  *         # Return feature if only radial part is desired
  *         if not use_angular:             # <<<<<<<<<<<<<<
@@ -7175,43 +7117,43 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":340
+  /* "angular_fingerprintFeature_cy.pyx":338
  * 
  *         # Convert 3body bondtype list into c-array
  *         cdef int Nbondtypes_3body = self.Nbondtypes_3body             # <<<<<<<<<<<<<<
  *         cdef list bondtypes_3body_old = self.bondtypes_3body
  *         cdef int *bondtypes_3body
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbondtypes_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 340, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbondtypes_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 340, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 338, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nbondtypes_3body = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":341
+  /* "angular_fingerprintFeature_cy.pyx":339
  *         # Convert 3body bondtype list into c-array
  *         cdef int Nbondtypes_3body = self.Nbondtypes_3body
  *         cdef list bondtypes_3body_old = self.bondtypes_3body             # <<<<<<<<<<<<<<
  *         cdef int *bondtypes_3body
  *         bondtypes_3body = <int*>mem.alloc(Ntypes*Ntypes*Ntypes, sizeof(int))
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bondtypes_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 341, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bondtypes_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 341, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 339, __pyx_L1_error)
   __pyx_v_bondtypes_3body_old = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":343
+  /* "angular_fingerprintFeature_cy.pyx":341
  *         cdef list bondtypes_3body_old = self.bondtypes_3body
  *         cdef int *bondtypes_3body
  *         bondtypes_3body = <int*>mem.alloc(Ntypes*Ntypes*Ntypes, sizeof(int))             # <<<<<<<<<<<<<<
  *         for m in range(Ntypes*Ntypes*Ntypes):
  *             bondtypes_3body[m] = bondtypes_3body_old[m]
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, ((__pyx_v_Ntypes * __pyx_v_Ntypes) * __pyx_v_Ntypes), (sizeof(int))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 343, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, ((__pyx_v_Ntypes * __pyx_v_Ntypes) * __pyx_v_Ntypes), (sizeof(int))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 341, __pyx_L1_error)
   __pyx_v_bondtypes_3body = ((int *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":344
+  /* "angular_fingerprintFeature_cy.pyx":342
  *         cdef int *bondtypes_3body
  *         bondtypes_3body = <int*>mem.alloc(Ntypes*Ntypes*Ntypes, sizeof(int))
  *         for m in range(Ntypes*Ntypes*Ntypes):             # <<<<<<<<<<<<<<
@@ -7223,7 +7165,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":345
+    /* "angular_fingerprintFeature_cy.pyx":343
  *         bondtypes_3body = <int*>mem.alloc(Ntypes*Ntypes*Ntypes, sizeof(int))
  *         for m in range(Ntypes*Ntypes*Ntypes):
  *             bondtypes_3body[m] = bondtypes_3body_old[m]             # <<<<<<<<<<<<<<
@@ -7232,28 +7174,28 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_bondtypes_3body_old == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 345, __pyx_L1_error)
+      __PYX_ERR(0, 343, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_bondtypes_3body_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_bondtypes_3body_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 343, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     (__pyx_v_bondtypes_3body[__pyx_v_m]) = __pyx_t_11;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":349
+  /* "angular_fingerprintFeature_cy.pyx":347
  *         # Initialize angular feature
  *         cdef double *feature2
  *         feature2 = <double*>mem.alloc(Nelements_3body, sizeof(double))             # <<<<<<<<<<<<<<
  * 
  *         cdef Point RijVec, RikVec
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Nelements_3body, (sizeof(double))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 349, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Nelements_3body, (sizeof(double))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 347, __pyx_L1_error)
   __pyx_v_feature2 = ((double *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":354
+  /* "angular_fingerprintFeature_cy.pyx":352
  *         cdef double angle
- *         cdef int k, cond_ij, cond_ik
+ *         cdef int k, cond_ij, cond_ik, type3
  *         for i in range(Natoms):             # <<<<<<<<<<<<<<
  *             pos_i = pos[i]
  *             for cell_index1 in range(Ncells):
@@ -7263,8 +7205,8 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":355
- *         cdef int k, cond_ij, cond_ik
+    /* "angular_fingerprintFeature_cy.pyx":353
+ *         cdef int k, cond_ij, cond_ik, type3
  *         for i in range(Natoms):
  *             pos_i = pos[i]             # <<<<<<<<<<<<<<
  *             for cell_index1 in range(Ncells):
@@ -7272,7 +7214,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     __pyx_v_pos_i = (__pyx_v_pos[__pyx_v_i]);
 
-    /* "angular_fingerprintFeature_cy.pyx":356
+    /* "angular_fingerprintFeature_cy.pyx":354
  *         for i in range(Natoms):
  *             pos_i = pos[i]
  *             for cell_index1 in range(Ncells):             # <<<<<<<<<<<<<<
@@ -7284,7 +7226,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
       __pyx_v_cell_index1 = __pyx_t_14;
 
-      /* "angular_fingerprintFeature_cy.pyx":357
+      /* "angular_fingerprintFeature_cy.pyx":355
  *             pos_i = pos[i]
  *             for cell_index1 in range(Ncells):
  *                 displacement1 = cell_displacements[cell_index1]             # <<<<<<<<<<<<<<
@@ -7293,7 +7235,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
       __pyx_v_displacement1 = (__pyx_v_cell_displacements[__pyx_v_cell_index1]);
 
-      /* "angular_fingerprintFeature_cy.pyx":358
+      /* "angular_fingerprintFeature_cy.pyx":356
  *             for cell_index1 in range(Ncells):
  *                 displacement1 = cell_displacements[cell_index1]
  *                 for j in range(Natoms):             # <<<<<<<<<<<<<<
@@ -7305,7 +7247,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
         __pyx_v_j = __pyx_t_17;
 
-        /* "angular_fingerprintFeature_cy.pyx":359
+        /* "angular_fingerprintFeature_cy.pyx":357
  *                 displacement1 = cell_displacements[cell_index1]
  *                 for j in range(Natoms):
  *                     pos_j = add(pos[j], displacement1)             # <<<<<<<<<<<<<<
@@ -7314,7 +7256,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_pos_j = __pyx_f_29angular_fingerprintFeature_cy_add((__pyx_v_pos[__pyx_v_j]), __pyx_v_displacement1);
 
-        /* "angular_fingerprintFeature_cy.pyx":360
+        /* "angular_fingerprintFeature_cy.pyx":358
  *                 for j in range(Natoms):
  *                     pos_j = add(pos[j], displacement1)
  *                     Rij = euclidean(pos[i], pos_j)             # <<<<<<<<<<<<<<
@@ -7323,7 +7265,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_Rij = __pyx_f_29angular_fingerprintFeature_cy_euclidean((__pyx_v_pos[__pyx_v_i]), __pyx_v_pos_j);
 
-        /* "angular_fingerprintFeature_cy.pyx":361
+        /* "angular_fingerprintFeature_cy.pyx":359
  *                     pos_j = add(pos[j], displacement1)
  *                     Rij = euclidean(pos[i], pos_j)
  *                     if Rij > Rc2 or Rij < 1e-6:             # <<<<<<<<<<<<<<
@@ -7341,7 +7283,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         __pyx_L38_bool_binop_done:;
         if (__pyx_t_19) {
 
-          /* "angular_fingerprintFeature_cy.pyx":362
+          /* "angular_fingerprintFeature_cy.pyx":360
  *                     Rij = euclidean(pos[i], pos_j)
  *                     if Rij > Rc2 or Rij < 1e-6:
  *                         continue             # <<<<<<<<<<<<<<
@@ -7350,7 +7292,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           goto __pyx_L35_continue;
 
-          /* "angular_fingerprintFeature_cy.pyx":361
+          /* "angular_fingerprintFeature_cy.pyx":359
  *                     pos_j = add(pos[j], displacement1)
  *                     Rij = euclidean(pos[i], pos_j)
  *                     if Rij > Rc2 or Rij < 1e-6:             # <<<<<<<<<<<<<<
@@ -7359,7 +7301,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         }
 
-        /* "angular_fingerprintFeature_cy.pyx":363
+        /* "angular_fingerprintFeature_cy.pyx":361
  *                     if Rij > Rc2 or Rij < 1e-6:
  *                         continue
  *                     for cell_index2 in range(cell_index1, Ncells):             # <<<<<<<<<<<<<<
@@ -7371,7 +7313,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         for (__pyx_t_26 = __pyx_v_cell_index1; __pyx_t_26 < __pyx_t_25; __pyx_t_26+=1) {
           __pyx_v_cell_index2 = __pyx_t_26;
 
-          /* "angular_fingerprintFeature_cy.pyx":364
+          /* "angular_fingerprintFeature_cy.pyx":362
  *                         continue
  *                     for cell_index2 in range(cell_index1, Ncells):
  *                         displacement2 = cell_displacements[cell_index2]             # <<<<<<<<<<<<<<
@@ -7380,7 +7322,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           __pyx_v_displacement2 = (__pyx_v_cell_displacements[__pyx_v_cell_index2]);
 
-          /* "angular_fingerprintFeature_cy.pyx":365
+          /* "angular_fingerprintFeature_cy.pyx":363
  *                     for cell_index2 in range(cell_index1, Ncells):
  *                         displacement2 = cell_displacements[cell_index2]
  *                         if cell_index1 == cell_index2:             # <<<<<<<<<<<<<<
@@ -7390,7 +7332,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           __pyx_t_19 = ((__pyx_v_cell_index1 == __pyx_v_cell_index2) != 0);
           if (__pyx_t_19) {
 
-            /* "angular_fingerprintFeature_cy.pyx":366
+            /* "angular_fingerprintFeature_cy.pyx":364
  *                         displacement2 = cell_displacements[cell_index2]
  *                         if cell_index1 == cell_index2:
  *                             k_start = j+1             # <<<<<<<<<<<<<<
@@ -7399,7 +7341,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_k_start = (__pyx_v_j + 1);
 
-            /* "angular_fingerprintFeature_cy.pyx":365
+            /* "angular_fingerprintFeature_cy.pyx":363
  *                     for cell_index2 in range(cell_index1, Ncells):
  *                         displacement2 = cell_displacements[cell_index2]
  *                         if cell_index1 == cell_index2:             # <<<<<<<<<<<<<<
@@ -7409,7 +7351,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
             goto __pyx_L42;
           }
 
-          /* "angular_fingerprintFeature_cy.pyx":368
+          /* "angular_fingerprintFeature_cy.pyx":366
  *                             k_start = j+1
  *                         else:
  *                             k_start = 0             # <<<<<<<<<<<<<<
@@ -7421,7 +7363,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           }
           __pyx_L42:;
 
-          /* "angular_fingerprintFeature_cy.pyx":369
+          /* "angular_fingerprintFeature_cy.pyx":367
  *                         else:
  *                             k_start = 0
  *                         for k in range(k_start, Natoms):             # <<<<<<<<<<<<<<
@@ -7433,7 +7375,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           for (__pyx_t_29 = __pyx_v_k_start; __pyx_t_29 < __pyx_t_28; __pyx_t_29+=1) {
             __pyx_v_k = __pyx_t_29;
 
-            /* "angular_fingerprintFeature_cy.pyx":370
+            /* "angular_fingerprintFeature_cy.pyx":368
  *                             k_start = 0
  *                         for k in range(k_start, Natoms):
  *                             pos_k = add(pos[k], displacement2)             # <<<<<<<<<<<<<<
@@ -7442,7 +7384,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_pos_k = __pyx_f_29angular_fingerprintFeature_cy_add((__pyx_v_pos[__pyx_v_k]), __pyx_v_displacement2);
 
-            /* "angular_fingerprintFeature_cy.pyx":371
+            /* "angular_fingerprintFeature_cy.pyx":369
  *                         for k in range(k_start, Natoms):
  *                             pos_k = add(pos[k], displacement2)
  *                             Rik = euclidean(pos_i, pos_k)             # <<<<<<<<<<<<<<
@@ -7451,7 +7393,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_Rik = __pyx_f_29angular_fingerprintFeature_cy_euclidean(__pyx_v_pos_i, __pyx_v_pos_k);
 
-            /* "angular_fingerprintFeature_cy.pyx":372
+            /* "angular_fingerprintFeature_cy.pyx":370
  *                             pos_k = add(pos[k], displacement2)
  *                             Rik = euclidean(pos_i, pos_k)
  *                             if Rik > Rc2 or Rik < 1e-6:             # <<<<<<<<<<<<<<
@@ -7469,7 +7411,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
             __pyx_L46_bool_binop_done:;
             if (__pyx_t_19) {
 
-              /* "angular_fingerprintFeature_cy.pyx":373
+              /* "angular_fingerprintFeature_cy.pyx":371
  *                             Rik = euclidean(pos_i, pos_k)
  *                             if Rik > Rc2 or Rik < 1e-6:
  *                                 continue             # <<<<<<<<<<<<<<
@@ -7478,7 +7420,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               goto __pyx_L43_continue;
 
-              /* "angular_fingerprintFeature_cy.pyx":372
+              /* "angular_fingerprintFeature_cy.pyx":370
  *                             pos_k = add(pos[k], displacement2)
  *                             Rik = euclidean(pos_i, pos_k)
  *                             if Rik > Rc2 or Rik < 1e-6:             # <<<<<<<<<<<<<<
@@ -7487,7 +7429,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             }
 
-            /* "angular_fingerprintFeature_cy.pyx":376
+            /* "angular_fingerprintFeature_cy.pyx":374
  * 
  *                             # determine bondtype
  *                             type1 = num_converted[i]             # <<<<<<<<<<<<<<
@@ -7496,7 +7438,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_type1 = (__pyx_v_num_converted[__pyx_v_i]);
 
-            /* "angular_fingerprintFeature_cy.pyx":377
+            /* "angular_fingerprintFeature_cy.pyx":375
  *                             # determine bondtype
  *                             type1 = num_converted[i]
  *                             if num_converted[j] <= num_converted[k]:             # <<<<<<<<<<<<<<
@@ -7506,7 +7448,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
             __pyx_t_19 = (((__pyx_v_num_converted[__pyx_v_j]) <= (__pyx_v_num_converted[__pyx_v_k])) != 0);
             if (__pyx_t_19) {
 
-              /* "angular_fingerprintFeature_cy.pyx":378
+              /* "angular_fingerprintFeature_cy.pyx":376
  *                             type1 = num_converted[i]
  *                             if num_converted[j] <= num_converted[k]:
  *                                 type2 = num_converted[j]             # <<<<<<<<<<<<<<
@@ -7515,19 +7457,16 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               __pyx_v_type2 = (__pyx_v_num_converted[__pyx_v_j]);
 
-              /* "angular_fingerprintFeature_cy.pyx":379
+              /* "angular_fingerprintFeature_cy.pyx":377
  *                             if num_converted[j] <= num_converted[k]:
  *                                 type2 = num_converted[j]
  *                                 type3 = num_converted[k]             # <<<<<<<<<<<<<<
  *                             else:
  *                                 type2 = num_converted[k]
  */
-              __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_num_converted[__pyx_v_k])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 379, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_1);
-              __Pyx_XDECREF_SET(__pyx_v_type3, __pyx_t_1);
-              __pyx_t_1 = 0;
+              __pyx_v_type3 = (__pyx_v_num_converted[__pyx_v_k]);
 
-              /* "angular_fingerprintFeature_cy.pyx":377
+              /* "angular_fingerprintFeature_cy.pyx":375
  *                             # determine bondtype
  *                             type1 = num_converted[i]
  *                             if num_converted[j] <= num_converted[k]:             # <<<<<<<<<<<<<<
@@ -7537,7 +7476,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               goto __pyx_L48;
             }
 
-            /* "angular_fingerprintFeature_cy.pyx":381
+            /* "angular_fingerprintFeature_cy.pyx":379
  *                                 type3 = num_converted[k]
  *                             else:
  *                                 type2 = num_converted[k]             # <<<<<<<<<<<<<<
@@ -7547,37 +7486,27 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
             /*else*/ {
               __pyx_v_type2 = (__pyx_v_num_converted[__pyx_v_k]);
 
-              /* "angular_fingerprintFeature_cy.pyx":382
+              /* "angular_fingerprintFeature_cy.pyx":380
  *                             else:
  *                                 type2 = num_converted[k]
  *                                 type3 = num_converted[j]             # <<<<<<<<<<<<<<
  *                             bondtype_index = Nbins2*bondtypes_3body[Ntypes*Ntypes*type1 + Ntypes*type2 + type3]
  * 
  */
-              __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_num_converted[__pyx_v_j])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 382, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_1);
-              __Pyx_XDECREF_SET(__pyx_v_type3, __pyx_t_1);
-              __pyx_t_1 = 0;
+              __pyx_v_type3 = (__pyx_v_num_converted[__pyx_v_j]);
             }
             __pyx_L48:;
 
-            /* "angular_fingerprintFeature_cy.pyx":383
+            /* "angular_fingerprintFeature_cy.pyx":381
  *                                 type2 = num_converted[k]
  *                                 type3 = num_converted[j]
  *                             bondtype_index = Nbins2*bondtypes_3body[Ntypes*Ntypes*type1 + Ntypes*type2 + type3]             # <<<<<<<<<<<<<<
  * 
  *                             # Calculate angle
  */
-            __pyx_t_1 = __Pyx_PyInt_From_int((((__pyx_v_Ntypes * __pyx_v_Ntypes) * __pyx_v_type1) + (__pyx_v_Ntypes * __pyx_v_type2))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 383, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_12 = PyNumber_Add(__pyx_t_1, __pyx_v_type3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 383, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_12);
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_12); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 383, __pyx_L1_error)
-            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-            __pyx_v_bondtype_index = (__pyx_v_Nbins2 * (__pyx_v_bondtypes_3body[__pyx_t_10]));
+            __pyx_v_bondtype_index = (__pyx_v_Nbins2 * (__pyx_v_bondtypes_3body[((((__pyx_v_Ntypes * __pyx_v_Ntypes) * __pyx_v_type1) + (__pyx_v_Ntypes * __pyx_v_type2)) + __pyx_v_type3)]));
 
-            /* "angular_fingerprintFeature_cy.pyx":386
+            /* "angular_fingerprintFeature_cy.pyx":384
  * 
  *                             # Calculate angle
  *                             RijVec = subtract(pos_j,pos_i)             # <<<<<<<<<<<<<<
@@ -7586,7 +7515,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_RijVec = __pyx_f_29angular_fingerprintFeature_cy_subtract(__pyx_v_pos_j, __pyx_v_pos_i);
 
-            /* "angular_fingerprintFeature_cy.pyx":387
+            /* "angular_fingerprintFeature_cy.pyx":385
  *                             # Calculate angle
  *                             RijVec = subtract(pos_j,pos_i)
  *                             RikVec = subtract(pos_k, pos_i)             # <<<<<<<<<<<<<<
@@ -7595,7 +7524,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_RikVec = __pyx_f_29angular_fingerprintFeature_cy_subtract(__pyx_v_pos_k, __pyx_v_pos_i);
 
-            /* "angular_fingerprintFeature_cy.pyx":388
+            /* "angular_fingerprintFeature_cy.pyx":386
  *                             RijVec = subtract(pos_j,pos_i)
  *                             RikVec = subtract(pos_k, pos_i)
  *                             angle = get_angle(RijVec, RikVec)             # <<<<<<<<<<<<<<
@@ -7604,7 +7533,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_angle = __pyx_f_29angular_fingerprintFeature_cy_get_angle(__pyx_v_RijVec, __pyx_v_RikVec);
 
-            /* "angular_fingerprintFeature_cy.pyx":391
+            /* "angular_fingerprintFeature_cy.pyx":389
  * 
  *                             # Calculate normalization
  *                             num_pairs = Natoms*Natoms*Natoms             # <<<<<<<<<<<<<<
@@ -7613,7 +7542,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_num_pairs = ((__pyx_v_Natoms * __pyx_v_Natoms) * __pyx_v_Natoms);
 
-            /* "angular_fingerprintFeature_cy.pyx":392
+            /* "angular_fingerprintFeature_cy.pyx":390
  *                             # Calculate normalization
  *                             num_pairs = Natoms*Natoms*Natoms
  *                             normalization = 1./smearing_norm2             # <<<<<<<<<<<<<<
@@ -7622,11 +7551,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             if (unlikely(__pyx_v_smearing_norm2 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 392, __pyx_L1_error)
+              __PYX_ERR(0, 390, __pyx_L1_error)
             }
             __pyx_v_normalization = (1. / __pyx_v_smearing_norm2);
 
-            /* "angular_fingerprintFeature_cy.pyx":393
+            /* "angular_fingerprintFeature_cy.pyx":391
  *                             num_pairs = Natoms*Natoms*Natoms
  *                             normalization = 1./smearing_norm2
  *                             normalization /= num_pairs/volume             # <<<<<<<<<<<<<<
@@ -7635,16 +7564,16 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             if (unlikely(__pyx_v_volume == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 393, __pyx_L1_error)
+              __PYX_ERR(0, 391, __pyx_L1_error)
             }
             __pyx_t_20 = (__pyx_v_num_pairs / __pyx_v_volume);
             if (unlikely(__pyx_t_20 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 393, __pyx_L1_error)
+              __PYX_ERR(0, 391, __pyx_L1_error)
             }
             __pyx_v_normalization = (__pyx_v_normalization / __pyx_t_20);
 
-            /* "angular_fingerprintFeature_cy.pyx":396
+            /* "angular_fingerprintFeature_cy.pyx":394
  * 
  *                             # Identify what bin 'Rij' belongs to + it's position in this bin
  *                             center_bin = <int> floor(angle/binwidth1)             # <<<<<<<<<<<<<<
@@ -7653,11 +7582,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             if (unlikely(__pyx_v_binwidth1 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 396, __pyx_L1_error)
+              __PYX_ERR(0, 394, __pyx_L1_error)
             }
             __pyx_v_center_bin = ((int)floor((__pyx_v_angle / __pyx_v_binwidth1)));
 
-            /* "angular_fingerprintFeature_cy.pyx":397
+            /* "angular_fingerprintFeature_cy.pyx":395
  *                             # Identify what bin 'Rij' belongs to + it's position in this bin
  *                             center_bin = <int> floor(angle/binwidth1)
  *                             binpos = angle/binwidth2 - center_bin             # <<<<<<<<<<<<<<
@@ -7666,11 +7595,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             if (unlikely(__pyx_v_binwidth2 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 397, __pyx_L1_error)
+              __PYX_ERR(0, 395, __pyx_L1_error)
             }
             __pyx_v_binpos = ((__pyx_v_angle / __pyx_v_binwidth2) - __pyx_v_center_bin);
 
-            /* "angular_fingerprintFeature_cy.pyx":400
+            /* "angular_fingerprintFeature_cy.pyx":398
  * 
  *                             # Lower and upper range of bins affected by the current atomic distance deltaR.
  *                             minbin_lim = <int> -ceil(m2 - binpos)             # <<<<<<<<<<<<<<
@@ -7679,7 +7608,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_minbin_lim = ((int)(-ceil((__pyx_v_m2 - __pyx_v_binpos))));
 
-            /* "angular_fingerprintFeature_cy.pyx":401
+            /* "angular_fingerprintFeature_cy.pyx":399
  *                             # Lower and upper range of bins affected by the current atomic distance deltaR.
  *                             minbin_lim = <int> -ceil(m2 - binpos)
  *                             maxbin_lim = <int> ceil(m2 - (1-binpos))             # <<<<<<<<<<<<<<
@@ -7688,7 +7617,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_maxbin_lim = ((int)ceil((__pyx_v_m2 - (1.0 - __pyx_v_binpos))));
 
-            /* "angular_fingerprintFeature_cy.pyx":403
+            /* "angular_fingerprintFeature_cy.pyx":401
  *                             maxbin_lim = <int> ceil(m2 - (1-binpos))
  * 
  *                             for n in range(minbin_lim, maxbin_lim + 1):             # <<<<<<<<<<<<<<
@@ -7700,7 +7629,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
             for (__pyx_t_30 = __pyx_v_minbin_lim; __pyx_t_30 < __pyx_t_22; __pyx_t_30+=1) {
               __pyx_v_n = __pyx_t_30;
 
-              /* "angular_fingerprintFeature_cy.pyx":404
+              /* "angular_fingerprintFeature_cy.pyx":402
  * 
  *                             for n in range(minbin_lim, maxbin_lim + 1):
  *                                 newbin = center_bin + n             # <<<<<<<<<<<<<<
@@ -7709,7 +7638,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               __pyx_v_newbin = (__pyx_v_center_bin + __pyx_v_n);
 
-              /* "angular_fingerprintFeature_cy.pyx":407
+              /* "angular_fingerprintFeature_cy.pyx":405
  * 
  *                                 # Wrap current bin into correct bin-range
  *                                 if newbin < 0:             # <<<<<<<<<<<<<<
@@ -7719,17 +7648,17 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               __pyx_t_19 = ((__pyx_v_newbin < 0) != 0);
               if (__pyx_t_19) {
 
-                /* "angular_fingerprintFeature_cy.pyx":408
+                /* "angular_fingerprintFeature_cy.pyx":406
  *                                 # Wrap current bin into correct bin-range
  *                                 if newbin < 0:
  *                                     newbin = abs(newbin)             # <<<<<<<<<<<<<<
  *                                 if newbin > Nbins2-1:
  *                                     newbin = 2*Nbins2 - newbin - 1
  */
-                __pyx_t_31 = abs(__pyx_v_newbin); if (unlikely(__pyx_t_31 == ((int)-1))) __PYX_ERR(0, 408, __pyx_L1_error)
+                __pyx_t_31 = abs(__pyx_v_newbin); if (unlikely(__pyx_t_31 == ((int)-1))) __PYX_ERR(0, 406, __pyx_L1_error)
                 __pyx_v_newbin = __pyx_t_31;
 
-                /* "angular_fingerprintFeature_cy.pyx":407
+                /* "angular_fingerprintFeature_cy.pyx":405
  * 
  *                                 # Wrap current bin into correct bin-range
  *                                 if newbin < 0:             # <<<<<<<<<<<<<<
@@ -7738,7 +7667,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               }
 
-              /* "angular_fingerprintFeature_cy.pyx":409
+              /* "angular_fingerprintFeature_cy.pyx":407
  *                                 if newbin < 0:
  *                                     newbin = abs(newbin)
  *                                 if newbin > Nbins2-1:             # <<<<<<<<<<<<<<
@@ -7748,7 +7677,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               __pyx_t_19 = ((__pyx_v_newbin > (__pyx_v_Nbins2 - 1)) != 0);
               if (__pyx_t_19) {
 
-                /* "angular_fingerprintFeature_cy.pyx":410
+                /* "angular_fingerprintFeature_cy.pyx":408
  *                                     newbin = abs(newbin)
  *                                 if newbin > Nbins2-1:
  *                                     newbin = 2*Nbins2 - newbin - 1             # <<<<<<<<<<<<<<
@@ -7757,7 +7686,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
                 __pyx_v_newbin = (((2 * __pyx_v_Nbins2) - __pyx_v_newbin) - 1);
 
-                /* "angular_fingerprintFeature_cy.pyx":409
+                /* "angular_fingerprintFeature_cy.pyx":407
  *                                 if newbin < 0:
  *                                     newbin = abs(newbin)
  *                                 if newbin > Nbins2-1:             # <<<<<<<<<<<<<<
@@ -7766,7 +7695,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               }
 
-              /* "angular_fingerprintFeature_cy.pyx":413
+              /* "angular_fingerprintFeature_cy.pyx":411
  * 
  *                                 # Calculate gauss contribution to current bin
  *                                 c = 1./sqrt(2)*binwidth2/sigma2             # <<<<<<<<<<<<<<
@@ -7776,16 +7705,16 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               __pyx_t_20 = sqrt(2.0);
               if (unlikely(__pyx_t_20 == 0)) {
                 PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                __PYX_ERR(0, 413, __pyx_L1_error)
+                __PYX_ERR(0, 411, __pyx_L1_error)
               }
               __pyx_t_24 = ((1. / __pyx_t_20) * __pyx_v_binwidth2);
               if (unlikely(__pyx_v_sigma2 == 0)) {
                 PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                __PYX_ERR(0, 413, __pyx_L1_error)
+                __PYX_ERR(0, 411, __pyx_L1_error)
               }
               __pyx_v_c = (__pyx_t_24 / __pyx_v_sigma2);
 
-              /* "angular_fingerprintFeature_cy.pyx":414
+              /* "angular_fingerprintFeature_cy.pyx":412
  *                                 # Calculate gauss contribution to current bin
  *                                 c = 1./sqrt(2)*binwidth2/sigma2
  *                                 erfarg_low = max(-m2, n-binpos)             # <<<<<<<<<<<<<<
@@ -7801,7 +7730,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               }
               __pyx_v_erfarg_low = __pyx_t_2;
 
-              /* "angular_fingerprintFeature_cy.pyx":415
+              /* "angular_fingerprintFeature_cy.pyx":413
  *                                 c = 1./sqrt(2)*binwidth2/sigma2
  *                                 erfarg_low = max(-m2, n-binpos)
  *                                 erfarg_up = min(m2, n+(1-binpos))             # <<<<<<<<<<<<<<
@@ -7817,7 +7746,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               }
               __pyx_v_erfarg_up = __pyx_t_20;
 
-              /* "angular_fingerprintFeature_cy.pyx":416
+              /* "angular_fingerprintFeature_cy.pyx":414
  *                                 erfarg_low = max(-m2, n-binpos)
  *                                 erfarg_up = min(m2, n+(1-binpos))
  *                                 value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)             # <<<<<<<<<<<<<<
@@ -7826,7 +7755,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               __pyx_v_value = ((0.5 * erf((__pyx_v_c * __pyx_v_erfarg_up))) - (0.5 * erf((__pyx_v_c * __pyx_v_erfarg_low))));
 
-              /* "angular_fingerprintFeature_cy.pyx":417
+              /* "angular_fingerprintFeature_cy.pyx":415
  *                                 erfarg_up = min(m2, n+(1-binpos))
  *                                 value = 0.5*erf(c*erfarg_up)-0.5*erf(c*erfarg_low)
  *                                 value *= f_cutoff(Rij, gamma, Rc2) * f_cutoff(Rik, gamma, Rc2)             # <<<<<<<<<<<<<<
@@ -7835,7 +7764,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               __pyx_v_value = (__pyx_v_value * (__pyx_f_29angular_fingerprintFeature_cy_f_cutoff(__pyx_v_Rij, __pyx_v_gamma, __pyx_v_Rc2) * __pyx_f_29angular_fingerprintFeature_cy_f_cutoff(__pyx_v_Rik, __pyx_v_gamma, __pyx_v_Rc2)));
 
-              /* "angular_fingerprintFeature_cy.pyx":419
+              /* "angular_fingerprintFeature_cy.pyx":417
  *                                 value *= f_cutoff(Rij, gamma, Rc2) * f_cutoff(Rik, gamma, Rc2)
  *                                 # Apply normalization
  *                                 value *= normalization             # <<<<<<<<<<<<<<
@@ -7844,7 +7773,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               __pyx_v_value = (__pyx_v_value * __pyx_v_normalization);
 
-              /* "angular_fingerprintFeature_cy.pyx":421
+              /* "angular_fingerprintFeature_cy.pyx":419
  *                                 value *= normalization
  * 
  *                                 feature2[bondtype_index + newbin] += value             # <<<<<<<<<<<<<<
@@ -7862,20 +7791,20 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":425
+  /* "angular_fingerprintFeature_cy.pyx":423
  * 
  *         # Convert angular feature to numpy array
  *         feature2_np = np.zeros(Nelements_3body)             # <<<<<<<<<<<<<<
  *         for m in range(Nelements_3body):
  *             feature2_np[m] = eta * feature2[m]
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 425, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 425, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 423, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_zeros); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 423, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_Nelements_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 425, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_12 = __Pyx_PyInt_From_int(__pyx_v_Nelements_3body); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 423, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
     __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_6);
@@ -7887,45 +7816,45 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 425, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_GOTREF(__pyx_t_12);
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 423, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_6)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_1};
-      __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 425, __pyx_L1_error)
+      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_12};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 423, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_GOTREF(__pyx_t_12);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_1};
-      __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 425, __pyx_L1_error)
+      PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_12};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 423, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_GOTREF(__pyx_t_12);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 425, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 423, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5); __pyx_t_5 = NULL;
-      __Pyx_GIVEREF(__pyx_t_1);
-      PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_1);
-      __pyx_t_1 = 0;
-      __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_4, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 425, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_12);
+      __Pyx_GIVEREF(__pyx_t_12);
+      PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_12);
+      __pyx_t_12 = 0;
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 423, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_v_feature2_np = __pyx_t_12;
-  __pyx_t_12 = 0;
+  __pyx_v_feature2_np = __pyx_t_1;
+  __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":426
+  /* "angular_fingerprintFeature_cy.pyx":424
  *         # Convert angular feature to numpy array
  *         feature2_np = np.zeros(Nelements_3body)
  *         for m in range(Nelements_3body):             # <<<<<<<<<<<<<<
@@ -7937,101 +7866,101 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":427
+    /* "angular_fingerprintFeature_cy.pyx":425
  *         feature2_np = np.zeros(Nelements_3body)
  *         for m in range(Nelements_3body):
  *             feature2_np[m] = eta * feature2[m]             # <<<<<<<<<<<<<<
  * 
  *         feature_np = np.zeros(Nelements)
  */
-    __pyx_t_12 = PyFloat_FromDouble((__pyx_v_eta * (__pyx_v_feature2[__pyx_v_m]))); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 427, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_12);
-    if (unlikely(__Pyx_SetItemInt(__pyx_v_feature2_np, __pyx_v_m, __pyx_t_12, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 427, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+    __pyx_t_1 = PyFloat_FromDouble((__pyx_v_eta * (__pyx_v_feature2[__pyx_v_m]))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 425, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    if (unlikely(__Pyx_SetItemInt(__pyx_v_feature2_np, __pyx_v_m, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 425, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":429
+  /* "angular_fingerprintFeature_cy.pyx":427
  *             feature2_np[m] = eta * feature2[m]
  * 
  *         feature_np = np.zeros(Nelements)             # <<<<<<<<<<<<<<
  *         feature_np[:Nelements_2body] = feature1_np
  *         feature_np[Nelements_2body:] = feature2_np
  */
-  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 429, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 427, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 429, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 427, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_Nelements); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 429, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_Nelements); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 427, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_1 = NULL;
+  __pyx_t_12 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_1)) {
+    __pyx_t_12 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_12)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_1);
+      __Pyx_INCREF(__pyx_t_12);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_4, function);
     }
   }
-  if (!__pyx_t_1) {
-    __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 429, __pyx_L1_error)
+  if (!__pyx_t_12) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_GOTREF(__pyx_t_12);
+    __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_6};
-      __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 429, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __Pyx_GOTREF(__pyx_t_12);
+      PyObject *__pyx_temp[2] = {__pyx_t_12, __pyx_t_6};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_6};
-      __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 429, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __Pyx_GOTREF(__pyx_t_12);
+      PyObject *__pyx_temp[2] = {__pyx_t_12, __pyx_t_6};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 429, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 427, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1); __pyx_t_1 = NULL;
+      __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_12); __pyx_t_12 = NULL;
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_6);
       __pyx_t_6 = 0;
-      __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 429, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_12);
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_feature_np = __pyx_t_12;
-  __pyx_t_12 = 0;
+  __pyx_v_feature_np = __pyx_t_1;
+  __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":430
+  /* "angular_fingerprintFeature_cy.pyx":428
  * 
  *         feature_np = np.zeros(Nelements)
  *         feature_np[:Nelements_2body] = feature1_np             # <<<<<<<<<<<<<<
  *         feature_np[Nelements_2body:] = feature2_np
  *         return feature_np
  */
-  if (__Pyx_PyObject_SetSlice(__pyx_v_feature_np, __pyx_v_feature1_np, 0, __pyx_v_Nelements_2body, NULL, NULL, NULL, 0, 1, 1) < 0) __PYX_ERR(0, 430, __pyx_L1_error)
+  if (__Pyx_PyObject_SetSlice(__pyx_v_feature_np, __pyx_v_feature1_np, 0, __pyx_v_Nelements_2body, NULL, NULL, NULL, 0, 1, 1) < 0) __PYX_ERR(0, 428, __pyx_L1_error)
 
-  /* "angular_fingerprintFeature_cy.pyx":431
+  /* "angular_fingerprintFeature_cy.pyx":429
  *         feature_np = np.zeros(Nelements)
  *         feature_np[:Nelements_2body] = feature1_np
  *         feature_np[Nelements_2body:] = feature2_np             # <<<<<<<<<<<<<<
  *         return feature_np
  * 
  */
-  if (__Pyx_PyObject_SetSlice(__pyx_v_feature_np, __pyx_v_feature2_np, __pyx_v_Nelements_2body, 0, NULL, NULL, NULL, 1, 0, 1) < 0) __PYX_ERR(0, 431, __pyx_L1_error)
+  if (__Pyx_PyObject_SetSlice(__pyx_v_feature_np, __pyx_v_feature2_np, __pyx_v_Nelements_2body, 0, NULL, NULL, NULL, 1, 0, 1) < 0) __PYX_ERR(0, 429, __pyx_L1_error)
 
-  /* "angular_fingerprintFeature_cy.pyx":432
+  /* "angular_fingerprintFeature_cy.pyx":430
  *         feature_np[:Nelements_2body] = feature1_np
  *         feature_np[Nelements_2body:] = feature2_np
  *         return feature_np             # <<<<<<<<<<<<<<
@@ -8043,7 +7972,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __pyx_r = __pyx_v_feature_np;
   goto __pyx_L0;
 
-  /* "angular_fingerprintFeature_cy.pyx":198
+  /* "angular_fingerprintFeature_cy.pyx":196
  *         self.neighbourcells_disp = self.__get_neighbour_cells_displacement(self.pbc, self.cell)
  * 
  *     def get_feature(self, atoms):             # <<<<<<<<<<<<<<
@@ -8070,7 +7999,6 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __Pyx_XDECREF(__pyx_v_num_converted_old);
   __Pyx_XDECREF(__pyx_v_feature1_np);
   __Pyx_XDECREF(__pyx_v_bondtypes_3body_old);
-  __Pyx_XDECREF(__pyx_v_type3);
   __Pyx_XDECREF(__pyx_v_feature2_np);
   __Pyx_XDECREF(__pyx_v_feature_np);
   __Pyx_XGIVEREF(__pyx_r);
@@ -8078,7 +8006,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   return __pyx_r;
 }
 
-/* "angular_fingerprintFeature_cy.pyx":434
+/* "angular_fingerprintFeature_cy.pyx":432
  *         return feature_np
  * 
  *     def get_featureMat(self, atoms_list):             # <<<<<<<<<<<<<<
@@ -8118,11 +8046,11 @@ static PyObject *__pyx_pw_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_atoms_list)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_featureMat", 1, 2, 2, 1); __PYX_ERR(0, 434, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_featureMat", 1, 2, 2, 1); __PYX_ERR(0, 432, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_featureMat") < 0)) __PYX_ERR(0, 434, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_featureMat") < 0)) __PYX_ERR(0, 432, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -8135,7 +8063,7 @@ static PyObject *__pyx_pw_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_featureMat", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 434, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_featureMat", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 432, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("angular_fingerprintFeature_cy.Angular_Fingerprint.get_featureMat", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8165,44 +8093,44 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   PyObject *__pyx_t_10 = NULL;
   __Pyx_RefNannySetupContext("get_featureMat", 0);
 
-  /* "angular_fingerprintFeature_cy.pyx":435
+  /* "angular_fingerprintFeature_cy.pyx":433
  * 
  *     def get_featureMat(self, atoms_list):
  *         featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])             # <<<<<<<<<<<<<<
  *         featureMat = np.array(featureMat)
  *         return featureMat
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 435, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 433, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 435, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 433, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 435, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 433, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (likely(PyList_CheckExact(__pyx_v_atoms_list)) || PyTuple_CheckExact(__pyx_v_atoms_list)) {
     __pyx_t_4 = __pyx_v_atoms_list; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_atoms_list); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_atoms_list); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 433, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 433, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_6)) {
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 435, __pyx_L1_error)
+        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 433, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 435, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 433, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 435, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 433, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 435, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 433, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       }
@@ -8212,7 +8140,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 435, __pyx_L1_error)
+          else __PYX_ERR(0, 433, __pyx_L1_error)
         }
         break;
       }
@@ -8220,7 +8148,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
     __Pyx_XDECREF_SET(__pyx_v_atoms, __pyx_t_7);
     __pyx_t_7 = 0;
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_feature); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_feature); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 433, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_9 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -8233,13 +8161,13 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       }
     }
     if (!__pyx_t_9) {
-      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_atoms); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 435, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_atoms); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 433, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_atoms};
-        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 435, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 433, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
@@ -8247,25 +8175,25 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_atoms};
-        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 435, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 433, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 435, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 433, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9); __pyx_t_9 = NULL;
         __Pyx_INCREF(__pyx_v_atoms);
         __Pyx_GIVEREF(__pyx_v_atoms);
         PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_v_atoms);
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 435, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 433, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 435, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 433, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -8280,14 +8208,14 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 433, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 435, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 433, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8296,20 +8224,20 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 435, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 433, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 435, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 433, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 435, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 433, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -8318,16 +8246,16 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __pyx_v_featureMat = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":436
+  /* "angular_fingerprintFeature_cy.pyx":434
  *     def get_featureMat(self, atoms_list):
  *         featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])
  *         featureMat = np.array(featureMat)             # <<<<<<<<<<<<<<
  *         return featureMat
  * 
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 436, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 434, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 436, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 434, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -8341,13 +8269,13 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_featureMat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 436, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_featureMat); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 434, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_featureMat};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 436, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 434, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -8355,19 +8283,19 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_featureMat};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 436, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 434, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 436, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 434, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_featureMat);
       __Pyx_GIVEREF(__pyx_v_featureMat);
       PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_v_featureMat);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 436, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 434, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
@@ -8376,7 +8304,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __Pyx_DECREF_SET(__pyx_v_featureMat, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":437
+  /* "angular_fingerprintFeature_cy.pyx":435
  *         featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])
  *         featureMat = np.array(featureMat)
  *         return featureMat             # <<<<<<<<<<<<<<
@@ -8388,7 +8316,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __pyx_r = __pyx_v_featureMat;
   goto __pyx_L0;
 
-  /* "angular_fingerprintFeature_cy.pyx":434
+  /* "angular_fingerprintFeature_cy.pyx":432
  *         return feature_np
  * 
  *     def get_featureMat(self, atoms_list):             # <<<<<<<<<<<<<<
@@ -8416,7 +8344,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   return __pyx_r;
 }
 
-/* "angular_fingerprintFeature_cy.pyx":439
+/* "angular_fingerprintFeature_cy.pyx":437
  *         return featureMat
  * 
  *     def get_featureGradient(self, atoms):             # <<<<<<<<<<<<<<
@@ -8456,11 +8384,11 @@ static PyObject *__pyx_pw_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_atoms)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_featureGradient", 1, 2, 2, 1); __PYX_ERR(0, 439, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_featureGradient", 1, 2, 2, 1); __PYX_ERR(0, 437, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_featureGradient") < 0)) __PYX_ERR(0, 439, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_featureGradient") < 0)) __PYX_ERR(0, 437, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -8473,7 +8401,7 @@ static PyObject *__pyx_pw_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_featureGradient", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 439, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_featureGradient", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 437, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("angular_fingerprintFeature_cy.Angular_Fingerprint.get_featureGradient", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8564,6 +8492,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   double __pyx_v_a;
   int __pyx_v_k;
   int __pyx_v_bin_index;
+  int __pyx_v_type3;
   int __pyx_v_cell_index1;
   __pyx_t_29angular_fingerprintFeature_cy_Point __pyx_v_displacement1;
   int __pyx_v_cell_index2;
@@ -8571,7 +8500,6 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   long __pyx_v_k_start;
   __pyx_t_29angular_fingerprintFeature_cy_Point __pyx_v_pos_k;
   double __pyx_v_Rik;
-  PyObject *__pyx_v_type3 = NULL;
   double __pyx_v_fc_ij;
   double __pyx_v_fc_ik;
   double __pyx_v_fc_grad_ij;
@@ -8614,298 +8542,298 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   int __pyx_t_32;
   __Pyx_RefNannySetupContext("get_featureGradient", 0);
 
-  /* "angular_fingerprintFeature_cy.pyx":441
+  /* "angular_fingerprintFeature_cy.pyx":439
  *     def get_featureGradient(self, atoms):
  * 
  *         cdef double Rc1 = self.Rc1             # <<<<<<<<<<<<<<
  *         cdef double Rc2 = self.Rc2
  *         cdef double binwidth1 = self.binwidth1
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 441, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Rc1 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":442
+  /* "angular_fingerprintFeature_cy.pyx":440
  * 
  *         cdef double Rc1 = self.Rc1
  *         cdef double Rc2 = self.Rc2             # <<<<<<<<<<<<<<
  *         cdef double binwidth1 = self.binwidth1
  *         cdef double binwidth2 = self.binwidth2
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 440, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 442, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 440, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Rc2 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":443
+  /* "angular_fingerprintFeature_cy.pyx":441
  *         cdef double Rc1 = self.Rc1
  *         cdef double Rc2 = self.Rc2
  *         cdef double binwidth1 = self.binwidth1             # <<<<<<<<<<<<<<
  *         cdef double binwidth2 = self.binwidth2
  *         cdef int Nbins1 = self.Nbins1
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 443, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 443, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 441, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_binwidth1 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":444
+  /* "angular_fingerprintFeature_cy.pyx":442
  *         cdef double Rc2 = self.Rc2
  *         cdef double binwidth1 = self.binwidth1
  *         cdef double binwidth2 = self.binwidth2             # <<<<<<<<<<<<<<
  *         cdef int Nbins1 = self.Nbins1
  *         cdef int Nbins2 = self.Nbins2
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_binwidth2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 442, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_binwidth2 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":445
+  /* "angular_fingerprintFeature_cy.pyx":443
  *         cdef double binwidth1 = self.binwidth1
  *         cdef double binwidth2 = self.binwidth2
  *         cdef int Nbins1 = self.Nbins1             # <<<<<<<<<<<<<<
  *         cdef int Nbins2 = self.Nbins2
  *         cdef double sigma1 = self.sigma1
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 445, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 443, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 445, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 443, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nbins1 = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":446
+  /* "angular_fingerprintFeature_cy.pyx":444
  *         cdef double binwidth2 = self.binwidth2
  *         cdef int Nbins1 = self.Nbins1
  *         cdef int Nbins2 = self.Nbins2             # <<<<<<<<<<<<<<
  *         cdef double sigma1 = self.sigma1
  *         cdef double sigma2 = self.sigma2
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 446, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbins2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 444, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 446, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 444, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nbins2 = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":447
+  /* "angular_fingerprintFeature_cy.pyx":445
  *         cdef int Nbins1 = self.Nbins1
  *         cdef int Nbins2 = self.Nbins2
  *         cdef double sigma1 = self.sigma1             # <<<<<<<<<<<<<<
  *         cdef double sigma2 = self.sigma2
  *         cdef int nsigma = self.nsigma
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 445, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 447, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 445, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_sigma1 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":448
+  /* "angular_fingerprintFeature_cy.pyx":446
  *         cdef int Nbins2 = self.Nbins2
  *         cdef double sigma1 = self.sigma1
  *         cdef double sigma2 = self.sigma2             # <<<<<<<<<<<<<<
  *         cdef int nsigma = self.nsigma
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 448, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 446, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 448, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 446, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_sigma2 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":449
+  /* "angular_fingerprintFeature_cy.pyx":447
  *         cdef double sigma1 = self.sigma1
  *         cdef double sigma2 = self.sigma2
  *         cdef int nsigma = self.nsigma             # <<<<<<<<<<<<<<
  * 
  *         cdef double eta = self.eta
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsigma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 449, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsigma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 449, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_nsigma = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":451
+  /* "angular_fingerprintFeature_cy.pyx":449
  *         cdef int nsigma = self.nsigma
  * 
  *         cdef double eta = self.eta             # <<<<<<<<<<<<<<
  *         cdef double gamma = self.gamma
  *         cdef use_angular = self.use_angular
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_eta); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 451, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_eta); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 451, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_eta = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":452
+  /* "angular_fingerprintFeature_cy.pyx":450
  * 
  *         cdef double eta = self.eta
  *         cdef double gamma = self.gamma             # <<<<<<<<<<<<<<
  *         cdef use_angular = self.use_angular
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 452, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_gamma); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 450, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 452, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 450, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_gamma = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":453
+  /* "angular_fingerprintFeature_cy.pyx":451
  *         cdef double eta = self.eta
  *         cdef double gamma = self.gamma
  *         cdef use_angular = self.use_angular             # <<<<<<<<<<<<<<
  * 
  *         cdef double volume = self.volume
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_use_angular); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 453, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_use_angular); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 451, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_use_angular = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":455
+  /* "angular_fingerprintFeature_cy.pyx":453
  *         cdef use_angular = self.use_angular
  * 
  *         cdef double volume = self.volume             # <<<<<<<<<<<<<<
  *         cdef int dim = self.dim
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_volume); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 455, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_volume); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 453, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 455, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 453, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_volume = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":456
+  /* "angular_fingerprintFeature_cy.pyx":454
  * 
  *         cdef double volume = self.volume
  *         cdef int dim = self.dim             # <<<<<<<<<<<<<<
  * 
  *         cdef double m1 = self.m1
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 456, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 454, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 456, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 454, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_dim = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":458
+  /* "angular_fingerprintFeature_cy.pyx":456
  *         cdef int dim = self.dim
  * 
  *         cdef double m1 = self.m1             # <<<<<<<<<<<<<<
  *         cdef double m2 = self.m2
  *         cdef double smearing_norm1 = self.smearing_norm1
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 458, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 456, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 458, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 456, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_m1 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":459
+  /* "angular_fingerprintFeature_cy.pyx":457
  * 
  *         cdef double m1 = self.m1
  *         cdef double m2 = self.m2             # <<<<<<<<<<<<<<
  *         cdef double smearing_norm1 = self.smearing_norm1
  *         cdef double smearing_norm2 = self.smearing_norm2
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 459, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_m2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 457, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 459, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 457, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_m2 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":460
+  /* "angular_fingerprintFeature_cy.pyx":458
  *         cdef double m1 = self.m1
  *         cdef double m2 = self.m2
  *         cdef double smearing_norm1 = self.smearing_norm1             # <<<<<<<<<<<<<<
  *         cdef double smearing_norm2 = self.smearing_norm2
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 460, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 458, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 460, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 458, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_smearing_norm1 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":461
+  /* "angular_fingerprintFeature_cy.pyx":459
  *         cdef double m2 = self.m2
  *         cdef double smearing_norm1 = self.smearing_norm1
  *         cdef double smearing_norm2 = self.smearing_norm2             # <<<<<<<<<<<<<<
  * 
  *         cdef int Nelements_2body = self.Nelements_2body
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 461, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_smearing_norm2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 459, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 461, __pyx_L1_error)
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 459, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_smearing_norm2 = __pyx_t_2;
 
-  /* "angular_fingerprintFeature_cy.pyx":463
+  /* "angular_fingerprintFeature_cy.pyx":461
  *         cdef double smearing_norm2 = self.smearing_norm2
  * 
  *         cdef int Nelements_2body = self.Nelements_2body             # <<<<<<<<<<<<<<
  *         cdef int Nelements_3body = self.Nelements_3body
  *         cdef int Nelements = self.Nelements
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 463, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 461, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 463, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 461, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nelements_2body = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":464
+  /* "angular_fingerprintFeature_cy.pyx":462
  * 
  *         cdef int Nelements_2body = self.Nelements_2body
  *         cdef int Nelements_3body = self.Nelements_3body             # <<<<<<<<<<<<<<
  *         cdef int Nelements = self.Nelements
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 464, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 462, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 464, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 462, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nelements_3body = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":465
+  /* "angular_fingerprintFeature_cy.pyx":463
  *         cdef int Nelements_2body = self.Nelements_2body
  *         cdef int Nelements_3body = self.Nelements_3body
  *         cdef int Nelements = self.Nelements             # <<<<<<<<<<<<<<
  * 
  *         # Memory allocation pool
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 465, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nelements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 463, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 465, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 463, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nelements = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":469
+  /* "angular_fingerprintFeature_cy.pyx":467
  *         # Memory allocation pool
  *         cdef Pool mem
  *         mem = Pool()             # <<<<<<<<<<<<<<
  * 
  *         cell = atoms.get_cell()
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_5cymem_5cymem_Pool)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 469, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_5cymem_5cymem_Pool)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 467, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_mem = ((struct __pyx_obj_5cymem_5cymem_Pool *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":471
+  /* "angular_fingerprintFeature_cy.pyx":469
  *         mem = Pool()
  * 
  *         cell = atoms.get_cell()             # <<<<<<<<<<<<<<
  *         cdef int Natoms = self.Natoms
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_cell); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 471, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_cell); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 469, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -8918,37 +8846,37 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 471, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 471, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 469, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_cell = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":472
+  /* "angular_fingerprintFeature_cy.pyx":470
  * 
  *         cell = atoms.get_cell()
  *         cdef int Natoms = self.Natoms             # <<<<<<<<<<<<<<
  * 
  *         # Get positions and convert to Point-struct
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Natoms); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 472, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Natoms); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 470, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 472, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 470, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Natoms = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":475
+  /* "angular_fingerprintFeature_cy.pyx":473
  * 
  *         # Get positions and convert to Point-struct
  *         cdef list pos_np = atoms.get_positions().tolist()             # <<<<<<<<<<<<<<
  *         cdef Point *pos
  *         pos = <Point*>mem.alloc(Natoms, sizeof(Point))
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_positions); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 475, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_positions); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 473, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -8961,14 +8889,14 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (__pyx_t_6) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 475, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 473, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   } else {
-    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 475, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 473, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_tolist); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 475, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_tolist); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 473, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -8982,28 +8910,28 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 475, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 473, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 475, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 473, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 475, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 473, __pyx_L1_error)
   __pyx_v_pos_np = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":477
+  /* "angular_fingerprintFeature_cy.pyx":475
  *         cdef list pos_np = atoms.get_positions().tolist()
  *         cdef Point *pos
  *         pos = <Point*>mem.alloc(Natoms, sizeof(Point))             # <<<<<<<<<<<<<<
  *         cdef int m
  *         for m in range(Natoms):
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Natoms, (sizeof(__pyx_t_29angular_fingerprintFeature_cy_Point))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 477, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Natoms, (sizeof(__pyx_t_29angular_fingerprintFeature_cy_Point))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 475, __pyx_L1_error)
   __pyx_v_pos = ((__pyx_t_29angular_fingerprintFeature_cy_Point *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":479
+  /* "angular_fingerprintFeature_cy.pyx":477
  *         pos = <Point*>mem.alloc(Natoms, sizeof(Point))
  *         cdef int m
  *         for m in range(Natoms):             # <<<<<<<<<<<<<<
@@ -9015,7 +8943,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":480
+    /* "angular_fingerprintFeature_cy.pyx":478
  *         cdef int m
  *         for m in range(Natoms):
  *             pos[m].coord[0] = pos_np[m][0]             # <<<<<<<<<<<<<<
@@ -9024,18 +8952,18 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_pos_np == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 480, __pyx_L1_error)
+      __PYX_ERR(0, 478, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 480, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 478, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 480, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 478, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 480, __pyx_L1_error)
+    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 478, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     ((__pyx_v_pos[__pyx_v_m]).coord[0]) = __pyx_t_2;
 
-    /* "angular_fingerprintFeature_cy.pyx":481
+    /* "angular_fingerprintFeature_cy.pyx":479
  *         for m in range(Natoms):
  *             pos[m].coord[0] = pos_np[m][0]
  *             pos[m].coord[1] = pos_np[m][1]             # <<<<<<<<<<<<<<
@@ -9044,18 +8972,18 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_pos_np == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 481, __pyx_L1_error)
+      __PYX_ERR(0, 479, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 481, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 479, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 481, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 479, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 481, __pyx_L1_error)
+    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 479, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     ((__pyx_v_pos[__pyx_v_m]).coord[1]) = __pyx_t_2;
 
-    /* "angular_fingerprintFeature_cy.pyx":482
+    /* "angular_fingerprintFeature_cy.pyx":480
  *             pos[m].coord[0] = pos_np[m][0]
  *             pos[m].coord[1] = pos_np[m][1]
  *             pos[m].coord[2] = pos_np[m][2]             # <<<<<<<<<<<<<<
@@ -9064,55 +8992,55 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_pos_np == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 482, __pyx_L1_error)
+      __PYX_ERR(0, 480, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 482, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_pos_np, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 480, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 482, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 480, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 482, __pyx_L1_error)
+    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 480, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     ((__pyx_v_pos[__pyx_v_m]).coord[2]) = __pyx_t_2;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":485
+  /* "angular_fingerprintFeature_cy.pyx":483
  * 
  *         # Get neighbourcells and convert to Point-struct
  *         cdef int Ncells = len(self.neighbourcells_disp)             # <<<<<<<<<<<<<<
  *         cdef list cell_displacements_old = self.neighbourcells_disp
  *         cdef Point *cell_displacements
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_neighbourcells_disp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 485, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_neighbourcells_disp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 483, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_10 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 485, __pyx_L1_error)
+  __pyx_t_10 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 483, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_Ncells = __pyx_t_10;
 
-  /* "angular_fingerprintFeature_cy.pyx":486
+  /* "angular_fingerprintFeature_cy.pyx":484
  *         # Get neighbourcells and convert to Point-struct
  *         cdef int Ncells = len(self.neighbourcells_disp)
  *         cdef list cell_displacements_old = self.neighbourcells_disp             # <<<<<<<<<<<<<<
  *         cdef Point *cell_displacements
  *         cell_displacements = <Point*>mem.alloc(Ncells, sizeof(Point))
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_neighbourcells_disp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 486, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_neighbourcells_disp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 484, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (!(likely(PyList_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 486, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 484, __pyx_L1_error)
   __pyx_v_cell_displacements_old = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":488
+  /* "angular_fingerprintFeature_cy.pyx":486
  *         cdef list cell_displacements_old = self.neighbourcells_disp
  *         cdef Point *cell_displacements
  *         cell_displacements = <Point*>mem.alloc(Ncells, sizeof(Point))             # <<<<<<<<<<<<<<
  *         for m in range(Ncells):
  *             cell_displacements[m].coord[0] = cell_displacements_old[m][0]
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Ncells, (sizeof(__pyx_t_29angular_fingerprintFeature_cy_Point))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 488, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Ncells, (sizeof(__pyx_t_29angular_fingerprintFeature_cy_Point))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 486, __pyx_L1_error)
   __pyx_v_cell_displacements = ((__pyx_t_29angular_fingerprintFeature_cy_Point *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":489
+  /* "angular_fingerprintFeature_cy.pyx":487
  *         cdef Point *cell_displacements
  *         cell_displacements = <Point*>mem.alloc(Ncells, sizeof(Point))
  *         for m in range(Ncells):             # <<<<<<<<<<<<<<
@@ -9124,7 +9052,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":490
+    /* "angular_fingerprintFeature_cy.pyx":488
  *         cell_displacements = <Point*>mem.alloc(Ncells, sizeof(Point))
  *         for m in range(Ncells):
  *             cell_displacements[m].coord[0] = cell_displacements_old[m][0]             # <<<<<<<<<<<<<<
@@ -9133,18 +9061,18 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_cell_displacements_old == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 490, __pyx_L1_error)
+      __PYX_ERR(0, 488, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_cell_displacements_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 490, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_cell_displacements_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 488, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 490, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 488, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 490, __pyx_L1_error)
+    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 488, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     ((__pyx_v_cell_displacements[__pyx_v_m]).coord[0]) = __pyx_t_2;
 
-    /* "angular_fingerprintFeature_cy.pyx":491
+    /* "angular_fingerprintFeature_cy.pyx":489
  *         for m in range(Ncells):
  *             cell_displacements[m].coord[0] = cell_displacements_old[m][0]
  *             cell_displacements[m].coord[1] = cell_displacements_old[m][1]             # <<<<<<<<<<<<<<
@@ -9153,18 +9081,18 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_cell_displacements_old == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 491, __pyx_L1_error)
+      __PYX_ERR(0, 489, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_cell_displacements_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 491, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_cell_displacements_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 489, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 491, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 489, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 491, __pyx_L1_error)
+    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 489, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     ((__pyx_v_cell_displacements[__pyx_v_m]).coord[1]) = __pyx_t_2;
 
-    /* "angular_fingerprintFeature_cy.pyx":492
+    /* "angular_fingerprintFeature_cy.pyx":490
  *             cell_displacements[m].coord[0] = cell_displacements_old[m][0]
  *             cell_displacements[m].coord[1] = cell_displacements_old[m][1]
  *             cell_displacements[m].coord[2] = cell_displacements_old[m][2]             # <<<<<<<<<<<<<<
@@ -9173,68 +9101,68 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_cell_displacements_old == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 492, __pyx_L1_error)
+      __PYX_ERR(0, 490, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_cell_displacements_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 492, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_cell_displacements_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 490, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 492, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 490, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 492, __pyx_L1_error)
+    __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 490, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     ((__pyx_v_cell_displacements[__pyx_v_m]).coord[2]) = __pyx_t_2;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":495
+  /* "angular_fingerprintFeature_cy.pyx":493
  * 
  *         # Convert bondtype list into c-array
  *         cdef int Ntypes = self.Ntypes             # <<<<<<<<<<<<<<
  *         cdef int Nbondtypes_2body = self.Nbondtypes_2body
  *         cdef list bondtypes_2body_old = self.bondtypes_2body
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Ntypes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 495, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Ntypes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 493, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 495, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 493, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Ntypes = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":496
+  /* "angular_fingerprintFeature_cy.pyx":494
  *         # Convert bondtype list into c-array
  *         cdef int Ntypes = self.Ntypes
  *         cdef int Nbondtypes_2body = self.Nbondtypes_2body             # <<<<<<<<<<<<<<
  *         cdef list bondtypes_2body_old = self.bondtypes_2body
  *         cdef int *bondtypes_2body
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbondtypes_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 496, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbondtypes_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 494, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 496, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 494, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nbondtypes_2body = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":497
+  /* "angular_fingerprintFeature_cy.pyx":495
  *         cdef int Ntypes = self.Ntypes
  *         cdef int Nbondtypes_2body = self.Nbondtypes_2body
  *         cdef list bondtypes_2body_old = self.bondtypes_2body             # <<<<<<<<<<<<<<
  *         cdef int *bondtypes_2body
  *         bondtypes_2body = <int*>mem.alloc(Ntypes*Ntypes, sizeof(int))
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bondtypes_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 497, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bondtypes_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 495, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 497, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 495, __pyx_L1_error)
   __pyx_v_bondtypes_2body_old = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":499
+  /* "angular_fingerprintFeature_cy.pyx":497
  *         cdef list bondtypes_2body_old = self.bondtypes_2body
  *         cdef int *bondtypes_2body
  *         bondtypes_2body = <int*>mem.alloc(Ntypes*Ntypes, sizeof(int))             # <<<<<<<<<<<<<<
  *         for m in range(Ntypes*Ntypes):
  *             bondtypes_2body[m] = bondtypes_2body_old[m]
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, (__pyx_v_Ntypes * __pyx_v_Ntypes), (sizeof(int))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 499, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, (__pyx_v_Ntypes * __pyx_v_Ntypes), (sizeof(int))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 497, __pyx_L1_error)
   __pyx_v_bondtypes_2body = ((int *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":500
+  /* "angular_fingerprintFeature_cy.pyx":498
  *         cdef int *bondtypes_2body
  *         bondtypes_2body = <int*>mem.alloc(Ntypes*Ntypes, sizeof(int))
  *         for m in range(Ntypes*Ntypes):             # <<<<<<<<<<<<<<
@@ -9246,7 +9174,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":501
+    /* "angular_fingerprintFeature_cy.pyx":499
  *         bondtypes_2body = <int*>mem.alloc(Ntypes*Ntypes, sizeof(int))
  *         for m in range(Ntypes*Ntypes):
  *             bondtypes_2body[m] = bondtypes_2body_old[m]             # <<<<<<<<<<<<<<
@@ -9255,25 +9183,25 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_bondtypes_2body_old == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 501, __pyx_L1_error)
+      __PYX_ERR(0, 499, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_bondtypes_2body_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 501, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_bondtypes_2body_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 499, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 501, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 499, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     (__pyx_v_bondtypes_2body[__pyx_v_m]) = __pyx_t_11;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":504
+  /* "angular_fingerprintFeature_cy.pyx":502
  * 
  *         # Get converted atom Ntypes
  *         cdef list num_converted_old = convert_atom_types(atoms.get_atomic_numbers())             # <<<<<<<<<<<<<<
  *         cdef int *num_converted
  *         num_converted = <int*>mem.alloc(Natoms, sizeof(int))
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_convert_atom_types); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 504, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_convert_atom_types); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_atomic_numbers); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 504, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_atoms, __pyx_n_s_get_atomic_numbers); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 502, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_12 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -9286,10 +9214,10 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (__pyx_t_12) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 504, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_12); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 502, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   } else {
-    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 504, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 502, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -9304,14 +9232,14 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (!__pyx_t_6) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 504, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 502, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_4};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 504, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 502, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -9320,40 +9248,40 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_4};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 504, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 502, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_12 = PyTuple_New(1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 504, __pyx_L1_error)
+      __pyx_t_12 = PyTuple_New(1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 502, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_6); __pyx_t_6 = NULL;
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_12, 0+1, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_12, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 504, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_12, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 502, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 504, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 502, __pyx_L1_error)
   __pyx_v_num_converted_old = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":506
+  /* "angular_fingerprintFeature_cy.pyx":504
  *         cdef list num_converted_old = convert_atom_types(atoms.get_atomic_numbers())
  *         cdef int *num_converted
  *         num_converted = <int*>mem.alloc(Natoms, sizeof(int))             # <<<<<<<<<<<<<<
  *         for m in range(Natoms):
  *             num_converted[m] = num_converted_old[m]
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Natoms, (sizeof(int))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 506, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, __pyx_v_Natoms, (sizeof(int))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 504, __pyx_L1_error)
   __pyx_v_num_converted = ((int *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":507
+  /* "angular_fingerprintFeature_cy.pyx":505
  *         cdef int *num_converted
  *         num_converted = <int*>mem.alloc(Natoms, sizeof(int))
  *         for m in range(Natoms):             # <<<<<<<<<<<<<<
@@ -9365,7 +9293,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":508
+    /* "angular_fingerprintFeature_cy.pyx":506
  *         num_converted = <int*>mem.alloc(Natoms, sizeof(int))
  *         for m in range(Natoms):
  *             num_converted[m] = num_converted_old[m]             # <<<<<<<<<<<<<<
@@ -9374,26 +9302,26 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_num_converted_old == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 508, __pyx_L1_error)
+      __PYX_ERR(0, 506, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_num_converted_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 508, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_num_converted_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 506, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 508, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 506, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     (__pyx_v_num_converted[__pyx_v_m]) = __pyx_t_11;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":514
+  /* "angular_fingerprintFeature_cy.pyx":512
  *         # Initialize radial feature-gradient
  *         cdef double *feature_grad1
  *         feature_grad1 = <double*>mem.alloc(Nelements_2body * Natoms * dim, sizeof(double))             # <<<<<<<<<<<<<<
  * 
  *         cdef Point RijVec
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, ((__pyx_v_Nelements_2body * __pyx_v_Natoms) * __pyx_v_dim), (sizeof(double))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 514, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, ((__pyx_v_Nelements_2body * __pyx_v_Natoms) * __pyx_v_dim), (sizeof(double))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 512, __pyx_L1_error)
   __pyx_v_feature_grad1 = ((double *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":520
+  /* "angular_fingerprintFeature_cy.pyx":518
  *         cdef double Rij, normalization, binpos, c, arg_low, arg_up, value1, value2, value
  *         cdef int i, j, n
  *         for i in range(Natoms):             # <<<<<<<<<<<<<<
@@ -9405,7 +9333,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":521
+    /* "angular_fingerprintFeature_cy.pyx":519
  *         cdef int i, j, n
  *         for i in range(Natoms):
  *             pos_i = pos[i]             # <<<<<<<<<<<<<<
@@ -9414,7 +9342,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     __pyx_v_pos_i = (__pyx_v_pos[__pyx_v_i]);
 
-    /* "angular_fingerprintFeature_cy.pyx":522
+    /* "angular_fingerprintFeature_cy.pyx":520
  *         for i in range(Natoms):
  *             pos_i = pos[i]
  *             for cell_index in range(Ncells):             # <<<<<<<<<<<<<<
@@ -9426,7 +9354,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
       __pyx_v_cell_index = __pyx_t_14;
 
-      /* "angular_fingerprintFeature_cy.pyx":523
+      /* "angular_fingerprintFeature_cy.pyx":521
  *             pos_i = pos[i]
  *             for cell_index in range(Ncells):
  *                 displacement = cell_displacements[cell_index]             # <<<<<<<<<<<<<<
@@ -9435,7 +9363,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
       __pyx_v_displacement = (__pyx_v_cell_displacements[__pyx_v_cell_index]);
 
-      /* "angular_fingerprintFeature_cy.pyx":524
+      /* "angular_fingerprintFeature_cy.pyx":522
  *             for cell_index in range(Ncells):
  *                 displacement = cell_displacements[cell_index]
  *                 for j in range(Natoms):             # <<<<<<<<<<<<<<
@@ -9447,7 +9375,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
         __pyx_v_j = __pyx_t_17;
 
-        /* "angular_fingerprintFeature_cy.pyx":525
+        /* "angular_fingerprintFeature_cy.pyx":523
  *                 displacement = cell_displacements[cell_index]
  *                 for j in range(Natoms):
  *                     pos_j = add(pos[j], displacement)             # <<<<<<<<<<<<<<
@@ -9456,7 +9384,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_pos_j = __pyx_f_29angular_fingerprintFeature_cy_add((__pyx_v_pos[__pyx_v_j]), __pyx_v_displacement);
 
-        /* "angular_fingerprintFeature_cy.pyx":526
+        /* "angular_fingerprintFeature_cy.pyx":524
  *                 for j in range(Natoms):
  *                     pos_j = add(pos[j], displacement)
  *                     Rij = euclidean(pos_i, pos_j)             # <<<<<<<<<<<<<<
@@ -9465,7 +9393,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_Rij = __pyx_f_29angular_fingerprintFeature_cy_euclidean(__pyx_v_pos_i, __pyx_v_pos_j);
 
-        /* "angular_fingerprintFeature_cy.pyx":529
+        /* "angular_fingerprintFeature_cy.pyx":527
  * 
  *                     # Stop if distance too long or atoms are the same one.
  *                     if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:             # <<<<<<<<<<<<<<
@@ -9483,7 +9411,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         __pyx_L18_bool_binop_done:;
         if (__pyx_t_18) {
 
-          /* "angular_fingerprintFeature_cy.pyx":530
+          /* "angular_fingerprintFeature_cy.pyx":528
  *                     # Stop if distance too long or atoms are the same one.
  *                     if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:
  *                         continue             # <<<<<<<<<<<<<<
@@ -9492,7 +9420,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           goto __pyx_L15_continue;
 
-          /* "angular_fingerprintFeature_cy.pyx":529
+          /* "angular_fingerprintFeature_cy.pyx":527
  * 
  *                     # Stop if distance too long or atoms are the same one.
  *                     if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:             # <<<<<<<<<<<<<<
@@ -9501,7 +9429,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         }
 
-        /* "angular_fingerprintFeature_cy.pyx":531
+        /* "angular_fingerprintFeature_cy.pyx":529
  *                     if Rij > Rc1+nsigma*sigma1 or Rij < 1e-6:
  *                         continue
  *                     RijVec = subtract(pos_j,pos_i)             # <<<<<<<<<<<<<<
@@ -9510,7 +9438,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_RijVec = __pyx_f_29angular_fingerprintFeature_cy_subtract(__pyx_v_pos_j, __pyx_v_pos_i);
 
-        /* "angular_fingerprintFeature_cy.pyx":534
+        /* "angular_fingerprintFeature_cy.pyx":532
  * 
  *                     # determine bondtype
  *                     if num_converted[i] <= num_converted[j]:             # <<<<<<<<<<<<<<
@@ -9520,7 +9448,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         __pyx_t_18 = (((__pyx_v_num_converted[__pyx_v_i]) <= (__pyx_v_num_converted[__pyx_v_j])) != 0);
         if (__pyx_t_18) {
 
-          /* "angular_fingerprintFeature_cy.pyx":535
+          /* "angular_fingerprintFeature_cy.pyx":533
  *                     # determine bondtype
  *                     if num_converted[i] <= num_converted[j]:
  *                         type1 = num_converted[i]             # <<<<<<<<<<<<<<
@@ -9529,7 +9457,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           __pyx_v_type1 = (__pyx_v_num_converted[__pyx_v_i]);
 
-          /* "angular_fingerprintFeature_cy.pyx":536
+          /* "angular_fingerprintFeature_cy.pyx":534
  *                     if num_converted[i] <= num_converted[j]:
  *                         type1 = num_converted[i]
  *                         type2 = num_converted[j]             # <<<<<<<<<<<<<<
@@ -9538,7 +9466,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           __pyx_v_type2 = (__pyx_v_num_converted[__pyx_v_j]);
 
-          /* "angular_fingerprintFeature_cy.pyx":534
+          /* "angular_fingerprintFeature_cy.pyx":532
  * 
  *                     # determine bondtype
  *                     if num_converted[i] <= num_converted[j]:             # <<<<<<<<<<<<<<
@@ -9548,7 +9476,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           goto __pyx_L20;
         }
 
-        /* "angular_fingerprintFeature_cy.pyx":538
+        /* "angular_fingerprintFeature_cy.pyx":536
  *                         type2 = num_converted[j]
  *                     else:
  *                         type1 = num_converted[j]             # <<<<<<<<<<<<<<
@@ -9558,7 +9486,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         /*else*/ {
           __pyx_v_type1 = (__pyx_v_num_converted[__pyx_v_j]);
 
-          /* "angular_fingerprintFeature_cy.pyx":539
+          /* "angular_fingerprintFeature_cy.pyx":537
  *                     else:
  *                         type1 = num_converted[j]
  *                         type2 = num_converted[i]             # <<<<<<<<<<<<<<
@@ -9569,7 +9497,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         }
         __pyx_L20:;
 
-        /* "angular_fingerprintFeature_cy.pyx":540
+        /* "angular_fingerprintFeature_cy.pyx":538
  *                         type1 = num_converted[j]
  *                         type2 = num_converted[i]
  *                     bondtype_index = Nbins1*bondtypes_2body[Ntypes*type1+type2]             # <<<<<<<<<<<<<<
@@ -9578,7 +9506,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_bondtype_index = (__pyx_v_Nbins1 * (__pyx_v_bondtypes_2body[((__pyx_v_Ntypes * __pyx_v_type1) + __pyx_v_type2)]));
 
-        /* "angular_fingerprintFeature_cy.pyx":543
+        /* "angular_fingerprintFeature_cy.pyx":541
  * 
  *                     # Calculate normalization
  *                     num_pairs = Natoms*Natoms             # <<<<<<<<<<<<<<
@@ -9587,7 +9515,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_num_pairs = (__pyx_v_Natoms * __pyx_v_Natoms);
 
-        /* "angular_fingerprintFeature_cy.pyx":544
+        /* "angular_fingerprintFeature_cy.pyx":542
  *                     # Calculate normalization
  *                     num_pairs = Natoms*Natoms
  *                     normalization = 1./smearing_norm1             # <<<<<<<<<<<<<<
@@ -9596,11 +9524,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         if (unlikely(__pyx_v_smearing_norm1 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 544, __pyx_L1_error)
+          __PYX_ERR(0, 542, __pyx_L1_error)
         }
         __pyx_v_normalization = (1. / __pyx_v_smearing_norm1);
 
-        /* "angular_fingerprintFeature_cy.pyx":545
+        /* "angular_fingerprintFeature_cy.pyx":543
  *                     num_pairs = Natoms*Natoms
  *                     normalization = 1./smearing_norm1
  *                     normalization /= 4*M_PI*Rij*Rij * binwidth1 * num_pairs/volume             # <<<<<<<<<<<<<<
@@ -9610,16 +9538,16 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         __pyx_t_2 = (((((4.0 * M_PI) * __pyx_v_Rij) * __pyx_v_Rij) * __pyx_v_binwidth1) * __pyx_v_num_pairs);
         if (unlikely(__pyx_v_volume == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 545, __pyx_L1_error)
+          __PYX_ERR(0, 543, __pyx_L1_error)
         }
         __pyx_t_20 = (__pyx_t_2 / __pyx_v_volume);
         if (unlikely(__pyx_t_20 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 545, __pyx_L1_error)
+          __PYX_ERR(0, 543, __pyx_L1_error)
         }
         __pyx_v_normalization = (__pyx_v_normalization / __pyx_t_20);
 
-        /* "angular_fingerprintFeature_cy.pyx":548
+        /* "angular_fingerprintFeature_cy.pyx":546
  * 
  *                     # Identify what bin 'Rij' belongs to + it's position in this bin
  *                     center_bin = <int> floor(Rij/binwidth1)             # <<<<<<<<<<<<<<
@@ -9628,11 +9556,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         if (unlikely(__pyx_v_binwidth1 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 548, __pyx_L1_error)
+          __PYX_ERR(0, 546, __pyx_L1_error)
         }
         __pyx_v_center_bin = ((int)floor((__pyx_v_Rij / __pyx_v_binwidth1)));
 
-        /* "angular_fingerprintFeature_cy.pyx":549
+        /* "angular_fingerprintFeature_cy.pyx":547
  *                     # Identify what bin 'Rij' belongs to + it's position in this bin
  *                     center_bin = <int> floor(Rij/binwidth1)
  *                     binpos = Rij/binwidth1 - center_bin             # <<<<<<<<<<<<<<
@@ -9641,11 +9569,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         if (unlikely(__pyx_v_binwidth1 == 0)) {
           PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-          __PYX_ERR(0, 549, __pyx_L1_error)
+          __PYX_ERR(0, 547, __pyx_L1_error)
         }
         __pyx_v_binpos = ((__pyx_v_Rij / __pyx_v_binwidth1) - __pyx_v_center_bin);
 
-        /* "angular_fingerprintFeature_cy.pyx":552
+        /* "angular_fingerprintFeature_cy.pyx":550
  * 
  *                     # Lower and upper range of bins affected by the current atomic distance deltaR.
  *                     minbin_lim = <int> -ceil(m1 - binpos)             # <<<<<<<<<<<<<<
@@ -9654,7 +9582,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_minbin_lim = ((int)(-ceil((__pyx_v_m1 - __pyx_v_binpos))));
 
-        /* "angular_fingerprintFeature_cy.pyx":553
+        /* "angular_fingerprintFeature_cy.pyx":551
  *                     # Lower and upper range of bins affected by the current atomic distance deltaR.
  *                     minbin_lim = <int> -ceil(m1 - binpos)
  *                     maxbin_lim = <int> ceil(m1 - (1-binpos))             # <<<<<<<<<<<<<<
@@ -9663,7 +9591,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_maxbin_lim = ((int)ceil((__pyx_v_m1 - (1.0 - __pyx_v_binpos))));
 
-        /* "angular_fingerprintFeature_cy.pyx":555
+        /* "angular_fingerprintFeature_cy.pyx":553
  *                     maxbin_lim = <int> ceil(m1 - (1-binpos))
  * 
  *                     for n in range(minbin_lim, maxbin_lim + 1):             # <<<<<<<<<<<<<<
@@ -9675,7 +9603,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         for (__pyx_t_23 = __pyx_v_minbin_lim; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
           __pyx_v_n = __pyx_t_23;
 
-          /* "angular_fingerprintFeature_cy.pyx":556
+          /* "angular_fingerprintFeature_cy.pyx":554
  * 
  *                     for n in range(minbin_lim, maxbin_lim + 1):
  *                         newbin = center_bin + n             # <<<<<<<<<<<<<<
@@ -9684,7 +9612,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           __pyx_v_newbin = (__pyx_v_center_bin + __pyx_v_n);
 
-          /* "angular_fingerprintFeature_cy.pyx":557
+          /* "angular_fingerprintFeature_cy.pyx":555
  *                     for n in range(minbin_lim, maxbin_lim + 1):
  *                         newbin = center_bin + n
  *                         if newbin < 0 or newbin >= Nbins1:             # <<<<<<<<<<<<<<
@@ -9702,7 +9630,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           __pyx_L24_bool_binop_done:;
           if (__pyx_t_18) {
 
-            /* "angular_fingerprintFeature_cy.pyx":558
+            /* "angular_fingerprintFeature_cy.pyx":556
  *                         newbin = center_bin + n
  *                         if newbin < 0 or newbin >= Nbins1:
  *                             continue             # <<<<<<<<<<<<<<
@@ -9711,7 +9639,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             goto __pyx_L21_continue;
 
-            /* "angular_fingerprintFeature_cy.pyx":557
+            /* "angular_fingerprintFeature_cy.pyx":555
  *                     for n in range(minbin_lim, maxbin_lim + 1):
  *                         newbin = center_bin + n
  *                         if newbin < 0 or newbin >= Nbins1:             # <<<<<<<<<<<<<<
@@ -9720,7 +9648,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           }
 
-          /* "angular_fingerprintFeature_cy.pyx":561
+          /* "angular_fingerprintFeature_cy.pyx":559
  * 
  *                         # Calculate gauss contribution to current bin
  *                         c = 1./sqrt(2)*binwidth1/sigma1             # <<<<<<<<<<<<<<
@@ -9730,16 +9658,16 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           __pyx_t_20 = sqrt(2.0);
           if (unlikely(__pyx_t_20 == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 561, __pyx_L1_error)
+            __PYX_ERR(0, 559, __pyx_L1_error)
           }
           __pyx_t_2 = ((1. / __pyx_t_20) * __pyx_v_binwidth1);
           if (unlikely(__pyx_v_sigma1 == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 561, __pyx_L1_error)
+            __PYX_ERR(0, 559, __pyx_L1_error)
           }
           __pyx_v_c = (__pyx_t_2 / __pyx_v_sigma1);
 
-          /* "angular_fingerprintFeature_cy.pyx":562
+          /* "angular_fingerprintFeature_cy.pyx":560
  *                         # Calculate gauss contribution to current bin
  *                         c = 1./sqrt(2)*binwidth1/sigma1
  *                         arg_low = max(-m1, n-binpos)             # <<<<<<<<<<<<<<
@@ -9755,7 +9683,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           }
           __pyx_v_arg_low = __pyx_t_24;
 
-          /* "angular_fingerprintFeature_cy.pyx":563
+          /* "angular_fingerprintFeature_cy.pyx":561
  *                         c = 1./sqrt(2)*binwidth1/sigma1
  *                         arg_low = max(-m1, n-binpos)
  *                         arg_up = min(m1, n+(1-binpos))             # <<<<<<<<<<<<<<
@@ -9771,7 +9699,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           }
           __pyx_v_arg_up = __pyx_t_20;
 
-          /* "angular_fingerprintFeature_cy.pyx":564
+          /* "angular_fingerprintFeature_cy.pyx":562
  *                         arg_low = max(-m1, n-binpos)
  *                         arg_up = min(m1, n+(1-binpos))
  *                         value1 = -1./Rij * (erf(c*arg_up) - erf(c*arg_low))             # <<<<<<<<<<<<<<
@@ -9780,11 +9708,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           if (unlikely(__pyx_v_Rij == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 564, __pyx_L1_error)
+            __PYX_ERR(0, 562, __pyx_L1_error)
           }
           __pyx_v_value1 = ((-1. / __pyx_v_Rij) * (erf((__pyx_v_c * __pyx_v_arg_up)) - erf((__pyx_v_c * __pyx_v_arg_low))));
 
-          /* "angular_fingerprintFeature_cy.pyx":565
+          /* "angular_fingerprintFeature_cy.pyx":563
  *                         arg_up = min(m1, n+(1-binpos))
  *                         value1 = -1./Rij * (erf(c*arg_up) - erf(c*arg_low))
  *                         value2 = -1./(sigma1*sqrt(2*M_PI)) * (exp(-pow(c*arg_up,2)) - exp(-pow(c*arg_low,2)))             # <<<<<<<<<<<<<<
@@ -9794,11 +9722,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           __pyx_t_20 = (__pyx_v_sigma1 * sqrt((2.0 * M_PI)));
           if (unlikely(__pyx_t_20 == 0)) {
             PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-            __PYX_ERR(0, 565, __pyx_L1_error)
+            __PYX_ERR(0, 563, __pyx_L1_error)
           }
           __pyx_v_value2 = ((-1. / __pyx_t_20) * (exp((-pow((__pyx_v_c * __pyx_v_arg_up), 2.0))) - exp((-pow((__pyx_v_c * __pyx_v_arg_low), 2.0)))));
 
-          /* "angular_fingerprintFeature_cy.pyx":566
+          /* "angular_fingerprintFeature_cy.pyx":564
  *                         value1 = -1./Rij * (erf(c*arg_up) - erf(c*arg_low))
  *                         value2 = -1./(sigma1*sqrt(2*M_PI)) * (exp(-pow(c*arg_up,2)) - exp(-pow(c*arg_low,2)))
  *                         value = value1 + value2             # <<<<<<<<<<<<<<
@@ -9807,7 +9735,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           __pyx_v_value = (__pyx_v_value1 + __pyx_v_value2);
 
-          /* "angular_fingerprintFeature_cy.pyx":569
+          /* "angular_fingerprintFeature_cy.pyx":567
  * 
  *                         # Apply normalization
  *                         value *= normalization             # <<<<<<<<<<<<<<
@@ -9816,7 +9744,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           __pyx_v_value = (__pyx_v_value * __pyx_v_normalization);
 
-          /* "angular_fingerprintFeature_cy.pyx":572
+          /* "angular_fingerprintFeature_cy.pyx":570
  * 
  *                         # Add to the the gradient matrix
  *                         for m in range(3):             # <<<<<<<<<<<<<<
@@ -9826,7 +9754,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           for (__pyx_t_25 = 0; __pyx_t_25 < 3; __pyx_t_25+=1) {
             __pyx_v_m = __pyx_t_25;
 
-            /* "angular_fingerprintFeature_cy.pyx":573
+            /* "angular_fingerprintFeature_cy.pyx":571
  *                         # Add to the the gradient matrix
  *                         for m in range(3):
  *                             feature_grad1[(bondtype_index + newbin) * Natoms*dim + dim*i+m] += -value/Rij * RijVec.coord[m]             # <<<<<<<<<<<<<<
@@ -9837,11 +9765,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
             __pyx_t_20 = (-__pyx_v_value);
             if (unlikely(__pyx_v_Rij == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 573, __pyx_L1_error)
+              __PYX_ERR(0, 571, __pyx_L1_error)
             }
             (__pyx_v_feature_grad1[__pyx_t_26]) = ((__pyx_v_feature_grad1[__pyx_t_26]) + ((__pyx_t_20 / __pyx_v_Rij) * (__pyx_v_RijVec.coord[__pyx_v_m])));
 
-            /* "angular_fingerprintFeature_cy.pyx":574
+            /* "angular_fingerprintFeature_cy.pyx":572
  *                         for m in range(3):
  *                             feature_grad1[(bondtype_index + newbin) * Natoms*dim + dim*i+m] += -value/Rij * RijVec.coord[m]
  *                             feature_grad1[(bondtype_index + newbin) * Natoms*dim + dim*j+m] += value/Rij * RijVec.coord[m]             # <<<<<<<<<<<<<<
@@ -9851,7 +9779,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
             __pyx_t_26 = (((((__pyx_v_bondtype_index + __pyx_v_newbin) * __pyx_v_Natoms) * __pyx_v_dim) + (__pyx_v_dim * __pyx_v_j)) + __pyx_v_m);
             if (unlikely(__pyx_v_Rij == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 574, __pyx_L1_error)
+              __PYX_ERR(0, 572, __pyx_L1_error)
             }
             (__pyx_v_feature_grad1[__pyx_t_26]) = ((__pyx_v_feature_grad1[__pyx_t_26]) + ((__pyx_v_value / __pyx_v_Rij) * (__pyx_v_RijVec.coord[__pyx_v_m])));
           }
@@ -9862,23 +9790,23 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":579
+  /* "angular_fingerprintFeature_cy.pyx":577
  *         # Convert radial feature to numpy array
  *         cdef int grad_index
  *         feature_grad1_np = np.zeros((Natoms*dim, Nelements_2body))             # <<<<<<<<<<<<<<
  *         for m in range(Nelements_2body):
  *             for grad_index in range(Natoms*dim):
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 577, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 577, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_int((__pyx_v_Natoms * __pyx_v_dim)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int((__pyx_v_Natoms * __pyx_v_dim)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 577, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_Nelements_2body); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_Nelements_2body); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 577, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 579, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 577, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5);
@@ -9897,14 +9825,14 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 579, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 577, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_12)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 579, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 577, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -9913,20 +9841,20 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_12)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_6};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 579, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 577, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 579, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 577, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_6);
       __pyx_t_6 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 579, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 577, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
@@ -9935,7 +9863,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __pyx_v_feature_grad1_np = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":580
+  /* "angular_fingerprintFeature_cy.pyx":578
  *         cdef int grad_index
  *         feature_grad1_np = np.zeros((Natoms*dim, Nelements_2body))
  *         for m in range(Nelements_2body):             # <<<<<<<<<<<<<<
@@ -9947,7 +9875,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":581
+    /* "angular_fingerprintFeature_cy.pyx":579
  *         feature_grad1_np = np.zeros((Natoms*dim, Nelements_2body))
  *         for m in range(Nelements_2body):
  *             for grad_index in range(Natoms*dim):             # <<<<<<<<<<<<<<
@@ -9959,35 +9887,35 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
       __pyx_v_grad_index = __pyx_t_14;
 
-      /* "angular_fingerprintFeature_cy.pyx":582
+      /* "angular_fingerprintFeature_cy.pyx":580
  *         for m in range(Nelements_2body):
  *             for grad_index in range(Natoms*dim):
  *                 feature_grad1_np[grad_index][m] = feature_grad1[m * Natoms*dim + grad_index]             # <<<<<<<<<<<<<<
  * 
  *         # Return feature if only radial part is desired
  */
-      __pyx_t_1 = PyFloat_FromDouble((__pyx_v_feature_grad1[(((__pyx_v_m * __pyx_v_Natoms) * __pyx_v_dim) + __pyx_v_grad_index)])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 582, __pyx_L1_error)
+      __pyx_t_1 = PyFloat_FromDouble((__pyx_v_feature_grad1[(((__pyx_v_m * __pyx_v_Natoms) * __pyx_v_dim) + __pyx_v_grad_index)])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 580, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_feature_grad1_np, __pyx_v_grad_index, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 582, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_feature_grad1_np, __pyx_v_grad_index, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 580, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_12, __pyx_v_m, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 582, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_12, __pyx_v_m, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 580, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":585
+  /* "angular_fingerprintFeature_cy.pyx":583
  * 
  *         # Return feature if only radial part is desired
  *         if not use_angular:             # <<<<<<<<<<<<<<
  *             return feature_grad1_np
  * 
  */
-  __pyx_t_18 = __Pyx_PyObject_IsTrue(__pyx_v_use_angular); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 585, __pyx_L1_error)
+  __pyx_t_18 = __Pyx_PyObject_IsTrue(__pyx_v_use_angular); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 583, __pyx_L1_error)
   __pyx_t_19 = ((!__pyx_t_18) != 0);
   if (__pyx_t_19) {
 
-    /* "angular_fingerprintFeature_cy.pyx":586
+    /* "angular_fingerprintFeature_cy.pyx":584
  *         # Return feature if only radial part is desired
  *         if not use_angular:
  *             return feature_grad1_np             # <<<<<<<<<<<<<<
@@ -9999,7 +9927,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     __pyx_r = __pyx_v_feature_grad1_np;
     goto __pyx_L0;
 
-    /* "angular_fingerprintFeature_cy.pyx":585
+    /* "angular_fingerprintFeature_cy.pyx":583
  * 
  *         # Return feature if only radial part is desired
  *         if not use_angular:             # <<<<<<<<<<<<<<
@@ -10008,43 +9936,43 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":591
+  /* "angular_fingerprintFeature_cy.pyx":589
  * 
  *         # Convert 3body bondtype list into c-array
  *         cdef int Nbondtypes_3body = self.Nbondtypes_3body             # <<<<<<<<<<<<<<
  *         cdef list bondtypes_3body_old = self.bondtypes_3body
  *         cdef int *bondtypes_3body
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbondtypes_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Nbondtypes_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 589, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 589, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Nbondtypes_3body = __pyx_t_3;
 
-  /* "angular_fingerprintFeature_cy.pyx":592
+  /* "angular_fingerprintFeature_cy.pyx":590
  *         # Convert 3body bondtype list into c-array
  *         cdef int Nbondtypes_3body = self.Nbondtypes_3body
  *         cdef list bondtypes_3body_old = self.bondtypes_3body             # <<<<<<<<<<<<<<
  *         cdef int *bondtypes_3body
  *         bondtypes_3body = <int*>mem.alloc(Ntypes*Ntypes*Ntypes, sizeof(int))
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bondtypes_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 592, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_bondtypes_3body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 590, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 592, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 590, __pyx_L1_error)
   __pyx_v_bondtypes_3body_old = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":594
+  /* "angular_fingerprintFeature_cy.pyx":592
  *         cdef list bondtypes_3body_old = self.bondtypes_3body
  *         cdef int *bondtypes_3body
  *         bondtypes_3body = <int*>mem.alloc(Ntypes*Ntypes*Ntypes, sizeof(int))             # <<<<<<<<<<<<<<
  *         for m in range(Ntypes*Ntypes*Ntypes):
  *             bondtypes_3body[m] = bondtypes_3body_old[m]
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, ((__pyx_v_Ntypes * __pyx_v_Ntypes) * __pyx_v_Ntypes), (sizeof(int))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 594, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, ((__pyx_v_Ntypes * __pyx_v_Ntypes) * __pyx_v_Ntypes), (sizeof(int))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 592, __pyx_L1_error)
   __pyx_v_bondtypes_3body = ((int *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":595
+  /* "angular_fingerprintFeature_cy.pyx":593
  *         cdef int *bondtypes_3body
  *         bondtypes_3body = <int*>mem.alloc(Ntypes*Ntypes*Ntypes, sizeof(int))
  *         for m in range(Ntypes*Ntypes*Ntypes):             # <<<<<<<<<<<<<<
@@ -10056,7 +9984,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":596
+    /* "angular_fingerprintFeature_cy.pyx":594
  *         bondtypes_3body = <int*>mem.alloc(Ntypes*Ntypes*Ntypes, sizeof(int))
  *         for m in range(Ntypes*Ntypes*Ntypes):
  *             bondtypes_3body[m] = bondtypes_3body_old[m]             # <<<<<<<<<<<<<<
@@ -10065,28 +9993,28 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     if (unlikely(__pyx_v_bondtypes_3body_old == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 596, __pyx_L1_error)
+      __PYX_ERR(0, 594, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_bondtypes_3body_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 596, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_bondtypes_3body_old, __pyx_v_m, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 594, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 596, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 594, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     (__pyx_v_bondtypes_3body[__pyx_v_m]) = __pyx_t_11;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":600
+  /* "angular_fingerprintFeature_cy.pyx":598
  *         # Initialize angular feature-gradient
  *         cdef double *feature_grad2
  *         feature_grad2 = <double*>mem.alloc(Nelements_3body * Natoms * dim, sizeof(double))             # <<<<<<<<<<<<<<
  * 
  *         cdef Point RikVec, angle_grad_i, angle_grad_j, angle_grad_k
  */
-  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, ((__pyx_v_Nelements_3body * __pyx_v_Natoms) * __pyx_v_dim), (sizeof(double))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 600, __pyx_L1_error)
+  __pyx_t_7 = ((struct __pyx_vtabstruct_5cymem_5cymem_Pool *)__pyx_v_mem->__pyx_vtab)->alloc(__pyx_v_mem, ((__pyx_v_Nelements_3body * __pyx_v_Natoms) * __pyx_v_dim), (sizeof(double))); if (unlikely(__pyx_t_7 == ((void *)NULL))) __PYX_ERR(0, 598, __pyx_L1_error)
   __pyx_v_feature_grad2 = ((double *)__pyx_t_7);
 
-  /* "angular_fingerprintFeature_cy.pyx":605
+  /* "angular_fingerprintFeature_cy.pyx":603
  *         cdef double angle, cos_angle, a
- *         cdef int k, cond_ij, cond_ik, bin_index
+ *         cdef int k, cond_ij, cond_ik, bin_index, type3
  *         for i in range(Natoms):             # <<<<<<<<<<<<<<
  *             pos_i = pos[i]
  *             for cell_index1 in range(Ncells):
@@ -10096,8 +10024,8 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":606
- *         cdef int k, cond_ij, cond_ik, bin_index
+    /* "angular_fingerprintFeature_cy.pyx":604
+ *         cdef int k, cond_ij, cond_ik, bin_index, type3
  *         for i in range(Natoms):
  *             pos_i = pos[i]             # <<<<<<<<<<<<<<
  *             for cell_index1 in range(Ncells):
@@ -10105,7 +10033,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
     __pyx_v_pos_i = (__pyx_v_pos[__pyx_v_i]);
 
-    /* "angular_fingerprintFeature_cy.pyx":607
+    /* "angular_fingerprintFeature_cy.pyx":605
  *         for i in range(Natoms):
  *             pos_i = pos[i]
  *             for cell_index1 in range(Ncells):             # <<<<<<<<<<<<<<
@@ -10117,7 +10045,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
       __pyx_v_cell_index1 = __pyx_t_14;
 
-      /* "angular_fingerprintFeature_cy.pyx":608
+      /* "angular_fingerprintFeature_cy.pyx":606
  *             pos_i = pos[i]
  *             for cell_index1 in range(Ncells):
  *                 displacement1 = cell_displacements[cell_index1]             # <<<<<<<<<<<<<<
@@ -10126,7 +10054,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
       __pyx_v_displacement1 = (__pyx_v_cell_displacements[__pyx_v_cell_index1]);
 
-      /* "angular_fingerprintFeature_cy.pyx":609
+      /* "angular_fingerprintFeature_cy.pyx":607
  *             for cell_index1 in range(Ncells):
  *                 displacement1 = cell_displacements[cell_index1]
  *                 for j in range(Natoms):             # <<<<<<<<<<<<<<
@@ -10138,7 +10066,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
         __pyx_v_j = __pyx_t_17;
 
-        /* "angular_fingerprintFeature_cy.pyx":610
+        /* "angular_fingerprintFeature_cy.pyx":608
  *                 displacement1 = cell_displacements[cell_index1]
  *                 for j in range(Natoms):
  *                     pos_j = add(pos[j], displacement1)             # <<<<<<<<<<<<<<
@@ -10147,7 +10075,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_pos_j = __pyx_f_29angular_fingerprintFeature_cy_add((__pyx_v_pos[__pyx_v_j]), __pyx_v_displacement1);
 
-        /* "angular_fingerprintFeature_cy.pyx":611
+        /* "angular_fingerprintFeature_cy.pyx":609
  *                 for j in range(Natoms):
  *                     pos_j = add(pos[j], displacement1)
  *                     Rij = euclidean(pos[i], pos_j)             # <<<<<<<<<<<<<<
@@ -10156,7 +10084,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         __pyx_v_Rij = __pyx_f_29angular_fingerprintFeature_cy_euclidean((__pyx_v_pos[__pyx_v_i]), __pyx_v_pos_j);
 
-        /* "angular_fingerprintFeature_cy.pyx":612
+        /* "angular_fingerprintFeature_cy.pyx":610
  *                     pos_j = add(pos[j], displacement1)
  *                     Rij = euclidean(pos[i], pos_j)
  *                     if Rij > Rc2 or Rij < 1e-6:             # <<<<<<<<<<<<<<
@@ -10174,7 +10102,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         __pyx_L42_bool_binop_done:;
         if (__pyx_t_19) {
 
-          /* "angular_fingerprintFeature_cy.pyx":613
+          /* "angular_fingerprintFeature_cy.pyx":611
  *                     Rij = euclidean(pos[i], pos_j)
  *                     if Rij > Rc2 or Rij < 1e-6:
  *                         continue             # <<<<<<<<<<<<<<
@@ -10183,7 +10111,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           goto __pyx_L39_continue;
 
-          /* "angular_fingerprintFeature_cy.pyx":612
+          /* "angular_fingerprintFeature_cy.pyx":610
  *                     pos_j = add(pos[j], displacement1)
  *                     Rij = euclidean(pos[i], pos_j)
  *                     if Rij > Rc2 or Rij < 1e-6:             # <<<<<<<<<<<<<<
@@ -10192,7 +10120,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
         }
 
-        /* "angular_fingerprintFeature_cy.pyx":614
+        /* "angular_fingerprintFeature_cy.pyx":612
  *                     if Rij > Rc2 or Rij < 1e-6:
  *                         continue
  *                     for cell_index2 in range(cell_index1, Ncells):             # <<<<<<<<<<<<<<
@@ -10204,7 +10132,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         for (__pyx_t_26 = __pyx_v_cell_index1; __pyx_t_26 < __pyx_t_25; __pyx_t_26+=1) {
           __pyx_v_cell_index2 = __pyx_t_26;
 
-          /* "angular_fingerprintFeature_cy.pyx":615
+          /* "angular_fingerprintFeature_cy.pyx":613
  *                         continue
  *                     for cell_index2 in range(cell_index1, Ncells):
  *                         displacement2 = cell_displacements[cell_index2]             # <<<<<<<<<<<<<<
@@ -10213,7 +10141,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
           __pyx_v_displacement2 = (__pyx_v_cell_displacements[__pyx_v_cell_index2]);
 
-          /* "angular_fingerprintFeature_cy.pyx":616
+          /* "angular_fingerprintFeature_cy.pyx":614
  *                     for cell_index2 in range(cell_index1, Ncells):
  *                         displacement2 = cell_displacements[cell_index2]
  *                         if cell_index1 == cell_index2:             # <<<<<<<<<<<<<<
@@ -10223,7 +10151,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           __pyx_t_19 = ((__pyx_v_cell_index1 == __pyx_v_cell_index2) != 0);
           if (__pyx_t_19) {
 
-            /* "angular_fingerprintFeature_cy.pyx":617
+            /* "angular_fingerprintFeature_cy.pyx":615
  *                         displacement2 = cell_displacements[cell_index2]
  *                         if cell_index1 == cell_index2:
  *                             k_start = j+1             # <<<<<<<<<<<<<<
@@ -10232,7 +10160,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_k_start = (__pyx_v_j + 1);
 
-            /* "angular_fingerprintFeature_cy.pyx":616
+            /* "angular_fingerprintFeature_cy.pyx":614
  *                     for cell_index2 in range(cell_index1, Ncells):
  *                         displacement2 = cell_displacements[cell_index2]
  *                         if cell_index1 == cell_index2:             # <<<<<<<<<<<<<<
@@ -10242,7 +10170,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
             goto __pyx_L46;
           }
 
-          /* "angular_fingerprintFeature_cy.pyx":619
+          /* "angular_fingerprintFeature_cy.pyx":617
  *                             k_start = j+1
  *                         else:
  *                             k_start = 0             # <<<<<<<<<<<<<<
@@ -10254,7 +10182,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           }
           __pyx_L46:;
 
-          /* "angular_fingerprintFeature_cy.pyx":620
+          /* "angular_fingerprintFeature_cy.pyx":618
  *                         else:
  *                             k_start = 0
  *                         for k in range(k_start, Natoms):             # <<<<<<<<<<<<<<
@@ -10266,7 +10194,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
           for (__pyx_t_29 = __pyx_v_k_start; __pyx_t_29 < __pyx_t_28; __pyx_t_29+=1) {
             __pyx_v_k = __pyx_t_29;
 
-            /* "angular_fingerprintFeature_cy.pyx":621
+            /* "angular_fingerprintFeature_cy.pyx":619
  *                             k_start = 0
  *                         for k in range(k_start, Natoms):
  *                             pos_k = add(pos[k], displacement2)             # <<<<<<<<<<<<<<
@@ -10275,7 +10203,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_pos_k = __pyx_f_29angular_fingerprintFeature_cy_add((__pyx_v_pos[__pyx_v_k]), __pyx_v_displacement2);
 
-            /* "angular_fingerprintFeature_cy.pyx":622
+            /* "angular_fingerprintFeature_cy.pyx":620
  *                         for k in range(k_start, Natoms):
  *                             pos_k = add(pos[k], displacement2)
  *                             Rik = euclidean(pos_i, pos_k)             # <<<<<<<<<<<<<<
@@ -10284,7 +10212,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_Rik = __pyx_f_29angular_fingerprintFeature_cy_euclidean(__pyx_v_pos_i, __pyx_v_pos_k);
 
-            /* "angular_fingerprintFeature_cy.pyx":623
+            /* "angular_fingerprintFeature_cy.pyx":621
  *                             pos_k = add(pos[k], displacement2)
  *                             Rik = euclidean(pos_i, pos_k)
  *                             if Rik > Rc2 or Rik < 1e-6:             # <<<<<<<<<<<<<<
@@ -10302,7 +10230,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
             __pyx_L50_bool_binop_done:;
             if (__pyx_t_19) {
 
-              /* "angular_fingerprintFeature_cy.pyx":624
+              /* "angular_fingerprintFeature_cy.pyx":622
  *                             Rik = euclidean(pos_i, pos_k)
  *                             if Rik > Rc2 or Rik < 1e-6:
  *                                 continue             # <<<<<<<<<<<<<<
@@ -10311,7 +10239,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               goto __pyx_L47_continue;
 
-              /* "angular_fingerprintFeature_cy.pyx":623
+              /* "angular_fingerprintFeature_cy.pyx":621
  *                             pos_k = add(pos[k], displacement2)
  *                             Rik = euclidean(pos_i, pos_k)
  *                             if Rik > Rc2 or Rik < 1e-6:             # <<<<<<<<<<<<<<
@@ -10320,7 +10248,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             }
 
-            /* "angular_fingerprintFeature_cy.pyx":627
+            /* "angular_fingerprintFeature_cy.pyx":625
  * 
  *                             # determine bondtype
  *                             type1 = num_converted[i]             # <<<<<<<<<<<<<<
@@ -10329,7 +10257,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_type1 = (__pyx_v_num_converted[__pyx_v_i]);
 
-            /* "angular_fingerprintFeature_cy.pyx":628
+            /* "angular_fingerprintFeature_cy.pyx":626
  *                             # determine bondtype
  *                             type1 = num_converted[i]
  *                             if num_converted[j] <= num_converted[k]:             # <<<<<<<<<<<<<<
@@ -10339,7 +10267,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
             __pyx_t_19 = (((__pyx_v_num_converted[__pyx_v_j]) <= (__pyx_v_num_converted[__pyx_v_k])) != 0);
             if (__pyx_t_19) {
 
-              /* "angular_fingerprintFeature_cy.pyx":629
+              /* "angular_fingerprintFeature_cy.pyx":627
  *                             type1 = num_converted[i]
  *                             if num_converted[j] <= num_converted[k]:
  *                                 type2 = num_converted[j]             # <<<<<<<<<<<<<<
@@ -10348,19 +10276,16 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               __pyx_v_type2 = (__pyx_v_num_converted[__pyx_v_j]);
 
-              /* "angular_fingerprintFeature_cy.pyx":630
+              /* "angular_fingerprintFeature_cy.pyx":628
  *                             if num_converted[j] <= num_converted[k]:
  *                                 type2 = num_converted[j]
  *                                 type3 = num_converted[k]             # <<<<<<<<<<<<<<
  *                             else:
  *                                 type2 = num_converted[k]
  */
-              __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_num_converted[__pyx_v_k])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 630, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_1);
-              __Pyx_XDECREF_SET(__pyx_v_type3, __pyx_t_1);
-              __pyx_t_1 = 0;
+              __pyx_v_type3 = (__pyx_v_num_converted[__pyx_v_k]);
 
-              /* "angular_fingerprintFeature_cy.pyx":628
+              /* "angular_fingerprintFeature_cy.pyx":626
  *                             # determine bondtype
  *                             type1 = num_converted[i]
  *                             if num_converted[j] <= num_converted[k]:             # <<<<<<<<<<<<<<
@@ -10370,7 +10295,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               goto __pyx_L52;
             }
 
-            /* "angular_fingerprintFeature_cy.pyx":632
+            /* "angular_fingerprintFeature_cy.pyx":630
  *                                 type3 = num_converted[k]
  *                             else:
  *                                 type2 = num_converted[k]             # <<<<<<<<<<<<<<
@@ -10380,37 +10305,27 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
             /*else*/ {
               __pyx_v_type2 = (__pyx_v_num_converted[__pyx_v_k]);
 
-              /* "angular_fingerprintFeature_cy.pyx":633
+              /* "angular_fingerprintFeature_cy.pyx":631
  *                             else:
  *                                 type2 = num_converted[k]
  *                                 type3 = num_converted[j]             # <<<<<<<<<<<<<<
  *                             bondtype_index = Nbins2*bondtypes_3body[Ntypes*Ntypes*type1 + Ntypes*type2 + type3]
  * 
  */
-              __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_num_converted[__pyx_v_j])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 633, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_1);
-              __Pyx_XDECREF_SET(__pyx_v_type3, __pyx_t_1);
-              __pyx_t_1 = 0;
+              __pyx_v_type3 = (__pyx_v_num_converted[__pyx_v_j]);
             }
             __pyx_L52:;
 
-            /* "angular_fingerprintFeature_cy.pyx":634
+            /* "angular_fingerprintFeature_cy.pyx":632
  *                                 type2 = num_converted[k]
  *                                 type3 = num_converted[j]
  *                             bondtype_index = Nbins2*bondtypes_3body[Ntypes*Ntypes*type1 + Ntypes*type2 + type3]             # <<<<<<<<<<<<<<
  * 
  *                             # Calculate angle
  */
-            __pyx_t_1 = __Pyx_PyInt_From_int((((__pyx_v_Ntypes * __pyx_v_Ntypes) * __pyx_v_type1) + (__pyx_v_Ntypes * __pyx_v_type2))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 634, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_12 = PyNumber_Add(__pyx_t_1, __pyx_v_type3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 634, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_12);
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __pyx_t_10 = __Pyx_PyIndex_AsSsize_t(__pyx_t_12); if (unlikely((__pyx_t_10 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 634, __pyx_L1_error)
-            __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-            __pyx_v_bondtype_index = (__pyx_v_Nbins2 * (__pyx_v_bondtypes_3body[__pyx_t_10]));
+            __pyx_v_bondtype_index = (__pyx_v_Nbins2 * (__pyx_v_bondtypes_3body[((((__pyx_v_Ntypes * __pyx_v_Ntypes) * __pyx_v_type1) + (__pyx_v_Ntypes * __pyx_v_type2)) + __pyx_v_type3)]));
 
-            /* "angular_fingerprintFeature_cy.pyx":637
+            /* "angular_fingerprintFeature_cy.pyx":635
  * 
  *                             # Calculate angle
  *                             RijVec = subtract(pos_j,pos_i)             # <<<<<<<<<<<<<<
@@ -10419,7 +10334,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_RijVec = __pyx_f_29angular_fingerprintFeature_cy_subtract(__pyx_v_pos_j, __pyx_v_pos_i);
 
-            /* "angular_fingerprintFeature_cy.pyx":638
+            /* "angular_fingerprintFeature_cy.pyx":636
  *                             # Calculate angle
  *                             RijVec = subtract(pos_j,pos_i)
  *                             RikVec = subtract(pos_k, pos_i)             # <<<<<<<<<<<<<<
@@ -10428,7 +10343,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_RikVec = __pyx_f_29angular_fingerprintFeature_cy_subtract(__pyx_v_pos_k, __pyx_v_pos_i);
 
-            /* "angular_fingerprintFeature_cy.pyx":641
+            /* "angular_fingerprintFeature_cy.pyx":639
  * 
  * 
  *                             angle = get_angle(RijVec, RikVec)             # <<<<<<<<<<<<<<
@@ -10437,7 +10352,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_angle = __pyx_f_29angular_fingerprintFeature_cy_get_angle(__pyx_v_RijVec, __pyx_v_RikVec);
 
-            /* "angular_fingerprintFeature_cy.pyx":642
+            /* "angular_fingerprintFeature_cy.pyx":640
  * 
  *                             angle = get_angle(RijVec, RikVec)
  *                             cos_angle = cos(angle)             # <<<<<<<<<<<<<<
@@ -10446,7 +10361,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_cos_angle = cos(__pyx_v_angle);
 
-            /* "angular_fingerprintFeature_cy.pyx":644
+            /* "angular_fingerprintFeature_cy.pyx":642
  *                             cos_angle = cos(angle)
  * 
  *                             for m in range(3):             # <<<<<<<<<<<<<<
@@ -10456,7 +10371,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
             for (__pyx_t_30 = 0; __pyx_t_30 < 3; __pyx_t_30+=1) {
               __pyx_v_m = __pyx_t_30;
 
-              /* "angular_fingerprintFeature_cy.pyx":645
+              /* "angular_fingerprintFeature_cy.pyx":643
  * 
  *                             for m in range(3):
  *                                 if not (angle == 0 or angle == M_PI):             # <<<<<<<<<<<<<<
@@ -10475,7 +10390,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               __pyx_t_18 = ((!__pyx_t_19) != 0);
               if (__pyx_t_18) {
 
-                /* "angular_fingerprintFeature_cy.pyx":646
+                /* "angular_fingerprintFeature_cy.pyx":644
  *                             for m in range(3):
  *                                 if not (angle == 0 or angle == M_PI):
  *                                     a = -1/sqrt(1 - cos_angle*cos_angle)             # <<<<<<<<<<<<<<
@@ -10485,11 +10400,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
                 __pyx_t_20 = sqrt((1.0 - (__pyx_v_cos_angle * __pyx_v_cos_angle)));
                 if (unlikely(__pyx_t_20 == 0)) {
                   PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                  __PYX_ERR(0, 646, __pyx_L1_error)
+                  __PYX_ERR(0, 644, __pyx_L1_error)
                 }
                 __pyx_v_a = (-1.0 / __pyx_t_20);
 
-                /* "angular_fingerprintFeature_cy.pyx":647
+                /* "angular_fingerprintFeature_cy.pyx":645
  *                                 if not (angle == 0 or angle == M_PI):
  *                                     a = -1/sqrt(1 - cos_angle*cos_angle)
  *                                     angle_grad_j.coord[m] = a * (RikVec.coord[m]/(Rij*Rik) - cos_angle*RijVec.coord[m]/(Rij*Rij))             # <<<<<<<<<<<<<<
@@ -10499,17 +10414,17 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
                 __pyx_t_20 = (__pyx_v_Rij * __pyx_v_Rik);
                 if (unlikely(__pyx_t_20 == 0)) {
                   PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                  __PYX_ERR(0, 647, __pyx_L1_error)
+                  __PYX_ERR(0, 645, __pyx_L1_error)
                 }
                 __pyx_t_24 = (__pyx_v_cos_angle * (__pyx_v_RijVec.coord[__pyx_v_m]));
                 __pyx_t_2 = (__pyx_v_Rij * __pyx_v_Rij);
                 if (unlikely(__pyx_t_2 == 0)) {
                   PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                  __PYX_ERR(0, 647, __pyx_L1_error)
+                  __PYX_ERR(0, 645, __pyx_L1_error)
                 }
                 (__pyx_v_angle_grad_j.coord[__pyx_v_m]) = (__pyx_v_a * (((__pyx_v_RikVec.coord[__pyx_v_m]) / __pyx_t_20) - (__pyx_t_24 / __pyx_t_2)));
 
-                /* "angular_fingerprintFeature_cy.pyx":648
+                /* "angular_fingerprintFeature_cy.pyx":646
  *                                     a = -1/sqrt(1 - cos_angle*cos_angle)
  *                                     angle_grad_j.coord[m] = a * (RikVec.coord[m]/(Rij*Rik) - cos_angle*RijVec.coord[m]/(Rij*Rij))
  *                                     angle_grad_k.coord[m] = a * (RijVec.coord[m]/(Rij*Rik) - cos_angle*RikVec.coord[m]/(Rik*Rik))             # <<<<<<<<<<<<<<
@@ -10519,17 +10434,17 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
                 __pyx_t_2 = (__pyx_v_Rij * __pyx_v_Rik);
                 if (unlikely(__pyx_t_2 == 0)) {
                   PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                  __PYX_ERR(0, 648, __pyx_L1_error)
+                  __PYX_ERR(0, 646, __pyx_L1_error)
                 }
                 __pyx_t_24 = (__pyx_v_cos_angle * (__pyx_v_RikVec.coord[__pyx_v_m]));
                 __pyx_t_20 = (__pyx_v_Rik * __pyx_v_Rik);
                 if (unlikely(__pyx_t_20 == 0)) {
                   PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                  __PYX_ERR(0, 648, __pyx_L1_error)
+                  __PYX_ERR(0, 646, __pyx_L1_error)
                 }
                 (__pyx_v_angle_grad_k.coord[__pyx_v_m]) = (__pyx_v_a * (((__pyx_v_RijVec.coord[__pyx_v_m]) / __pyx_t_2) - (__pyx_t_24 / __pyx_t_20)));
 
-                /* "angular_fingerprintFeature_cy.pyx":649
+                /* "angular_fingerprintFeature_cy.pyx":647
  *                                     angle_grad_j.coord[m] = a * (RikVec.coord[m]/(Rij*Rik) - cos_angle*RijVec.coord[m]/(Rij*Rij))
  *                                     angle_grad_k.coord[m] = a * (RijVec.coord[m]/(Rij*Rik) - cos_angle*RikVec.coord[m]/(Rik*Rik))
  *                                     angle_grad_i.coord[m] = -(angle_grad_j.coord[m] + angle_grad_k.coord[m])             # <<<<<<<<<<<<<<
@@ -10538,7 +10453,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
                 (__pyx_v_angle_grad_i.coord[__pyx_v_m]) = (-((__pyx_v_angle_grad_j.coord[__pyx_v_m]) + (__pyx_v_angle_grad_k.coord[__pyx_v_m])));
 
-                /* "angular_fingerprintFeature_cy.pyx":645
+                /* "angular_fingerprintFeature_cy.pyx":643
  * 
  *                             for m in range(3):
  *                                 if not (angle == 0 or angle == M_PI):             # <<<<<<<<<<<<<<
@@ -10548,7 +10463,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
                 goto __pyx_L55;
               }
 
-              /* "angular_fingerprintFeature_cy.pyx":651
+              /* "angular_fingerprintFeature_cy.pyx":649
  *                                     angle_grad_i.coord[m] = -(angle_grad_j.coord[m] + angle_grad_k.coord[m])
  *                                 else:
  *                                     angle_grad_j.coord[m] = 0             # <<<<<<<<<<<<<<
@@ -10558,7 +10473,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               /*else*/ {
                 (__pyx_v_angle_grad_j.coord[__pyx_v_m]) = 0.0;
 
-                /* "angular_fingerprintFeature_cy.pyx":652
+                /* "angular_fingerprintFeature_cy.pyx":650
  *                                 else:
  *                                     angle_grad_j.coord[m] = 0
  *                                     angle_grad_k.coord[m] = 0             # <<<<<<<<<<<<<<
@@ -10567,7 +10482,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
                 (__pyx_v_angle_grad_k.coord[__pyx_v_m]) = 0.0;
 
-                /* "angular_fingerprintFeature_cy.pyx":653
+                /* "angular_fingerprintFeature_cy.pyx":651
  *                                     angle_grad_j.coord[m] = 0
  *                                     angle_grad_k.coord[m] = 0
  *                                     angle_grad_i.coord[m] = 0             # <<<<<<<<<<<<<<
@@ -10579,7 +10494,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               __pyx_L55:;
             }
 
-            /* "angular_fingerprintFeature_cy.pyx":655
+            /* "angular_fingerprintFeature_cy.pyx":653
  *                                     angle_grad_i.coord[m] = 0
  * 
  *                             fc_ij = f_cutoff(Rij, gamma, Rc2)             # <<<<<<<<<<<<<<
@@ -10588,7 +10503,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_fc_ij = __pyx_f_29angular_fingerprintFeature_cy_f_cutoff(__pyx_v_Rij, __pyx_v_gamma, __pyx_v_Rc2);
 
-            /* "angular_fingerprintFeature_cy.pyx":656
+            /* "angular_fingerprintFeature_cy.pyx":654
  * 
  *                             fc_ij = f_cutoff(Rij, gamma, Rc2)
  *                             fc_ik = f_cutoff(Rik, gamma, Rc2)             # <<<<<<<<<<<<<<
@@ -10597,7 +10512,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_fc_ik = __pyx_f_29angular_fingerprintFeature_cy_f_cutoff(__pyx_v_Rik, __pyx_v_gamma, __pyx_v_Rc2);
 
-            /* "angular_fingerprintFeature_cy.pyx":657
+            /* "angular_fingerprintFeature_cy.pyx":655
  *                             fc_ij = f_cutoff(Rij, gamma, Rc2)
  *                             fc_ik = f_cutoff(Rik, gamma, Rc2)
  *                             fc_grad_ij = f_cutoff_grad(Rij, gamma, Rc2)             # <<<<<<<<<<<<<<
@@ -10606,7 +10521,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_fc_grad_ij = __pyx_f_29angular_fingerprintFeature_cy_f_cutoff_grad(__pyx_v_Rij, __pyx_v_gamma, __pyx_v_Rc2);
 
-            /* "angular_fingerprintFeature_cy.pyx":658
+            /* "angular_fingerprintFeature_cy.pyx":656
  *                             fc_ik = f_cutoff(Rik, gamma, Rc2)
  *                             fc_grad_ij = f_cutoff_grad(Rij, gamma, Rc2)
  *                             fc_grad_ik = f_cutoff_grad(Rik, gamma, Rc2)             # <<<<<<<<<<<<<<
@@ -10615,7 +10530,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_fc_grad_ik = __pyx_f_29angular_fingerprintFeature_cy_f_cutoff_grad(__pyx_v_Rik, __pyx_v_gamma, __pyx_v_Rc2);
 
-            /* "angular_fingerprintFeature_cy.pyx":661
+            /* "angular_fingerprintFeature_cy.pyx":659
  * 
  *                             # Calculate normalization
  *                             num_pairs = Natoms*Natoms*Natoms             # <<<<<<<<<<<<<<
@@ -10624,7 +10539,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_num_pairs = ((__pyx_v_Natoms * __pyx_v_Natoms) * __pyx_v_Natoms);
 
-            /* "angular_fingerprintFeature_cy.pyx":662
+            /* "angular_fingerprintFeature_cy.pyx":660
  *                             # Calculate normalization
  *                             num_pairs = Natoms*Natoms*Natoms
  *                             normalization = 1./smearing_norm2             # <<<<<<<<<<<<<<
@@ -10633,11 +10548,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             if (unlikely(__pyx_v_smearing_norm2 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 662, __pyx_L1_error)
+              __PYX_ERR(0, 660, __pyx_L1_error)
             }
             __pyx_v_normalization = (1. / __pyx_v_smearing_norm2);
 
-            /* "angular_fingerprintFeature_cy.pyx":663
+            /* "angular_fingerprintFeature_cy.pyx":661
  *                             num_pairs = Natoms*Natoms*Natoms
  *                             normalization = 1./smearing_norm2
  *                             normalization /= num_pairs/volume             # <<<<<<<<<<<<<<
@@ -10646,16 +10561,16 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             if (unlikely(__pyx_v_volume == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 663, __pyx_L1_error)
+              __PYX_ERR(0, 661, __pyx_L1_error)
             }
             __pyx_t_20 = (__pyx_v_num_pairs / __pyx_v_volume);
             if (unlikely(__pyx_t_20 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 663, __pyx_L1_error)
+              __PYX_ERR(0, 661, __pyx_L1_error)
             }
             __pyx_v_normalization = (__pyx_v_normalization / __pyx_t_20);
 
-            /* "angular_fingerprintFeature_cy.pyx":666
+            /* "angular_fingerprintFeature_cy.pyx":664
  * 
  *                             # Identify what bin 'Rij' belongs to + it's position in this bin
  *                             center_bin = <int> floor(angle/binwidth1)             # <<<<<<<<<<<<<<
@@ -10664,11 +10579,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             if (unlikely(__pyx_v_binwidth1 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 666, __pyx_L1_error)
+              __PYX_ERR(0, 664, __pyx_L1_error)
             }
             __pyx_v_center_bin = ((int)floor((__pyx_v_angle / __pyx_v_binwidth1)));
 
-            /* "angular_fingerprintFeature_cy.pyx":667
+            /* "angular_fingerprintFeature_cy.pyx":665
  *                             # Identify what bin 'Rij' belongs to + it's position in this bin
  *                             center_bin = <int> floor(angle/binwidth1)
  *                             binpos = angle/binwidth2 - center_bin             # <<<<<<<<<<<<<<
@@ -10677,11 +10592,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             if (unlikely(__pyx_v_binwidth2 == 0)) {
               PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-              __PYX_ERR(0, 667, __pyx_L1_error)
+              __PYX_ERR(0, 665, __pyx_L1_error)
             }
             __pyx_v_binpos = ((__pyx_v_angle / __pyx_v_binwidth2) - __pyx_v_center_bin);
 
-            /* "angular_fingerprintFeature_cy.pyx":670
+            /* "angular_fingerprintFeature_cy.pyx":668
  * 
  *                             # Lower and upper range of bins affected by the current atomic distance deltaR.
  *                             minbin_lim = <int> -ceil(m2 - binpos)             # <<<<<<<<<<<<<<
@@ -10690,7 +10605,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_minbin_lim = ((int)(-ceil((__pyx_v_m2 - __pyx_v_binpos))));
 
-            /* "angular_fingerprintFeature_cy.pyx":671
+            /* "angular_fingerprintFeature_cy.pyx":669
  *                             # Lower and upper range of bins affected by the current atomic distance deltaR.
  *                             minbin_lim = <int> -ceil(m2 - binpos)
  *                             maxbin_lim = <int> ceil(m2 - (1-binpos))             # <<<<<<<<<<<<<<
@@ -10699,7 +10614,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
             __pyx_v_maxbin_lim = ((int)ceil((__pyx_v_m2 - (1.0 - __pyx_v_binpos))));
 
-            /* "angular_fingerprintFeature_cy.pyx":673
+            /* "angular_fingerprintFeature_cy.pyx":671
  *                             maxbin_lim = <int> ceil(m2 - (1-binpos))
  * 
  *                             for n in range(minbin_lim, maxbin_lim + 1):             # <<<<<<<<<<<<<<
@@ -10711,7 +10626,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
             for (__pyx_t_30 = __pyx_v_minbin_lim; __pyx_t_30 < __pyx_t_22; __pyx_t_30+=1) {
               __pyx_v_n = __pyx_t_30;
 
-              /* "angular_fingerprintFeature_cy.pyx":674
+              /* "angular_fingerprintFeature_cy.pyx":672
  * 
  *                             for n in range(minbin_lim, maxbin_lim + 1):
  *                                 newbin = center_bin + n             # <<<<<<<<<<<<<<
@@ -10720,7 +10635,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               __pyx_v_newbin = (__pyx_v_center_bin + __pyx_v_n);
 
-              /* "angular_fingerprintFeature_cy.pyx":677
+              /* "angular_fingerprintFeature_cy.pyx":675
  * 
  *                                 # Wrap current bin into correct bin-range
  *                                 if newbin < 0:             # <<<<<<<<<<<<<<
@@ -10730,17 +10645,17 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               __pyx_t_18 = ((__pyx_v_newbin < 0) != 0);
               if (__pyx_t_18) {
 
-                /* "angular_fingerprintFeature_cy.pyx":678
+                /* "angular_fingerprintFeature_cy.pyx":676
  *                                 # Wrap current bin into correct bin-range
  *                                 if newbin < 0:
  *                                     newbin = abs(newbin)             # <<<<<<<<<<<<<<
  *                                 if newbin > Nbins2-1:
  *                                     newbin = 2*Nbins2 - newbin - 1
  */
-                __pyx_t_31 = abs(__pyx_v_newbin); if (unlikely(__pyx_t_31 == ((int)-1))) __PYX_ERR(0, 678, __pyx_L1_error)
+                __pyx_t_31 = abs(__pyx_v_newbin); if (unlikely(__pyx_t_31 == ((int)-1))) __PYX_ERR(0, 676, __pyx_L1_error)
                 __pyx_v_newbin = __pyx_t_31;
 
-                /* "angular_fingerprintFeature_cy.pyx":677
+                /* "angular_fingerprintFeature_cy.pyx":675
  * 
  *                                 # Wrap current bin into correct bin-range
  *                                 if newbin < 0:             # <<<<<<<<<<<<<<
@@ -10749,7 +10664,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               }
 
-              /* "angular_fingerprintFeature_cy.pyx":679
+              /* "angular_fingerprintFeature_cy.pyx":677
  *                                 if newbin < 0:
  *                                     newbin = abs(newbin)
  *                                 if newbin > Nbins2-1:             # <<<<<<<<<<<<<<
@@ -10759,7 +10674,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               __pyx_t_18 = ((__pyx_v_newbin > (__pyx_v_Nbins2 - 1)) != 0);
               if (__pyx_t_18) {
 
-                /* "angular_fingerprintFeature_cy.pyx":680
+                /* "angular_fingerprintFeature_cy.pyx":678
  *                                     newbin = abs(newbin)
  *                                 if newbin > Nbins2-1:
  *                                     newbin = 2*Nbins2 - newbin - 1             # <<<<<<<<<<<<<<
@@ -10768,7 +10683,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
                 __pyx_v_newbin = (((2 * __pyx_v_Nbins2) - __pyx_v_newbin) - 1);
 
-                /* "angular_fingerprintFeature_cy.pyx":679
+                /* "angular_fingerprintFeature_cy.pyx":677
  *                                 if newbin < 0:
  *                                     newbin = abs(newbin)
  *                                 if newbin > Nbins2-1:             # <<<<<<<<<<<<<<
@@ -10777,7 +10692,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               }
 
-              /* "angular_fingerprintFeature_cy.pyx":683
+              /* "angular_fingerprintFeature_cy.pyx":681
  * 
  *                                 # Calculate gauss contribution to current bin
  *                                 c = 1./sqrt(2)*binwidth2/sigma2             # <<<<<<<<<<<<<<
@@ -10787,16 +10702,16 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               __pyx_t_20 = sqrt(2.0);
               if (unlikely(__pyx_t_20 == 0)) {
                 PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                __PYX_ERR(0, 683, __pyx_L1_error)
+                __PYX_ERR(0, 681, __pyx_L1_error)
               }
               __pyx_t_24 = ((1. / __pyx_t_20) * __pyx_v_binwidth2);
               if (unlikely(__pyx_v_sigma2 == 0)) {
                 PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                __PYX_ERR(0, 683, __pyx_L1_error)
+                __PYX_ERR(0, 681, __pyx_L1_error)
               }
               __pyx_v_c = (__pyx_t_24 / __pyx_v_sigma2);
 
-              /* "angular_fingerprintFeature_cy.pyx":684
+              /* "angular_fingerprintFeature_cy.pyx":682
  *                                 # Calculate gauss contribution to current bin
  *                                 c = 1./sqrt(2)*binwidth2/sigma2
  *                                 arg_low = max(-m2, n-binpos)             # <<<<<<<<<<<<<<
@@ -10812,7 +10727,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               }
               __pyx_v_arg_low = __pyx_t_2;
 
-              /* "angular_fingerprintFeature_cy.pyx":685
+              /* "angular_fingerprintFeature_cy.pyx":683
  *                                 c = 1./sqrt(2)*binwidth2/sigma2
  *                                 arg_low = max(-m2, n-binpos)
  *                                 arg_up = min(m2, n+(1-binpos))             # <<<<<<<<<<<<<<
@@ -10828,7 +10743,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               }
               __pyx_v_arg_up = __pyx_t_20;
 
-              /* "angular_fingerprintFeature_cy.pyx":686
+              /* "angular_fingerprintFeature_cy.pyx":684
  *                                 arg_low = max(-m2, n-binpos)
  *                                 arg_up = min(m2, n+(1-binpos))
  *                                 value1 = 0.5*erf(c*arg_up)-0.5*erf(c*arg_low)             # <<<<<<<<<<<<<<
@@ -10837,7 +10752,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               __pyx_v_value1 = ((0.5 * erf((__pyx_v_c * __pyx_v_arg_up))) - (0.5 * erf((__pyx_v_c * __pyx_v_arg_low))));
 
-              /* "angular_fingerprintFeature_cy.pyx":687
+              /* "angular_fingerprintFeature_cy.pyx":685
  *                                 arg_up = min(m2, n+(1-binpos))
  *                                 value1 = 0.5*erf(c*arg_up)-0.5*erf(c*arg_low)
  *                                 value2 = -1./(sigma2*sqrt(2*M_PI)) * (exp(-pow(c*arg_up, 2)) - exp(-pow(c*arg_low, 2)))             # <<<<<<<<<<<<<<
@@ -10847,11 +10762,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               __pyx_t_20 = (__pyx_v_sigma2 * sqrt((2.0 * M_PI)));
               if (unlikely(__pyx_t_20 == 0)) {
                 PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                __PYX_ERR(0, 687, __pyx_L1_error)
+                __PYX_ERR(0, 685, __pyx_L1_error)
               }
               __pyx_v_value2 = ((-1. / __pyx_t_20) * (exp((-pow((__pyx_v_c * __pyx_v_arg_up), 2.0))) - exp((-pow((__pyx_v_c * __pyx_v_arg_low), 2.0)))));
 
-              /* "angular_fingerprintFeature_cy.pyx":690
+              /* "angular_fingerprintFeature_cy.pyx":688
  * 
  *                                 # Apply normalization
  *                                 value1 *= normalization             # <<<<<<<<<<<<<<
@@ -10860,7 +10775,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               __pyx_v_value1 = (__pyx_v_value1 * __pyx_v_normalization);
 
-              /* "angular_fingerprintFeature_cy.pyx":691
+              /* "angular_fingerprintFeature_cy.pyx":689
  *                                 # Apply normalization
  *                                 value1 *= normalization
  *                                 value2 *= normalization             # <<<<<<<<<<<<<<
@@ -10869,7 +10784,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               __pyx_v_value2 = (__pyx_v_value2 * __pyx_v_normalization);
 
-              /* "angular_fingerprintFeature_cy.pyx":693
+              /* "angular_fingerprintFeature_cy.pyx":691
  *                                 value2 *= normalization
  * 
  *                                 bin_index = (bondtype_index + newbin) * Natoms*dim             # <<<<<<<<<<<<<<
@@ -10878,7 +10793,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  */
               __pyx_v_bin_index = (((__pyx_v_bondtype_index + __pyx_v_newbin) * __pyx_v_Natoms) * __pyx_v_dim);
 
-              /* "angular_fingerprintFeature_cy.pyx":694
+              /* "angular_fingerprintFeature_cy.pyx":692
  * 
  *                                 bin_index = (bondtype_index + newbin) * Natoms*dim
  *                                 for m in range(3):             # <<<<<<<<<<<<<<
@@ -10888,7 +10803,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
               for (__pyx_t_31 = 0; __pyx_t_31 < 3; __pyx_t_31+=1) {
                 __pyx_v_m = __pyx_t_31;
 
-                /* "angular_fingerprintFeature_cy.pyx":695
+                /* "angular_fingerprintFeature_cy.pyx":693
  *                                 bin_index = (bondtype_index + newbin) * Natoms*dim
  *                                 for m in range(3):
  *                                     feature_grad2[bin_index + dim*i+m] += -value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij             # <<<<<<<<<<<<<<
@@ -10899,11 +10814,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
                 __pyx_t_20 = ((((-__pyx_v_value1) * __pyx_v_fc_ik) * __pyx_v_fc_grad_ij) * (__pyx_v_RijVec.coord[__pyx_v_m]));
                 if (unlikely(__pyx_v_Rij == 0)) {
                   PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                  __PYX_ERR(0, 695, __pyx_L1_error)
+                  __PYX_ERR(0, 693, __pyx_L1_error)
                 }
                 (__pyx_v_feature_grad2[__pyx_t_32]) = ((__pyx_v_feature_grad2[__pyx_t_32]) + (__pyx_t_20 / __pyx_v_Rij));
 
-                /* "angular_fingerprintFeature_cy.pyx":696
+                /* "angular_fingerprintFeature_cy.pyx":694
  *                                 for m in range(3):
  *                                     feature_grad2[bin_index + dim*i+m] += -value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
  *                                     feature_grad2[bin_index + dim*j+m] += value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij             # <<<<<<<<<<<<<<
@@ -10914,11 +10829,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
                 __pyx_t_20 = (((__pyx_v_value1 * __pyx_v_fc_ik) * __pyx_v_fc_grad_ij) * (__pyx_v_RijVec.coord[__pyx_v_m]));
                 if (unlikely(__pyx_v_Rij == 0)) {
                   PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                  __PYX_ERR(0, 696, __pyx_L1_error)
+                  __PYX_ERR(0, 694, __pyx_L1_error)
                 }
                 (__pyx_v_feature_grad2[__pyx_t_32]) = ((__pyx_v_feature_grad2[__pyx_t_32]) + (__pyx_t_20 / __pyx_v_Rij));
 
-                /* "angular_fingerprintFeature_cy.pyx":698
+                /* "angular_fingerprintFeature_cy.pyx":696
  *                                     feature_grad2[bin_index + dim*j+m] += value1 * fc_ik*fc_grad_ij * RijVec.coord[m]/Rij
  * 
  *                                     feature_grad2[bin_index + dim*i+m] += -value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik             # <<<<<<<<<<<<<<
@@ -10929,11 +10844,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
                 __pyx_t_20 = ((((-__pyx_v_value1) * __pyx_v_fc_ij) * __pyx_v_fc_grad_ik) * (__pyx_v_RikVec.coord[__pyx_v_m]));
                 if (unlikely(__pyx_v_Rik == 0)) {
                   PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                  __PYX_ERR(0, 698, __pyx_L1_error)
+                  __PYX_ERR(0, 696, __pyx_L1_error)
                 }
                 (__pyx_v_feature_grad2[__pyx_t_32]) = ((__pyx_v_feature_grad2[__pyx_t_32]) + (__pyx_t_20 / __pyx_v_Rik));
 
-                /* "angular_fingerprintFeature_cy.pyx":699
+                /* "angular_fingerprintFeature_cy.pyx":697
  * 
  *                                     feature_grad2[bin_index + dim*i+m] += -value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
  *                                     feature_grad2[bin_index + dim*k+m] += value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik             # <<<<<<<<<<<<<<
@@ -10944,11 +10859,11 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
                 __pyx_t_20 = (((__pyx_v_value1 * __pyx_v_fc_ij) * __pyx_v_fc_grad_ik) * (__pyx_v_RikVec.coord[__pyx_v_m]));
                 if (unlikely(__pyx_v_Rik == 0)) {
                   PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-                  __PYX_ERR(0, 699, __pyx_L1_error)
+                  __PYX_ERR(0, 697, __pyx_L1_error)
                 }
                 (__pyx_v_feature_grad2[__pyx_t_32]) = ((__pyx_v_feature_grad2[__pyx_t_32]) + (__pyx_t_20 / __pyx_v_Rik));
 
-                /* "angular_fingerprintFeature_cy.pyx":701
+                /* "angular_fingerprintFeature_cy.pyx":699
  *                                     feature_grad2[bin_index + dim*k+m] += value1 * fc_ij*fc_grad_ik * RikVec.coord[m]/Rik
  * 
  *                                     feature_grad2[bin_index + dim*i+m] += value2 * fc_ij * fc_ik * angle_grad_i.coord[m]             # <<<<<<<<<<<<<<
@@ -10958,7 +10873,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
                 __pyx_t_32 = ((__pyx_v_bin_index + (__pyx_v_dim * __pyx_v_i)) + __pyx_v_m);
                 (__pyx_v_feature_grad2[__pyx_t_32]) = ((__pyx_v_feature_grad2[__pyx_t_32]) + (((__pyx_v_value2 * __pyx_v_fc_ij) * __pyx_v_fc_ik) * (__pyx_v_angle_grad_i.coord[__pyx_v_m])));
 
-                /* "angular_fingerprintFeature_cy.pyx":702
+                /* "angular_fingerprintFeature_cy.pyx":700
  * 
  *                                     feature_grad2[bin_index + dim*i+m] += value2 * fc_ij * fc_ik * angle_grad_i.coord[m]
  *                                     feature_grad2[bin_index + dim*j+m] += value2 * fc_ij * fc_ik * angle_grad_j.coord[m]             # <<<<<<<<<<<<<<
@@ -10968,7 +10883,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
                 __pyx_t_32 = ((__pyx_v_bin_index + (__pyx_v_dim * __pyx_v_j)) + __pyx_v_m);
                 (__pyx_v_feature_grad2[__pyx_t_32]) = ((__pyx_v_feature_grad2[__pyx_t_32]) + (((__pyx_v_value2 * __pyx_v_fc_ij) * __pyx_v_fc_ik) * (__pyx_v_angle_grad_j.coord[__pyx_v_m])));
 
-                /* "angular_fingerprintFeature_cy.pyx":703
+                /* "angular_fingerprintFeature_cy.pyx":701
  *                                     feature_grad2[bin_index + dim*i+m] += value2 * fc_ij * fc_ik * angle_grad_i.coord[m]
  *                                     feature_grad2[bin_index + dim*j+m] += value2 * fc_ij * fc_ik * angle_grad_j.coord[m]
  *                                     feature_grad2[bin_index + dim*k+m] += value2 * fc_ij * fc_ik * angle_grad_k.coord[m]             # <<<<<<<<<<<<<<
@@ -10987,29 +10902,29 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":706
+  /* "angular_fingerprintFeature_cy.pyx":704
  * 
  * 
  *         feature_grad2_np = np.zeros((Natoms*dim, Nelements_3body))             # <<<<<<<<<<<<<<
  *         for m in range(Nelements_3body):
  *             for grad_index in range(Natoms*dim):
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 704, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 704, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_Natoms * __pyx_v_dim)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_Nelements_3body); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_12 = __Pyx_PyInt_From_int((__pyx_v_Natoms * __pyx_v_dim)); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 704, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_Nelements_3body); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 704, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 704, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_12);
+  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_12);
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_6);
-  __pyx_t_1 = 0;
+  __pyx_t_12 = 0;
   __pyx_t_6 = 0;
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -11022,45 +10937,45 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (!__pyx_t_6) {
-    __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 706, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GOTREF(__pyx_t_12);
+    __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_4};
-      __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 706, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 704, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_GOTREF(__pyx_t_12);
+      __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_4};
-      __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 706, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 704, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_GOTREF(__pyx_t_12);
+      __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_6); __pyx_t_6 = NULL;
-      __Pyx_GIVEREF(__pyx_t_4);
-      PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_4);
-      __pyx_t_4 = 0;
-      __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_1, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 706, __pyx_L1_error)
+      __pyx_t_12 = PyTuple_New(1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 704, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_6); __pyx_t_6 = NULL;
+      __Pyx_GIVEREF(__pyx_t_4);
+      PyTuple_SET_ITEM(__pyx_t_12, 0+1, __pyx_t_4);
+      __pyx_t_4 = 0;
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_12, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 704, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_v_feature_grad2_np = __pyx_t_12;
-  __pyx_t_12 = 0;
+  __pyx_v_feature_grad2_np = __pyx_t_1;
+  __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":707
+  /* "angular_fingerprintFeature_cy.pyx":705
  * 
  *         feature_grad2_np = np.zeros((Natoms*dim, Nelements_3body))
  *         for m in range(Nelements_3body):             # <<<<<<<<<<<<<<
@@ -11072,7 +10987,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_m = __pyx_t_9;
 
-    /* "angular_fingerprintFeature_cy.pyx":708
+    /* "angular_fingerprintFeature_cy.pyx":706
  *         feature_grad2_np = np.zeros((Natoms*dim, Nelements_3body))
  *         for m in range(Nelements_3body):
  *             for grad_index in range(Natoms*dim):             # <<<<<<<<<<<<<<
@@ -11084,40 +10999,40 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
       __pyx_v_grad_index = __pyx_t_14;
 
-      /* "angular_fingerprintFeature_cy.pyx":709
+      /* "angular_fingerprintFeature_cy.pyx":707
  *         for m in range(Nelements_3body):
  *             for grad_index in range(Natoms*dim):
  *                 feature_grad2_np[grad_index][m] = eta * feature_grad2[m * Natoms*dim + grad_index]             # <<<<<<<<<<<<<<
  * 
  *         feature_grad_np = np.zeros((Natoms*dim, Nelements))
  */
-      __pyx_t_12 = PyFloat_FromDouble((__pyx_v_eta * (__pyx_v_feature_grad2[(((__pyx_v_m * __pyx_v_Natoms) * __pyx_v_dim) + __pyx_v_grad_index)]))); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 709, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_12);
-      __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_feature_grad2_np, __pyx_v_grad_index, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 709, __pyx_L1_error)
+      __pyx_t_1 = PyFloat_FromDouble((__pyx_v_eta * (__pyx_v_feature_grad2[(((__pyx_v_m * __pyx_v_Natoms) * __pyx_v_dim) + __pyx_v_grad_index)]))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 707, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_feature_grad2_np, __pyx_v_grad_index, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 707, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_5, __pyx_v_m, __pyx_t_12, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 709, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_5, __pyx_v_m, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 707, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":711
+  /* "angular_fingerprintFeature_cy.pyx":709
  *                 feature_grad2_np[grad_index][m] = eta * feature_grad2[m * Natoms*dim + grad_index]
  * 
  *         feature_grad_np = np.zeros((Natoms*dim, Nelements))             # <<<<<<<<<<<<<<
  *         feature_grad_np[:, :Nelements_2body] = feature_grad1_np
  *         feature_grad_np[:, Nelements_2body:] = feature_grad2_np
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 711, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 709, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 711, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 709, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_int((__pyx_v_Natoms * __pyx_v_dim)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 711, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int((__pyx_v_Natoms * __pyx_v_dim)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 709, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_Nelements); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 711, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_Nelements); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 709, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 711, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 709, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5);
@@ -11126,101 +11041,101 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __pyx_t_5 = 0;
   __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_1);
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_12))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_12);
     if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_12);
       __Pyx_INCREF(__pyx_t_4);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_1, function);
+      __Pyx_DECREF_SET(__pyx_t_12, function);
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 711, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 709, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_GOTREF(__pyx_t_12);
+    __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_1)) {
+    if (PyFunction_Check(__pyx_t_12)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_6};
-      __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 711, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 709, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_12);
+      __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_12)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_6};
-      __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 711, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 709, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_12);
+      __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 711, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 709, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_6);
       __pyx_t_6 = 0;
-      __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 711, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_12);
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 709, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_feature_grad_np = __pyx_t_12;
-  __pyx_t_12 = 0;
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_v_feature_grad_np = __pyx_t_1;
+  __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":712
+  /* "angular_fingerprintFeature_cy.pyx":710
  * 
  *         feature_grad_np = np.zeros((Natoms*dim, Nelements))
  *         feature_grad_np[:, :Nelements_2body] = feature_grad1_np             # <<<<<<<<<<<<<<
  *         feature_grad_np[:, Nelements_2body:] = feature_grad2_np
  *         return feature_grad_np
  */
-  __pyx_t_12 = __Pyx_PyInt_From_int(__pyx_v_Nelements_2body); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 712, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  __pyx_t_1 = PySlice_New(Py_None, __pyx_t_12, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 712, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_Nelements_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 710, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 712, __pyx_L1_error)
+  __pyx_t_12 = PySlice_New(Py_None, __pyx_t_1, Py_None); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 710, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 710, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_slice__5);
   __Pyx_GIVEREF(__pyx_slice__5);
-  PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_slice__5);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_1);
-  __pyx_t_1 = 0;
-  if (unlikely(PyObject_SetItem(__pyx_v_feature_grad_np, __pyx_t_12, __pyx_v_feature_grad1_np) < 0)) __PYX_ERR(0, 712, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_slice__5);
+  __Pyx_GIVEREF(__pyx_t_12);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_12);
+  __pyx_t_12 = 0;
+  if (unlikely(PyObject_SetItem(__pyx_v_feature_grad_np, __pyx_t_1, __pyx_v_feature_grad1_np) < 0)) __PYX_ERR(0, 710, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":713
+  /* "angular_fingerprintFeature_cy.pyx":711
  *         feature_grad_np = np.zeros((Natoms*dim, Nelements))
  *         feature_grad_np[:, :Nelements_2body] = feature_grad1_np
  *         feature_grad_np[:, Nelements_2body:] = feature_grad2_np             # <<<<<<<<<<<<<<
  *         return feature_grad_np
  * 
  */
-  __pyx_t_12 = __Pyx_PyInt_From_int(__pyx_v_Nelements_2body); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 713, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  __pyx_t_1 = PySlice_New(__pyx_t_12, Py_None, Py_None); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 713, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_Nelements_2body); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 711, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 713, __pyx_L1_error)
+  __pyx_t_12 = PySlice_New(__pyx_t_1, Py_None, Py_None); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 711, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 711, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_slice__6);
   __Pyx_GIVEREF(__pyx_slice__6);
-  PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_slice__6);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_1);
-  __pyx_t_1 = 0;
-  if (unlikely(PyObject_SetItem(__pyx_v_feature_grad_np, __pyx_t_12, __pyx_v_feature_grad2_np) < 0)) __PYX_ERR(0, 713, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_slice__6);
+  __Pyx_GIVEREF(__pyx_t_12);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_12);
+  __pyx_t_12 = 0;
+  if (unlikely(PyObject_SetItem(__pyx_v_feature_grad_np, __pyx_t_1, __pyx_v_feature_grad2_np) < 0)) __PYX_ERR(0, 711, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":714
+  /* "angular_fingerprintFeature_cy.pyx":712
  *         feature_grad_np[:, :Nelements_2body] = feature_grad1_np
  *         feature_grad_np[:, Nelements_2body:] = feature_grad2_np
  *         return feature_grad_np             # <<<<<<<<<<<<<<
@@ -11232,7 +11147,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __pyx_r = __pyx_v_feature_grad_np;
   goto __pyx_L0;
 
-  /* "angular_fingerprintFeature_cy.pyx":439
+  /* "angular_fingerprintFeature_cy.pyx":437
  *         return featureMat
  * 
  *     def get_featureGradient(self, atoms):             # <<<<<<<<<<<<<<
@@ -11259,7 +11174,6 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __Pyx_XDECREF(__pyx_v_num_converted_old);
   __Pyx_XDECREF(__pyx_v_feature_grad1_np);
   __Pyx_XDECREF(__pyx_v_bondtypes_3body_old);
-  __Pyx_XDECREF(__pyx_v_type3);
   __Pyx_XDECREF(__pyx_v_feature_grad2_np);
   __Pyx_XDECREF(__pyx_v_feature_grad_np);
   __Pyx_XGIVEREF(__pyx_r);
@@ -11267,7 +11181,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   return __pyx_r;
 }
 
-/* "angular_fingerprintFeature_cy.pyx":716
+/* "angular_fingerprintFeature_cy.pyx":714
  *         return feature_grad_np
  * 
  *     def get_all_featureGradients(self, atoms_list):             # <<<<<<<<<<<<<<
@@ -11307,11 +11221,11 @@ static PyObject *__pyx_pw_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_atoms_list)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_all_featureGradients", 1, 2, 2, 1); __PYX_ERR(0, 716, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_all_featureGradients", 1, 2, 2, 1); __PYX_ERR(0, 714, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_all_featureGradients") < 0)) __PYX_ERR(0, 716, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_all_featureGradients") < 0)) __PYX_ERR(0, 714, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -11324,7 +11238,7 @@ static PyObject *__pyx_pw_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_all_featureGradients", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 716, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_all_featureGradients", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 714, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("angular_fingerprintFeature_cy.Angular_Fingerprint.get_all_featureGradients", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -11354,44 +11268,44 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   PyObject *__pyx_t_10 = NULL;
   __Pyx_RefNannySetupContext("get_all_featureGradients", 0);
 
-  /* "angular_fingerprintFeature_cy.pyx":717
+  /* "angular_fingerprintFeature_cy.pyx":715
  * 
  *     def get_all_featureGradients(self, atoms_list):
  *         feature_grads = np.array([self.get_featureGradient(atoms) for atoms in atoms_list])             # <<<<<<<<<<<<<<
  *         feature_grads = np.array(feature_grads)
  *         return feature_grads
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 717, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 715, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 717, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 715, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 717, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 715, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (likely(PyList_CheckExact(__pyx_v_atoms_list)) || PyTuple_CheckExact(__pyx_v_atoms_list)) {
     __pyx_t_4 = __pyx_v_atoms_list; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_atoms_list); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_atoms_list); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 715, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 715, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_6)) {
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 717, __pyx_L1_error)
+        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 715, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 717, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 715, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 717, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 715, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 717, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 715, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       }
@@ -11401,7 +11315,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 717, __pyx_L1_error)
+          else __PYX_ERR(0, 715, __pyx_L1_error)
         }
         break;
       }
@@ -11409,7 +11323,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
     __Pyx_XDECREF_SET(__pyx_v_atoms, __pyx_t_7);
     __pyx_t_7 = 0;
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_featureGradient); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_featureGradient); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 715, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_9 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -11422,13 +11336,13 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       }
     }
     if (!__pyx_t_9) {
-      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_atoms); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 717, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_atoms); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 715, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_atoms};
-        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 717, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 715, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
@@ -11436,25 +11350,25 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_atoms};
-        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 717, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 715, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 717, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 715, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9); __pyx_t_9 = NULL;
         __Pyx_INCREF(__pyx_v_atoms);
         __Pyx_GIVEREF(__pyx_v_atoms);
         PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_v_atoms);
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 717, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 715, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 717, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 715, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -11469,14 +11383,14 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 717, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 715, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 717, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 715, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -11485,20 +11399,20 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 717, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 715, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 717, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 715, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 717, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 715, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
@@ -11507,16 +11421,16 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __pyx_v_feature_grads = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":718
+  /* "angular_fingerprintFeature_cy.pyx":716
  *     def get_all_featureGradients(self, atoms_list):
  *         feature_grads = np.array([self.get_featureGradient(atoms) for atoms in atoms_list])
  *         feature_grads = np.array(feature_grads)             # <<<<<<<<<<<<<<
  *         return feature_grads
  * 
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 716, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 716, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -11530,13 +11444,13 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_feature_grads); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 718, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_feature_grads); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 716, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_feature_grads};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 718, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 716, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -11544,19 +11458,19 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_feature_grads};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 718, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 716, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 718, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 716, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_feature_grads);
       __Pyx_GIVEREF(__pyx_v_feature_grads);
       PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_v_feature_grads);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 718, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 716, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
@@ -11565,7 +11479,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __Pyx_DECREF_SET(__pyx_v_feature_grads, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":719
+  /* "angular_fingerprintFeature_cy.pyx":717
  *         feature_grads = np.array([self.get_featureGradient(atoms) for atoms in atoms_list])
  *         feature_grads = np.array(feature_grads)
  *         return feature_grads             # <<<<<<<<<<<<<<
@@ -11577,7 +11491,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __pyx_r = __pyx_v_feature_grads;
   goto __pyx_L0;
 
-  /* "angular_fingerprintFeature_cy.pyx":716
+  /* "angular_fingerprintFeature_cy.pyx":714
  *         return feature_grad_np
  * 
  *     def get_all_featureGradients(self, atoms_list):             # <<<<<<<<<<<<<<
@@ -11605,7 +11519,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   return __pyx_r;
 }
 
-/* "angular_fingerprintFeature_cy.pyx":721
+/* "angular_fingerprintFeature_cy.pyx":719
  *         return feature_grads
  * 
  *     def __get_neighbour_cells_displacement(self, pbc, cell):             # <<<<<<<<<<<<<<
@@ -11648,17 +11562,17 @@ static PyObject *__pyx_pw_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pbc)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__get_neighbour_cells_displacement", 1, 3, 3, 1); __PYX_ERR(0, 721, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__get_neighbour_cells_displacement", 1, 3, 3, 1); __PYX_ERR(0, 719, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_cell)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__get_neighbour_cells_displacement", 1, 3, 3, 2); __PYX_ERR(0, 721, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__get_neighbour_cells_displacement", 1, 3, 3, 2); __PYX_ERR(0, 719, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__get_neighbour_cells_displacement") < 0)) __PYX_ERR(0, 721, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__get_neighbour_cells_displacement") < 0)) __PYX_ERR(0, 719, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -11673,7 +11587,7 @@ static PyObject *__pyx_pw_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__get_neighbour_cells_displacement", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 721, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__get_neighbour_cells_displacement", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 719, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("angular_fingerprintFeature_cy.Angular_Fingerprint.__get_neighbour_cells_displacement", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -11715,31 +11629,31 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   int __pyx_t_13;
   __Pyx_RefNannySetupContext("__get_neighbour_cells_displacement", 0);
 
-  /* "angular_fingerprintFeature_cy.pyx":723
+  /* "angular_fingerprintFeature_cy.pyx":721
  *     def __get_neighbour_cells_displacement(self, pbc, cell):
  *         # Calculate neighbour cells
  *         Rc_max = max(self.Rc1+self.sigma1*self.nsigma, self.Rc2)  # relevant cutoff             # <<<<<<<<<<<<<<
  *         cell_vec_norms = np.linalg.norm(cell, axis=0)
  *         neighbours = []
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 723, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 721, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 723, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_Rc1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 721, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 723, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_sigma1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 721, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsigma); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 723, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsigma); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 721, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyNumber_Multiply(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 723, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Multiply(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 721, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 723, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 721, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 723, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 723, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 721, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 721, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_6) {
     __Pyx_INCREF(__pyx_t_1);
@@ -11756,30 +11670,30 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __pyx_v_Rc_max = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":724
+  /* "angular_fingerprintFeature_cy.pyx":722
  *         # Calculate neighbour cells
  *         Rc_max = max(self.Rc1+self.sigma1*self.nsigma, self.Rc2)  # relevant cutoff
  *         cell_vec_norms = np.linalg.norm(cell, axis=0)             # <<<<<<<<<<<<<<
  *         neighbours = []
  *         for i in range(3):
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 724, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 722, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_linalg); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 724, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_linalg); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 722, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_norm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 724, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_norm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 722, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 724, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 722, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_v_cell);
   __Pyx_GIVEREF(__pyx_v_cell);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_cell);
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 724, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 722, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 724, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 724, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 722, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 722, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -11787,19 +11701,19 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __pyx_v_cell_vec_norms = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":725
+  /* "angular_fingerprintFeature_cy.pyx":723
  *         Rc_max = max(self.Rc1+self.sigma1*self.nsigma, self.Rc2)  # relevant cutoff
  *         cell_vec_norms = np.linalg.norm(cell, axis=0)
  *         neighbours = []             # <<<<<<<<<<<<<<
  *         for i in range(3):
  *             if pbc[i]:
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 725, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 723, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_neighbours = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":726
+  /* "angular_fingerprintFeature_cy.pyx":724
  *         cell_vec_norms = np.linalg.norm(cell, axis=0)
  *         neighbours = []
  *         for i in range(3):             # <<<<<<<<<<<<<<
@@ -11809,37 +11723,37 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   for (__pyx_t_7 = 0; __pyx_t_7 < 3; __pyx_t_7+=1) {
     __pyx_v_i = __pyx_t_7;
 
-    /* "angular_fingerprintFeature_cy.pyx":727
+    /* "angular_fingerprintFeature_cy.pyx":725
  *         neighbours = []
  *         for i in range(3):
  *             if pbc[i]:             # <<<<<<<<<<<<<<
  *                 ncellmax = int(np.ceil(abs(Rc_max/cell_vec_norms[i]))) + 1  # +1 because atoms can be outside unitcell.
  *                 neighbours.append(range(-ncellmax,ncellmax+1))
  */
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_pbc, __pyx_v_i, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 727, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_pbc, __pyx_v_i, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 725, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 727, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 725, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_6) {
 
-      /* "angular_fingerprintFeature_cy.pyx":728
+      /* "angular_fingerprintFeature_cy.pyx":726
  *         for i in range(3):
  *             if pbc[i]:
  *                 ncellmax = int(np.ceil(abs(Rc_max/cell_vec_norms[i]))) + 1  # +1 because atoms can be outside unitcell.             # <<<<<<<<<<<<<<
  *                 neighbours.append(range(-ncellmax,ncellmax+1))
  *             else:
  */
-      __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 728, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 726, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_ceil); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 728, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_ceil); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 726, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_cell_vec_norms, __pyx_v_i, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 728, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_cell_vec_norms, __pyx_v_i, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 726, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_v_Rc_max, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 728, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_v_Rc_max, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 726, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = PyNumber_Absolute(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 728, __pyx_L1_error)
+      __pyx_t_4 = PyNumber_Absolute(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 726, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_1 = NULL;
@@ -11853,14 +11767,14 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         }
       }
       if (!__pyx_t_1) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 728, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 726, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_5)) {
           PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_4};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 728, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 726, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -11869,46 +11783,46 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
           PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_4};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 728, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 726, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         } else
         #endif
         {
-          __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 728, __pyx_L1_error)
+          __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 726, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1); __pyx_t_1 = NULL;
           __Pyx_GIVEREF(__pyx_t_4);
           PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_4);
           __pyx_t_4 = 0;
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 728, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 726, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 728, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 726, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_t_5, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 728, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_t_5, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 726, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_XDECREF_SET(__pyx_v_ncellmax, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "angular_fingerprintFeature_cy.pyx":729
+      /* "angular_fingerprintFeature_cy.pyx":727
  *             if pbc[i]:
  *                 ncellmax = int(np.ceil(abs(Rc_max/cell_vec_norms[i]))) + 1  # +1 because atoms can be outside unitcell.
  *                 neighbours.append(range(-ncellmax,ncellmax+1))             # <<<<<<<<<<<<<<
  *             else:
  *                 neighbours.append([0])
  */
-      __pyx_t_2 = PyNumber_Negative(__pyx_v_ncellmax); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 729, __pyx_L1_error)
+      __pyx_t_2 = PyNumber_Negative(__pyx_v_ncellmax); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 727, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_v_ncellmax, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 729, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_v_ncellmax, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 727, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 729, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 727, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
@@ -11916,13 +11830,13 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_5);
       __pyx_t_2 = 0;
       __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_3, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 729, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_3, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 727, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_neighbours, __pyx_t_5); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 729, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_neighbours, __pyx_t_5); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 727, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "angular_fingerprintFeature_cy.pyx":727
+      /* "angular_fingerprintFeature_cy.pyx":725
  *         neighbours = []
  *         for i in range(3):
  *             if pbc[i]:             # <<<<<<<<<<<<<<
@@ -11932,7 +11846,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       goto __pyx_L5;
     }
 
-    /* "angular_fingerprintFeature_cy.pyx":731
+    /* "angular_fingerprintFeature_cy.pyx":729
  *                 neighbours.append(range(-ncellmax,ncellmax+1))
  *             else:
  *                 neighbours.append([0])             # <<<<<<<<<<<<<<
@@ -11940,41 +11854,41 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
  *         neighbourcells_disp = []
  */
     /*else*/ {
-      __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 731, __pyx_L1_error)
+      __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 729, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_int_0);
       __Pyx_GIVEREF(__pyx_int_0);
       PyList_SET_ITEM(__pyx_t_5, 0, __pyx_int_0);
-      __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_neighbours, __pyx_t_5); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 731, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_neighbours, __pyx_t_5); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 729, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __pyx_L5:;
   }
 
-  /* "angular_fingerprintFeature_cy.pyx":733
+  /* "angular_fingerprintFeature_cy.pyx":731
  *                 neighbours.append([0])
  * 
  *         neighbourcells_disp = []             # <<<<<<<<<<<<<<
  *         for x,y,z in product(*neighbours):
  *             xyz = (x,y,z)
  */
-  __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 733, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 731, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_v_neighbourcells_disp = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":734
+  /* "angular_fingerprintFeature_cy.pyx":732
  * 
  *         neighbourcells_disp = []
  *         for x,y,z in product(*neighbours):             # <<<<<<<<<<<<<<
  *             xyz = (x,y,z)
  *             displacement = np.dot(xyz, cell)
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_product); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 734, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_product); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 732, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = PySequence_Tuple(__pyx_v_neighbours); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 734, __pyx_L1_error)
+  __pyx_t_3 = PySequence_Tuple(__pyx_v_neighbours); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 732, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 734, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 732, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -11982,9 +11896,9 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     __pyx_t_3 = __pyx_t_2; __Pyx_INCREF(__pyx_t_3); __pyx_t_9 = 0;
     __pyx_t_10 = NULL;
   } else {
-    __pyx_t_9 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 734, __pyx_L1_error)
+    __pyx_t_9 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 732, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_10 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 734, __pyx_L1_error)
+    __pyx_t_10 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 732, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   for (;;) {
@@ -11992,17 +11906,17 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       if (likely(PyList_CheckExact(__pyx_t_3))) {
         if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_9); __Pyx_INCREF(__pyx_t_2); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 734, __pyx_L1_error)
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_9); __Pyx_INCREF(__pyx_t_2); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 732, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 734, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 732, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_9); __Pyx_INCREF(__pyx_t_2); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 734, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_9); __Pyx_INCREF(__pyx_t_2); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 732, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 734, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 732, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       }
@@ -12012,7 +11926,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 734, __pyx_L1_error)
+          else __PYX_ERR(0, 732, __pyx_L1_error)
         }
         break;
       }
@@ -12024,7 +11938,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 734, __pyx_L1_error)
+        __PYX_ERR(0, 732, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -12040,17 +11954,17 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       __Pyx_INCREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_t_1);
       #else
-      __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 734, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 732, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 734, __pyx_L1_error)
+      __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 732, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_1 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 734, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 732, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #endif
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_11 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 734, __pyx_L1_error)
+      __pyx_t_11 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 732, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_12 = Py_TYPE(__pyx_t_11)->tp_iternext;
@@ -12060,7 +11974,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       __Pyx_GOTREF(__pyx_t_4);
       index = 2; __pyx_t_1 = __pyx_t_12(__pyx_t_11); if (unlikely(!__pyx_t_1)) goto __pyx_L8_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_1);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_12(__pyx_t_11), 3) < 0) __PYX_ERR(0, 734, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_12(__pyx_t_11), 3) < 0) __PYX_ERR(0, 732, __pyx_L1_error)
       __pyx_t_12 = NULL;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       goto __pyx_L9_unpacking_done;
@@ -12068,7 +11982,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __pyx_t_12 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 734, __pyx_L1_error)
+      __PYX_ERR(0, 732, __pyx_L1_error)
       __pyx_L9_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_5);
@@ -12078,14 +11992,14 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     __Pyx_XDECREF_SET(__pyx_v_z, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "angular_fingerprintFeature_cy.pyx":735
+    /* "angular_fingerprintFeature_cy.pyx":733
  *         neighbourcells_disp = []
  *         for x,y,z in product(*neighbours):
  *             xyz = (x,y,z)             # <<<<<<<<<<<<<<
  *             displacement = np.dot(xyz, cell)
  *             neighbourcells_disp.append(list(displacement))
  */
-    __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 735, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 733, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_v_x);
     __Pyx_GIVEREF(__pyx_v_x);
@@ -12099,16 +12013,16 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     __Pyx_XDECREF_SET(__pyx_v_xyz, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "angular_fingerprintFeature_cy.pyx":736
+    /* "angular_fingerprintFeature_cy.pyx":734
  *         for x,y,z in product(*neighbours):
  *             xyz = (x,y,z)
  *             displacement = np.dot(xyz, cell)             # <<<<<<<<<<<<<<
  *             neighbourcells_disp.append(list(displacement))
  * 
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 736, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 734, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_dot); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 736, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_dot); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 734, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_1 = NULL;
@@ -12126,7 +12040,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_xyz, __pyx_v_cell};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 736, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 734, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
@@ -12134,13 +12048,13 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_xyz, __pyx_v_cell};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 736, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 734, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(2+__pyx_t_13); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 736, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(2+__pyx_t_13); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 734, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       if (__pyx_t_1) {
         __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -12151,7 +12065,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
       __Pyx_INCREF(__pyx_v_cell);
       __Pyx_GIVEREF(__pyx_v_cell);
       PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_13, __pyx_v_cell);
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 736, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 734, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
@@ -12159,19 +12073,19 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
     __Pyx_XDECREF_SET(__pyx_v_displacement, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "angular_fingerprintFeature_cy.pyx":737
+    /* "angular_fingerprintFeature_cy.pyx":735
  *             xyz = (x,y,z)
  *             displacement = np.dot(xyz, cell)
  *             neighbourcells_disp.append(list(displacement))             # <<<<<<<<<<<<<<
  * 
  *         return neighbourcells_disp
  */
-    __pyx_t_2 = PySequence_List(__pyx_v_displacement); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 737, __pyx_L1_error)
+    __pyx_t_2 = PySequence_List(__pyx_v_displacement); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 735, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_neighbourcells_disp, __pyx_t_2); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 737, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_neighbourcells_disp, __pyx_t_2); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 735, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "angular_fingerprintFeature_cy.pyx":734
+    /* "angular_fingerprintFeature_cy.pyx":732
  * 
  *         neighbourcells_disp = []
  *         for x,y,z in product(*neighbours):             # <<<<<<<<<<<<<<
@@ -12181,7 +12095,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":739
+  /* "angular_fingerprintFeature_cy.pyx":737
  *             neighbourcells_disp.append(list(displacement))
  * 
  *         return neighbourcells_disp             # <<<<<<<<<<<<<<
@@ -12191,7 +12105,7 @@ static PyObject *__pyx_pf_29angular_fingerprintFeature_cy_19Angular_Fingerprint_
   __pyx_r = __pyx_v_neighbourcells_disp;
   goto __pyx_L0;
 
-  /* "angular_fingerprintFeature_cy.pyx":721
+  /* "angular_fingerprintFeature_cy.pyx":719
  *         return feature_grads
  * 
  *     def __get_neighbour_cells_displacement(self, pbc, cell):             # <<<<<<<<<<<<<<
@@ -14742,7 +14656,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_Nbondtypes_3body, __pyx_k_Nbondtypes_3body, sizeof(__pyx_k_Nbondtypes_3body), 0, 0, 1, 1},
   {&__pyx_n_s_Ncells, __pyx_k_Ncells, sizeof(__pyx_k_Ncells), 0, 0, 1, 1},
   {&__pyx_n_s_Nelements, __pyx_k_Nelements, sizeof(__pyx_k_Nelements), 0, 0, 1, 1},
-  {&__pyx_kp_s_Nelements_2, __pyx_k_Nelements_2, sizeof(__pyx_k_Nelements_2), 0, 0, 1, 0},
   {&__pyx_n_s_Nelements_2body, __pyx_k_Nelements_2body, sizeof(__pyx_k_Nelements_2body), 0, 0, 1, 1},
   {&__pyx_n_s_Nelements_3body, __pyx_k_Nelements_3body, sizeof(__pyx_k_Nelements_3body), 0, 0, 1, 1},
   {&__pyx_kp_u_Non_native_byte_order_not_suppor, __pyx_k_Non_native_byte_order_not_suppor, sizeof(__pyx_k_Non_native_byte_order_not_suppor), 0, 1, 0, 0},
@@ -14802,14 +14715,12 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_cos_angle, __pyx_k_cos_angle, sizeof(__pyx_k_cos_angle), 0, 0, 1, 1},
   {&__pyx_n_s_count, __pyx_k_count, sizeof(__pyx_k_count), 0, 0, 1, 1},
   {&__pyx_n_s_cwd, __pyx_k_cwd, sizeof(__pyx_k_cwd), 0, 0, 1, 1},
-  {&__pyx_n_s_cy, __pyx_k_cy, sizeof(__pyx_k_cy), 0, 0, 1, 1},
   {&__pyx_n_s_dim, __pyx_k_dim, sizeof(__pyx_k_dim), 0, 0, 1, 1},
   {&__pyx_n_s_displacement, __pyx_k_displacement, sizeof(__pyx_k_displacement), 0, 0, 1, 1},
   {&__pyx_n_s_displacement1, __pyx_k_displacement1, sizeof(__pyx_k_displacement1), 0, 0, 1, 1},
   {&__pyx_n_s_displacement2, __pyx_k_displacement2, sizeof(__pyx_k_displacement2), 0, 0, 1, 1},
   {&__pyx_n_s_doc, __pyx_k_doc, sizeof(__pyx_k_doc), 0, 0, 1, 1},
   {&__pyx_n_s_dot, __pyx_k_dot, sizeof(__pyx_k_dot), 0, 0, 1, 1},
-  {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
   {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
   {&__pyx_n_s_erf, __pyx_k_erf, sizeof(__pyx_k_erf), 0, 0, 1, 1},
   {&__pyx_n_s_erfarg_low, __pyx_k_erfarg_low, sizeof(__pyx_k_erfarg_low), 0, 0, 1, 1},
@@ -14831,7 +14742,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_feature_grad_np, __pyx_k_feature_grad_np, sizeof(__pyx_k_feature_grad_np), 0, 0, 1, 1},
   {&__pyx_n_s_feature_grads, __pyx_k_feature_grads, sizeof(__pyx_k_feature_grads), 0, 0, 1, 1},
   {&__pyx_n_s_feature_np, __pyx_k_feature_np, sizeof(__pyx_k_feature_np), 0, 0, 1, 1},
-  {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
   {&__pyx_n_s_gamma, __pyx_k_gamma, sizeof(__pyx_k_gamma), 0, 0, 1, 1},
   {&__pyx_n_s_get_all_featureGradients, __pyx_k_get_all_featureGradients, sizeof(__pyx_k_get_all_featureGradients), 0, 0, 1, 1},
   {&__pyx_n_s_get_atomic_numbers, __pyx_k_get_atomic_numbers, sizeof(__pyx_k_get_atomic_numbers), 0, 0, 1, 1},
@@ -14897,7 +14807,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_pos_k, __pyx_k_pos_k, sizeof(__pyx_k_pos_k), 0, 0, 1, 1},
   {&__pyx_n_s_pos_np, __pyx_k_pos_np, sizeof(__pyx_k_pos_np), 0, 0, 1, 1},
   {&__pyx_n_s_prepare, __pyx_k_prepare, sizeof(__pyx_k_prepare), 0, 0, 1, 1},
-  {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_product, __pyx_k_product, sizeof(__pyx_k_product), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
   {&__pyx_n_s_qualname, __pyx_k_qualname, sizeof(__pyx_k_qualname), 0, 0, 1, 1},
@@ -14991,32 +14900,32 @@ static int __Pyx_InitCachedConstants(void) {
  *             k1, k2, k3 = key
  *             self.bondtypes_3body[type_converter[k1],type_converter[k2],type_converter[k3]] = i
  *         self.bondtypes_3body = self.bondtypes_3body.reshape(-1).tolist()             # <<<<<<<<<<<<<<
- *         print('cy', bondtypes_3body_keys)
  * 
+ *         self.Nelements_2body = self.Nbondtypes_2body * self.Nbins1
  */
   __pyx_tuple__4 = PyTuple_Pack(1, __pyx_int_neg_1); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "angular_fingerprintFeature_cy.pyx":712
+  /* "angular_fingerprintFeature_cy.pyx":710
  * 
  *         feature_grad_np = np.zeros((Natoms*dim, Nelements))
  *         feature_grad_np[:, :Nelements_2body] = feature_grad1_np             # <<<<<<<<<<<<<<
  *         feature_grad_np[:, Nelements_2body:] = feature_grad2_np
  *         return feature_grad_np
  */
-  __pyx_slice__5 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__5)) __PYX_ERR(0, 712, __pyx_L1_error)
+  __pyx_slice__5 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__5)) __PYX_ERR(0, 710, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__5);
   __Pyx_GIVEREF(__pyx_slice__5);
 
-  /* "angular_fingerprintFeature_cy.pyx":713
+  /* "angular_fingerprintFeature_cy.pyx":711
  *         feature_grad_np = np.zeros((Natoms*dim, Nelements))
  *         feature_grad_np[:, :Nelements_2body] = feature_grad1_np
  *         feature_grad_np[:, Nelements_2body:] = feature_grad2_np             # <<<<<<<<<<<<<<
  *         return feature_grad_np
  * 
  */
-  __pyx_slice__6 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__6)) __PYX_ERR(0, 713, __pyx_L1_error)
+  __pyx_slice__6 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__6)) __PYX_ERR(0, 711, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__6);
   __Pyx_GIVEREF(__pyx_slice__6);
 
@@ -15155,65 +15064,65 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
 
-  /* "angular_fingerprintFeature_cy.pyx":198
+  /* "angular_fingerprintFeature_cy.pyx":196
  *         self.neighbourcells_disp = self.__get_neighbour_cells_displacement(self.pbc, self.cell)
  * 
  *     def get_feature(self, atoms):             # <<<<<<<<<<<<<<
  *         """
  *         """
  */
-  __pyx_tuple__22 = PyTuple_Pack(82, __pyx_n_s_self, __pyx_n_s_atoms, __pyx_n_s_Rc1, __pyx_n_s_Rc2, __pyx_n_s_binwidth1, __pyx_n_s_binwidth2, __pyx_n_s_Nbins1, __pyx_n_s_Nbins2, __pyx_n_s_sigma1, __pyx_n_s_sigma2, __pyx_n_s_nsigma, __pyx_n_s_eta, __pyx_n_s_gamma, __pyx_n_s_use_angular, __pyx_n_s_volume, __pyx_n_s_dim, __pyx_n_s_m1, __pyx_n_s_m2, __pyx_n_s_smearing_norm1, __pyx_n_s_smearing_norm2, __pyx_n_s_Nelements_2body, __pyx_n_s_Nelements_3body, __pyx_n_s_Nelements, __pyx_n_s_mem, __pyx_n_s_cell, __pyx_n_s_Natoms, __pyx_n_s_pos_np, __pyx_n_s_pos, __pyx_n_s_m, __pyx_n_s_Ncells, __pyx_n_s_cell_displacements_old, __pyx_n_s_cell_displacements, __pyx_n_s_Ntypes, __pyx_n_s_Nbondtypes_2body, __pyx_n_s_bondtypes_2body_old, __pyx_n_s_bondtypes_2body, __pyx_n_s_num_converted_old, __pyx_n_s_num_converted, __pyx_n_s_feature1, __pyx_n_s_num_pairs, __pyx_n_s_center_bin, __pyx_n_s_minbin_lim, __pyx_n_s_maxbin_lim, __pyx_n_s_newbin, __pyx_n_s_bondtype_index, __pyx_n_s_type1, __pyx_n_s_type2, __pyx_n_s_Rij, __pyx_n_s_normalization, __pyx_n_s_binpos, __pyx_n_s_c, __pyx_n_s_erfarg_low, __pyx_n_s_erfarg_up, __pyx_n_s_value, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_n, __pyx_n_s_cell_index, __pyx_n_s_displacement, __pyx_n_s_feature1_np, __pyx_n_s_Nbondtypes_3body, __pyx_n_s_bondtypes_3body_old, __pyx_n_s_bondtypes_3body, __pyx_n_s_feature2, __pyx_n_s_RijVec, __pyx_n_s_RikVec, __pyx_n_s_angle, __pyx_n_s_k, __pyx_n_s_cond_ij, __pyx_n_s_cond_ik, __pyx_n_s_pos_i, __pyx_n_s_cell_index1, __pyx_n_s_displacement1, __pyx_n_s_pos_j, __pyx_n_s_cell_index2, __pyx_n_s_displacement2, __pyx_n_s_k_start, __pyx_n_s_pos_k, __pyx_n_s_Rik, __pyx_n_s_type3, __pyx_n_s_feature2_np, __pyx_n_s_feature_np); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_tuple__22 = PyTuple_Pack(82, __pyx_n_s_self, __pyx_n_s_atoms, __pyx_n_s_Rc1, __pyx_n_s_Rc2, __pyx_n_s_binwidth1, __pyx_n_s_binwidth2, __pyx_n_s_Nbins1, __pyx_n_s_Nbins2, __pyx_n_s_sigma1, __pyx_n_s_sigma2, __pyx_n_s_nsigma, __pyx_n_s_eta, __pyx_n_s_gamma, __pyx_n_s_use_angular, __pyx_n_s_volume, __pyx_n_s_dim, __pyx_n_s_m1, __pyx_n_s_m2, __pyx_n_s_smearing_norm1, __pyx_n_s_smearing_norm2, __pyx_n_s_Nelements_2body, __pyx_n_s_Nelements_3body, __pyx_n_s_Nelements, __pyx_n_s_mem, __pyx_n_s_cell, __pyx_n_s_Natoms, __pyx_n_s_pos_np, __pyx_n_s_pos, __pyx_n_s_m, __pyx_n_s_Ncells, __pyx_n_s_cell_displacements_old, __pyx_n_s_cell_displacements, __pyx_n_s_Ntypes, __pyx_n_s_Nbondtypes_2body, __pyx_n_s_bondtypes_2body_old, __pyx_n_s_bondtypes_2body, __pyx_n_s_num_converted_old, __pyx_n_s_num_converted, __pyx_n_s_feature1, __pyx_n_s_num_pairs, __pyx_n_s_center_bin, __pyx_n_s_minbin_lim, __pyx_n_s_maxbin_lim, __pyx_n_s_newbin, __pyx_n_s_bondtype_index, __pyx_n_s_type1, __pyx_n_s_type2, __pyx_n_s_Rij, __pyx_n_s_normalization, __pyx_n_s_binpos, __pyx_n_s_c, __pyx_n_s_erfarg_low, __pyx_n_s_erfarg_up, __pyx_n_s_value, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_n, __pyx_n_s_cell_index, __pyx_n_s_displacement, __pyx_n_s_feature1_np, __pyx_n_s_Nbondtypes_3body, __pyx_n_s_bondtypes_3body_old, __pyx_n_s_bondtypes_3body, __pyx_n_s_feature2, __pyx_n_s_RijVec, __pyx_n_s_RikVec, __pyx_n_s_angle, __pyx_n_s_k, __pyx_n_s_cond_ij, __pyx_n_s_cond_ik, __pyx_n_s_type3, __pyx_n_s_pos_i, __pyx_n_s_cell_index1, __pyx_n_s_displacement1, __pyx_n_s_pos_j, __pyx_n_s_cell_index2, __pyx_n_s_displacement2, __pyx_n_s_k_start, __pyx_n_s_pos_k, __pyx_n_s_Rik, __pyx_n_s_feature2_np, __pyx_n_s_feature_np); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(2, 0, 82, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_angular_fingerprintFeature_cy_py, __pyx_n_s_get_feature, 198, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(2, 0, 82, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_angular_fingerprintFeature_cy_py, __pyx_n_s_get_feature, 196, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 196, __pyx_L1_error)
 
-  /* "angular_fingerprintFeature_cy.pyx":434
+  /* "angular_fingerprintFeature_cy.pyx":432
  *         return feature_np
  * 
  *     def get_featureMat(self, atoms_list):             # <<<<<<<<<<<<<<
  *         featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])
  *         featureMat = np.array(featureMat)
  */
-  __pyx_tuple__24 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_atoms_list, __pyx_n_s_featureMat, __pyx_n_s_atoms); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 434, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_atoms_list, __pyx_n_s_featureMat, __pyx_n_s_atoms); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 432, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_angular_fingerprintFeature_cy_py, __pyx_n_s_get_featureMat, 434, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 434, __pyx_L1_error)
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_angular_fingerprintFeature_cy_py, __pyx_n_s_get_featureMat, 432, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 432, __pyx_L1_error)
 
-  /* "angular_fingerprintFeature_cy.pyx":439
+  /* "angular_fingerprintFeature_cy.pyx":437
  *         return featureMat
  * 
  *     def get_featureGradient(self, atoms):             # <<<<<<<<<<<<<<
  * 
  *         cdef double Rc1 = self.Rc1
  */
-  __pyx_tuple__26 = PyTuple_Pack(95, __pyx_n_s_self, __pyx_n_s_atoms, __pyx_n_s_Rc1, __pyx_n_s_Rc2, __pyx_n_s_binwidth1, __pyx_n_s_binwidth2, __pyx_n_s_Nbins1, __pyx_n_s_Nbins2, __pyx_n_s_sigma1, __pyx_n_s_sigma2, __pyx_n_s_nsigma, __pyx_n_s_eta, __pyx_n_s_gamma, __pyx_n_s_use_angular, __pyx_n_s_volume, __pyx_n_s_dim, __pyx_n_s_m1, __pyx_n_s_m2, __pyx_n_s_smearing_norm1, __pyx_n_s_smearing_norm2, __pyx_n_s_Nelements_2body, __pyx_n_s_Nelements_3body, __pyx_n_s_Nelements, __pyx_n_s_mem, __pyx_n_s_cell, __pyx_n_s_Natoms, __pyx_n_s_pos_np, __pyx_n_s_pos, __pyx_n_s_m, __pyx_n_s_Ncells, __pyx_n_s_cell_displacements_old, __pyx_n_s_cell_displacements, __pyx_n_s_Ntypes, __pyx_n_s_Nbondtypes_2body, __pyx_n_s_bondtypes_2body_old, __pyx_n_s_bondtypes_2body, __pyx_n_s_num_converted_old, __pyx_n_s_num_converted, __pyx_n_s_feature_grad1, __pyx_n_s_RijVec, __pyx_n_s_num_pairs, __pyx_n_s_center_bin, __pyx_n_s_minbin_lim, __pyx_n_s_maxbin_lim, __pyx_n_s_newbin, __pyx_n_s_bondtype_index, __pyx_n_s_type1, __pyx_n_s_type2, __pyx_n_s_Rij, __pyx_n_s_normalization, __pyx_n_s_binpos, __pyx_n_s_c, __pyx_n_s_arg_low, __pyx_n_s_arg_up, __pyx_n_s_value1, __pyx_n_s_value2, __pyx_n_s_value, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_n, __pyx_n_s_pos_i, __pyx_n_s_cell_index, __pyx_n_s_displacement, __pyx_n_s_pos_j, __pyx_n_s_grad_index, __pyx_n_s_feature_grad1_np, __pyx_n_s_Nbondtypes_3body, __pyx_n_s_bondtypes_3body_old, __pyx_n_s_bondtypes_3body, __pyx_n_s_feature_grad2, __pyx_n_s_RikVec, __pyx_n_s_angle_grad_i, __pyx_n_s_angle_grad_j, __pyx_n_s_angle_grad_k, __pyx_n_s_angle, __pyx_n_s_cos_angle, __pyx_n_s_a, __pyx_n_s_k, __pyx_n_s_cond_ij, __pyx_n_s_cond_ik, __pyx_n_s_bin_index, __pyx_n_s_cell_index1, __pyx_n_s_displacement1, __pyx_n_s_cell_index2, __pyx_n_s_displacement2, __pyx_n_s_k_start, __pyx_n_s_pos_k, __pyx_n_s_Rik, __pyx_n_s_type3, __pyx_n_s_fc_ij, __pyx_n_s_fc_ik, __pyx_n_s_fc_grad_ij, __pyx_n_s_fc_grad_ik, __pyx_n_s_feature_grad2_np, __pyx_n_s_feature_grad_np); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 439, __pyx_L1_error)
+  __pyx_tuple__26 = PyTuple_Pack(95, __pyx_n_s_self, __pyx_n_s_atoms, __pyx_n_s_Rc1, __pyx_n_s_Rc2, __pyx_n_s_binwidth1, __pyx_n_s_binwidth2, __pyx_n_s_Nbins1, __pyx_n_s_Nbins2, __pyx_n_s_sigma1, __pyx_n_s_sigma2, __pyx_n_s_nsigma, __pyx_n_s_eta, __pyx_n_s_gamma, __pyx_n_s_use_angular, __pyx_n_s_volume, __pyx_n_s_dim, __pyx_n_s_m1, __pyx_n_s_m2, __pyx_n_s_smearing_norm1, __pyx_n_s_smearing_norm2, __pyx_n_s_Nelements_2body, __pyx_n_s_Nelements_3body, __pyx_n_s_Nelements, __pyx_n_s_mem, __pyx_n_s_cell, __pyx_n_s_Natoms, __pyx_n_s_pos_np, __pyx_n_s_pos, __pyx_n_s_m, __pyx_n_s_Ncells, __pyx_n_s_cell_displacements_old, __pyx_n_s_cell_displacements, __pyx_n_s_Ntypes, __pyx_n_s_Nbondtypes_2body, __pyx_n_s_bondtypes_2body_old, __pyx_n_s_bondtypes_2body, __pyx_n_s_num_converted_old, __pyx_n_s_num_converted, __pyx_n_s_feature_grad1, __pyx_n_s_RijVec, __pyx_n_s_num_pairs, __pyx_n_s_center_bin, __pyx_n_s_minbin_lim, __pyx_n_s_maxbin_lim, __pyx_n_s_newbin, __pyx_n_s_bondtype_index, __pyx_n_s_type1, __pyx_n_s_type2, __pyx_n_s_Rij, __pyx_n_s_normalization, __pyx_n_s_binpos, __pyx_n_s_c, __pyx_n_s_arg_low, __pyx_n_s_arg_up, __pyx_n_s_value1, __pyx_n_s_value2, __pyx_n_s_value, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_n, __pyx_n_s_pos_i, __pyx_n_s_cell_index, __pyx_n_s_displacement, __pyx_n_s_pos_j, __pyx_n_s_grad_index, __pyx_n_s_feature_grad1_np, __pyx_n_s_Nbondtypes_3body, __pyx_n_s_bondtypes_3body_old, __pyx_n_s_bondtypes_3body, __pyx_n_s_feature_grad2, __pyx_n_s_RikVec, __pyx_n_s_angle_grad_i, __pyx_n_s_angle_grad_j, __pyx_n_s_angle_grad_k, __pyx_n_s_angle, __pyx_n_s_cos_angle, __pyx_n_s_a, __pyx_n_s_k, __pyx_n_s_cond_ij, __pyx_n_s_cond_ik, __pyx_n_s_bin_index, __pyx_n_s_type3, __pyx_n_s_cell_index1, __pyx_n_s_displacement1, __pyx_n_s_cell_index2, __pyx_n_s_displacement2, __pyx_n_s_k_start, __pyx_n_s_pos_k, __pyx_n_s_Rik, __pyx_n_s_fc_ij, __pyx_n_s_fc_ik, __pyx_n_s_fc_grad_ij, __pyx_n_s_fc_grad_ik, __pyx_n_s_feature_grad2_np, __pyx_n_s_feature_grad_np); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__26);
   __Pyx_GIVEREF(__pyx_tuple__26);
-  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(2, 0, 95, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_angular_fingerprintFeature_cy_py, __pyx_n_s_get_featureGradient, 439, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 439, __pyx_L1_error)
+  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(2, 0, 95, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_angular_fingerprintFeature_cy_py, __pyx_n_s_get_featureGradient, 437, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 437, __pyx_L1_error)
 
-  /* "angular_fingerprintFeature_cy.pyx":716
+  /* "angular_fingerprintFeature_cy.pyx":714
  *         return feature_grad_np
  * 
  *     def get_all_featureGradients(self, atoms_list):             # <<<<<<<<<<<<<<
  *         feature_grads = np.array([self.get_featureGradient(atoms) for atoms in atoms_list])
  *         feature_grads = np.array(feature_grads)
  */
-  __pyx_tuple__28 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_atoms_list, __pyx_n_s_feature_grads, __pyx_n_s_atoms); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 716, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_atoms_list, __pyx_n_s_feature_grads, __pyx_n_s_atoms); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 714, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_angular_fingerprintFeature_cy_py, __pyx_n_s_get_all_featureGradients, 716, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 716, __pyx_L1_error)
+  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_angular_fingerprintFeature_cy_py, __pyx_n_s_get_all_featureGradients, 714, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 714, __pyx_L1_error)
 
-  /* "angular_fingerprintFeature_cy.pyx":721
+  /* "angular_fingerprintFeature_cy.pyx":719
  *         return feature_grads
  * 
  *     def __get_neighbour_cells_displacement(self, pbc, cell):             # <<<<<<<<<<<<<<
  *         # Calculate neighbour cells
  *         Rc_max = max(self.Rc1+self.sigma1*self.nsigma, self.Rc2)  # relevant cutoff
  */
-  __pyx_tuple__30 = PyTuple_Pack(14, __pyx_n_s_self, __pyx_n_s_pbc, __pyx_n_s_cell, __pyx_n_s_Rc_max, __pyx_n_s_cell_vec_norms, __pyx_n_s_neighbours, __pyx_n_s_i, __pyx_n_s_ncellmax, __pyx_n_s_neighbourcells_disp, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_z, __pyx_n_s_xyz, __pyx_n_s_displacement); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 721, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(14, __pyx_n_s_self, __pyx_n_s_pbc, __pyx_n_s_cell, __pyx_n_s_Rc_max, __pyx_n_s_cell_vec_norms, __pyx_n_s_neighbours, __pyx_n_s_i, __pyx_n_s_ncellmax, __pyx_n_s_neighbourcells_disp, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_z, __pyx_n_s_xyz, __pyx_n_s_displacement); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 719, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(3, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_angular_fingerprintFeature_cy_py, __pyx_n_s_get_neighbour_cells_displaceme, 721, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 721, __pyx_L1_error)
+  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(3, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_angular_fingerprintFeature_cy_py, __pyx_n_s_get_neighbour_cells_displaceme, 719, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 719, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -15754,64 +15663,64 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_init, __pyx_t_2) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":198
+  /* "angular_fingerprintFeature_cy.pyx":196
  *         self.neighbourcells_disp = self.__get_neighbour_cells_displacement(self.pbc, self.cell)
  * 
  *     def get_feature(self, atoms):             # <<<<<<<<<<<<<<
  *         """
  *         """
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_29angular_fingerprintFeature_cy_19Angular_Fingerprint_3get_feature, 0, __pyx_n_s_Angular_Fingerprint_get_feature, NULL, __pyx_n_s_angular_fingerprintFeature_cy, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_29angular_fingerprintFeature_cy_19Angular_Fingerprint_3get_feature, 0, __pyx_n_s_Angular_Fingerprint_get_feature, NULL, __pyx_n_s_angular_fingerprintFeature_cy, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_feature, __pyx_t_2) < 0) __PYX_ERR(0, 198, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_feature, __pyx_t_2) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":434
+  /* "angular_fingerprintFeature_cy.pyx":432
  *         return feature_np
  * 
  *     def get_featureMat(self, atoms_list):             # <<<<<<<<<<<<<<
  *         featureMat = np.array([self.get_feature(atoms) for atoms in atoms_list])
  *         featureMat = np.array(featureMat)
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_29angular_fingerprintFeature_cy_19Angular_Fingerprint_5get_featureMat, 0, __pyx_n_s_Angular_Fingerprint_get_featureM, NULL, __pyx_n_s_angular_fingerprintFeature_cy, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 434, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_29angular_fingerprintFeature_cy_19Angular_Fingerprint_5get_featureMat, 0, __pyx_n_s_Angular_Fingerprint_get_featureM, NULL, __pyx_n_s_angular_fingerprintFeature_cy, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 432, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_featureMat, __pyx_t_2) < 0) __PYX_ERR(0, 434, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_featureMat, __pyx_t_2) < 0) __PYX_ERR(0, 432, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":439
+  /* "angular_fingerprintFeature_cy.pyx":437
  *         return featureMat
  * 
  *     def get_featureGradient(self, atoms):             # <<<<<<<<<<<<<<
  * 
  *         cdef double Rc1 = self.Rc1
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_29angular_fingerprintFeature_cy_19Angular_Fingerprint_7get_featureGradient, 0, __pyx_n_s_Angular_Fingerprint_get_featureG, NULL, __pyx_n_s_angular_fingerprintFeature_cy, __pyx_d, ((PyObject *)__pyx_codeobj__27)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 439, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_29angular_fingerprintFeature_cy_19Angular_Fingerprint_7get_featureGradient, 0, __pyx_n_s_Angular_Fingerprint_get_featureG, NULL, __pyx_n_s_angular_fingerprintFeature_cy, __pyx_d, ((PyObject *)__pyx_codeobj__27)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_featureGradient, __pyx_t_2) < 0) __PYX_ERR(0, 439, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_featureGradient, __pyx_t_2) < 0) __PYX_ERR(0, 437, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":716
+  /* "angular_fingerprintFeature_cy.pyx":714
  *         return feature_grad_np
  * 
  *     def get_all_featureGradients(self, atoms_list):             # <<<<<<<<<<<<<<
  *         feature_grads = np.array([self.get_featureGradient(atoms) for atoms in atoms_list])
  *         feature_grads = np.array(feature_grads)
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_29angular_fingerprintFeature_cy_19Angular_Fingerprint_9get_all_featureGradients, 0, __pyx_n_s_Angular_Fingerprint_get_all_feat, NULL, __pyx_n_s_angular_fingerprintFeature_cy, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 716, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_29angular_fingerprintFeature_cy_19Angular_Fingerprint_9get_all_featureGradients, 0, __pyx_n_s_Angular_Fingerprint_get_all_feat, NULL, __pyx_n_s_angular_fingerprintFeature_cy, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 714, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_all_featureGradients, __pyx_t_2) < 0) __PYX_ERR(0, 716, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_all_featureGradients, __pyx_t_2) < 0) __PYX_ERR(0, 714, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "angular_fingerprintFeature_cy.pyx":721
+  /* "angular_fingerprintFeature_cy.pyx":719
  *         return feature_grads
  * 
  *     def __get_neighbour_cells_displacement(self, pbc, cell):             # <<<<<<<<<<<<<<
  *         # Calculate neighbour cells
  *         Rc_max = max(self.Rc1+self.sigma1*self.nsigma, self.Rc2)  # relevant cutoff
  */
-  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_29angular_fingerprintFeature_cy_19Angular_Fingerprint_11__get_neighbour_cells_displacement, 0, __pyx_n_s_Angular_Fingerprint___get_neighb, NULL, __pyx_n_s_angular_fingerprintFeature_cy, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 721, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_29angular_fingerprintFeature_cy_19Angular_Fingerprint_11__get_neighbour_cells_displacement, 0, __pyx_n_s_Angular_Fingerprint___get_neighb, NULL, __pyx_n_s_angular_fingerprintFeature_cy, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 719, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_Angular_Fingerprint__get_neighb, __pyx_t_2) < 0) __PYX_ERR(0, 721, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_Angular_Fingerprint__get_neighb, __pyx_t_2) < 0) __PYX_ERR(0, 719, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "angular_fingerprintFeature_cy.pyx":94
@@ -18402,112 +18311,6 @@ bad:
         return (target_type) value;\
     }
 
-/* Print */
-              #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION < 3
-static PyObject *__Pyx_GetStdout(void) {
-    PyObject *f = PySys_GetObject((char *)"stdout");
-    if (!f) {
-        PyErr_SetString(PyExc_RuntimeError, "lost sys.stdout");
-    }
-    return f;
-}
-static int __Pyx_Print(PyObject* f, PyObject *arg_tuple, int newline) {
-    int i;
-    if (!f) {
-        if (!(f = __Pyx_GetStdout()))
-            return -1;
-    }
-    Py_INCREF(f);
-    for (i=0; i < PyTuple_GET_SIZE(arg_tuple); i++) {
-        PyObject* v;
-        if (PyFile_SoftSpace(f, 1)) {
-            if (PyFile_WriteString(" ", f) < 0)
-                goto error;
-        }
-        v = PyTuple_GET_ITEM(arg_tuple, i);
-        if (PyFile_WriteObject(v, f, Py_PRINT_RAW) < 0)
-            goto error;
-        if (PyString_Check(v)) {
-            char *s = PyString_AsString(v);
-            Py_ssize_t len = PyString_Size(v);
-            if (len > 0) {
-                switch (s[len-1]) {
-                    case ' ': break;
-                    case '\f': case '\r': case '\n': case '\t': case '\v':
-                        PyFile_SoftSpace(f, 0);
-                        break;
-                    default:  break;
-                }
-            }
-        }
-    }
-    if (newline) {
-        if (PyFile_WriteString("\n", f) < 0)
-            goto error;
-        PyFile_SoftSpace(f, 0);
-    }
-    Py_DECREF(f);
-    return 0;
-error:
-    Py_DECREF(f);
-    return -1;
-}
-#else
-static int __Pyx_Print(PyObject* stream, PyObject *arg_tuple, int newline) {
-    PyObject* kwargs = 0;
-    PyObject* result = 0;
-    PyObject* end_string;
-    if (unlikely(!__pyx_print)) {
-        __pyx_print = PyObject_GetAttr(__pyx_b, __pyx_n_s_print);
-        if (!__pyx_print)
-            return -1;
-    }
-    if (stream) {
-        kwargs = PyDict_New();
-        if (unlikely(!kwargs))
-            return -1;
-        if (unlikely(PyDict_SetItem(kwargs, __pyx_n_s_file, stream) < 0))
-            goto bad;
-        if (!newline) {
-            end_string = PyUnicode_FromStringAndSize(" ", 1);
-            if (unlikely(!end_string))
-                goto bad;
-            if (PyDict_SetItem(kwargs, __pyx_n_s_end, end_string) < 0) {
-                Py_DECREF(end_string);
-                goto bad;
-            }
-            Py_DECREF(end_string);
-        }
-    } else if (!newline) {
-        if (unlikely(!__pyx_print_kwargs)) {
-            __pyx_print_kwargs = PyDict_New();
-            if (unlikely(!__pyx_print_kwargs))
-                return -1;
-            end_string = PyUnicode_FromStringAndSize(" ", 1);
-            if (unlikely(!end_string))
-                return -1;
-            if (PyDict_SetItem(__pyx_print_kwargs, __pyx_n_s_end, end_string) < 0) {
-                Py_DECREF(end_string);
-                return -1;
-            }
-            Py_DECREF(end_string);
-        }
-        kwargs = __pyx_print_kwargs;
-    }
-    result = PyObject_Call(__pyx_print, arg_tuple, kwargs);
-    if (unlikely(kwargs) && (kwargs != __pyx_print_kwargs))
-        Py_DECREF(kwargs);
-    if (!result)
-        return -1;
-    Py_DECREF(result);
-    return 0;
-bad:
-    if (kwargs != __pyx_print_kwargs)
-        Py_XDECREF(kwargs);
-    return -1;
-}
-#endif
-
 /* Declarations */
               #if CYTHON_CCOMPLEX
   #ifdef __cplusplus
@@ -19037,43 +18840,6 @@ raise_neg_overflow:
         "can't convert negative value to int");
     return (int) -1;
 }
-
-/* PrintOne */
-              #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION < 3
-static int __Pyx_PrintOne(PyObject* f, PyObject *o) {
-    if (!f) {
-        if (!(f = __Pyx_GetStdout()))
-            return -1;
-    }
-    Py_INCREF(f);
-    if (PyFile_SoftSpace(f, 0)) {
-        if (PyFile_WriteString(" ", f) < 0)
-            goto error;
-    }
-    if (PyFile_WriteObject(o, f, Py_PRINT_RAW) < 0)
-        goto error;
-    if (PyFile_WriteString("\n", f) < 0)
-        goto error;
-    Py_DECREF(f);
-    return 0;
-error:
-    Py_DECREF(f);
-    return -1;
-    /* the line below is just to avoid C compiler
-     * warnings about unused functions */
-    return __Pyx_Print(f, NULL, 0);
-}
-#else
-static int __Pyx_PrintOne(PyObject* stream, PyObject *o) {
-    int res;
-    PyObject* arg_tuple = PyTuple_Pack(1, o);
-    if (unlikely(!arg_tuple))
-        return -1;
-    res = __Pyx_Print(stream, arg_tuple, 1);
-    Py_DECREF(arg_tuple);
-    return res;
-}
-#endif
 
 /* CIntFromPy */
               static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *x) {

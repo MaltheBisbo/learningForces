@@ -48,7 +48,7 @@ class doubleLJ_calculator(Calculator):
     def calculate(self, atoms=None, properties=['energy', 'forces'], system_changes=['positions']):
         Calculator.calculate(self, atoms, properties, system_changes)
 
-        
+        print('calculating')
         
         if 'energy' in properties:
             self.results['energy'] = self.energy(atoms)

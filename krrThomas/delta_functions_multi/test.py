@@ -13,9 +13,9 @@ from time import time
 
 dim = 3
 
-L = 2
+L = 1
 d = 1
-pbc = [0,0,0]
+pbc = [1,0,0]
 
 """
 N = 2
@@ -78,6 +78,20 @@ N = len(a.get_atomic_numbers())
 x = a.get_positions().reshape(-1)
 """
 
+
+
+"""
+calc = doubleLJ_calculator()
+a.set_calculator(calc)
+print('1:', a.get_potential_energy())
+print(a.get_positions())
+print('2:', a.get_potential_energy())
+print(a.get_positions())
+#a.set_positions(a.get_scaled_positions())
+a.wrap()
+print('3:', a.get_potential_energy())
+print(a.get_positions())
+"""
 #view(a)
 
 from delta import delta as delta_cy
@@ -85,20 +99,33 @@ from delta_py import delta as delta_py
 from ase.data import covalent_radii
 from ase.ga.utilities import closest_distances_generator
 
-num = a.get_atomic_numbers()
-atomic_types = sorted(list(set(num)))
-print(atomic_types)
-blmin = closest_distances_generator(atomic_types,                                                                                          
-                                    ratio_of_covalent_radii=0.7)
-print(blmin)
+dcy = delta_cy(atoms=a)
+dpy = delta_py(atoms=a)
 
-cov_dist = 1
-deltaFunc_cy = delta_cy(cov_dist=cov_dist)
-deltaFunc_py = delta_py(cov_dist=cov_dist)
 
-print('E_py=', deltaFunc_py.energy(a))
-print('E_cy=', deltaFunc_cy.energy(a))
+print(dcy.energy(a))
+print(dpy.energy(a))
 
-print('F_py=', deltaFunc_py.forces(a))
-print('F_cy=', deltaFunc_cy.forces(a))
+print(dcy.forces(a))
+print(dpy.forces(a))
+
+"""
+print('pbc check:')
+print('before wrap')
+print(dpy.energy(a))
+a.wrap()
+print('after wrap')
+print(dpy.energy(a))
+print(dcy.energy(a))
+"""
+print('pbc check:')
+print('before wrap')
+print(dpy.forces(a))
+a.wrap()
+print('after wrap')
+print(dpy.forces(a))
+print(dcy.forces(a))
+
+
+
 
