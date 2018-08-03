@@ -385,10 +385,6 @@ class globalOptim():
         # Reset traj_counter for ML-relaxations
         self.traj_counter = 0
 
-        # Initial structure
-        #a_init = createInitalStructure2d(self.Natoms)
-        #self.a, self.E = self.relax(a_init, ML=False)
-
         # Initialize the best structure
         self.a_best = self.a.copy()
         self.Ebest = self.E

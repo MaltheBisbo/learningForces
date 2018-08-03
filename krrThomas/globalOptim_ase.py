@@ -13,7 +13,7 @@ from ase.optimize import BFGS
 from ase.calculators.singlepoint import SinglePointCalculator
 from ase.constraints import FixedPlane
 
-def createInitalStructure2d(Natoms):
+def createInitalStructure2d_LJ(Natoms):
     dim = 3
     boxsize = 2 * np.sqrt(Natoms)
     rmin = 0.9

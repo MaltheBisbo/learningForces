@@ -1,0 +1,11 @@
+File Edit Options Buffers Tools Python Virtual Envs Elpy YASnippet Help                                      
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+bins = [1,2,3,4]
+frac = np.array([0.4, 0.6, 0.4, 0.8])
+
+plt.figure()
+plt.hist(frac, bins)
+plt.show()

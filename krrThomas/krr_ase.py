@@ -124,8 +124,8 @@ class krr_class():
         #filtered_std = np.std(sorted_filtered_data_values)
         #self.beta = filtered_mean + self.bias_std_add * filtered_std
 
-        #self.beta = np.mean(data_values)
-        self.beta = np.max(data_values)
+        self.beta = np.mean(data_values)
+        #self.beta = np.max(data_values)
 
         #Ndata = len(data_values)
         #sorted_data_values = np.sort(data_values)

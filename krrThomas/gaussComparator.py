@@ -5,14 +5,30 @@ from scipy.spatial.distance import cdist
 
 
 class gaussComparator():
+<<<<<<< HEAD
+    def __init__(self, featureMat=None, amplitude=1, **kwargs):
+        self.featureMat = featureMat
+        self.amplitude = amplitude
+=======
     def __init__(self, featureCalculator=None, **kwargs):
         self.featureCalculator = featureCalculator
+>>>>>>> master
         if 'sigma' in kwargs:
             self.sigma = kwargs['sigma']
 
     def set_args(self, **kwargs):
         if 'sigma' in kwargs:
             self.sigma = kwargs['sigma']
+        if 'amplitude' in kwargs:
+            self.amplitude = kwargs['amplitude']
+
+    def hyper_grad(self, featureMat):
+        d = cdist(self.featureMat, self.featureMat, metric='sqeuclidean')
+        self.similarityMat = self.amplitude*np.exp(-1/(2*self.sigma**2)*d)
+        
+        hyper_grad_amp = self.similarityMat / self.amplitude
+        hyper_grad_sigma = d/self.sigma**3*self.similarityMat
+        return np.array([hyper_grad_amp, hyper_grad_sigma])
 
     def get_similarity_matrix(self, featureMat=None):
         if featureMat is not None:
@@ -21,14 +37,14 @@ class gaussComparator():
             print("You need to supply a feature matrix")
         
         d = cdist(self.featureMat, self.featureMat, metric='sqeuclidean')
-        self.similarityMat = np.exp(-1/(2*self.sigma**2)*d)
+        self.similarityMat = self.amplitude*np.exp(-1/(2*self.sigma**2)*d)
         return self.similarityMat
 
     def get_similarity_vector(self, fnew, featureMat=None):
         if featureMat is not None:
             self.featureMat = featureMat
         d = cdist(fnew.reshape((1,len(fnew))), self.featureMat, metric='sqeuclidean')
-        self.similarityVec = np.exp(-1/(2*self.sigma**2)*d).reshape(-1)
+        self.similarityVec = self.amplitude*np.exp(-1/(2*self.sigma**2)*d).reshape(-1)
         
         return self.similarityVec
 
@@ -36,7 +52,7 @@ class gaussComparator():
         if sigma is None:
             sigma = self.sigma
         d = sqeuclidean(feature1, feature2)
-        return np.exp(-1/(2*sigma**2)*d)
+        return self.amplitude*np.exp(-1/(2*sigma**2)*d)
 
     def get_jac(self, fnew, kappa=None, featureMat=None):
         """

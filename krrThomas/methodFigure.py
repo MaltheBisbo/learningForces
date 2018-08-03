@@ -24,8 +24,11 @@ def make_arrow(p1,p2, head_width, head_length, stop_before):
     diff = vec - (head_length + stop_before) * vec/np.linalg.norm(vec)
     plt.arrow(p1[0], p1[1], diff[0], diff[1], head_width=0.05, head_length=0.1, fc='k', ec='k')
 
+fs = 15
 
 plt.figure(figsize=(5,6))
+plt.subplots_adjust(left=0.01, right=0.95,
+                    bottom=0, top=1-1/14)
 #plt.axis('equal')
 #plt.gca().set_aspect('equal', adjustable='box')
 plt.axis('off')
@@ -59,23 +62,23 @@ make_arrow(p,q, head_width=0.05, head_length=0.1, stop_before=0.03)
 plt.plot(0.3, func_true(0.3), 'go')
 
 # Plot text
-plt.text(-0.35, -0.9, 'Calculate\ntrue\nenergy')
-plt.text(-1.6, 0.7, 'ML potential')
-plt.text(-1.6, -0.49, 'True potential')
-plt.text(0.6, 0.1, 'Relax')
+plt.text(-0.35, -0.9, 'Single-\npoint', fontsize=fs)
+plt.text(-1.6, 0.7, 'ML potential', fontsize=fs)
+plt.text(-1.7, -0.49, 'True potential', fontsize=fs)
+plt.text(0.6, 0.1, 'Relax', fontsize=fs)
 
 p1 = np.array([1.4, 0.9])
 p2 = np.array([1.4, 0.47])
 make_arrow(p1,p2, head_width=0.05, head_length=0.1, stop_before=0.03)
-plt.text(0.8, 1.0, 'New structure')
+plt.text(0.8, 1.0, 'New structure', fontsize=fs)
 
 p1 = np.array([1.4, 0.9])
 p2 = np.array([1.4, 0.47])
 make_arrow(p1,p2, head_width=0.05, head_length=0.1, stop_before=0.03)
-plt.text(0.8, 1.0, 'New structure')
+plt.text(0.8, 1.0, 'New structure', fontsize=fs)
 
 make_arrow([0.9, -1.38],[0.4, -1.38], head_width=0.05, head_length=0.1, stop_before=0.03)
-plt.text(1.0, -1.5, 'Use for\ntraining')
+plt.text(1.0, -1.5, 'Use for\ntraining', fontsize=fs)
 
 plt.savefig('MLrelaxFigure.pdf', format='pdf')
 plt.show()
