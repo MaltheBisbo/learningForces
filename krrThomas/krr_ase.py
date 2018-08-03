@@ -240,7 +240,12 @@ class krr_class():
     
     def __cross_validation(self, data_values, similarityMat, k, reg, delta_values=None):
         Ndata = len(data_values)
-
+        
+        # adapt if little data is avaliable
+        if Ndata < 4:
+            return np.nan
+        k = min(Ndata // 2, k)
+        
         # Permute data for cross-validation
         permutation = np.random.permutation(Ndata)
         data_values = data_values[permutation]
@@ -275,10 +280,11 @@ class krr_class():
     def __get_FVU_energy(self, data_values, test_similarities, delta_values=None):
         Epred = self.predict_energy(similarityVec=test_similarities,
                                     delta_values=delta_values)
+        
         MAE = np.mean(np.abs(Epred - data_values))
-        MSE = np.mean((Epred - data_values)**2)
-        var = np.var(data_values)
-        FVU = MSE / var
+        #MSE = np.mean((Epred - data_values)**2)
+        #var = np.var(data_values)
+        #FVU = MSE / var
         return MAE
 
 if __name__ == '__main__':

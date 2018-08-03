@@ -85,6 +85,10 @@ class StartGenerator(object):
         self.elliptic = elliptic
         self.cluster = cluster
 
+    def get_new_individual(self, parents):
+        a = self.get_new_candidate()
+        return a, 'mutation: startGenerator'
+        
     def get_new_candidate(self,maxlength=2.):
         """ Returns a new candidate. """
         N = len(self.atom_numbers)

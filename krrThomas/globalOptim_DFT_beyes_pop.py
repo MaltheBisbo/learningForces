@@ -142,9 +142,6 @@ def relax_VarianceBreak(structure, calc, label='', niter_max=10, forcemax=0.1):
 class globalOptim():
     """
     --Input--
-    calculator:
-    ASE calculator for calculating the true energy and forces
-
     MLmodel:
     Model that given training data can predict energy and gradient of a structure.
     Hint: must include a fit, predict_energy and predict_force methods.
@@ -159,14 +156,6 @@ class globalOptim():
     Max translation of each coordinate when perturbing the current structure to
     form a new candidate.
     
-    kbT:
-    Variable controling how likly it is to accept a worse structure.
-    Hint: Should be on the order of the energy difference between local minima.
-
-    Nstag:
-    Max number of iterations without accepting new structure before
-    the search is terminated.
-
     min_saveDifference:
     Defines the energy which a new trajectory point has to be lover than the previous, to be saved for training.
     
@@ -174,43 +163,21 @@ class globalOptim():
     if minSampleStep=10, every tenth point in the relaxation trajectory is used for training, and so on..
     Unless min_saveDifference have not been ecxeeded.
 
-    MLerrorMargin:
-    Maximum error differende between the ML-relaxed structure and the target energy of the same structure,
-    below which the ML structure is accepted.
-
-    NstartML:
-    The Number of training data required for the ML-model to be used.
-
-    maxNtrain:
-    The maximum number of training data. When above this, some of the oldest training data is removed.
-
-    radiusRange:
-    Range [rmin, rmax] constraining the initial and perturbed structures. All atoms need to be atleast a
-    distance rmin from each other, and have atleast one neighbour less than rmax away.
-
-    fracPerturb:
-    The fraction of the atoms which are ratteled to create a new structure.
-
-    noZ:
-    Atoms are not mooved in the z-direction during relaxation.
     """
-    def __init__(self, calculator, traj_namebase, MLmodel=None, Natoms=6, Niter=50, rattle_maxDist=0.5, kbT=1, Nstag=10, min_saveDifference=0.3, minSampleStep=10, MLerrorMargin=0.1, Nstart_pop=5, Nperturb=2, noZ=False, dualPoint=False):
+    def __init__(self, traj_namebase, MLmodel, population_size=5, kappa=2, Natoms=6, Niter=50, rattle_maxDist=0.5, min_saveDifference=0.3, minSampleStep=10, Nstart_pop=5, Nperturb=2, dualPoint=False):
 
-        self.calculator = calculator
         self.traj_namebase = traj_namebase
         self.MLmodel = MLmodel
+
+        self.kappa = kappa
 
         self.Natoms = Natoms
         self.rattle_maxDist = rattle_maxDist
         self.Niter = Niter
-        self.kbT = kbT
-        self.Nstag = Nstag
         self.min_saveDifference = min_saveDifference
         self.minSampleStep = minSampleStep
-        self.MLerrorMargin = MLerrorMargin
         self.Nstart_pop = Nstart_pop
         self.Nperturb = Nperturb
-        self.noZ = noZ
         self.dualPoint = dualPoint
 
         # List of structures to be added in next training
@@ -219,7 +186,7 @@ class globalOptim():
         self.traj_counter = 0
         self.ksaved = 0
 
-        self.population = population(population_size=5, comparator=self.MLmodel.comparator)
+        self.population = population(population_size=population_size, comparator=self.MLmodel.comparator)
         
         # Define parallel communication
         self.comm = world.new_communicator(np.array(range(world.size)))
@@ -240,10 +207,7 @@ class globalOptim():
     def runOptimizer(self):
         # Initial structures
         for i in range(self.Nstart_pop):
-            if self.noZ:
-                a_init = createInitalStructure2d(self.Natoms)
-            else:
-                a_init = createInitalStructure(self.Natoms)
+            a_init = createInitalStructure(self.Natoms)
             a, E, F = self.relaxTrue(a_init)
             self.population.add_structure(a, E, F)
                 
@@ -277,7 +241,7 @@ class globalOptim():
                 E, error, _ = self.MLmodel.predict_energy(a_dp, return_error=True)
 
                 # If dual-point looks promising - perform sp-calculation
-                if E - 2*error < self.population.largest_energy: 
+                if E - self.kappa*error < self.population.largest_energy: 
                     E_dp, F_dp = self.singlePoint(a_dp)
                     if E_dp < Enew:
                         a_new = a_dp.copy()
@@ -322,7 +286,6 @@ class globalOptim():
         pos_displace = max_atom_displacement * F*min(1/Fmax_flat, 1/Fmax)
         pos_dp = a.positions + pos_displace
         a_dp.set_positions(pos_dp)
-
         return a_dp
         
     def mutate(self, Ntasks_each):
@@ -351,30 +314,17 @@ class globalOptim():
                 a = self.population.get_structure()
                 a_mutated = a.copy()
                 # make 2d or 3d mutations
-                if self.noZ:
-                    if i_mut == 0:
-                        a_mutated = createInitalStructure2d(self.Natoms)
-                    elif i_mut == 1:
-                        a_mutated = rattle_Natoms2d_center(struct=a_mutated,
-                                                           Nrattle=self.Nperturb,
-                                                           rmax_rattle=self.rattle_maxDist)
-                    else:
-                        rmax_rattle = 0.1 + 0.7*np.random.rand()
-                        a_mutated = rattle_Natoms2d(struct=a_mutated,
-                                                    Nrattle=self.Natoms,
-                                                    rmax_rattle=rmax_rattle)
+                if i_mut == 0:
+                    a_mutated = createInitalStructure(self.Natoms)
+                elif i_mut == 1:
+                    a_mutated = rattle_Natoms_center(struct=a_mutated,
+                                                     Nrattle=self.Nperturb,
+                                                     rmax_rattle=self.rattle_maxDist)
                 else:
-                    if i_mut == 0:
-                        a_mutated = createInitalStructure(self.Natoms)
-                    elif i_mut == 1:
-                        a_mutated = rattle_Natoms_center(struct=a_mutated,
-                                                           Nrattle=self.Nperturb,
-                                                           rmax_rattle=self.rattle_maxDist)
-                    else:
-                        rmax_rattle = 0.1 + 0.7*np.random.rand()
-                        a_mutated = rattle_Natoms(struct=a_mutated,
-                                                    Nrattle=self.Natoms,
-                                                    rmax_rattle=rmax_rattle)
+                    rmax_rattle = 0.1 + 0.7*np.random.rand()
+                    a_mutated = rattle_Natoms(struct=a_mutated,
+                                              Nrattle=self.Natoms,
+                                              rmax_rattle=rmax_rattle)
                 a_mutated_list.append(a_mutated)
         self.comm.barrier()
 
@@ -429,7 +379,7 @@ class globalOptim():
         pos_new_mutated = np.zeros((self.Natoms, 3))
         if self.master:
             
-            EwithError_all = E_all - 2 * error_all
+            EwithError_all = E_all - self.kappa * error_all
             index_best = EwithError_all.argmin()
             
             print('{}:\n'.format(self.traj_counter), np.c_[E_all, error_all])
@@ -504,10 +454,6 @@ class globalOptim():
                 
     def relaxML(self, anew, Fmax=0.1):
         a = anew.copy()
-        # fix atoms in xy-plane if noZ=True
-        if self.noZ:
-            plane = [FixedPlane(x, (0, 0, 1)) for x in range(len(a))]
-            a.set_constraint(plane)
 
         # Relax
         label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
@@ -518,11 +464,6 @@ class globalOptim():
         return a_relaxed
 
     def relaxTrue(self, a):
-        # fix atons in xy-plane if noZ=True
-        if self.noZ:
-            plane = [FixedPlane(x, (0, 0, 1)) for x in range(len(a))]
-            a.set_constraint(plane)
-
         pos = a.positions
         if self.master:
             pos = a.positions
@@ -618,17 +559,13 @@ if __name__ == '__main__':
         run_num = ''
     savefiles_namebase = savefiles_path + 'global' + run_num + '_' 
 
-    optimizer = globalOptim(calculator=None,
-                            traj_namebase=savefiles_namebase,
+    optimizer = globalOptim(traj_namebase=savefiles_namebase,
                             MLmodel=krr,
                             Natoms=Natoms,
                             Niter=600,
-                            Nstag=600,
                             Nstart_pop=2,
                             Nperturb=2,
                             rattle_maxDist=5,
-                            kbT=0.5,
-                            noZ=False,
                             dualPoint=True)
 
     optimizer.runOptimizer()

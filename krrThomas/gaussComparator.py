@@ -91,7 +91,6 @@ class gaussComparator():
         f1 = featureCalculator.get_feature(a1)
         f2 = featureCalculator.get_feature(a2)
         distance = euclidean(f1, f2)
-        print('dist', distance)
         if distance < 0.5:  # Hard coded value
             return True
         else:
