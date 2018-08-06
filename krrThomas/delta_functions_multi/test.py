@@ -15,7 +15,7 @@ dim = 3
 
 L = 1
 d = 1
-pbc = [1,0,0]
+pbc = [0,0,0]
 
 """
 N = 2
@@ -71,7 +71,8 @@ a = Atoms(atomtypes,
           cell=[L,L,d],
           pbc=pbc)
 """
-atoms = read('graphene_data/graphene_all2.traj', index=':')
+
+atoms = read('graphene_all2.traj', index=':')
 a = atoms[100]
 atomtypes = a.get_atomic_numbers()
 N = len(a.get_atomic_numbers())
@@ -102,7 +103,6 @@ from ase.ga.utilities import closest_distances_generator
 dcy = delta_cy(atoms=a)
 dpy = delta_py(atoms=a)
 
-
 print(dcy.energy(a))
 print(dpy.energy(a))
 
@@ -117,7 +117,8 @@ a.wrap()
 print('after wrap')
 print(dpy.energy(a))
 print(dcy.energy(a))
-"""
+
+
 print('pbc check:')
 print('before wrap')
 print(dpy.forces(a))
@@ -125,7 +126,7 @@ a.wrap()
 print('after wrap')
 print(dpy.forces(a))
 print(dcy.forces(a))
-
+"""
 
 
 
