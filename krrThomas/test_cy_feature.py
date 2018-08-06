@@ -82,11 +82,17 @@ a = read('SnO_data_all/cand4159.traj')
 atomtypes = a.get_atomic_numbers()
 N = len(a.get_atomic_numbers())
 x = a.get_positions().reshape(-1)
+pbc = a.get_pbc()
 
-
-
-
+calc = doubleLJ_calculator()
+a.set_calculator(calc)
+print(a.get_potential_energy())
 view(a)
+a.set_scaled_positions(a.get_scaled_positions())
+print(a.get_potential_energy())
+view(a)
+
+
 Rc1 = 6
 binwidth1 = 0.1
 sigma1 = 0.2

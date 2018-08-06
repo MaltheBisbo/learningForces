@@ -57,7 +57,7 @@ a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
           pbc=pbc)
-"""
+
 N = 5
 x = np.array([0.2*L, 0.7*L, d/2,
               0.3*L, 0.2*L, d/2,
@@ -76,7 +76,7 @@ a = atoms[100]
 atomtypes = a.get_atomic_numbers()
 N = len(a.get_atomic_numbers())
 x = a.get_positions().reshape(-1)
-"""
+
 
 
 
