@@ -48,11 +48,11 @@ def relaxGPAW(structure, label, forcemax=0.1, niter_max=1, steps=10):
     '''
 
     # Create calculator
-    calc=GPAW(poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),  # C
+    calc=GPAW(#poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),  # C
               mode = 'lcao',
               basis = 'dzp',
               xc='PBE',
-              gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
+              #gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
               occupations=FermiDirac(0.1),
               #maxiter=99,  # C
               maxiter=49,  # Sn3O3
@@ -88,11 +88,11 @@ def relaxGPAW(structure, label, forcemax=0.1, niter_max=1, steps=10):
 def singleGPAW(structure, label):
     # Create calculator
 
-    calc=GPAW(poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),  # C
+    calc=GPAW(#poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),  # C
               mode = 'lcao',
               basis = 'dzp',
               xc='PBE',
-              gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
+              #gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
               occupations=FermiDirac(0.1),
               #maxiter=99,  # C
               maxiter=49,  # Sn3O3
@@ -168,14 +168,13 @@ class globalOptim():
     Unless min_saveDifference have not been ecxeeded.
 
     """
-    def __init__(self, traj_namebase, MLmodel, startGenerator, mutationSelector, startStructures=None, population_size=5, kappa=2, Niter=50, Ninit=2, min_saveDifference=0.3, minSampleStep=10, dualPoint=False):
+    def __init__(self, traj_namebase, MLmodel, startGenerator, mutationSelector, population_size=5, kappa=2, Niter=50, Ninit=2, min_saveDifference=0.3, minSampleStep=10, dualPoint=False):
 
         self.traj_namebase = traj_namebase
         self.MLmodel = MLmodel
         self.startGenerator = startGenerator
         self.mutationSelector = mutationSelector
-        self.startStructures = startStructures
-        
+
         self.population = population(population_size=population_size, comparator=self.MLmodel.comparator)
         
         self.kappa = kappa
@@ -210,50 +209,27 @@ class globalOptim():
 
     def runOptimizer(self):
         # Initial structures
-        if self.startStructures is None:
-            for i in range(self.Ninit):
-                a_init = self.startGenerator.get_new_candidate()
-                a, E, F = self.relaxTrue(a_init)
-                self.population.add_structure(a, E, F)
-        else:
-            for a in self.startStructures:
-                Ei = a.get_potential_energy()
-                Fi = a.get_forces()
-                self.a_add.append(a)
-                self.writer_initTrain.write(a, energy=Ei)
-                self.population.add_structure(a, Ei, Fi)
-        
+        for i in range(self.Ninit):
+            a_init = self.startGenerator.get_new_candidate()
+            a, E, F = self.relaxTrue(a_init)
+            self.population.add_structure(a, E, F)
+                
         # Reset traj_counter for ML-relaxations
         self.traj_counter = 0
-        
+
         # Run global search
         for i in range(self.Niter):
             # Train ML model if new data is available
-            if self.master:
-                print('h2')
-                sys.stdout.flush()
-            self.comm.barrier()
             t0_all = time()
             t0_train = time()
             if len(self.a_add) > 0:
                 self.trainModel()
             t1_train = time()
 
-            if self.master:
-                print('h3')
-                sys.stdout.flush()
-            self.comm.barrier()
-            sss
-            
             # Generate new rattled + MLrelaxed candidate
             t_newCand_start = time()
             a_new = self.newCandidate_beyes()
             t_newCand_end = time()
-
-            if self.master:
-                print('h4')
-                sys.stdout.flush()
-            self.comm.barrier()
 
             # Singlepoint with objective potential
             t_sp_start = time()
@@ -446,22 +422,10 @@ class globalOptim():
         """
         #GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1, 3, 5)}
         GSkwargs = {'reg': [1e-5], 'sigma': [30]}
-
-        if self.master:
-            print('b1')
-            sys.stdout.flush()
-        self.comm.barrier()
-        
         FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
                                          k=5,
                                          **GSkwargs)
-
-        if self.master:
-            print('b2')
-            sys.stdout.flush()
-        self.comm.barrier()
-
         self.a_add = []
         if self.master:
             with open(self.traj_namebase + 'sigma.txt', 'a') as f:
@@ -556,7 +520,6 @@ class globalOptim():
 if __name__ == '__main__':
     from custom_calculators import doubleLJ_calculator
     from gaussComparator import gaussComparator
-    #from angular_fingerprintFeature import Angular_Fingerprint
     #from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
     from featureCalculators_multi.angular_fingerprintFeature_cy import Angular_Fingerprint
     #from delta_functions.delta import delta as deltaFunc
@@ -646,17 +609,10 @@ if __name__ == '__main__':
         run_num = ''
     savefiles_namebase = savefiles_path + 'global' + run_num + '_' 
 
-    try:
-        start_pop_file = sys.argv[3]
-        start_pop = read(start_pop_file, index=':')
-    except IndexError:
-        start_pop = None
-    
     optimizer = globalOptim(traj_namebase=savefiles_namebase,
                             MLmodel=krr,
                             startGenerator=sg,
                             mutationSelector=mutationSelector,
-                            startStructures=start_pop,
                             kappa=2,
                             Niter=600,
                             Ninit=2,
