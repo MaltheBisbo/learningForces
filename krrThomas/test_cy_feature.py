@@ -27,7 +27,7 @@ a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
           pbc=pbc)
-"""
+
 N = 3
 x = np.array([1.5*L, 0.2*L, d/2,
               0.5*L, 0.9*L, d/2,
@@ -38,7 +38,7 @@ a = Atoms(atomtypes,
           positions=positions,
           cell=[L,L,d],
           pbc=pbc)
-"""
+
 x = np.array([1, 0, 0, 2, 0, 0, 3, 0, 0, 1.5, 1, 0])
 positions = x.reshape((-1,dim))
 a = Atoms('H4',
@@ -76,10 +76,30 @@ a = atoms[100]
 atomtypes = a.get_atomic_numbers()
 N = len(a.get_atomic_numbers())
 x = a.get_positions().reshape(-1)
+
 """
+a = read('SnO_data_all/cand4159.traj')
+atomtypes = a.get_atomic_numbers()
+N = len(a.get_atomic_numbers())
+x = a.get_positions().reshape(-1)
 
-#view(a)
 
+
+
+view(a)
+Rc1 = 6
+binwidth1 = 0.1
+sigma1 = 0.2
+
+Rc2 = 4
+Nbins2 = 50
+sigma2 = 0.2
+
+eta = 30
+gamma = 2
+use_angular = True
+
+"""
 Rc1 = 4
 binwidth1 = 0.1
 sigma1 = 0.2
@@ -91,7 +111,7 @@ sigma2 = 0.2
 eta = 30
 gamma = 2
 use_angular = True
-
+"""
 
 featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2,
                                         eta=eta, gamma=gamma, use_angular=use_angular)
