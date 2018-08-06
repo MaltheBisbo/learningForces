@@ -8,9 +8,9 @@ import numpy as np
 
 def prepare_startGenerator():
     
-    cell = np.array([[20, 0, 0],
-                     [0, 20, 0],
-                     [0, 0, 20]])
+    cell = np.array([[24, 0, 0],
+                     [0, 24, 0],
+                     [0, 0, 24]])
     pbc = [False, False, False]
     
     # Define template
@@ -20,9 +20,9 @@ def prepare_startGenerator():
     
     # Define the box to place the atoms within
     # The volume is defined by a corner position (p0) and three spanning vectors (v)
-    v = np.array([[5, 0, 0],
-                  [0, 5, 0],
-                  [0, 0, 5]])
+    v = np.array([[4, 0, 0],
+                  [0, 4, 0],
+                  [0, 0, 4]])
     p0 = np.diag((cell-v)/2)
     
     # Define the composition of the atoms to optimize

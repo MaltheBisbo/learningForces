@@ -5,16 +5,14 @@ from scipy.spatial.distance import cdist
 
 
 class gaussComparator():
-<<<<<<< HEAD
-    def __init__(self, featureMat=None, amplitude=1, **kwargs):
-        self.featureMat = featureMat
-        self.amplitude = amplitude
-=======
-    def __init__(self, featureCalculator=None, **kwargs):
+#    def __init__(self, featureMat=None, amplitude=1, **kwargs):
+#        self.featureMat = featureMat
+#        self.amplitude = amplitude
+    def __init__(self, featureCalculator=None, amplitude=1, **kwargs):
         self.featureCalculator = featureCalculator
->>>>>>> master
         if 'sigma' in kwargs:
             self.sigma = kwargs['sigma']
+        self.amplitude = amplitude 
 
     def set_args(self, **kwargs):
         if 'sigma' in kwargs:
