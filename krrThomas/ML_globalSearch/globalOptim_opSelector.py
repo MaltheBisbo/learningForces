@@ -138,7 +138,7 @@ def relax_VarianceBreak(structure, calc, label='', niter_max=10, forcemax=0.1):
         vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
         #dyn.attach(traj)
         dyn.attach(vb)
-        dyn.run(fmax = forcemax, steps = 100)
+        dyn.run(fmax = forcemax, steps = 300)
         niter += 1
         
     return structure
@@ -229,31 +229,16 @@ class globalOptim():
         # Run global search
         for i in range(self.Niter):
             # Train ML model if new data is available
-            if self.master:
-                print('h2')
-                sys.stdout.flush()
-            self.comm.barrier()
             t0_all = time()
             t0_train = time()
             if len(self.a_add) > 0:
                 self.trainModel()
             t1_train = time()
 
-            if self.master:
-                print('h3')
-                sys.stdout.flush()
-            self.comm.barrier()
-            sss
-            
             # Generate new rattled + MLrelaxed candidate
             t_newCand_start = time()
             a_new = self.newCandidate_beyes()
             t_newCand_end = time()
-
-            if self.master:
-                print('h4')
-                sys.stdout.flush()
-            self.comm.barrier()
 
             # Singlepoint with objective potential
             t_sp_start = time()
@@ -445,7 +430,8 @@ class globalOptim():
             self.MLmodel.remove_data(Nremove)
         """
         #GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1, 3, 5)}
-        GSkwargs = {'reg': [1e-5], 'sigma': [30]}
+        # GSkwargs = {'reg': [1e-5], 'sigma': [30]}  # C24
+        GSkwargs = {'reg': [1e-5], 'sigma': [15]}  # SnO
 
         if self.master:
             print('b1')
@@ -573,11 +559,33 @@ if __name__ == '__main__':
     from ase.ga.utilities import get_all_atom_types
 
     from prepare_startGenerator import prepare_startGenerator
-    Natoms = 24
-    
-    # Set up featureCalculator
-    a = createInitalStructure(Natoms)
 
+    # Set up startGenerator and mutations
+    sg = prepare_startGenerator()
+    atom_numbers_to_optimize = sg.atom_numbers
+    n_to_optimize = len(atom_numbers_to_optimize)
+    blmin = sg.blmin
+
+    """
+    mutationSelector = OperationSelector([0.3, 0.2, 0.2, 0.3],
+                                         [sg,
+                                          RattleMutation(blmin, n_to_optimize,
+                                                         rattle_strength=0.3, rattle_prop=1.),
+                                          RattleMutation(blmin, n_to_optimize,
+                                                         rattle_strength=0.7, rattle_prop=1.),
+                                          RattleMutation(blmin, n_to_optimize,
+                                                         rattle_strength=2, rattle_prop=0.1)])
+    """
+    mutationSelector = OperationSelector([0.3, 0.3, 0.2, 0.2],
+                                         [sg,
+                                          PermutationMutation(n_to_optimize, probability=0.3),
+                                          RattleMutation(blmin, n_to_optimize,
+                                                         rattle_strength=0.7, rattle_prop=1.),
+                                          RattleMutation(blmin, n_to_optimize,
+                                                         rattle_strength=2, rattle_prop=0.4)])
+
+    a = sg.get_new_candidate()
+    
     Rc1 = 6
     binwidth1 = 0.2
     sigma1 = 0.2
@@ -614,29 +622,6 @@ if __name__ == '__main__':
                     featureCalculator=featureCalculator,
                     delta_function=delta_function)
 
-    # Set up startGenerator and mutations
-    sg = prepare_startGenerator()
-    atom_numbers_to_optimize = sg.atom_numbers
-    n_to_optimize = len(atom_numbers_to_optimize)
-    blmin = sg.blmin
-
-    """
-    mutationSelector = OperationSelector([0.3, 0.2, 0.2, 0.3],
-                                         [sg,
-                                          RattleMutation(blmin, n_to_optimize,
-                                                         rattle_strength=0.3, rattle_prop=1.),
-                                          RattleMutation(blmin, n_to_optimize,
-                                                         rattle_strength=0.7, rattle_prop=1.),
-                                          RattleMutation(blmin, n_to_optimize,
-                                                         rattle_strength=2, rattle_prop=0.1)])
-    """
-    mutationSelector = OperationSelector([0.3, 0.3, 0.2, 0.2],
-                                         [sg,
-                                          PermutationMutation(n_to_optimize, probability=0.3),
-                                          RattleMutation(blmin, n_to_optimize,
-                                                         rattle_strength=0.7, rattle_prop=1.),
-                                          RattleMutation(blmin, n_to_optimize,
-                                                         rattle_strength=2, rattle_prop=0.4)])
     
     # Savefile setup
     savefiles_path = sys.argv[1]
@@ -658,7 +643,7 @@ if __name__ == '__main__':
                             mutationSelector=mutationSelector,
                             startStructures=start_pop,
                             kappa=2,
-                            Niter=600,
+                            Niter=300,
                             Ninit=2,
                             dualPoint=True)
 

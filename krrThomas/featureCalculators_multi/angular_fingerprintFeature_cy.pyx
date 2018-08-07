@@ -130,6 +130,7 @@ class Angular_Fingerprint(object):
         self.atomic_types = sorted(list(set(self.num)))
         self.atomic_count = {type:list(self.num).count(type) for type in self.atomic_types}
         self.Ntypes = len(self.atomic_types)
+
         type_converter = {}
         for i, type in enumerate(self.atomic_types):
             type_converter[type] = i
