@@ -54,8 +54,8 @@ def relaxGPAW(structure, label, forcemax=0.1, niter_max=1, steps=10):
               xc='PBE',
               gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
               occupations=FermiDirac(0.1),
-              #maxiter=99,  # C
-              maxiter=49,  # Sn3O3
+              maxiter=99,  # C
+              #maxiter=49,  # Sn3O3
               mixer=Mixer(nmaxold=5, beta=0.05, weight=75),
               nbands=-50,
               #kpts=(1,1,1),  # C
@@ -94,8 +94,8 @@ def singleGPAW(structure, label):
               xc='PBE',
               gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
               occupations=FermiDirac(0.1),
-              #maxiter=99,  # C
-              maxiter=49,  # Sn3O3
+              maxiter=99,  # C
+              #maxiter=49,  # Sn3O3
               mixer=Mixer(nmaxold=5, beta=0.05, weight=75),
               nbands=-50,
               #kpts=(1,1,1),  # C
@@ -297,7 +297,7 @@ class globalOptim():
             self.comm.broadcast(pos, i)
             self.population.pop_MLrelaxed[i].set_positions(pos)
                 
-    def get_dualPoint(self, a, F, lmax=0.1, Fmax_flat=5):
+    def get_dualPoint(self, a, F, lmax=0.10, Fmax_flat=5):
         """
         lmax:
         The atom with the largest force will be displaced by this distance
@@ -431,22 +431,11 @@ class globalOptim():
         """
         #GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1, 3, 5)}
         # GSkwargs = {'reg': [1e-5], 'sigma': [30]}  # C24
-        GSkwargs = {'reg': [1e-5], 'sigma': [15]}  # SnO
-
-        if self.master:
-            print('b1')
-            sys.stdout.flush()
-        self.comm.barrier()
-        
+        GSkwargs = {'reg': [1e-5], 'sigma': [40]}  # SnO
         FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
-                                         k=5,
+                                         k=3,
                                          **GSkwargs)
-
-        if self.master:
-            print('b2')
-            sys.stdout.flush()
-        self.comm.barrier()
 
         self.a_add = []
         if self.master:
@@ -595,7 +584,7 @@ if __name__ == '__main__':
     sigma2 = 0.2
     
     gamma = 2
-    eta = 5
+    eta = 20
     use_angular = True
     
     """
@@ -643,7 +632,7 @@ if __name__ == '__main__':
                             mutationSelector=mutationSelector,
                             startStructures=start_pop,
                             kappa=2,
-                            Niter=300,
+                            Niter=500,
                             Ninit=2,
                             dualPoint=True)
 
