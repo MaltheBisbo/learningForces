@@ -48,14 +48,14 @@ def relaxGPAW(structure, label, forcemax=0.1, niter_max=1, steps=10):
     '''
 
     # Create calculator
-    calc=GPAW(#poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),  # C
+    calc=GPAW(poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),  # C
               mode = 'lcao',
               basis = 'dzp',
               xc='PBE',
-              #gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
+              gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
               occupations=FermiDirac(0.1),
-              #maxiter=99,  # C
-              maxiter=49,  # Sn3O3
+              maxiter=99,  # C
+              #maxiter=49,  # Sn3O3
               mixer=Mixer(nmaxold=5, beta=0.05, weight=75),
               nbands=-50,
               #kpts=(1,1,1),  # C
@@ -88,14 +88,14 @@ def relaxGPAW(structure, label, forcemax=0.1, niter_max=1, steps=10):
 def singleGPAW(structure, label):
     # Create calculator
 
-    calc=GPAW(#poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),  # C
+    calc=GPAW(poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),  # C
               mode = 'lcao',
               basis = 'dzp',
               xc='PBE',
-              #gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
+              gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
               occupations=FermiDirac(0.1),
-              #maxiter=99,  # C
-              maxiter=49,  # Sn3O3
+              maxiter=99,  # C
+              #maxiter=49,  # Sn3O3
               mixer=Mixer(nmaxold=5, beta=0.05, weight=75),
               nbands=-50,
               #kpts=(1,1,1),  # C
@@ -138,7 +138,7 @@ def relax_VarianceBreak(structure, calc, label='', niter_max=10, forcemax=0.1):
         vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
         #dyn.attach(traj)
         dyn.attach(vb)
-        dyn.run(fmax = forcemax, steps = 100)
+        dyn.run(fmax = forcemax, steps = 300)
         niter += 1
         
     return structure
@@ -168,13 +168,14 @@ class globalOptim():
     Unless min_saveDifference have not been ecxeeded.
 
     """
-    def __init__(self, traj_namebase, MLmodel, startGenerator, mutationSelector, population_size=5, kappa=2, Niter=50, Ninit=2, min_saveDifference=0.3, minSampleStep=10, dualPoint=False):
+    def __init__(self, traj_namebase, MLmodel, startGenerator, mutationSelector, startStructures=None, population_size=5, kappa=2, Niter=50, Ninit=2, min_saveDifference=0.3, minSampleStep=10, dualPoint=False):
 
         self.traj_namebase = traj_namebase
         self.MLmodel = MLmodel
         self.startGenerator = startGenerator
         self.mutationSelector = mutationSelector
-
+        self.startStructures = startStructures
+        
         self.population = population(population_size=population_size, comparator=self.MLmodel.comparator)
         
         self.kappa = kappa
@@ -209,14 +210,22 @@ class globalOptim():
 
     def runOptimizer(self):
         # Initial structures
-        for i in range(self.Ninit):
-            a_init = self.startGenerator.get_new_candidate()
-            a, E, F = self.relaxTrue(a_init)
-            self.population.add_structure(a, E, F)
-                
+        if self.startStructures is None:
+            for i in range(self.Ninit):
+                a_init = self.startGenerator.get_new_candidate()
+                a, E, F = self.relaxTrue(a_init)
+                self.population.add_structure(a, E, F)
+        else:
+            for a in self.startStructures:
+                Ei = a.get_potential_energy()
+                Fi = a.get_forces()
+                self.a_add.append(a)
+                self.writer_initTrain.write(a, energy=Ei)
+                self.population.add_structure(a, Ei, Fi)
+        
         # Reset traj_counter for ML-relaxations
         self.traj_counter = 0
-
+        
         # Run global search
         for i in range(self.Niter):
             # Train ML model if new data is available
@@ -288,7 +297,7 @@ class globalOptim():
             self.comm.broadcast(pos, i)
             self.population.pop_MLrelaxed[i].set_positions(pos)
                 
-    def get_dualPoint(self, a, F, lmax=0.1, Fmax_flat=5):
+    def get_dualPoint(self, a, F, lmax=0.10, Fmax_flat=5):
         """
         lmax:
         The atom with the largest force will be displaced by this distance
@@ -421,11 +430,13 @@ class globalOptim():
             self.MLmodel.remove_data(Nremove)
         """
         #GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1, 3, 5)}
-        GSkwargs = {'reg': [1e-5], 'sigma': [30]}
+        # GSkwargs = {'reg': [1e-5], 'sigma': [30]}  # C24
+        GSkwargs = {'reg': [1e-5], 'sigma': [40]}  # SnO
         FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
-                                         k=5,
+                                         k=3,
                                          **GSkwargs)
+
         self.a_add = []
         if self.master:
             with open(self.traj_namebase + 'sigma.txt', 'a') as f:
@@ -520,6 +531,7 @@ class globalOptim():
 if __name__ == '__main__':
     from custom_calculators import doubleLJ_calculator
     from gaussComparator import gaussComparator
+    #from angular_fingerprintFeature import Angular_Fingerprint
     #from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
     from featureCalculators_multi.angular_fingerprintFeature_cy import Angular_Fingerprint
     #from delta_functions.delta import delta as deltaFunc
@@ -536,11 +548,46 @@ if __name__ == '__main__':
     from ase.ga.utilities import get_all_atom_types
 
     from prepare_startGenerator import prepare_startGenerator
-    Natoms = 24
-    
-    # Set up featureCalculator
-    a = createInitalStructure(Natoms)
 
+    # Set up startGenerator and mutations
+    sg = prepare_startGenerator()
+    atom_numbers_to_optimize = sg.atom_numbers
+    n_to_optimize = len(atom_numbers_to_optimize)
+    blmin = sg.blmin
+
+    """
+    mutationSelector = OperationSelector([0.3, 0.2, 0.2, 0.3],
+                                         [sg,
+                                          RattleMutation(blmin, n_to_optimize,
+                                                         rattle_strength=0.3, rattle_prop=1.),
+                                          RattleMutation(blmin, n_to_optimize,
+                                                         rattle_strength=0.7, rattle_prop=1.),
+                                          RattleMutation(blmin, n_to_optimize,
+                                                         rattle_strength=2, rattle_prop=0.1)])
+    """
+    mutationSelector = OperationSelector([0.3, 0.3, 0.2, 0.2],
+                                         [sg,
+                                          PermutationMutation(n_to_optimize, probability=0.3),
+                                          RattleMutation(blmin, n_to_optimize,
+                                                         rattle_strength=0.7, rattle_prop=1.),
+                                          RattleMutation(blmin, n_to_optimize,
+                                                         rattle_strength=2, rattle_prop=0.4)])
+
+    a = sg.get_new_candidate()
+    
+    Rc1 = 6
+    binwidth1 = 0.2
+    sigma1 = 0.2
+    
+    Rc2 = 4
+    Nbins2 = 30
+    sigma2 = 0.2
+    
+    gamma = 2
+    eta = 20
+    use_angular = True
+    
+    """
     Rc1 = 5
     binwidth1 = 0.2
     sigma1 = 0.2
@@ -552,6 +599,7 @@ if __name__ == '__main__':
     gamma = 1
     eta = 5
     use_angular = True
+    """
     
     featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
 
@@ -563,27 +611,6 @@ if __name__ == '__main__':
                     featureCalculator=featureCalculator,
                     delta_function=delta_function)
 
-    # Set up startGenerator and mutations
-    sg = prepare_startGenerator()
-    atom_numbers_to_optimize = sg.atom_numbers
-    n_to_optimize = len(atom_numbers_to_optimize)
-    blmin = sg.blmin
-
-    """
-    mutationSelector = OperationSelector([0.4, 0.3, 0.3],
-                                         [sg,
-                                          RattleMutation(blmin, n_to_optimize,
-                                                         rattle_strength=0.7, rattle_prop=1.),
-                                          RattleMutation(blmin, n_to_optimize,
-                                                         rattle_strength=4, rattle_prop=0.2)])
-    """
-    mutationSelector = OperationSelector([0.3, 0.3, 0.2, 0.2],
-                                         [sg,
-                                          PermutationMutation(n_to_optimize, probability=0.3),
-                                          RattleMutation(blmin, n_to_optimize,
-                                                         rattle_strength=0.7, rattle_prop=1.),
-                                          RattleMutation(blmin, n_to_optimize,
-                                                         rattle_strength=2, rattle_prop=0.4)])
     
     # Savefile setup
     savefiles_path = sys.argv[1]
@@ -593,12 +620,20 @@ if __name__ == '__main__':
         run_num = ''
     savefiles_namebase = savefiles_path + 'global' + run_num + '_' 
 
+    try:
+        start_pop_file = sys.argv[3]
+        start_pop = read(start_pop_file, index=':')
+    except IndexError:
+        start_pop = None
+    
     optimizer = globalOptim(traj_namebase=savefiles_namebase,
                             MLmodel=krr,
                             startGenerator=sg,
                             mutationSelector=mutationSelector,
+                            startStructures=start_pop,
                             kappa=2,
-                            Niter=600,
+                            Niter=500,
+                            Ninit=2,
                             dualPoint=True)
 
     optimizer.runOptimizer()
