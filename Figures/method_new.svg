@@ -5950,10 +5950,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.0000001"
-     inkscape:cx="334.85972"
-     inkscape:cy="801.24627"
+     inkscape:cx="34.859732"
+     inkscape:cy="888.10919"
      inkscape:document-units="mm"
-     inkscape:current-layer="g26646"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1075"
@@ -49158,8 +49158,8 @@
    style="font-size:64.99999762%;baseline-shift:super;stroke-linecap:butt;stroke-linejoin:round"
    id="tspan16448">(best)</tspan></tspan></text>
     <path
-       style="fill:none;stroke:#008080;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:"
-       d="m 64.859509,103.12148 v 2.12917 h -3.523182"
+       style="fill:none;stroke:#008080;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 64.48861,103.22583 V 105.355 H 60.965428"
        id="path15941"
        inkscape:connector-curvature="0" />
     <text
