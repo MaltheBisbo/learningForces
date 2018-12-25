@@ -16,7 +16,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
-   sodipodi:docname="method_new.svg">
+   sodipodi:docname="method_scalebar.svg">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -5771,6 +5771,13 @@
          width="164.97394"
          id="rect9943"
          style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.42883268;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2.87859631;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m -73.78434,-555.24968 c 75.7660844,0 151.531389,0 227.29593,0"
+         id="path32831"
+         inkscape:connector-curvature="0"
+         inkscape:path-effect="#path-effect32833"
+         inkscape:original-d="m -73.78434,-555.24968 c 75.7660844,-7.5e-4 151.531389,-7.5e-4 227.29593,0" />
       <rect
          style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.4016588;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="rect32835"
@@ -15100,6 +15107,11 @@
          sodipodi:role="line">x<tspan
    style="font-size:64.99999762%;baseline-shift:super;stroke-linecap:butt;stroke-linejoin:round"
    id="tspan16448">(best)</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 64.48861,103.22583 V 105.355 H 60.965428"
+       id="path15941"
+       inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round"
@@ -15127,7 +15139,7 @@
     <path
        inkscape:connector-curvature="0"
        id="path11291"
-       d="m 61.06124,105.74249 h 3.42737 v -2.11403"
+       d="m 51.440697,105.19381 h -3.427361 v 2.11403"
        style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker11295)" />
     <g
        style="stroke-linecap:butt;stroke-linejoin:round"
