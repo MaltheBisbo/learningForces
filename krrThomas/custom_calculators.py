@@ -12,9 +12,9 @@ class krr_calculator(Calculator):
     implemented_properties = ['energy', 'forces']
     default_parameters = {}
 
-    def __init__(self, MLmodel, label='MLmodel', noZ=False, **kwargs):
+    def __init__(self, MLmodel, label='MLmodel', kappa=None, **kwargs):
         self.MLmodel = MLmodel
-        self.noZ = noZ
+        self.kappa = kappa
         
         Calculator.__init__(self, **kwargs)
 
@@ -23,12 +23,23 @@ class krr_calculator(Calculator):
         Calculator.calculate(self, atoms, properties, system_changes)
 
         if 'energy' in properties:
-            E = self.MLmodel.predict_energy(atoms, return_error=False)
+            if self.kappa is None:
+                E = self.MLmodel.predict_energy(atoms, return_error=False)
+            else:
+                energy, error, _ = self.MLmodel.predict_energy(atoms, return_error=True)
+                E = energy - self.kappa*error
             self.results['energy'] = E
+
         if 'forces' in properties:
-            F = self.MLmodel.predict_force(atoms).reshape((-1,3))
+            if self.kappa is None:
+                F = self.MLmodel.predict_force(atoms).reshape((-1,3))
+            else:
+                F, F_error = self.MLmodel.predict_force(atoms, return_error=True)
+                F = (F + self.kappa*F_error).reshape((-1,3))
             self.results['forces'] = F
-            
+
+
+
 class doubleLJ_calculator(Calculator):
 
     implemented_properties = ['energy', 'forces']
@@ -46,8 +57,6 @@ class doubleLJ_calculator(Calculator):
     def calculate(self, atoms=None, properties=['energy', 'forces'], system_changes=['positions']):
         Calculator.calculate(self, atoms, properties, system_changes)
 
-        print('calculating')
-        
         if 'energy' in properties:
             self.results['energy'] = self.energy(atoms)
         if 'forces' in properties:

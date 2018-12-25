@@ -1,22 +1,16 @@
 import numpy as np
 from time import time
 
-from startgenerator import StartGenerator
-from startgenerator2d_new import StartGenerator as StartGenerator2d
 from custom_calculators import krr_calculator
 
 from ase import Atoms
 from ase.io import read, write, Trajectory
 from ase.io.trajectory import TrajectoryWriter
-from ase.ga.utilities import closest_distances_generator
 from ase.optimize import BFGS, BFGSLineSearch
 from ase.optimize.sciopt import SciPyFminBFGS, SciPyFminCG
 from ase.calculators.singlepoint import SinglePointCalculator
-from ase.constraints import FixedPlane
 from ase.ga.relax_attaches import VariansBreak
-from ase.data import covalent_radii
 
-from mutations import rattle_Natoms, rattle_Natoms_center, createInitalStructure
 from populationMC import population
 
 from gpaw import GPAW, FermiDirac, PoissonSolver, Mixer
@@ -25,42 +19,31 @@ extra_parameters['blacs'] = True
 from gpaw.utilities import h2gpts
 from ase.ga.relax_attaches import VariansBreak
 
+import os
+
 import ase.parallel as mpi
 world = mpi.world
 
-import sys
 
-def relaxGPAW(structure, label, forcemax=0.1, niter_max=1, steps=10):
-    '''
-    Relax a structure and saves the trajectory based in the index i
-
-    Parameters
-    ----------
-    structure : ase Atoms object to be relaxed
-
-    i : index which the trajectory is saved under
-
-    ranks: ranks of the processors to relax the structure 
-
-    Returns
-    -------
-    structure : relaxed Atoms object
-    '''
+def relaxGPAW(structure, label, calc=None, forcemax=0.1, niter_max=1, steps=10):
 
     # Create calculator
-    calc=GPAW(poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),  # C
-              mode = 'lcao',
-              basis = 'dzp',
-              xc='PBE',
-              gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
-              occupations=FermiDirac(0.1),
-              maxiter=99,  # C
-              #maxiter=49,  # Sn3O3
-              mixer=Mixer(nmaxold=5, beta=0.05, weight=75),
-              nbands=-50,
-              #kpts=(1,1,1),  # C
-              kpts=(2,2,1),  # Sn3O3
-              txt = label+ '_lcao.txt')
+    if calc is None:
+        calc=GPAW(poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),  # C
+                  mode = 'lcao',
+                  basis = 'dzp',
+                  xc='PBE',
+                  gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
+                  occupations=FermiDirac(0.1),
+                  maxiter=99,  # C
+                  #maxiter=49,  # Sn3O3
+                  mixer=Mixer(nmaxold=5, beta=0.05, weight=75),
+                  nbands=-50,
+                  #kpts=(1,1,1),  # C
+                  kpts=(2,2,1),  # Sn3O3
+                  txt = label+ '_lcao.txt')
+    else:
+        calc.set(txt=label+'_true.txt')
 
     # Set calculator 
     structure.set_calculator(calc)
@@ -85,22 +68,24 @@ def relaxGPAW(structure, label, forcemax=0.1, niter_max=1, steps=10):
 
     return structure
 
-def singleGPAW(structure, label):
+def singleGPAW(structure, label, calc=None):
     # Create calculator
-
-    calc=GPAW(poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),  # C
-              mode = 'lcao',
-              basis = 'dzp',
-              xc='PBE',
-              gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
-              occupations=FermiDirac(0.1),
-              maxiter=99,  # C
-              #maxiter=49,  # Sn3O3
-              mixer=Mixer(nmaxold=5, beta=0.05, weight=75),
-              nbands=-50,
-              #kpts=(1,1,1),  # C
-              kpts=(2,2,1),  # Sn3O3
-              txt = label+ '_lcao.txt')
+    if calc is None:
+        calc=GPAW(poissonsolver = PoissonSolver(relax = 'GS',eps = 1.0e-7),  # C
+                  mode = 'lcao',
+                  basis = 'dzp',
+                  xc='PBE',
+                  gpts = h2gpts(0.2, structure.get_cell(), idiv = 8),  # C
+                  occupations=FermiDirac(0.1),
+                  maxiter=99,  # C
+                  #maxiter=49,  # Sn3O3
+                  mixer=Mixer(nmaxold=5, beta=0.05, weight=75),
+                  nbands=-50,
+                  #kpts=(1,1,1),  # C
+                  kpts=(2,2,1),  # Sn3O3
+                  txt = label+ '_lcao.txt')
+    else:
+        calc.set(txt=label+'_true.txt')
     
     # Set calculator 
     structure.set_calculator(calc)
@@ -126,19 +111,16 @@ def relax_VarianceBreak(structure, calc, label='', niter_max=10, forcemax=0.1):
     # due to the VariansBreak calls
     niter = 0
 
-    # traj = Trajectory(label+'.traj','a', structure)
     # If the structure is already fully relaxed just return it
     if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
-        #traj.write(structure)
         return structure
     
     while (structure.get_forces()**2).sum(axis = 1).max()**0.5 > forcemax and niter < niter_max:
         dyn = BFGS(structure,
                    logfile=label+'.log')
         vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
-        #dyn.attach(traj)
         dyn.attach(vb)
-        dyn.run(fmax = forcemax, steps = 300)
+        dyn.run(fmax = forcemax, steps = 200)
         niter += 1
         
     return structure
@@ -168,12 +150,13 @@ class globalOptim():
     Unless min_saveDifference have not been ecxeeded.
 
     """
-    def __init__(self, traj_namebase, MLmodel, startGenerator, mutationSelector, startStructures=None, population_size=5, kappa=2, Niter=50, Ninit=2, min_saveDifference=0.3, minSampleStep=10, dualPoint=False):
+    def __init__(self, traj_namebase, MLmodel, startGenerator, mutationSelector, calc=None, startStructures=None, population_size=5, kappa=2, Niter=50, Ninit=2, sigma=20, min_saveDifference=0.3, minSampleStep=10, dualPoint=False, relaxFinalPop=False, stat=True):
 
         self.traj_namebase = traj_namebase
         self.MLmodel = MLmodel
         self.startGenerator = startGenerator
         self.mutationSelector = mutationSelector
+        self.calc = calc
         self.startStructures = startStructures
         
         self.population = population(population_size=population_size, comparator=self.MLmodel.comparator)
@@ -182,10 +165,19 @@ class globalOptim():
         self.Natoms = len(self.startGenerator.slab) + len(self.startGenerator.atom_numbers)
         self.Niter = Niter
         self.Ninit = Ninit
+        try:
+            len(sigma)
+            self.sigma = list(sigma)
+        except:
+            self.sigma = [sigma]
         self.min_saveDifference = min_saveDifference
         self.minSampleStep = minSampleStep
         self.dualPoint = dualPoint
+        self.relaxFinalPop = relaxFinalPop
+        self.stat = stat
 
+        self.opNameList = [op.descriptor for op in self.mutationSelector.oplist]
+        
         # List of structures to be added in next training
         self.a_add = []
 
@@ -196,6 +188,13 @@ class globalOptim():
         self.comm = world.new_communicator(np.array(range(world.size)))
         self.master = self.comm.rank == 0
 
+        # Make new folders
+        self.ML_dir = 'all_MLcandidates/'
+        self.pop_dir = 'relaxedPop/'
+        if self.master:
+            os.makedirs(self.ML_dir)
+            os.makedirs(self.pop_dir)
+        
         # Trajectory names
         self.writer_initTrain = Trajectory(filename=traj_namebase+'initTrain.traj', mode='a', master=self.master)
         self.writer_spTrain = Trajectory(filename=traj_namebase+'spTrain.traj', mode='a', master=self.master)
@@ -212,7 +211,7 @@ class globalOptim():
         # Initial structures
         if self.startStructures is None:
             for i in range(self.Ninit):
-                a_init = self.startGenerator.get_new_candidate()
+                a_init, _ = self.startGenerator.get_new_individual()
                 a, E, F = self.relaxTrue(a_init)
                 self.population.add_structure(a, E, F)
         else:
@@ -235,6 +234,9 @@ class globalOptim():
                 self.trainModel()
             t1_train = time()
 
+            # Clean similar structures from population
+            self.update_MLrelaxed_pop()
+            
             # Generate new rattled + MLrelaxed candidate
             t_newCand_start = time()
             a_new = self.newCandidate_beyes()
@@ -260,7 +262,7 @@ class globalOptim():
 
             # Try to add the new structure to the population
             t1_all = time()
-            self.update_MLrelaxed_pop()
+            #self.update_MLrelaxed_pop()
             self.population.add_structure(a_new, Enew, Fnew)
             
             if self.master:
@@ -280,8 +282,61 @@ class globalOptim():
                                                           t1_train - t0_train,
                                                           t1_all - t0_all,
                                                           t2_all - t0_all))
+            self.traj_counter += 1
+            
+        # Save final population
+        self.update_MLrelaxed_pop()
+        pop = self.population.pop
+        write(self.traj_namebase + 'finalPop.traj', pop)
+
+        # relax final pop with true potential
+        if self.relaxFinalPop:
+            relaxed_pop = []
+            for i, a in enumerate(pop):
+                # Only promicing structures
+                if (a.get_forces()**2).sum(axis = 1).max()**0.5 < 2:
+                    name = savefiles_namebase + 'pop{}'.format(i)
+                    a_relaxed = relaxGPAW(a, name, forcemax=0.05, steps=30, niter_max=2)
+                    relaxed_pop.append(a_relaxed)
+
+            write(self.traj_namebase + 'finalPop_relaxed.traj', relaxed_pop)
+            
                     
     def update_MLrelaxed_pop(self):
+        #  Initialize MLrelaxed population
+        self.population.pop_MLrelaxed = []
+
+        for a in self.population.pop:
+            self.population.pop_MLrelaxed.append(a.copy())
+
+        E_relaxed_pop = np.zeros(len(self.population.pop))
+        error_relaxed_pop = np.zeros(len(self.population.pop))
+        if self.comm.rank < len(self.population.pop):
+            index = self.comm.rank
+            a_MLrelaxed = self.relaxML(self.population.pop[index], Fmax=0.01)
+            self.population.pop_MLrelaxed[index] = a_MLrelaxed
+            E_temp, error_temp, _ = self.MLmodel.predict_energy(a_MLrelaxed, return_error=True)
+            E_relaxed_pop[index] = E_temp
+            error_relaxed_pop[index] = error_temp
+            
+        for i in range(len(self.population.pop)):
+            pos = self.population.pop_MLrelaxed[i].positions
+            self.comm.broadcast(pos, i)
+            self.population.pop_MLrelaxed[i].set_positions(pos)
+
+            E = np.array([E_relaxed_pop[i]])
+            error = np.array([error_relaxed_pop[i]])
+            self.comm.broadcast(E, i)
+            self.comm.broadcast(error, i)
+            
+            self.population.pop_MLrelaxed[i].info['key_value_pairs']['predictedEnergy'] = E[0]
+            self.population.pop_MLrelaxed[i].info['key_value_pairs']['predictedError'] = error[0]
+            self.population.pop_MLrelaxed[i].info['key_value_pairs']['fitness'] = E[0] - self.kappa*error[0]
+
+        label = self.pop_dir + 'ML_relaxed_pop{}'.format(self.traj_counter)
+        write(label+'.traj', self.population.pop_MLrelaxed)
+        
+        """
         #  Initialize MLrelaxed population
         self.population.pop_MLrelaxed = []
 
@@ -291,12 +346,13 @@ class globalOptim():
         if self.comm.rank < len(self.population.pop):
             index = self.comm.rank
             self.population.pop_MLrelaxed[index] = self.relaxML(self.population.pop[index], Fmax=0.01)
-
+            
         for i in range(len(self.population.pop)):
             pos = self.population.pop_MLrelaxed[i].positions
             self.comm.broadcast(pos, i)
             self.population.pop_MLrelaxed[i].set_positions(pos)
-                
+        """
+            
     def get_dualPoint(self, a, F, lmax=0.10, Fmax_flat=5):
         """
         lmax:
@@ -353,8 +409,13 @@ class globalOptim():
         # Use all cores on nodes.
         N_newCandidates = N_tasks * N_newCandidates
 
+        
         # perform mutations
+        if self.master:
+            t0 = time()
         anew_mutated_list = self.mutate(N_tasks)
+        if self.master:
+            print('mutation time:', time() - t0, flush=True)
         
         # Relax with MLmodel
         anew_list = []
@@ -370,6 +431,11 @@ class globalOptim():
         E_list = np.array(E_list)
         error_list = np.array(error_list)
 
+        if self.master:
+            print('theta0:', theta0, flush=True)
+        
+        oplist_index = np.array([self.opNameList.index(a.info['key_value_pairs']['origin']) for a in anew_list]).astype(int)
+        
         # Gather data from slaves to master
         pos_new_list = np.array([anew.positions for anew in anew_list])
         pos_new_mutated_list = np.array([anew_mutated.positions for anew_mutated in anew_mutated_list])
@@ -378,47 +444,78 @@ class globalOptim():
             error_all = np.empty(N_tasks * self.comm.size, dtype=float)
             pos_all = np.empty(N_tasks * 3*self.Natoms*self.comm.size, dtype=float)
             pos_all_mutated = np.empty(N_tasks * 3*self.Natoms*self.comm.size, dtype=float)
+            oplist_index_all = np.empty(N_tasks * self.comm.size, dtype=int)
         else:
             E_all = None
             error_all = None
             pos_all = None
             pos_all_mutated = None
+            oplist_index_all = None
         self.comm.gather(E_list, 0, E_all)
         self.comm.gather(error_list, 0, error_all)
         self.comm.gather(pos_new_list.reshape(-1), 0, pos_all)
         self.comm.gather(pos_new_mutated_list.reshape(-1), 0, pos_all_mutated)
+        self.comm.gather(oplist_index, 0, oplist_index_all)
         
         # Pick best candidate on master + broadcast
         pos_new = np.zeros((self.Natoms, 3))
         pos_new_mutated = np.zeros((self.Natoms, 3))
         if self.master:
-            
-            EwithError_all = E_all - self.kappa * error_all
-            index_best = EwithError_all.argmin()
+            fitness_all = E_all - self.kappa * error_all
+            index_best = fitness_all.argmin()
             
             print('{}:\n'.format(self.traj_counter), np.c_[E_all, error_all])
             print('{} best:\n'.format(self.traj_counter), E_all[index_best], error_all[index_best])
-            
+        
             with open(self.traj_namebase + 'E_MLerror.txt', 'a') as f:
                 f.write('{0:.4f}\t{1:.4f}\n'.format(E_all[index_best], error_all[index_best]))
             
             pos_all = pos_all.reshape((-1, self.Natoms, 3))
-            pos_new = pos_all[index_best]
+            pos_new = pos_all[index_best]  # old
             pos_all_mutated = pos_all_mutated.reshape((N_tasks * self.comm.size, self.Natoms, 3))
-            pos_new_mutated = pos_all_mutated[index_best]
+            pos_new_mutated = pos_all_mutated[index_best]  # old
+            
+            if self.stat:
+                a_all = []
+                a_all_mutated = []
+                for i, (pos, pos_mutated) in enumerate(zip(pos_all, pos_all_mutated)):
+                    a = anew.copy()
+                    a_mutated = anew.copy()
+                    a.positions = pos
+                    a_mutated.positions = pos_mutated
+                    a.info['key_value_pairs']['predictedEnergy'] = E_all[i]
+                    a.info['key_value_pairs']['predictedError'] = error_all[i]
+                    a.info['key_value_pairs']['fitness'] = E_all[i] - self.kappa*error_all[i]
+                    a.info['key_value_pairs']['origin'] = self.opNameList[oplist_index_all[index_best]]
+
+                    a_all.append(a)
+                    a_all_mutated.append(a_mutated)
+                    
+                label_relaxed = self.ML_dir + 'ML_relaxed{}'.format(self.traj_counter)
+                write(label_relaxed+'.traj', a_all, parallel=False)
+                label_unrelaxed = self.ML_dir + 'ML_unrelaxed{}'.format(self.traj_counter)
+                write(label_unrelaxed+'.traj', a_all_mutated, parallel=False)
+
+            try:
+                pos_new = pos_all[index_best]
+                pos_new_mutated = pos_all_mutated[index_best]
+            except IndexError:
+                pos_new = self.population.pop_MLrelaxed[index_best % N_newCandidates].get_positions()
+                pos_new_mutated = self.population.pop[index_best % N_newCandidates].get_positions()
+                
+            
 
         self.comm.broadcast(pos_new, 0)
         anew.positions = pos_new
         self.comm.broadcast(pos_new_mutated, 0)
-        anew_mutated = a.copy()
+        anew_mutated = anew.copy()
         anew_mutated.positions = pos_new_mutated
         self.comm.barrier()
-        
-        # Write unrelaxed + relaxed versions of new candidate to file
-        label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
+
+        # Write unrelaxed + relaxed versions of best candidate to file
+        label = self.ML_dir + 'ML_best{}'.format(self.traj_counter)
         write(label+'.traj', [anew_mutated, anew])
-        
-        self.traj_counter += 1
+
         return anew
 
     def trainModel(self):
@@ -431,7 +528,7 @@ class globalOptim():
         """
         #GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1, 3, 5)}
         # GSkwargs = {'reg': [1e-5], 'sigma': [30]}  # C24
-        GSkwargs = {'reg': [1e-5], 'sigma': [40]}  # SnO
+        GSkwargs = {'reg': [1e-5], 'sigma': self.sigma}  # SnO
         FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
                                          k=3,
@@ -476,7 +573,6 @@ class globalOptim():
         krr_calc = krr_calculator(self.MLmodel)
         a_relaxed = relax_VarianceBreak(a, krr_calc, label, niter_max=1, forcemax=Fmax)
 
-        #self.traj_counter += 1
         return a_relaxed
 
     def relaxTrue(self, a):
@@ -489,7 +585,7 @@ class globalOptim():
 
         # Relax
         label = self.traj_namebase + '{}'.format(self.traj_counter)
-        a_relaxed = relaxGPAW(a, label)
+        a_relaxed = relaxGPAW(a, label, calc=self.calc)
 
         # Add sampled trajectory to training data.
         self.add_trajectory_to_training(label+'_lcao.traj')
@@ -516,7 +612,7 @@ class globalOptim():
 
         # Perform single-point
         label =  self.traj_namebase + '{}'.format(self.traj_counter)
-        E, F = singleGPAW(a, label)
+        E, F = singleGPAW(a, label, calc=self.calc)
         self.comm.barrier()
 
         # save structure for training
@@ -529,26 +625,18 @@ class globalOptim():
         return E, F
 
 if __name__ == '__main__':
-    from custom_calculators import doubleLJ_calculator
     from gaussComparator import gaussComparator
-    #from angular_fingerprintFeature import Angular_Fingerprint
-    #from featureCalculators.angular_fingerprintFeature_cy import Angular_Fingerprint
     from featureCalculators_multi.angular_fingerprintFeature_cy import Angular_Fingerprint
-    #from delta_functions.delta import delta as deltaFunc
     from delta_functions_multi.delta import delta as deltaFunc
     from krr_ase import krr_class
     
-    from ase.calculators.dftb import Dftb
-    import sys
-
-    from ase.data import covalent_radii
     from ase.ga.offspring_creator import OperationSelector
     from ase.ga.standardmutations_mkb import RattleMutation, PermutationMutation
-    from ase.ga.data_esb import DataConnection
-    from ase.ga.utilities import get_all_atom_types
 
     from prepare_startGenerator import prepare_startGenerator
 
+    import sys
+    
     # Set up startGenerator and mutations
     sg = prepare_startGenerator()
     atom_numbers_to_optimize = sg.atom_numbers
@@ -605,7 +693,6 @@ if __name__ == '__main__':
 
     # Set up KRR-model
     comparator = gaussComparator(featureCalculator=featureCalculator)
-    #delta_function = deltaFunc(cov_dist=2*covalent_radii[6])
     delta_function = deltaFunc(atoms=a, rcut=6)
     krr = krr_class(comparator=comparator,
                     featureCalculator=featureCalculator,
@@ -639,17 +726,5 @@ if __name__ == '__main__':
     optimizer.runOptimizer()
 
     
-    # Save final population
-    optimizer.update_MLrelaxed_pop()
-    pop = optimizer.population.pop
-    write(savefiles_namebase + 'finalPop.traj', pop)
-
     
-    relaxed_pop = []
-    for i, a in enumerate(pop):
-        name = savefiles_namebase + 'pop{}'.format(i)
-        a_relaxed = relaxGPAW(a, name, forcemax=0.05, steps=200, niter_max=10)
-        relaxed_pop.append(a_relaxed)
-
-    write(savefiles_namebase + 'finalPop_relaxed.traj', relaxed_pop)
     
