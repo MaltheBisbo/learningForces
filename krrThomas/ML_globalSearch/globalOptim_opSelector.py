@@ -19,6 +19,8 @@ extra_parameters['blacs'] = True
 from gpaw.utilities import h2gpts
 from ase.ga.relax_attaches import VariansBreak
 
+import os
+
 import ase.parallel as mpi
 world = mpi.world
 
@@ -109,19 +111,16 @@ def relax_VarianceBreak(structure, calc, label='', niter_max=10, forcemax=0.1):
     # due to the VariansBreak calls
     niter = 0
 
-    # traj = Trajectory(label+'.traj','a', structure)
     # If the structure is already fully relaxed just return it
     if (structure.get_forces()**2).sum(axis = 1).max()**0.5 < forcemax:
-        #traj.write(structure)
         return structure
     
     while (structure.get_forces()**2).sum(axis = 1).max()**0.5 > forcemax and niter < niter_max:
         dyn = BFGS(structure,
                    logfile=label+'.log')
         vb = VariansBreak(structure, dyn, min_stdev = 0.01, N = 15)
-        #dyn.attach(traj)
         dyn.attach(vb)
-        dyn.run(fmax = forcemax, steps = 300)
+        dyn.run(fmax = forcemax, steps = 200)
         niter += 1
         
     return structure
@@ -151,7 +150,7 @@ class globalOptim():
     Unless min_saveDifference have not been ecxeeded.
 
     """
-    def __init__(self, traj_namebase, MLmodel, startGenerator, mutationSelector, calc=None, startStructures=None, population_size=5, kappa=2, Niter=50, Ninit=2, sigma=20, min_saveDifference=0.3, minSampleStep=10, dualPoint=False, relaxFinalPop=False, stat=False):
+    def __init__(self, traj_namebase, MLmodel, startGenerator, mutationSelector, calc=None, startStructures=None, population_size=5, kappa=2, Niter=50, Ninit=2, sigma=20, min_saveDifference=0.3, minSampleStep=10, dualPoint=False, relaxFinalPop=False, stat=True):
 
         self.traj_namebase = traj_namebase
         self.MLmodel = MLmodel
@@ -166,12 +165,18 @@ class globalOptim():
         self.Natoms = len(self.startGenerator.slab) + len(self.startGenerator.atom_numbers)
         self.Niter = Niter
         self.Ninit = Ninit
-        self.sigma = sigma
+        try:
+            len(sigma)
+            self.sigma = list(sigma)
+        except:
+            self.sigma = [sigma]
         self.min_saveDifference = min_saveDifference
         self.minSampleStep = minSampleStep
         self.dualPoint = dualPoint
         self.relaxFinalPop = relaxFinalPop
         self.stat = stat
+
+        self.opNameList = [op.descriptor for op in self.mutationSelector.oplist]
         
         # List of structures to be added in next training
         self.a_add = []
@@ -183,6 +188,13 @@ class globalOptim():
         self.comm = world.new_communicator(np.array(range(world.size)))
         self.master = self.comm.rank == 0
 
+        # Make new folders
+        self.ML_dir = 'all_MLcandidates/'
+        self.pop_dir = 'relaxedPop/'
+        if self.master:
+            os.makedirs(self.ML_dir)
+            os.makedirs(self.pop_dir)
+        
         # Trajectory names
         self.writer_initTrain = Trajectory(filename=traj_namebase+'initTrain.traj', mode='a', master=self.master)
         self.writer_spTrain = Trajectory(filename=traj_namebase+'spTrain.traj', mode='a', master=self.master)
@@ -199,7 +211,7 @@ class globalOptim():
         # Initial structures
         if self.startStructures is None:
             for i in range(self.Ninit):
-                a_init = self.startGenerator.get_new_candidate()
+                a_init, _ = self.startGenerator.get_new_individual()
                 a, E, F = self.relaxTrue(a_init)
                 self.population.add_structure(a, E, F)
         else:
@@ -222,6 +234,9 @@ class globalOptim():
                 self.trainModel()
             t1_train = time()
 
+            # Clean similar structures from population
+            self.update_MLrelaxed_pop()
+            
             # Generate new rattled + MLrelaxed candidate
             t_newCand_start = time()
             a_new = self.newCandidate_beyes()
@@ -247,7 +262,7 @@ class globalOptim():
 
             # Try to add the new structure to the population
             t1_all = time()
-            self.update_MLrelaxed_pop()
+            #self.update_MLrelaxed_pop()
             self.population.add_structure(a_new, Enew, Fnew)
             
             if self.master:
@@ -267,7 +282,8 @@ class globalOptim():
                                                           t1_train - t0_train,
                                                           t1_all - t0_all,
                                                           t2_all - t0_all))
-
+            self.traj_counter += 1
+            
         # Save final population
         self.update_MLrelaxed_pop()
         pop = self.population.pop
@@ -293,15 +309,50 @@ class globalOptim():
         for a in self.population.pop:
             self.population.pop_MLrelaxed.append(a.copy())
 
+        E_relaxed_pop = np.zeros(len(self.population.pop))
+        error_relaxed_pop = np.zeros(len(self.population.pop))
         if self.comm.rank < len(self.population.pop):
             index = self.comm.rank
-            self.population.pop_MLrelaxed[index] = self.relaxML(self.population.pop[index], Fmax=0.01)
-
+            a_MLrelaxed = self.relaxML(self.population.pop[index], Fmax=0.01)
+            self.population.pop_MLrelaxed[index] = a_MLrelaxed
+            E_temp, error_temp, _ = self.MLmodel.predict_energy(a_MLrelaxed, return_error=True)
+            E_relaxed_pop[index] = E_temp
+            error_relaxed_pop[index] = error_temp
+            
         for i in range(len(self.population.pop)):
             pos = self.population.pop_MLrelaxed[i].positions
             self.comm.broadcast(pos, i)
             self.population.pop_MLrelaxed[i].set_positions(pos)
-                
+
+            E = np.array([E_relaxed_pop[i]])
+            error = np.array([error_relaxed_pop[i]])
+            self.comm.broadcast(E, i)
+            self.comm.broadcast(error, i)
+            
+            self.population.pop_MLrelaxed[i].info['key_value_pairs']['predictedEnergy'] = E[0]
+            self.population.pop_MLrelaxed[i].info['key_value_pairs']['predictedError'] = error[0]
+            self.population.pop_MLrelaxed[i].info['key_value_pairs']['fitness'] = E[0] - self.kappa*error[0]
+
+        label = self.pop_dir + 'ML_relaxed_pop{}'.format(self.traj_counter)
+        write(label+'.traj', self.population.pop_MLrelaxed)
+        
+        """
+        #  Initialize MLrelaxed population
+        self.population.pop_MLrelaxed = []
+
+        for a in self.population.pop:
+            self.population.pop_MLrelaxed.append(a.copy())
+
+        if self.comm.rank < len(self.population.pop):
+            index = self.comm.rank
+            self.population.pop_MLrelaxed[index] = self.relaxML(self.population.pop[index], Fmax=0.01)
+            
+        for i in range(len(self.population.pop)):
+            pos = self.population.pop_MLrelaxed[i].positions
+            self.comm.broadcast(pos, i)
+            self.population.pop_MLrelaxed[i].set_positions(pos)
+        """
+            
     def get_dualPoint(self, a, F, lmax=0.10, Fmax_flat=5):
         """
         lmax:
@@ -358,8 +409,13 @@ class globalOptim():
         # Use all cores on nodes.
         N_newCandidates = N_tasks * N_newCandidates
 
+        
         # perform mutations
+        if self.master:
+            t0 = time()
         anew_mutated_list = self.mutate(N_tasks)
+        if self.master:
+            print('mutation time:', time() - t0, flush=True)
         
         # Relax with MLmodel
         anew_list = []
@@ -375,6 +431,11 @@ class globalOptim():
         E_list = np.array(E_list)
         error_list = np.array(error_list)
 
+        if self.master:
+            print('theta0:', theta0, flush=True)
+        
+        oplist_index = np.array([self.opNameList.index(a.info['key_value_pairs']['origin']) for a in anew_list]).astype(int)
+        
         # Gather data from slaves to master
         pos_new_list = np.array([anew.positions for anew in anew_list])
         pos_new_mutated_list = np.array([anew_mutated.positions for anew_mutated in anew_mutated_list])
@@ -383,46 +444,66 @@ class globalOptim():
             error_all = np.empty(N_tasks * self.comm.size, dtype=float)
             pos_all = np.empty(N_tasks * 3*self.Natoms*self.comm.size, dtype=float)
             pos_all_mutated = np.empty(N_tasks * 3*self.Natoms*self.comm.size, dtype=float)
+            oplist_index_all = np.empty(N_tasks * self.comm.size, dtype=int)
         else:
             E_all = None
             error_all = None
             pos_all = None
             pos_all_mutated = None
+            oplist_index_all = None
         self.comm.gather(E_list, 0, E_all)
         self.comm.gather(error_list, 0, error_all)
         self.comm.gather(pos_new_list.reshape(-1), 0, pos_all)
         self.comm.gather(pos_new_mutated_list.reshape(-1), 0, pos_all_mutated)
+        self.comm.gather(oplist_index, 0, oplist_index_all)
         
         # Pick best candidate on master + broadcast
         pos_new = np.zeros((self.Natoms, 3))
         pos_new_mutated = np.zeros((self.Natoms, 3))
         if self.master:
+            fitness_all = E_all - self.kappa * error_all
+            index_best = fitness_all.argmin()
+            
+            print('{}:\n'.format(self.traj_counter), np.c_[E_all, error_all])
+            print('{} best:\n'.format(self.traj_counter), E_all[index_best], error_all[index_best])
+        
+            with open(self.traj_namebase + 'E_MLerror.txt', 'a') as f:
+                f.write('{0:.4f}\t{1:.4f}\n'.format(E_all[index_best], error_all[index_best]))
+            
+            pos_all = pos_all.reshape((-1, self.Natoms, 3))
+            pos_new = pos_all[index_best]  # old
+            pos_all_mutated = pos_all_mutated.reshape((N_tasks * self.comm.size, self.Natoms, 3))
+            pos_new_mutated = pos_all_mutated[index_best]  # old
+            
             if self.stat:
-                EwithError_all = E_all - self.kappa * error_all
-                index_sorted = EwithError_all.argsort()
+                a_all = []
+                a_all_mutated = []
+                for i, (pos, pos_mutated) in enumerate(zip(pos_all, pos_all_mutated)):
+                    a = anew.copy()
+                    a_mutated = anew.copy()
+                    a.positions = pos
+                    a_mutated.positions = pos_mutated
+                    a.info['key_value_pairs']['predictedEnergy'] = E_all[i]
+                    a.info['key_value_pairs']['predictedError'] = error_all[i]
+                    a.info['key_value_pairs']['fitness'] = E_all[i] - self.kappa*error_all[i]
+                    a.info['key_value_pairs']['origin'] = self.opNameList[oplist_index_all[index_best]]
 
-                print('{}:\n'.format(self.traj_counter), np.c_[E_all, error_all])
-                print('{} best:\n'.format(self.traj_counter), E_all[0], error_all[0])
-
-                
-                pos_all = pos_all.reshape((-1, self.Natoms, 3))
-                pos_new = pos_all[0]
-                pos_all_mutated = pos_all_mutated.reshape((N_tasks * self.comm.size, self.Natoms, 3))
-                pos_new_mutated = pos_all_mutated[0]
-            else:
-                EwithError_all = E_all - self.kappa * error_all
-                index_best = EwithError_all.argmin()
-                
-                print('{}:\n'.format(self.traj_counter), np.c_[E_all, error_all])
-                print('{} best:\n'.format(self.traj_counter), E_all[index_best], error_all[index_best])
-                
-                with open(self.traj_namebase + 'E_MLerror.txt', 'a') as f:
-                    f.write('{0:.4f}\t{1:.4f}\n'.format(E_all[index_best], error_all[index_best]))
+                    a_all.append(a)
+                    a_all_mutated.append(a_mutated)
                     
-                pos_all = pos_all.reshape((-1, self.Natoms, 3))
+                label_relaxed = self.ML_dir + 'ML_relaxed{}'.format(self.traj_counter)
+                write(label_relaxed+'.traj', a_all, parallel=False)
+                label_unrelaxed = self.ML_dir + 'ML_unrelaxed{}'.format(self.traj_counter)
+                write(label_unrelaxed+'.traj', a_all_mutated, parallel=False)
+
+            try:
                 pos_new = pos_all[index_best]
-                pos_all_mutated = pos_all_mutated.reshape((N_tasks * self.comm.size, self.Natoms, 3))
                 pos_new_mutated = pos_all_mutated[index_best]
+            except IndexError:
+                pos_new = self.population.pop_MLrelaxed[index_best % N_newCandidates].get_positions()
+                pos_new_mutated = self.population.pop[index_best % N_newCandidates].get_positions()
+                
+            
 
         self.comm.broadcast(pos_new, 0)
         anew.positions = pos_new
@@ -430,12 +511,11 @@ class globalOptim():
         anew_mutated = anew.copy()
         anew_mutated.positions = pos_new_mutated
         self.comm.barrier()
-        
-        # Write unrelaxed + relaxed versions of new candidate to file
-        label = self.traj_namebase + 'ML{}'.format(self.traj_counter)
+
+        # Write unrelaxed + relaxed versions of best candidate to file
+        label = self.ML_dir + 'ML_best{}'.format(self.traj_counter)
         write(label+'.traj', [anew_mutated, anew])
-        
-        self.traj_counter += 1
+
         return anew
 
     def trainModel(self):
@@ -448,7 +528,7 @@ class globalOptim():
         """
         #GSkwargs = {'reg': [1e-5], 'sigma': np.logspace(1, 3, 5)}
         # GSkwargs = {'reg': [1e-5], 'sigma': [30]}  # C24
-        GSkwargs = {'reg': [1e-5], 'sigma': [self.sigma]}  # SnO
+        GSkwargs = {'reg': [1e-5], 'sigma': self.sigma}  # SnO
         FVU, params = self.MLmodel.train(atoms_list=self.a_add,
                                          add_new_data=True,
                                          k=3,
@@ -493,7 +573,6 @@ class globalOptim():
         krr_calc = krr_calculator(self.MLmodel)
         a_relaxed = relax_VarianceBreak(a, krr_calc, label, niter_max=1, forcemax=Fmax)
 
-        #self.traj_counter += 1
         return a_relaxed
 
     def relaxTrue(self, a):

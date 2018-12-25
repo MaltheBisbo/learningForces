@@ -84,9 +84,16 @@ class StartGenerator(object):
         self.box = box_to_place_in
         self.elliptic = elliptic
         self.cluster = cluster
-
-    def get_new_individual(self, parents):
+        self.descriptor = 'StartGenerator'
+        
+    def get_new_individual(self, parents=None):
         a = self.get_new_candidate()
+
+        try:
+            a.info['key_value_pairs']['origin'] = 'StartGenerator'
+        except:
+            a.info['key_value_pairs'] = {'origin': 'StartGenerator'}
+            
         return a, 'mutation: startGenerator'
         
     def get_new_candidate(self,maxlength=2.):

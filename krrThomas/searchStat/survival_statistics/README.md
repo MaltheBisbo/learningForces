@@ -1,0 +1,3 @@
+This folder holds the survival_stats.py module and all the files needed to make it run. If you have problems, first make sure that all the modules in survival_stats.py are loaded from the correct locations.
+
+The module can be used to obtain a survival, the cumulative distribution function (CDF), the cumulative hazard function, and somewhat poor estimate for the hazard function, for a set of EA runs. Normally the CDF and the hazard curve will be the most interesting. Additionally, the module also produces 95 % confidence intervals for most of the curves, and perform log-rank tests if more than one set of EAs are presented. The result of the log-rank test can be used to determine if there is any significant difference between the EA runs.
