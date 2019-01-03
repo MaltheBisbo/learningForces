@@ -1,0 +1,96 @@
+import numpy as np
+from scipy.spatial.distance import euclidean
+from scipy.spatial.distance import cdist
+
+import matplotlib.pyplot as plt
+
+from ase.io import read, write
+from ase.visualize import view
+
+from gaussComparator import gaussComparator
+from featureCalculators_multi.angular_fingerprintFeature_cy import Angular_Fingerprint
+from delta_functions_multi.delta import delta as deltaFunc
+from krr_errorForce import krr_class
+
+def plot_EvsDist_ref(traj, ref, MLmodel):
+    Ndata = len(traj)
+    E = np.array([a.get_potential_energy() for a in traj]).reshape((-1,1))
+    f_ref = MLmodel.featureCalculator.get_feature(ref)
+    f_traj = MLmodel.featureCalculator.get_featureMat(traj)
+    d = cdist(f_ref.reshape((1,-1)), f_traj, metric='euclidean')[0]
+
+    Eref = ref.get_potential_energy()
+    Etraj = np.array([a.get_potential_energy() for a in traj])
+
+    dE = Etraj - Eref
+    
+    try:
+        print('max grad:', np.max(dE/d))
+    except Exception as err:
+        print(err)
+    plt.figure()
+    plt.scatter(d, dE, alpha=0.1)
+
+if __name__ == '__main__':
+
+    """
+    n = 2
+    i = 0
+    traj_init = read('/home/mkb/DFT/gpLEA/anatase/step/sanity_check/test_new_calc/runs{}/run{}/global{}_initTrain.traj'.format(n,i,i), index=':')
+    traj_sp = read('/home/mkb/DFT/gpLEA/anatase/step/sanity_check/test_new_calc/runs{}/run{}/global{}_spTrain.traj'.format(n,i,i), index=':')
+    traj = traj_init + traj_sp
+
+    ref = read('/home/mkb/DFT/gpLEA/anatase/step/bestfound_2u.traj', index='1')
+    """
+
+    n = 1
+    i = 0
+    traj_init = read('/home/mkb/DFTB/TiO_1layer/dualGPR_search/runs{}/run{}/global{}_initTrain.traj'.format(n,i,i), index=':')
+    traj_sp = read('/home/mkb/DFTB/TiO_1layer/dualGPR_search/runs{}/run{}/global{}_spTrain.traj'.format(n,i,i), index=':')
+    traj = traj_init + traj_sp
+    
+    ref = read('/home/mkb/DFTB/TiO_1layer/ref/2layer_gm_transfered_done.traj', index='0')
+    
+    """
+    n = 18
+    i = 18
+    traj_init = read('/home/mkb/DFTB/TiO_2layer/all_runs/runs{}/run{}/global{}_initTrain.traj'.format(n,i,i), index=':')
+    traj_sp = read('/home/mkb/DFTB/TiO_2layer/all_runs/runs{}/run{}/global{}_spTrain.traj'.format(n,i,i), index=':')
+    traj = traj_init + traj_sp
+
+    ref = read('/home/mkb/DFTB/TiO_2layer/ref/Ti13O26_GM_done.traj', index='0')
+    """
+    
+    ### Set up feature ###
+
+    # Template structure
+    a = traj[0]
+    
+    # Radial part
+    Rc1 = 6
+    binwidth1 = 0.2
+    sigma1 = 0.2
+    
+    # Angular part
+    Rc2 = 4
+    Nbins2 = 30
+    sigma2 = 0.2
+    gamma = 2
+    
+    # Radial/angular weighting
+    eta = 20
+    use_angular = True
+    
+    # Initialize feature
+    featureCalculator = Angular_Fingerprint(a, Rc1=Rc1, Rc2=Rc2, binwidth1=binwidth1, Nbins2=Nbins2, sigma1=sigma1, sigma2=sigma2, gamma=gamma, eta=eta, use_angular=use_angular)
+
+    ### Set up KRR-model ###
+    comparator = gaussComparator(featureCalculator=featureCalculator, max_looks_like_dist=0.2)
+    delta_function = deltaFunc(atoms=a, rcut=6)
+    krr = krr_class(comparator=comparator,
+                    featureCalculator=featureCalculator,
+                    delta_function=delta_function,
+                    bias_std_add=0)
+
+    plot_EvsDist_ref(traj, ref, krr)
+    plt.show()

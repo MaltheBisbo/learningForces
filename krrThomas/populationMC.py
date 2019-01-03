@@ -48,10 +48,6 @@ class population():
 
         a = self.__save_FandE(anew, E, F)
         
-        #if len(self.pop) < self.pop_size:
-        #    # just add structure if population is not full
-        #    self.pop.append(a)
-        #else:
         # check for similar structure in pop - starting from the largest energy
         for i, ai in enumerate(self.pop_MLrelaxed[::-1]):
             if self.comparator.looks_like(a, ai):
@@ -82,3 +78,9 @@ class population():
     def get_structure(self):
         t = np.random.randint(len(self.pop))
         return self.pop[t].copy()
+
+    def get_structure_pair(self):
+        t1 = np.random.permutation(len(self.pop))[0]
+        t2 = np.random.permutation(len(self.pop))[0]
+        structure_pair = [self.pop[t1].copy(), self.pop[t2].copy()]
+        return structure_pair

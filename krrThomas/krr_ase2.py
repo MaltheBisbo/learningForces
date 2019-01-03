@@ -17,11 +17,10 @@ class krr_class():
     comparator_kwargs:
     Parameters for the compator. This could be the width for the gaussian kernel.
     """
-    def __init__(self, comparator, featureCalculator, delta_function=None, reg=1e-5, bias_fraction=0.8, bias_std_add=0.5, **comparator_kwargs):
+    def __init__(self, comparator, featureCalculator, delta_function=None, reg=1e-5, bias_std_add=0.5, **comparator_kwargs):
         self.featureCalculator = featureCalculator
         self.comparator = comparator
         self.comparator.set_args(**comparator_kwargs)
-        self.bias_fraction = bias_fraction
         self.bias_std_add = bias_std_add
         self.reg = reg
         self.delta_function = delta_function
@@ -154,7 +153,7 @@ class krr_class():
         else:
             delta_values_add = None
 
-        if add_new_data:
+        if add_new_data and self.Ndata > 0:
             self.add_data(data_values, features, delta_values_add)
         else:
             self.Ndata = len(data_values)
